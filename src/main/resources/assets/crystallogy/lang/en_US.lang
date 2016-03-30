@@ -1,0 +1,28 @@
+< en_US.lang - English localization file >
+
+block.crystall_red.name=§4Red§r Crystall
+block.crystall_blue.name=§9Blue§r Crystall
+block.crystall_yellow.name=§eYellow§r Crystall
+block.crystall_green.name=§2Green§r Crystall
+block.crystallCrusher.name=Crystallcrusher
+block.infuserBlock.name=Infuserblock
+block.playerJar.name=Player Jar
+
+tile.crystall_red.name=§4Red§r Crystall
+tile.crystall_blue.name=§9Blue§r Crystall
+tile.crystall_yellow.name=§eYellow§r Crystall
+tile.crystall_green.name=§2Green§r Crystall
+tile.crystallCrusher.name=Crystallcrusher
+tile.infuserBlock.name=Infuserblock
+tile.playerJar.name=Player Jar
+
+item.crystallDust_red.name=§4Red§r Crystalldust
+item.crystallDust_blue.name=§9Blue§r Crystalldust
+item.crystallDust_yellow.name=§eYellow§r Crystalldust
+item.crystallDust_green.name=§2Green§r Crystalldust
+item.pureCrystallDust.name=§7Pure§r Crystalldust
+item.vaporizer.name=Vaporizer
+item.vaporizerDirection.name=Firevaporizer
+item.crystallKnif.name=Crystallknif
+
+itemGroup.crystallogyMainTab=Crystallogy Maintab
