@@ -399,6 +399,9 @@ public class InfusionRecipeVaporizer {
 		if(centerInfuserBlock.getStackInSlot(0) == null){
 			return false;
 		}
+		if(!centerInfuserBlock.checkForStructure()){
+			return false;
+		}
 		for (int i = 0; i < infuserBlocks.length; i++) {
 			if(infuserBlocks[i] != null){
 				if(infuserBlocks[i].getStackInSlot(0) == null){

@@ -56,7 +56,7 @@ public class MessageHandlerOnClientInfuserBlockEnabled implements IMessageHandle
 			t.changeParticleActive(message.getStatus());
 		}
 		else{
-			System.out.println("No/wrong TileEntity in MessageHandlerOnClientInfuserBlockEnabled! " + message.toString());
+			//System.out.println("No/wrong TileEntity in MessageHandlerOnClientInfuserBlockEnabled! " + message.toString());
 		}
 	}
 	

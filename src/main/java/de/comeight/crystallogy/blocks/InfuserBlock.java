@@ -17,6 +17,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -71,8 +72,15 @@ public class InfuserBlock extends BaseBlockContainer {
 		if (tE == null || playerIn.isSneaking())
         {
 			if(tE != null){
-				Utilities.printWorldSide(worldIn);
-				System.out.println(tE.getStackInSlot(0));
+				if(!worldIn.isRemote){
+					tE.checkForStructure();
+					/*if(tE.getCenterInfuserBlockPos() != null){
+						playerIn.addChatMessage(new TextComponentString(String.valueOf(tE.isActive()) + ", " + tE.getCenterInfuserBlockPos().toString()));
+					}
+					else{
+						playerIn.addChatMessage(new TextComponentString(String.valueOf(tE.isActive()) + ", null"));
+					}*/
+				}
 			}
 			
 			if(!tE.getWorld().isRemote){

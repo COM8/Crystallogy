@@ -10,6 +10,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -22,6 +23,7 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 	
 	private StructureInfuser struct;
 	private boolean active;
+	private BlockPos centerInfuserBlockPos;
 	
 	private LightParticle lightParticle;
 	public InfusionRecipeVaporizer recipe;
@@ -43,6 +45,23 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 	public void setActive(boolean active) {
 		this.active = active;
 		updateParticle();
+		
+		if(worldObj == null){
+			return;
+		}
+		BlockPos[] surPos = struct.getSurroundingPedals(getPos());
+		for (int i = 0; i < surPos.length; i++) {
+			TileEntity tE = worldObj.getTileEntity(surPos[i]);
+			if(tE != null && tE instanceof TileEnityInfuserBlock){
+				TileEnityInfuserBlock tEB = (TileEnityInfuserBlock) tE;
+				if(active){
+					tEB.setCenterInfuserBlockPos(getPos());
+				}
+				else{
+					tEB.setCenterInfuserBlockPos(null);
+				}
+			}
+		}
 	}
 	
 	@Override
@@ -51,13 +70,20 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
         return "TileEnityInfuserBlock";
     }
 	
+	public void setCenterInfuserBlockPos(BlockPos centerInfuserBlockPos) {
+		this.centerInfuserBlockPos = centerInfuserBlockPos;
+	}
+	
+	public BlockPos getCenterInfuserBlockPos() {
+		return centerInfuserBlockPos;
+	}
+	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 		//compound.setBoolean("active", recipe.isActive());
 		//compound.setInteger("cookTime", recipe.cookTime);
-		
 	}
 	
 	@Override
@@ -96,18 +122,38 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 				}
 			}
 			
+			if(tick % 5 == 0){
+				testForCenterInfusionBlock();
+			}
+			
 			if(tick > 200){
 				tick = 0;
 				setActive(checkForStructure());
 			}
 			updateParticle();
 		}
+		else{ // Client:
+			
+		}
 		tick++;
+	}
+	
+	private void testForCenterInfusionBlock(){
+		if(centerInfuserBlockPos == null){
+			return;
+		}
+		TileEntity tE = worldObj.getTileEntity(centerInfuserBlockPos);
+		if(tE != null && tE instanceof TileEnityInfuserBlock){
+			return;
+		}
+		else{
+			centerInfuserBlockPos = null;
+		}
 	}
 	
 	public boolean checkForStructure(){
 		StructureAreaDescription structureArea = struct.infuserArea;
-		return structureArea.testForStructure(worldObj, this.getPos(), 2, 2);
+		return structureArea.testForStructure(worldObj, getPos(), 2, 2);
 	}
 	
 	private void setInfuserBlocks(){
@@ -129,7 +175,7 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 		if(status){
 			if(lightParticle == null){
 				lightParticle = new LightParticle(worldObj, this.pos.getX() + 0.5, this.pos.getY() + 1.0, this.pos.getZ() + 0.5, 0, 0, 0);
-				lightParticle.setParticleMaxAge(10);
+				lightParticle.setParticleMaxAge(5);
 				Minecraft.getMinecraft().effectRenderer.addEffect(lightParticle);
 			}
 			else{
@@ -143,4 +189,5 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 			}
 		}
 	}
+
 }
