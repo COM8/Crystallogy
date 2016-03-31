@@ -5,16 +5,19 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 
-public class NetworkPacketParticleToServer extends BaseNetworkPacket {
+public class NetworkPacketParticle extends BaseNetworkPacket {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	protected NetworkParticle nP;
 	
+	public static final Byte ID_SERVER = 44;
+	public static final Byte ID_CLIENT = 45;
+	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public NetworkPacketParticleToServer() {
+	public NetworkPacketParticle() {
 		this.messageValid = false;
 	}
 	
-	public NetworkPacketParticleToServer(NetworkParticle nP){
+	public NetworkPacketParticle(NetworkParticle nP){
 		if(nP == null){
 			this.messageValid =false;
 		}

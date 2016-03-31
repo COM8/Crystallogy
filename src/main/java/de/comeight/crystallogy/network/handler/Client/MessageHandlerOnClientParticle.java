@@ -1,8 +1,7 @@
-package de.comeight.crystallogy.handler;
+package de.comeight.crystallogy.network.handler.Client;
 
-import net.minecraft.util.math.Vec3d;
-
-import de.comeight.crystallogy.network.MessageToClient;
+import de.comeight.crystallogy.network.NetworkPacketInfusionRecipeStatus;
+import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.ParticleA;
 import de.comeight.crystallogy.particles.ParticleB;
@@ -17,72 +16,46 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 
-public class MessageHandlerOnClientHandler implements IMessageHandler<MessageToClient, IMessage>{
+public class MessageHandlerOnClientParticle implements IMessageHandler<NetworkPacketParticle, IMessage> {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 
-
+	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public MessageHandlerOnClientHandler() {
+	public MessageHandlerOnClientParticle() {
 	}
-
+	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
-
+	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
-	public IMessage onMessage(final MessageToClient message, MessageContext ctx) {
-		//System.out.println("Nachricheneingang Client.");
+	public IMessage onMessage(final NetworkPacketParticle message, MessageContext ctx) {
+		// System.out.println("Nachricheneingang Client.");
 		if (ctx.side != Side.CLIENT) {
-			System.err.println("TargetEffectMessageToClient received on wrong side:" + ctx.side);
+			System.err.println("NetworkPacketParticle received on wrong side: " + ctx.side);
 			return null;
 		}
 		if (!message.isMessageValid()) {
-			System.err.println("TargetEffectMessageToClient was invalid" + message.toString());
+			System.err.println("NetworkPacketParticle was invalid" + message.toString());
 			return null;
 		}
 		Minecraft minecraft = Minecraft.getMinecraft();
 		final WorldClient worldClient = minecraft.theWorld;
 		minecraft.addScheduledTask(new Runnable() {
 			public void run() {
-				processMessage(worldClient, message);
+				processMessage(message, worldClient);
 			}
 		});
-
 		return null;
 	}
 	
-	private void processMessage(WorldClient worldClient, MessageToClient message) {	
-		switch (message.messageType) {
-			case MessageToClient.PARTICLE:
-				particleMessage(worldClient, message);
-				break;
-				
-			case MessageToClient.TILEENTITYPARTICLEUPDATERECIPE:
-				tileEntityParticleMessageRecipe(worldClient, message);
-				break;
-				
-			case MessageToClient.TILEENTITYPARTICLEUPDATE:
-				tileEntityParticleMessage(worldClient, message);
-				break;
-				
-			case MessageToClient.ITEMSTACK:
-				setItemMessage(worldClient, message);
-				break;
-				
-			default:
-				System.out.println("Unknown messageType: " + message.messageType);
-				break;
-		}
-		
-	    //System.out.println("Clientside ausgeführt!");
-	}
-	
-	private void particleMessage(WorldClient worldClient, MessageToClient message){
+	private void processMessage(NetworkPacketParticle message, WorldClient worldClient) {
 		NetworkParticle nP = message.getNetworkParticle();
 		Vec3d pos = nP.getParticle().getPos();
 		String type = nP.getType();
@@ -155,39 +128,4 @@ public class MessageHandlerOnClientHandler implements IMessageHandler<MessageToC
 		}
 	}
 	
-	private void tileEntityParticleMessageRecipe(WorldClient worldClient, MessageToClient message){
-		Vec3d pos = message.getTilePos();
-		TileEntity tE = worldClient.getTileEntity(new BlockPos(pos.xCoord, pos.yCoord, pos.zCoord));
-		if(tE instanceof TileEnityInfuserBlock){
-			TileEnityInfuserBlock t =  (TileEnityInfuserBlock) tE;
-			t.changeRecipeStatus(message.isStatus(), worldClient);
-		}
-		else{
-			System.out.println("Wrong TileEntity!");
-		}
-	}
-	
-	private void tileEntityParticleMessage(WorldClient worldClient, MessageToClient message){
-		Vec3d pos = message.getTilePos();
-		TileEntity tE = worldClient.getTileEntity(new BlockPos(pos.xCoord, pos.yCoord, pos.zCoord));
-		if(tE instanceof TileEnityInfuserBlock){
-			TileEnityInfuserBlock t =  (TileEnityInfuserBlock) tE;
-			t.changeParticleActive(message.isStatus());
-		}
-		else{
-			System.out.println("Wrong TileEntity! " + message.toString());
-		}
-	}
-	
-	private void setItemMessage(WorldClient worldClient, MessageToClient message){
-		Vec3d pos = message.getTilePos();
-		TileEntity tE = worldClient.getTileEntity(new BlockPos(pos.xCoord, pos.yCoord, pos.zCoord));
-		if(tE instanceof TileEnityInfuserBlock){
-			TileEnityInfuserBlock t =  (TileEnityInfuserBlock) tE;
-			t.setInventorySlotContents(0, message.getStack());;
-		}
-		else{
-			System.out.println("Wrong TileEntity!");
-		}
-	}
 }

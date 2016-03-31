@@ -2,8 +2,14 @@ package de.comeight.crystallogy;
 
 import de.comeight.crystallogy.handler.BlockRenderHandler;
 import de.comeight.crystallogy.handler.ItemRenderHandler;
-import de.comeight.crystallogy.handler.MessageHandlerOnClientHandler;
-import de.comeight.crystallogy.network.MessageToClient;
+import de.comeight.crystallogy.network.NetworkPacketInfuserBlockEnabled;
+import de.comeight.crystallogy.network.NetworkPacketInfusionRecipeStatus;
+import de.comeight.crystallogy.network.NetworkPacketParticle;
+import de.comeight.crystallogy.network.NetworkPacketUpdateInventory;
+import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientInfuserBlockEnabled;
+import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientInfusionRecipeStatus;
+import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientParticle;
+import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientUpdateInventory;
 import de.comeight.crystallogy.particles.ParticleHandler;
 import de.comeight.crystallogy.renderer.RendererInfuserBlockItem;
 import de.comeight.crystallogy.renderer.RendererPlayerinJar;
@@ -48,7 +54,10 @@ public class ClientProxy extends CommonProxy{
     }
     
     private void registerNetworkWrappers() {
-    	CommonProxy.NETWORKWRAPPER.registerMessage(MessageHandlerOnClientHandler.class, MessageToClient.class, CommonProxy.PARTICLE_MESSAGE_CLIENT_ID, Side.CLIENT);
+    	CommonProxy.NETWORKWRAPPER.registerMessage(MessageHandlerOnClientInfuserBlockEnabled.class, NetworkPacketInfuserBlockEnabled.class, NetworkPacketInfuserBlockEnabled.ID_CLIENT, Side.CLIENT);
+    	CommonProxy.NETWORKWRAPPER.registerMessage(MessageHandlerOnClientInfusionRecipeStatus.class, NetworkPacketInfusionRecipeStatus.class, NetworkPacketInfusionRecipeStatus.ID_CLIENT, Side.CLIENT);
+    	CommonProxy.NETWORKWRAPPER.registerMessage(MessageHandlerOnClientUpdateInventory.class, NetworkPacketUpdateInventory.class, NetworkPacketUpdateInventory.ID_CLIENT, Side.CLIENT);
+    	CommonProxy.NETWORKWRAPPER.registerMessage(MessageHandlerOnClientParticle.class, NetworkPacketParticle.class, NetworkPacketParticle.ID_CLIENT, Side.CLIENT);
     	System.out.println("Clientside MessageHandlerOnClient registriert.");
 	}
 }

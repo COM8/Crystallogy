@@ -1,10 +1,8 @@
 package de.comeight.crystallogy.blocks;
 
-import java.util.Random;
-
 import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.blocks.container.BaseBlockContainer;
-import de.comeight.crystallogy.network.MessageToServer;
+import de.comeight.crystallogy.network.NetworkPacketUpdateInventory;
 import de.comeight.crystallogy.structures.StructureInfuser;
 import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
 import de.comeight.crystallogy.util.Utilities;
@@ -14,7 +12,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -107,7 +104,7 @@ public class InfuserBlock extends BaseBlockContainer {
 	}
 	
 	private void setItemsFromInfuserBlocksNetwork(BlockPos pos, ItemStack stack) {
-		MessageToServer message = new MessageToServer(MessageToServer.ITEMSTACK, new Vec3d(pos), stack);
+		NetworkPacketUpdateInventory message = new NetworkPacketUpdateInventory(new Vec3d(pos), stack, 0);
 		CommonProxy.NETWORKWRAPPER.sendToServer(message);
 	}
 	

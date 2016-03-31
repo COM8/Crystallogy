@@ -2,7 +2,9 @@ package de.comeight.crystallogy.items.crafting;
 
 import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.handler.ItemHandler;
-import de.comeight.crystallogy.network.MessageToServer;
+import de.comeight.crystallogy.network.NetworkPacketInfusionRecipeStatus;
+import de.comeight.crystallogy.network.NetworkPacketParticle;
+import de.comeight.crystallogy.network.NetworkPacketUpdateInventory;
 import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.InfusionParticle;
 import de.comeight.crystallogy.particles.ParticleA;
@@ -88,7 +90,7 @@ public class InfusionRecipeVaporizer {
 		iP.setRBGColorF(Utilities.getRandFloat(0.0F, 1.0F), Utilities.getRandFloat(0.0F, 1.0F), Utilities.getRandFloat(0.0F, 1.0F));
 		NetworkParticle nP = new NetworkParticle(iP, iP.NAME);
 		nP.setSize(new Vec3d(0.0, 2.0, 0.0));
-		MessageToServer pMtS = new MessageToServer(nP);
+		NetworkPacketParticle pMtS = new NetworkPacketParticle(nP);
 		CommonProxy.NETWORKWRAPPER.sendToServer(pMtS);
 	}
 
@@ -307,7 +309,7 @@ public class InfusionRecipeVaporizer {
 	}
 	
 	private void startAnimationServer(){
-		MessageToServer message = new MessageToServer(MessageToServer.TILEENTITYPARTICLEUPDATERECIPE, new Vec3d(this.centerInfuserBlock.getPos()), true);
+		NetworkPacketInfusionRecipeStatus message = new NetworkPacketInfusionRecipeStatus(new Vec3d(this.centerInfuserBlock.getPos()), true);
 		CommonProxy.NETWORKWRAPPER.sendToServer(message);
 	}
 
@@ -336,7 +338,7 @@ public class InfusionRecipeVaporizer {
 	}
 	
 	private void stopAnimationServer(){
-		MessageToServer message = new MessageToServer(MessageToServer.TILEENTITYPARTICLEUPDATERECIPE, new Vec3d(this.centerInfuserBlock.getPos()), false);
+		NetworkPacketInfusionRecipeStatus message = new NetworkPacketInfusionRecipeStatus(new Vec3d(this.centerInfuserBlock.getPos()), false);
 		CommonProxy.NETWORKWRAPPER.sendToServer(message);
 	}
 	
@@ -408,7 +410,7 @@ public class InfusionRecipeVaporizer {
 	}
 	
 	private void setItemsFromInfuserBlocksNetwork(BlockPos pos, ItemStack stack) {
-		MessageToServer message = new MessageToServer(MessageToServer.ITEMSTACK, new Vec3d(pos), stack);
+		NetworkPacketUpdateInventory message = new NetworkPacketUpdateInventory(new Vec3d(pos), stack, 0);
 		CommonProxy.NETWORKWRAPPER.sendToServer(message);
 	}
 	

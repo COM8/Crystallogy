@@ -2,7 +2,7 @@ package de.comeight.crystallogy.tileEntitys;
 
 import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.items.crafting.InfusionRecipeVaporizer;
-import de.comeight.crystallogy.network.MessageToServer;
+import de.comeight.crystallogy.network.NetworkPacketInfuserBlockEnabled;
 import de.comeight.crystallogy.particles.LightParticle;
 import de.comeight.crystallogy.structures.StructureInfuser;
 import de.comeight.crystallogy.util.StructureAreaDescription;
@@ -82,7 +82,7 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
     
     public void updateParticle() {
     	if(worldObj != null && !worldObj.isRemote){
-    		MessageToServer message = new MessageToServer( MessageToServer.TILEENTITYPARTICLEUPDATE, new Vec3d(this.pos), active);
+    		NetworkPacketInfuserBlockEnabled message = new NetworkPacketInfuserBlockEnabled(new Vec3d(this.pos), active);
     		CommonProxy.NETWORKWRAPPER.sendToServer(message);
 		}
 	}

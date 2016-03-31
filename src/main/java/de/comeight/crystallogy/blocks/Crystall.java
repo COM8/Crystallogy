@@ -4,7 +4,7 @@ import java.util.Random;
 
 import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.handler.BlockHandler;
-import de.comeight.crystallogy.network.MessageToServer;
+import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.JumpParticleBetweenCrystalls;
 import de.comeight.crystallogy.particles.ParticleB;
@@ -19,7 +19,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -138,7 +137,7 @@ public class Crystall extends BaseBlockCutout{
 		gP.setRBGColorF(r, g, b);
 		NetworkParticle nP = new NetworkParticle(gP, gP.name);
 		nP.setSize(new Vec3d(0.0, 0.0, 0.0));
-		MessageToServer pMtS = new MessageToServer(nP);
+		NetworkPacketParticle pMtS = new NetworkPacketParticle(nP);
 		CommonProxy.NETWORKWRAPPER.sendToServer(pMtS);
 	}
     

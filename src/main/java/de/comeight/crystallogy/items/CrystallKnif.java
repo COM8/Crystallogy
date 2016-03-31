@@ -7,7 +7,7 @@ import com.mojang.authlib.GameProfile;
 
 import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.entity.PlayerClientDummy;
-import de.comeight.crystallogy.network.MessageToServer;
+import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.ParticleB;
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
@@ -184,7 +184,7 @@ public class CrystallKnif extends BaseItemSword{
 						NetworkParticle nP = new NetworkParticle(gP, gP.name);
 						nP.setSize(new Vec3d(1.0, 2.0, 1.0));
 						nP.setNumberOfParticle(30);
-						MessageToServer pMtS = new MessageToServer(nP);
+						NetworkPacketParticle pMtS = new NetworkPacketParticle(nP);
 						CommonProxy.NETWORKWRAPPER.sendToServer(pMtS);	
 					}
 				}

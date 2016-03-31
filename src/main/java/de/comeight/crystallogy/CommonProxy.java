@@ -5,10 +5,16 @@ import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.GuiHandler;
 import de.comeight.crystallogy.handler.GuiHandlerRegistry;
 import de.comeight.crystallogy.handler.ItemHandler;
-import de.comeight.crystallogy.handler.MessageHandlerOnServerHandler;
 import de.comeight.crystallogy.items.Vaporizer;
 import de.comeight.crystallogy.items.crafting.RecipeVaporizer;
-import de.comeight.crystallogy.network.MessageToServer;
+import de.comeight.crystallogy.network.NetworkPacketInfuserBlockEnabled;
+import de.comeight.crystallogy.network.NetworkPacketInfusionRecipeStatus;
+import de.comeight.crystallogy.network.NetworkPacketParticle;
+import de.comeight.crystallogy.network.NetworkPacketUpdateInventory;
+import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerInfuserBlockEnabled;
+import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerInfusionRecipeStatus;
+import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerParticle;
+import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerUpdateInventory;
 import de.comeight.crystallogy.tabs.CrystallogyMainTab;
 import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
 import de.comeight.crystallogy.tileEntitys.TileEntityCrystallCrusher;
@@ -32,8 +38,6 @@ public class CommonProxy {
 	
 	// Network:
 	public static final SimpleNetworkWrapper NETWORKWRAPPER = NetworkRegistry.INSTANCE.newSimpleChannel(CrystallogyBase.MODID);
-	public static final Byte PARTICLE_MESSAGE_SERVER_ID = 35;
-	public static final Byte PARTICLE_MESSAGE_CLIENT_ID = 36;
 	
 	//Blocks:
 	private static BlockHandler bH = new BlockHandler();
@@ -51,6 +55,14 @@ public class CommonProxy {
 
 	
 	// -----------------------------------------------Sonstige Methoden:-------------------------------------
+	private void registerNetworkWrappers() {
+		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerInfuserBlockEnabled.class, NetworkPacketInfuserBlockEnabled.class, NetworkPacketInfuserBlockEnabled.ID_SERVER, Side.SERVER);
+		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerInfusionRecipeStatus.class, NetworkPacketInfusionRecipeStatus.class, NetworkPacketInfusionRecipeStatus.ID_SERVER, Side.SERVER);
+		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerUpdateInventory.class, NetworkPacketUpdateInventory.class, NetworkPacketUpdateInventory.ID_SERVER, Side.SERVER);
+		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerParticle.class, NetworkPacketParticle.class, NetworkPacketParticle.ID_SERVER, Side.SERVER);
+		System.out.println("Serverside MessageHandlerOnServer registriert.");
+	}
+	
 	private void registerGuiHandlers() {
 		NetworkRegistry.INSTANCE.registerGuiHandler(CrystallogyBase.INSTANCE, GuiHandlerRegistry.getInstance());
 		GuiHandlerRegistry.getInstance().registerGuiHandler(new GuiHandler(), GuiCrystallCrusher.ID);
@@ -67,11 +79,6 @@ public class CommonProxy {
 		GameRegistry.registerTileEntity(TileEntityCrystallCrusher.class, BlockHandler.crystallCrusher.ID);
 		GameRegistry.registerTileEntity(TileEnityInfuserBlock.class, BlockHandler.infuserBlock.ID);
 		GameRegistry.registerTileEntity(TileEntityPlayerJar.class, BlockHandler.playerJar.ID);
-	}	
-	
-	private void registerNetworkWrappers() {
-		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerHandler.class, MessageToServer.class, PARTICLE_MESSAGE_SERVER_ID, Side.SERVER);
-		System.out.println("Serverside MessageHandlerOnServer registriert.");
 	}
 	
 	private void registerRecipes() {
@@ -96,9 +103,8 @@ public class CommonProxy {
 	public void preInit(FMLPreInitializationEvent e) {
 		bH.preInit();
 		iH.preInit();
-		
-		registerGuiHandlers();
 		registerNetworkWrappers();
+		registerGuiHandlers();
     }
 
 	// -----------------------------------------------Init:--------------------------------------------------

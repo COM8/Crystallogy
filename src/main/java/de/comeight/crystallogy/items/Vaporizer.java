@@ -3,8 +3,7 @@ package de.comeight.crystallogy.items;
 import java.util.List;
 
 import de.comeight.crystallogy.CommonProxy;
-import de.comeight.crystallogy.network.MessageToClient;
-import de.comeight.crystallogy.network.MessageToServer;
+import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.BaseParticle;
 import de.comeight.crystallogy.particles.ParticleHandler;
@@ -150,7 +149,7 @@ public class Vaporizer extends BaseItem {
 		nP.setSize(new Vec3d(c.getDouble("sizeX"), c.getDouble("sizeY"), c.getDouble("sizeZ")));
 		nP.setNumberOfParticle(c.getInteger("numberOfParticle"));
 		
-		MessageToServer message = new MessageToClient(nP);
+		NetworkPacketParticle message = new NetworkPacketParticle(nP);
 		CommonProxy.NETWORKWRAPPER.sendToServer(message);
 	}
 	
