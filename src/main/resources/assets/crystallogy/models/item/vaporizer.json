@@ -95,8 +95,8 @@
 		},
 		"gui": {
 			"rotation": [ 22, 60, 0 ],
-			"translation": [ 0, 3.02, 0 ],
-			"scale": [ 1, 1, 1 ]
+			"translation": [ 0, 5.67, 0 ],
+			"scale": [ 1.5, 1.5, 1.5 ]
 		}
 	}
 }

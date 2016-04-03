@@ -49,10 +49,9 @@ public class RendererInfuserBlockItem extends TileEntitySpecialRenderer<TileEnit
             float rotationAngel = (float) (720.0 * (System.currentTimeMillis() / 2 & 0x3FFFL) / 0x3FFFL);
 
             GlStateManager.rotate(rotationAngel, 0.0F, 1.0F, 0.0F);
-            GlStateManager.scale(0.5F, 0.5F, 0.5F);
             GlStateManager.pushAttrib();
             RenderHelper.enableStandardItemLighting();
-            itemRenderer.renderItem(entityitem.getEntityItem(), ItemCameraTransforms.TransformType.FIXED);
+            itemRenderer.renderItem(entityitem.getEntityItem(), ItemCameraTransforms.TransformType.GROUND);
             RenderHelper.disableStandardItemLighting();
             GlStateManager.popAttrib();
 
