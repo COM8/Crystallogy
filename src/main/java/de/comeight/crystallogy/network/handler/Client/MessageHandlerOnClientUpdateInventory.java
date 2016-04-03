@@ -1,14 +1,11 @@
 package de.comeight.crystallogy.network.handler.Client;
 
-import de.comeight.crystallogy.network.NetworkPacketInfusionRecipeStatus;
 import de.comeight.crystallogy.network.NetworkPacketUpdateInventory;
-import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
 import de.comeight.crystallogy.tileEntitys.TileEntityInventory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -48,11 +45,11 @@ public class MessageHandlerOnClientUpdateInventory implements IMessageHandler<Ne
 	}
 	
 	private void processMessage(NetworkPacketUpdateInventory message, WorldClient worldClient) {
-		Vec3d pos = message.getTilePos();
-		TileEntity tE = worldClient.getTileEntity(new BlockPos(pos.xCoord, pos.yCoord, pos.zCoord));
+		BlockPos pos = message.getTilePos();
+		TileEntity tE = worldClient.getTileEntity(new BlockPos(pos.getX(), pos.getY(), pos.getZ()));
 		if(tE instanceof TileEntityInventory){
 			TileEntityInventory t =  (TileEntityInventory) tE;
-			t.setInventorySlotContents(message.getSlotIndex(), message.getStack());;
+			t.setInventorySlotContents(message.getSlotIndex(), message.getStack());
 		}
 		else{
 			System.out.println("No/wrong TileEntity in MessageHandlerOnClientUpdateInventory!");

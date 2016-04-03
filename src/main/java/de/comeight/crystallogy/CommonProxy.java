@@ -4,8 +4,11 @@ import de.comeight.crystallogy.gui.GuiCrystallCrusher;
 import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.GuiHandler;
 import de.comeight.crystallogy.handler.GuiHandlerRegistry;
+import de.comeight.crystallogy.handler.InfusionRecipeHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.items.Vaporizer;
+import de.comeight.crystallogy.items.crafting.InfusionRecipe;
+import de.comeight.crystallogy.items.crafting.InfusionRecipeVaporizer;
 import de.comeight.crystallogy.items.crafting.RecipeVaporizer;
 import de.comeight.crystallogy.network.NetworkPacketInfuserBlockEnabled;
 import de.comeight.crystallogy.network.NetworkPacketInfusionRecipeStatus;
@@ -48,6 +51,8 @@ public class CommonProxy {
 	//Recipes:
 	public static RecipeVaporizer recipeVaporizer = new RecipeVaporizer();
 	
+	public static InfusionRecipeVaporizer infusionRecipeVaporizer = new InfusionRecipeVaporizer(); 
+	
 	// -----------------------------------------------Constructor:-------------------------------------------
 	
 	
@@ -82,6 +87,8 @@ public class CommonProxy {
 	}
 	
 	private void registerRecipes() {
+		InfusionRecipeHandler.addRecipe(infusionRecipeVaporizer);
+		
 		GameRegistry.addRecipe(recipeVaporizer);
 		
 		ItemStack s =  new ItemStack(ItemHandler.vaporizer);

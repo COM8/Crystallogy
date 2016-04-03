@@ -1,15 +1,16 @@
 package de.comeight.crystallogy.network;
 
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufUtil;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 
 public class NetworkPacketInfusionRecipeStatus extends BaseNetworkPacket {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	protected Vec3d tilePos;
+	protected BlockPos centerTilePos;
 	protected boolean status;
+	protected int recipeIndex;
 	
 	public static final Byte ID_SERVER = 42;
 	public static final Byte ID_CLIENT = 43;
@@ -19,13 +20,22 @@ public class NetworkPacketInfusionRecipeStatus extends BaseNetworkPacket {
 		this.messageValid = false;
 	}
 	
-	public NetworkPacketInfusionRecipeStatus(Vec3d tilePos, boolean status){
-		this.tilePos = tilePos;
+	public NetworkPacketInfusionRecipeStatus(BlockPos centerTilePos, boolean status, int recipeIndex){
+		this.centerTilePos = centerTilePos;
 		this.status = status;
+		this.recipeIndex = recipeIndex;
 		this.messageValid = true;
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
+	public int getRecipeIndex() {
+		return recipeIndex;
+	}
+
+	public void setRecipeIndex(int recipeIndex) {
+		this.recipeIndex = recipeIndex;
+	}
+	
 	public boolean getStatus() {
 		return status;
 	}
@@ -34,27 +44,28 @@ public class NetworkPacketInfusionRecipeStatus extends BaseNetworkPacket {
 		this.status = status;
 	}
 	
-	public Vec3d getTilePos() {
-		return tilePos;
+	public BlockPos getTilePos() {
+		return centerTilePos;
 	}
 
-	public void setTilePos(Vec3d tilePos) {
-		this.tilePos = tilePos;
+	public void setTilePos(BlockPos tilePos) {
+		this.centerTilePos = tilePos;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public String toString() {
-		return "NetworkPacketInfusionRecipeStatus[Pos;status =" + tilePos.toString() + ";" + status + "]";
+		return "NetworkPacketInfusionRecipeStatus[Pos;status =" + centerTilePos.toString() + ";" + status + ";" + recipeIndex + "]";
 	}
 
 	@Override
 	public void toBytes(ByteBuf buf) {
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setBoolean("status", status);
-		tag.setDouble("posX", tilePos.xCoord);
-		tag.setDouble("posY", tilePos.yCoord);
-		tag.setDouble("posZ", tilePos.zCoord);
+		tag.setInteger("posX", centerTilePos.getX());
+		tag.setInteger("posY", centerTilePos.getY());
+		tag.setInteger("posZ", centerTilePos.getZ());
+		tag.setInteger("recipeIndex", recipeIndex);
 		ByteBufUtils.writeTag(buf, tag);
 	}
 
@@ -63,7 +74,8 @@ public class NetworkPacketInfusionRecipeStatus extends BaseNetworkPacket {
 		try{
 			NBTTagCompound tag = ByteBufUtils.readTag(buf);
 			status = tag.getBoolean("status");
-			tilePos = new Vec3d(tag.getDouble("posX"), tag.getDouble("posY"), tag.getDouble("posZ"));
+			centerTilePos = new BlockPos(tag.getInteger("posX"), tag.getInteger("posY"), tag.getInteger("posZ"));
+			recipeIndex = tag.getInteger("recipeIndex");
 			messageValid = true;
 		}
 		catch (Exception e) {

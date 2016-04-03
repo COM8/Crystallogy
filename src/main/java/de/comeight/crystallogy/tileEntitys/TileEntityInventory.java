@@ -1,5 +1,7 @@
 package de.comeight.crystallogy.tileEntitys;
 
+import de.comeight.crystallogy.CommonProxy;
+import de.comeight.crystallogy.network.NetworkPacketUpdateInventory;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -9,6 +11,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.util.Constants;
@@ -54,12 +57,10 @@ public class TileEntityInventory extends TileEntity implements IInventory{
 		this.inventory[index] = stack;
 		if(stack != null && stack.stackSize > getInventoryStackLimit()){
 			stack.stackSize = getInventoryStackLimit();
-			//System.out.println(this.inventory[index].toString());
 		}
-		
 		markDirty();
 	}
-
+	
 	@Override
 	public int getInventoryStackLimit() {
 		return 64;

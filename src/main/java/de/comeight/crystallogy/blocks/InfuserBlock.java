@@ -3,9 +3,7 @@ package de.comeight.crystallogy.blocks;
 import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.blocks.container.BaseBlockContainer;
 import de.comeight.crystallogy.network.NetworkPacketUpdateInventory;
-import de.comeight.crystallogy.structures.StructureInfuser;
 import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
-import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -16,8 +14,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -66,7 +62,7 @@ public class InfuserBlock extends BaseBlockContainer {
 	}
 	
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) { //TODO Rewrite method
 		TileEnityInfuserBlock tE = (TileEnityInfuserBlock) worldIn.getTileEntity(pos);
 		
 		if (tE == null || playerIn.isSneaking())
@@ -97,9 +93,10 @@ public class InfuserBlock extends BaseBlockContainer {
             newItem.stackSize = 1;
             playerIStack.stackSize--;
             tE.setInventorySlotContents(0, newItem);
-            tryInfuse(tE, worldIn, pos);
-        } else if (tE.getStackInSlot(0) != null && playerIStack == null)
-        {
+            if(!worldIn.isRemote){
+            	tE.tryInfuse();	//Try Infuse
+            }
+        } else if (tE.getStackInSlot(0) != null && playerIStack == null){
             playerIn.inventory.addItemStackToInventory(tE.removeStackFromSlot(0));
         }
 		updateTileEntity(worldIn, pos);
@@ -112,20 +109,8 @@ public class InfuserBlock extends BaseBlockContainer {
 	}
 	
 	private void setItemsFromInfuserBlocksNetwork(BlockPos pos, ItemStack stack) {
-		NetworkPacketUpdateInventory message = new NetworkPacketUpdateInventory(new Vec3d(pos), stack, 0);
+		NetworkPacketUpdateInventory message = new NetworkPacketUpdateInventory(pos, stack, 0);
 		CommonProxy.NETWORKWRAPPER.sendToServer(message);
-	}
-	
-	private void tryInfuse(TileEnityInfuserBlock tE, World worldIn, BlockPos pos) {
-		if(!tE.isActive()){
-			tE.checkForStructure();
-		}
-		if(tE.isActive() && !tE.recipe.isActive()){
-			BlockPos[] infuserBlocks = StructureInfuser.getSurroundingPedals(pos);
-			if(tE.recipe.match(pos, infuserBlocks, worldIn)){
-				tE.recipe.cook();
-			}
-		}
 	}
 
 	private void updateTileEntity(World worldIn, BlockPos pos){

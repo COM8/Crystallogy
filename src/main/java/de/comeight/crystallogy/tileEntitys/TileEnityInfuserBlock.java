@@ -1,9 +1,13 @@
 package de.comeight.crystallogy.tileEntitys;
 
+import java.util.ArrayList;
+
 import de.comeight.crystallogy.CommonProxy;
-import de.comeight.crystallogy.items.crafting.InfusionRecipeVaporizer;
+import de.comeight.crystallogy.handler.InfusionRecipeHandler;
+import de.comeight.crystallogy.items.crafting.InfusionRecipe;
 import de.comeight.crystallogy.network.NetworkPacketInfuserBlockEnabled;
 import de.comeight.crystallogy.particles.LightParticle;
+import de.comeight.crystallogy.renderer.InfusionAnimation;
 import de.comeight.crystallogy.structures.StructureInfuser;
 import de.comeight.crystallogy.util.StructureAreaDescription;
 import net.minecraft.client.Minecraft;
@@ -23,10 +27,11 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 	
 	private StructureInfuser struct;
 	private boolean active;
-	private BlockPos centerInfuserBlockPos;
 	
 	private LightParticle lightParticle;
-	public InfusionRecipeVaporizer recipe;
+	private InfusionRecipe recipe;
+	
+	private InfusionAnimation infusionAnimation;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public TileEnityInfuserBlock() {
@@ -34,7 +39,6 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 		this.tick = 0;
 		this.struct = new StructureInfuser();
 		setActive(false);
-		this.recipe = new InfusionRecipeVaporizer();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -45,23 +49,6 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 	public void setActive(boolean active) {
 		this.active = active;
 		updateParticle();
-		
-		if(worldObj == null){
-			return;
-		}
-		BlockPos[] surPos = struct.getSurroundingPedals(getPos());
-		for (int i = 0; i < surPos.length; i++) {
-			TileEntity tE = worldObj.getTileEntity(surPos[i]);
-			if(tE != null && tE instanceof TileEnityInfuserBlock){
-				TileEnityInfuserBlock tEB = (TileEnityInfuserBlock) tE;
-				if(active){
-					tEB.setCenterInfuserBlockPos(getPos());
-				}
-				else{
-					tEB.setCenterInfuserBlockPos(null);
-				}
-			}
-		}
 	}
 	
 	@Override
@@ -70,20 +57,53 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
         return "TileEnityInfuserBlock";
     }
 	
-	public void setCenterInfuserBlockPos(BlockPos centerInfuserBlockPos) {
-		this.centerInfuserBlockPos = centerInfuserBlockPos;
-	}
-	
-	public BlockPos getCenterInfuserBlockPos() {
-		return centerInfuserBlockPos;
+	protected ItemStack[] getSurroundingItemStacks(){
+		ArrayList<ItemStack> list = new ArrayList<ItemStack>();
+		BlockPos surr[] = struct.getSurroundingPedals(pos);
+		for (int i = 0; i < surr.length; i++) {
+			TileEntity tE = worldObj.getTileEntity(surr[i]);
+			if(tE instanceof TileEnityInfuserBlock){
+				TileEnityInfuserBlock tEI = (TileEnityInfuserBlock) tE;
+				if(tEI.getStackInSlot(0) != null){
+					list.add(tEI.getStackInSlot(0));
+				}
+			}
+		}
+		ItemStack[] stacks = new ItemStack[list.size()];
+		for (int i = 0; i < list.size(); i++) {
+			stacks[i] = list.get(i);
+		}
+		return stacks;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	public void tryInfuse() {
+		if(!active){
+			checkForStructure();
+		}
+		if(active){
+			if(recipe != null && recipe.isActive()){
+				//System.out.println("Recipe active!");
+				return;
+			}
+			else{
+				if((recipe = InfusionRecipeHandler.matchRecipes(getStackInSlot(0), getSurroundingItemStacks())) != null){
+					recipe.cook(pos, struct.getSurroundingPedals(pos), worldObj);
+				}
+				else{
+					//System.out.println("Recipe not found!");
+					return;
+				}
+			}
+		}
+	}
+	
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 		//compound.setBoolean("active", recipe.isActive());
 		//compound.setInteger("cookTime", recipe.cookTime);
+		
 	}
 	
 	@Override
@@ -116,21 +136,21 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 	@Override
 	public void update() {
 		if(!worldObj.isRemote){ // Server:
-			if(recipe.isActive()){
-				if(recipe.tick()){
-					this.setInventorySlotContents(0, recipe.getRecipeOutput());
-				}
+			if(recipe != null && recipe.isActive()){
+				recipe.tick();
 			}
 			
-			if(tick % 5 == 0){
-				testForCenterInfusionBlock();
+			if(tick % 4 == 0){
+				updateParticle();
+			}
+			
+			if(tick == 100){
+				setActive(checkForStructure());
 			}
 			
 			if(tick > 200){
 				tick = 0;
-				setActive(checkForStructure());
 			}
-			updateParticle();
 		}
 		else{ // Client:
 			
@@ -138,36 +158,21 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 		tick++;
 	}
 	
-	private void testForCenterInfusionBlock(){
-		if(centerInfuserBlockPos == null){
-			return;
-		}
-		TileEntity tE = worldObj.getTileEntity(centerInfuserBlockPos);
-		if(tE != null && tE instanceof TileEnityInfuserBlock){
-			return;
-		}
-		else{
-			centerInfuserBlockPos = null;
-		}
-	}
-	
 	public boolean checkForStructure(){
 		StructureAreaDescription structureArea = struct.infuserArea;
-		return structureArea.testForStructure(worldObj, getPos(), 2, 2);
+		return structureArea.testForStructure(worldObj, this.getPos(), 2, 2);
 	}
 	
-	private void setInfuserBlocks(){
-		BlockPos[] infuserBlocks = StructureInfuser.getSurroundingPedals(this.pos);
-		recipe.setInfuserBlocks(this.pos, infuserBlocks, this.worldObj);
-	}
-	
-	public void changeRecipeStatus(boolean status, WorldClient worldClient){
+	public void changeRecipeStatus(boolean status, WorldClient worldClient, int recipeIndex){ //Client Animation
 		if(status){
-			setInfuserBlocks();
-			recipe.startAnimations(worldClient);
+			recipe = InfusionRecipeHandler.getRecipe(recipeIndex);
+			infusionAnimation = new InfusionAnimation(pos, struct.getSurroundingPedals(pos), worldObj, recipe.getTotalCookTime());
+			infusionAnimation.start();
 		}
 		else{
-			recipe.stopAnimation(worldClient);
+			if(infusionAnimation != null){
+				infusionAnimation.stop();
+			}
 		}
 	}
 	
@@ -175,7 +180,7 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 		if(status){
 			if(lightParticle == null){
 				lightParticle = new LightParticle(worldObj, this.pos.getX() + 0.5, this.pos.getY() + 1.0, this.pos.getZ() + 0.5, 0, 0, 0);
-				lightParticle.setParticleMaxAge(5);
+				lightParticle.setParticleMaxAge(10);
 				Minecraft.getMinecraft().effectRenderer.addEffect(lightParticle);
 			}
 			else{
@@ -189,5 +194,4 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 			}
 		}
 	}
-
 }

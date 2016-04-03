@@ -3,12 +3,12 @@ package de.comeight.crystallogy.network;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 
 public class NetworkPacketUpdateInventory extends BaseNetworkPacket {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	protected Vec3d tilePos;
+	protected BlockPos tilePos;
 	protected ItemStack stack;
 	protected int slotIndex;
 	
@@ -20,7 +20,7 @@ public class NetworkPacketUpdateInventory extends BaseNetworkPacket {
 		this.messageValid = false;
 	}
 	
-	public NetworkPacketUpdateInventory(Vec3d tilePos, ItemStack stack, int slotIndex) {
+	public NetworkPacketUpdateInventory(BlockPos tilePos, ItemStack stack, int slotIndex) {
 		this.tilePos = tilePos;
 		this.stack = stack;
 		this.slotIndex = slotIndex;
@@ -28,11 +28,11 @@ public class NetworkPacketUpdateInventory extends BaseNetworkPacket {
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
-	public Vec3d getTilePos() {
+	public BlockPos getTilePos() {
 		return tilePos;
 	}
 
-	public void setTilePos(Vec3d tilePos) {
+	public void setTilePos(BlockPos tilePos) {
 		this.tilePos = tilePos;
 	}
 	
@@ -74,9 +74,9 @@ public class NetworkPacketUpdateInventory extends BaseNetworkPacket {
 	@Override
 	public void toBytes(ByteBuf buf) {
 		NBTTagCompound tag = new NBTTagCompound();
-		tag.setDouble("posX", tilePos.xCoord);
-		tag.setDouble("posY", tilePos.yCoord);
-		tag.setDouble("posZ", tilePos.zCoord);
+		tag.setInteger("posX", tilePos.getX());
+		tag.setInteger("posY", tilePos.getY());
+		tag.setInteger("posZ", tilePos.getZ());
 		tag.setInteger("slotIndex", slotIndex);
 		
 		if(stack == null){
@@ -96,7 +96,7 @@ public class NetworkPacketUpdateInventory extends BaseNetworkPacket {
 		try{
 			NBTTagCompound tag = ByteBufUtils.readTag(buf);
 			
-			tilePos = new Vec3d(tag.getDouble("posX"), tag.getDouble("posY"), tag.getDouble("posZ"));
+			tilePos = new BlockPos(tag.getInteger("posX"), tag.getInteger("posY"), tag.getInteger("posZ"));
 			if(tag.getBoolean("emptyStack")){
 				stack = null;
 			}

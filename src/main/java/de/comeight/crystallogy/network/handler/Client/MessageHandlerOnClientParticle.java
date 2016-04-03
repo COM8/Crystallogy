@@ -119,7 +119,7 @@ public class MessageHandlerOnClientParticle implements IMessageHandler<NetworkPa
 			for(int i = 0; i < nP.getNumberOfParticle(); i++){
 				ParticleNColor gP = new ParticleNColor(worldClient, pos.xCoord + Utilities.getRandDouble(-size.xCoord, size.xCoord), pos.yCoord + Utilities.getRandDouble(0.0, size.yCoord), pos.zCoord + Utilities.getRandDouble(-size.zCoord, size.zCoord), 0.2, 0.2, 0.2);
 				gP.setParticleMaxAge(Utilities.getRandInt((int)(nP.getParticle().getParticleMaxAge()*0.75), nP.getParticle().getParticleMaxAge()));
-				gP.setRBGColorF(nP.getParticle().getRedColorF(), nP.getParticle().getGreenColorF(), nP.getParticle().getBlueColorF());
+				gP.setRBGColorF(Utilities.getRandFloat(0.0F, 1.0F), Utilities.getRandFloat(0.0F, 1.0F), Utilities.getRandFloat(0.0F, 1.0F));
 				Minecraft.getMinecraft().effectRenderer.addEffect(gP);
 			}
 		}
