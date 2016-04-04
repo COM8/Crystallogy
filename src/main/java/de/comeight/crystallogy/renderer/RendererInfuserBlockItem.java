@@ -54,7 +54,6 @@ public class RendererInfuserBlockItem extends TileEntitySpecialRenderer<TileEnit
             itemRenderer.renderItem(entityitem.getEntityItem(), ItemCameraTransforms.TransformType.GROUND);
             RenderHelper.disableStandardItemLighting();
             GlStateManager.popAttrib();
-
             GlStateManager.enableLighting();
             GlStateManager.popMatrix();
         }

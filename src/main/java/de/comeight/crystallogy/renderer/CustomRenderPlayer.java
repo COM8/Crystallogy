@@ -25,6 +25,7 @@ public class CustomRenderPlayer extends RenderPlayer {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public void doRender(AbstractClientPlayer entity, double x, double y, double z, float entityYaw, float partialTicks) {
+		//GlStateManager.scale(0.5F, 0.5F, 0.5F);
 		GlStateManager.pushMatrix();
 		super.doRender(entity, x, y, z, entityYaw, partialTicks);
 		GlStateManager.popMatrix();
