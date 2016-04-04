@@ -6,7 +6,7 @@ import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.handler.InfusionRecipeHandler;
 import de.comeight.crystallogy.items.crafting.InfusionRecipe;
 import de.comeight.crystallogy.network.NetworkPacketInfuserBlockEnabled;
-import de.comeight.crystallogy.particles.LightParticle;
+import de.comeight.crystallogy.particles.InfuserBlockActiveParticle;
 import de.comeight.crystallogy.renderer.InfusionAnimation;
 import de.comeight.crystallogy.structures.StructureInfuser;
 import de.comeight.crystallogy.util.StructureAreaDescription;
@@ -28,7 +28,7 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 	private StructureInfuser struct;
 	private boolean active;
 	
-	private LightParticle lightParticle;
+	private InfuserBlockActiveParticle infuserBlockActiveParticle;
 	private InfusionRecipe recipe;
 	
 	private InfusionAnimation infusionAnimation;
@@ -178,19 +178,19 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 	
 	public void changeParticleActive(Boolean status) {
 		if(status){
-			if(lightParticle == null){
-				lightParticle = new LightParticle(worldObj, this.pos.getX() + 0.5, this.pos.getY() + 1.0, this.pos.getZ() + 0.5, 0, 0, 0);
-				lightParticle.setParticleMaxAge(10);
-				Minecraft.getMinecraft().effectRenderer.addEffect(lightParticle);
+			if(infuserBlockActiveParticle == null){
+				infuserBlockActiveParticle = new InfuserBlockActiveParticle(worldObj, this.pos.getX() + 0.5, this.pos.getY() + 1.0, this.pos.getZ() + 0.5, 0, 0, 0);
+				infuserBlockActiveParticle.setParticleMaxAge(10);
+				Minecraft.getMinecraft().effectRenderer.addEffect(infuserBlockActiveParticle);
 			}
 			else{
-				lightParticle.setParticleAge(0);
+				infuserBlockActiveParticle.setParticleAge(0);
 			}
 		}
 		else{
-			if(lightParticle != null){
-				lightParticle.setExpired();
-				lightParticle = null;
+			if(infuserBlockActiveParticle != null){
+				infuserBlockActiveParticle.setExpired();
+				infuserBlockActiveParticle = null;
 			}
 		}
 	}

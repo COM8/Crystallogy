@@ -59,8 +59,8 @@ public class ParticleHandler {
 		else if(type.equals(ParticleNColor.NAME)){
 			particle = new ParticleNColor(s);
 		}
-		else if(type.equals(LightParticle.NAME)){
-			particle = new LightParticle(s);
+		else if(type.equals(InfuserBlockActiveParticle.NAME)){
+			particle = new InfuserBlockActiveParticle(s);
 		}
 		else{
 			System.out.println("Unknown Particle Type!");
@@ -122,8 +122,8 @@ public class ParticleHandler {
 		}
 		
 		//LightParticle:
-		for (int i = 0; i < LightParticle.rL.length; i++) {
-			event.getMap().registerSprite(LightParticle.rL[i]);
+		for (int i = 0; i < InfuserBlockActiveParticle.rL.length; i++) {
+			event.getMap().registerSprite(InfuserBlockActiveParticle.rL[i]);
 		}
 		
 		registerParticles();
@@ -141,7 +141,7 @@ public class ParticleHandler {
 		
 		this.registerParticle(EnumCrystallogyParticleTypes.INFUSION_PARTICLE.getParticleID(), new InfusionParticle.Factory());
 		this.registerParticle(EnumCrystallogyParticleTypes.JUMP_PARTICLE_BETWEEN_CRYSTALLS.getParticleID(), new JumpParticleBetweenCrystalls.Factory());
-		this.registerParticle(EnumCrystallogyParticleTypes.LIGHT_PARTICLE.getParticleID(), new LightParticle.Factory());
+		this.registerParticle(EnumCrystallogyParticleTypes.LIGHT_PARTICLE.getParticleID(), new InfuserBlockActiveParticle.Factory());
 	}
 	
 }

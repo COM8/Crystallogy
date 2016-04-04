@@ -1,6 +1,7 @@
 package de.comeight.crystallogy.particles;
 
 import de.comeight.crystallogy.util.RGBColor;
+import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.particle.IParticleFactory;
@@ -10,7 +11,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class LightParticle extends BaseParticle {
+public class InfuserBlockActiveParticle extends BaseParticle {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	public static ResourceLocation[] rL = getTextures("crystallogy:particles/i_color", "i", 32);
 	public static final String NAME = "i_color";
@@ -19,18 +20,18 @@ public class LightParticle extends BaseParticle {
 	private int color;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public LightParticle(World world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
+	public InfuserBlockActiveParticle(World world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
 		super(NAME, world, x, y, z, velocityX, velocityY, velocityZ);
 		this.particleScale = 3.0F;
 		this.colorStatus = 0;
-		this.color = 256;
+		this.color = Utilities.getRandInt(0, 16777215);
 	}
 
-	public LightParticle() {
+	public InfuserBlockActiveParticle() {
 		super();
 	}
 	
-	public LightParticle(String s) {
+	public InfuserBlockActiveParticle(String s) {
 		super();
 		if(s != null){
 			fromString(s);
@@ -60,7 +61,7 @@ public class LightParticle extends BaseParticle {
 	@SideOnly(Side.CLIENT)
 	public static class Factory implements IParticleFactory {
 		public EntityFX getEntityFX(int particleID, World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, double xSpeedIn, double ySpeedIn, double zSpeedIn, int... p_178902_15_) {
-			return new LightParticle(worldIn, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
+			return new InfuserBlockActiveParticle(worldIn, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
 		}
 	}
 	
