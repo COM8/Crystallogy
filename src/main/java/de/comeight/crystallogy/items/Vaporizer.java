@@ -8,6 +8,7 @@ import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.BaseParticle;
 import de.comeight.crystallogy.particles.ParticleHandler;
 import de.comeight.crystallogy.util.RGBColor;
+import de.comeight.crystallogy.util.ToolTipBuilder;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.Entity;
@@ -159,13 +160,14 @@ public class Vaporizer extends BaseItem {
 		NBTTagCompound nbtTagCompound = stack.getTagCompound();
 		if(nbtTagCompound == null){
 			stack = saveNBT(stack);
+			tooltip.add("§4THIS IS A BUG!!§r");
+			tooltip.add("Delete the item!");
 			tooltip.add("Type: -");
 			tooltip.add("Color: R= -, G= -, B= -");
 			tooltip.add("Max particle age: -");
 			tooltip.add("Size: X= -, Y= -, Z= -");
 			tooltip.add("Number of particles: -");
 			tooltip.add("Activated: -");
-			tooltip.add("§4THIS IS A BUG!!§r");
 		}
 		else{
 			if(nbtTagCompound.getBoolean("activated")){
@@ -183,7 +185,7 @@ public class Vaporizer extends BaseItem {
 				tooltip.add("Number of particles: " + nbtTagCompound.getInteger("numberOfParticle"));
 			}
 			else{
-				tooltip.add(TextFormatting.YELLOW + ">>Press SHIFT for more informations!<<");
+				ToolTipBuilder.addShiftForMoreDetails(tooltip);
 			}
 		}
 		super.addInformation(stack, playerIn, tooltip, advanced);

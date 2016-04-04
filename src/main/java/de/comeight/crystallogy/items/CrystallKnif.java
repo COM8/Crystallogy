@@ -11,6 +11,7 @@ import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.ParticleB;
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
+import de.comeight.crystallogy.util.ToolTipBuilder;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.EntityLivingBase;
@@ -137,7 +138,7 @@ public class CrystallKnif extends BaseItemSword{
 				tooltip.add("§6UUID:§r " + nbtTagCompound.getString("uuid"));
 			}
 			else{
-				tooltip.add(TextFormatting.YELLOW + ">>Press SHIFT for more informations!<<");
+				ToolTipBuilder.addShiftForMoreDetails(tooltip);
 			}
 		}
 		super.addInformation(stack, playerIn, tooltip, advanced);
