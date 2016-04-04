@@ -1,9 +1,23 @@
-package de.comeight.crystallogy.particles;
+package de.comeight.crystallogy.handler;
 
 import java.util.Map;
 
 import com.google.common.collect.Maps;
 
+import de.comeight.crystallogy.particles.BaseParticle;
+import de.comeight.crystallogy.particles.EnumCrystallogyParticleTypes;
+import de.comeight.crystallogy.particles.InfuserBlockActiveParticle;
+import de.comeight.crystallogy.particles.InfusionParticle;
+import de.comeight.crystallogy.particles.JumpParticleBetweenCrystalls;
+import de.comeight.crystallogy.particles.LightParticle;
+import de.comeight.crystallogy.particles.ParticleA;
+import de.comeight.crystallogy.particles.ParticleB;
+import de.comeight.crystallogy.particles.ParticleC;
+import de.comeight.crystallogy.particles.ParticleD;
+import de.comeight.crystallogy.particles.ParticleE;
+import de.comeight.crystallogy.particles.ParticleF;
+import de.comeight.crystallogy.particles.ParticleNColor;
+import de.comeight.crystallogy.particles.ParticleNColor.Factory;
 import net.minecraft.client.particle.EffectRenderer;
 import net.minecraft.client.particle.IParticleFactory;
 import net.minecraftforge.client.event.TextureStitchEvent;
@@ -121,9 +135,14 @@ public class ParticleHandler {
 			event.getMap().registerSprite(JumpParticleBetweenCrystalls.rL[i]);
 		}
 		
-		//LightParticle:
+		//InfuserBlockActiveParticle:
 		for (int i = 0; i < InfuserBlockActiveParticle.rL.length; i++) {
 			event.getMap().registerSprite(InfuserBlockActiveParticle.rL[i]);
+		}
+		
+		//LightParticle:
+		for (int i = 0; i < LightParticle.rL.length; i++) {
+			event.getMap().registerSprite(LightParticle.rL[i]);
 		}
 		
 		registerParticles();
@@ -142,6 +161,7 @@ public class ParticleHandler {
 		this.registerParticle(EnumCrystallogyParticleTypes.INFUSION_PARTICLE.getParticleID(), new InfusionParticle.Factory());
 		this.registerParticle(EnumCrystallogyParticleTypes.JUMP_PARTICLE_BETWEEN_CRYSTALLS.getParticleID(), new JumpParticleBetweenCrystalls.Factory());
 		this.registerParticle(EnumCrystallogyParticleTypes.LIGHT_PARTICLE.getParticleID(), new InfuserBlockActiveParticle.Factory());
+		//this.registerParticle(EnumCrystallogyParticleTypes.INFUSER_BLOCK_ACTIVE_PARTICLE.getParticleID(), new LightParticle.Factory());
 	}
 	
 }

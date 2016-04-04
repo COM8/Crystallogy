@@ -6,7 +6,8 @@ block.crystall_yellow.name=§eGelber§r Kristall
 block.crystall_green.name=§2Grüner§r Kristall
 block.crystallCrusher.name=Kristallmahler
 block.infuserBlock.name=Infuserblock
-block.playerJar.name=Spieler Glas
+block.playerJar.name=Spielerglas
+block.crystalLlight.name=Kristalllicht
 
 tile.crystall_red.name=§4Roter§r Kristall
 tile.crystall_blue.name=§9Blauer§r Kristall
@@ -14,7 +15,8 @@ tile.crystall_yellow.name=§eGelber§r Kristall
 tile.crystall_green.name=§2Grüner§r Kristall
 tile.crystallCrusher.name=Kristallmahler
 tile.infuserBlock.name=Infuserblock
-tile.playerJar.name=Spieler Glas
+tile.playerJar.name=Spielerglas
+tile.crystalLlight.name=Kristalllicht
 
 item.crystallDust_red.name=§4Roter§r Kristallstaub
 item.crystallDust_blue.name=§9Blauer§r Kristallstaub
@@ -24,5 +26,6 @@ item.pureCrystallDust.name=§7Purer§r Kristallstaub
 item.vaporizer.name=Sprühflasche 
 item.vaporizerDirection.name=Feuersprühflasche
 item.crystallKnif.name=Kristallmesser
+item.crystalLlight.name=Kristalllicht
 
 itemGroup.crystallogyMainTab=Crystallogy Hauptfenster

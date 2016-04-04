@@ -1,6 +1,7 @@
 package de.comeight.crystallogy.handler;
 
 import de.comeight.crystallogy.blocks.CrystallCrusher;
+import de.comeight.crystallogy.blocks.CrystallLight;
 import de.comeight.crystallogy.blocks.Crystall_blue;
 import de.comeight.crystallogy.blocks.Crystall_green;
 import de.comeight.crystallogy.blocks.Crystall_red;
@@ -19,6 +20,7 @@ public class BlockHandler {
 	public static CrystallCrusher crystallCrusher;
 	public static InfuserBlock infuserBlock;
 	public static PlayerJar playerJar;
+	public static CrystallLight crystallLight;
 
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public BlockHandler() {
@@ -36,6 +38,7 @@ public class BlockHandler {
 		crystallCrusher = new CrystallCrusher();
 		infuserBlock = new InfuserBlock();
 		playerJar = new PlayerJar();
+		crystallLight = new CrystallLight();
 		
 		GameRegistry.registerBlock(crystall_blue, crystall_blue.ID);
 		GameRegistry.registerBlock(crystall_green, crystall_green.ID);
@@ -44,6 +47,7 @@ public class BlockHandler {
 		GameRegistry.registerBlock(crystallCrusher, crystallCrusher.ID);
 		GameRegistry.registerBlock(infuserBlock, infuserBlock.ID);
 		GameRegistry.registerBlock(playerJar, playerJar.ID);
+		GameRegistry.registerBlock(crystallLight, crystallLight.ID);
 	}
 
 	//-----------------------------------------------Pre-Init:----------------------------------------------

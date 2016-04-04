@@ -2,6 +2,7 @@ package de.comeight.crystallogy;
 
 import de.comeight.crystallogy.handler.BlockRenderHandler;
 import de.comeight.crystallogy.handler.ItemRenderHandler;
+import de.comeight.crystallogy.handler.ParticleHandler;
 import de.comeight.crystallogy.network.NetworkPacketInfuserBlockEnabled;
 import de.comeight.crystallogy.network.NetworkPacketInfusionRecipeStatus;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
@@ -10,7 +11,6 @@ import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientInfu
 import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientInfusionRecipeStatus;
 import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientParticle;
 import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientUpdateInventory;
-import de.comeight.crystallogy.particles.ParticleHandler;
 import de.comeight.crystallogy.renderer.RendererInfuserBlockItem;
 import de.comeight.crystallogy.renderer.RendererPlayerinJar;
 import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;

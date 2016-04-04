@@ -16,9 +16,11 @@ import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerInfu
 import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerInfusionRecipeStatus;
 import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerParticle;
 import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerUpdateInventory;
+import de.comeight.crystallogy.particles.LightParticle;
 import de.comeight.crystallogy.tabs.CrystallogyMainTab;
 import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
 import de.comeight.crystallogy.tileEntitys.TileEntityCrystallCrusher;
+import de.comeight.crystallogy.tileEntitys.TileEntityCrystallLight;
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -80,6 +82,7 @@ public class CommonProxy {
 		GameRegistry.registerTileEntity(TileEntityCrystallCrusher.class, BlockHandler.crystallCrusher.ID);
 		GameRegistry.registerTileEntity(TileEnityInfuserBlock.class, BlockHandler.infuserBlock.ID);
 		GameRegistry.registerTileEntity(TileEntityPlayerJar.class, BlockHandler.playerJar.ID);
+		GameRegistry.registerTileEntity(TileEntityCrystallLight.class, BlockHandler.crystallLight.ID);
 	}
 	
 	private void registerRecipes() {

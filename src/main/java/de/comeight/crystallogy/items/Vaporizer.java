@@ -3,10 +3,10 @@ package de.comeight.crystallogy.items;
 import java.util.List;
 
 import de.comeight.crystallogy.CommonProxy;
+import de.comeight.crystallogy.handler.ParticleHandler;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.BaseParticle;
-import de.comeight.crystallogy.particles.ParticleHandler;
 import de.comeight.crystallogy.util.RGBColor;
 import de.comeight.crystallogy.util.ToolTipBuilder;
 import de.comeight.crystallogy.util.Utilities;

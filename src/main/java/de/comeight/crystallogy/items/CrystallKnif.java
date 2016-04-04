@@ -29,6 +29,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -36,16 +37,16 @@ public class CrystallKnif extends BaseItemSword{
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	public static final String ID = "crystallKnif";
 	
+	public static final ToolMaterial CRYSTALLKNIF = EnumHelper.addToolMaterial("CRYSTALLKNIF", 2, 10, 6.0F, 1.0F, 17);
+	
 	private float attackDamage;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public CrystallKnif() {
-		super(ToolMaterial.GOLD,ID);
-		this.attackDamage = 1.0F;
+		super(CRYSTALLKNIF, ID);
 		this.canRepair = true;
 		
 		this.setMaxStackSize(1);
-		this.setMaxDamage(10);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------

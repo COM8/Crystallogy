@@ -1,8 +1,8 @@
 package de.comeight.crystallogy.network;
 
+import de.comeight.crystallogy.handler.ParticleHandler;
 import de.comeight.crystallogy.particles.BaseParticle;
 import de.comeight.crystallogy.particles.BaseParticleExtended;
-import de.comeight.crystallogy.particles.ParticleHandler;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.Vec3d;
 
