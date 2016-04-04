@@ -29,12 +29,12 @@ public class InfusionParticle extends BaseParticle {
 		
 		this.targetPos = targetPos;
 		this.startPos = startPos;
-		initVariables();
 		this.timeInTicks = timeInTicks;
 		this.noClip = true;
 		this.setParticleMaxAge(timeInTicks);
 		
 		this.particleScale = Utilities.getRandFloat(3.0F, 5.0F);
+		initVariables();
 	}
 	
 	public InfusionParticle(String s) {
@@ -59,13 +59,13 @@ public class InfusionParticle extends BaseParticle {
 		double y = difStartTarget.yCoord;
 		double z = difStartTarget.zCoord;
 		if(x != 0){
-			x = x / timeInTicks;
+			x /= timeInTicks;
 		}
 		if(y != 0){
-			y = y / timeInTicks;
+			y /= timeInTicks;
 		}
 		if(z != 0){
-			z = z / timeInTicks;
+			z /= timeInTicks;
 		}
 		this.difStartTarget = new Vec3d(-x, -y, -z);
 	}
