@@ -1,6 +1,6 @@
 package de.comeight.crystallogy.blocks;
 
-import de.comeight.crystallogy.materials.Material;
+import de.comeight.crystallogy.blocks.materials.CustomMaterials;
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
@@ -19,7 +19,7 @@ public class PlayerJar extends BaseBlockTileEntity {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public PlayerJar() {
-		super(Material.glass, ID);
+		super(CustomMaterials.glass, ID);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------

@@ -18,20 +18,22 @@ public final class BlockRenderHandler {
 
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	public static void registerBlockRenderer() {
-		registerBlockRenderer(BlockHandler.crystall_blue);
-		registerBlockRenderer(BlockHandler.crystall_green);
-		registerBlockRenderer(BlockHandler.crystall_red);
-		registerBlockRenderer(BlockHandler.crystall_yellow);
-		registerBlockRenderer(BlockHandler.crystallCrusher);
-		registerBlockRenderer(BlockHandler.infuserBlock);
-		registerBlockRenderer(BlockHandler.playerJar);
+		registerRenderer(BlockHandler.crystall_blue);
+		registerRenderer(BlockHandler.crystall_green);
+		registerRenderer(BlockHandler.crystall_red);
+		registerRenderer(BlockHandler.crystall_yellow);
+		registerRenderer(BlockHandler.crystallCrusher);
+		registerRenderer(BlockHandler.infuserBlock);
+		registerRenderer(BlockHandler.playerJar);
+		registerRenderer(BlockHandler.crystallLight);
+		System.out.println("Crystallogy: All block renderer are registerd");
     }
 	
-	public static void registerBlockRenderer(Block block) {
+	public static void registerRenderer(Block block) {
 		Item item = Item.getItemFromBlock(block);
 		ModelResourceLocation iMRL = new ModelResourceLocation(CrystallogyBase.MODID + ":" + block.getUnlocalizedName().substring(5), "inventory");
 		
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, iMRL);
-		System.out.println("Crystallogy: \"" + block.getUnlocalizedName().substring(5) + "\" wurde gerendert.");
 	}
+	
 }
