@@ -56,6 +56,11 @@ public class Crystall extends BaseBlockCutout{
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
+	public String getHarvestTool(IBlockState state) {
+		return "pickaxe";
+	}
+	
+	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return new AxisAlignedBB(0.3, 0.0, 0.25, 0.7, 0.6, 0.9);
 	}
