@@ -1,0 +1,7 @@
+{
+	"__comment": "Designed by COM8",
+	"textures": {
+		"particle": "crystallogy:blocks/crystall",
+		"texture": "crystallogy:blocks/empty"
+	}
+}
