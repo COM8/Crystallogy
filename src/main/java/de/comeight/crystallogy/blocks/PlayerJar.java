@@ -31,7 +31,7 @@ public class PlayerJar extends BaseBlockTileEntity {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public TileEntity createTileEntity(World world, IBlockState state) {
-		return new TileEntityPlayerJar(world);
+		return new TileEntityPlayerJar();
 	}
 	
 	@Override

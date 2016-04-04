@@ -18,7 +18,7 @@ public class TileEntityPlayerJar extends TileEntity {
 	private PlayerClientDummy player;
 
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public TileEntityPlayerJar(World world) {
+	public TileEntityPlayerJar() {
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
