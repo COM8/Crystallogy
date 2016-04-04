@@ -1,14 +1,15 @@
-package de.comeight.crystallogy.materials;
+package de.comeight.crystallogy.blocks.materials;
 
 import net.minecraft.block.material.MapColor;
+import net.minecraft.block.material.Material;
 
-public class Material extends net.minecraft.block.material.Material{
+public abstract class CustomMaterials extends Material{
 
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	public static final Material crystall = new Material(MapColor.iceColor);
+	//public static final CustomMaterials crystall = (CustomMaterials) (new CustomMaterials(MapColor.iceColor)).setRequiresTool();
 
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public Material(MapColor color) {
+	public CustomMaterials(MapColor color) {
 		super(color);
 	}
 
