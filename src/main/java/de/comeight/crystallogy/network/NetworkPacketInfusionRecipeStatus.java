@@ -10,6 +10,7 @@ public class NetworkPacketInfusionRecipeStatus extends BaseNetworkPacket {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	protected BlockPos centerTilePos;
 	protected boolean status;
+	protected boolean successfully;
 	protected int recipeIndex;
 	
 	public static final Byte ID_SERVER = 42;
@@ -20,10 +21,11 @@ public class NetworkPacketInfusionRecipeStatus extends BaseNetworkPacket {
 		this.messageValid = false;
 	}
 	
-	public NetworkPacketInfusionRecipeStatus(BlockPos centerTilePos, boolean status, int recipeIndex){
+	public NetworkPacketInfusionRecipeStatus(BlockPos centerTilePos, boolean status, int recipeIndex, boolean successfully){
 		this.centerTilePos = centerTilePos;
 		this.status = status;
 		this.recipeIndex = recipeIndex;
+		this.successfully = successfully;
 		this.messageValid = true;
 	}
 	
@@ -52,10 +54,14 @@ public class NetworkPacketInfusionRecipeStatus extends BaseNetworkPacket {
 		this.centerTilePos = tilePos;
 	}
 	
+	public boolean getSuccessfull(){
+		return successfully;
+	}
+	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public String toString() {
-		return "NetworkPacketInfusionRecipeStatus[Pos;status =" + centerTilePos.toString() + ";" + status + ";" + recipeIndex + "]";
+		return "NetworkPacketInfusionRecipeStatus[Pos;status =" + centerTilePos.toString() + ";" + status + ";" + recipeIndex + successfully +"]";
 	}
 
 	@Override
@@ -66,6 +72,7 @@ public class NetworkPacketInfusionRecipeStatus extends BaseNetworkPacket {
 		tag.setInteger("posY", centerTilePos.getY());
 		tag.setInteger("posZ", centerTilePos.getZ());
 		tag.setInteger("recipeIndex", recipeIndex);
+		tag.setBoolean("successfully", successfully);
 		ByteBufUtils.writeTag(buf, tag);
 	}
 
@@ -76,6 +83,7 @@ public class NetworkPacketInfusionRecipeStatus extends BaseNetworkPacket {
 			status = tag.getBoolean("status");
 			centerTilePos = new BlockPos(tag.getInteger("posX"), tag.getInteger("posY"), tag.getInteger("posZ"));
 			recipeIndex = tag.getInteger("recipeIndex");
+			successfully = tag.getBoolean("successfully");
 			messageValid = true;
 		}
 		catch (Exception e) {

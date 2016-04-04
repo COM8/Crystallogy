@@ -15,6 +15,7 @@ import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -138,6 +139,7 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 		if(!worldObj.isRemote){ // Server:
 			if(recipe != null && recipe.isActive()){
 				recipe.tick();
+				worldObj.spawnParticle(EnumParticleTypes.LAVA, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, 0.0, 0.0, 0.0, new int[0]);
 			}
 			
 			if(tick % 4 == 0){
@@ -153,7 +155,9 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 			}
 		}
 		else{ // Client:
-			
+			if(infusionAnimation != null && infusionAnimation.isActive()){
+				infusionAnimation.tick();
+			}
 		}
 		tick++;
 	}
@@ -163,7 +167,7 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 		return structureArea.testForStructure(worldObj, this.getPos(), 2, 2);
 	}
 	
-	public void changeRecipeStatus(boolean status, WorldClient worldClient, int recipeIndex){ //Client Animation
+	public void changeRecipeStatus(boolean status, WorldClient worldClient, int recipeIndex, boolean successfully){ //Client Animation
 		if(status){
 			recipe = InfusionRecipeHandler.getRecipe(recipeIndex);
 			infusionAnimation = new InfusionAnimation(pos, struct.getSurroundingPedals(pos), worldObj, recipe.getTotalCookTime());
@@ -171,7 +175,7 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 		}
 		else{
 			if(infusionAnimation != null){
-				infusionAnimation.stop();
+				infusionAnimation.stop(successfully);
 			}
 		}
 	}

@@ -11,8 +11,11 @@ import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.ParticleNColor;
 import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
 import de.comeight.crystallogy.util.Utilities;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -104,6 +107,7 @@ public abstract class InfusionRecipe {
 			}
 		}		
 		else{
+			this.worldIn = worldIn;
 			setTileEnityInfuserBlocks(centerInputPos, ingredientsPos, worldIn);
 			startAnimationOnClients();
 			active = true;
@@ -113,6 +117,9 @@ public abstract class InfusionRecipe {
 	public void tick(){
 		if(!active){
 			return;
+		}
+		if(worldIn != null){
+			//worldIn.spawnParticle(EnumParticleTypes.LAVA, centerInput.getPos().getX() + 0.5, centerInput.getPos().getY() + 0.8, centerInput.getPos().getZ() + 0.5, 0.0, 0.0, 0.0, new int[0]);
 		}
 		if(!stillActive()){
 			done(false);
@@ -151,7 +158,7 @@ public abstract class InfusionRecipe {
 		else{
 			
 		}
-		stopAnimationOnClients();
+		stopAnimationOnClients(successfully);
 		spawnParticlesOnClient(successfully);
 		active = false;
 	}
@@ -180,13 +187,13 @@ public abstract class InfusionRecipe {
 	}
 	
 	protected void startAnimationOnClients(){
-		NetworkPacketInfusionRecipeStatus packet = new NetworkPacketInfusionRecipeStatus(centerInput.getPos(), true, InfusionRecipeHandler.getIndexOfRecipe(this));
+		NetworkPacketInfusionRecipeStatus packet = new NetworkPacketInfusionRecipeStatus(centerInput.getPos(), true, InfusionRecipeHandler.getIndexOfRecipe(this), true);
 		CommonProxy.NETWORKWRAPPER.sendToServer(packet);
 		
 	}
 	
-	protected void stopAnimationOnClients(){
-		NetworkPacketInfusionRecipeStatus packet = new NetworkPacketInfusionRecipeStatus(centerInput.getPos(), false, -1);
+	protected void stopAnimationOnClients(boolean successfully){
+		NetworkPacketInfusionRecipeStatus packet = new NetworkPacketInfusionRecipeStatus(centerInput.getPos(), false, -1, successfully);
 		CommonProxy.NETWORKWRAPPER.sendToServer(packet);
 	}
 	

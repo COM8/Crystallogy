@@ -49,7 +49,7 @@ public class MessageHandlerOnClientInfusionRecipeStatus implements IMessageHandl
 		TileEntity tE = worldClient.getTileEntity(new BlockPos(pos.getX(), pos.getY(), pos.getZ()));
 		if(tE instanceof TileEnityInfuserBlock){
 			TileEnityInfuserBlock t =  (TileEnityInfuserBlock) tE;
-			t.changeRecipeStatus(message.getStatus(), worldClient, message.getRecipeIndex());
+			t.changeRecipeStatus(message.getStatus(), worldClient, message.getRecipeIndex(), message.getSuccessfull());
 		}
 		else{
 			System.out.println("No/wrong TileEntity in MessageHandlerOnClientInfusionRecipeStatus!");

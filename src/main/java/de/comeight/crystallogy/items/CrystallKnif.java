@@ -193,6 +193,7 @@ public class CrystallKnif extends BaseItemSword{
 				worldIn.addWeatherEffect(new EntityLightningBolt(worldIn, pos.xCoord, pos.yCoord, pos.zCoord, false));
 				worldIn.playSound((EntityPlayer)null, pos.xCoord, pos.yCoord, pos.zCoord, SoundEvents.entity_endermen_stare, SoundCategory.NEUTRAL, 1.0F, 1.0F);
 				worldIn.playSound((EntityPlayer)null, pos.xCoord, pos.yCoord, pos.zCoord, SoundEvents.entity_enderdragon_growl, SoundCategory.NEUTRAL, 1.0F, 1.0F);
+				worldIn.playSound((EntityPlayer)null, pos.xCoord, pos.yCoord, pos.zCoord, SoundEvents.entity_wither_spawn, SoundCategory.NEUTRAL, 1.0F, 0.6F);
 			}
 		}
 		return stack;
