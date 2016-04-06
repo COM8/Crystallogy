@@ -95,7 +95,7 @@ public class InfusionAnimation {
 			return;
 		}
 		if(successfully){
-			world.playSound(center.getX(), center.getY(), center.getZ(), SoundEvents.entity_blaze_ambient, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
+			world.playSound(center.getX(), center.getY(), center.getZ(), SoundEvents.entity_lightning_thunder, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
 		}
 		else{
 			world.playSound(center.getX(), center.getY(), center.getZ(), SoundEvents.entity_wither_spawn, SoundCategory.BLOCKS, 1.0F, Utilities.getRandFloat(0.55F, 1.25F), false);
