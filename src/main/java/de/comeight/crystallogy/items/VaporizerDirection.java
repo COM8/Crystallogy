@@ -25,7 +25,6 @@ public class VaporizerDirection extends Vaporizer {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public void spawnParticles(Vec3d coords, ItemStack stack, World worldIn) {
-		System.out.println(stack.getItemDamage());
 		if(stack.getItemDamage() < 200){
 			stack.setItemDamage(stack.getItemDamage() + 1);
 		}
