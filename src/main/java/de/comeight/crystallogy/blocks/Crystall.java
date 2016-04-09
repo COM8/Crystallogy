@@ -27,21 +27,17 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class Crystall extends BaseBlockCutout{
+public abstract class Crystall extends BaseBlockCutout{
 	
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	//public final static String ID = "crystall";
-	protected float r;
-	protected float g;
-	protected float b;
+	protected RGBColor color;
 	protected int chance;
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public Crystall(String ID) {
 		super(Material.glass, ID);
 		
-		this.r = 1.0F;
-		this.g = 1.0F;
-		this.b = 1.0F;
+		color = new RGBColor(1.0F, 1.0F, 1.0F);
 		this.chance = 5;
 		
 		this.setHarvestLevel("pickaxe", 3);
@@ -95,7 +91,7 @@ public class Crystall extends BaseBlockCutout{
 						addJumpParticleBetweenCrystalls(worldIn, pos, new Vec3d(pos.getX() + i + 0.5, pos.getY() + e + 0.2, pos.getZ() + 0.5 + j), new RGBColor(0.5F, 0.5F, 1.0F));
 					}
 					if(worldIn.getBlockState(new BlockPos(pos.getX() + i, pos.getY() + e, pos.getZ() + j)).getBlock() == BlockHandler.crystall_red){
-						addJumpParticleBetweenCrystalls(worldIn, pos, new Vec3d(pos.getX() + i + 0.5, pos.getY() + e + 0.2, pos.getZ() + 0.5 + j), new RGBColor(r, g, b));
+						addJumpParticleBetweenCrystalls(worldIn, pos, new Vec3d(pos.getX() + i + 0.5, pos.getY() + e + 0.2, pos.getZ() + 0.5 + j), color);
 					}
 				}
 			}
@@ -108,10 +104,8 @@ public class Crystall extends BaseBlockCutout{
 		Minecraft.getMinecraft().effectRenderer.addEffect(jP);
 	}
 	
-	protected void setParticleColor(float r, float g, float b){
-		this.r = r;
-		this.g = g;
-		this.b = b;
+	protected void setParticleColor(RGBColor color){
+		this.color = color;
 	}
 	
 	protected void addGlitterParticleChance(World worldIn, BlockPos pos){
@@ -126,7 +120,7 @@ public class Crystall extends BaseBlockCutout{
 	
 	protected void addGlitterParticle(World worldIn, BlockPos pos){
 		ParticleB gP = new ParticleB(worldIn, pos.getX() + Utilities.getRandDouble(0.3, 0.7), pos.getY() + Utilities.getRandDouble(0.2, 0.6), pos.getZ() + Utilities.getRandDouble(0.25, 0.9), 0.2, 0.2, 0.2);
-		gP.setRBGColorF(r, g, b);
+		gP.setRBGColorF(color.r, color.g, color.b);
 		Minecraft.getMinecraft().effectRenderer.addEffect(gP);
 	}
 	
@@ -139,7 +133,7 @@ public class Crystall extends BaseBlockCutout{
 	protected void addGlitterParticleNetwork(World worldIn, BlockPos pos){
 		ParticleB gP = new ParticleB(worldIn, pos.getX() + Utilities.getRandDouble(0.25, 0.75), pos.getY() + Utilities.getRandDouble(0.25, 0.75), pos.getZ() + Utilities.getRandDouble(0.25, 0.75), 0.0, 0.0, 0.0);
 		gP.setParticleMaxAge(60);
-		gP.setRBGColorF(r, g, b);
+		gP.setRBGColorF(color.r, color.g, color.b);
 		NetworkParticle nP = new NetworkParticle(gP, gP.name);
 		nP.setSize(new Vec3d(0.0, 0.0, 0.0));
 		NetworkPacketParticle pMtS = new NetworkPacketParticle(nP);
