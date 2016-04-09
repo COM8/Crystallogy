@@ -7,7 +7,8 @@ block.crystall_green.name=§2Green§r Crystall
 block.crystallCrusher.name=Crystallcrusher
 block.infuserBlock.name=Infuserblock
 block.playerJar.name=Player Jar
-block.crystalLlight.name=Crystalllight
+block.crystalLlight.name=Crystall Light
+block.fireCrystall.name=§cFire Crystall§r
 
 tile.crystall_red.name=§4Red§r Crystall
 tile.crystall_blue.name=§9Blue§r Crystall
@@ -16,7 +17,8 @@ tile.crystall_green.name=§2Green§r Crystall
 tile.crystallCrusher.name=Crystallcrusher
 tile.infuserBlock.name=Infuserblock
 tile.playerJar.name=Player Jar
-tile.crystalLlight.name=Crystalllight
+tile.crystalLlight.name=Crystall Light
+tile.fireCrystall.name=§cFire Crystall§r
 
 item.crystallDust_red.name=§4Red§r Crystalldust
 item.crystallDust_blue.name=§9Blue§r Crystalldust
@@ -24,8 +26,9 @@ item.crystallDust_yellow.name=§eYellow§r Crystalldust
 item.crystallDust_green.name=§2Green§r Crystalldust
 item.pureCrystallDust.name=§7Pure§r Crystalldust
 item.vaporizer.name=Vaporizer
-item.vaporizerDirection.name=Firevaporizer
+item.vaporizerDirection.name=Fire Vaporizer
 item.crystallKnif.name=Crystallknif
-item.crystalLlight.name=Crystalllight
+item.crystalLlight.name=Crystall Light
+item.fireCrystall.name=§cFire Crystall§r
 
 itemGroup.crystallogyMainTab=Crystallogy Maintab

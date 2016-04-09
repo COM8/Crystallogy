@@ -66,7 +66,7 @@ public abstract class Crystall extends BaseBlockCutout{
 	public void randomDisplayTick(IBlockState state, World worldIn, BlockPos pos, Random rand) {
 		if(worldIn.isRemote){	//Client Side Welt?
 			addGlitterParticleChance(worldIn, pos, chance);
-			addJumpParticleBetweenCrystallsChance(worldIn, pos, 20);
+			//addJumpParticleBetweenCrystallsChance(worldIn, pos, 20);
 		}
 	}
 		

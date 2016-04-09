@@ -26,6 +26,7 @@ public final class BlockRenderHandler {
 		registerRenderer(BlockHandler.infuserBlock);
 		registerRenderer(BlockHandler.playerJar);
 		registerRenderer(BlockHandler.crystallLight);
+		registerRenderer(BlockHandler.fireCrystall);
 		System.out.println("Crystallogy: All block renderer are registerd");
     }
 	

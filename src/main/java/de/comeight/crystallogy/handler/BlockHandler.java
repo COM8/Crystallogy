@@ -6,9 +6,11 @@ import de.comeight.crystallogy.blocks.Crystall_blue;
 import de.comeight.crystallogy.blocks.Crystall_green;
 import de.comeight.crystallogy.blocks.Crystall_red;
 import de.comeight.crystallogy.blocks.Crystall_yellow;
+import de.comeight.crystallogy.blocks.FireCrystall;
 import de.comeight.crystallogy.blocks.InfuserBlock;
 import de.comeight.crystallogy.blocks.PlayerJar;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
 
 public class BlockHandler {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -21,6 +23,7 @@ public class BlockHandler {
 	public static InfuserBlock infuserBlock;
 	public static PlayerJar playerJar;
 	public static CrystallLight crystallLight;
+	public static FireCrystall fireCrystall;
 
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public BlockHandler() {
@@ -39,6 +42,7 @@ public class BlockHandler {
 		infuserBlock = new InfuserBlock();
 		playerJar = new PlayerJar();
 		crystallLight = new CrystallLight();
+		fireCrystall = new FireCrystall();
 		
 		GameRegistry.registerBlock(crystall_blue, crystall_blue.ID);
 		GameRegistry.registerBlock(crystall_green, crystall_green.ID);
@@ -48,6 +52,7 @@ public class BlockHandler {
 		GameRegistry.registerBlock(infuserBlock, infuserBlock.ID);
 		GameRegistry.registerBlock(playerJar, playerJar.ID);
 		GameRegistry.registerBlock(crystallLight, crystallLight.ID);
+		GameRegistry.registerBlock(fireCrystall, fireCrystall.ID);
 	}
 
 	//-----------------------------------------------Pre-Init:----------------------------------------------
