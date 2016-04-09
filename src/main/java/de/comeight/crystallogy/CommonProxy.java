@@ -8,6 +8,8 @@ import de.comeight.crystallogy.handler.InfusionRecipeHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.items.Vaporizer;
 import de.comeight.crystallogy.items.crafting.InfusionRecipeCrystallLight;
+import de.comeight.crystallogy.items.crafting.InfusionRecipeFireCrystall;
+import de.comeight.crystallogy.items.crafting.InfusionRecipeRefulelVaporizer;
 import de.comeight.crystallogy.items.crafting.InfusionRecipeVaporizer;
 import de.comeight.crystallogy.network.NetworkPacketInfuserBlockEnabled;
 import de.comeight.crystallogy.network.NetworkPacketInfusionRecipeStatus;
@@ -23,6 +25,7 @@ import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
 import de.comeight.crystallogy.tileEntitys.TileEntityCrystallCrusher;
 import de.comeight.crystallogy.tileEntitys.TileEntityCrystallLight;
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -52,6 +55,8 @@ public class CommonProxy {
 	//Recipes:
 	private static InfusionRecipeVaporizer infusionRecipeVaporizer = new InfusionRecipeVaporizer(); 
 	private static InfusionRecipeCrystallLight infusionRecipeCrystallLight = new InfusionRecipeCrystallLight();
+	private static InfusionRecipeFireCrystall infusionRecipeFireCrystall = new InfusionRecipeFireCrystall();
+	private static InfusionRecipeRefulelVaporizer infusionRecipeRefulelVaporizer = new InfusionRecipeRefulelVaporizer();
 	
 	// -----------------------------------------------Constructor:-------------------------------------------
 	
@@ -90,6 +95,8 @@ public class CommonProxy {
 	private void registerRecipes() {
 		InfusionRecipeHandler.addRecipe(infusionRecipeVaporizer);
 		InfusionRecipeHandler.addRecipe(infusionRecipeCrystallLight);
+		InfusionRecipeHandler.addRecipe(infusionRecipeFireCrystall);
+		InfusionRecipeHandler.addRecipe(infusionRecipeRefulelVaporizer);
 		
 		ItemStack s =  new ItemStack(ItemHandler.vaporizer);
 		s = ((Vaporizer)s.getItem()).saveNBT(s);
@@ -104,6 +111,17 @@ public class CommonProxy {
 				'G', "blockGlassLime",
 		});
 		GameRegistry.addRecipe(vaporicerRecipe);
+		
+		IRecipe infuserBlockRecipe = new ShapedOreRecipe(BlockHandler.infuserBlock, new Object[]{
+				"CIC",
+				"_C_",
+				"WWW",
+				
+				'C', Blocks.cobblestone,
+				'I', Blocks.crafting_table,
+				'W', Blocks.heavy_weighted_pressure_plate,
+		});
+		GameRegistry.addRecipe(infuserBlockRecipe);
 	}
 	
 	// -----------------------------------------------Pre-Init:----------------------------------------------
