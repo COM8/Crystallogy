@@ -118,7 +118,7 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
     @Override
     public int getInventoryStackLimit()
     {
-        return 1;
+        return 64;
     }
     
     @Override

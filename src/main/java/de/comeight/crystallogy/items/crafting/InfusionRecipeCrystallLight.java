@@ -48,7 +48,7 @@ public class InfusionRecipeCrystallLight extends InfusionRecipe {
 		}
 		
 		output = new ItemStack(BlockHandler.crystallLight);
-		output.stackSize = 4; // TODO FIX stackSize in NetCode
+		output.stackSize = 4;
 		
 		return true;
 	}
