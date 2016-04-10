@@ -8,6 +8,7 @@ import de.comeight.crystallogy.items.CrystallKnif;
 import de.comeight.crystallogy.items.PureCrystallDust;
 import de.comeight.crystallogy.items.Vaporizer;
 import de.comeight.crystallogy.items.VaporizerDirection;
+import de.comeight.crystallogy.util.Utilities;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemHandler {
@@ -50,6 +51,8 @@ public class ItemHandler {
 		GameRegistry.registerItem(vaporizer, vaporizer.ID);
 		GameRegistry.registerItem(vaporizerDirection, vaporizerDirection.ID);
 		GameRegistry.registerItem(crystallKnif, crystallKnif.ID);
+		
+		Utilities.addConsoleText("All items are registered.");
 	}
 	
 	private void registerItemBlocks() {

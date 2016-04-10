@@ -103,7 +103,7 @@ public class Vaporizer extends BaseItem {
 		if(stack.getTagCompound().getBoolean("activated") == true){
 			if(Utilities.getRandInt(0, 3) == 0){
 				Vec3d coords = entityIn.getPositionEyes(1.0F).subtract(0, entityIn.getEyeHeight(), 0);
-				spawnParticles(coords, stack, worldIn);
+				spawnParticles(coords, stack, worldIn, (EntityPlayer) entityIn);
 			}
 		}
 	}
@@ -123,7 +123,7 @@ public class Vaporizer extends BaseItem {
 			}
 			else{
 				Vec3d coords = playerIn.getPositionEyes(1.0F).subtract(0, playerIn.getEyeHeight(), 0);
-				spawnParticles(coords, itemStackIn, worldIn);
+				spawnParticles(coords, itemStackIn, worldIn, playerIn);
 			}
 			return new ActionResult(EnumActionResult.SUCCESS, itemStackIn);
 		}
@@ -134,7 +134,7 @@ public class Vaporizer extends BaseItem {
 		return EnumAction.BLOCK;
 	}
 	
-	public void spawnParticles(Vec3d coords, ItemStack stack, World worldIn){
+	public void spawnParticles(Vec3d coords, ItemStack stack, World worldIn, EntityPlayer playerIn){
 		NBTTagCompound c = stack.getTagCompound();
 		if(c == null){
 			stack = saveNBT(stack);

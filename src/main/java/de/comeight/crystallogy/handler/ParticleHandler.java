@@ -18,6 +18,7 @@ import de.comeight.crystallogy.particles.ParticleE;
 import de.comeight.crystallogy.particles.ParticleF;
 import de.comeight.crystallogy.particles.ParticleNColor;
 import de.comeight.crystallogy.particles.ParticleNColor.Factory;
+import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.client.particle.EffectRenderer;
 import net.minecraft.client.particle.IParticleFactory;
 import net.minecraftforge.client.event.TextureStitchEvent;
@@ -77,7 +78,7 @@ public class ParticleHandler {
 			particle = new InfuserBlockActiveParticle(s);
 		}
 		else{
-			System.out.println("Unknown Particle Type!");
+			Utilities.addConsoleText("Unknown Particle Type!");
 		}
 		return particle;
 	}
@@ -146,6 +147,8 @@ public class ParticleHandler {
 		}
 		
 		registerParticles();
+		
+		Utilities.addConsoleText("All particles are registered.");
 	}
 	
 	private void registerParticles(){

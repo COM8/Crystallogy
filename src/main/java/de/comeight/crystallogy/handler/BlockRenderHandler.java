@@ -1,6 +1,7 @@
 package de.comeight.crystallogy.handler;
 
 import de.comeight.crystallogy.CrystallogyBase;
+import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -27,7 +28,7 @@ public final class BlockRenderHandler {
 		registerRenderer(BlockHandler.playerJar);
 		registerRenderer(BlockHandler.crystallLight);
 		registerRenderer(BlockHandler.fireCrystall);
-		System.out.println("Crystallogy: All block renderer are registerd");
+		Utilities.addConsoleText("All blockrenderer are registered.");
     }
 	
 	public static void registerRenderer(Block block) {

@@ -2,6 +2,7 @@ package de.comeight.crystallogy.util;
 
 import java.util.Random;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
@@ -53,6 +54,10 @@ public class Utilities {
 	    return (double) tmp / factor;
 	}
 	
+	public static void addConsoleText(String text){
+		System.out.println("[Crystallogy]: " + text);
+	}
+	
 	public static Vec3d vec3FormString(String s){
 		String s1 = s.substring(0, s.indexOf(")"));
 		//X:
@@ -71,10 +76,10 @@ public class Utilities {
 	
 	public static void printWorldSide(World worldObj){
 		if(worldObj.isRemote){
-			System.out.println("Side.Client!");
+			addConsoleText("Side.Client!");
 		}
 		else{
-			System.out.println("Side.Server!");
+			addConsoleText("Side.Server!");
 		}
 	}
 }

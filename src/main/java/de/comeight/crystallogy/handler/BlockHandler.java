@@ -9,6 +9,7 @@ import de.comeight.crystallogy.blocks.Crystall_yellow;
 import de.comeight.crystallogy.blocks.FireCrystall;
 import de.comeight.crystallogy.blocks.InfuserBlock;
 import de.comeight.crystallogy.blocks.PlayerJar;
+import de.comeight.crystallogy.util.Utilities;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
 
@@ -53,6 +54,8 @@ public class BlockHandler {
 		GameRegistry.registerBlock(playerJar, playerJar.ID);
 		GameRegistry.registerBlock(crystallLight, crystallLight.ID);
 		GameRegistry.registerBlock(fireCrystall, fireCrystall.ID);
+		
+		Utilities.addConsoleText("All blocks are registered.");
 	}
 
 	//-----------------------------------------------Pre-Init:----------------------------------------------

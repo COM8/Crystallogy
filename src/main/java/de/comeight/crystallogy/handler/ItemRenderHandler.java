@@ -1,6 +1,7 @@
 package de.comeight.crystallogy.handler;
 
 import de.comeight.crystallogy.CrystallogyBase;
+import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -25,6 +26,8 @@ public class ItemRenderHandler {
 		registerItemRender(ItemHandler.vaporizer);
 		registerItemRender(ItemHandler.vaporizerDirection);
 		registerItemRender(ItemHandler.crystallKnif);
+		
+		Utilities.addConsoleText("All itemrenderer are registered.");
     }
 	
 	public static void registerItemBlockRenderer() {
@@ -35,7 +38,6 @@ public class ItemRenderHandler {
 		ModelResourceLocation iMRL = new ModelResourceLocation(CrystallogyBase.MODID + ":" + item.getUnlocalizedName().substring(5), "inventory");
 		
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, iMRL);
-		System.out.println("Crystallogy: \"" + item.getUnlocalizedName().substring(5) + "\" wurde gerendert.");
 	}
 
 }

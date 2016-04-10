@@ -1,7 +1,7 @@
 {
     "variants": {
         "normal": [
-            { "model": "crystallogy:crystall_red" }
+            { "model": "crystallogy:fireCrystall" }
         ]
     }
 }

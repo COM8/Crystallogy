@@ -26,7 +26,7 @@ public class BaseBlockContainer extends BlockContainer {
 		this.setCreativeTab(CommonProxy.crystallogyMainTab);
 		this.isBlockContainer = true;
 		
-		System.out.println("\"" + this.getUnlocalizedName() + "\" wurde initialisiert.");
+		//System.out.println("\"" + this.getUnlocalizedName() + "\" wurde initialisiert.");
 	}
 
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------

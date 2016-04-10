@@ -25,6 +25,7 @@ import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
 import de.comeight.crystallogy.tileEntitys.TileEntityCrystallCrusher;
 import de.comeight.crystallogy.tileEntitys.TileEntityCrystallLight;
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
+import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -70,12 +71,13 @@ public class CommonProxy {
 		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerInfusionRecipeStatus.class, NetworkPacketInfusionRecipeStatus.class, NetworkPacketInfusionRecipeStatus.ID_SERVER, Side.SERVER);
 		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerUpdateInventory.class, NetworkPacketUpdateInventory.class, NetworkPacketUpdateInventory.ID_SERVER, Side.SERVER);
 		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerParticle.class, NetworkPacketParticle.class, NetworkPacketParticle.ID_SERVER, Side.SERVER);
-		System.out.println("Serverside MessageHandlerOnServer registriert.");
+		Utilities.addConsoleText("Serverside: MessageHandlerOnServer registered.");
 	}
 	
 	private void registerGuiHandlers() {
 		NetworkRegistry.INSTANCE.registerGuiHandler(CrystallogyBase.INSTANCE, GuiHandlerRegistry.getInstance());
 		GuiHandlerRegistry.getInstance().registerGuiHandler(new GuiHandler(), GuiCrystallCrusher.ID);
+		Utilities.addConsoleText("All guis are registered.");
 	}
 	
 	private void registerWorldGens() {
@@ -83,6 +85,7 @@ public class CommonProxy {
 		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_blue, 10, 2, 48, 64), 2);
 		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_yellow, 10, 2, 16, 48), 2);
 		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_red, 10, 2, 0, 16), 2);
+		Utilities.addConsoleText("All worldgens are registered..");
 	}
 
 	private void registerTileEntitys() {
@@ -90,6 +93,8 @@ public class CommonProxy {
 		GameRegistry.registerTileEntity(TileEnityInfuserBlock.class, BlockHandler.infuserBlock.ID);
 		GameRegistry.registerTileEntity(TileEntityPlayerJar.class, BlockHandler.playerJar.ID);
 		GameRegistry.registerTileEntity(TileEntityCrystallLight.class, BlockHandler.crystallLight.ID);
+		Utilities.addConsoleText("All tileEntitys are registered..");
+		
 	}
 	
 	private void registerRecipes() {
@@ -122,6 +127,7 @@ public class CommonProxy {
 				'W', Blocks.heavy_weighted_pressure_plate,
 		});
 		GameRegistry.addRecipe(infuserBlockRecipe);
+		Utilities.addConsoleText("All recipes are registered..");
 	}
 	
 	// -----------------------------------------------Pre-Init:----------------------------------------------

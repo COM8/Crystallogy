@@ -13,7 +13,7 @@ public class BaseItemSword extends ItemSword {
 		this.setCreativeTab(CommonProxy.crystallogyMainTab);
 		this.setUnlocalizedName(ID);
 		
-		System.out.println("\"" + this.getUnlocalizedName() + "\" wurde initialisiert.");
+		//System.out.println("\"" + this.getUnlocalizedName() + "\" wurde initialisiert.");
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------

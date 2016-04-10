@@ -24,7 +24,7 @@ public class FireCrystall extends Crystall {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public FireCrystall() {
 		super(ID);
-		setParticleColor(new RGBColor(1.0F, 0.0F, 0.0F));
+		setParticleColor(new RGBColor(1.0F, 0.1F, 0.1F));
 		setTickRandomly(true);
 	}
 	

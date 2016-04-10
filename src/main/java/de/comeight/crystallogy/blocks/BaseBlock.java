@@ -16,7 +16,7 @@ public class BaseBlock extends Block{
 		this.setUnlocalizedName(id);
 		this.setCreativeTab(CommonProxy.crystallogyMainTab);
 		
-		System.out.println("\"" + this.getUnlocalizedName() + "\" wurde initialisiert.");
+		//System.out.println("\"" + this.getUnlocalizedName() + "\" wurde initialisiert.");
 	}
 
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
