@@ -3,9 +3,15 @@ package de.comeight.crystallogy.renderer;
 import de.comeight.crystallogy.entity.PlayerClientDummy;
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.inventory.GuiInventory;
+import net.minecraft.client.model.ModelPlayer;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.OpenGlHelper;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.entity.Entity;
 import net.minecraft.world.World;
 
 public class RendererPlayerinJar extends TileEntitySpecialRenderer<TileEntityPlayerJar>{
@@ -27,16 +33,15 @@ public class RendererPlayerinJar extends TileEntitySpecialRenderer<TileEntityPla
 		GlStateManager.popMatrix();
 	}
 	
-	private void renderPlayer(World world, PlayerClientDummy player, double x, double y, double z, float partialTicks){
+	private void renderPlayer(World world, PlayerClientDummy player, double posX, double posY, double posZ, float partialTicks){
 		if(player == null){
 			return;
 		}
-		GlStateManager.pushMatrix();
-		
-		CustomRenderPlayer rP = new CustomRenderPlayer(Minecraft.getMinecraft().getRenderManager());
+		CustomRenderPlayer cRP = new CustomRenderPlayer(Minecraft.getMinecraft().getRenderManager());
 		float rotationAngel = (float) (720.0 * (System.currentTimeMillis() / 2 & 0x3FFFL) / 0x3FFFL);
-		rP.doRender(player, x + 0.5, y, z + 0.5, 1.0F, rotationAngel);
 		
+		GlStateManager.pushMatrix();
+		cRP.doRender(player, posX + 0.5, posY, posZ + 0.5, 1.0F, rotationAngel);
 		GlStateManager.popMatrix();
 	}
 	
