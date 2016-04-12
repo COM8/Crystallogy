@@ -89,9 +89,11 @@ public class CrystallKnif extends BaseItemSword{
 		if(hasPlayer(stack)){
 			if(worldIn.getTileEntity(pos) instanceof TileEntityPlayerJar){
 				TileEntityPlayerJar tE = (TileEntityPlayerJar) worldIn.getTileEntity(pos);
-				tE.setPlayer(new PlayerClientDummy(worldIn, getGameProfile(stack)));
-				stack = removePlayer(stack, worldIn, playerIn.getPositionVector(), false);
-				return EnumActionResult.SUCCESS;
+				if(!tE.hasPlayer()){
+					tE.setPlayer(new PlayerClientDummy(worldIn, getGameProfile(stack)));
+					stack = removePlayer(stack, worldIn, playerIn.getPositionVector(), false);
+					return EnumActionResult.SUCCESS;
+				}
 			}
 		}
 		
