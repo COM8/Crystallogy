@@ -131,18 +131,17 @@ public class InfuserBlock extends BaseBlockContainer {
 	
 	@Override
 	public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
-		if(worldIn.isRemote){	//Client Side Welt?
-		     return 0;   
-			}
-			else{
-				TileEnityInfuserBlock tE = (TileEnityInfuserBlock) worldIn.getTileEntity(pos);
-				if(tE != null){
-					if(tE.getStackInSlot(0) != null){
-						return 10;
-					}
+		if (worldIn.isRemote) { // Client Side Welt?
+			return 0;
+		} else {
+			TileEnityInfuserBlock tE = (TileEnityInfuserBlock) worldIn.getTileEntity(pos);
+			if (tE != null) {
+				if (tE.getStackInSlot(0) != null) {
+					return 10;
 				}
-				return 0;
 			}
+			return 0;
+		}
 	}
 	
 }

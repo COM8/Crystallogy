@@ -18,15 +18,15 @@ public class PlayerClientDummy extends AbstractClientPlayer{
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public PlayerClientDummy(World world, GameProfile playerProfile) {
 		super(world, playerProfile);
-		getDownloadImageSkin(null, "COM8");
 		setHeldItem(EnumHand.MAIN_HAND, new ItemStack(ItemHandler.vaporizer));
 		setHeldItem(EnumHand.OFF_HAND, new ItemStack(ItemHandler.crystallKnif));
 		setRotationYawHead(0.0F);
 	}
 	
+	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
-
+	
 }
