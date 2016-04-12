@@ -39,8 +39,8 @@ public class CrystallLight extends BaseBlockCutout {
 	}
 	
 	@Override
-	public boolean isPassable(IBlockAccess worldIn, BlockPos pos) {
-		return true;
+	public AxisAlignedBB getSelectedBoundingBox(IBlockState blockState, World worldIn, BlockPos pos) {
+		return NULL_AABB;
 	}
 	
 	@Override
