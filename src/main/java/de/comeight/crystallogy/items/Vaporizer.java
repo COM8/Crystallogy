@@ -125,7 +125,7 @@ public class Vaporizer extends BaseItem {
 				Vec3d coords = playerIn.getPositionEyes(1.0F).subtract(0, playerIn.getEyeHeight(), 0);
 				spawnParticles(coords, itemStackIn, worldIn, playerIn);
 			}
-			return new ActionResult(EnumActionResult.SUCCESS, itemStackIn);
+			return new ActionResult(EnumActionResult.PASS, itemStackIn);
 		}
 	}
 	
