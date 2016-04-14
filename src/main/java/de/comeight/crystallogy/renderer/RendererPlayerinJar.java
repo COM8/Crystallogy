@@ -22,9 +22,8 @@ public class RendererPlayerinJar extends TileEntitySpecialRenderer<TileEntityPla
 	public void renderTileEntityAt(TileEntityPlayerJar tE, double x, double y, double z, float partialTicks, int destroyStage) {
 		float partialTick = (float) (720.0 * (System.currentTimeMillis() / 2 & 0x3FFFL) / 0x3FFFL);
 		GlStateManager.pushMatrix();
-		//GlStateManager.scale(0.5, 0.5, 0.5);
 		renderPlayer(tE.getPlayer(), x, y, z, partialTick);
-		renderWater(tE.getWorld(), x, y, z, partialTick);
+		renderIngredients(tE.getWorld(), x, y, z, partialTick);
 		GlStateManager.popMatrix();
 	}
 	
@@ -39,7 +38,7 @@ public class RendererPlayerinJar extends TileEntitySpecialRenderer<TileEntityPla
 		GlStateManager.popMatrix();
 	}
 	
-	private void renderWater(World worldIn, double x, double y, double z, float partialTicks){
+	private void renderIngredients(World worldIn, double x, double y, double z, float partialTicks){
 		GlStateManager.pushMatrix();
         
 		GlStateManager.popMatrix();
