@@ -55,7 +55,7 @@ public class Utilities {
 	}
 	
 	public static void addConsoleText(String text){
-		System.out.println("[Crystallogy]: " + text);
+		Log.info(text);
 	}
 	
 	public static Vec3d vec3FormString(String s){
