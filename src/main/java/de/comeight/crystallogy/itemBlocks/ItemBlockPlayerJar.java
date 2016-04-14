@@ -2,8 +2,6 @@ package de.comeight.crystallogy.itemBlocks;
 
 import de.comeight.crystallogy.handler.BlockHandler;
 import net.minecraft.block.Block;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
 
 public class ItemBlockPlayerJar extends BaseItemBlock {
 	//-----------------------------------------------Variabeln:---------------------------------------------

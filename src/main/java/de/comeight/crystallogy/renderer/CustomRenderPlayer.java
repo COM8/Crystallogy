@@ -1,7 +1,6 @@
 package de.comeight.crystallogy.renderer;
 
 import net.minecraft.client.entity.AbstractClientPlayer;
-import net.minecraft.client.model.ModelPlayer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -25,8 +24,9 @@ public class CustomRenderPlayer extends RenderPlayer {
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
-	public void doRender(AbstractClientPlayer entity, double x, double y, double z, float entityYaw, float partialTicks) {
+	public void doRender(AbstractClientPlayer player, double x, double y, double z, float entityYaw, float partialTicks) {
 		float scale = 0.5F;
+		player.setRotationYawHead(partialTicks*0.009F);
 		
 		GlStateManager.pushMatrix();
 		
@@ -38,7 +38,7 @@ public class CustomRenderPlayer extends RenderPlayer {
 		GlStateManager.rotate(135.0F, 0.0F, 1.0F, 0.0F);
         RenderHelper.enableStandardItemLighting();
         GlStateManager.rotate(-135.0F, 0.0F, 1.0F, 0.0F);
-		super.doRender(entity, x, y, z, entityYaw, partialTicks);
+		super.doRender(player, x, y, z, entityYaw, partialTicks);
 		GlStateManager.popMatrix();
 		
 	}

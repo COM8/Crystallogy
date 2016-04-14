@@ -2,18 +2,12 @@ package de.comeight.crystallogy.renderer;
 
 import de.comeight.crystallogy.entity.PlayerClientDummy;
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
-import de.comeight.crystallogy.util.Utilities;
-import net.minecraft.block.BlockStaticLiquid;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.init.Blocks;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 
-public class RendererPlayerinJar extends TileEntitySpecialRenderer<TileEntityPlayerJar>{
+public class RendererPlayerinJar extends TileEntitySpecialRenderer<TileEntityPlayerJar> {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 
 	

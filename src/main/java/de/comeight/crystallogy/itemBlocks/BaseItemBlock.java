@@ -1,6 +1,5 @@
 package de.comeight.crystallogy.itemBlocks;
 
-import de.comeight.crystallogy.CommonProxy;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 
