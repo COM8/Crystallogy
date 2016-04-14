@@ -85,7 +85,7 @@ public class CommonProxy {
 		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_blue, 10, 2, 48, 64), 2);
 		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_yellow, 10, 2, 16, 48), 2);
 		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_red, 10, 2, 0, 16), 2);
-		Utilities.addConsoleText("All worldgens are registered..");
+		Utilities.addConsoleText("All worldgens are registered.");
 	}
 
 	private void registerTileEntitys() {
@@ -93,7 +93,7 @@ public class CommonProxy {
 		GameRegistry.registerTileEntity(TileEnityInfuserBlock.class, BlockHandler.infuserBlock.ID);
 		GameRegistry.registerTileEntity(TileEntityPlayerJar.class, BlockHandler.playerJar.ID);
 		GameRegistry.registerTileEntity(TileEntityCrystallLight.class, BlockHandler.crystallLight.ID);
-		Utilities.addConsoleText("All tileEntitys are registered..");
+		Utilities.addConsoleText("All tileEntitys are registered.");
 		
 	}
 	
@@ -127,7 +127,7 @@ public class CommonProxy {
 				'W', Blocks.heavy_weighted_pressure_plate,
 		});
 		GameRegistry.addRecipe(infuserBlockRecipe);
-		Utilities.addConsoleText("All recipes are registered..");
+		Utilities.addConsoleText("All recipes are registered.");
 	}
 	
 	// -----------------------------------------------Pre-Init:----------------------------------------------

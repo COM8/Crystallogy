@@ -16,6 +16,8 @@ import de.comeight.crystallogy.renderer.RendererPlayerinJar;
 import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
 import de.comeight.crystallogy.util.Utilities;
+import net.minecraft.world.gen.structure.StructureOceanMonumentPieces.MonumentCoreRoom;
+import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -52,6 +54,7 @@ public class ClientProxy extends CommonProxy{
     private void registerSpecialRenderers(){
     	ClientRegistry.bindTileEntitySpecialRenderer(TileEnityInfuserBlock.class, new RendererInfuserBlockItem());
     	ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlayerJar.class, new RendererPlayerinJar());
+    	
     	Utilities.addConsoleText("All specialRenderers are registered.");
     }
     

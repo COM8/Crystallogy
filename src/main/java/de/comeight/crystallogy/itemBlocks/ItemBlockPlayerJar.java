@@ -1,17 +1,17 @@
 package de.comeight.crystallogy.itemBlocks;
 
-import de.comeight.crystallogy.CommonProxy;
+import de.comeight.crystallogy.handler.BlockHandler;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 
-public class BaseItemBlock extends ItemBlock {
+public class ItemBlockPlayerJar extends BaseItemBlock {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public BaseItemBlock(Block block, String id) {
-		super(block);
-		this.setUnlocalizedName(id);
+	public ItemBlockPlayerJar(Block block) {
+		super(block, BlockHandler.playerJar.ID);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -19,4 +19,5 @@ public class BaseItemBlock extends ItemBlock {
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 
+	
 }

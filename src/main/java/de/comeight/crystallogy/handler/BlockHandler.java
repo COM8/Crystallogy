@@ -9,6 +9,7 @@ import de.comeight.crystallogy.blocks.Crystall_yellow;
 import de.comeight.crystallogy.blocks.FireCrystall;
 import de.comeight.crystallogy.blocks.InfuserBlock;
 import de.comeight.crystallogy.blocks.PlayerJar;
+import de.comeight.crystallogy.itemBlocks.ItemBlockPlayerJar;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
@@ -51,7 +52,7 @@ public class BlockHandler {
 		GameRegistry.registerBlock(crystall_yellow, crystall_yellow.ID);
 		GameRegistry.registerBlock(crystallCrusher, crystallCrusher.ID);
 		GameRegistry.registerBlock(infuserBlock, infuserBlock.ID);
-		GameRegistry.registerBlock(playerJar, playerJar.ID);
+		GameRegistry.registerBlock(playerJar, ItemBlockPlayerJar.class, playerJar.ID);
 		GameRegistry.registerBlock(crystallLight, crystallLight.ID);
 		GameRegistry.registerBlock(fireCrystall, fireCrystall.ID);
 		
