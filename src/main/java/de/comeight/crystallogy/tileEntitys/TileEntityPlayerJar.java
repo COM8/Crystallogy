@@ -1,5 +1,6 @@
 package de.comeight.crystallogy.tileEntitys;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 import com.mojang.authlib.GameProfile;
@@ -9,11 +10,11 @@ import de.comeight.crystallogy.entity.PlayerClientDummy;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.ParticleB;
+import de.comeight.crystallogy.util.RGBColor;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
@@ -30,6 +31,49 @@ public class TileEntityPlayerJar extends TileEntity implements ITickable{
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private PlayerClientDummy player;
 	private GameProfile profile;
+	private EnumThreats threat; 
+	
+	public enum EnumThreats{
+		POISON(new RGBColor(0.0F, 1.0F, 0.0F), 0),
+		DAMAGE(new RGBColor(1.0F, 0.2F, 0.2F), 1),
+		FIRE(new RGBColor(1.0F, 0.0F, 0.0F), 2),
+		DROWN(new RGBColor(0.0F, 0.0F, 1.0F), 3);
+		
+		private final int id;
+		private final RGBColor color;
+		private static ArrayList<EnumThreats> list = new ArrayList<TileEntityPlayerJar.EnumThreats>();
+		
+		private EnumThreats(RGBColor color, int id){
+			this.color = color;
+			this.id = id;
+			
+		}
+		
+		public int getID(){
+			return id;
+		}
+		
+		public RGBColor getColor(){
+			return color;
+		}
+		
+		public NBTTagCompound toNBTTagCompound(NBTTagCompound compound, String key){
+			compound.setInteger(key + "_EnumThreat", id);
+			
+			return compound;
+		}
+		
+		public static EnumThreats fromNBTTagCompound(NBTTagCompound compound, String key){
+			int _id = compound.getInteger(key + "_EnumThreat");
+			for(EnumThreats threat : values()){
+				if(threat.getID() == _id){
+					return threat;
+				}
+			}
+			return null;
+		}
+		
+	}
 
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public TileEntityPlayerJar() {
@@ -46,6 +90,14 @@ public class TileEntityPlayerJar extends TileEntity implements ITickable{
 		markDirty();
 	}
 	
+	public void setThreat(EnumThreats threat){
+		this.threat = threat;
+	}
+	
+	public EnumThreats getThreat(){
+		return threat;
+	}
+	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	public boolean hasPlayer(){
 		if(profile != null){
@@ -53,24 +105,31 @@ public class TileEntityPlayerJar extends TileEntity implements ITickable{
 		}
 		return false;
 	}
+	
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 		if(profile != null){
+			compound.setBoolean("hasPlayer", true);
 			compound.setString("playerName", profile.getName());
 			compound.setUniqueId("playerUUID", profile.getId());
+		}
+		else{
+			compound.setBoolean("hasPlayer", false);
 		}
 	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
-		String name = compound.getString("playerName");
-		UUID uuid = compound.getUniqueId("playerUUID");
-		if(!name.equals("")){
-			profile = new GameProfile(uuid, name);
-			if(worldObj != null){
-				player = new PlayerClientDummy(worldObj, profile);
+		if(compound.getBoolean("hasPlayer")){
+			String name = compound.getString("playerName");
+			UUID uuid = compound.getUniqueId("playerUUID");
+			if(!name.equals("")){
+				profile = new GameProfile(uuid, name);
+				if(worldObj != null){
+					player = new PlayerClientDummy(worldObj, profile);
+				}
 			}
 		}
 	}

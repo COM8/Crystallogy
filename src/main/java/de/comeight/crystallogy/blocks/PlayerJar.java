@@ -1,13 +1,17 @@
 package de.comeight.crystallogy.blocks;
 
+import java.util.List;
+import java.util.Random;
+
 import de.comeight.crystallogy.blocks.materials.CustomMaterials;
 import de.comeight.crystallogy.entity.PlayerClientDummy;
-import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
-import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
@@ -38,6 +42,44 @@ public class PlayerJar extends BaseBlockTileEntity {
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) { //TODO FIX item drop with player
+		//Normal Vanilla Logic:
+		List<ItemStack> ret = new java.util.ArrayList<ItemStack>();
+        Random rand = world instanceof World ? ((World)world).rand : RANDOM;
+        Item item = this.getItemDropped(state, rand, fortune);
+        ItemStack stack = null;
+        if (item != null)
+        {
+        	stack = new ItemStack(item, 1, this.damageDropped(state));
+        	ret.add(stack);
+        }
+
+        //Save data:
+        TileEntity tE = world.getTileEntity(pos);
+        if(tE == null){
+        	System.out.println("NULL");
+        }
+		if(tE instanceof TileEntityPlayerJar && stack != null){
+			TileEntityPlayerJar jar = (TileEntityPlayerJar) tE;
+			NBTTagCompound compound = new NBTTagCompound();
+			if(jar.hasPlayer()){
+				jar.writeToNBT(compound);
+				stack.setTagCompound(compound);
+			}
+		}
+        return ret;
+	}
+	
+	@Override
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+		TileEntity tE = worldIn.getTileEntity(pos);
+		if(tE instanceof TileEntityPlayerJar && stack.hasTagCompound()){
+			TileEntityPlayerJar jar = (TileEntityPlayerJar) tE;
+			jar.readFromNBT(stack.getTagCompound());
+		}
+	}
+	
 	@Override
 	public boolean hasComparatorInputOverride(IBlockState state) {
 		return true;
