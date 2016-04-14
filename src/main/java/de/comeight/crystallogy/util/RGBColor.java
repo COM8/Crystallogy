@@ -2,6 +2,8 @@ package de.comeight.crystallogy.util;
 
 import java.awt.Color;
 
+import net.minecraft.nbt.NBTTagCompound;
+
 public class RGBColor {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	public float r;
@@ -33,6 +35,20 @@ public class RGBColor {
 	}
 
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	public void fromNBTTagCompound(NBTTagCompound compound, String key){
+		r = compound.getFloat(key + 'R');
+		g = compound.getFloat(key + 'G');
+		b = compound.getFloat(key + 'B');
+	}
+	
+	public NBTTagCompound toNBTTagCompound(NBTTagCompound compound, String key){
+		compound.setFloat(key + 'R', r);
+		compound.setFloat(key + 'G', g);
+		compound.setFloat(key + 'B', b);
+		
+		return compound;
+	}
+	
 	/**
 	 * 
 	 * @param colorStr e.g. "#FFFFFF"
