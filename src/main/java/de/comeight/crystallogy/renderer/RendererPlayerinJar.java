@@ -3,9 +3,14 @@ package de.comeight.crystallogy.renderer;
 import de.comeight.crystallogy.entity.PlayerClientDummy;
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
+import net.minecraft.client.model.ModelDragon;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.pipeline.VertexTransformer;
 
 public class RendererPlayerinJar extends TileEntitySpecialRenderer<TileEntityPlayerJar> {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -37,7 +42,12 @@ public class RendererPlayerinJar extends TileEntitySpecialRenderer<TileEntityPla
 	}
 	
 	private void renderIngredients(World worldIn, double x, double y, double z, float partialTicks){
+		GlStateManager.pushMatrix();
 		
+		Tessellator te = Tessellator.getInstance();
+		VertexBuffer buff = te.getBuffer();
+		
+		GlStateManager.popMatrix();
 	}
 	
 }
