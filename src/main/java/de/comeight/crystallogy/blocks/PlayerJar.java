@@ -1,7 +1,6 @@
 package de.comeight.crystallogy.blocks;
 
 import java.util.List;
-import java.util.Random;
 
 import de.comeight.crystallogy.blocks.materials.CustomMaterials;
 import de.comeight.crystallogy.entity.PlayerClientDummy;
@@ -9,7 +8,6 @@ import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -50,7 +48,7 @@ public class PlayerJar extends BaseBlockTileEntity {
 			NBTTagCompound compound = new NBTTagCompound();
 			
 			if(jar.hasPlayer()){
-				jar.writeToNBT(compound);
+				jar.writeCustomDataToNBT(compound);
 				stack.setTagCompound(compound);
 			}
 		}
@@ -75,7 +73,7 @@ public class PlayerJar extends BaseBlockTileEntity {
 		TileEntity tE = worldIn.getTileEntity(pos);
 		if(tE instanceof TileEntityPlayerJar && stack.hasTagCompound()){
 			TileEntityPlayerJar jar = (TileEntityPlayerJar) tE;
-			jar.readFromNBT(stack.getTagCompound());
+			jar.readCustomDataToNBT(stack.getTagCompound());
 		}
 	}
 	

@@ -106,9 +106,7 @@ public class TileEntityPlayerJar extends TileEntity implements ITickable{
 		return false;
 	}
 	
-	@Override
-	public void writeToNBT(NBTTagCompound compound) {
-		super.writeToNBT(compound);
+	public void writeCustomDataToNBT(NBTTagCompound compound) {
 		if(profile != null){
 			compound.setBoolean("hasPlayer", true);
 			compound.setString("playerName", profile.getName());
@@ -120,8 +118,12 @@ public class TileEntityPlayerJar extends TileEntity implements ITickable{
 	}
 	
 	@Override
-	public void readFromNBT(NBTTagCompound compound) {
-		super.readFromNBT(compound);
+	public void writeToNBT(NBTTagCompound compound) {
+		super.writeToNBT(compound);
+		writeCustomDataToNBT(compound);
+	}
+	
+	public void readCustomDataToNBT(NBTTagCompound compound) {
 		if(compound.getBoolean("hasPlayer")){
 			String name = compound.getString("playerName");
 			UUID uuid = compound.getUniqueId("playerUUID");
@@ -132,6 +134,12 @@ public class TileEntityPlayerJar extends TileEntity implements ITickable{
 				}
 			}
 		}
+	}
+	
+	@Override
+	public void readFromNBT(NBTTagCompound compound) {
+		super.readFromNBT(compound);
+		readCustomDataToNBT(compound);
 	}
 	
 	@Override
