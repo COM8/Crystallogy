@@ -22,9 +22,10 @@ public class BaseBlockContainer extends BlockContainer {
 	public BaseBlockContainer(Material material, String id) {
 		super(material);
 		
-		this.setUnlocalizedName(id);
-		this.setCreativeTab(CommonProxy.crystallogyMainTab);
-		this.isBlockContainer = true;
+		setUnlocalizedName(id);
+		setRegistryName(id);
+		setCreativeTab(CommonProxy.crystallogyMainTab);
+		isBlockContainer = true;
 		
 		//System.out.println("\"" + this.getUnlocalizedName() + "\" wurde initialisiert.");
 	}

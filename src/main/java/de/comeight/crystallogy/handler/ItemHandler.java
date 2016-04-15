@@ -9,6 +9,7 @@ import de.comeight.crystallogy.items.PureCrystallDust;
 import de.comeight.crystallogy.items.Vaporizer;
 import de.comeight.crystallogy.items.VaporizerDirection;
 import de.comeight.crystallogy.util.Utilities;
+import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemHandler {
@@ -43,14 +44,14 @@ public class ItemHandler {
 		vaporizerDirection = new VaporizerDirection();
 		crystallKnif = new CrystallKnif();
 		
-		GameRegistry.registerItem(crystallDust_red, crystallDust_red.ID);
-		GameRegistry.registerItem(crystallDust_green, crystallDust_green.ID);
-		GameRegistry.registerItem(crystallDust_blue, crystallDust_blue.ID);
-		GameRegistry.registerItem(crystallDust_yellow, crystallDust_yellow.ID);
-		GameRegistry.registerItem(pureCrystallDust, pureCrystallDust.ID);
-		GameRegistry.registerItem(vaporizer, vaporizer.ID);
-		GameRegistry.registerItem(vaporizerDirection, vaporizerDirection.ID);
-		GameRegistry.registerItem(crystallKnif, crystallKnif.ID);
+		GameRegistry.register(crystallDust_red);
+		GameRegistry.register(crystallDust_green);
+		GameRegistry.register(crystallDust_blue);
+		GameRegistry.register(crystallDust_yellow);
+		GameRegistry.register(pureCrystallDust);
+		GameRegistry.register(vaporizer);
+		GameRegistry.register(vaporizerDirection);
+		GameRegistry.register(crystallKnif);
 		
 		Utilities.addConsoleText("All items are registered.");
 	}

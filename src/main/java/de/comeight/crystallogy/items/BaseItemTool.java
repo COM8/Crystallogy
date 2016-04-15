@@ -13,8 +13,9 @@ public class BaseItemTool extends ItemTool {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public BaseItemTool(float attackDamage, float attackSpeed, ToolMaterial material, Set<Block> effectiveBlocks, String ID) {
 		super(attackDamage, attackDamage, material, effectiveBlocks);
-		this.setCreativeTab(CommonProxy.crystallogyMainTab);
-		this.setUnlocalizedName(ID);
+		setCreativeTab(CommonProxy.crystallogyMainTab);
+		setUnlocalizedName(ID);
+		setRegistryName(ID);
 		
 		//System.out.println("\"" + this.getUnlocalizedName() + "\" wurde initialisiert.");
 	}

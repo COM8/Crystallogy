@@ -9,8 +9,9 @@ public class BaseItem extends Item {
 
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public BaseItem(String ID) {
-		this.setCreativeTab(CommonProxy.crystallogyMainTab);
-		this.setUnlocalizedName(ID);
+		setCreativeTab(CommonProxy.crystallogyMainTab);
+		setUnlocalizedName(ID);
+		setRegistryName(ID);
 		
 		//System.out.println("\"" + this.getUnlocalizedName() + "\" wurde initialisiert.");
 	}

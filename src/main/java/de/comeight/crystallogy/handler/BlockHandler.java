@@ -11,6 +11,9 @@ import de.comeight.crystallogy.blocks.InfuserBlock;
 import de.comeight.crystallogy.blocks.PlayerJar;
 import de.comeight.crystallogy.itemBlocks.ItemBlockPlayerJar;
 import de.comeight.crystallogy.util.Utilities;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
 
@@ -35,6 +38,16 @@ public class BlockHandler {
 
 
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	private void registerBlock(Block block, String id){
+		GameRegistry.register(block);
+		GameRegistry.register(new ItemBlock(block).setRegistryName(id));
+	}
+	
+	private void registerBlock(Block block, ItemBlock itemBlock, String id){
+		GameRegistry.register(block);
+		GameRegistry.register(itemBlock.setRegistryName(id));
+	}
+	
 	private void registerBlocks() {
 		crystall_blue = new Crystall_blue();
 		crystall_green = new Crystall_green();
@@ -46,15 +59,15 @@ public class BlockHandler {
 		crystallLight = new CrystallLight();
 		fireCrystall = new FireCrystall();
 		
-		GameRegistry.registerBlock(crystall_blue, crystall_blue.ID);
-		GameRegistry.registerBlock(crystall_green, crystall_green.ID);
-		GameRegistry.registerBlock(crystall_red, crystall_red.ID);
-		GameRegistry.registerBlock(crystall_yellow, crystall_yellow.ID);
-		GameRegistry.registerBlock(crystallCrusher, crystallCrusher.ID);
-		GameRegistry.registerBlock(infuserBlock, infuserBlock.ID);
-		GameRegistry.registerBlock(playerJar, ItemBlockPlayerJar.class, playerJar.ID);
-		GameRegistry.registerBlock(crystallLight, crystallLight.ID);
-		GameRegistry.registerBlock(fireCrystall, fireCrystall.ID);
+		registerBlock(crystall_blue, crystall_blue.ID);
+		registerBlock(crystall_green, crystall_green.ID);
+		registerBlock(crystall_red, crystall_red.ID);
+		registerBlock(crystall_yellow, crystall_yellow.ID);
+		registerBlock(crystallCrusher, crystallCrusher.ID);
+		registerBlock(infuserBlock, infuserBlock.ID);
+		registerBlock(playerJar, new ItemBlockPlayerJar(playerJar), playerJar.ID);
+		registerBlock(crystallLight, crystallLight.ID);
+		registerBlock(fireCrystall, fireCrystall.ID);
 		
 		Utilities.addConsoleText("All blocks are registered.");
 	}

@@ -13,8 +13,9 @@ public class BaseBlock extends Block{
 	public BaseBlock(Material material, String id){
 		super(material);
 		
-		this.setUnlocalizedName(id);
-		this.setCreativeTab(CommonProxy.crystallogyMainTab);
+		setUnlocalizedName(id);
+		setRegistryName(id);
+		setCreativeTab(CommonProxy.crystallogyMainTab);
 		
 		//System.out.println("\"" + this.getUnlocalizedName() + "\" wurde initialisiert.");
 	}

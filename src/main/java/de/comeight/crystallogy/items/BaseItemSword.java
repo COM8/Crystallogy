@@ -10,8 +10,9 @@ public class BaseItemSword extends ItemSword {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public BaseItemSword(ToolMaterial material, String ID) {
 		super(material);
-		this.setCreativeTab(CommonProxy.crystallogyMainTab);
-		this.setUnlocalizedName(ID);
+		setCreativeTab(CommonProxy.crystallogyMainTab);
+		setUnlocalizedName(ID);
+		setRegistryName(ID);
 		
 		//System.out.println("\"" + this.getUnlocalizedName() + "\" wurde initialisiert.");
 	}
