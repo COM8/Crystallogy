@@ -43,26 +43,30 @@ public class PlayerJar extends BaseBlockTileEntity {
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
-	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) { //TODO FIX item drop with player
-		//Normal Vanilla Logic:
+	public boolean removedByPlayer(IBlockState state, World world, BlockPos pos, EntityPlayer player, boolean willHarvest) {
+		if(willHarvest){
+			return true;
+		}
+		return super.removedByPlayer(state, world, pos, player, willHarvest);
+	}
+	
+	@Override
+	public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te, ItemStack stack) {
+		super.harvestBlock(worldIn, player, pos, state, te, stack);
+		worldIn.setBlockToAir(pos);
+	}
+	
+	@Override
+	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		List<ItemStack> ret = new java.util.ArrayList<ItemStack>();
-        Random rand = world instanceof World ? ((World)world).rand : RANDOM;
-        Item item = this.getItemDropped(state, rand, fortune);
-        ItemStack stack = null;
-        if (item != null)
-        {
-        	stack = new ItemStack(item, 1, this.damageDropped(state));
-        	ret.add(stack);
-        }
-
-        //Save data:
-        TileEntity tE = world.getTileEntity(pos);
-        if(tE == null){
-        	System.out.println("NULL");
-        }
-		if(tE instanceof TileEntityPlayerJar && stack != null){
+		ItemStack stack = new ItemStack(this);
+		ret.add(stack);
+		
+		TileEntity tE = world.getTileEntity(pos);
+		if(tE instanceof TileEntityPlayerJar){
 			TileEntityPlayerJar jar = (TileEntityPlayerJar) tE;
 			NBTTagCompound compound = new NBTTagCompound();
+			
 			if(jar.hasPlayer()){
 				jar.writeToNBT(compound);
 				stack.setTagCompound(compound);
