@@ -19,6 +19,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
@@ -41,14 +42,9 @@ public class PlayerJar extends BaseBlockTileEntity {
 		return new AxisAlignedBB(0.25, 0.0, 0.25, 0.75, 0.685, 0.75);
 	}
 	
-	//-----------------------------------------------Sonstige Methoden:-------------------------------------
-	@Override
-	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-		List<ItemStack> ret = new java.util.ArrayList<ItemStack>();
-		ItemStack stack = new ItemStack(this);
-		ret.add(stack);
-		
+	private ItemStack getItemStackWithData(World world, BlockPos pos){
 		TileEntity tE = world.getTileEntity(pos);
+		ItemStack stack = new ItemStack(this);
 		if(tE instanceof TileEntityPlayerJar){
 			TileEntityPlayerJar jar = (TileEntityPlayerJar) tE;
 			NBTTagCompound compound = new NBTTagCompound();
@@ -58,9 +54,22 @@ public class PlayerJar extends BaseBlockTileEntity {
 				stack.setTagCompound(compound);
 			}
 		}
+		return stack;
+	}
+	
+	@Override
+	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
+		return getItemStackWithData(world, pos);
+	}
+	
+	@Override
+	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+		List<ItemStack> ret = new java.util.ArrayList<ItemStack>();
+		ret.add(getItemStackWithData((World) world, pos));
         return ret;
 	}
 	
+	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 		TileEntity tE = worldIn.getTileEntity(pos);
