@@ -43,20 +43,6 @@ public class PlayerJar extends BaseBlockTileEntity {
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
-	public boolean removedByPlayer(IBlockState state, World world, BlockPos pos, EntityPlayer player, boolean willHarvest) {
-		if(willHarvest){
-			return true;
-		}
-		return super.removedByPlayer(state, world, pos, player, willHarvest);
-	}
-	
-	@Override
-	public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te, ItemStack stack) {
-		super.harvestBlock(worldIn, player, pos, state, te, stack);
-		worldIn.setBlockToAir(pos);
-	}
-	
-	@Override
 	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		List<ItemStack> ret = new java.util.ArrayList<ItemStack>();
 		ItemStack stack = new ItemStack(this);
