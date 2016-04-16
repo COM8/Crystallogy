@@ -28,7 +28,7 @@ public class HungDust extends ThreatDust {
 	}
 	
 	@Override
-	public void castOnPlayer(ItemStack stack, World worldIn, EntityPlayer player) {
+	public void castOnPlayer(World worldIn, EntityPlayer player) {
 		if(!worldIn.isRemote){
 			player.addPotionEffect(new PotionEffect(Potion.getPotionById(17), 300, 3, true, true));
 		}

@@ -26,7 +26,7 @@ public class FireDust extends ThreatDust {
 	}
 	
 	@Override
-	public void castOnPlayer(ItemStack stack, World worldIn, EntityPlayer player) {
+	public void castOnPlayer(World worldIn, EntityPlayer player) {
 		if(!worldIn.isRemote){
 			player.setFire(7);
 		}

@@ -24,6 +24,6 @@ public abstract class ThreatDust extends BaseItemFood {
 		super.onFoodEaten(stack, worldIn, player);	
 	}
 	
-	public abstract void castOnPlayer(ItemStack stack, World worldIn, EntityPlayer player);
+	public abstract void castOnPlayer(World worldIn, EntityPlayer player);
 	
 }

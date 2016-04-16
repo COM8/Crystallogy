@@ -11,7 +11,7 @@ public class DrowDust extends ThreatDust {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public DrowDust() {
-		super(0, 0.0F, false, 21, ID);
+		super(0, 0.0F, false, 11, ID);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -22,14 +22,14 @@ public class DrowDust extends ThreatDust {
 	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
 		super.onFoodEaten(stack, worldIn, player);
 		if(!worldIn.isRemote){
-			player.attackEntityFrom(DamageSource.drown, 10.5F);
+			player.attackEntityFrom(DamageSource.drown, 11.0F);
 		}
 	}
 	
 	@Override
-	public void castOnPlayer(ItemStack stack, World worldIn, EntityPlayer player) {
+	public void castOnPlayer(World worldIn, EntityPlayer player) {
 		if(!worldIn.isRemote){
-			player.attackEntityFrom(DamageSource.drown, 0.5F);
+			player.attackEntityFrom(DamageSource.drown, 1.0F);
 		}
 	}
 	
