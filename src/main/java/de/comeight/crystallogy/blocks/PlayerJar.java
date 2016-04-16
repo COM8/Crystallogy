@@ -3,8 +3,13 @@ package de.comeight.crystallogy.blocks;
 import java.util.List;
 
 import de.comeight.crystallogy.blocks.materials.CustomMaterials;
-import de.comeight.crystallogy.entity.PlayerClientDummy;
+import de.comeight.crystallogy.items.DamDust;
+import de.comeight.crystallogy.items.DrowDust;
+import de.comeight.crystallogy.items.FireDust;
+import de.comeight.crystallogy.items.HungDust;
+import de.comeight.crystallogy.items.PoisDust;
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
+import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar.EnumThreats;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,7 +24,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -102,26 +106,59 @@ public class PlayerJar extends BaseBlockTileEntity {
 	}
 	
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {		
 		TileEntity tE = worldIn.getTileEntity(pos);
 		if(tE instanceof TileEntityPlayerJar){
 			TileEntityPlayerJar jar = (TileEntityPlayerJar) tE;
-			if(jar.getPlayer() != null){
+			if(jar.hasPlayer()){
 				if(playerIn.isSneaking()){
+					//Releas Player
 					jar.removePlayer(worldIn, new Vec3d(pos), true); //TODO Fix no sound playing
 					worldIn.notifyNeighborsOfStateChange(pos, this);
 				}
 				else{
-					if(worldIn.isRemote){
-						PlayerClientDummy player = jar.getPlayer();
-						playerIn.addChatMessage(new TextComponentString("Name: " + player.getGameProfile().getName()));
-						playerIn.addChatMessage(new TextComponentString("UUID: " + player.getGameProfile().getId()));
+					ItemStack stack = null;
+					if((stack = playerIn.getHeldItemMainhand())!= null){
+						//Use threat dust
+						if(!worldIn.isRemote){
+							testForThreatDust(stack, jar, pos, playerIn);
+						}
 					}
 				}
 			}
 		}
+		return true;
+	}
+	
+	private void testForThreatDust(ItemStack stack, TileEntityPlayerJar jar, BlockPos pos, EntityPlayer playerIn){
+		boolean success = false;
 		
-		return super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
+		if(stack.getItem() instanceof DamDust){
+			jar.addThreat(EnumThreats.DAMAGE);
+			success = true;
+		}
+		else if(stack.getItem() instanceof DrowDust){
+			jar.addThreat(EnumThreats.DROWN);
+			success = true;
+		}
+		else if(stack.getItem() instanceof PoisDust){
+			jar.addThreat(EnumThreats.POISON);
+			success = true;
+		}
+		else if(stack.getItem() instanceof FireDust){
+			jar.addThreat(EnumThreats.FIRE);
+			success = true;
+		}
+		else if(stack.getItem() instanceof HungDust){
+			jar.addThreat(EnumThreats.HUNGER);
+			success = true;
+		}
+		if(success){
+			ItemStack playerIStack = playerIn.getHeldItemMainhand();
+			if (playerIStack != null){
+	            playerIStack.stackSize--;
+	        }
+		}
 	}
 	
 	@Override

@@ -7,7 +7,10 @@ import com.mojang.authlib.GameProfile;
 
 import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.entity.PlayerClientDummy;
+import de.comeight.crystallogy.handler.ItemHandler;
+import de.comeight.crystallogy.items.ThreatDust;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
+import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
 import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.ParticleB;
 import de.comeight.crystallogy.util.RGBColor;
@@ -19,34 +22,47 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.server.management.PlayerList;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 
-public class TileEntityPlayerJar extends TileEntity implements ITickable{
+public class TileEntityPlayerJar extends BaseTileEntity implements ITickable{
 
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private PlayerClientDummy player;
 	private GameProfile profile;
-	private EnumThreats threat; 
+	private EnumThreats threat;
+	private int threatTick; 
+	private int tick;
 	
 	public enum EnumThreats{
-		POISON(new RGBColor(0.0F, 1.0F, 0.0F), 0),
-		DAMAGE(new RGBColor(1.0F, 0.2F, 0.2F), 1),
-		FIRE(new RGBColor(1.0F, 0.0F, 0.0F), 2),
-		DROWN(new RGBColor(0.0F, 0.0F, 1.0F), 3);
+		POISON(new RGBColor(0.0F, 1.0F, 0.0F), ItemHandler.poisDust, 0),
+		DAMAGE(new RGBColor(1.0F, 0.2F, 0.2F), ItemHandler.damDust, 1),
+		FIRE(new RGBColor(1.0F, 0.0F, 0.0F), ItemHandler.fireDust, 2),
+		DROWN(new RGBColor(0.0F, 0.0F, 1.0F), ItemHandler.drowDust, 3),
+		HUNGER(new RGBColor(0.5F, 0.5F, 0.5F), ItemHandler.hungDust, 4);
 		
 		private final int id;
 		private final RGBColor color;
+		private ThreatDust threatDust;
 		private static ArrayList<EnumThreats> list = new ArrayList<TileEntityPlayerJar.EnumThreats>();
 		
-		private EnumThreats(RGBColor color, int id){
+		private EnumThreats(RGBColor color, ThreatDust threatDust, int id){
 			this.color = color;
-			this.id = id;
-			
+			this.threatDust = threatDust;
+			this.id = id;			
+		}
+		
+		public int getNumOfCalls(){
+			return threatDust.numOfCalls;
+		}
+		
+		public void castOnPlayer(World worldIn, EntityPlayer player){
+			threatDust.castOnPlayer(worldIn, player);
 		}
 		
 		public int getID(){
@@ -65,6 +81,10 @@ public class TileEntityPlayerJar extends TileEntity implements ITickable{
 		
 		public static EnumThreats fromNBTTagCompound(NBTTagCompound compound, String key){
 			int _id = compound.getInteger(key + "_EnumThreat");
+			return fromID(_id);
+		}
+		
+		public static EnumThreats fromID(int _id){
 			for(EnumThreats threat : values()){
 				if(threat.getID() == _id){
 					return threat;
@@ -77,6 +97,9 @@ public class TileEntityPlayerJar extends TileEntity implements ITickable{
 
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public TileEntityPlayerJar() {
+		tick = 0;
+		threatTick = 0;
+		threat = null;
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -87,7 +110,7 @@ public class TileEntityPlayerJar extends TileEntity implements ITickable{
 	public void setPlayer(PlayerClientDummy player) {
 		this.player = player;
 		this.profile = player.getGameProfile();
-		markDirty();
+		sync();
 	}
 	
 	public void setThreat(EnumThreats threat){
@@ -99,6 +122,11 @@ public class TileEntityPlayerJar extends TileEntity implements ITickable{
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	public void addThreat(EnumThreats threat){
+		threatTick = 0;
+		this.threat = threat;
+	}
+	
 	public boolean hasPlayer(){
 		if(profile != null){
 			return true;
@@ -119,8 +147,8 @@ public class TileEntityPlayerJar extends TileEntity implements ITickable{
 	
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
-		super.writeToNBT(compound);
 		writeCustomDataToNBT(compound);
+		super.writeToNBT(compound);
 	}
 	
 	public void readCustomDataToNBT(NBTTagCompound compound) {
@@ -134,12 +162,27 @@ public class TileEntityPlayerJar extends TileEntity implements ITickable{
 				}
 			}
 		}
+		else{
+			this.player = null;
+			this.profile = null;
+		}
+	}
+	
+	@Override
+	public NetworkPacketTileEntitySync getCustomDataPacket(NBTTagCompound compound) {
+		writeToNBT(compound);
+		return new NetworkPacketTileEntitySync(pos, compound);
+	}
+	
+	@Override
+	public void onCustomDataPacket(NetworkPacketTileEntitySync packet) {
+		readFromNBT(packet.getNBTTagCompound());
 	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
-		super.readFromNBT(compound);
 		readCustomDataToNBT(compound);
+		super.readFromNBT(compound);
 	}
 	
 	@Override
@@ -160,6 +203,8 @@ public class TileEntityPlayerJar extends TileEntity implements ITickable{
 			if(release){
 				player = null;
 				profile = null;
+				sync();
+				
 				if(worldIn.isRemote){
 					for (int i = 0; i < 5; i++) { //Particel:
 						ParticleB gP = new ParticleB(worldIn, pos.xCoord + 0.5, pos.yCoord, pos.zCoord + 0.5, 0.0, 0.0, 0.0);
@@ -181,17 +226,56 @@ public class TileEntityPlayerJar extends TileEntity implements ITickable{
 		}
 	}
 
+	private void incTick(){
+		tick++;
+		if(tick >= 20){
+			tick = 0;
+		}
+	}
+	
 	@Override
 	public void update() {
 		if(!hasPlayer()){
 			return;
 		}
-		if(Utilities.getRandInt(0, 5) == 0){
-			double d1 = Utilities.getRandDouble(0.5, 0.7);
-			double d2 = Utilities.getRandDouble(0.5, 0.7);
-			double d3 = Utilities.getRandDouble(0.2, 0.6);
-        	worldObj.spawnParticle(EnumParticleTypes.WATER_WAKE, pos.getX() + d1, pos.getY() + 0.65, pos.getZ() + d2, 0.0, -0.015, 0.0, new int[0]);
-        }
+		incTick();
+		
+		if(worldObj.isRemote){
+			if(Utilities.getRandInt(0, 5) == 0){
+				double d1 = Utilities.getRandDouble(0.5, 0.7);
+				double d2 = Utilities.getRandDouble(0.5, 0.7);
+				double d3 = Utilities.getRandDouble(0.2, 0.6);
+	        	worldObj.spawnParticle(EnumParticleTypes.WATER_WAKE, pos.getX() + d1, pos.getY() + 0.65, pos.getZ() + d2, 0.0, -0.015, 0.0, new int[0]);
+	        }
+		}
+		else{
+			if(tick == 10 && threat != null){
+				threatTick++;
+				tryCastOnPlayer();
+				if(threat.getNumOfCalls() <= threatTick){
+					threat = null;
+					threatTick = 0;
+				}
+			}
+		}
+	}
+	
+	private void tryCastOnPlayer(){
+		EntityPlayer ePlayer;
+		if((ePlayer = getPlayerFromServer()) != null){
+			threat.castOnPlayer(ePlayer.getEntityWorld(), ePlayer);
+		}
+	}
+	
+	private EntityPlayer getPlayerFromServer(){
+		WorldServer server = (WorldServer) worldObj;
+		PlayerList playerList = server.getMinecraftServer().getPlayerList();
+		EntityPlayer ePlayer = null;
+		if((ePlayer = playerList.getPlayerByUUID(profile.getId())) == null){
+			ePlayer = playerList.getPlayerByUsername(profile.getName());
+		}
+		
+		return ePlayer;
 	}
 	
 }
