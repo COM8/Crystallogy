@@ -14,12 +14,13 @@ import de.comeight.crystallogy.items.crafting.InfusionRecipeVaporizer;
 import de.comeight.crystallogy.network.NetworkPacketInfuserBlockEnabled;
 import de.comeight.crystallogy.network.NetworkPacketInfusionRecipeStatus;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
+import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
 import de.comeight.crystallogy.network.NetworkPacketUpdateInventory;
 import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerInfuserBlockEnabled;
 import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerInfusionRecipeStatus;
 import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerParticle;
+import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerTileEntitySync;
 import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerUpdateInventory;
-import de.comeight.crystallogy.particles.LightParticle;
 import de.comeight.crystallogy.tabs.CrystallogyMainTab;
 import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
 import de.comeight.crystallogy.tileEntitys.TileEntityCrystallCrusher;
@@ -71,6 +72,7 @@ public class CommonProxy {
 		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerInfusionRecipeStatus.class, NetworkPacketInfusionRecipeStatus.class, NetworkPacketInfusionRecipeStatus.ID_SERVER, Side.SERVER);
 		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerUpdateInventory.class, NetworkPacketUpdateInventory.class, NetworkPacketUpdateInventory.ID_SERVER, Side.SERVER);
 		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerParticle.class, NetworkPacketParticle.class, NetworkPacketParticle.ID_SERVER, Side.SERVER);
+		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerTileEntitySync.class, NetworkPacketTileEntitySync.class, NetworkPacketTileEntitySync.ID_SERVER, Side.SERVER);
 		Utilities.addConsoleText("Serverside: MessageHandlerOnServer registered.");
 	}
 	

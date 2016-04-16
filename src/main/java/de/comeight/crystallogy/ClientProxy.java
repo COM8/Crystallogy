@@ -6,18 +6,18 @@ import de.comeight.crystallogy.handler.ParticleHandler;
 import de.comeight.crystallogy.network.NetworkPacketInfuserBlockEnabled;
 import de.comeight.crystallogy.network.NetworkPacketInfusionRecipeStatus;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
+import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
 import de.comeight.crystallogy.network.NetworkPacketUpdateInventory;
 import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientInfuserBlockEnabled;
 import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientInfusionRecipeStatus;
 import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientParticle;
+import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientTileEntitySync;
 import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientUpdateInventory;
 import de.comeight.crystallogy.renderer.RendererInfuserBlockItem;
 import de.comeight.crystallogy.renderer.RendererPlayerinJar;
 import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
 import de.comeight.crystallogy.util.Utilities;
-import net.minecraft.world.gen.structure.StructureOceanMonumentPieces.MonumentCoreRoom;
-import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -63,6 +63,7 @@ public class ClientProxy extends CommonProxy{
     	CommonProxy.NETWORKWRAPPER.registerMessage(MessageHandlerOnClientInfusionRecipeStatus.class, NetworkPacketInfusionRecipeStatus.class, NetworkPacketInfusionRecipeStatus.ID_CLIENT, Side.CLIENT);
     	CommonProxy.NETWORKWRAPPER.registerMessage(MessageHandlerOnClientUpdateInventory.class, NetworkPacketUpdateInventory.class, NetworkPacketUpdateInventory.ID_CLIENT, Side.CLIENT);
     	CommonProxy.NETWORKWRAPPER.registerMessage(MessageHandlerOnClientParticle.class, NetworkPacketParticle.class, NetworkPacketParticle.ID_CLIENT, Side.CLIENT);
+    	CommonProxy.NETWORKWRAPPER.registerMessage(MessageHandlerOnClientTileEntitySync.class, NetworkPacketTileEntitySync.class, NetworkPacketTileEntitySync.ID_CLIENT, Side.CLIENT);
     	Utilities.addConsoleText("Clientside: MessageHandlerOnClient registriert.");
 	}
 }
