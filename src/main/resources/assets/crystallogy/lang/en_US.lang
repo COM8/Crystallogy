@@ -30,5 +30,10 @@ item.vaporizerDirection.name=Fire Vaporizer
 item.crystallKnif.name=Crystallknif
 item.crystalLlight.name=Crystall Light
 item.fireCrystall.name=§cFire Crystall§r
+item.damDust.name=§dDamage§r Dust
+item.drowDust.name=§bDrown§r Dust
+item.hungDust.name=§eHunger§r Dust
+item.fireDust.name=§4Fire§r Dust
+item.poisDust.name=§2Poison§r Dust
 
 itemGroup.crystallogyMainTab=Crystallogy Maintab

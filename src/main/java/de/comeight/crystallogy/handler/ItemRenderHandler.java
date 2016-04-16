@@ -26,6 +26,11 @@ public class ItemRenderHandler {
 		registerItemRender(ItemHandler.vaporizer);
 		registerItemRender(ItemHandler.vaporizerDirection);
 		registerItemRender(ItemHandler.crystallKnif);
+		registerItemRender(ItemHandler.damDust);
+		registerItemRender(ItemHandler.drowDust);
+		registerItemRender(ItemHandler.fireDust);
+		registerItemRender(ItemHandler.poisDust);
+		registerItemRender(ItemHandler.hungDust);
 		
 		Utilities.addConsoleText("All itemrenderer are registered.");
     }

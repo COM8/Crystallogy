@@ -30,5 +30,10 @@ item.vaporizerDirection.name=Feuersprühflasche
 item.crystallKnif.name=Kristallmesser
 item.crystalLlight.name=Kristalllicht
 item.fireCrystall.name=§cFeuerkristall§r
+item.damDust.name=§dSchadens§rstaub
+item.drowDust.name=§bErtrinkens§rstaub
+item.hungDust.name=§eHunger§rstaub
+item.fireDust.name=§4Feuer§rstaub
+item.poisDust.name=§2Gift§rstaub
 
 itemGroup.crystallogyMainTab=Crystallogy Hauptfenster

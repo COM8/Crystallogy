@@ -5,11 +5,15 @@ import de.comeight.crystallogy.items.CrystallDust_green;
 import de.comeight.crystallogy.items.CrystallDust_red;
 import de.comeight.crystallogy.items.CrystallDust_yellow;
 import de.comeight.crystallogy.items.CrystallKnif;
+import de.comeight.crystallogy.items.DamDust;
+import de.comeight.crystallogy.items.DrowDust;
+import de.comeight.crystallogy.items.FireDust;
+import de.comeight.crystallogy.items.HungDust;
+import de.comeight.crystallogy.items.PoisDust;
 import de.comeight.crystallogy.items.PureCrystallDust;
 import de.comeight.crystallogy.items.Vaporizer;
 import de.comeight.crystallogy.items.VaporizerDirection;
 import de.comeight.crystallogy.util.Utilities;
-import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemHandler {
@@ -23,6 +27,11 @@ public class ItemHandler {
 	public static Vaporizer vaporizer;
 	public static VaporizerDirection vaporizerDirection;
 	public static CrystallKnif crystallKnif;
+	public static DamDust damDust;
+	public static DrowDust drowDust;
+	public static FireDust fireDust;
+	public static PoisDust poisDust;
+	public static HungDust hungDust;
 	
 	//ItemBlocks
 	
@@ -43,6 +52,11 @@ public class ItemHandler {
 		vaporizer = new Vaporizer();
 		vaporizerDirection = new VaporizerDirection();
 		crystallKnif = new CrystallKnif();
+		damDust = new DamDust();
+		drowDust = new DrowDust();
+		fireDust = new FireDust();
+		poisDust = new PoisDust();
+		hungDust = new HungDust();
 		
 		GameRegistry.register(crystallDust_red);
 		GameRegistry.register(crystallDust_green);
@@ -52,6 +66,11 @@ public class ItemHandler {
 		GameRegistry.register(vaporizer);
 		GameRegistry.register(vaporizerDirection);
 		GameRegistry.register(crystallKnif);
+		GameRegistry.register(damDust);
+		GameRegistry.register(drowDust);
+		GameRegistry.register(fireDust);
+		GameRegistry.register(poisDust);
+		GameRegistry.register(hungDust);
 		
 		Utilities.addConsoleText("All items are registered.");
 	}
