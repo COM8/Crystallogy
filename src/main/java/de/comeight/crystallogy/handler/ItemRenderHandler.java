@@ -39,6 +39,15 @@ public class ItemRenderHandler {
 		registerItemRender(ItemHandler.crystalSword_green);
 		registerItemRender(ItemHandler.crystalSword_red);
 		registerItemRender(ItemHandler.crystalSword_yellow);
+		registerItemRender(ItemHandler.toolRod);
+		registerItemRender(ItemHandler.crystallHammerHead_blue);
+		registerItemRender(ItemHandler.crystallHammerHead_green);
+		registerItemRender(ItemHandler.crystallHammerHead_red);
+		registerItemRender(ItemHandler.crystallHammerHead_yellow);
+		registerItemRender(ItemHandler.crystalSwordBlade_yellow);
+		registerItemRender(ItemHandler.crystalSwordBlade_red);
+		registerItemRender(ItemHandler.crystalSwordBlade_green);
+		registerItemRender(ItemHandler.crystalSwordBlade_blue);
 		
 		Utilities.addConsoleText("All itemrenderer are registered.");
     }

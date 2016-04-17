@@ -41,5 +41,14 @@ item.crystallSword_red.name=§4Rotes§r Kristallschwert
 item.crystallSword_blue.name=§9Blaues§r Kristallschwert
 item.crystallSword_yellow.name=§eGelbes§r Kristallschwert
 item.crystallSword_green.name=§2Grünes§r Kristallschwert
+item.toolRod.name=Werkzeugstange
+item.crystallHammerHead_blue.name=§pBlauer§r Kristallhammerkopf
+item.crystallHammerHead_red.name=§4Roter§r Kristallhammerkopf
+item.crystallHammerHead_yellow.name=§eGelber§r Kristallhammerkopf
+item.crystallHammerHead_green.name=§2Grünes§r Kristallhammerkopf
+item.crystallSwordBlade_red.name=§4Roter§r Kristallschwertklinge
+item.crystallSwordBlade_blue.name=§pBlauer§r Kristallschwertklinge
+item.crystallSwordBlade_yellow.name=§eGelber§r Kristallschwertklinge
+item.crystallSwordBlade_green.name=§2Grünes§r Kristallschwertklinge
 
 itemGroup.crystallogyMainTab=Crystallogy Hauptfenster
