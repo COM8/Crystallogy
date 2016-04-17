@@ -35,5 +35,13 @@ item.drowDust.name=§bErtrinkens§rstaub
 item.hungDust.name=§eHunger§rstaub
 item.fireDust.name=§4Feuer§rstaub
 item.poisDust.name=§2Gift§rstaub
+item.crystallHammer_red.name=§4Roter§r Kristallhammer
+item.crystallHammer_blue.name=§pBlauer§r Kristallhammer
+item.crystallHammer_yellow.name=§eGelber§r Kristallhammer
+item.crystallHammer_green.name=§2Grüner§r Kristallhammer
+item.crystallSword_red.name=§4Rotes§r Kristallschwert
+item.crystallSword_blue.name=§pBlaues§r Kristallschwert
+item.crystallSword_yellow.name=§eGelbes§r Kristallschwert
+item.crystallSword_green.name=§2Grünes§r Kristallschwert
 
 itemGroup.crystallogyMainTab=Crystallogy Hauptfenster

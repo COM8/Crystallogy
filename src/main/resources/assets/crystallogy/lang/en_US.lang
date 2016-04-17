@@ -35,5 +35,13 @@ item.drowDust.name=§bDrown§r Dust
 item.hungDust.name=§eHunger§r Dust
 item.fireDust.name=§4Fire§r Dust
 item.poisDust.name=§2Poison§r Dust
+item.crystallHammer_red.name=§4Red§r Crystallhammer
+item.crystallHammer_blue.name=§pBlue§r Crystallhammer
+item.crystallHammer_yellow.name=§eYellow§r Crystallhammer
+item.crystallHammer_green.name=§2Green§r Crystallhammer
+item.crystallSword_red.name=§4Red§r Crystallsword
+item.crystallSword_blue.name=§pBlue§r Crystallsword
+item.crystallSword_yellow.name=§eYellow§r Crystallsword
+item.crystallSword_green.name=§2Green§r Crystallsword
 
 itemGroup.crystallogyMainTab=Crystallogy Maintab

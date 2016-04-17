@@ -31,6 +31,10 @@ public class ItemRenderHandler {
 		registerItemRender(ItemHandler.fireDust);
 		registerItemRender(ItemHandler.poisDust);
 		registerItemRender(ItemHandler.hungDust);
+		registerItemRender(ItemHandler.crystallHammer_blue);
+		registerItemRender(ItemHandler.crystallHammer_green);
+		registerItemRender(ItemHandler.crystallHammer_red);
+		registerItemRender(ItemHandler.crystallHammer_yellow);
 		
 		Utilities.addConsoleText("All itemrenderer are registered.");
     }

@@ -129,6 +129,47 @@ public class CommonProxy {
 				'W', Blocks.heavy_weighted_pressure_plate,
 		});
 		GameRegistry.addRecipe(infuserBlockRecipe);
+		
+		IRecipe crystallHammer_red = new ShapedOreRecipe(ItemHandler.crystallHammer_red, new Object[]{
+				"CCC",
+				"CSC",
+				"_S_",
+				
+				'C', BlockHandler.crystall_red,
+				'S', "stickWood",
+		});
+		GameRegistry.addRecipe(crystallHammer_red);
+		
+		IRecipe crystallHammer_blue = new ShapedOreRecipe(ItemHandler.crystallHammer_blue, new Object[]{
+				"CCC",
+				"CSC",
+				"_S_",
+				
+				'C', BlockHandler.crystall_blue,
+				'S', "stickWood",
+		});
+		GameRegistry.addRecipe(crystallHammer_blue);
+		
+		IRecipe crystallHammer_green = new ShapedOreRecipe(ItemHandler.crystallHammer_green, new Object[]{
+				"CCC",
+				"CSC",
+				"_S_",
+				
+				'C', BlockHandler.crystall_green,
+				'S', "stickWood",
+		});
+		GameRegistry.addRecipe(crystallHammer_green);
+		
+		IRecipe crystallHammer_yellow = new ShapedOreRecipe(ItemHandler.crystallHammer_yellow, new Object[]{
+				"CCC",
+				"CSC",
+				"_S_",
+				
+				'C', BlockHandler.crystall_yellow,
+				'S', "stickWood",
+		});
+		GameRegistry.addRecipe(crystallHammer_yellow);
+		
 		Utilities.addConsoleText("All recipes are registered.");
 	}
 	

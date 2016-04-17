@@ -4,6 +4,10 @@ import de.comeight.crystallogy.items.CrystallDust_blue;
 import de.comeight.crystallogy.items.CrystallDust_green;
 import de.comeight.crystallogy.items.CrystallDust_red;
 import de.comeight.crystallogy.items.CrystallDust_yellow;
+import de.comeight.crystallogy.items.CrystallHammer_blue;
+import de.comeight.crystallogy.items.CrystallHammer_green;
+import de.comeight.crystallogy.items.CrystallHammer_red;
+import de.comeight.crystallogy.items.CrystallHammer_yellow;
 import de.comeight.crystallogy.items.CrystallKnif;
 import de.comeight.crystallogy.items.DamDust;
 import de.comeight.crystallogy.items.DrowDust;
@@ -32,6 +36,10 @@ public class ItemHandler {
 	public static FireDust fireDust;
 	public static PoisDust poisDust;
 	public static HungDust hungDust;
+	public static CrystallHammer_blue crystallHammer_blue;
+	public static CrystallHammer_red crystallHammer_red;
+	public static CrystallHammer_yellow crystallHammer_yellow;
+	public static CrystallHammer_green crystallHammer_green;
 	
 	//ItemBlocks
 	
@@ -57,6 +65,10 @@ public class ItemHandler {
 		fireDust = new FireDust();
 		poisDust = new PoisDust();
 		hungDust = new HungDust();
+		crystallHammer_blue = new CrystallHammer_blue();
+		crystallHammer_green = new CrystallHammer_green();
+		crystallHammer_red = new CrystallHammer_red();
+		crystallHammer_yellow = new CrystallHammer_yellow();
 		
 		GameRegistry.register(crystallDust_red);
 		GameRegistry.register(crystallDust_green);
@@ -71,6 +83,10 @@ public class ItemHandler {
 		GameRegistry.register(fireDust);
 		GameRegistry.register(poisDust);
 		GameRegistry.register(hungDust);
+		GameRegistry.register(crystallHammer_blue);
+		GameRegistry.register(crystallHammer_green);
+		GameRegistry.register(crystallHammer_red);
+		GameRegistry.register(crystallHammer_yellow);
 		
 		Utilities.addConsoleText("All items are registered.");
 	}
