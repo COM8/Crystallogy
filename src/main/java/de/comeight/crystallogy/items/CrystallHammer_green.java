@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 
 public class CrystallHammer_green extends BaseItemHammer {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	public static final String ID = "CrystallHammer_green";
+	public static final String ID = "crystallHammer_green";
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public CrystallHammer_green() {
