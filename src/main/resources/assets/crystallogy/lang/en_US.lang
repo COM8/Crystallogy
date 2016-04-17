@@ -1,23 +1,23 @@
 < en_US.lang - English localization file >
 
-block.crystall_red.name=§4Red§r Crystall
-block.crystall_blue.name=§9Blue§r Crystall
-block.crystall_yellow.name=§eYellow§r Crystall
-block.crystall_green.name=§2Green§r Crystall
+block.crystall_red.name=§4Red§r Crystal
+block.crystall_blue.name=§9Blue§r Crystal
+block.crystall_yellow.name=§eYellow§r Crystal
+block.crystall_green.name=§2Green§r Crystal
 block.crystallCrusher.name=Crystallcrusher
 block.infuserBlock.name=Infuserblock
 block.playerJar.name=Player Jar
-block.crystalLlight.name=Crystall Light
+block.crystalllight.name=Crystal Light
 block.fireCrystall.name=§cFire Crystall§r
 
-tile.crystall_red.name=§4Red§r Crystall
-tile.crystall_blue.name=§9Blue§r Crystall
-tile.crystall_yellow.name=§eYellow§r Crystall
-tile.crystall_green.name=§2Green§r Crystall
+tile.crystall_red.name=§4Red§r Crystal
+tile.crystall_blue.name=§9Blue§r Crystal
+tile.crystall_yellow.name=§eYellow§r Crystal
+tile.crystall_green.name=§2Green§r Crystal
 tile.crystallCrusher.name=Crystallcrusher
 tile.infuserBlock.name=Infuserblock
 tile.playerJar.name=Player Jar
-tile.crystalLlight.name=Crystall Light
+tile.crystalllight.name=Crystal Light
 tile.fireCrystall.name=§cFire Crystall§r
 
 item.crystallDust_red.name=§4Red§r Crystalldust
@@ -27,8 +27,8 @@ item.crystallDust_green.name=§2Green§r Crystalldust
 item.pureCrystallDust.name=§7Pure§r Crystalldust
 item.vaporizer.name=Vaporizer
 item.vaporizerDirection.name=Fire Vaporizer
-item.crystallKnif.name=Crystallknif
-item.crystalLlight.name=Crystall Light
+item.crystallKnif.name=Crystalknif
+item.crystalllight.name=Crystall Light
 item.fireCrystall.name=§cFire Crystall§r
 item.damDust.name=§dDamage§r Dust
 item.drowDust.name=§bDrown§r Dust
@@ -36,12 +36,12 @@ item.hungDust.name=§eHunger§r Dust
 item.fireDust.name=§4Fire§r Dust
 item.poisDust.name=§2Poison§r Dust
 item.crystallHammer_red.name=§4Red§r Crystallhammer
-item.crystallHammer_blue.name=§pBlue§r Crystallhammer
+item.crystallHammer_blue.name=§9Blue§r Crystallhammer
 item.crystallHammer_yellow.name=§eYellow§r Crystallhammer
 item.crystallHammer_green.name=§2Green§r Crystallhammer
 item.crystallSword_red.name=§4Red§r Crystallsword
-item.crystallSword_blue.name=§pBlue§r Crystallsword
+item.crystallSword_blue.name=§9Blue§r Crystallsword
 item.crystallSword_yellow.name=§eYellow§r Crystallsword
 item.crystallSword_green.name=§2Green§r Crystallsword
 
-itemGroup.crystallogyMainTab=Crystallogy Maintab
+itemGroup.CrystallogyMainTab=Crystallogy Maintab

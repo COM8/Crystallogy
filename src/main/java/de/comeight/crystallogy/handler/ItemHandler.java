@@ -1,5 +1,9 @@
 package de.comeight.crystallogy.handler;
 
+import de.comeight.crystallogy.items.CrystalSword_blue;
+import de.comeight.crystallogy.items.CrystalSword_green;
+import de.comeight.crystallogy.items.CrystalSword_red;
+import de.comeight.crystallogy.items.CrystalSword_yellow;
 import de.comeight.crystallogy.items.CrystallDust_blue;
 import de.comeight.crystallogy.items.CrystallDust_green;
 import de.comeight.crystallogy.items.CrystallDust_red;
@@ -40,6 +44,10 @@ public class ItemHandler {
 	public static CrystallHammer_red crystallHammer_red;
 	public static CrystallHammer_yellow crystallHammer_yellow;
 	public static CrystallHammer_green crystallHammer_green;
+	public static CrystalSword_blue crystalSword_blue;
+	public static CrystalSword_red crystalSword_red;
+	public static CrystalSword_green crystalSword_green;
+	public static CrystalSword_yellow crystalSword_yellow;
 	
 	//ItemBlocks
 	
@@ -69,6 +77,10 @@ public class ItemHandler {
 		crystallHammer_green = new CrystallHammer_green();
 		crystallHammer_red = new CrystallHammer_red();
 		crystallHammer_yellow = new CrystallHammer_yellow();
+		crystalSword_blue = new CrystalSword_blue();
+		crystalSword_green = new CrystalSword_green();
+		crystalSword_red = new CrystalSword_red();
+		crystalSword_yellow = new CrystalSword_yellow();
 		
 		GameRegistry.register(crystallDust_red);
 		GameRegistry.register(crystallDust_green);
@@ -87,6 +99,10 @@ public class ItemHandler {
 		GameRegistry.register(crystallHammer_green);
 		GameRegistry.register(crystallHammer_red);
 		GameRegistry.register(crystallHammer_yellow);
+		GameRegistry.register(crystalSword_blue);
+		GameRegistry.register(crystalSword_green);
+		GameRegistry.register(crystalSword_red);
+		GameRegistry.register(crystalSword_yellow);
 		
 		Utilities.addConsoleText("All items are registered.");
 	}

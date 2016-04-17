@@ -3,7 +3,7 @@
 "textures": {
     "particle": "blocks/planks_oak",
     "texture": "blocks/planks_oak",
-    "crystall_red": "crystallogy:items/crystall_yellow"
+    "crystall_red": "crystallogy:blocks/crystall_yellow"
 },
 "elements": [ 
 {

@@ -1,21 +1,16 @@
 package de.comeight.crystallogy.items;
 
-import de.comeight.crystallogy.CommonProxy;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.ItemSword;
+import de.comeight.crystallogy.blocks.materials.CustomToolMaterials;
+import de.comeight.crystallogy.handler.BlockHandler;
+import net.minecraft.item.ItemStack;
 
-public class BaseItemSword extends ItemSword {
+public class CrystalSword_blue extends BaseItemSword {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-
+	public static final String ID = "crystallSword_blue";
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public BaseItemSword(ToolMaterial material, String ID) {
-		super(material);
-		setCreativeTab(CommonProxy.crystallogyMainTab);
-		setUnlocalizedName(ID);
-		setRegistryName(ID);
-		
-		//System.out.println("\"" + this.getUnlocalizedName() + "\" wurde initialisiert.");
+	public CrystalSword_blue() {
+		super(CustomToolMaterials.CRYSTALL_BLUE, ID);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -23,4 +18,5 @@ public class BaseItemSword extends ItemSword {
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 
+	
 }
