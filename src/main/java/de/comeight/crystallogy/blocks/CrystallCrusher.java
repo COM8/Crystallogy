@@ -28,10 +28,10 @@ public class CrystallCrusher extends BaseBlockContainer{
 
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public CrystallCrusher(){
-		super(Material.rock, ID);
+		super(Material.iron, ID);
 		
 		this.setHarvestLevel("pickaxe", 2);
-		this.setHardness(30);
+		this.setHardness(30.0F);
 		this.setStepSound(SoundType.STONE);
 	}
 
@@ -65,16 +65,11 @@ public class CrystallCrusher extends BaseBlockContainer{
 	
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (worldIn.isRemote)
+		if (!worldIn.isRemote)
         {	
 			playerIn.openGui(CrystallogyBase.INSTANCE, GuiCrystallCrusher.ID, worldIn, pos.getX(), pos.getY(), pos.getZ());
-            return true;
         }
-        else
-        {
-        	//playerIn.openGui(CrystallogyBase.INSTANCE, GuiCrystallCrusher.ID, worldIn, pos.getX(), pos.getY(), pos.getZ());
-            return true;
-        }
+		return true;
 	}
 	
 	@Override

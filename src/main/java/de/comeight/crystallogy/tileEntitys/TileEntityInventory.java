@@ -16,7 +16,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.util.Constants;
 
-public class TileEntityInventory extends TileEntity implements IInventory{
+public abstract class TileEntityInventory extends BaseTileEntity implements IInventory{
 
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	protected ItemStack[] inventory;

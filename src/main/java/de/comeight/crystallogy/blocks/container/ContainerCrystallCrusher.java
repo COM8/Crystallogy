@@ -14,10 +14,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ContainerCrystallCrusher extends Container{
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	private int inputSlot;
-	private int outputSlot;
-	private int progressSlot;
+	private int inputSlot = 36;
+	private int outputSlot = 37;
 	
+	private int[] cachedFields;
 	private TileEntityCrystallCrusher tileEntity;
 
 	//-----------------------------------------------Constructor:-------------------------------------------
@@ -36,40 +36,6 @@ public class ContainerCrystallCrusher extends Container{
 	public boolean canInteractWith(EntityPlayer playerIn) {
 		return tileEntity.isUseableByPlayer(playerIn);
 	}
-	
-	@Override
-	public void detectAndSendChanges() {
-		super.detectAndSendChanges();
-		
-		for(int i = 0; i < this.crafters.size(); i++){
-			ICrafting icrafting = (ICrafting)this.crafters.get(i);
-
-            if (this.inputSlot != this.tileEntity.getField(0))
-            {
-                icrafting.sendProgressBarUpdate(this, 0, this.tileEntity.getField(0));
-            }
-
-            if (this.outputSlot != this.tileEntity.getField(1))
-            {
-                icrafting.sendProgressBarUpdate(this, 1, this.tileEntity.getField(1));
-            }
-
-            if (this.progressSlot != this.tileEntity.getField(2))
-            {
-                icrafting.sendProgressBarUpdate(this, 3, this.tileEntity.getField(2));
-            }
-		}
-		
-		this.inputSlot = tileEntity.getField(0);
-		this.outputSlot = tileEntity.getField(1);
-		this.progressSlot = tileEntity.getField(2);
-	}
-
-	@SideOnly(Side.CLIENT)
-    public void updateProgressBar(int id, int data)
-    {
-        this.tileEntity.setField(id, data);
-    }
 	
 	private void addSlostPlayerInventorry(InventoryPlayer playerInventory){
 		for (int i = 0; i < 3; ++i)
@@ -96,11 +62,11 @@ public class ContainerCrystallCrusher extends Container{
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
 		ItemStack stack = null;
-        Slot slotObject = (Slot) inventorySlots.get(index);
+        Slot slot = (Slot) inventorySlots.get(index);
 
         //null checks and checks if the item can be stacked (maxStackSize > 1)
-        if (slotObject != null && slotObject.getHasStack()) {
-                ItemStack stackInSlot = slotObject.getStack();
+        if (slot != null && slot.getHasStack()) {
+                ItemStack stackInSlot = slot.getStack();
                 stack = stackInSlot.copy();
 
                 //merges the item into player inventory since its in the tileEntity
@@ -110,20 +76,20 @@ public class ContainerCrystallCrusher extends Container{
                         }
                 }
                 //places it into the tileEntity is possible since its in the player inventory
-                else if (!this.mergeItemStack(stackInSlot, 0, tileEntity.getSizeInventory(), false)) {
+                else if (!this.mergeItemStack(stackInSlot, 0, 2, false)) {
                         return null;
                 }
 
                 if (stackInSlot.stackSize == 0) {
-                        slotObject.putStack(null);
+                        slot.putStack(null);
                 } else {
-                        slotObject.onSlotChanged();
+                        slot.onSlotChanged();
                 }
 
                 if (stackInSlot.stackSize == stack.stackSize) {
                         return null;
                 }
-                slotObject.onPickupFromSlot(playerIn, stackInSlot);
+                slot.onPickupFromSlot(playerIn, stackInSlot);
         }
         return stack;
 	}

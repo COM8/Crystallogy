@@ -1,5 +1,6 @@
 package de.comeight.crystallogy.handler;
 
+import de.comeight.crystallogy.blocks.container.ContainerCrystallCrusher;
 import de.comeight.crystallogy.gui.GuiCrystallCrusher;
 import de.comeight.crystallogy.tileEntitys.TileEntityCrystallCrusher;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,7 +27,7 @@ public class GuiHandler implements IGuiHandler{
 		case GuiCrystallCrusher.ID:
 			TileEntity t = world.getTileEntity(new BlockPos(x,y,z));
 			if(t instanceof TileEntityCrystallCrusher){
-				return new GuiCrystallCrusher(player.inventory, (TileEntityCrystallCrusher) t);
+				return new ContainerCrystallCrusher(player.inventory, (TileEntityCrystallCrusher) t);
 			}
 		default:
 			return null;

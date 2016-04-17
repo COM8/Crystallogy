@@ -1,67 +1,54 @@
 package de.comeight.crystallogy.tileEntitys;
 
+import java.io.ObjectInputStream.GetField;
+
 import de.comeight.crystallogy.gui.GuiCrystallCrusher;
-import de.comeight.crystallogy.items.crafting.RecipesCrystallCrusher;
+import de.comeight.crystallogy.handler.CrystalCrusherRecipeHandler;
+import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerFurnace;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityLockable;
+import net.minecraft.util.ITickable;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 
-public class TileEntityCrystallCrusher extends TileEntity implements IInventory {
+public class TileEntityCrystallCrusher extends TileEntityInventory implements ITickable {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	public static final String ID = "containerCrystallCrusher";
 	
-	private static final int[] slotsTop = new int[] {0};
-    private static final int[] slotsSides = new int[] {1};
-    /** The ItemStacks that hold the items currently being used in the furnace */
-    private ItemStack[] furnaceItemStacks = new ItemStack[2];
+    private ItemStack[] crusherItemStacks = new ItemStack[2];
 
-    private int currentItemBurnTime;
     private int cookTime;
     private int totalCookTime;
-    private String furnaceCustomName = "haha";
+    public boolean crushing;
     
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public TileEntityCrystallCrusher() {
+		super(2);
+		crushing = false;
 	}
 
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	@Override
 	public String getName()
     {
-		if(this.hasCustomName()){
-			return this.furnaceCustomName;
-		}
-		else{
-			return "de.comeight.crystallogy.tileEntitys";
-		}
+		return "de.comeight.crystallogy.tileEntitys";
     }
 
 
 	@Override
 	public int getSizeInventory() {
-		return this.furnaceItemStacks.length;
+		return this.crusherItemStacks.length;
 	}
 
 	@Override
 	public ItemStack getStackInSlot(int index) {
-		return this.furnaceItemStacks[index];
-	}
-	
-	@Override
-	public int getFieldCount() {
-		return 0;
-	}
-	
-	@Override
-	public int getField(int id) {
-		return 0;
+		return this.crusherItemStacks[index];
 	}
 
 	@Override
@@ -78,89 +65,98 @@ public class TileEntityCrystallCrusher extends TileEntity implements IInventory 
 	public void setField(int id, int value) {
 	}
 	
-	public void setCustomInventoryName(String p_145951_1_)
-    {
-        this.furnaceCustomName = p_145951_1_;
-    }
-	
 	public int getCookTime(ItemStack stack)
     {
-        return 200;
+        return CrystalCrusherRecipeHandler.INSTANCE.getTotalCookTime(stack);
     }
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	public double fractionOfCookTimeComplete()
+	{
+		return (double)cookTime / (double)totalCookTime;
+	}
+	
+	@Override
 	public void update()
     {
+        if (worldObj.isRemote)
+        {
+        	return;
+        }
         boolean flag1 = false;
-
-        if (!this.worldObj.isRemote)
-        {
-            if (this.furnaceItemStacks[1] != null && this.furnaceItemStacks[0] != null)
-            {
-            	flag1 = true;
-                if (this.canSmelt())
-                {
-                    ++this.cookTime;
-
-                    if (this.cookTime == this.totalCookTime)
-                    {
-                        this.cookTime = 0;
-                        this.totalCookTime = this.getCookTime(this.furnaceItemStacks[0]);
-                        this.smeltItem();
-                    }
-                }
-                else
-                {
-                    this.cookTime = 0;
-                }
-            }
+        if(crushing){
+        	if(!canCrush()){
+        		crushing = false;
+        		cookTime = 1;
+        	}
+        	else{
+        		cookTime++;
+            	if (cookTime >= totalCookTime) {
+    				cookTime = 1;
+    				crushItem();
+    				crushing = false;
+    			}
+        	}
+        	sync();
+        	flag1 = true;
+        }
+        else{
+        	if (crusherItemStacks[0] != null) {
+    			if (canCrush()) {
+    				flag1 = true;
+    				crushing = true;
+    				cookTime = 1;
+    				totalCookTime = getCookTime(this.crusherItemStacks[0]);
+    				sync();
+    			}
+    		}
         }
 
-        if (flag1)
-        {
-            this.markDirty();
-        }
+		if (flag1) {
+			this.markDirty();
+		}
     }
 	
-    private boolean canSmelt()
+    private boolean canCrush()
     {
-        if (this.furnaceItemStacks[0] == null)
-        {
-            return false;
+    	ItemStack output = CrystalCrusherRecipeHandler.INSTANCE.getResult(crusherItemStacks[0]);
+        if (output == null){
+        	return false;
         }
-        else
-        {
-            ItemStack itemstack = RecipesCrystallCrusher.instance().getCrusherResult(this.furnaceItemStacks[0]);
-            if (itemstack == null) return false;
-            if (!this.furnaceItemStacks[1].isItemEqual(itemstack)) return false;
-            int result = furnaceItemStacks[1].stackSize + itemstack.stackSize;
-            return result <= getInventoryStackLimit() && result <= this.furnaceItemStacks[2].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
+        if (crusherItemStacks[1] == null){
+        	return true;
         }
+        if(crusherItemStacks[1].getItem() != output.getItem()){
+    		return false;
+    	}
+        
+        int result = crusherItemStacks[1].stackSize + output.stackSize;
+        if(result >= getInventoryStackLimit() && result >= this.crusherItemStacks[1].getMaxStackSize()){
+        	return false;
+        }
+        return true;
     }
 
-    /**
-     * Turn one item from the furnace source stack into the appropriate smelted item in the furnace result stack
-     */
-    public void smeltItem()
+    public void crushItem()
     {
-        if (this.canSmelt())
+        if (canCrush())
         {
-            ItemStack itemstack = RecipesCrystallCrusher.instance().getCrusherResult(this.furnaceItemStacks[0]);
+            ItemStack itemstack = CrystalCrusherRecipeHandler.INSTANCE.getResult(crusherItemStacks[0]);
 
-            if (this.furnaceItemStacks[1] == null)
+            if (crusherItemStacks[1] == null)
             {
-                this.furnaceItemStacks[1] = itemstack.copy();
+                crusherItemStacks[1] = itemstack.copy();
             }
-            else if (this.furnaceItemStacks[1].getItem() == itemstack.getItem())
+            else if (crusherItemStacks[1].getItem() == itemstack.getItem())
             {
-                this.furnaceItemStacks[1].stackSize += itemstack.stackSize; // Forge BugFix: Results may have multiple items
+                crusherItemStacks[1].stackSize += itemstack.stackSize;
             }
 
-            --this.furnaceItemStacks[0].stackSize;
+            crusherItemStacks[0].stackSize--;
 
-            if (this.furnaceItemStacks[0].stackSize <= 0)
+            if (crusherItemStacks[0].stackSize <= 0)
             {
-                this.furnaceItemStacks[0] = null;
+                crusherItemStacks[0] = null;
             }
         }
     }
@@ -169,26 +165,20 @@ public class TileEntityCrystallCrusher extends TileEntity implements IInventory 
     public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
+        
+        readCookTimeFromNBT(compound);
         NBTTagList nbttaglist = compound.getTagList("Items", 10);
-        this.furnaceItemStacks = new ItemStack[this.getSizeInventory()];
+        this.crusherItemStacks = new ItemStack[this.getSizeInventory()];
 
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {
             NBTTagCompound nbttagcompound = nbttaglist.getCompoundTagAt(i);
             int j = nbttagcompound.getByte("Slot");
 
-            if (j >= 0 && j < this.furnaceItemStacks.length)
+            if (j >= 0 && j < this.crusherItemStacks.length)
             {
-                this.furnaceItemStacks[j] = ItemStack.loadItemStackFromNBT(nbttagcompound);
+                this.crusherItemStacks[j] = ItemStack.loadItemStackFromNBT(nbttagcompound);
             }
-        }
-
-        this.cookTime = compound.getShort("CookTime");
-        this.totalCookTime = compound.getShort("CookTimeTotal");
-
-        if (compound.hasKey("CustomName", 8))
-        {
-            this.furnaceCustomName = compound.getString("CustomName");
         }
     }
 
@@ -196,34 +186,24 @@ public class TileEntityCrystallCrusher extends TileEntity implements IInventory 
     public void writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
-        compound.setShort("CookTime", (short)this.cookTime);
-        compound.setShort("CookTimeTotal", (short)this.totalCookTime);
+        
+        writeCookTimeToNBT(compound);
         NBTTagList nbttaglist = new NBTTagList();
 
-        for (int i = 0; i < this.furnaceItemStacks.length; ++i)
+        for (int i = 0; i < this.crusherItemStacks.length; ++i)
         {
-            if (this.furnaceItemStacks[i] != null)
+            if (this.crusherItemStacks[i] != null)
             {
                 NBTTagCompound nbttagcompound = new NBTTagCompound();
                 nbttagcompound.setByte("Slot", (byte)i);
-                this.furnaceItemStacks[i].writeToNBT(nbttagcompound);
+                this.crusherItemStacks[i].writeToNBT(nbttagcompound);
                 nbttaglist.appendTag(nbttagcompound);
             }
         }
 
         compound.setTag("Items", nbttaglist);
+    }	
 
-        if (this.hasCustomName())
-        {
-            compound.setString("CustomName", this.furnaceCustomName);
-        }
-    }
-	
-	@Override
-	public boolean hasCustomName()
-    {
-        return this.furnaceCustomName != null && this.furnaceCustomName.length() > 0;
-    }
 
 	@Override
 	public ItemStack decrStackSize(int index, int count) {
@@ -246,10 +226,10 @@ public class TileEntityCrystallCrusher extends TileEntity implements IInventory 
 
 	@Override
 	public ItemStack removeStackFromSlot(int index) {
-		if (this.furnaceItemStacks[index] != null)
+		if (this.crusherItemStacks[index] != null)
         {
-            ItemStack itemstack = this.furnaceItemStacks[index];
-            this.furnaceItemStacks[index] = null;
+            ItemStack itemstack = this.crusherItemStacks[index];
+            this.crusherItemStacks[index] = null;
             return itemstack;
         }
         else
@@ -260,7 +240,7 @@ public class TileEntityCrystallCrusher extends TileEntity implements IInventory 
 
 	@Override
 	public void setInventorySlotContents(int index, ItemStack stack) {
-		this.furnaceItemStacks[index] = stack;
+		this.crusherItemStacks[index] = stack;
 		if (stack != null && stack.stackSize > getInventoryStackLimit()) {
 			stack.stackSize = getInventoryStackLimit();
 		}
@@ -297,15 +277,36 @@ public class TileEntityCrystallCrusher extends TileEntity implements IInventory 
 
 	@Override
 	public void clear() {
-		for (int i = 0; i < this.furnaceItemStacks.length; ++i)
+		for (int i = 0; i < this.crusherItemStacks.length; ++i)
         {
-            this.furnaceItemStacks[i] = null;
+            this.crusherItemStacks[i] = null;
         }
 	}
 
 	@Override
 	public ITextComponent getDisplayName() {
 		return null;
+	}
+
+	@Override
+	public void onCustomDataPacket(NetworkPacketTileEntitySync packet) {
+		readCookTimeFromNBT(packet.getNBTTagCompound());
+	}
+
+	private void readCookTimeFromNBT(NBTTagCompound compound){
+		this.cookTime = compound.getInteger("CookTime");
+        this.totalCookTime = compound.getInteger("CookTimeTotal");
+	}
+	
+	private void writeCookTimeToNBT(NBTTagCompound compound){
+		compound.setInteger("CookTime", this.cookTime);
+        compound.setInteger("CookTimeTotal", this.totalCookTime);
+	}
+	
+	@Override
+	public NetworkPacketTileEntitySync getCustomDataPacket(NBTTagCompound compound) {
+		writeCookTimeToNBT(compound);
+		return new NetworkPacketTileEntitySync(pos, compound);
 	}
 
 }
