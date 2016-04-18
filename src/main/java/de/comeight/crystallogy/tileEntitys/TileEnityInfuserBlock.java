@@ -6,6 +6,7 @@ import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.handler.InfusionRecipeHandler;
 import de.comeight.crystallogy.items.crafting.InfusionRecipe;
 import de.comeight.crystallogy.network.NetworkPacketInfuserBlockEnabled;
+import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
 import de.comeight.crystallogy.particles.InfuserBlockActiveParticle;
 import de.comeight.crystallogy.renderer.InfusionAnimation;
 import de.comeight.crystallogy.structures.StructureInfuser;
@@ -197,5 +198,14 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 				infuserBlockActiveParticle = null;
 			}
 		}
+	}
+
+	@Override
+	public void onCustomDataPacket(NetworkPacketTileEntitySync packet) { //TODO Update to the new TileEntity Sync system
+	}
+
+	@Override
+	public NetworkPacketTileEntitySync getCustomDataPacket(NBTTagCompound compound) {
+		return null;
 	}
 }
