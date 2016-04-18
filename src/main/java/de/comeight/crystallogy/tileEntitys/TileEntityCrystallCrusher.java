@@ -81,6 +81,13 @@ public class TileEntityCrystallCrusher extends TileEntityInventory implements IT
     {
         if (worldObj.isRemote)
         {
+        	if(crushing){
+        		cookTime++;
+        		if (cookTime >= totalCookTime) {
+    				cookTime = 1;
+    				crushing = false;
+        		}
+        	}
         	return;
         }
         boolean flag1 = false;
@@ -88,6 +95,7 @@ public class TileEntityCrystallCrusher extends TileEntityInventory implements IT
         	if(!canCrush()){
         		crushing = false;
         		cookTime = 1;
+        		sync();
         	}
         	else{
         		cookTime++;
@@ -97,7 +105,6 @@ public class TileEntityCrystallCrusher extends TileEntityInventory implements IT
     				crushing = false;
     			}
         	}
-        	sync();
         	flag1 = true;
         }
         else{
@@ -296,11 +303,13 @@ public class TileEntityCrystallCrusher extends TileEntityInventory implements IT
 	private void readCookTimeFromNBT(NBTTagCompound compound){
 		this.cookTime = compound.getInteger("CookTime");
         this.totalCookTime = compound.getInteger("CookTimeTotal");
+        this.crushing = compound.getBoolean("crushing");
 	}
 	
 	private void writeCookTimeToNBT(NBTTagCompound compound){
 		compound.setInteger("CookTime", this.cookTime);
         compound.setInteger("CookTimeTotal", this.totalCookTime);
+        compound.setBoolean("crushing", crushing);
 	}
 	
 	@Override
