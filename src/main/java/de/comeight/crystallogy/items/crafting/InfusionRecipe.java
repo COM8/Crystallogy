@@ -6,6 +6,7 @@ import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.handler.InfusionRecipeHandler;
 import de.comeight.crystallogy.network.NetworkPacketInfusionRecipeStatus;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
+import de.comeight.crystallogy.network.NetworkPacketUpdateInventory;
 import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.ParticleNColor;
 import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
@@ -195,13 +196,18 @@ public abstract class InfusionRecipe {
 	protected void removeIngredients(){
 		for (int i = 0; i < ingredients.length; i++) {
 			ingredients[i].setInventorySlotContents(0, null);
-			ingredients[i].sync();
+			setItemOnClient(ingredients[i].getPos(), null);
 		}
 	}
 	
 	protected void setCenterInputItem(){
 		centerInput.setInventorySlotContents(0, output);
-		centerInput.sync();
+		setItemOnClient(centerInput.getPos(), output);
 	}
-	
+
+	protected void setItemOnClient(BlockPos pos, ItemStack stack) {
+		NetworkPacketUpdateInventory message = new NetworkPacketUpdateInventory(pos, stack, 0); //TODO update
+		CommonProxy.NETWORKWRAPPER.sendToServer(message);
+	}
+
 }
