@@ -9,8 +9,13 @@ import de.comeight.crystallogy.handler.InfusionRecipeHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.items.Tools.Vaporizer;
 import de.comeight.crystallogy.items.crafting.InfusionRecipeCrystallLight;
+import de.comeight.crystallogy.items.crafting.InfusionRecipeDamDust;
+import de.comeight.crystallogy.items.crafting.InfusionRecipeDrowDust;
 import de.comeight.crystallogy.items.crafting.InfusionRecipeFireCrystall;
+import de.comeight.crystallogy.items.crafting.InfusionRecipeFireDust;
 import de.comeight.crystallogy.items.crafting.InfusionRecipeHammer;
+import de.comeight.crystallogy.items.crafting.InfusionRecipeHungDust;
+import de.comeight.crystallogy.items.crafting.InfusionRecipePoisDust;
 import de.comeight.crystallogy.items.crafting.InfusionRecipePureDust;
 import de.comeight.crystallogy.items.crafting.InfusionRecipeRefulelVaporizer;
 import de.comeight.crystallogy.items.crafting.InfusionRecipeSword;
@@ -61,14 +66,19 @@ public class CommonProxy {
 	private static ItemHandler iH = new ItemHandler();
 	
 	//Recipes:
-	private static InfusionRecipeVaporizer infusionRecipeVaporizer = new InfusionRecipeVaporizer(); 
-	private static InfusionRecipeCrystallLight infusionRecipeCrystallLight = new InfusionRecipeCrystallLight();
-	private static InfusionRecipeFireCrystall infusionRecipeFireCrystall = new InfusionRecipeFireCrystall();
-	private static InfusionRecipeRefulelVaporizer infusionRecipeRefulelVaporizer = new InfusionRecipeRefulelVaporizer();
-	private static InfusionRecipeToolRod infusionRecipeToolRod = new InfusionRecipeToolRod();
-	private static InfusionRecipePureDust infusionRecipePureDust = new InfusionRecipePureDust();
-	private static InfusionRecipeHammer infusionRecipeHammer = new InfusionRecipeHammer();
-	private static InfusionRecipeSword infusionRecipeSword = new InfusionRecipeSword();
+	private static InfusionRecipeVaporizer infusionRecipeVaporizer; 
+	private static InfusionRecipeCrystallLight infusionRecipeCrystallLight;
+	private static InfusionRecipeFireCrystall infusionRecipeFireCrystall;
+	private static InfusionRecipeRefulelVaporizer infusionRecipeRefulelVaporizer;
+	private static InfusionRecipeToolRod infusionRecipeToolRod;
+	private static InfusionRecipePureDust infusionRecipePureDust;
+	private static InfusionRecipeHammer infusionRecipeHammer;
+	private static InfusionRecipeSword infusionRecipeSword;
+	private static InfusionRecipeHungDust infusionRecipeHungDust;
+	private static InfusionRecipeDamDust infusionRecipeDamDust;
+	private static InfusionRecipeFireDust infusionRecipeFireDust;
+	private static InfusionRecipeDrowDust infusionRecipeDrowDust;
+	private static InfusionRecipePoisDust infusionRecipePoisDust;
 	
 	// -----------------------------------------------Constructor:-------------------------------------------
 	
@@ -110,6 +120,20 @@ public class CommonProxy {
 	}
 	
 	private void registerRecipes() {
+		infusionRecipeVaporizer = new InfusionRecipeVaporizer(); 
+		infusionRecipeCrystallLight = new InfusionRecipeCrystallLight();
+		infusionRecipeFireCrystall = new InfusionRecipeFireCrystall();
+		infusionRecipeRefulelVaporizer = new InfusionRecipeRefulelVaporizer();
+		infusionRecipeToolRod = new InfusionRecipeToolRod();
+		infusionRecipePureDust = new InfusionRecipePureDust();
+		infusionRecipeHammer = new InfusionRecipeHammer();
+		infusionRecipeSword = new InfusionRecipeSword();
+		infusionRecipeHungDust = new InfusionRecipeHungDust();
+		infusionRecipeDamDust = new InfusionRecipeDamDust();
+		infusionRecipeFireDust = new InfusionRecipeFireDust();
+		infusionRecipeDrowDust = new InfusionRecipeDrowDust();
+		infusionRecipePoisDust = new InfusionRecipePoisDust();
+		
 		InfusionRecipeHandler.addRecipe(infusionRecipeVaporizer);
 		InfusionRecipeHandler.addRecipe(infusionRecipeCrystallLight);
 		InfusionRecipeHandler.addRecipe(infusionRecipeFireCrystall);
@@ -118,6 +142,11 @@ public class CommonProxy {
 		InfusionRecipeHandler.addRecipe(infusionRecipeSword);
 		InfusionRecipeHandler.addRecipe(infusionRecipeHammer);
 		InfusionRecipeHandler.addRecipe(infusionRecipeToolRod);
+		InfusionRecipeHandler.addRecipe(infusionRecipeDamDust);
+		InfusionRecipeHandler.addRecipe(infusionRecipeDrowDust);
+		InfusionRecipeHandler.addRecipe(infusionRecipeFireDust);
+		InfusionRecipeHandler.addRecipe(infusionRecipePoisDust);
+		InfusionRecipeHandler.addRecipe(infusionRecipeHungDust);
 		
 		ItemStack s =  new ItemStack(ItemHandler.vaporizer);
 		s = ((Vaporizer)s.getItem()).saveNBT(s);
