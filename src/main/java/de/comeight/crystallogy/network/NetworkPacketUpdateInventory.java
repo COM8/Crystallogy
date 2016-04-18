@@ -6,6 +6,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 
+@Deprecated
 public class NetworkPacketUpdateInventory extends BaseNetworkPacket {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	protected BlockPos tilePos;

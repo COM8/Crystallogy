@@ -199,13 +199,5 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 			}
 		}
 	}
-
-	@Override
-	public void onCustomDataPacket(NetworkPacketTileEntitySync packet) { //TODO Update to the new TileEntity Sync system
-	}
-
-	@Override
-	public NetworkPacketTileEntitySync getCustomDataPacket(NBTTagCompound compound) {
-		return null;
-	}
+	
 }

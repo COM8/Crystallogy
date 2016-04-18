@@ -6,16 +6,11 @@ import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.handler.InfusionRecipeHandler;
 import de.comeight.crystallogy.network.NetworkPacketInfusionRecipeStatus;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
-import de.comeight.crystallogy.network.NetworkPacketUpdateInventory;
 import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.ParticleNColor;
 import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
-import de.comeight.crystallogy.util.Utilities;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -200,17 +195,13 @@ public abstract class InfusionRecipe {
 	protected void removeIngredients(){
 		for (int i = 0; i < ingredients.length; i++) {
 			ingredients[i].setInventorySlotContents(0, null);
-			setItemOnClient(ingredients[i].getPos(), null);
+			ingredients[i].sync();
 		}
 	}
 	
 	protected void setCenterInputItem(){
 		centerInput.setInventorySlotContents(0, output);
-		setItemOnClient(centerInput.getPos(), output);
+		centerInput.sync();
 	}
 	
-	protected void setItemOnClient(BlockPos pos, ItemStack stack){
-		NetworkPacketUpdateInventory message = new NetworkPacketUpdateInventory(pos, stack, 0);
-		CommonProxy.NETWORKWRAPPER.sendToServer(message);
-	}
 }

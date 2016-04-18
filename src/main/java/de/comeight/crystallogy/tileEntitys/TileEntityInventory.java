@@ -1,7 +1,6 @@
 package de.comeight.crystallogy.tileEntitys;
 
-import de.comeight.crystallogy.CommonProxy;
-import de.comeight.crystallogy.network.NetworkPacketUpdateInventory;
+import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -10,8 +9,6 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.util.Constants;
@@ -150,9 +147,7 @@ public abstract class TileEntityInventory extends BaseTileEntity implements IInv
 	public void closeInventory(EntityPlayer player) {
 	}
 	
-	@Override
-	public void writeToNBT(NBTTagCompound compound) {
-		super.writeToNBT(compound);
+	public void writeInventoryToNBT(NBTTagCompound compound) {
 		NBTTagList inventoryList = new NBTTagList();
         for (int i = 0; i < inventory.length; i++)
         {
@@ -168,8 +163,12 @@ public abstract class TileEntityInventory extends BaseTileEntity implements IInv
 	}
 	
 	@Override
-	public void readFromNBT(NBTTagCompound compound) {
-		super.readFromNBT(compound);
+	public void writeToNBT(NBTTagCompound compound) {
+		super.writeToNBT(compound);
+		writeInventoryToNBT(compound);
+	}
+	
+	public void readInventoryFromNBT(NBTTagCompound compound) {
 		NBTTagList invList = compound.getTagList("Inventory", Constants.NBT.TAG_COMPOUND);
         for (int i = 0; i < invList.tagCount(); i++)
         {
@@ -180,6 +179,23 @@ public abstract class TileEntityInventory extends BaseTileEntity implements IInv
             	inventory[slot] = ItemStack.loadItemStackFromNBT(stackTag);
             }
         }
+	}
+	
+	@Override
+	public void readFromNBT(NBTTagCompound compound) {
+		super.readFromNBT(compound);
+		readInventoryFromNBT(compound);
+	}
+	
+	@Override
+	public void onCustomDataPacket(NetworkPacketTileEntitySync packet) {
+		readInventoryFromNBT(packet.getNBTTagCompound());
+	}
+
+	@Override
+	public NetworkPacketTileEntitySync getCustomDataPacket(NBTTagCompound compound) {
+		writeInventoryToNBT(compound);
+		return new NetworkPacketTileEntitySync(pos, compound);
 	}
 	
 }
