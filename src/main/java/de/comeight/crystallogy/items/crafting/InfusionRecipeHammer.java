@@ -1,5 +1,6 @@
 package de.comeight.crystallogy.items.crafting;
 
+import de.comeight.crystallogy.blocks.EnumCrystalColor;
 import de.comeight.crystallogy.handler.ItemHandler;
 import net.minecraft.item.ItemStack;
 
@@ -39,17 +40,20 @@ public class InfusionRecipeHammer extends InfusionRecipe {
 		
 		for (int i = 0; i < ingredients.length; i++) {
 			if(ingredients[i] != null){
-				if(ingredients[i].getItem() == ItemHandler.crystallHammerHead_red){
-					head_red++;
-				}
-				else if(ingredients[i].getItem() == ItemHandler.crystallHammerHead_blue){
-					head_blue++;
-				}
-				else if(ingredients[i].getItem() == ItemHandler.crystallHammerHead_green){
-					head_green++;
-				}
-				else if(ingredients[i].getItem() == ItemHandler.crystallHammerHead_yellow){
-					head_yellow++;
+				if(ingredients[i].getItem() == ItemHandler.crystallHammerHead){
+					int meta = ingredients[i].getItem().getDamage(ingredients[i]); 
+					if(meta == EnumCrystalColor.RED.getMetadata()){
+						head_red++;
+					}
+					else if(meta == EnumCrystalColor.BLUE.getMetadata()){
+						head_blue++;
+					}
+					else if(meta == EnumCrystalColor.GREEN.getMetadata()){
+						head_green++;
+					}
+					else if(meta == EnumCrystalColor.YELLOW.getMetadata()){
+						head_yellow++;
+					}
 				}
 				else if(ingredients[i].getItem() == ItemHandler.crystallDust_red){
 					dust_red++;

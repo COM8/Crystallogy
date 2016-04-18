@@ -1,5 +1,6 @@
 package de.comeight.crystallogy;
 
+import de.comeight.crystallogy.blocks.EnumCrystalColor;
 import de.comeight.crystallogy.gui.GuiCrystallCrusher;
 import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.GuiHandler;
@@ -147,52 +148,52 @@ public class CommonProxy {
 		IRecipe crystallHammerHead_red = new ShapedRecipes(3, 2, new ItemStack[]{
 				r,r,r,
 				r,r,r,
-		}, new ItemStack(ItemHandler.crystallHammerHead_red));
+		}, EnumCrystalColor.RED.getStack(new ItemStack(ItemHandler.crystallHammerHead)));
 		GameRegistry.addRecipe(crystallHammerHead_red);
 		
 		IRecipe crystallSwordBlade_red = new ShapedRecipes(1, 2, new ItemStack[]{
 				r,
 				r,
-		}, new ItemStack(ItemHandler.crystalSwordBlade_red));
+		}, EnumCrystalColor.RED.getStack(new ItemStack(ItemHandler.crystallSwordBlade)));
 		GameRegistry.addRecipe(crystallSwordBlade_red);
 		
 		ItemStack g = new ItemStack(BlockHandler.crystall_green);
 		IRecipe crystallHammerHead_green = new ShapedRecipes(3, 2, new ItemStack[]{
 				g,g,g,
 				g,g,g,
-		}, new ItemStack(ItemHandler.crystallHammerHead_red));
+		}, EnumCrystalColor.GREEN.getStack(new ItemStack(ItemHandler.crystallHammerHead)));
 		GameRegistry.addRecipe(crystallHammerHead_green);
 		
 		IRecipe crystallSwordBlade_green = new ShapedRecipes(1, 2, new ItemStack[]{
 				g,
 				g,
-		}, new ItemStack(ItemHandler.crystalSwordBlade_green));
+		}, EnumCrystalColor.GREEN.getStack(new ItemStack(ItemHandler.crystallSwordBlade)));
 		GameRegistry.addRecipe(crystallSwordBlade_green);
 		
 		ItemStack b = new ItemStack(BlockHandler.crystall_blue);
 		IRecipe crystallHammerHead_blue = new ShapedRecipes(3, 2, new ItemStack[]{
 				b,b,b,
 				b,b,b,
-		}, new ItemStack(ItemHandler.crystallHammerHead_red));
+		}, EnumCrystalColor.BLUE.getStack(new ItemStack(ItemHandler.crystallHammerHead)));
 		GameRegistry.addRecipe(crystallHammerHead_blue);
 		
 		IRecipe crystallSwordBlade_blue = new ShapedRecipes(1, 2, new ItemStack[]{
-				r,
-				r,
-		}, new ItemStack(ItemHandler.crystalSwordBlade_blue));
+				b,
+				b,
+		}, EnumCrystalColor.BLUE.getStack(new ItemStack(ItemHandler.crystallSwordBlade)));
 		GameRegistry.addRecipe(crystallSwordBlade_blue);
 		
 		ItemStack y = new ItemStack(BlockHandler.crystall_yellow);
 		IRecipe crystallHammerHead_yellow = new ShapedRecipes(3, 2, new ItemStack[]{
 				y,y,y,
 				y,y,y,
-		}, new ItemStack(ItemHandler.crystallHammerHead_red));
+		}, EnumCrystalColor.YELLOW.getStack(new ItemStack(ItemHandler.crystallHammerHead)));
 		GameRegistry.addRecipe(crystallHammerHead_yellow);
 		
 		IRecipe crystallSwordBlade_yellow = new ShapedRecipes(1, 2, new ItemStack[]{
 				y,
 				y,
-		}, new ItemStack(ItemHandler.crystalSwordBlade_yellow));
+		}, EnumCrystalColor.YELLOW.getStack(new ItemStack(ItemHandler.crystallSwordBlade)));
 		GameRegistry.addRecipe(crystallSwordBlade_yellow);
 		
 		Utilities.addConsoleText("All recipes are registered.");

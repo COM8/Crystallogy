@@ -1,5 +1,6 @@
 package de.comeight.crystallogy.items.crafting;
 
+import de.comeight.crystallogy.blocks.EnumCrystalColor;
 import de.comeight.crystallogy.handler.ItemHandler;
 import net.minecraft.item.ItemStack;
 
@@ -39,17 +40,20 @@ public class InfusionRecipeSword extends InfusionRecipe {
 		
 		for (int i = 0; i < ingredients.length; i++) {
 			if(ingredients[i] != null){
-				if(ingredients[i].getItem() == ItemHandler.crystalSwordBlade_red){
-					sword_red++;
-				}
-				else if(ingredients[i].getItem() == ItemHandler.crystalSwordBlade_blue){
-					sword_blue++;
-				}
-				else if(ingredients[i].getItem() == ItemHandler.crystalSwordBlade_green){
-					sword_green++;
-				}
-				else if(ingredients[i].getItem() == ItemHandler.crystalSwordBlade_yellow){
-					sword_yellow++;
+				if(ingredients[i].getItem() == ItemHandler.crystallSwordBlade){
+					int meta = ingredients[i].getItem().getDamage(ingredients[i]); 
+					if(meta == EnumCrystalColor.RED.getMetadata()){
+						sword_red++;
+					}
+					else if(meta == EnumCrystalColor.BLUE.getMetadata()){
+						sword_blue++;
+					}
+					else if(meta == EnumCrystalColor.GREEN.getMetadata()){
+						sword_green++;
+					}
+					else if(meta == EnumCrystalColor.YELLOW.getMetadata()){
+						sword_yellow++;
+					}
 				}
 				else if(ingredients[i].getItem() == ItemHandler.crystallDust_red){
 					dust_red++;
@@ -74,7 +78,7 @@ public class InfusionRecipeSword extends InfusionRecipe {
 			return true;
 		}
 		else if(sword_blue == 1 && dust_blue == 2){
-			output = new ItemStack(ItemHandler.crystalSwordBlade_blue);
+			output = new ItemStack(ItemHandler.crystalSword_blue);
 			return true;
 		}
 		else if(sword_green == 1 && dust_green == 2){
