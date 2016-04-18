@@ -1,18 +1,18 @@
-package de.comeight.crystallogy.items;
+package de.comeight.crystallogy.items.threatDusts;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
-public abstract class ThreatDust extends BaseItemFood {
+public class DamDust extends ThreatDust {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	public int numOfCalls;
+	public static String ID = "damDust";
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public ThreatDust(int amount, float saturation, boolean isWolfFood, int numOfCalls, String id) {
-		super(amount, saturation, isWolfFood, id);
-		this.numOfCalls = numOfCalls;
-		setAlwaysEdible();
+	public DamDust() {
+		super(0, 0.0F, false, 11, ID);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -21,9 +21,17 @@ public abstract class ThreatDust extends BaseItemFood {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
-		super.onFoodEaten(stack, worldIn, player);	
+		super.onFoodEaten(stack, worldIn, player);
+		if(!worldIn.isRemote){
+			player.attackEntityFrom(DamageSource.magic, 11.0F);
+		}
 	}
 	
-	public abstract void castOnPlayer(World worldIn, EntityPlayer player);
+	@Override
+	public void castOnPlayer(World worldIn, EntityPlayer player) {
+		if(!worldIn.isRemote){
+			player.attackEntityFrom(DamageSource.magic, 1.0F);
+		}
+	}
 	
 }

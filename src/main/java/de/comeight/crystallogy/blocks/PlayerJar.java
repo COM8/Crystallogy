@@ -3,11 +3,11 @@ package de.comeight.crystallogy.blocks;
 import java.util.List;
 
 import de.comeight.crystallogy.blocks.materials.CustomMaterials;
-import de.comeight.crystallogy.items.DamDust;
-import de.comeight.crystallogy.items.DrowDust;
-import de.comeight.crystallogy.items.FireDust;
-import de.comeight.crystallogy.items.HungDust;
-import de.comeight.crystallogy.items.PoisDust;
+import de.comeight.crystallogy.items.threatDusts.DamDust;
+import de.comeight.crystallogy.items.threatDusts.DrowDust;
+import de.comeight.crystallogy.items.threatDusts.FireDust;
+import de.comeight.crystallogy.items.threatDusts.HungDust;
+import de.comeight.crystallogy.items.threatDusts.PoisDust;
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar.EnumThreats;
 import net.minecraft.block.state.IBlockState;

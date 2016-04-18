@@ -1,4 +1,4 @@
-package de.comeight.crystallogy.items;
+package de.comeight.crystallogy.items.Tools;
 
 import de.comeight.crystallogy.blocks.materials.CustomToolMaterials;
 import de.comeight.crystallogy.handler.BlockHandler;

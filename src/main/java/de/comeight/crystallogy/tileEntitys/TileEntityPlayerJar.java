@@ -8,7 +8,7 @@ import com.mojang.authlib.GameProfile;
 import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.entity.PlayerClientDummy;
 import de.comeight.crystallogy.handler.ItemHandler;
-import de.comeight.crystallogy.items.ThreatDust;
+import de.comeight.crystallogy.items.threatDusts.ThreatDust;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
 import de.comeight.crystallogy.network.NetworkParticle;

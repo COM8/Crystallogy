@@ -1,16 +1,18 @@
-package de.comeight.crystallogy.items;
+package de.comeight.crystallogy.items.Tools;
 
-import de.comeight.crystallogy.blocks.materials.CustomToolMaterials;
-import de.comeight.crystallogy.handler.BlockHandler;
-import net.minecraft.item.ItemStack;
+import de.comeight.crystallogy.CommonProxy;
+import net.minecraft.item.ItemPickaxe;
 
-public class CrystalSword_red extends BaseItemSword {
+public abstract class BaseItemPickaxe extends ItemPickaxe {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	public static final String ID = "crystallSword_red";
+
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public CrystalSword_red() {
-		super(CustomToolMaterials.CRYSTALL_RED, ID);
+	public BaseItemPickaxe(ToolMaterial material, String ID) {
+		super(material);
+		setCreativeTab(CommonProxy.crystallogyMainTab);
+		setUnlocalizedName(ID);
+		setRegistryName(ID);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------

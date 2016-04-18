@@ -1,4 +1,4 @@
-package de.comeight.crystallogy.items;
+package de.comeight.crystallogy.items.threatDusts;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

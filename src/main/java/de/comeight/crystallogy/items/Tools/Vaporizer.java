@@ -1,9 +1,10 @@
-package de.comeight.crystallogy.items;
+package de.comeight.crystallogy.items.Tools;
 
 import java.util.List;
 
 import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.handler.ParticleHandler;
+import de.comeight.crystallogy.items.BaseItem;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.BaseParticle;

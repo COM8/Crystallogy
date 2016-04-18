@@ -1,4 +1,4 @@
-package de.comeight.crystallogy.items;
+package de.comeight.crystallogy.items.Tools;
 
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.entity.player.EntityPlayer;

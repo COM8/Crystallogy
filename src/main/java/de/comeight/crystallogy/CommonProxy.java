@@ -7,7 +7,7 @@ import de.comeight.crystallogy.handler.GuiHandler;
 import de.comeight.crystallogy.handler.GuiHandlerRegistry;
 import de.comeight.crystallogy.handler.InfusionRecipeHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
-import de.comeight.crystallogy.items.Vaporizer;
+import de.comeight.crystallogy.items.Tools.Vaporizer;
 import de.comeight.crystallogy.items.crafting.InfusionRecipeCrystallLight;
 import de.comeight.crystallogy.items.crafting.InfusionRecipeFireCrystall;
 import de.comeight.crystallogy.items.crafting.InfusionRecipeHammer;

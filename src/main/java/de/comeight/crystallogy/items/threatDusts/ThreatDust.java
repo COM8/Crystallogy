@@ -1,18 +1,19 @@
-package de.comeight.crystallogy.items;
+package de.comeight.crystallogy.items.threatDusts;
 
+import de.comeight.crystallogy.items.BaseItemFood;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
-public class HungDust extends ThreatDust {
+public abstract class ThreatDust extends BaseItemFood {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	public static String ID = "hungDust";
+	public int numOfCalls;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public HungDust() {
-		super(0, 0.0F, false, 1, ID);
+	public ThreatDust(int amount, float saturation, boolean isWolfFood, int numOfCalls, String id) {
+		super(amount, saturation, isWolfFood, id);
+		this.numOfCalls = numOfCalls;
+		setAlwaysEdible();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -21,17 +22,9 @@ public class HungDust extends ThreatDust {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
-		super.onFoodEaten(stack, worldIn, player);
-		if(!worldIn.isRemote){
-			player.addPotionEffect(new PotionEffect(Potion.getPotionById(17), 300, 3, true, true));
-		}
+		super.onFoodEaten(stack, worldIn, player);	
 	}
 	
-	@Override
-	public void castOnPlayer(World worldIn, EntityPlayer player) {
-		if(!worldIn.isRemote){
-			player.addPotionEffect(new PotionEffect(Potion.getPotionById(17), 300, 3, true, true));
-		}
-	}
+	public abstract void castOnPlayer(World worldIn, EntityPlayer player);
 	
 }

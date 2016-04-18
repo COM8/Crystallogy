@@ -1,16 +1,16 @@
-package de.comeight.crystallogy.items;
+package de.comeight.crystallogy.items.Tools;
 
 import de.comeight.crystallogy.blocks.materials.CustomToolMaterials;
 import de.comeight.crystallogy.handler.BlockHandler;
 import net.minecraft.item.ItemStack;
 
-public class CrystallHammer_green extends BaseItemHammer {
+public class CrystallHammer_blue extends BaseItemHammer {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	public static final String ID = "crystallHammer_green";
+	public static final String ID = "crystallHammer_blue";
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public CrystallHammer_green() {
-		super(CustomToolMaterials.CRYSTALL_GREEN.setRepairItem(new ItemStack(BlockHandler.crystall_green, 4)), ID);
+	public CrystallHammer_blue() {
+		super(CustomToolMaterials.CRYSTALL_BLUE.setRepairItem(new ItemStack(BlockHandler.crystall_blue, 4)), ID);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
