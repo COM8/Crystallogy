@@ -9,7 +9,11 @@ import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.items.Vaporizer;
 import de.comeight.crystallogy.items.crafting.InfusionRecipeCrystallLight;
 import de.comeight.crystallogy.items.crafting.InfusionRecipeFireCrystall;
+import de.comeight.crystallogy.items.crafting.InfusionRecipeHammer;
+import de.comeight.crystallogy.items.crafting.InfusionRecipePureDust;
 import de.comeight.crystallogy.items.crafting.InfusionRecipeRefulelVaporizer;
+import de.comeight.crystallogy.items.crafting.InfusionRecipeSword;
+import de.comeight.crystallogy.items.crafting.InfusionRecipeToolRod;
 import de.comeight.crystallogy.items.crafting.InfusionRecipeVaporizer;
 import de.comeight.crystallogy.network.NetworkPacketInfuserBlockEnabled;
 import de.comeight.crystallogy.network.NetworkPacketInfusionRecipeStatus;
@@ -31,6 +35,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -59,6 +64,10 @@ public class CommonProxy {
 	private static InfusionRecipeCrystallLight infusionRecipeCrystallLight = new InfusionRecipeCrystallLight();
 	private static InfusionRecipeFireCrystall infusionRecipeFireCrystall = new InfusionRecipeFireCrystall();
 	private static InfusionRecipeRefulelVaporizer infusionRecipeRefulelVaporizer = new InfusionRecipeRefulelVaporizer();
+	private static InfusionRecipeToolRod infusionRecipeToolRod = new InfusionRecipeToolRod();
+	private static InfusionRecipePureDust infusionRecipePureDust = new InfusionRecipePureDust();
+	private static InfusionRecipeHammer infusionRecipeHammer = new InfusionRecipeHammer();
+	private static InfusionRecipeSword infusionRecipeSword = new InfusionRecipeSword();
 	
 	// -----------------------------------------------Constructor:-------------------------------------------
 	
@@ -104,6 +113,10 @@ public class CommonProxy {
 		InfusionRecipeHandler.addRecipe(infusionRecipeCrystallLight);
 		InfusionRecipeHandler.addRecipe(infusionRecipeFireCrystall);
 		InfusionRecipeHandler.addRecipe(infusionRecipeRefulelVaporizer);
+		InfusionRecipeHandler.addRecipe(infusionRecipePureDust);
+		InfusionRecipeHandler.addRecipe(infusionRecipeSword);
+		InfusionRecipeHandler.addRecipe(infusionRecipeHammer);
+		InfusionRecipeHandler.addRecipe(infusionRecipeToolRod);
 		
 		ItemStack s =  new ItemStack(ItemHandler.vaporizer);
 		s = ((Vaporizer)s.getItem()).saveNBT(s);
@@ -130,45 +143,57 @@ public class CommonProxy {
 		});
 		GameRegistry.addRecipe(infuserBlockRecipe);
 		
-		IRecipe crystallHammer_red = new ShapedOreRecipe(ItemHandler.crystallHammer_red, new Object[]{
-				"CCC",
-				"CSC",
-				"_S_",
-				
-				'C', BlockHandler.crystall_red,
-				'S', "stickWood",
-		});
-		GameRegistry.addRecipe(crystallHammer_red);
+		ItemStack r = new ItemStack(BlockHandler.crystall_red);
+		IRecipe crystallHammerHead_red = new ShapedRecipes(3, 2, new ItemStack[]{
+				r,r,r,
+				r,r,r,
+		}, new ItemStack(ItemHandler.crystallHammerHead_red));
+		GameRegistry.addRecipe(crystallHammerHead_red);
 		
-		IRecipe crystallHammer_blue = new ShapedOreRecipe(ItemHandler.crystallHammer_blue, new Object[]{
-				"CCC",
-				"CSC",
-				"_S_",
-				
-				'C', BlockHandler.crystall_blue,
-				'S', "stickWood",
-		});
-		GameRegistry.addRecipe(crystallHammer_blue);
+		IRecipe crystallSwordBlade_red = new ShapedRecipes(1, 2, new ItemStack[]{
+				r,
+				r,
+		}, new ItemStack(ItemHandler.crystalSwordBlade_red));
+		GameRegistry.addRecipe(crystallSwordBlade_red);
 		
-		IRecipe crystallHammer_green = new ShapedOreRecipe(ItemHandler.crystallHammer_green, new Object[]{
-				"CCC",
-				"CSC",
-				"_S_",
-				
-				'C', BlockHandler.crystall_green,
-				'S', "stickWood",
-		});
-		GameRegistry.addRecipe(crystallHammer_green);
+		ItemStack g = new ItemStack(BlockHandler.crystall_green);
+		IRecipe crystallHammerHead_green = new ShapedRecipes(3, 2, new ItemStack[]{
+				g,g,g,
+				g,g,g,
+		}, new ItemStack(ItemHandler.crystallHammerHead_red));
+		GameRegistry.addRecipe(crystallHammerHead_green);
 		
-		IRecipe crystallHammer_yellow = new ShapedOreRecipe(ItemHandler.crystallHammer_yellow, new Object[]{
-				"CCC",
-				"CSC",
-				"_S_",
-				
-				'C', BlockHandler.crystall_yellow,
-				'S', "stickWood",
-		});
-		GameRegistry.addRecipe(crystallHammer_yellow);
+		IRecipe crystallSwordBlade_green = new ShapedRecipes(1, 2, new ItemStack[]{
+				g,
+				g,
+		}, new ItemStack(ItemHandler.crystalSwordBlade_green));
+		GameRegistry.addRecipe(crystallSwordBlade_green);
+		
+		ItemStack b = new ItemStack(BlockHandler.crystall_blue);
+		IRecipe crystallHammerHead_blue = new ShapedRecipes(3, 2, new ItemStack[]{
+				b,b,b,
+				b,b,b,
+		}, new ItemStack(ItemHandler.crystallHammerHead_red));
+		GameRegistry.addRecipe(crystallHammerHead_blue);
+		
+		IRecipe crystallSwordBlade_blue = new ShapedRecipes(1, 2, new ItemStack[]{
+				r,
+				r,
+		}, new ItemStack(ItemHandler.crystalSwordBlade_blue));
+		GameRegistry.addRecipe(crystallSwordBlade_blue);
+		
+		ItemStack y = new ItemStack(BlockHandler.crystall_yellow);
+		IRecipe crystallHammerHead_yellow = new ShapedRecipes(3, 2, new ItemStack[]{
+				y,y,y,
+				y,y,y,
+		}, new ItemStack(ItemHandler.crystallHammerHead_red));
+		GameRegistry.addRecipe(crystallHammerHead_yellow);
+		
+		IRecipe crystallSwordBlade_yellow = new ShapedRecipes(1, 2, new ItemStack[]{
+				y,
+				y,
+		}, new ItemStack(ItemHandler.crystalSwordBlade_yellow));
+		GameRegistry.addRecipe(crystallSwordBlade_yellow);
 		
 		Utilities.addConsoleText("All recipes are registered.");
 	}
