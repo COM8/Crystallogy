@@ -1,7 +1,5 @@
 package de.comeight.crystallogy.tileEntitys;
 
-import java.io.ObjectInputStream.GetField;
-
 import de.comeight.crystallogy.gui.GuiCrystallCrusher;
 import de.comeight.crystallogy.handler.CrystalCrusherRecipeHandler;
 import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
@@ -12,9 +10,7 @@ import net.minecraft.inventory.ContainerFurnace;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.ITickable;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 
 public class TileEntityCrystallCrusher extends TileEntityInventory implements ITickable {
@@ -58,7 +54,13 @@ public class TileEntityCrystallCrusher extends TileEntityInventory implements IT
 	
 	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
-		return false;
+		if(index != 0){
+			return false;
+		}
+		if(inventory[index] != null){
+			return false;
+		}
+		return true;
 	}
 
 	@Override

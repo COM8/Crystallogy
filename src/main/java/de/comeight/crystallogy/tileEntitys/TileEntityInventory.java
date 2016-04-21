@@ -3,6 +3,7 @@ package de.comeight.crystallogy.tileEntitys;
 import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -13,7 +14,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.util.Constants;
 
-public abstract class TileEntityInventory extends BaseTileEntity implements IInventory{
+public abstract class TileEntityInventory extends BaseTileEntity implements IInventory {
 
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	protected ItemStack[] inventory;
@@ -153,7 +154,7 @@ public abstract class TileEntityInventory extends BaseTileEntity implements IInv
         {
             if (inventory[i] != null)
             {
-                NBTTagCompound stackTag = new NBTTagCompound();
+            	NBTTagCompound stackTag = new NBTTagCompound();
                 stackTag.setByte("Slot", (byte) i);
                 inventory[i].writeToNBT(stackTag);
                 inventoryList.appendTag(stackTag);
@@ -169,6 +170,7 @@ public abstract class TileEntityInventory extends BaseTileEntity implements IInv
 	}
 	
 	public void readInventoryFromNBT(NBTTagCompound compound) {
+		clear();
 		NBTTagList invList = compound.getTagList("Inventory", Constants.NBT.TAG_COMPOUND);
         for (int i = 0; i < invList.tagCount(); i++)
         {
