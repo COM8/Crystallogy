@@ -47,7 +47,7 @@ public class InfusionRecipeCrystallLight extends InfusionRecipe {
 			return false;
 		}
 		
-		output = new ItemStack(BlockHandler.crystallLight);
+		output = new ItemStack(BlockHandler.crystalLight);
 		output.stackSize = 4;
 		
 		return true;

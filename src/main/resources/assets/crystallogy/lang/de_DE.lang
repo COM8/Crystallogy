@@ -7,7 +7,7 @@ block.crystall_green.name=§2Grüner§r Kristall
 block.crystallCrusher.name=Kristallmahler
 block.infuserBlock.name=Infuserblock
 block.playerJar.name=Spielerglas
-block.crystalLlight.name=Kristalllicht
+block.crystalLight.name=Kristalllicht
 block.fireCrystall.name=§cFeuerkristall§r
 
 tile.crystall_red.name=§4Roter§r Kristall
@@ -17,7 +17,7 @@ tile.crystall_green.name=§2Grüner§r Kristall
 tile.crystallCrusher.name=Kristallmahler
 tile.infuserBlock.name=Infuserblock
 tile.playerJar.name=Spielerglas
-tile.crystalLlight.name=Kristalllicht
+tile.crystalLight.name=Kristalllicht
 tile.fireCrystall.name=§cFeuerkristall§r
 
 item.crystallDust_red.name=§4Roter§r Kristallstaub

@@ -12,12 +12,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class CrystallLight extends BaseBlockCutout {
+public class CrystalLight extends BaseBlockCutout {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	public final static String ID = "crystalLlight";
+	public final static String ID = "crystalLight";
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public CrystallLight() {
+	public CrystalLight() {
 		super(Material.carpet, ID);
 		this.lightOpacity = 0;
 		setLightLevel(1.0F);

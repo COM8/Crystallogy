@@ -1,7 +1,7 @@
 package de.comeight.crystallogy.handler;
 
 import de.comeight.crystallogy.blocks.CrystallCrusher;
-import de.comeight.crystallogy.blocks.CrystallLight;
+import de.comeight.crystallogy.blocks.CrystalLight;
 import de.comeight.crystallogy.blocks.Crystall_blue;
 import de.comeight.crystallogy.blocks.Crystall_green;
 import de.comeight.crystallogy.blocks.Crystall_red;
@@ -27,7 +27,7 @@ public class BlockHandler {
 	public static CrystallCrusher crystallCrusher;
 	public static InfuserBlock infuserBlock;
 	public static PlayerJar playerJar;
-	public static CrystallLight crystallLight;
+	public static CrystalLight crystalLight;
 	public static FireCrystall fireCrystall;
 
 	//-----------------------------------------------Constructor:-------------------------------------------
@@ -56,7 +56,7 @@ public class BlockHandler {
 		crystallCrusher = new CrystallCrusher();
 		infuserBlock = new InfuserBlock();
 		playerJar = new PlayerJar();
-		crystallLight = new CrystallLight();
+		crystalLight = new CrystalLight();
 		fireCrystall = new FireCrystall();
 		
 		registerBlock(crystall_blue, crystall_blue.ID);
@@ -66,7 +66,7 @@ public class BlockHandler {
 		registerBlock(crystallCrusher, crystallCrusher.ID);
 		registerBlock(infuserBlock, infuserBlock.ID);
 		registerBlock(playerJar, new ItemBlockPlayerJar(playerJar), playerJar.ID);
-		registerBlock(crystallLight, crystallLight.ID);
+		registerBlock(crystalLight, crystalLight.ID);
 		registerBlock(fireCrystall, fireCrystall.ID);
 		
 		Utilities.addConsoleText("All blocks are registered.");

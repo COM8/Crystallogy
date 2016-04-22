@@ -7,7 +7,7 @@ block.crystall_green.name=§2Green§r Crystal
 block.crystallCrusher.name=Crystal Crusher
 block.infuserBlock.name=Infuser Block
 block.playerJar.name=Player Jar
-block.crystalLlight.name=Crystal Light
+block.crystalLight.name=Crystal Light
 block.fireCrystall.name=§cFire§r Crystal
 
 tile.crystall_red.name=§4Red§r Crystal
@@ -17,7 +17,7 @@ tile.crystall_green.name=§2Green§r Crystal
 tile.crystallCrusher.name=Crystal Crusher
 tile.infuserBlock.name=Infuser Block
 tile.playerJar.name=Player Jar
-tile.crystalLlight.name=Crystal Light
+tile.crystalLight.name=Crystal Light
 tile.fireCrystall.name=§cFire§r Crystal
 
 item.crystallDust_red.name=§4Red§r Crystal Dust
