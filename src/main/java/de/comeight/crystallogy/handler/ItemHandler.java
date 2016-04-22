@@ -1,5 +1,6 @@
 package de.comeight.crystallogy.handler;
 
+import de.comeight.crystallogy.items.CrystalKnifeBlade;
 import de.comeight.crystallogy.items.CrystallDust_blue;
 import de.comeight.crystallogy.items.CrystallDust_green;
 import de.comeight.crystallogy.items.CrystallDust_red;
@@ -16,7 +17,7 @@ import de.comeight.crystallogy.items.Tools.CrystallHammer_blue;
 import de.comeight.crystallogy.items.Tools.CrystallHammer_green;
 import de.comeight.crystallogy.items.Tools.CrystallHammer_red;
 import de.comeight.crystallogy.items.Tools.CrystallHammer_yellow;
-import de.comeight.crystallogy.items.Tools.CrystallKnif;
+import de.comeight.crystallogy.items.Tools.CrystallKnife;
 import de.comeight.crystallogy.items.Tools.Vaporizer;
 import de.comeight.crystallogy.items.Tools.VaporizerDirection;
 import de.comeight.crystallogy.items.threatDusts.DamDust;
@@ -37,7 +38,7 @@ public class ItemHandler {
 	public static PureCrystallDust pureCrystallDust;
 	public static Vaporizer vaporizer;
 	public static VaporizerDirection vaporizerDirection;
-	public static CrystallKnif crystallKnif;
+	public static CrystallKnife crystallKnife;
 	public static DamDust damDust;
 	public static DrowDust drowDust;
 	public static FireDust fireDust;
@@ -53,7 +54,8 @@ public class ItemHandler {
 	public static CrystalSword_yellow crystalSword_yellow;
 	public static ToolRod toolRod;
 	public static CrystallHammerHead crystallHammerHead;
-	public static CrystallSwordBlade crystallSwordBlade; 
+	public static CrystallSwordBlade crystallSwordBlade;
+	public static CrystalKnifeBlade crystalKnifeBlade;
 	
 	//ItemBlocks
 	
@@ -73,7 +75,7 @@ public class ItemHandler {
 		pureCrystallDust = new PureCrystallDust();
 		vaporizer = new Vaporizer();
 		vaporizerDirection = new VaporizerDirection();
-		crystallKnif = new CrystallKnif();
+		crystallKnife = new CrystallKnife();
 		damDust = new DamDust();
 		drowDust = new DrowDust();
 		fireDust = new FireDust();
@@ -90,6 +92,7 @@ public class ItemHandler {
 		toolRod = new ToolRod();
 		crystallHammerHead = new CrystallHammerHead();
 		crystallSwordBlade = new CrystallSwordBlade();
+		crystalKnifeBlade = new CrystalKnifeBlade();
 		
 		GameRegistry.register(crystallDust_red);
 		GameRegistry.register(crystallDust_green);
@@ -98,7 +101,7 @@ public class ItemHandler {
 		GameRegistry.register(pureCrystallDust);
 		GameRegistry.register(vaporizer);
 		GameRegistry.register(vaporizerDirection);
-		GameRegistry.register(crystallKnif);
+		GameRegistry.register(crystallKnife);
 		GameRegistry.register(damDust);
 		GameRegistry.register(drowDust);
 		GameRegistry.register(fireDust);
@@ -115,6 +118,7 @@ public class ItemHandler {
 		GameRegistry.register(toolRod);
 		GameRegistry.register(crystallHammerHead);
 		GameRegistry.register(crystallSwordBlade);
+		GameRegistry.register(crystalKnifeBlade);
 		
 		Utilities.addConsoleText("All items are registered.");
 	}

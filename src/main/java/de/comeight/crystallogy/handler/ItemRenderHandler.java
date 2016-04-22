@@ -29,7 +29,7 @@ public class ItemRenderHandler {
 		registerBasicItemRender(ItemHandler.pureCrystallDust);
 		registerBasicItemRender(ItemHandler.vaporizer);
 		registerBasicItemRender(ItemHandler.vaporizerDirection);
-		registerBasicItemRender(ItemHandler.crystallKnif);
+		registerBasicItemRender(ItemHandler.crystallKnife);
 		registerBasicItemRender(ItemHandler.damDust);
 		registerBasicItemRender(ItemHandler.drowDust);
 		registerBasicItemRender(ItemHandler.fireDust);
@@ -44,6 +44,7 @@ public class ItemRenderHandler {
 		registerBasicItemRender(ItemHandler.crystalSword_red);
 		registerBasicItemRender(ItemHandler.crystalSword_yellow);
 		registerBasicItemRender(ItemHandler.toolRod);
+		registerBasicItemRender(ItemHandler.crystalKnifeBlade);
 		
 		registerItemVariantsRenderer(ItemHandler.crystallHammerHead, 0, "crystallHammerHead_red");
 		registerItemVariantsRenderer(ItemHandler.crystallHammerHead, 1, "crystallHammerHead_blue");

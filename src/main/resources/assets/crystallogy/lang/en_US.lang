@@ -27,7 +27,8 @@ item.crystallDust_green.name=§2Green§r Crystal Dust
 item.pureCrystallDust.name=§7Pure§r Crystal Dust
 item.vaporizer.name=Vaporizer
 item.vaporizerDirection.name=Fire Vaporizer
-item.crystallKnif.name=Crystalknifd
+item.crystallKnife.name=Crystal Knife
+item.crystalKnifeBlade.name=Crystal Knife Blade
 item.damDust.name=§dDamage§r Dust
 item.drowDust.name=§bDrown§r Dust
 item.hungDust.name=§eHunger§r Dust
@@ -51,4 +52,4 @@ item.crystallSwordBlade_blue.name=§9Blue§r Crystal Sword Blade
 item.crystallSwordBlade_yellow.name=§eYellow§r Crystal Sword Blade
 item.crystallSwordBlade_green.name=§2Green§r Crystal Sword Blade
 
-itemGroup.CrystallogyMainTab=Crystallogy Maintab
+itemGroup.crystallogyMainTab=Crystallogy Maintab
