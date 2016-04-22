@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.handler.InfusionRecipeHandler;
-import de.comeight.crystallogy.items.crafting.InfusionRecipe;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipe;
 import de.comeight.crystallogy.network.NetworkPacketInfuserBlockEnabled;
 import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
 import de.comeight.crystallogy.particles.InfuserBlockActiveParticle;

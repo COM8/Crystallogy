@@ -1,4 +1,4 @@
-package de.comeight.crystallogy.items.crafting;
+package de.comeight.crystallogy.items.crafting.infusion;
 
 import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.particles.ParticleA;

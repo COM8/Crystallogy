@@ -2,7 +2,7 @@ package de.comeight.crystallogy.handler;
 
 import java.util.ArrayList;
 
-import de.comeight.crystallogy.items.crafting.InfusionRecipe;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipe;
 import net.minecraft.item.ItemStack;
 
 public class InfusionRecipeHandler {

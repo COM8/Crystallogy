@@ -1,19 +1,19 @@
-package de.comeight.crystallogy.items.crafting;
+package de.comeight.crystallogy.items.crafting.infusion;
 
 import de.comeight.crystallogy.handler.ItemHandler;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-public class InfusionRecipePoisDust extends InfusionRecipeSimple {
+public class InfusionRecipeDamDust extends InfusionRecipeSimple {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public InfusionRecipePoisDust() {
-		super("poisDust", 230, new ItemStack(Items.spider_eye),
-				new ItemStack[]{ 	new ItemStack(ItemHandler.crystallDust_green, 3),
-									new ItemStack(ItemHandler.crystallDust_yellow, 1),},
-				new ItemStack(ItemHandler.poisDust));
+	public InfusionRecipeDamDust() {
+		super("damDust", 230, new ItemStack(Items.fermented_spider_eye),
+				new ItemStack[]{ 	new ItemStack(ItemHandler.crystallDust_green, 2),
+									new ItemStack(ItemHandler.crystallDust_blue, 2),},
+				new ItemStack(ItemHandler.damDust));
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -22,7 +22,7 @@ public class InfusionRecipePoisDust extends InfusionRecipeSimple {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public InfusionRecipe getRecipe() {
-		return new InfusionRecipePoisDust();
+		return new InfusionRecipeDamDust();
 	}
 	
 }
