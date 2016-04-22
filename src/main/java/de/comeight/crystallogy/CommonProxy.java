@@ -8,6 +8,8 @@ import de.comeight.crystallogy.handler.GuiHandlerRegistry;
 import de.comeight.crystallogy.handler.InfusionRecipeHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.items.Tools.Vaporizer;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeCrystalKnife;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeCrystalKnifeBlade;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeCrystallLight;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeDamDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeDrowDust;
@@ -79,6 +81,8 @@ public class CommonProxy {
 	private static InfusionRecipeFireDust infusionRecipeFireDust;
 	private static InfusionRecipeDrowDust infusionRecipeDrowDust;
 	private static InfusionRecipePoisDust infusionRecipePoisDust;
+	private static InfusionRecipeCrystalKnife infusionRecipeCrystalKnife;
+	private static InfusionRecipeCrystalKnifeBlade infusionRecipeCrystalKnifeBlade;
 	
 	// -----------------------------------------------Constructor:-------------------------------------------
 	
@@ -133,6 +137,8 @@ public class CommonProxy {
 		infusionRecipeFireDust = new InfusionRecipeFireDust();
 		infusionRecipeDrowDust = new InfusionRecipeDrowDust();
 		infusionRecipePoisDust = new InfusionRecipePoisDust();
+		infusionRecipeCrystalKnife = new InfusionRecipeCrystalKnife();
+		infusionRecipeCrystalKnifeBlade = new InfusionRecipeCrystalKnifeBlade();
 		
 		InfusionRecipeHandler.addRecipe(infusionRecipeVaporizer);
 		InfusionRecipeHandler.addRecipe(infusionRecipeCrystallLight);
@@ -147,6 +153,8 @@ public class CommonProxy {
 		InfusionRecipeHandler.addRecipe(infusionRecipeFireDust);
 		InfusionRecipeHandler.addRecipe(infusionRecipePoisDust);
 		InfusionRecipeHandler.addRecipe(infusionRecipeHungDust);
+		InfusionRecipeHandler.addRecipe(infusionRecipeCrystalKnife);
+		InfusionRecipeHandler.addRecipe(infusionRecipeCrystalKnifeBlade);
 		
 		ItemStack s =  new ItemStack(ItemHandler.vaporizer);
 		s = ((Vaporizer)s.getItem()).saveNBT(s);
