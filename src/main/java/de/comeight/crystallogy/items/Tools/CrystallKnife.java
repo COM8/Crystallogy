@@ -33,16 +33,16 @@ import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class CrystallKnif extends BaseItemSword{
+public class CrystallKnife extends BaseItemSword{
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	public static final String ID = "crystallKnif";
+	public static final String ID = "crystallKnife";
 	
 	public static final ToolMaterial CRYSTALLKNIF = EnumHelper.addToolMaterial("CRYSTALLKNIF", 2, 10, 6.0F, 1.0F, 17);
 	
 	private float attackDamage;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public CrystallKnif() {
+	public CrystallKnife() {
 		super(CRYSTALLKNIF, ID);
 		this.canRepair = true;
 		
