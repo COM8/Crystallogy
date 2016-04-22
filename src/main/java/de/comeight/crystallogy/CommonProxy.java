@@ -17,6 +17,7 @@ import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeFireCrystal
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeFireDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeHammer;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeHungDust;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipePlayerJar;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipePoisDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipePureDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeRefulelVaporizer;
@@ -83,6 +84,7 @@ public class CommonProxy {
 	private static InfusionRecipePoisDust infusionRecipePoisDust;
 	private static InfusionRecipeCrystalKnife infusionRecipeCrystalKnife;
 	private static InfusionRecipeCrystalKnifeBlade infusionRecipeCrystalKnifeBlade;
+	private static InfusionRecipePlayerJar iInfusionRecipePlayerJar;
 	
 	// -----------------------------------------------Constructor:-------------------------------------------
 	
@@ -107,10 +109,10 @@ public class CommonProxy {
 	}
 	
 	private void registerWorldGens() {
-		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_green, 20, 2, 64, 128), 2);
-		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_blue, 10, 2, 48, 64), 2);
-		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_yellow, 10, 2, 16, 48), 2);
-		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_red, 10, 2, 0, 16), 2);
+		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_green, 8, 5, 64, 128), 0);
+		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_blue, 7, 5, 48, 64), 0);
+		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_yellow, 5, 4, 16, 48), 0);
+		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_red, 5, 3, 0, 16), 0);
 		Utilities.addConsoleText("All worldgens are registered.");
 	}
 
@@ -139,6 +141,7 @@ public class CommonProxy {
 		infusionRecipePoisDust = new InfusionRecipePoisDust();
 		infusionRecipeCrystalKnife = new InfusionRecipeCrystalKnife();
 		infusionRecipeCrystalKnifeBlade = new InfusionRecipeCrystalKnifeBlade();
+		iInfusionRecipePlayerJar = new InfusionRecipePlayerJar();
 		
 		InfusionRecipeHandler.addRecipe(infusionRecipeVaporizer);
 		InfusionRecipeHandler.addRecipe(infusionRecipeCrystallLight);
@@ -155,6 +158,7 @@ public class CommonProxy {
 		InfusionRecipeHandler.addRecipe(infusionRecipeHungDust);
 		InfusionRecipeHandler.addRecipe(infusionRecipeCrystalKnife);
 		InfusionRecipeHandler.addRecipe(infusionRecipeCrystalKnifeBlade);
+		InfusionRecipeHandler.addRecipe(iInfusionRecipePlayerJar);
 		
 		ItemStack s =  new ItemStack(ItemHandler.vaporizer);
 		s = ((Vaporizer)s.getItem()).saveNBT(s);
