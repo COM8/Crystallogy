@@ -1,6 +1,5 @@
 {
 	"__comment": "Designed by COM8",
-    "parent": "block/cube_all",
     "textures": {
         "particle": "crystallogy:particles/l_color/l0",
 		"texture": "crystallogy:blocks/empty"
