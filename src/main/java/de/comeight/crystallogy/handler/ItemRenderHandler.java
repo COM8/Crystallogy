@@ -1,14 +1,12 @@
 package de.comeight.crystallogy.handler;
 
 import de.comeight.crystallogy.CrystallogyBase;
-import de.comeight.crystallogy.blocks.EnumCrystalColor;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.ModelLoader;
 
 public class ItemRenderHandler {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -45,6 +43,22 @@ public class ItemRenderHandler {
 		registerBasicItemRender(ItemHandler.crystalSword_yellow);
 		registerBasicItemRender(ItemHandler.toolRod);
 		registerBasicItemRender(ItemHandler.crystalKnifeBlade);
+		registerBasicItemRender(ItemHandler.armorHelmet_red);
+		registerBasicItemRender(ItemHandler.armorChestplate_red);
+		registerBasicItemRender(ItemHandler.armorLeggins_red);
+		registerBasicItemRender(ItemHandler.armorBoots_red);
+		registerBasicItemRender(ItemHandler.armorHelmet_blue);
+		registerBasicItemRender(ItemHandler.armorChestplate_blue);
+		registerBasicItemRender(ItemHandler.armorLeggins_blue);
+		registerBasicItemRender(ItemHandler.armorBoots_blue);
+		registerBasicItemRender(ItemHandler.armorHelmet_green);
+		registerBasicItemRender(ItemHandler.armorChestplate_green);
+		registerBasicItemRender(ItemHandler.armorLeggins_green);
+		registerBasicItemRender(ItemHandler.armorBoots_green);
+		registerBasicItemRender(ItemHandler.armorHelmet_yellow);
+		registerBasicItemRender(ItemHandler.armorChestplate_yellow);
+		registerBasicItemRender(ItemHandler.armorLeggins_yellow);
+		registerBasicItemRender(ItemHandler.armorBoots_yellow);
 		
 		registerItemVariantsRenderer(ItemHandler.crystallHammerHead, 0, "crystallHammerHead_red");
 		registerItemVariantsRenderer(ItemHandler.crystallHammerHead, 1, "crystallHammerHead_blue");
@@ -54,6 +68,11 @@ public class ItemRenderHandler {
 		registerItemVariantsRenderer(ItemHandler.crystallSwordBlade, 1, "crystallSwordBlade_blue");
 		registerItemVariantsRenderer(ItemHandler.crystallSwordBlade, 2, "crystallSwordBlade_green");
 		registerItemVariantsRenderer(ItemHandler.crystallSwordBlade, 3, "crystallSwordBlade_yellow");
+		registerItemVariantsRenderer(ItemHandler.armorPlate, 0, "armorPlate_red");
+		registerItemVariantsRenderer(ItemHandler.armorPlate, 1, "armorPlate_blue");
+		registerItemVariantsRenderer(ItemHandler.armorPlate, 2, "armorPlate_green");
+		registerItemVariantsRenderer(ItemHandler.armorPlate, 3, "armorPlate_yellow");
+		registerItemVariantsRenderer(ItemHandler.armorPlate, 4, "armorPlate_gray");
 		
 		Utilities.addConsoleText("All itemrenderer are registered.");
     }

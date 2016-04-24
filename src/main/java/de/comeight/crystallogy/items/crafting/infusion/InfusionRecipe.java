@@ -213,5 +213,17 @@ public abstract class InfusionRecipe {
 		NetworkPacketUpdateInventory message = new NetworkPacketUpdateInventory(pos, stack, 0); //TODO update
 		CommonProxy.NETWORKWRAPPER.sendToServer(message);
 	}
+	
+	protected boolean compare(ItemStack i1, ItemStack i2){
+		if(i1.getItem() != i2.getItem()){
+			return false;
+		}
+		if(i1.getItem().getHasSubtypes()){
+			if(i1.getItem().getDamage(i1) != i2.getItem().getDamage(i2)){
+				return false;
+			}
+		}
+		return true;
+	}
 
 }

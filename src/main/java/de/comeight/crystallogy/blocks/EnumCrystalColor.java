@@ -7,7 +7,8 @@ public enum EnumCrystalColor {
 	RED(0, "red", MapColor.redColor),
 	BLUE(1, "blue", MapColor.blueColor),
 	GREEN(2, "green", MapColor.greenColor),
-	YELLOW(3, "yellow", MapColor.yellowColor);
+	YELLOW(3, "yellow", MapColor.yellowColor),
+	GRAY(4, "gray", MapColor.grayColor);
 	
     private static final EnumCrystalColor[] META_LOOKUP = new EnumCrystalColor[values().length];
     private final int meta;

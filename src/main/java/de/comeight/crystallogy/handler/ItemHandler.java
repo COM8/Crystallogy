@@ -1,5 +1,6 @@
 package de.comeight.crystallogy.handler;
 
+import de.comeight.crystallogy.items.ArmorPlate;
 import de.comeight.crystallogy.items.CrystalKnifeBlade;
 import de.comeight.crystallogy.items.CrystallDust_blue;
 import de.comeight.crystallogy.items.CrystallDust_green;
@@ -20,12 +21,17 @@ import de.comeight.crystallogy.items.Tools.CrystallHammer_yellow;
 import de.comeight.crystallogy.items.Tools.CrystallKnife;
 import de.comeight.crystallogy.items.Tools.Vaporizer;
 import de.comeight.crystallogy.items.Tools.VaporizerDirection;
+import de.comeight.crystallogy.items.armor.Armor_blue;
+import de.comeight.crystallogy.items.armor.Armor_green;
+import de.comeight.crystallogy.items.armor.Armor_red;
+import de.comeight.crystallogy.items.armor.Armor_yellow;
 import de.comeight.crystallogy.items.threatDusts.DamDust;
 import de.comeight.crystallogy.items.threatDusts.DrowDust;
 import de.comeight.crystallogy.items.threatDusts.FireDust;
 import de.comeight.crystallogy.items.threatDusts.HungDust;
 import de.comeight.crystallogy.items.threatDusts.PoisDust;
 import de.comeight.crystallogy.util.Utilities;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemHandler {
@@ -56,8 +62,25 @@ public class ItemHandler {
 	public static CrystallHammerHead crystallHammerHead;
 	public static CrystallSwordBlade crystallSwordBlade;
 	public static CrystalKnifeBlade crystalKnifeBlade;
+	public static ArmorPlate armorPlate;
 	
-	//ItemBlocks
+	//Armor:
+	public static Armor_red armorHelmet_red;
+	public static Armor_red armorChestplate_red;
+	public static Armor_red armorLeggins_red;
+	public static Armor_red armorBoots_red;
+	public static Armor_blue armorHelmet_blue;
+	public static Armor_blue armorChestplate_blue;
+	public static Armor_blue armorLeggins_blue;
+	public static Armor_blue armorBoots_blue;
+	public static Armor_green armorHelmet_green;
+	public static Armor_green armorChestplate_green;
+	public static Armor_green armorLeggins_green;
+	public static Armor_green armorBoots_green;
+	public static Armor_yellow armorHelmet_yellow;
+	public static Armor_yellow armorChestplate_yellow;
+	public static Armor_yellow armorLeggins_yellow;
+	public static Armor_yellow armorBoots_yellow;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public ItemHandler() {
@@ -93,6 +116,23 @@ public class ItemHandler {
 		crystallHammerHead = new CrystallHammerHead();
 		crystallSwordBlade = new CrystallSwordBlade();
 		crystalKnifeBlade = new CrystalKnifeBlade();
+		armorHelmet_red = new Armor_red(1, EntityEquipmentSlot.HEAD);
+		armorChestplate_red = new Armor_red(1, EntityEquipmentSlot.CHEST);
+		armorLeggins_red = new Armor_red(1, EntityEquipmentSlot.LEGS);
+		armorBoots_red = new Armor_red(1, EntityEquipmentSlot.FEET);
+		armorHelmet_blue = new Armor_blue(1, EntityEquipmentSlot.HEAD);
+		armorChestplate_blue = new Armor_blue(1, EntityEquipmentSlot.CHEST);
+		armorLeggins_blue = new Armor_blue(1, EntityEquipmentSlot.LEGS);
+		armorBoots_blue = new Armor_blue(1, EntityEquipmentSlot.FEET);
+		armorHelmet_green = new Armor_green(1, EntityEquipmentSlot.HEAD);
+		armorChestplate_green = new Armor_green(1, EntityEquipmentSlot.CHEST);
+		armorLeggins_green = new Armor_green(1, EntityEquipmentSlot.LEGS);
+		armorBoots_green = new Armor_green(1, EntityEquipmentSlot.FEET);
+		armorHelmet_yellow = new Armor_yellow(1, EntityEquipmentSlot.HEAD);
+		armorChestplate_yellow = new Armor_yellow(1, EntityEquipmentSlot.CHEST);
+		armorLeggins_yellow = new Armor_yellow(1, EntityEquipmentSlot.LEGS);
+		armorBoots_yellow = new Armor_yellow(1, EntityEquipmentSlot.FEET);
+		armorPlate = new ArmorPlate();
 		
 		GameRegistry.register(crystallDust_red);
 		GameRegistry.register(crystallDust_green);
@@ -119,6 +159,23 @@ public class ItemHandler {
 		GameRegistry.register(crystallHammerHead);
 		GameRegistry.register(crystallSwordBlade);
 		GameRegistry.register(crystalKnifeBlade);
+		GameRegistry.register(armorHelmet_red);
+		GameRegistry.register(armorChestplate_red);
+		GameRegistry.register(armorLeggins_red);
+		GameRegistry.register(armorBoots_red);
+		GameRegistry.register(armorHelmet_blue);
+		GameRegistry.register(armorChestplate_blue);
+		GameRegistry.register(armorLeggins_blue);
+		GameRegistry.register(armorBoots_blue);
+		GameRegistry.register(armorHelmet_green);
+		GameRegistry.register(armorChestplate_green);
+		GameRegistry.register(armorLeggins_green);
+		GameRegistry.register(armorBoots_green);
+		GameRegistry.register(armorHelmet_yellow);
+		GameRegistry.register(armorChestplate_yellow);
+		GameRegistry.register(armorLeggins_yellow);
+		GameRegistry.register(armorBoots_yellow);
+		GameRegistry.register(armorPlate);
 		
 		Utilities.addConsoleText("All items are registered.");
 	}
