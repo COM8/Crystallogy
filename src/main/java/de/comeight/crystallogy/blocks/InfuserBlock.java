@@ -1,6 +1,8 @@
 package de.comeight.crystallogy.blocks;
 
+import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.blocks.container.BaseBlockContainer;
+import de.comeight.crystallogy.network.NetworkPacketUpdateInventory;
 import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -68,12 +70,6 @@ public class InfuserBlock extends BaseBlockContainer {
 			if(tE != null){
 				if(!worldIn.isRemote){
 					tE.checkForStructure();
-					/*if(tE.getCenterInfuserBlockPos() != null){
-						playerIn.addChatMessage(new TextComponentString(String.valueOf(tE.isActive()) + ", " + tE.getCenterInfuserBlockPos().toString()));
-					}
-					else{
-						playerIn.addChatMessage(new TextComponentString(String.valueOf(tE.isActive()) + ", null"));
-					}*/
 				}
 			}
 			
@@ -101,12 +97,16 @@ public class InfuserBlock extends BaseBlockContainer {
 		worldIn.notifyNeighborsOfStateChange(pos, this);
         tE.markDirty();
         if(worldIn.isRemote){
-        	//setItemsFromInfuserBlocksNetwork(tE.getPos(), tE.getStackInSlot(0));
-        	tE.sync();
+        	setItemsFromInfuserBlocksNetwork(tE.getPos(), tE.getStackInSlot(0)); //TODO Figure out why tE.syn() is not working
         }
         return true;
 	}
 
+	private void setItemsFromInfuserBlocksNetwork(BlockPos pos, ItemStack stack) {
+		 NetworkPacketUpdateInventory message = new NetworkPacketUpdateInventory(pos, stack, 0);
+		 CommonProxy.NETWORKWRAPPER.sendToServer(message);
+	}
+	
 	private void updateTileEntity(World worldIn, BlockPos pos){
 		TileEnityInfuserBlock tE = (TileEnityInfuserBlock) worldIn.getTileEntity(pos);
 		tE.update();
