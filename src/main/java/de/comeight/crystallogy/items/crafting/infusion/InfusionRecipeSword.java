@@ -1,5 +1,7 @@
 package de.comeight.crystallogy.items.crafting.infusion;
 
+import java.util.ArrayList;
+
 import de.comeight.crystallogy.blocks.EnumCrystalColor;
 import de.comeight.crystallogy.handler.ItemHandler;
 import net.minecraft.item.ItemStack;
@@ -17,6 +19,44 @@ public class InfusionRecipeSword extends InfusionRecipe {
 	@Override
 	public InfusionRecipe getRecipe() {
 		return new InfusionRecipeSword();
+	}
+	
+	@Override
+	public ArrayList<ArrayList<ItemStack>> getInputsJEI() {
+		ItemStack hR = new ItemStack(ItemHandler.crystallSwordBlade, 1, 0);
+		ItemStack hB = new ItemStack(ItemHandler.crystallSwordBlade, 1, 1);
+		ItemStack hG = new ItemStack(ItemHandler.crystallSwordBlade, 1, 2);
+		ItemStack hY = new ItemStack(ItemHandler.crystallSwordBlade, 1, 3);
+		
+		ArrayList<ArrayList<ItemStack>> ret = new ArrayList<ArrayList<ItemStack>>();
+		ret.add(new ArrayList<ItemStack>());
+		ret.get(0).add(new ItemStack(ItemHandler.toolRod));
+		ret.add(new ArrayList<ItemStack>());
+		ret.get(1).add(new ItemStack(ItemHandler.crystallDust_red));
+		ret.get(1).add(new ItemStack(ItemHandler.crystallDust_blue));
+		ret.get(1).add(new ItemStack(ItemHandler.crystallDust_green));
+		ret.get(1).add(new ItemStack(ItemHandler.crystallDust_yellow));
+		ret.add(new ArrayList<ItemStack>());
+		ret.get(2).add(new ItemStack(ItemHandler.crystallDust_red));
+		ret.get(2).add(new ItemStack(ItemHandler.crystallDust_blue));
+		ret.get(2).add(new ItemStack(ItemHandler.crystallDust_green));
+		ret.get(2).add(new ItemStack(ItemHandler.crystallDust_yellow));
+		ret.add(new ArrayList<ItemStack>());
+		ret.get(3).add(hR);
+		ret.get(3).add(hB);
+		ret.get(3).add(hG);
+		ret.get(3).add(hY);
+		return ret;
+	}
+
+	@Override
+	public ArrayList<ItemStack> getOutputJEI() {
+		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+		ret.add(new ItemStack(ItemHandler.crystalSword_red));
+		ret.add(new ItemStack(ItemHandler.crystalSword_blue));
+		ret.add(new ItemStack(ItemHandler.crystalSword_green));
+		ret.add(new ItemStack(ItemHandler.crystalSword_yellow));
+		return ret;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------

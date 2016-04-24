@@ -1,6 +1,9 @@
 package de.comeight.crystallogy.items.crafting.infusion;
 
+import java.util.ArrayList;
+
 import de.comeight.crystallogy.handler.ItemHandler;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
@@ -14,7 +17,25 @@ public class InfusionRecipePureDust extends InfusionRecipe {
 		}
 		
 		//-----------------------------------------------Set-, Get-Methoden:------------------------------------
+		@Override
+		public ArrayList<ArrayList<ItemStack>> getInputsJEI() {
+			ArrayList<ArrayList<ItemStack>> ret = new ArrayList<ArrayList<ItemStack>>();
+			ret.add(new ArrayList<ItemStack>());
+			ret.get(0).add(new ItemStack(Items.water_bucket));
+			ret.add(new ArrayList<ItemStack>());
+			ret.get(1).add(new ItemStack(ItemHandler.crystallDust_red));
+			ret.get(1).add(new ItemStack(ItemHandler.crystallDust_blue));
+			ret.get(1).add(new ItemStack(ItemHandler.crystallDust_green));
+			ret.get(1).add(new ItemStack(ItemHandler.crystallDust_yellow));
+			return ret;
+		}
 
+		@Override
+		public ArrayList<ItemStack> getOutputJEI() {
+			ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+			ret.add(new ItemStack(ItemHandler.pureCrystallDust));
+			return ret;
+		}
 		
 		//-----------------------------------------------Sonstige Methoden:-------------------------------------
 		@Override

@@ -4,13 +4,15 @@ import de.comeight.crystallogy.handler.ItemHandler;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-public class InfusionRecipeToolRod extends InfusionRecipe {
+public class InfusionRecipeToolRod extends InfusionRecipeSimple {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public InfusionRecipeToolRod() {
-		super("toolRod", 200);
+		super("toolRod", 200, new ItemStack(Items.stick),
+				new ItemStack[]{ new ItemStack(ItemHandler.pureCrystallDust, 2),},
+				new ItemStack(ItemHandler.toolRod));
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -20,28 +22,6 @@ public class InfusionRecipeToolRod extends InfusionRecipe {
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
-	@Override
-	public boolean match(ItemStack centerInput, ItemStack[] ingredients) {
-		if(centerInput.getItem() != Items.stick){
-			return false;
-		}
-		
-		int pureCrystallDust = 0;
-		
-		for (int i = 0; i < ingredients.length; i++) {
-			if(ingredients[i] != null){
-				if(ingredients[i].getItem() == ItemHandler.pureCrystallDust){
-					pureCrystallDust++;
-				}
-			}
-		}
-		
-		if(pureCrystallDust != 2){
-			return false;
-		}
-		
-		output = new ItemStack(ItemHandler.toolRod);
-		
-		return true;
-	}
+
+	
 }

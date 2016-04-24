@@ -1,5 +1,8 @@
 package de.comeight.crystallogy.items.crafting.infusion;
 
+import java.util.ArrayList;
+
+import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.particles.ParticleA;
 import de.comeight.crystallogy.particles.ParticleB;
@@ -25,7 +28,33 @@ public class InfusionRecipeVaporizer extends InfusionRecipe {
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
+	@Override
+	public ArrayList<ArrayList<ItemStack>> getInputsJEI() {
+		ArrayList<ArrayList<ItemStack>> ret = new ArrayList<ArrayList<ItemStack>>();
+		ret.add(new ArrayList<ItemStack>());
+		ret.get(0).add(new ItemStack(ItemHandler.vaporizer));
+		ret.add(new ArrayList<ItemStack>());
+		ret.get(1).add(new ItemStack(Items.dye));
+		ret.add(new ArrayList<ItemStack>());
+		ret.get(2).add(new ItemStack(Items.gunpowder));
+		ret.add(new ArrayList<ItemStack>());
+		ret.get(3).add(new ItemStack(Items.diamond));
+		ret.get(3).add(new ItemStack(Blocks.leaves));
+		ret.get(3).add(new ItemStack(Blocks.dirt));
+		ret.add(new ArrayList<ItemStack>());
+		ret.get(4).add(new ItemStack(ItemHandler.crystallDust_red));
+		ret.get(4).add(new ItemStack(ItemHandler.crystallDust_blue));
+		ret.get(4).add(new ItemStack(ItemHandler.crystallDust_green));
+		ret.get(4).add(new ItemStack(ItemHandler.crystallDust_yellow));
+		return ret;
+	}
 
+	@Override
+	public ArrayList<ItemStack> getOutputJEI() {
+		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+		ret.add(new ItemStack(ItemHandler.vaporizer));
+		return ret;
+	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
@@ -35,7 +64,7 @@ public class InfusionRecipeVaporizer extends InfusionRecipe {
 
 	@Override
 	public boolean match(ItemStack centerInput, ItemStack[] ingredients) {
-		if(centerInput == null){
+		if(centerInput.getItem() != ItemHandler.vaporizer){
 			return false;
 		}
 		//Crafting:

@@ -31,7 +31,9 @@ public class GuiCrystallCrusher extends GuiContainer{
 	}	
 
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
-
+	public static ResourceLocation getGUIResourceLocation(){
+		return rL;
+	}
 
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------	
 	@Override

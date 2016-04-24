@@ -91,6 +91,10 @@ public abstract class InfusionRecipe {
 		return positions;
 	}
 	
+	public abstract ArrayList<ArrayList<ItemStack>> getInputsJEI();
+	
+	public abstract ArrayList<ItemStack> getOutputJEI();
+	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	public abstract boolean match(ItemStack centerInput, ItemStack[] ingredients);
 	

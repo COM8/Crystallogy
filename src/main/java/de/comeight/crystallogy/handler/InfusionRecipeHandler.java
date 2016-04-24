@@ -27,6 +27,10 @@ public class InfusionRecipeHandler {
 		return recipes.get(index).getRecipe();
 	}
 	
+	public static ArrayList<InfusionRecipe> getRecipes(){
+		return recipes;
+	}
+	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	public static void addRecipe(InfusionRecipe recipe){
 		recipes.add(recipe);

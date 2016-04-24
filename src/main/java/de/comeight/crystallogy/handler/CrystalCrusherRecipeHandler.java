@@ -19,6 +19,10 @@ public class CrystalCrusherRecipeHandler {
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
+	public ArrayList<RecipeCrystalCrusher> getRecipes() {
+		return crushList;
+	}
+	
 	public ItemStack getResult(ItemStack  input){
 		if(input == null){
 			return null;
@@ -53,6 +57,22 @@ public class CrystalCrusherRecipeHandler {
 			}
 		}
 		return 0;
+	}
+	
+	public ArrayList<ItemStack> getInputs(){
+		ArrayList<ItemStack> inputs = new ArrayList<ItemStack>();
+		for (RecipeCrystalCrusher recipeCrystalCrusher : crushList) {
+			inputs.add(recipeCrystalCrusher.input);
+		}
+		return inputs;
+	}
+	
+	public ArrayList<ItemStack> getOutputs(){
+		ArrayList<ItemStack> outputs = new ArrayList<ItemStack>();
+		for (RecipeCrystalCrusher recipeCrystalCrusher : crushList) {
+			outputs.add(recipeCrystalCrusher.input);
+		}
+		return outputs;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------

@@ -1,7 +1,7 @@
 package de.comeight.crystallogy.items.crafting.infusion;
 
-import de.comeight.crystallogy.handler.ItemHandler;
-import net.minecraft.init.Items;
+import java.util.ArrayList;
+
 import net.minecraft.item.ItemStack;
 
 public abstract class InfusionRecipeSimple extends InfusionRecipe {
@@ -19,7 +19,31 @@ public abstract class InfusionRecipeSimple extends InfusionRecipe {
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
+	@Override
+	public ArrayList<ArrayList<ItemStack>> getInputsJEI() {
+		ArrayList<ArrayList<ItemStack>> ret = new ArrayList<ArrayList<ItemStack>>();
+		ret.add(new ArrayList<ItemStack>());
+		ret.get(0).add(center);
+		int e = 1;
+		for(int i = 0; i < surrounding.length; i++){
+			if(surrounding[i] != null){
+				for(int j = 0; j < surrounding[i].stackSize; j++){
+					ret.add(new ArrayList<ItemStack>());
+					ret.get(e).add(new ItemStack(surrounding[i].getItem(), 1));
+					e++;
+				}
+				
+			}
+		}
+		return ret;
+	}
 
+	@Override
+	public ArrayList<ItemStack> getOutputJEI() {
+		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+		ret.add(result);
+		return ret;
+	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override

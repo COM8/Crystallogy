@@ -2,6 +2,8 @@ package de.comeight.crystallogy.util;
 
 import java.util.Random;
 
+import com.sun.org.apache.xml.internal.security.utils.I18n;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -81,5 +83,9 @@ public class Utilities {
 		else{
 			addConsoleText("Side.Server!");
 		}
+	}
+	
+	public static String localizeText(String text){
+		return I18n.translate(text);
 	}
 }
