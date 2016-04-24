@@ -97,7 +97,7 @@ public class InfuserBlock extends BaseBlockContainer {
 		worldIn.notifyNeighborsOfStateChange(pos, this);
         tE.markDirty();
         if(worldIn.isRemote){
-        	setItemsFromInfuserBlocksNetwork(tE.getPos(), tE.getStackInSlot(0)); //TODO Figure out why tE.syn() is not working
+        	setItemsFromInfuserBlocksNetwork(tE.getPos(), tE.getStackInSlot(0)); //TODO Figure out why tE.sync() is not working
         }
         return true;
 	}
