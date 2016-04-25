@@ -1,12 +1,21 @@
 package de.comeight.crystallogy.items.armor;
 
+import java.util.List;
+
+import com.sun.jna.platform.win32.Guid.GUID;
+
 import de.comeight.crystallogy.blocks.materials.CustomArmorMaterials;
 import de.comeight.crystallogy.handler.ItemHandler;
+import de.comeight.crystallogy.util.ToolTipBuilder;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayer.EnumChatVisibility;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 public class Armor_green extends BaseArmor {
@@ -40,8 +49,27 @@ public class Armor_green extends BaseArmor {
 			return;
 		}
 		if (isPlayerWearingFullArmor(player)) {
-			player.addPotionEffect(new PotionEffect(Potion.getPotionById(1), 1, 1, true, false));
+			player.capabilities.setPlayerWalkSpeed(0.12F);
+			player.capabilities.setFlySpeed(0.06F);
+		}
+		else{
+			if(player.capabilities.getWalkSpeed() != 0.1F){
+				player.capabilities.setPlayerWalkSpeed(0.1F);
+				player.capabilities.setFlySpeed(0.05F);
+			}
 		}
 	}
 	
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+		if(GuiScreen.isShiftKeyDown()){
+			tooltip.add("");
+			tooltip.add(TextFormatting.DARK_PURPLE + "When completely equipped:");
+			tooltip.add(TextFormatting.BLUE + "+20% Speed");
+		}
+		else{
+			ToolTipBuilder.addShiftForMoreDetails(tooltip);
+		}
+		super.addInformation(stack, playerIn, tooltip, advanced);
+	}
 }
