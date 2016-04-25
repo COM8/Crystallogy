@@ -7,7 +7,6 @@ import de.comeight.crystallogy.handler.GuiHandler;
 import de.comeight.crystallogy.handler.GuiHandlerRegistry;
 import de.comeight.crystallogy.handler.InfusionRecipeHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
-import de.comeight.crystallogy.items.Tools.Vaporizer;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorPlate;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeCrystalKnife;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeCrystalKnifeBlade;
@@ -25,6 +24,7 @@ import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeRefulelVapo
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeSword;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeToolRod;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeVaporizer;
+import de.comeight.crystallogy.items.tools.Vaporizer;
 import de.comeight.crystallogy.network.NetworkPacketInfuserBlockEnabled;
 import de.comeight.crystallogy.network.NetworkPacketInfusionRecipeStatus;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
@@ -248,118 +248,57 @@ public class CommonProxy {
 		GameRegistry.addRecipe(armorPlareGray);
 		
 		//Armor Red:
-		ItemStack aR = new ItemStack(ItemHandler.armorPlate, 1, 0);
-		IRecipe helmet_red = new ShapedRecipes(3, 2, new ItemStack[]{
-				aR,aR,aR,
-				aR,null,aR,
-		}, new ItemStack(ItemHandler.armorHelmet_red));
-		GameRegistry.addRecipe(helmet_red);
-		
-		IRecipe chetplate_red = new ShapedRecipes(3, 3, new ItemStack[]{
-				aR,null,aR,
-				aR,aR,aR,
-				aR,aR,aR,
-		}, new ItemStack(ItemHandler.armorChestplate_red));
-		GameRegistry.addRecipe(chetplate_red);
-		
-		IRecipe leggins_red = new ShapedRecipes(3, 3, new ItemStack[]{
-				aR,aR,aR,
-				aR,null,aR,
-				aR,null,aR,
-		}, new ItemStack(ItemHandler.armorLeggins_red));
-		GameRegistry.addRecipe(leggins_red);
-		
-		IRecipe boots_red = new ShapedRecipes(3, 2, new ItemStack[]{
-				aR,null,aR,
-				aR,null,aR,
-		}, new ItemStack(ItemHandler.armorBoots_red));
-		GameRegistry.addRecipe(boots_red);
+		addArmorRecipe(new ItemStack(ItemHandler.armorPlate, 1, 0), new ItemStack(ItemHandler.armorHelmet_red),
+																	new ItemStack(ItemHandler.armorChestplate_red),
+																	new ItemStack(ItemHandler.armorLeggins_red),
+																	new ItemStack(ItemHandler.armorBoots_red));
 		
 		//Armor Green:
-		ItemStack aG = new ItemStack(ItemHandler.armorPlate, 1, 2);
-		IRecipe helmet_green = new ShapedRecipes(3, 2, new ItemStack[]{
-				aG,aG,aG,
-				aG,null,aG,
-		}, new ItemStack(ItemHandler.armorHelmet_green));
-		GameRegistry.addRecipe(helmet_green);
-		
-		IRecipe chetplate_green = new ShapedRecipes(3, 3, new ItemStack[]{
-				aG,null,aG,
-				aG,aG,aG,
-				aG,aG,aG,
-		}, new ItemStack(ItemHandler.armorChestplate_green));
-		GameRegistry.addRecipe(chetplate_green);
-		
-		IRecipe leggins_green = new ShapedRecipes(3, 3, new ItemStack[]{
-				aG,aG,aG,
-				aG,null,aG,
-				aG,null,aG,
-		}, new ItemStack(ItemHandler.armorLeggins_green));
-		GameRegistry.addRecipe(leggins_green);
-		
-		IRecipe boots_green = new ShapedRecipes(3, 2, new ItemStack[]{
-				aG,null,aG,
-				aG,null,aG,
-		}, new ItemStack(ItemHandler.armorBoots_green));
-		GameRegistry.addRecipe(boots_green);
+		addArmorRecipe(new ItemStack(ItemHandler.armorPlate, 1, 2), new ItemStack(ItemHandler.armorHelmet_green),
+																	new ItemStack(ItemHandler.armorChestplate_green),
+																	new ItemStack(ItemHandler.armorLeggins_green),
+																	new ItemStack(ItemHandler.armorBoots_green));
 		
 		//Armor Blue:
-		ItemStack aB = new ItemStack(ItemHandler.armorPlate, 1, 1);
-		IRecipe helmet_blue = new ShapedRecipes(3, 2, new ItemStack[]{
-				aB,aB,aB,
-				aB,null,aB,
-		}, new ItemStack(ItemHandler.armorHelmet_blue));
-		GameRegistry.addRecipe(helmet_blue);
-		
-		IRecipe chetplate_blue = new ShapedRecipes(3, 3, new ItemStack[]{
-				aB,null,aB,
-				aB,aB,aB,
-				aB,aB,aB,
-		}, new ItemStack(ItemHandler.armorChestplate_blue));
-		GameRegistry.addRecipe(chetplate_blue);
-		
-		IRecipe leggins_blue = new ShapedRecipes(3, 3, new ItemStack[]{
-				aB,aB,aB,
-				aB,null,aB,
-				aB,null,aB,
-		}, new ItemStack(ItemHandler.armorLeggins_blue));
-		GameRegistry.addRecipe(leggins_blue);
-		
-		IRecipe boots_blue = new ShapedRecipes(3, 2, new ItemStack[]{
-				aB,null,aB,
-				aB,null,aB,
-		}, new ItemStack(ItemHandler.armorBoots_blue));
-		GameRegistry.addRecipe(boots_blue);
+		addArmorRecipe(new ItemStack(ItemHandler.armorPlate, 1, 1), new ItemStack(ItemHandler.armorHelmet_blue),
+																	new ItemStack(ItemHandler.armorChestplate_blue),
+																	new ItemStack(ItemHandler.armorLeggins_blue),
+																	new ItemStack(ItemHandler.armorBoots_blue));
 		
 		//Armor Yellow:
-		ItemStack aY = new ItemStack(ItemHandler.armorPlate, 1, 3);
-		IRecipe helmet_yellow = new ShapedRecipes(3, 2, new ItemStack[]{
-				aY,aY,aY,
-				aY,null,aY,
-		}, new ItemStack(ItemHandler.armorHelmet_yellow));
-		GameRegistry.addRecipe(helmet_yellow);
-		
-		IRecipe chetplate_yellow = new ShapedRecipes(3, 3, new ItemStack[]{
-				aY,null,aY,
-				aY,aY,aY,
-				aY,aY,aY,
-		}, new ItemStack(ItemHandler.armorChestplate_yellow));
-		GameRegistry.addRecipe(chetplate_yellow);
-		
-		IRecipe leggins_yellow = new ShapedRecipes(3, 3, new ItemStack[]{
-				aY,aY,aY,
-				aY,null,aY,
-				aY,null,aY,
-		}, new ItemStack(ItemHandler.armorLeggins_yellow));
-		GameRegistry.addRecipe(leggins_yellow);
-		
-		IRecipe boots_yellow = new ShapedRecipes(3, 2, new ItemStack[]{
-				aY,null,aY,
-				aY,null,aY,
-		}, new ItemStack(ItemHandler.armorBoots_yellow));
-		GameRegistry.addRecipe(boots_yellow);
-		
+		addArmorRecipe(new ItemStack(ItemHandler.armorPlate, 1, 3), new ItemStack(ItemHandler.armorHelmet_yellow),
+																	new ItemStack(ItemHandler.armorChestplate_yellow),
+																	new ItemStack(ItemHandler.armorLeggins_yellow),
+																	new ItemStack(ItemHandler.armorBoots_yellow));
 		Utilities.addConsoleText("All recipes are registered.");
+	}
+	
+	protected void addArmorRecipe(ItemStack s, ItemStack helmet, ItemStack chestplate, ItemStack leggins, ItemStack boots){
+		IRecipe recipeHelmet = new ShapedRecipes(3, 2, new ItemStack[]{
+				s,s,s,
+				s,null,s,
+		}, helmet);
+		GameRegistry.addRecipe(recipeHelmet);
+		
+		IRecipe recipeChetplate = new ShapedRecipes(3, 3, new ItemStack[]{
+				s,null,s,
+				s,s,s,
+				s,s,s,
+		}, chestplate);
+		GameRegistry.addRecipe(recipeChetplate);
+		
+		IRecipe recipeLeggins = new ShapedRecipes(3, 3, new ItemStack[]{
+				s,s,s,
+				s,null,s,
+				s,null,s,
+		}, leggins);
+		GameRegistry.addRecipe(recipeLeggins);
+		
+		IRecipe recipeBoots = new ShapedRecipes(3, 2, new ItemStack[]{
+				s,null,s,
+				s,null,s,
+		}, boots);
+		GameRegistry.addRecipe(recipeBoots);
 	}
 	
 	// -----------------------------------------------Pre-Init:----------------------------------------------
