@@ -1,4 +1,4 @@
-package de.comeight.crystallogy.items.Tools;
+package de.comeight.crystallogy.items.tools;
 
 import java.util.ArrayList;
 
