@@ -1,12 +1,17 @@
 package de.comeight.crystallogy.items.armor;
 
+import java.util.List;
+
 import de.comeight.crystallogy.blocks.materials.CustomArmorMaterials;
 import de.comeight.crystallogy.handler.ItemHandler;
+import de.comeight.crystallogy.util.ToolTipBuilder;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 public class Armor_blue extends BaseArmor {
@@ -43,6 +48,20 @@ public class Armor_blue extends BaseArmor {
 			player.addPotionEffect(new PotionEffect(Potion.getPotionById(13), 1, 0, true, false));
 			player.addPotionEffect(new PotionEffect(Potion.getPotionById(16), 1, 0, true, false));
 		}
+	}
+	
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+		if(GuiScreen.isShiftKeyDown()){
+			tooltip.add("");
+			tooltip.add(TextFormatting.DARK_PURPLE + "When completely equipped:");
+			tooltip.add(TextFormatting.BLUE + "-Night vision");
+			tooltip.add(TextFormatting.BLUE + "-Water breathing");
+		}
+		else{
+			ToolTipBuilder.addShiftForMoreDetails(tooltip);
+		}
+		super.addInformation(stack, playerIn, tooltip, advanced);
 	}
 	
 }

@@ -72,5 +72,10 @@ item.armor_yellow_head.name=§eYellow§r Crystal Helmet
 item.armor_yellow_chest.name=§eYellow§r Crystal Chestplate
 item.armor_yellow_legs.name=§eYellow§r Crystal Leggins
 item.armor_yellow_feet.name=§eYellow§r Crystal Boots
+item.armor_combined_head.name=The hunter's dream Crystal Helmet
+item.armor_combined_chest.name=The hunter's dream Crystal Chestplate
+item.armor_combined_legs.name=The hunter's dream Crystal Leggins
+item.armor_combined_feet.name=The hunter's dream Crystal Boots
+item.energyCrystal.name=§5Energy Crystal§r
 
 itemGroup.crystallogyMainTab=Crystallogy Maintab

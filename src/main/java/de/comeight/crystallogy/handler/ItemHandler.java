@@ -8,9 +8,11 @@ import de.comeight.crystallogy.items.CrystallDust_red;
 import de.comeight.crystallogy.items.CrystallDust_yellow;
 import de.comeight.crystallogy.items.CrystallHammerHead;
 import de.comeight.crystallogy.items.CrystallSwordBlade;
+import de.comeight.crystallogy.items.EnergyCrystal;
 import de.comeight.crystallogy.items.PureCrystallDust;
 import de.comeight.crystallogy.items.ToolRod;
 import de.comeight.crystallogy.items.armor.Armor_blue;
+import de.comeight.crystallogy.items.armor.Armor_combined;
 import de.comeight.crystallogy.items.armor.Armor_green;
 import de.comeight.crystallogy.items.armor.Armor_red;
 import de.comeight.crystallogy.items.armor.Armor_yellow;
@@ -63,6 +65,7 @@ public class ItemHandler {
 	public static CrystallSwordBlade crystallSwordBlade;
 	public static CrystalKnifeBlade crystalKnifeBlade;
 	public static ArmorPlate armorPlate;
+	public static EnergyCrystal energyCrystal;
 	
 	//Armor:
 	public static Armor_red armorHelmet_red;
@@ -81,6 +84,10 @@ public class ItemHandler {
 	public static Armor_yellow armorChestplate_yellow;
 	public static Armor_yellow armorLeggins_yellow;
 	public static Armor_yellow armorBoots_yellow;
+	public static Armor_combined armorHelmet_combined;
+	public static Armor_combined armorChestplate_combined;
+	public static Armor_combined armorLeggins_combined;
+	public static Armor_combined armorBoots_combined;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public ItemHandler() {
@@ -133,6 +140,11 @@ public class ItemHandler {
 		armorLeggins_yellow = new Armor_yellow(1, EntityEquipmentSlot.LEGS);
 		armorBoots_yellow = new Armor_yellow(1, EntityEquipmentSlot.FEET);
 		armorPlate = new ArmorPlate();
+		armorHelmet_combined = new Armor_combined(1, EntityEquipmentSlot.HEAD);
+		armorChestplate_combined = new Armor_combined(1, EntityEquipmentSlot.CHEST);
+		armorLeggins_combined = new Armor_combined(1, EntityEquipmentSlot.LEGS);
+		armorBoots_combined = new Armor_combined(1, EntityEquipmentSlot.FEET);
+		energyCrystal = new EnergyCrystal();
 		
 		GameRegistry.register(crystallDust_red);
 		GameRegistry.register(crystallDust_green);
@@ -176,6 +188,11 @@ public class ItemHandler {
 		GameRegistry.register(armorLeggins_yellow);
 		GameRegistry.register(armorBoots_yellow);
 		GameRegistry.register(armorPlate);
+		GameRegistry.register(armorHelmet_combined);
+		GameRegistry.register(armorChestplate_combined);
+		GameRegistry.register(armorLeggins_combined);
+		GameRegistry.register(armorBoots_combined);
+		GameRegistry.register(energyCrystal);
 		
 		Utilities.addConsoleText("All items are registered.");
 	}

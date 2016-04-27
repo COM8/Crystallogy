@@ -7,6 +7,10 @@ import de.comeight.crystallogy.handler.GuiHandler;
 import de.comeight.crystallogy.handler.GuiHandlerRegistry;
 import de.comeight.crystallogy.handler.InfusionRecipeHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorCombinedBoots;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorCombinedChestplate;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorCombinedHelmet;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorCombinedLeggins;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorPlate;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeCrystalKnife;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeCrystalKnifeBlade;
@@ -87,6 +91,10 @@ public class CommonProxy {
 	private static InfusionRecipeCrystalKnifeBlade infusionRecipeCrystalKnifeBlade;
 	private static InfusionRecipePlayerJar infusionRecipePlayerJar;
 	private static InfusionRecipeArmorPlate infusionRecipeArmorPlate;
+	private static InfusionRecipeArmorCombinedHelmet infusionRecipeArmorCombinedHelmet;
+	private static InfusionRecipeArmorCombinedChestplate infusionRecipeArmorCombinedChestplate;
+	private static InfusionRecipeArmorCombinedLeggins infusionRecipeArmorCombinedLeggins;
+	private static InfusionRecipeArmorCombinedBoots infusionRecipeArmorCombinedBoots;
 	
 	// -----------------------------------------------Constructor:-------------------------------------------
 	
@@ -145,6 +153,10 @@ public class CommonProxy {
 		infusionRecipeCrystalKnifeBlade = new InfusionRecipeCrystalKnifeBlade();
 		infusionRecipePlayerJar = new InfusionRecipePlayerJar();
 		infusionRecipeArmorPlate = new InfusionRecipeArmorPlate();
+		infusionRecipeArmorCombinedHelmet = new InfusionRecipeArmorCombinedHelmet();
+		infusionRecipeArmorCombinedChestplate = new InfusionRecipeArmorCombinedChestplate();
+		infusionRecipeArmorCombinedLeggins = new InfusionRecipeArmorCombinedLeggins();
+		infusionRecipeArmorCombinedBoots = new InfusionRecipeArmorCombinedBoots();
 		
 		InfusionRecipeHandler.addRecipe(infusionRecipeVaporizer);
 		InfusionRecipeHandler.addRecipe(infusionRecipeCrystallLight);
@@ -163,6 +175,10 @@ public class CommonProxy {
 		InfusionRecipeHandler.addRecipe(infusionRecipeCrystalKnifeBlade);
 		InfusionRecipeHandler.addRecipe(infusionRecipePlayerJar);
 		InfusionRecipeHandler.addRecipe(infusionRecipeArmorPlate);
+		InfusionRecipeHandler.addRecipe(infusionRecipeArmorCombinedHelmet);
+		InfusionRecipeHandler.addRecipe(infusionRecipeArmorCombinedChestplate);
+		InfusionRecipeHandler.addRecipe(infusionRecipeArmorCombinedLeggins);
+		InfusionRecipeHandler.addRecipe(infusionRecipeArmorCombinedBoots);
 		
 		ItemStack s =  new ItemStack(ItemHandler.vaporizer);
 		s = ((Vaporizer)s.getItem()).saveNBT(s);
