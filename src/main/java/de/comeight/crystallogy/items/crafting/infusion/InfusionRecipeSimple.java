@@ -29,7 +29,7 @@ public abstract class InfusionRecipeSimple extends InfusionRecipe {
 			if(surrounding[i] != null){
 				for(int j = 0; j < surrounding[i].stackSize; j++){
 					ret.add(new ArrayList<ItemStack>());
-					ret.get(e).add(new ItemStack(surrounding[i].getItem(), 1));
+					ret.get(e).add(new ItemStack(surrounding[i].getItem(), 1, surrounding[i].getMetadata()));
 					e++;
 				}
 				
