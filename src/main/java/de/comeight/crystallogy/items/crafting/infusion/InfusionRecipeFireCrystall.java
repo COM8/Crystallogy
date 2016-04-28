@@ -12,11 +12,11 @@ public class InfusionRecipeFireCrystall extends InfusionRecipeSimple {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public InfusionRecipeFireCrystall() {
-		super("crystalKnife", 200, new ItemStack(Item.getItemFromBlock(BlockHandler.crystall_red)),
+		super("fireCrystal", 200, new ItemStack(Item.getItemFromBlock(BlockHandler.crystall_red)),
 				new ItemStack[]{ 	new ItemStack(Items.lava_bucket, 1),
 									new ItemStack(Items.flint_and_steel, 1),
 									new ItemStack(Items.blaze_powder, 2),},
-				new ItemStack(ItemHandler.crystallKnife));
+				new ItemStack(BlockHandler.fireCrystall));
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
