@@ -28,6 +28,7 @@ public final class BlockRenderHandler {
 		registerRenderer(BlockHandler.playerJar);
 		registerRenderer(BlockHandler.crystalLight);
 		registerRenderer(BlockHandler.fireCrystall);
+		registerRenderer(BlockHandler.compressor);
 		Utilities.addConsoleText("All blockrenderer are registered.");
     }
 	

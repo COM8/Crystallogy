@@ -13,7 +13,9 @@ public class GuiHandlerRegistry implements IGuiHandler {
 		registeredHandlers.put(guiID, handler);
 	}
 
-	public static GuiHandlerRegistry getInstance() {return guiHandlerRegistry;}
+	public static GuiHandlerRegistry getInstance() {
+		return guiHandlerRegistry;
+	}
 
 	private HashMap<Integer, IGuiHandler> registeredHandlers = new HashMap<Integer, IGuiHandler>();
 	private static GuiHandlerRegistry guiHandlerRegistry = new GuiHandlerRegistry();

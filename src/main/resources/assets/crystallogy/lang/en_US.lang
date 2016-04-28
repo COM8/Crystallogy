@@ -9,6 +9,7 @@ block.infuserBlock.name=Infuser Block
 block.playerJar.name=Player Jar
 block.crystalLight.name=Crystal Light
 block.fireCrystall.name=§cFire§r Crystal
+block.compressor.name=Compressor
 
 tile.crystall_red.name=§4Red§r Crystal
 tile.crystall_blue.name=§9Blue§r Crystal
@@ -19,6 +20,7 @@ tile.infuserBlock.name=Infuser Block
 tile.playerJar.name=Player Jar
 tile.crystalLight.name=Crystal Light
 tile.fireCrystall.name=§cFire§r Crystal
+tile.compressor.name=Compressor
 
 item.crystallDust_red.name=§4Red§r Crystal Dust
 item.crystallDust_blue.name=§9Blue§r Crystal Dust
@@ -77,5 +79,7 @@ item.armor_combined_chest.name=The hunter's dream Crystal Chestplate
 item.armor_combined_legs.name=The hunter's dream Crystal Leggins
 item.armor_combined_feet.name=The hunter's dream Crystal Boots
 item.energyCrystal.name=§5Energy Crystal§r
+item.compressor.name=Compressor
+item.energyDust.name=Energy Dust
 
 itemGroup.crystallogyMainTab=Crystallogy Maintab

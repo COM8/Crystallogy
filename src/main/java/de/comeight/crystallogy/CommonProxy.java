@@ -1,6 +1,7 @@
 package de.comeight.crystallogy;
 
 import de.comeight.crystallogy.blocks.EnumCrystalColor;
+import de.comeight.crystallogy.gui.GuiCompressor;
 import de.comeight.crystallogy.gui.GuiCrystallCrusher;
 import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.GuiHandler;
@@ -41,6 +42,7 @@ import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerTile
 import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerUpdateInventory;
 import de.comeight.crystallogy.tabs.CrystallogyMainTab;
 import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
+import de.comeight.crystallogy.tileEntitys.TileEntityCompressor;
 import de.comeight.crystallogy.tileEntitys.TileEntityCrystallCrusher;
 import de.comeight.crystallogy.tileEntitys.TileEntityCrystallLight;
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
@@ -115,6 +117,7 @@ public class CommonProxy {
 	private void registerGuiHandlers() {
 		NetworkRegistry.INSTANCE.registerGuiHandler(CrystallogyBase.INSTANCE, GuiHandlerRegistry.getInstance());
 		GuiHandlerRegistry.getInstance().registerGuiHandler(new GuiHandler(), GuiCrystallCrusher.ID);
+		GuiHandlerRegistry.getInstance().registerGuiHandler(new GuiHandler(), GuiCompressor.ID);
 		Utilities.addConsoleText("All guis are registered.");
 	}
 	
@@ -131,6 +134,7 @@ public class CommonProxy {
 		GameRegistry.registerTileEntity(TileEnityInfuserBlock.class, BlockHandler.infuserBlock.ID);
 		GameRegistry.registerTileEntity(TileEntityPlayerJar.class, BlockHandler.playerJar.ID);
 		GameRegistry.registerTileEntity(TileEntityCrystallLight.class, BlockHandler.crystalLight.ID);
+		GameRegistry.registerTileEntity(TileEntityCompressor.class, BlockHandler.compressor.ID);
 		Utilities.addConsoleText("All tileEntitys are registered.");
 		
 	}
@@ -286,6 +290,25 @@ public class CommonProxy {
 																	new ItemStack(ItemHandler.armorChestplate_yellow),
 																	new ItemStack(ItemHandler.armorLeggins_yellow),
 																	new ItemStack(ItemHandler.armorBoots_yellow));
+		
+		ItemStack redstone = new ItemStack(Items.redstone);
+		ItemStack redDust = new ItemStack(ItemHandler.crystallDust_red);
+		IRecipe energyDust = new ShapedRecipes(3, 3, new ItemStack[]{
+				redstone,redstone,redstone,
+				redstone,redDust,redstone,
+				redstone,redstone,redstone,
+		}, new ItemStack(ItemHandler.energyDust));
+		GameRegistry.addRecipe(energyDust);
+		
+		ItemStack obsidian = new ItemStack(Blocks.obsidian);
+		ItemStack iron_block = new ItemStack(Blocks.iron_block);
+		IRecipe compressor = new ShapedRecipes(3, 3, new ItemStack[]{
+				obsidian,b,obsidian,
+				obsidian,redstone,obsidian,
+				obsidian,iron_block,obsidian,
+		}, new ItemStack(BlockHandler.compressor));
+		GameRegistry.addRecipe(compressor);
+		
 		Utilities.addConsoleText("All recipes are registered.");
 	}
 	

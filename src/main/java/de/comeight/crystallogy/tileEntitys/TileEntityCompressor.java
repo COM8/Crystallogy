@@ -1,8 +1,8 @@
 package de.comeight.crystallogy.tileEntitys;
 
-import de.comeight.crystallogy.blocks.container.ContainerCrystallCrusher;
+import de.comeight.crystallogy.blocks.container.ContainerCompressor;
 import de.comeight.crystallogy.gui.GuiCrystallCrusher;
-import de.comeight.crystallogy.handler.CrystalCrusherRecipeHandler;
+import de.comeight.crystallogy.handler.CompressorRecipeHandler;
 import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -13,20 +13,20 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.text.ITextComponent;
 
-public class TileEntityCrystallCrusher extends TileEntityInventory implements ITickable {
+public class TileEntityCompressor extends TileEntityInventory implements ITickable {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	public static final String ID = "containerCrystallCrusher";
+	public static final String ID = "tileEntityCompressor";
 	
-    private ItemStack[] crusherItemStacks = new ItemStack[2];
+    private ItemStack[] compressorItemStacks = new ItemStack[2];
 
     private int cookTime;
     private int totalCookTime;
-    public boolean crushing;
+    public boolean compressing;
     
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public TileEntityCrystallCrusher() {
+	public TileEntityCompressor() {
 		super(2);
-		crushing = false;
+		compressing = false;
 	}
 
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -39,12 +39,12 @@ public class TileEntityCrystallCrusher extends TileEntityInventory implements IT
 
 	@Override
 	public int getSizeInventory() {
-		return this.crusherItemStacks.length;
+		return this.compressorItemStacks.length;
 	}
 
 	@Override
 	public ItemStack getStackInSlot(int index) {
-		return this.crusherItemStacks[index];
+		return this.compressorItemStacks[index];
 	}
 
 	@Override
@@ -69,7 +69,7 @@ public class TileEntityCrystallCrusher extends TileEntityInventory implements IT
 	
 	public int getCookTime(ItemStack stack)
     {
-        return CrystalCrusherRecipeHandler.INSTANCE.getTotalCookTime(stack);
+        return CompressorRecipeHandler.INSTANCE.getTotalCookTime(stack);
     }
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
@@ -83,19 +83,19 @@ public class TileEntityCrystallCrusher extends TileEntityInventory implements IT
     {
         if (worldObj.isRemote)
         {
-        	if(crushing){
+        	if(compressing){
         		cookTime++;
         		if (cookTime >= totalCookTime) {
     				cookTime = 1;
-    				crushing = false;
+    				compressing = false;
         		}
         	}
         	return;
         }
         boolean flag1 = false;
-        if(crushing){
-        	if(!canCrush()){
-        		crushing = false;
+        if(compressing){
+        	if(!canCompress()){
+        		compressing = false;
         		cookTime = 1;
         		sync();
         	}
@@ -103,19 +103,19 @@ public class TileEntityCrystallCrusher extends TileEntityInventory implements IT
         		cookTime++;
             	if (cookTime >= totalCookTime) {
     				cookTime = 1;
-    				crushItem();
-    				crushing = false;
+    				compressItem();
+    				compressing = false;
     			}
         	}
         	flag1 = true;
         }
         else{
-        	if (crusherItemStacks[0] != null) {
-    			if (canCrush()) {
+        	if (compressorItemStacks[0] != null) {
+    			if (canCompress()) {
     				flag1 = true;
-    				crushing = true;
+    				compressing = true;
     				cookTime = 1;
-    				totalCookTime = getCookTime(this.crusherItemStacks[0]);
+    				totalCookTime = getCookTime(this.compressorItemStacks[0]);
     				sync();
     			}
     		}
@@ -126,46 +126,49 @@ public class TileEntityCrystallCrusher extends TileEntityInventory implements IT
 		}
     }
 	
-    private boolean canCrush()
+    private boolean canCompress()
     {
-    	ItemStack output = CrystalCrusherRecipeHandler.INSTANCE.getResult(crusherItemStacks[0]);
+    	ItemStack output = CompressorRecipeHandler.INSTANCE.getResult(compressorItemStacks[0]);
         if (output == null){
         	return false;
         }
-        if (crusherItemStacks[1] == null){
+        if (compressorItemStacks[1] == null){
         	return true;
         }
-        if(crusherItemStacks[1].getItem() != output.getItem()){
+        if(compressorItemStacks[1].stackSize >= compressorItemStacks[1].getMaxStackSize()){
+        	return false;
+        }
+        if(compressorItemStacks[1].getItem() != output.getItem()){
     		return false;
     	}
         
-        int result = crusherItemStacks[1].stackSize + output.stackSize;
-        if(result >= getInventoryStackLimit() && result >= this.crusherItemStacks[1].getMaxStackSize()){
+        int result = compressorItemStacks[1].stackSize + output.stackSize;
+        if(result >= getInventoryStackLimit() && result >= this.compressorItemStacks[1].getMaxStackSize()){
         	return false;
         }
         return true;
     }
 
-    public void crushItem()
+    public void compressItem()
     {
-        if (canCrush())
+        if (canCompress())
         {
-            ItemStack itemstack = CrystalCrusherRecipeHandler.INSTANCE.getResult(crusherItemStacks[0]);
+            ItemStack itemstack = CompressorRecipeHandler.INSTANCE.getResult(compressorItemStacks[0]);
 
-            if (crusherItemStacks[1] == null)
+            if (compressorItemStacks[1] == null)
             {
-                crusherItemStacks[1] = itemstack.copy();
+                compressorItemStacks[1] = itemstack.copy();
             }
-            else if (crusherItemStacks[1].getItem() == itemstack.getItem())
+            else if (compressorItemStacks[1].getItem() == itemstack.getItem())
             {
-                crusherItemStacks[1].stackSize += itemstack.stackSize;
+                compressorItemStacks[1].stackSize += itemstack.stackSize;
             }
 
-            crusherItemStacks[0].stackSize--;
+            compressorItemStacks[0].stackSize -= CompressorRecipeHandler.INSTANCE.getNumberOfInputItems(compressorItemStacks[0]);
 
-            if (crusherItemStacks[0].stackSize <= 0)
+            if (compressorItemStacks[0].stackSize <= 0)
             {
-                crusherItemStacks[0] = null;
+                compressorItemStacks[0] = null;
             }
         }
     }
@@ -177,16 +180,16 @@ public class TileEntityCrystallCrusher extends TileEntityInventory implements IT
         
         readCookTimeFromNBT(compound);
         NBTTagList nbttaglist = compound.getTagList("Items", 10);
-        this.crusherItemStacks = new ItemStack[this.getSizeInventory()];
+        this.compressorItemStacks = new ItemStack[this.getSizeInventory()];
 
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {
             NBTTagCompound nbttagcompound = nbttaglist.getCompoundTagAt(i);
             int j = nbttagcompound.getByte("Slot");
 
-            if (j >= 0 && j < this.crusherItemStacks.length)
+            if (j >= 0 && j < this.compressorItemStacks.length)
             {
-                this.crusherItemStacks[j] = ItemStack.loadItemStackFromNBT(nbttagcompound);
+                this.compressorItemStacks[j] = ItemStack.loadItemStackFromNBT(nbttagcompound);
             }
         }
     }
@@ -199,13 +202,13 @@ public class TileEntityCrystallCrusher extends TileEntityInventory implements IT
         writeCookTimeToNBT(compound);
         NBTTagList nbttaglist = new NBTTagList();
 
-        for (int i = 0; i < this.crusherItemStacks.length; ++i)
+        for (int i = 0; i < this.compressorItemStacks.length; ++i)
         {
-            if (this.crusherItemStacks[i] != null)
+            if (this.compressorItemStacks[i] != null)
             {
                 NBTTagCompound nbttagcompound = new NBTTagCompound();
                 nbttagcompound.setByte("Slot", (byte)i);
-                this.crusherItemStacks[i].writeToNBT(nbttagcompound);
+                this.compressorItemStacks[i].writeToNBT(nbttagcompound);
                 nbttaglist.appendTag(nbttagcompound);
             }
         }
@@ -235,10 +238,10 @@ public class TileEntityCrystallCrusher extends TileEntityInventory implements IT
 
 	@Override
 	public ItemStack removeStackFromSlot(int index) {
-		if (this.crusherItemStacks[index] != null)
+		if (this.compressorItemStacks[index] != null)
         {
-            ItemStack itemstack = this.crusherItemStacks[index];
-            this.crusherItemStacks[index] = null;
+            ItemStack itemstack = this.compressorItemStacks[index];
+            this.compressorItemStacks[index] = null;
             return itemstack;
         }
         else
@@ -249,7 +252,7 @@ public class TileEntityCrystallCrusher extends TileEntityInventory implements IT
 
 	@Override
 	public void setInventorySlotContents(int index, ItemStack stack) {
-		this.crusherItemStacks[index] = stack;
+		this.compressorItemStacks[index] = stack;
 		if (stack != null && stack.stackSize > getInventoryStackLimit()) {
 			stack.stackSize = getInventoryStackLimit();
 		}
@@ -269,7 +272,7 @@ public class TileEntityCrystallCrusher extends TileEntityInventory implements IT
     }
 
 	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
-		return new ContainerCrystallCrusher(playerInventory, this);
+		return new ContainerCompressor(playerInventory, this);
 	}
 
 	public String getGuiID() {
@@ -286,9 +289,9 @@ public class TileEntityCrystallCrusher extends TileEntityInventory implements IT
 
 	@Override
 	public void clear() {
-		for (int i = 0; i < this.crusherItemStacks.length; ++i)
+		for (int i = 0; i < this.compressorItemStacks.length; ++i)
         {
-            this.crusherItemStacks[i] = null;
+            this.compressorItemStacks[i] = null;
         }
 	}
 
@@ -305,13 +308,13 @@ public class TileEntityCrystallCrusher extends TileEntityInventory implements IT
 	private void readCookTimeFromNBT(NBTTagCompound compound){
 		this.cookTime = compound.getInteger("CookTime");
         this.totalCookTime = compound.getInteger("CookTimeTotal");
-        this.crushing = compound.getBoolean("crushing");
+        this.compressing = compound.getBoolean("crushing");
 	}
 	
 	private void writeCookTimeToNBT(NBTTagCompound compound){
 		compound.setInteger("CookTime", this.cookTime);
         compound.setInteger("CookTimeTotal", this.totalCookTime);
-        compound.setBoolean("crushing", crushing);
+        compound.setBoolean("crushing", compressing);
 	}
 	
 	@Override

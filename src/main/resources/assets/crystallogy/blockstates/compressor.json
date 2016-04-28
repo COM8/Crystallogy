@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "crystallogy:compressor" },
+        "facing=south": { "model": "crystallogy:compressor", "y": 180 },
+        "facing=west":  { "model": "crystallogy:compressor", "y": 270 },
+        "facing=east":  { "model": "crystallogy:compressor", "y": 90 }
+    }
+}

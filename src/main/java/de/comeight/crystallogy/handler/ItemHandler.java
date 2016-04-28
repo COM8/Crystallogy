@@ -9,6 +9,7 @@ import de.comeight.crystallogy.items.CrystallDust_yellow;
 import de.comeight.crystallogy.items.CrystallHammerHead;
 import de.comeight.crystallogy.items.CrystallSwordBlade;
 import de.comeight.crystallogy.items.EnergyCrystal;
+import de.comeight.crystallogy.items.EnergyDust;
 import de.comeight.crystallogy.items.PureCrystallDust;
 import de.comeight.crystallogy.items.ToolRod;
 import de.comeight.crystallogy.items.armor.Armor_blue;
@@ -66,6 +67,7 @@ public class ItemHandler {
 	public static CrystalKnifeBlade crystalKnifeBlade;
 	public static ArmorPlate armorPlate;
 	public static EnergyCrystal energyCrystal;
+	public static EnergyDust energyDust;
 	
 	//Armor:
 	public static Armor_red armorHelmet_red;
@@ -145,6 +147,7 @@ public class ItemHandler {
 		armorLeggins_combined = new Armor_combined(1, EntityEquipmentSlot.LEGS);
 		armorBoots_combined = new Armor_combined(1, EntityEquipmentSlot.FEET);
 		energyCrystal = new EnergyCrystal();
+		energyDust = new EnergyDust();
 		
 		GameRegistry.register(crystallDust_red);
 		GameRegistry.register(crystallDust_green);
@@ -193,6 +196,7 @@ public class ItemHandler {
 		GameRegistry.register(armorLeggins_combined);
 		GameRegistry.register(armorBoots_combined);
 		GameRegistry.register(energyCrystal);
+		GameRegistry.register(energyDust);
 		
 		Utilities.addConsoleText("All items are registered.");
 	}
