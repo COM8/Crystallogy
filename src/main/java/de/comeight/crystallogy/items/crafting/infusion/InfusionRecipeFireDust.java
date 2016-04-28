@@ -12,7 +12,7 @@ public class InfusionRecipeFireDust extends InfusionRecipeSimple {
 	public InfusionRecipeFireDust() {
 		super("fireDust", 230, new ItemStack(Items.blaze_powder),
 				new ItemStack[]{ 	new ItemStack(ItemHandler.crystallDust_red, 1),
-									new ItemStack(ItemHandler.fireDust, 3),},
+									new ItemStack(ItemHandler.crystallDust_red, 3),},
 				new ItemStack(ItemHandler.fireDust));
 	}
 	
