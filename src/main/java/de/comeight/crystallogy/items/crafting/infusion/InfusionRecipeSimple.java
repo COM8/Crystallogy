@@ -65,7 +65,6 @@ public abstract class InfusionRecipeSimple extends InfusionRecipe {
 		}
 		
 		for(int i = 0; i < iSurrounding.length; i++){
-			System.out.println(iSurrounding[i] + id + surrounding[i].stackSize);
 			if(surrounding[i].stackSize != iSurrounding[i]){
 				return false;
 			}
