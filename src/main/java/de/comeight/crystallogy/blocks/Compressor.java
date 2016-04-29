@@ -3,16 +3,19 @@ package de.comeight.crystallogy.blocks;
 import de.comeight.crystallogy.CrystallogyBase;
 import de.comeight.crystallogy.blocks.container.BaseBlockContainer;
 import de.comeight.crystallogy.gui.GuiCompressor;
+import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.tileEntitys.TileEntityCompressor;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
@@ -28,6 +31,7 @@ public class Compressor extends BaseBlockContainer {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	public static final String ID = "compressor";
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
+	public static final PropertyBool ENABLED = PropertyBool.create("enabled");
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public Compressor() {
@@ -36,11 +40,20 @@ public class Compressor extends BaseBlockContainer {
 		this.setHarvestLevel("pickaxe", 2);
 		this.setHardness(30.0F);
 		this.setStepSound(SoundType.STONE);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(ENABLED, false));
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
-
+	public static void setBlockState(boolean enabled, World worldIn, BlockPos pos){
+		TileEntity tE = worldIn.getTileEntity(pos);
+		IBlockState iblockstate = worldIn.getBlockState(pos);
+		worldIn.setBlockState(pos, iblockstate.withProperty(ENABLED, enabled), 3);
+		
+		if(tE != null){
+			tE.validate();
+			worldIn.setTileEntity(pos, tE);
+		}
+	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
@@ -62,7 +75,7 @@ public class Compressor extends BaseBlockContainer {
     {
         this.setDefaultFacing(worldIn, pos, state);
     }
-
+	
     private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state)
     {
         if (!worldIn.isRemote)
@@ -156,7 +169,7 @@ public class Compressor extends BaseBlockContainer {
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {FACING});
+        return new BlockStateContainer(this, new IProperty[] {ENABLED, FACING});
     }
     
 }

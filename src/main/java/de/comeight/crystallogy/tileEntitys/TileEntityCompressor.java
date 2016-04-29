@@ -1,5 +1,6 @@
 package de.comeight.crystallogy.tileEntitys;
 
+import de.comeight.crystallogy.blocks.Compressor;
 import de.comeight.crystallogy.blocks.container.ContainerCompressor;
 import de.comeight.crystallogy.gui.GuiCrystallCrusher;
 import de.comeight.crystallogy.handler.CompressorRecipeHandler;
@@ -78,6 +79,10 @@ public class TileEntityCompressor extends TileEntityInventory implements ITickab
 		return (double)cookTime / (double)totalCookTime;
 	}
 	
+	public void setBlockState(){
+		Compressor.setBlockState(compressing, worldObj, pos);
+	}
+	
 	@Override
 	public void update()
     {
@@ -122,7 +127,8 @@ public class TileEntityCompressor extends TileEntityInventory implements ITickab
         }
 
 		if (flag1) {
-			this.markDirty();
+			markDirty();
+			setBlockState();
 		}
     }
 	
@@ -309,12 +315,16 @@ public class TileEntityCompressor extends TileEntityInventory implements ITickab
 		this.cookTime = compound.getInteger("CookTime");
         this.totalCookTime = compound.getInteger("CookTimeTotal");
         this.compressing = compound.getBoolean("crushing");
+        
+        this.compressing = compound.getBoolean("compressing");
 	}
 	
 	private void writeCookTimeToNBT(NBTTagCompound compound){
 		compound.setInteger("CookTime", this.cookTime);
         compound.setInteger("CookTimeTotal", this.totalCookTime);
         compound.setBoolean("crushing", compressing);
+        
+       compound.setBoolean("compressing", compressing);
 	}
 	
 	@Override

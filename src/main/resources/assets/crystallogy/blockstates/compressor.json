@@ -1,8 +1,12 @@
 {
     "variants": {
-        "facing=north": { "model": "crystallogy:compressor" },
-        "facing=south": { "model": "crystallogy:compressor", "y": 180 },
-        "facing=west":  { "model": "crystallogy:compressor", "y": 270 },
-        "facing=east":  { "model": "crystallogy:compressor", "y": 90 }
+		"enabled=true,facing=north": { "model": "crystallogy:compressor_enabled" },
+		"enabled=true,facing=east":  { "model": "crystallogy:compressor_enabled", "y": 90 },
+		"enabled=true,facing=south": { "model": "crystallogy:compressor_enabled", "y": 180 },
+		"enabled=true,facing=west":  { "model": "crystallogy:compressor_enabled", "y": 270 },
+		"enabled=false,facing=north": { "model": "crystallogy:compressor_disabled" },
+		"enabled=false,facing=east":  { "model": "crystallogy:compressor_disabled", "y": 90 },
+        "enabled=false,facing=south": { "model": "crystallogy:compressor_disabled", "y": 180 },
+        "enabled=false,facing=west":  { "model": "crystallogy:compressor_disabled", "y": 270 }
     }
 }
