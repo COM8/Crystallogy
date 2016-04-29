@@ -7,6 +7,7 @@ import javax.annotation.Nonnull;
 import de.comeight.crystallogy.CrystallogyBase;
 import de.comeight.crystallogy.compat.jei.CrystallogyPlugin;
 import de.comeight.crystallogy.handler.CompressorRecipeHandler;
+import de.comeight.crystallogy.items.crafting.BaseRecipe;
 import de.comeight.crystallogy.items.crafting.RecipeCompressor;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IDrawableAnimated;
@@ -85,8 +86,8 @@ public class CompressorCraftingCategory implements IRecipeCategory {
 	public static ArrayList<CompressorRecipeJEI> getRecipes(){
 		ArrayList<CompressorRecipeJEI> recipes = new ArrayList<CompressorRecipeJEI>();
 		
-		for (RecipeCompressor recipeCompressor : CompressorRecipeHandler.INSTANCE.getRecipes()) {
-			recipes.add(new CompressorRecipeJEI(recipeCompressor));
+		for (BaseRecipe recipeCompressor : CompressorRecipeHandler.INSTANCE.getRecipes()) {
+			recipes.add(new CompressorRecipeJEI((RecipeCompressor)recipeCompressor));
 		}
 		
 		return recipes;

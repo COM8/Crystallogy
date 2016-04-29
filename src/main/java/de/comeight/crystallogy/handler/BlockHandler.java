@@ -1,7 +1,5 @@
 package de.comeight.crystallogy.handler;
 
-import de.comeight.crystallogy.blocks.CrystallCrusher;
-import de.comeight.crystallogy.blocks.Compressor;
 import de.comeight.crystallogy.blocks.CrystalLight;
 import de.comeight.crystallogy.blocks.Crystall_blue;
 import de.comeight.crystallogy.blocks.Crystall_green;
@@ -10,6 +8,8 @@ import de.comeight.crystallogy.blocks.Crystall_yellow;
 import de.comeight.crystallogy.blocks.FireCrystall;
 import de.comeight.crystallogy.blocks.InfuserBlock;
 import de.comeight.crystallogy.blocks.PlayerJar;
+import de.comeight.crystallogy.blocks.machines.Compressor;
+import de.comeight.crystallogy.blocks.machines.CrystallCrusher;
 import de.comeight.crystallogy.itemBlocks.ItemBlockPlayerJar;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.block.Block;

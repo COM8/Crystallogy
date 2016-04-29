@@ -3,7 +3,7 @@ package de.comeight.crystallogy.gui;
 import de.comeight.crystallogy.CrystallogyBase;
 import de.comeight.crystallogy.blocks.container.ContainerCompressor;
 import de.comeight.crystallogy.handler.BlockHandler;
-import de.comeight.crystallogy.tileEntitys.TileEntityCompressor;
+import de.comeight.crystallogy.tileEntitys.machines.TileEntityCompressor;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;

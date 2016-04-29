@@ -1,6 +1,6 @@
 package de.comeight.crystallogy.blocks.container;
 
-import de.comeight.crystallogy.tileEntitys.TileEntityCrystallCrusher;
+import de.comeight.crystallogy.tileEntitys.machines.TileEntityCrystallCrusher;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;

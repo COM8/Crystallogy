@@ -1,9 +1,9 @@
 package de.comeight.crystallogy.gui;
 
 import de.comeight.crystallogy.CrystallogyBase;
-import de.comeight.crystallogy.blocks.CrystallCrusher;
 import de.comeight.crystallogy.blocks.container.ContainerCrystallCrusher;
-import de.comeight.crystallogy.tileEntitys.TileEntityCrystallCrusher;
+import de.comeight.crystallogy.blocks.machines.CrystallCrusher;
+import de.comeight.crystallogy.tileEntitys.machines.TileEntityCrystallCrusher;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;

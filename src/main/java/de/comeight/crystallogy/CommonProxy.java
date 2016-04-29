@@ -42,10 +42,10 @@ import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerTile
 import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerUpdateInventory;
 import de.comeight.crystallogy.tabs.CrystallogyMainTab;
 import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
-import de.comeight.crystallogy.tileEntitys.TileEntityCompressor;
-import de.comeight.crystallogy.tileEntitys.TileEntityCrystallCrusher;
 import de.comeight.crystallogy.tileEntitys.TileEntityCrystallLight;
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
+import de.comeight.crystallogy.tileEntitys.machines.TileEntityCompressor;
+import de.comeight.crystallogy.tileEntitys.machines.TileEntityCrystallCrusher;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;

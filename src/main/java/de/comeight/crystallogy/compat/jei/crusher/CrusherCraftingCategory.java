@@ -8,6 +8,7 @@ import javax.annotation.Nonnull;
 import de.comeight.crystallogy.CrystallogyBase;
 import de.comeight.crystallogy.compat.jei.CrystallogyPlugin;
 import de.comeight.crystallogy.handler.CrystalCrusherRecipeHandler;
+import de.comeight.crystallogy.items.crafting.BaseRecipe;
 import de.comeight.crystallogy.items.crafting.RecipeCrystalCrusher;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IDrawableAnimated;
@@ -87,8 +88,8 @@ public class CrusherCraftingCategory implements IRecipeCategory {
 	public static ArrayList<CrusherRecipeJEI> getRecipes(){
 		ArrayList<CrusherRecipeJEI> recipes = new ArrayList<CrusherRecipeJEI>();
 		
-		for (RecipeCrystalCrusher recipeCrystalCrusher : CrystalCrusherRecipeHandler.INSTANCE.getRecipes()) {
-			recipes.add(new CrusherRecipeJEI(recipeCrystalCrusher));
+		for (BaseRecipe recipeCrystalCrusher : CrystalCrusherRecipeHandler.INSTANCE.getRecipes()) {
+			recipes.add(new CrusherRecipeJEI((RecipeCrystalCrusher)recipeCrystalCrusher));
 		}
 		
 		return recipes;

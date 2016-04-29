@@ -1,11 +1,11 @@
-package de.comeight.crystallogy.blocks;
+package de.comeight.crystallogy.blocks.machines;
 
 import java.util.Random;
 
 import de.comeight.crystallogy.CrystallogyBase;
 import de.comeight.crystallogy.blocks.container.BaseBlockContainer;
 import de.comeight.crystallogy.gui.GuiCrystallCrusher;
-import de.comeight.crystallogy.tileEntitys.TileEntityCrystallCrusher;
+import de.comeight.crystallogy.tileEntitys.machines.TileEntityCrystallCrusher;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -22,17 +22,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class CrystallCrusher extends BaseBlockContainer{
+public class CrystallCrusher extends BaseMachine{
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	public final static String ID = "crystallCrusher";
 
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public CrystallCrusher(){
-		super(Material.iron, ID);
-		
-		this.setHarvestLevel("pickaxe", 2);
-		this.setHardness(30.0F);
-		this.setStepSound(SoundType.STONE);
+		super(ID);
 	}
 
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------

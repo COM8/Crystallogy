@@ -1,7 +1,12 @@
 {
     "variants": {
-        "normal": [
-            { "model": "crystallogy:crystallCrusher" }
-        ]
+		"enabled=true,facing=north": { "model": "crystallogy:crystallCrusher" },
+		"enabled=true,facing=east":  { "model": "crystallogy:crystallCrusher", "y": 90 },
+		"enabled=true,facing=south": { "model": "crystallogy:crystallCrusher", "y": 180 },
+		"enabled=true,facing=west":  { "model": "crystallogy:crystallCrusher", "y": 270 },
+		"enabled=false,facing=north": { "model": "crystallogy:crystallCrusher" },
+		"enabled=false,facing=east":  { "model": "crystallogy:crystallCrusher", "y": 90 },
+        "enabled=false,facing=south": { "model": "crystallogy:crystallCrusher", "y": 180 },
+        "enabled=false,facing=west":  { "model": "crystallogy:crystallCrusher", "y": 270 }
     }
 }
