@@ -3,11 +3,13 @@ package de.comeight.crystallogy.tileEntitys.machines;
 import de.comeight.crystallogy.handler.BaseRecipeHandler;
 import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
 import de.comeight.crystallogy.tileEntitys.TileEntityInventory;
+import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 
-public abstract class BaseTileEntityMachine extends TileEntityInventory implements ITickable {
+public abstract class BaseTileEntityMachine extends TileEntityInventory implements ITickable, ISidedInventory{
 	//-----------------------------------------------Variabeln:---------------------------------------------
     protected int cookTime;
     protected int totalCookTime;
@@ -40,6 +42,9 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
 			return false;
 		}
 		if(inventory[index] != null){
+			if(inventory[index].getItem() == stack.getItem() && inventory[index].stackSize < inventory[index].getMaxStackSize()){
+				return true;
+			}
 			return false;
 		}
 		return true;
@@ -225,6 +230,34 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
 			markDirty();
 			setBlockState();
 		}
+	}
+
+	@Override
+	public int[] getSlotsForFace(EnumFacing side) {
+		int[] ret;
+		if(side == EnumFacing.DOWN){
+			ret = new int[slotsOutput];
+			for(int i = 0; i < slotsOutput; i++){
+				ret[i] = slotsInput + i;
+			}
+		}
+		else{
+			ret = new int[slotsInput];
+			for(int i = 0; i < slotsInput; i++){
+				ret[i] = i;
+			}
+		}
+		return ret;
+	}
+
+	@Override
+	public boolean canInsertItem(int index, ItemStack itemStackIn, EnumFacing direction) {
+		return isItemValidForSlot(index, itemStackIn);
+	}
+
+	@Override
+	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
+		return true;
 	}
 	
 }
