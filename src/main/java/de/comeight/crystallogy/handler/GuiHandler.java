@@ -1,9 +1,12 @@
 package de.comeight.crystallogy.handler;
 
+import de.comeight.crystallogy.blocks.container.ContainerCharger;
 import de.comeight.crystallogy.blocks.container.ContainerCompressor;
 import de.comeight.crystallogy.blocks.container.ContainerCrystallCrusher;
+import de.comeight.crystallogy.gui.GuiCharger;
 import de.comeight.crystallogy.gui.GuiCompressor;
 import de.comeight.crystallogy.gui.GuiCrystallCrusher;
+import de.comeight.crystallogy.tileEntitys.machines.TileEntityCharger;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCompressor;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCrystallCrusher;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,7 +17,7 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 
 public class GuiHandler implements IGuiHandler{
 	//-----------------------------------------------Variabeln:---------------------------------------------
-
+	public static GuiHandler INSTANCE = new GuiHandler();
 
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiHandler() {
@@ -42,6 +45,13 @@ public class GuiHandler implements IGuiHandler{
 			else{
 				return null;
 			}
+		case GuiCharger.ID:  //Charger
+			if(t instanceof TileEntityCharger){
+				return new ContainerCharger(player.inventory, (TileEntityCharger) t);
+			}
+			else{
+				return null;
+			}
 		default:
 			return null;
 		}
@@ -65,6 +75,13 @@ public class GuiHandler implements IGuiHandler{
 			else{
 				return null;
 			}
+		case GuiCharger.ID:  //Charger
+			if(t instanceof TileEntityCharger){
+				return new GuiCharger(player.inventory, (TileEntityCharger) t);
+			}
+			else{
+				return null;
+			}			
 		default:
 			return null;
 		}

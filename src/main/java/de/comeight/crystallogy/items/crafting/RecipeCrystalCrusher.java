@@ -7,7 +7,7 @@ public class RecipeCrystalCrusher extends BaseRecipe{
 
 
 	//-----------------------------------------------Constructor:-------------------------------------------
-    public RecipeCrystalCrusher(ItemStack input, ItemStack output, float experience, int totalCookTime){
+    public RecipeCrystalCrusher(ItemStack input[], ItemStack output[], float experience, int totalCookTime){
     	super(input, output, experience, totalCookTime);
     }
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------

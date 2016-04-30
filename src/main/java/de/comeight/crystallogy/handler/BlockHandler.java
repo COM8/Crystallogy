@@ -8,15 +8,14 @@ import de.comeight.crystallogy.blocks.Crystall_yellow;
 import de.comeight.crystallogy.blocks.FireCrystall;
 import de.comeight.crystallogy.blocks.InfuserBlock;
 import de.comeight.crystallogy.blocks.PlayerJar;
+import de.comeight.crystallogy.blocks.machines.Charger;
 import de.comeight.crystallogy.blocks.machines.Compressor;
 import de.comeight.crystallogy.blocks.machines.CrystallCrusher;
 import de.comeight.crystallogy.itemBlocks.ItemBlockPlayerJar;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
 
 public class BlockHandler {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -31,6 +30,7 @@ public class BlockHandler {
 	public static CrystalLight crystalLight;
 	public static FireCrystall fireCrystall;
 	public static Compressor compressor;
+	public static Charger charger;
 
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public BlockHandler() {
@@ -61,6 +61,7 @@ public class BlockHandler {
 		crystalLight = new CrystalLight();
 		fireCrystall = new FireCrystall();
 		compressor = new Compressor();
+		charger = new Charger();
 		
 		registerBlock(crystall_blue, crystall_blue.ID);
 		registerBlock(crystall_green, crystall_green.ID);
@@ -72,6 +73,7 @@ public class BlockHandler {
 		registerBlock(crystalLight, crystalLight.ID);
 		registerBlock(fireCrystall, fireCrystall.ID);
 		registerBlock(compressor, compressor.ID);
+		registerBlock(charger, charger.ID);
 		
 		Utilities.addConsoleText("All blocks are registered.");
 	}

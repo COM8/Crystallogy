@@ -1,0 +1,8 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "crystallogy:blocks/compressor_top",
+        "front": "crystallogy:blocks/charger_front_disabled",
+        "side": "crystallogy:blocks/compressor_side"
+    }
+}

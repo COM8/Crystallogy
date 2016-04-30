@@ -10,6 +10,7 @@ block.playerJar.name=Spielerglas
 block.crystalLight.name=Kristalllicht
 block.fireCrystall.name=§cFeuerkristall§r
 block.compressor.name=Kompressor
+block.charger.name= Kristallladestation
 
 tile.crystall_red.name=§4Roter§r Kristall
 tile.crystall_blue.name=§9Blauer§r Kristall
@@ -21,6 +22,7 @@ tile.playerJar.name=Spielerglas
 tile.crystalLight.name=Kristalllicht
 tile.fireCrystall.name=§cFeuerkristall§r
 tile.compressor.name=Kompressor
+tile.charger.name= Kristallladestation
 
 item.crystallDust_red.name=§4Roter§r Kristallstaub
 item.crystallDust_blue.name=§9Blauer§r Kristallstaub
@@ -81,5 +83,6 @@ item.armor_combined_feet.name=Des Jägers Traum Kristallstiefel
 item.energyCrystal.name=§5Energiekristal§r
 item.compressor.name=Kompressor
 item.energyDust.name=Energiestaub
+item.charger.name= Kristallladestation
 
 itemGroup.crystallogyMainTab=Crystallogy Hauptfenster

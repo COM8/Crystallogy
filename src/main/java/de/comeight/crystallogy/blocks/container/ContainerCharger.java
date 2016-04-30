@@ -1,25 +1,26 @@
 package de.comeight.crystallogy.blocks.container;
 
-import de.comeight.crystallogy.tileEntitys.machines.TileEntityCrystallCrusher;
+import de.comeight.crystallogy.tileEntitys.machines.TileEntityCharger;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotFurnaceOutput;
 import net.minecraft.item.ItemStack;
 
-public class ContainerCrystallCrusher extends BaseContainer{
+public class ContainerCharger extends BaseContainer{
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	private int inputSlot = 0;
-	private int outputSlot = 1;
+	private int inputSlot0 = 0;
+	private int inputSlot1 = 1;
+	private int outputSlot = 2;
 	
-	private TileEntityCrystallCrusher tileEntity;
+	private TileEntityCharger tileEntity;
 
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public ContainerCrystallCrusher(InventoryPlayer playerInventory, TileEntityCrystallCrusher tileEntity) {
+	public ContainerCharger(InventoryPlayer playerInventory, TileEntityCharger tileEntity) {
 		super(playerInventory);
 		
 		this.tileEntity = tileEntity;
-		addCrystallCrusherSlots(playerInventory);
+		addCompressorSlots(playerInventory);
 	}
 
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -31,8 +32,9 @@ public class ContainerCrystallCrusher extends BaseContainer{
 		return tileEntity.isUseableByPlayer(playerIn);
 	}
 	
-	private void addCrystallCrusherSlots(InventoryPlayer playerInventory){
-        this.addSlotToContainer(new Slot(tileEntity, inputSlot, 56, 35));
+	private void addCompressorSlots(InventoryPlayer playerInventory){
+		this.addSlotToContainer(new Slot(tileEntity, inputSlot0, 56, 24));
+		this.addSlotToContainer(new Slot(tileEntity, inputSlot1, 56, 45));
         this.addSlotToContainer(new SlotFurnaceOutput(playerInventory.player, tileEntity, outputSlot, 116, 35));
 	}
 
@@ -48,7 +50,7 @@ public class ContainerCrystallCrusher extends BaseContainer{
 
                 //merges the item into player inventory since its in the tileEntity
                 if (index < tileEntity.getSizeInventory()) {
-                        if (!this.mergeItemStack(stackInSlot, tileEntity.getSizeInventory(), 36+tileEntity.getSizeInventory(), true)) {
+                        if (!this.mergeItemStack(stackInSlot, tileEntity.getSizeInventory(), 36 + tileEntity.getSizeInventory(), true)) {
                                 return null;
                         }
                 }

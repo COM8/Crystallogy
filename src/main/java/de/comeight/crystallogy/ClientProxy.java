@@ -63,6 +63,7 @@ public class ClientProxy extends CommonProxy{
     	CommonProxy.NETWORKWRAPPER.registerMessage(MessageHandlerOnClientUpdateInventory.class, NetworkPacketUpdateInventory.class, NetworkPacketUpdateInventory.ID_CLIENT, Side.CLIENT);
     	CommonProxy.NETWORKWRAPPER.registerMessage(MessageHandlerOnClientParticle.class, NetworkPacketParticle.class, NetworkPacketParticle.ID_CLIENT, Side.CLIENT);
     	CommonProxy.NETWORKWRAPPER.registerMessage(MessageHandlerOnClientTileEntitySync.class, NetworkPacketTileEntitySync.class, NetworkPacketTileEntitySync.ID_CLIENT, Side.CLIENT);
+    	
     	Utilities.addConsoleText("Clientside: MessageHandlerOnClient registriert.");
 	}
 }

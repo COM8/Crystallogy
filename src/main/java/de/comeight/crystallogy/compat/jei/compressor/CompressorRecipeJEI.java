@@ -16,8 +16,15 @@ public class CompressorRecipeJEI extends BlankRecipeWrapper {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public CompressorRecipeJEI(RecipeCompressor recipe) {
-		this.inputs.add(recipe.input);
-		this.outputs.add(recipe.output);
+		ItemStack[] inputsIS = recipe.input;
+		ItemStack[] outputsIS = recipe.getOutput(inputsIS);
+		
+		for(int i = 0; i < inputsIS.length; i++){
+			this.inputs.add(inputsIS[i]);
+		}
+		for(int i = 0; i < outputsIS.length; i++){
+			this.outputs.add(outputsIS[i]);
+		}
 		this.totalCookTime = recipe.totalCookTime;
 	}
 	

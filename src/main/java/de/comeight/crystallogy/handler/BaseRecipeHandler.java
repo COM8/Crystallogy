@@ -18,79 +18,104 @@ public abstract class BaseRecipeHandler {
 		return craftingList;
 	}
 	
-	public int getNumberOfInputItems(ItemStack  input){
-		if(input == null){
-			return -1;
-		}
-		for (BaseRecipe baseRecipe : craftingList) {
-			if(baseRecipe.input.getItem() == input.getItem() && baseRecipe.input.stackSize <= input.stackSize){
-				return baseRecipe.input.stackSize;
-			}
-		}
-		return -1;
-	}
-	
-	public ItemStack getResult(ItemStack  input){
+	public int[] getNumberOfInputItems(ItemStack  input[]){
 		if(input == null){
 			return null;
 		}
-		for (BaseRecipe baseRecipe : craftingList) {
-			if(baseRecipe.input.getItem() == input.getItem() && baseRecipe.input.stackSize <= input.stackSize){
-				return baseRecipe.output;
-			}
+		
+		BaseRecipe recipe = findRecipe(input);
+		if(recipe == null){
+			return null;
+		}
+		int[] ret = new int[recipe.input.length];
+		for(int i = 0; i < recipe.input.length; i++){
+			ret[i] = recipe.input[i].stackSize;
+		}
+		
+		return ret;
+	}
+	
+	public ItemStack[] getResults(ItemStack  input[]){
+		if(input == null){
+			return null;
+		}
+		BaseRecipe recipe = findRecipe(input);
+		if(recipe != null){
+			return recipe.getOutput(input);
 		}
 		return null;
 	}
 	
-	public float getExperience(ItemStack  input){
+	public float getExperience(ItemStack  input[]){
 		if(input == null){
 			return 0.0F;
 		}
-		for (BaseRecipe baseRecipe : craftingList) {
-			if(baseRecipe.input.getItem() == input.getItem()){
-				return baseRecipe.experience;
-			}
+		BaseRecipe recipe = findRecipe(input);
+		if(recipe != null){
+			return recipe.experience;
 		}
 		return 0.0F;
 	}
 	
-	public int getTotalCookTime(ItemStack  input){
+	public int getTotalCookTime(ItemStack  input[]){
 		if(input == null){
 			return 0;
 		}
-		for (BaseRecipe baseRecipe : craftingList) {
-			if(baseRecipe.input.getItem() == input.getItem()){
-				return baseRecipe.totalCookTime;
-			}
+		BaseRecipe recipe = findRecipe(input);
+		if(recipe != null){
+			return recipe.totalCookTime;
 		}
 		return 0;
 	}
 	
-	public ArrayList<ItemStack> getInputs(){
-		ArrayList<ItemStack> inputs = new ArrayList<ItemStack>();
+	public ArrayList<ArrayList<ItemStack>> getInputs(){
+		ArrayList<ArrayList<ItemStack>> inputs = new ArrayList<ArrayList<ItemStack>>();
+		int e = 0;
 		for (BaseRecipe baseRecipe : craftingList) {
-			inputs.add(baseRecipe.input);
+			inputs.add(new ArrayList<ItemStack>());
+			for(int i = 0; i< baseRecipe.input.length; i++){
+				inputs.get(e).add(baseRecipe.input[i]);
+			}
+			e++;
 		}
 		return inputs;
 	}
 	
-	public ArrayList<ItemStack> getOutputs(){
-		ArrayList<ItemStack> outputs = new ArrayList<ItemStack>();
+	public ArrayList<ArrayList<ItemStack>> getOutputs(){
+		ArrayList<ArrayList<ItemStack>> outputs = new ArrayList<ArrayList<ItemStack>>();
+		int e = 0;
 		for (BaseRecipe baseRecipe : craftingList) {
-			outputs.add(baseRecipe.input);
+			outputs.add(new ArrayList<ItemStack>());
+			for(int i = 0; i< baseRecipe.getOutput(baseRecipe.input).length; i++){
+				outputs.get(e).add(baseRecipe.getOutput(baseRecipe.input)[i]);
+			}
+			e++;
 		}
 		return outputs;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
-	public boolean match(ItemStack  input){
+	public BaseRecipe findRecipe(ItemStack input[]){
+		for (BaseRecipe baseRecipe : craftingList) {
+			boolean wrong = false;
+			for(int i = 0; i < baseRecipe.input.length; i++){
+				if(input[i] == null || baseRecipe.input[i].getItem() != input[i].getItem() || baseRecipe.input[i].stackSize > input[i].stackSize){
+					wrong = true;
+				}
+			}
+			if(!wrong){
+				return baseRecipe;
+			}
+		}
+		return null;
+	}
+	
+	public boolean match(ItemStack  input[]){
 		if(input == null){
 			return false;
 		}
-		for (BaseRecipe baseRecipe : craftingList) {
-			if(baseRecipe.input.getItem() == input.getItem()){
-				return true;
-			}
+		if(findRecipe(input) != null){
+			return true;
 		}
 		return false;
 	}

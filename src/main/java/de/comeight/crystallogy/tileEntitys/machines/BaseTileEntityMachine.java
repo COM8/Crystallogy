@@ -14,12 +14,17 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
     public boolean crafting;
     
     protected BaseRecipeHandler recipeHandler;
+    
+    protected int slotsInput;
+    protected int slotsOutput;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public BaseTileEntityMachine(BaseRecipeHandler recipeHandler) {
-		super(2);
+	public BaseTileEntityMachine(BaseRecipeHandler recipeHandler, int slotsInput, int slotsOutput) {
+		super(slotsInput + slotsOutput);
 		
 		this.recipeHandler = recipeHandler;
+		this.slotsInput = slotsInput;
+		this.slotsOutput = slotsOutput;
 		crafting = false;
 	}
 
@@ -31,7 +36,7 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
 	
 	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
-		if(index != 0){
+		if(index > slotsInput){
 			return false;
 		}
 		if(inventory[index] != null){
@@ -40,12 +45,28 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
 		return true;
 	}
 	
-	public int getCookTime(ItemStack stack)
+	public int getCookTime(ItemStack stack[])
     {
         return recipeHandler.getTotalCookTime(stack);
     }
 	
 	public abstract void setBlockState();
+	
+	public ItemStack[] getInputSlots(){
+		ItemStack[] ret = new ItemStack[slotsInput];
+		for (int i = 0; i < slotsInput; i++) {
+			ret[i] = getStackInSlot(i);
+		}
+		return ret;
+	}
+	
+	public ItemStack[] getOutputSlots(){
+		ItemStack[] ret = new ItemStack[slotsOutput];
+		for (int i = 0; i < slotsOutput; i++) {
+			ret[i] = getStackInSlot(slotsInput + i);
+		}
+		return ret;
+	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	public double fractionOfCookTimeComplete()
@@ -55,24 +76,39 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
 	
     protected boolean canCraft()
     {
-    	ItemStack output = recipeHandler.getResult(inventory[0]);
+    	ItemStack output[] = recipeHandler.getResults(getInputSlots());
         if (output == null){
         	return false;
         }
-        if (inventory[1] == null){
+        boolean flag1 = true;
+        for (int i = 0; i < slotsOutput; i++) {
+			if(inventory[slotsInput + i] != null){
+				flag1 = false;
+				if(inventory[slotsInput + i].stackSize >= inventory[slotsInput + i].getMaxStackSize()){
+		        	return false;
+		        }
+			}
+		}
+        if(flag1){
         	return true;
         }
-        if(inventory[1].stackSize >= inventory[1].getMaxStackSize()){
-        	return false;
-        }
-        if(inventory[1].getItem() != output.getItem()){
-    		return false;
-    	}
         
-        int result = inventory[1].stackSize + output.stackSize;
-        if(result >= getInventoryStackLimit() && result >= this.inventory[1].getMaxStackSize()){
-        	return false;
+        for (int i = 0; i < slotsOutput; i++) {
+        	if(inventory[slotsInput + i].getItem() != output[i].getItem()){
+        		return false;
+        	}
         }
+        
+        int[] resultStackSize = new int[slotsOutput];
+        for (int i = 0; i < slotsOutput; i++) {
+        	resultStackSize[i] = inventory[slotsInput + i].stackSize + output[i].stackSize;
+        }
+        for (int i = 0; i < slotsOutput; i++) {
+        	if(resultStackSize[i] > getInventoryStackLimit() || resultStackSize[i] > inventory[slotsInput + i].getMaxStackSize()){
+        		return false;
+        	}
+        }
+        
         return true;
     }
 
@@ -80,22 +116,25 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
     {
         if (canCraft())
         {
-            ItemStack itemstack = recipeHandler.getResult(inventory[0]);
+            ItemStack[] res = recipeHandler.getResults(getInputSlots());
 
-            if (inventory[1] == null)
-            {
-                inventory[1] = itemstack.copy();
+            for (int i = 0; i < slotsOutput; i++) {
+            	if(inventory[slotsInput + i] == null){
+            		inventory[slotsInput + i] = res[i].copy();
+            	}
+            	else if(inventory[slotsInput + i].getItem() == res[i].getItem()){
+            		inventory[slotsInput + i].stackSize += res[i].stackSize;
+            	}
             }
-            else if (inventory[1].getItem() == itemstack.getItem())
-            {
-                inventory[1].stackSize += itemstack.stackSize;
-            }
 
-            inventory[0].stackSize -= recipeHandler.getNumberOfInputItems(inventory[0]);
-
-            if (inventory[0].stackSize <= 0)
-            {
-                inventory[0] = null;
+            int[] numOfInputs = recipeHandler.getNumberOfInputItems(getInputSlots());
+            for (int i = 0; i < slotsInput; i++) {
+            	if(inventory[i] != null && numOfInputs != null){
+            		inventory[i].stackSize -= numOfInputs[i];
+                	if(inventory[i].stackSize <= 0){
+                		inventory[i] = null;
+                	}
+            	}
             }
         }
     }
@@ -176,7 +215,7 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
     				flag1 = true;
     				crafting = true;
     				cookTime = 1;
-    				totalCookTime = getCookTime(this.inventory[0]);
+    				totalCookTime = getCookTime(getInputSlots());
     				sync();
     			}
     		}

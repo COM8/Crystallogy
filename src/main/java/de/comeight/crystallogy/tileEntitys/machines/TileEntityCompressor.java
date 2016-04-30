@@ -9,7 +9,7 @@ public class TileEntityCompressor extends BaseTileEntityMachine {
     
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public TileEntityCompressor() {
-		super(CompressorRecipeHandler.INSTANCE);
+		super(CompressorRecipeHandler.INSTANCE, 1, 1);
 	}
 
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------

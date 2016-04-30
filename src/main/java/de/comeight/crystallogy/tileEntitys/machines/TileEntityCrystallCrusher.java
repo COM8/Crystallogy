@@ -9,7 +9,7 @@ public class TileEntityCrystallCrusher extends BaseTileEntityMachine {
     
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public TileEntityCrystallCrusher() {
-		super(CrystalCrusherRecipeHandler.INSTANCE);
+		super(CrystalCrusherRecipeHandler.INSTANCE, 1, 1);
 	}
 
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------

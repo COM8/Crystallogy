@@ -3,7 +3,6 @@ package de.comeight.crystallogy.compat.jei.crusher;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.comeight.crystallogy.handler.CrystalCrusherRecipeHandler;
 import de.comeight.crystallogy.items.crafting.RecipeCrystalCrusher;
 import mezz.jei.api.recipe.BlankRecipeWrapper;
 import net.minecraft.client.Minecraft;
@@ -17,8 +16,15 @@ public class CrusherRecipeJEI extends BlankRecipeWrapper {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public CrusherRecipeJEI(RecipeCrystalCrusher recipe) {
-		this.inputs.add(recipe.input);
-		this.outputs.add(recipe.output);
+		ItemStack[] inputsIS = recipe.input;
+		ItemStack[] outputsIS = recipe.getOutput(inputsIS);
+		
+		for(int i = 0; i < inputsIS.length; i++){
+			this.inputs.add(inputsIS[i]);
+		}
+		for(int i = 0; i < outputsIS.length; i++){
+			this.outputs.add(outputsIS[i]);
+		}
 		this.totalCookTime = recipe.totalCookTime;
 	}
 	

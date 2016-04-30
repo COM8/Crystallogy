@@ -1,6 +1,7 @@
 package de.comeight.crystallogy;
 
 import de.comeight.crystallogy.blocks.EnumCrystalColor;
+import de.comeight.crystallogy.gui.GuiCharger;
 import de.comeight.crystallogy.gui.GuiCompressor;
 import de.comeight.crystallogy.gui.GuiCrystallCrusher;
 import de.comeight.crystallogy.handler.BlockHandler;
@@ -44,6 +45,7 @@ import de.comeight.crystallogy.tabs.CrystallogyMainTab;
 import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
 import de.comeight.crystallogy.tileEntitys.TileEntityCrystallLight;
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
+import de.comeight.crystallogy.tileEntitys.machines.TileEntityCharger;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCompressor;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCrystallCrusher;
 import de.comeight.crystallogy.util.Utilities;
@@ -111,13 +113,16 @@ public class CommonProxy {
 		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerUpdateInventory.class, NetworkPacketUpdateInventory.class, NetworkPacketUpdateInventory.ID_SERVER, Side.SERVER);
 		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerParticle.class, NetworkPacketParticle.class, NetworkPacketParticle.ID_SERVER, Side.SERVER);
 		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerTileEntitySync.class, NetworkPacketTileEntitySync.class, NetworkPacketTileEntitySync.ID_SERVER, Side.SERVER);
+		
 		Utilities.addConsoleText("Serverside: MessageHandlerOnServer registered.");
 	}
 	
 	private void registerGuiHandlers() {
 		NetworkRegistry.INSTANCE.registerGuiHandler(CrystallogyBase.INSTANCE, GuiHandlerRegistry.getInstance());
-		GuiHandlerRegistry.getInstance().registerGuiHandler(new GuiHandler(), GuiCrystallCrusher.ID);
-		GuiHandlerRegistry.getInstance().registerGuiHandler(new GuiHandler(), GuiCompressor.ID);
+		GuiHandlerRegistry.getInstance().registerGuiHandler(GuiHandler.INSTANCE, GuiCrystallCrusher.ID);
+		GuiHandlerRegistry.getInstance().registerGuiHandler(GuiHandler.INSTANCE, GuiCompressor.ID);
+		GuiHandlerRegistry.getInstance().registerGuiHandler(GuiHandler.INSTANCE, GuiCharger.ID);
+		
 		Utilities.addConsoleText("All guis are registered.");
 	}
 	
@@ -126,6 +131,7 @@ public class CommonProxy {
 		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_blue, 7, 5, 48, 64), 0);
 		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_yellow, 5, 4, 16, 48), 0);
 		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_red, 5, 3, 0, 16), 0);
+		
 		Utilities.addConsoleText("All worldgens are registered.");
 	}
 
@@ -135,6 +141,8 @@ public class CommonProxy {
 		GameRegistry.registerTileEntity(TileEntityPlayerJar.class, BlockHandler.playerJar.ID);
 		GameRegistry.registerTileEntity(TileEntityCrystallLight.class, BlockHandler.crystalLight.ID);
 		GameRegistry.registerTileEntity(TileEntityCompressor.class, BlockHandler.compressor.ID);
+		GameRegistry.registerTileEntity(TileEntityCharger.class, BlockHandler.charger.ID);
+		
 		Utilities.addConsoleText("All tileEntitys are registered.");
 		
 	}

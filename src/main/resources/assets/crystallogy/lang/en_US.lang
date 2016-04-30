@@ -10,6 +10,7 @@ block.playerJar.name=Player Jar
 block.crystalLight.name=Crystal Light
 block.fireCrystall.name=§cFire§r Crystal
 block.compressor.name=Compressor
+block.charger.name= Crystal Charger
 
 tile.crystall_red.name=§4Red§r Crystal
 tile.crystall_blue.name=§9Blue§r Crystal
@@ -21,6 +22,7 @@ tile.playerJar.name=Player Jar
 tile.crystalLight.name=Crystal Light
 tile.fireCrystall.name=§cFire§r Crystal
 tile.compressor.name=Compressor
+tile.charger.name= Crystal Charger
 
 item.crystallDust_red.name=§4Red§r Crystal Dust
 item.crystallDust_blue.name=§9Blue§r Crystal Dust
@@ -81,5 +83,6 @@ item.armor_combined_feet.name=The hunter's dream Crystal Boots
 item.energyCrystal.name=§5Energy Crystal§r
 item.compressor.name=Compressor
 item.energyDust.name=Energy Dust
+item.charger.name= Crystal Charger
 
 itemGroup.crystallogyMainTab=Crystallogy Maintab

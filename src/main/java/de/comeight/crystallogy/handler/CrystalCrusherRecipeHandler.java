@@ -9,10 +9,10 @@ public class CrystalCrusherRecipeHandler extends BaseRecipeHandler{
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public CrystalCrusherRecipeHandler() {
-		addRecipe(new RecipeCrystalCrusher(new ItemStack(BlockHandler.crystall_blue), new ItemStack(ItemHandler.crystallDust_blue), 1.0F, 200));
-		addRecipe(new RecipeCrystalCrusher(new ItemStack(BlockHandler.crystall_green), new ItemStack(ItemHandler.crystallDust_green), 1.0F, 200));
-		addRecipe(new RecipeCrystalCrusher(new ItemStack(BlockHandler.crystall_red), new ItemStack(ItemHandler.crystallDust_red), 1.0F, 200));
-		addRecipe(new RecipeCrystalCrusher(new ItemStack(BlockHandler.crystall_yellow), new ItemStack(ItemHandler.crystallDust_yellow), 1.0F, 200));
+		addRecipe(new RecipeCrystalCrusher(new ItemStack[]{ new ItemStack(BlockHandler.crystall_blue)}, new ItemStack[]{ new ItemStack(ItemHandler.crystallDust_blue)}, 1.0F, 200));
+		addRecipe(new RecipeCrystalCrusher(new ItemStack[]{ new ItemStack(BlockHandler.crystall_green)}, new ItemStack[]{ new ItemStack(ItemHandler.crystallDust_green)}, 1.0F, 200));
+		addRecipe(new RecipeCrystalCrusher(new ItemStack[]{ new ItemStack(BlockHandler.crystall_red)}, new ItemStack[]{ new ItemStack(ItemHandler.crystallDust_red)}, 1.0F, 200));
+		addRecipe(new RecipeCrystalCrusher(new ItemStack[]{ new ItemStack(BlockHandler.crystall_yellow)}, new ItemStack[]{ new ItemStack(ItemHandler.crystallDust_yellow)}, 1.0F, 200));
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------

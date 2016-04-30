@@ -3,25 +3,23 @@ package de.comeight.crystallogy.blocks.container;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCompressor;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotFurnaceOutput;
 import net.minecraft.item.ItemStack;
 
-public class ContainerCompressor extends Container{
+public class ContainerCompressor extends BaseContainer{
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	private int inputSlot = 36;
-	private int outputSlot = 37;
+	private int inputSlot = 0;
+	private int outputSlot = 1;
 	
-	private int[] cachedFields;
 	private TileEntityCompressor tileEntity;
 
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public ContainerCompressor(InventoryPlayer playerInventory, TileEntityCompressor tileEntity) {
+		super(playerInventory);
+		
 		this.tileEntity = tileEntity;
-		addCrystallCrusherSlots(playerInventory);
-		addSlostPlayerInventorry(playerInventory);
-		addSlotsPlayerHotbar(playerInventory);
+		addCompressorSlots(playerInventory);
 	}
 
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -33,26 +31,9 @@ public class ContainerCompressor extends Container{
 		return tileEntity.isUseableByPlayer(playerIn);
 	}
 	
-	private void addSlostPlayerInventorry(InventoryPlayer playerInventory){
-		for (int i = 0; i < 3; ++i)
-        {
-            for (int j = 0; j < 9; ++j)
-            {
-                this.addSlotToContainer(new Slot(playerInventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
-            }
-        }
-	}
-	
-	private void addSlotsPlayerHotbar(InventoryPlayer playerInventory){
-		for (int k = 0; k < 9; ++k)
-        {
-            this.addSlotToContainer(new Slot(playerInventory, k, 8 + k * 18, 142));
-        }
-	}
-	
-	private void addCrystallCrusherSlots(InventoryPlayer playerInventory){
-        this.addSlotToContainer(new Slot(tileEntity, 0, 56, 35));
-        this.addSlotToContainer(new SlotFurnaceOutput(playerInventory.player, tileEntity, 1, 116, 35));
+	private void addCompressorSlots(InventoryPlayer playerInventory){
+        this.addSlotToContainer(new Slot(tileEntity, inputSlot, 56, 35));
+        this.addSlotToContainer(new SlotFurnaceOutput(playerInventory.player, tileEntity, outputSlot, 116, 35));
 	}
 
 	@Override
