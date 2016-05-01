@@ -63,7 +63,7 @@ public class CrystallKnife extends BaseItemSword{
 		return hasPlayer(stack);
     }
 	
-	private boolean hasPlayer(ItemStack stack){
+	public boolean hasPlayer(ItemStack stack){
 		NBTTagCompound c = stack.getTagCompound();
 		if(c == null||c.getString("name") == null||c.getString("name").equals("-")||c.getString("name").equals("")){
 			return false;
@@ -78,6 +78,16 @@ public class CrystallKnife extends BaseItemSword{
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		if(playerIn.isSneaking()){
 			itemStackIn = removePlayer(itemStackIn, worldIn, playerIn.getPositionVector(), true);
+		}
+		else{
+			if(!hasPlayer(itemStackIn)){
+				if(playerIn.capabilities.isCreativeMode){
+					saveNBT(itemStackIn, playerIn);
+				}
+				else{
+					playerIn.attackTargetEntityWithCurrentItem(playerIn);
+				}
+			}
 		}
 		return super.onItemRightClick(itemStackIn, worldIn, playerIn, hand);
 	}
@@ -145,7 +155,7 @@ public class CrystallKnife extends BaseItemSword{
 		super.addInformation(stack, playerIn, tooltip, advanced);
 	}
 	
-	private ItemStack saveNBT(ItemStack stack, EntityPlayer player){
+	public ItemStack saveNBT(ItemStack stack, EntityPlayer player){
 		stack = saveNBT(stack);
 		NBTTagCompound nbtTagCompound = stack.getTagCompound();
 		
