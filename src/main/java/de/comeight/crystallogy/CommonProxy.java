@@ -317,6 +317,16 @@ public class CommonProxy {
 		}, new ItemStack(BlockHandler.compressor));
 		GameRegistry.addRecipe(compressor);
 		
+		ItemStack cauldron = new ItemStack(Blocks.cauldron);
+		ItemStack brick_block = new ItemStack(Blocks.brick_block);
+		ItemStack ironIngot = new ItemStack(Items.iron_ingot);
+		IRecipe crusher = new ShapedRecipes(3, 3, new ItemStack[]{
+				brick_block,brick_block,brick_block,
+				ironIngot,null,ironIngot,
+				ironIngot,cauldron,ironIngot,
+		}, new ItemStack(BlockHandler.compressor));
+		GameRegistry.addRecipe(crusher);
+		
 		Utilities.addConsoleText("All recipes are registered.");
 	}
 	
