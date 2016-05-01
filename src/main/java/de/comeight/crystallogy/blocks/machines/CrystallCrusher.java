@@ -1,18 +1,13 @@
 package de.comeight.crystallogy.blocks.machines;
 
-import java.util.Random;
-
 import de.comeight.crystallogy.CrystallogyBase;
-import de.comeight.crystallogy.blocks.container.BaseBlockContainer;
 import de.comeight.crystallogy.gui.GuiCrystallCrusher;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCrystallCrusher;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumBlockRenderType;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -32,9 +27,12 @@ public class CrystallCrusher extends BaseMachine{
 	}
 
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
-
-
-	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@SideOnly(Side.CLIENT)
+	@Override
+	public BlockRenderLayer getBlockLayer() {
+		return BlockRenderLayer.CUTOUT;
+	}
+	
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return new AxisAlignedBB(0.0, 0.0, 0.0, 1.0, 0.75, 1.0);
@@ -58,7 +56,8 @@ public class CrystallCrusher extends BaseMachine{
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
-	
+
+	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!worldIn.isRemote)
