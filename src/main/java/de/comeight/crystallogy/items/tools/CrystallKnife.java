@@ -6,6 +6,7 @@ import java.util.UUID;
 import com.mojang.authlib.GameProfile;
 
 import de.comeight.crystallogy.CommonProxy;
+import de.comeight.crystallogy.blocks.materials.CustomToolMaterials;
 import de.comeight.crystallogy.entity.PlayerClientDummy;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkParticle;
@@ -29,7 +30,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -37,13 +37,11 @@ public class CrystallKnife extends BaseItemSword{
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	public static final String ID = "crystallKnife";
 	
-	public static final ToolMaterial CRYSTALLKNIF = EnumHelper.addToolMaterial("CRYSTALLKNIF", 2, 10, 6.0F, 1.0F, 17);
-	
 	private float attackDamage;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public CrystallKnife() {
-		super(CRYSTALLKNIF, ID);
+		super(CustomToolMaterials.CRYSTALLKNIF, ID);
 		this.canRepair = true;
 		
 		this.setMaxStackSize(1);
