@@ -161,7 +161,7 @@ public class Vaporizer extends BaseItem {
 		NBTTagCompound nbtTagCompound = stack.getTagCompound();
 		if(nbtTagCompound == null){
 			stack = saveNBT(stack);
-			tooltip.add("§4THIS IS A BUG!!§r");
+			tooltip.add(TextFormatting.DARK_RED + "THIS IS A BUG!!" + TextFormatting.RESET);
 			tooltip.add("Delete the item!");
 			tooltip.add("Type: -");
 			tooltip.add("Color: R= -, G= -, B= -");
@@ -180,7 +180,7 @@ public class Vaporizer extends BaseItem {
 			if(GuiScreen.isShiftKeyDown()){
 				tooltip.add("");
 				tooltip.add("Type: " + nbtTagCompound.getString("particleType"));
-				tooltip.add("Color: §4R§7=" + 255 * nbtTagCompound.getFloat("r") + ", §2G§7=" + 255 * nbtTagCompound.getFloat("g") + ", §9B§7=" + 255 * nbtTagCompound.getFloat("b"));
+				tooltip.add("Color: " + TextFormatting.DARK_RED + "R" + TextFormatting.GRAY + "=" + 255 * nbtTagCompound.getFloat("r") + ", " + TextFormatting.DARK_GREEN + "G" + TextFormatting.GRAY + "=" + 255 * nbtTagCompound.getFloat("g") + ", " + TextFormatting.DARK_BLUE + "B" + TextFormatting.RESET + "=" + 255 * nbtTagCompound.getFloat("b"));
 				tooltip.add("Max particle age: " + nbtTagCompound.getInteger("maxTime"));
 				tooltip.add("Size: X= +-" + nbtTagCompound.getDouble("sizeX") + ", Y= +" + nbtTagCompound.getDouble("sizeY") + ", Z= +-" + nbtTagCompound.getDouble("sizeZ"));
 				tooltip.add("Number of particles: " + nbtTagCompound.getInteger("numberOfParticle"));

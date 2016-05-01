@@ -133,8 +133,8 @@ public class CrystallKnife extends BaseItemSword{
 		NBTTagCompound nbtTagCompound = stack.getTagCompound();
 		if(nbtTagCompound == null){
 			stack = saveNBT(stack);
-			tooltip.add("§6Name:§r -");
-			tooltip.add("§6UUID:§r -");
+			tooltip.add(TextFormatting.GOLD + "Name:" + TextFormatting.RESET + " -");
+			tooltip.add(TextFormatting.GOLD + "UUID:" + TextFormatting.RESET + " -");
 		}
 		else{
 			if(hasPlayer(stack)){
@@ -145,8 +145,8 @@ public class CrystallKnife extends BaseItemSword{
 			}
 			if(GuiScreen.isShiftKeyDown()){
 				tooltip.add("");
-				tooltip.add("§6Name:§r " + nbtTagCompound.getString("name"));
-				tooltip.add("§6UUID:§r " + nbtTagCompound.getString("uuid"));
+				tooltip.add(TextFormatting.GOLD + "Name: " + TextFormatting.RESET + nbtTagCompound.getString("name"));
+				tooltip.add(TextFormatting.GOLD + "UUID: " + TextFormatting.RESET + nbtTagCompound.getString("uuid"));
 			}
 			else{
 				ToolTipBuilder.addShiftForMoreDetails(tooltip);
