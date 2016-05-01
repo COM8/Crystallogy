@@ -172,10 +172,10 @@ public class Vaporizer extends BaseItem {
 		}
 		else{
 			if(nbtTagCompound.getBoolean("activated")){
-				tooltip.add("Activated: §2true§r");
+				tooltip.add("Activated: " + TextFormatting.DARK_GREEN + "true" + TextFormatting.RESET);
 			}
 			else{
-				tooltip.add("Activated: §4false§r");
+				tooltip.add("Activated: "+ TextFormatting.DARK_RED + "false" + TextFormatting.RESET);
 			}
 			if(GuiScreen.isShiftKeyDown()){
 				tooltip.add("");
