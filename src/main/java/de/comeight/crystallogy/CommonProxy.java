@@ -324,7 +324,7 @@ public class CommonProxy {
 				brick_block,brick_block,brick_block,
 				ironIngot,null,ironIngot,
 				ironIngot,cauldron,ironIngot,
-		}, new ItemStack(BlockHandler.compressor));
+		}, new ItemStack(BlockHandler.crystallCrusher));
 		GameRegistry.addRecipe(crusher);
 		
 		Utilities.addConsoleText("All recipes are registered.");
