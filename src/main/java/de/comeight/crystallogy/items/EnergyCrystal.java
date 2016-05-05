@@ -3,11 +3,14 @@ package de.comeight.crystallogy.items;
 import java.util.List;
 
 import de.comeight.crystallogy.util.ToolTipBuilder;
-import javafx.util.converter.PercentageStringConverter;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EnergyCrystal extends BaseItem {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -21,7 +24,12 @@ public class EnergyCrystal extends BaseItem {
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
-
+	@SideOnly(Side.CLIENT)
+    public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems)
+    {
+		subItems.add(new ItemStack(itemIn, 1, getMaxDamage()));
+		subItems.add(new ItemStack(itemIn, 1, 0));
+    }
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
