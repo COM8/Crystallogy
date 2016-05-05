@@ -1,7 +1,10 @@
 {
     "variants": {
-        "normal": [
-            { "model": "crystallogy:crystall" }
-        ]
+		"facing=north": { "model": "crystallogy:crystall", "x": 90 },
+		"facing=east":  { "model": "crystallogy:crystall", "x": 90, "y": 90 },
+		"facing=south": { "model": "crystallogy:crystall", "x": 90, "y": 180 },
+		"facing=west":  { "model": "crystallogy:crystall", "x": 270, "y": 90 },
+		"facing=up":  { "model": "crystallogy:crystall" },
+		"facing=down":  { "model": "crystallogy:crystall", "x": 180, "y": 180  }
     }
 }
