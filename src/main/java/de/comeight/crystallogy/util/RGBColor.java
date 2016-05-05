@@ -55,7 +55,10 @@ public class RGBColor {
 	 * @return 
 	 */
 	public static Color hex2Rgb(String colorStr) {
-	    if(colorStr.length() < 6){
+		if(colorStr.length() > 6){
+			colorStr = colorStr.substring(0, 6);
+		}
+		if(colorStr.length() < 6){
 	    	for (int i = 0 ; i < 6 - colorStr.length(); i++){
 	    		colorStr = "0" + colorStr;
 	    	}
