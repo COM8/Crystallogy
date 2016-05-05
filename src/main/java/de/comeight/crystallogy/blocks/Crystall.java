@@ -65,18 +65,13 @@ public abstract class Crystall extends BaseBlockCutout{
 		this.setLightLevel(0.3F);
 		this.setHardness(5.0F);
 		this.setStepSound(SoundType.GLASS);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.DOWN));
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		EnumFacing enumfacing = EnumFacing.getFront(meta);
-
-		if (enumfacing.getAxis() == EnumFacing.Axis.Y) {
-			enumfacing = EnumFacing.NORTH;
-		}
-
 		return this.getDefaultState().withProperty(FACING, enumfacing);
 	}
 
@@ -89,39 +84,7 @@ public abstract class Crystall extends BaseBlockCutout{
     {
         if (!worldIn.isRemote)
         {
-            IBlockState iblockstate = worldIn.getBlockState(pos.north());
-            IBlockState iblockstate1 = worldIn.getBlockState(pos.south());
-            IBlockState iblockstate2 = worldIn.getBlockState(pos.west());
-            IBlockState iblockstate3 = worldIn.getBlockState(pos.east());
-            IBlockState iblockstate4 = worldIn.getBlockState(pos.up());
-            IBlockState iblockstate5 = worldIn.getBlockState(pos.down());
-            EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
-
-            if (enumfacing == EnumFacing.NORTH && iblockstate.isFullBlock() && !iblockstate1.isFullBlock())
-            {
-                enumfacing = EnumFacing.SOUTH;
-            }
-            else if (enumfacing == EnumFacing.SOUTH && iblockstate1.isFullBlock() && !iblockstate.isFullBlock())
-            {
-                enumfacing = EnumFacing.NORTH;
-            }
-            else if (enumfacing == EnumFacing.WEST && iblockstate2.isFullBlock() && !iblockstate3.isFullBlock())
-            {
-                enumfacing = EnumFacing.EAST;
-            }
-            else if (enumfacing == EnumFacing.EAST && iblockstate3.isFullBlock() && !iblockstate2.isFullBlock())
-            {
-                enumfacing = EnumFacing.WEST;
-            }
-            else if (enumfacing == EnumFacing.UP && iblockstate4.isFullBlock() && !iblockstate4.isFullBlock())
-            {
-                enumfacing = EnumFacing.DOWN;
-            }
-            else if (enumfacing == EnumFacing.DOWN && iblockstate5.isFullBlock() && !iblockstate5.isFullBlock())
-            {
-                enumfacing = EnumFacing.UP;
-            }
-
+        	EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
             worldIn.setBlockState(pos, state.withProperty(FACING, enumfacing), 2);
         }
     }
