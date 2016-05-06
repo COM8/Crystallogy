@@ -1,11 +1,9 @@
 package de.comeight.crystallogy.blocks;
 
 import de.comeight.crystallogy.tileEntitys.TileEntityCrystallLight;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -21,7 +19,6 @@ public class CrystalLight extends BaseBlockCutout {
 		super(Material.carpet, ID);
 		this.lightOpacity = 0;
 		setLightLevel(1.0F);
-		Block s = Blocks.glowstone;
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
