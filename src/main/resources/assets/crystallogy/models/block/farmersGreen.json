@@ -1,0 +1,46 @@
+{
+"__comment": "Designed by CCOM8",
+"textures": {
+    "particle": "crystallogy:blocks/glass_lime",
+    "glass_green": "crystallogy:blocks/glass_lime",
+    "wood2": "crystallogy:blocks/wood2"
+},
+"elements": [ 
+{
+    "from": [ 4, 0, 4 ],
+    "to": [ 12, 7, 12 ],
+    "faces": {
+        "down":  { "uv": [ 12, 12, 4, 4 ], "texture": "#glass_green" },
+        "up":    { "uv": [ 4, 4, 12, 12 ], "texture": "#glass_green" },
+        "north": { "uv": [ 4, 9, 12, 16 ], "texture": "#glass_green" },
+        "south": { "uv": [ 4, 9, 12, 16 ], "texture": "#glass_green" },
+        "west":  { "uv": [ 4, 9, 12, 16 ], "texture": "#glass_green" },
+        "east":  { "uv": [ 4, 9, 12, 16 ], "texture": "#glass_green" }
+    }
+},
+{
+    "from": [ 6, 7, 6 ],
+    "to": [ 10, 10.5, 10 ],
+    "faces": {
+        "down":  { "uv": [ 5, 8, 9, 12 ], "texture": "#wood2" },
+        "up":    { "uv": [ 0, 0, 4, 4 ], "texture": "#wood2" },
+        "north": { "uv": [ 7.5, 11, 11.5, 14.5 ], "texture": "#wood2" },
+        "south": { "uv": [ 2.5, 6, 6.5, 9.5 ], "texture": "#wood2" },
+        "west":  { "uv": [ 2, 1.5, 6, 5 ], "texture": "#wood2" },
+        "east":  { "uv": [ 9, 2.5, 13, 6 ], "texture": "#wood2" }
+    }
+},
+{
+    "from": [ 5, 10.5, 5 ],
+    "to": [ 11, 11.5, 11 ],
+    "faces": {
+        "down":  { "uv": [ 11, 11, 5, 5 ], "texture": "#wood2" },
+        "up":    { "uv": [ 5, 5, 11, 11 ], "texture": "#wood2" },
+        "north": { "uv": [ 5, 4.5, 11, 5.5 ], "texture": "#wood2" },
+        "south": { "uv": [ 5, 4.5, 11, 5.5 ], "texture": "#wood2" },
+        "west":  { "uv": [ 5, 4.5, 11, 5.5 ], "texture": "#wood2" },
+        "east":  { "uv": [ 5, 4.5, 11, 5.5 ], "texture": "#wood2" }
+    }
+}
+]
+}

@@ -79,6 +79,8 @@ public class ItemRenderHandler {
 		registerItemVariantsRenderer(ItemHandler.armorPlate, 2, "armorPlate_green");
 		registerItemVariantsRenderer(ItemHandler.armorPlate, 3, "armorPlate_yellow");
 		registerItemVariantsRenderer(ItemHandler.armorPlate, 4, "armorPlate_gray");
+		registerItemVariantsRenderer(Item.getItemFromBlock(BlockHandler.farmersGreen), 0, "farmersGreen_closed_empty");
+		registerItemVariantsRenderer(Item.getItemFromBlock(BlockHandler.farmersGreen), 1, "farmersGreen_closed_full");
 		
 		Utilities.addConsoleText("All itemrenderer are registered.");
     }

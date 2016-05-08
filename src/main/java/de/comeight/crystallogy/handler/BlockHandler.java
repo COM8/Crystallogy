@@ -5,12 +5,14 @@ import de.comeight.crystallogy.blocks.Crystall_blue;
 import de.comeight.crystallogy.blocks.Crystall_green;
 import de.comeight.crystallogy.blocks.Crystall_red;
 import de.comeight.crystallogy.blocks.Crystall_yellow;
+import de.comeight.crystallogy.blocks.FarmersGreen;
 import de.comeight.crystallogy.blocks.FireCrystall;
 import de.comeight.crystallogy.blocks.InfuserBlock;
 import de.comeight.crystallogy.blocks.PlayerJar;
 import de.comeight.crystallogy.blocks.machines.Charger;
 import de.comeight.crystallogy.blocks.machines.Compressor;
 import de.comeight.crystallogy.blocks.machines.CrystallCrusher;
+import de.comeight.crystallogy.itemBlocks.ItemBlockFarmersGreen;
 import de.comeight.crystallogy.itemBlocks.ItemBlockPlayerJar;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.block.Block;
@@ -31,6 +33,7 @@ public class BlockHandler {
 	public static FireCrystall fireCrystall;
 	public static Compressor compressor;
 	public static Charger charger;
+	public static FarmersGreen farmersGreen;
 
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public BlockHandler() {
@@ -62,18 +65,20 @@ public class BlockHandler {
 		fireCrystall = new FireCrystall();
 		compressor = new Compressor();
 		charger = new Charger();
+		farmersGreen = new FarmersGreen();
 		
 		registerBlock(crystall_blue, crystall_blue.ID);
 		registerBlock(crystall_green, crystall_green.ID);
 		registerBlock(crystall_red, crystall_red.ID);
 		registerBlock(crystall_yellow, crystall_yellow.ID);
-		registerBlock(crystallCrusher, crystallCrusher.ID);
-		registerBlock(infuserBlock, infuserBlock.ID);
-		registerBlock(playerJar, new ItemBlockPlayerJar(playerJar), playerJar.ID);
-		registerBlock(crystalLight, crystalLight.ID);
 		registerBlock(fireCrystall, fireCrystall.ID);
+		registerBlock(crystallCrusher, crystallCrusher.ID);
 		registerBlock(compressor, compressor.ID);
 		registerBlock(charger, charger.ID);
+		registerBlock(infuserBlock, infuserBlock.ID);
+		registerBlock(crystalLight, crystalLight.ID);
+		registerBlock(farmersGreen, new ItemBlockFarmersGreen(farmersGreen), farmersGreen.ID);
+		registerBlock(playerJar, new ItemBlockPlayerJar(playerJar), playerJar.ID);
 		
 		Utilities.addConsoleText("All blocks are registered.");
 	}
