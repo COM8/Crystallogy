@@ -1,0 +1,6 @@
+.gradle/
+libs/
+classes/
+minecraft/
+.idea/
+ClaySoldiersMod.iml
