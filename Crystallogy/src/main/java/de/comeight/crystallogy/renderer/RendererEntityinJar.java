@@ -1,18 +1,16 @@
 package de.comeight.crystallogy.renderer;
 
-import de.comeight.crystallogy.entity.PlayerClientDummy;
-import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
+import de.comeight.crystallogy.tileEntitys.TileEntityEntityJar;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.model.ModelDragon;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.VertexBuffer;
+import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.pipeline.VertexTransformer;
 
-public class RendererPlayerinJar extends TileEntitySpecialRenderer<TileEntityPlayerJar> {
+public class RendererEntityinJar extends TileEntitySpecialRenderer<TileEntityEntityJar> {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	
 	
@@ -24,20 +22,20 @@ public class RendererPlayerinJar extends TileEntitySpecialRenderer<TileEntityPla
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
-	public void renderTileEntityAt(TileEntityPlayerJar tE, double x, double y, double z, float partialTicks, int destroyStage) {
+	public void renderTileEntityAt(TileEntityEntityJar tE, double x, double y, double z, float partialTicks, int destroyStage) {
 		float partialTick = (float) (720.0 * (System.currentTimeMillis() / 2 & 0x3FFFL) / 0x3FFFL);
-		renderPlayer(tE.getPlayer(), x, y, z, partialTick);
+		renderEntity(tE.getEntity(), x, y, z, partialTick);
 		renderIngredients(tE.getWorld(), x, y, z, partialTick);
 	}
 	
-	private void renderPlayer(PlayerClientDummy player, double posX, double posY, double posZ, float partialTicks){
-		if(player == null){
+	private void renderEntity(EntityLivingBase entity, double posX, double posY, double posZ, float partialTicks){
+		if(entity == null){
 			return;
 		}
-		CustomRenderPlayer cRP = new CustomRenderPlayer(Minecraft.getMinecraft().getRenderManager());
+		Render<EntityLivingBase> rM = Minecraft.getMinecraft().getRenderManager().getEntityRenderObject(entity);
 		
 		GlStateManager.pushMatrix();
-		cRP.doRender(player, posX + 0.5, posY, posZ + 0.5, 1.0F, partialTicks);
+		rM.doRender(entity, posX + 0.5, posY, posZ + 0.5, 1.0F, partialTicks);
 		GlStateManager.popMatrix();
 	}
 	

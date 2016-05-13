@@ -26,6 +26,7 @@ public final class BlockRenderHandler {
 		registerRenderer(BlockHandler.crystallCrusher);
 		registerRenderer(BlockHandler.infuserBlock);
 		registerRenderer(BlockHandler.playerJar);
+		registerRenderer(BlockHandler.entityJar);
 		registerRenderer(BlockHandler.crystalLight);
 		registerRenderer(BlockHandler.fireCrystall);
 		registerRenderer(BlockHandler.compressor);

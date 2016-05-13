@@ -2,7 +2,7 @@ package de.comeight.crystallogy.itemBlocks;
 
 import java.util.List;
 
-import de.comeight.crystallogy.blocks.PlayerJar;
+import de.comeight.crystallogy.blocks.EntityJar;
 import de.comeight.crystallogy.util.ToolTipBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiScreen;
@@ -11,13 +11,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
 
-public class ItemBlockPlayerJar extends BaseItemBlock {
+public class ItemBlockEntityJar extends BaseItemBlock {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public ItemBlockPlayerJar(Block block) {
-		super(block, PlayerJar.ID);
+	public ItemBlockEntityJar(Block block) {
+		super(block, EntityJar.ID);
 		setMaxStackSize(1);
 	}
 	
@@ -31,8 +31,8 @@ public class ItemBlockPlayerJar extends BaseItemBlock {
 			NBTTagCompound tag = stack.getTagCompound();
 			if(GuiScreen.isShiftKeyDown()){
 				if(tag.getBoolean("hasEntity")){
-					tooltip.add(TextFormatting.GOLD + "Name: " + TextFormatting.RESET + tag.getString("playerName"));
-					tooltip.add(TextFormatting.GOLD + "UUID: " + TextFormatting.RESET + tag.getUniqueId("playerUUID").toString());
+					tooltip.add(TextFormatting.GOLD + "Name: " + TextFormatting.RESET + tag.getString("name"));
+					tooltip.add(TextFormatting.GOLD + "ID: " + TextFormatting.RESET + tag.getString("entityId"));
 				}
 			}
 			else{

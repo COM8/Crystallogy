@@ -6,6 +6,7 @@ import de.comeight.crystallogy.blocks.Crystall_green;
 import de.comeight.crystallogy.blocks.Crystall_red;
 import de.comeight.crystallogy.blocks.Crystall_yellow;
 import de.comeight.crystallogy.blocks.Crystorya;
+import de.comeight.crystallogy.blocks.EntityJar;
 import de.comeight.crystallogy.blocks.FarmersGreen;
 import de.comeight.crystallogy.blocks.FireCrystall;
 import de.comeight.crystallogy.blocks.InfuserBlock;
@@ -13,6 +14,7 @@ import de.comeight.crystallogy.blocks.PlayerJar;
 import de.comeight.crystallogy.blocks.machines.Charger;
 import de.comeight.crystallogy.blocks.machines.Compressor;
 import de.comeight.crystallogy.blocks.machines.CrystallCrusher;
+import de.comeight.crystallogy.itemBlocks.ItemBlockEntityJar;
 import de.comeight.crystallogy.itemBlocks.ItemBlockFarmersGreen;
 import de.comeight.crystallogy.itemBlocks.ItemBlockPlayerJar;
 import de.comeight.crystallogy.util.Utilities;
@@ -30,6 +32,7 @@ public class BlockHandler {
 	public static CrystallCrusher crystallCrusher;
 	public static InfuserBlock infuserBlock;
 	public static PlayerJar playerJar;
+	public static EntityJar entityJar;
 	public static CrystalLight crystalLight;
 	public static FireCrystall fireCrystall;
 	public static Compressor compressor;
@@ -63,6 +66,7 @@ public class BlockHandler {
 		fireCrystall = new FireCrystall();
 		infuserBlock = new InfuserBlock();
 		playerJar = new PlayerJar();
+		entityJar = new EntityJar();
 		crystalLight = new CrystalLight();
 		crystallCrusher = new CrystallCrusher();
 		compressor = new Compressor();
@@ -82,6 +86,7 @@ public class BlockHandler {
 		registerBlock(crystalLight, crystalLight.ID);
 		registerBlock(farmersGreen, new ItemBlockFarmersGreen(farmersGreen), farmersGreen.ID);
 		registerBlock(playerJar, new ItemBlockPlayerJar(playerJar), playerJar.ID);
+		registerBlock(entityJar, new ItemBlockEntityJar(entityJar), entityJar.ID);
 		registerBlock(crystorya, crystorya.ID);
 		
 		Utilities.addConsoleText("All blocks are registered.");
