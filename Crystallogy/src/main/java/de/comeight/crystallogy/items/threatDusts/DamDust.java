@@ -1,9 +1,9 @@
 package de.comeight.crystallogy.items.threatDusts;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
 public class DamDust extends ThreatDust {
@@ -28,9 +28,9 @@ public class DamDust extends ThreatDust {
 	}
 	
 	@Override
-	public void castOnPlayer(World worldIn, EntityPlayer player) {
+	public void castOnEntity(World worldIn, EntityLivingBase entity) {
 		if(!worldIn.isRemote){
-			player.attackEntityFrom(DamageSource.magic, 1.0F);
+			entity.attackEntityFrom(DamageSource.magic, 1.0F);
 		}
 	}
 	

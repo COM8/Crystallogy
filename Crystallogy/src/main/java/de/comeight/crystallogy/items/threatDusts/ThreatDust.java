@@ -1,6 +1,7 @@
 package de.comeight.crystallogy.items.threatDusts;
 
 import de.comeight.crystallogy.items.BaseItemFood;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -25,6 +26,6 @@ public abstract class ThreatDust extends BaseItemFood {
 		super.onFoodEaten(stack, worldIn, player);	
 	}
 	
-	public abstract void castOnPlayer(World worldIn, EntityPlayer player);
+	public abstract void castOnEntity(World worldIn, EntityLivingBase entity);
 	
 }

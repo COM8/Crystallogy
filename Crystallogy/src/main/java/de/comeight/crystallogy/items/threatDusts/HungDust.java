@@ -1,5 +1,6 @@
 package de.comeight.crystallogy.items.threatDusts;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -28,9 +29,9 @@ public class HungDust extends ThreatDust {
 	}
 	
 	@Override
-	public void castOnPlayer(World worldIn, EntityPlayer player) {
+	public void castOnEntity(World worldIn, EntityLivingBase entity) {
 		if(!worldIn.isRemote){
-			player.addPotionEffect(new PotionEffect(Potion.getPotionById(17), 300, 3, true, true));
+			entity.addPotionEffect(new PotionEffect(Potion.getPotionById(17), 300, 3, true, true));
 		}
 	}
 	

@@ -1,5 +1,6 @@
 package de.comeight.crystallogy.items.threatDusts;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -26,9 +27,9 @@ public class FireDust extends ThreatDust {
 	}
 	
 	@Override
-	public void castOnPlayer(World worldIn, EntityPlayer player) {
+	public void castOnEntity(World worldIn, EntityLivingBase entity) {
 		if(!worldIn.isRemote){
-			player.setFire(7);
+			entity.setFire(7);
 		}
 	}
 	

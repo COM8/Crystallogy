@@ -1,5 +1,6 @@
 package de.comeight.crystallogy.items.threatDusts;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
@@ -27,9 +28,9 @@ public class DrowDust extends ThreatDust {
 	}
 	
 	@Override
-	public void castOnPlayer(World worldIn, EntityPlayer player) {
+	public void castOnEntity(World worldIn, EntityLivingBase entity) {
 		if(!worldIn.isRemote){
-			player.attackEntityFrom(DamageSource.drown, 1.0F);
+			entity.attackEntityFrom(DamageSource.drown, 1.0F);
 		}
 	}
 	
