@@ -19,6 +19,7 @@ import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeCrystalKnif
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeCrystallLight;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeDamDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeDrowDust;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeEntityJar;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeFireCrystall;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeFireDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeHammer;
@@ -97,6 +98,7 @@ public class CommonProxy {
 	private static InfusionRecipeCrystalKnife infusionRecipeCrystalKnife;
 	private static InfusionRecipeCrystalKnifeBlade infusionRecipeCrystalKnifeBlade;
 	private static InfusionRecipePlayerJar infusionRecipePlayerJar;
+	private static InfusionRecipeEntityJar infusionRecipeEntityJar;
 	private static InfusionRecipeArmorPlate infusionRecipeArmorPlate;
 	private static InfusionRecipeArmorCombinedHelmet infusionRecipeArmorCombinedHelmet;
 	private static InfusionRecipeArmorCombinedChestplate infusionRecipeArmorCombinedChestplate;
@@ -174,6 +176,7 @@ public class CommonProxy {
 		infusionRecipeArmorCombinedChestplate = new InfusionRecipeArmorCombinedChestplate();
 		infusionRecipeArmorCombinedLeggins = new InfusionRecipeArmorCombinedLeggins();
 		infusionRecipeArmorCombinedBoots = new InfusionRecipeArmorCombinedBoots();
+		infusionRecipeEntityJar = new InfusionRecipeEntityJar();
 		
 		InfusionRecipeHandler.addRecipe(infusionRecipeVaporizer);
 		InfusionRecipeHandler.addRecipe(infusionRecipeCrystallLight);
@@ -191,6 +194,7 @@ public class CommonProxy {
 		InfusionRecipeHandler.addRecipe(infusionRecipeCrystalKnife);
 		InfusionRecipeHandler.addRecipe(infusionRecipeCrystalKnifeBlade);
 		InfusionRecipeHandler.addRecipe(infusionRecipePlayerJar);
+		InfusionRecipeHandler.addRecipe(infusionRecipeEntityJar);
 		InfusionRecipeHandler.addRecipe(infusionRecipeArmorPlate);
 		InfusionRecipeHandler.addRecipe(infusionRecipeArmorCombinedHelmet);
 		InfusionRecipeHandler.addRecipe(infusionRecipeArmorCombinedChestplate);
