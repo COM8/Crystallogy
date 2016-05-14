@@ -1,5 +1,6 @@
 package de.comeight.crystallogy.handler;
 
+import de.comeight.crystallogy.blocks.CrystalGlas;
 import de.comeight.crystallogy.blocks.CrystalLight;
 import de.comeight.crystallogy.blocks.Crystall_blue;
 import de.comeight.crystallogy.blocks.Crystall_green;
@@ -14,13 +15,16 @@ import de.comeight.crystallogy.blocks.PlayerJar;
 import de.comeight.crystallogy.blocks.machines.Charger;
 import de.comeight.crystallogy.blocks.machines.Compressor;
 import de.comeight.crystallogy.blocks.machines.CrystallCrusher;
+import de.comeight.crystallogy.itemBlocks.ItemBlockCrystalGlas;
 import de.comeight.crystallogy.itemBlocks.ItemBlockEntityJar;
 import de.comeight.crystallogy.itemBlocks.ItemBlockFarmersGreen;
 import de.comeight.crystallogy.itemBlocks.ItemBlockPlayerJar;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class BlockHandler {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -39,6 +43,7 @@ public class BlockHandler {
 	public static Charger charger;
 	public static FarmersGreen farmersGreen;
 	public static Crystorya crystorya;
+	public static CrystalGlas crystalGlas;
 
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public BlockHandler() {
@@ -73,6 +78,7 @@ public class BlockHandler {
 		charger = new Charger();
 		farmersGreen = new FarmersGreen();
 		crystorya = new Crystorya();
+		crystalGlas = new CrystalGlas();
 		
 		registerBlock(crystall_blue, crystall_blue.ID);
 		registerBlock(crystall_green, crystall_green.ID);
@@ -88,8 +94,16 @@ public class BlockHandler {
 		registerBlock(playerJar, new ItemBlockPlayerJar(playerJar), playerJar.ID);
 		registerBlock(entityJar, new ItemBlockEntityJar(entityJar), entityJar.ID);
 		registerBlock(crystorya, crystorya.ID);
+		registerBlock(crystalGlas, new ItemBlockCrystalGlas(crystalGlas), crystalGlas.ID);
 		
 		Utilities.addConsoleText("All blocks are registered.");
+	}
+	
+	private void registerOreDictionary(){
+		OreDictionary.registerOre("blockGlass", new ItemStack(crystalGlas, 1, 0));
+		OreDictionary.registerOre("blockGlass", new ItemStack(crystalGlas, 1, 1));
+		OreDictionary.registerOre("blockGlass", new ItemStack(crystalGlas, 1, 2));
+		OreDictionary.registerOre("blockGlass", new ItemStack(crystalGlas, 1, 3));
 	}
 
 	//-----------------------------------------------Pre-Init:----------------------------------------------
@@ -99,7 +113,7 @@ public class BlockHandler {
 
 	//-----------------------------------------------Init:--------------------------------------------------
 	public void init(){
-		
+		registerOreDictionary();
 	}
 
 	//-----------------------------------------------Post-Init:---------------------------------------------

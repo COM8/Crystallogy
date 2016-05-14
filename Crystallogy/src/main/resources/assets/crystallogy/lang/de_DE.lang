@@ -11,8 +11,9 @@ block.entityJar.name=Wesensglas
 block.crystalLight.name=Kristalllicht
 block.fireCrystall.name=§cFeuerkristall§r
 block.compressor.name=Kompressor
-block.charger.name= Kristallladestation
-block.crystorya.name= Crystorya
+block.charger.name=Kristallladestation
+block.crystorya.name=Crystorya
+block.crystalGlas.name=Kristallglas
 
 tile.crystall_red.name=§4Roter§r Kristall
 tile.crystall_blue.name=§9Blauer§r Kristall
@@ -25,8 +26,9 @@ tile.entityJar.name=Wesensglas
 tile.crystalLight.name=Kristalllicht
 tile.fireCrystall.name=§cFeuerkristall§r
 tile.compressor.name=Kompressor
-tile.charger.name= Kristallladestation
-tile.crystorya.name= Crystorya
+tile.charger.name=Kristallladestation
+tile.crystorya.name=Crystorya
+tile.crystalGlas.name=Kristallglas
 
 item.crystallDust_red.name=§4Roter§r Kristallstaub
 item.crystallDust_blue.name=§9Blauer§r Kristallstaub

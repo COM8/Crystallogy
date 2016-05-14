@@ -11,8 +11,9 @@ block.entityJar.name=Entity Jar
 block.crystalLight.name=Crystal Light
 block.fireCrystall.name=§cFire§r Crystal
 block.compressor.name=Compressor
-block.charger.name= Crystal Charger
-block.crystorya.name= Crystorya
+block.charger.name=Crystal Charger
+block.crystorya.name=Crystorya
+block.crystalGlas.name=Crystal Glas
 
 tile.crystall_red.name=§4Red§r Crystal
 tile.crystall_blue.name=§9Blue§r Crystal
@@ -25,8 +26,9 @@ tile.entityJar.name=Entity Jar
 tile.crystalLight.name=Crystal Light
 tile.fireCrystall.name=§cFire§r Crystal
 tile.compressor.name=Compressor
-tile.charger.name= Crystal Charger
-tile.crystorya.name= Crystorya
+tile.charger.name=Crystal Charger
+tile.crystorya.name=Crystorya
+tile.crystalGlas.name=Crystal Glas
 
 item.crystallDust_red.name=§4Red§r Crystal Dust
 item.crystallDust_blue.name=§9Blue§r Crystal Dust
