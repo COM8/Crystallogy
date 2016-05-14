@@ -53,6 +53,7 @@ import de.comeight.crystallogy.tileEntitys.machines.TileEntityCompressor;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCrystallCrusher;
 import de.comeight.crystallogy.util.Utilities;
 import de.comeight.crystallogy.worldGenerators.WorldGenerator;
+import de.comeight.crystallogy.worldGenerators.WorldGeneratorFoilage;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -136,6 +137,7 @@ public class CommonProxy {
 		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_blue, 7, 5, 48, 64), 0);
 		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_yellow, 5, 4, 16, 48), 0);
 		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_red, 5, 3, 0, 16), 0);
+		GameRegistry.registerWorldGenerator(new WorldGeneratorFoilage(3), 20);
 		
 		Utilities.addConsoleText("All worldgens are registered.");
 	}
