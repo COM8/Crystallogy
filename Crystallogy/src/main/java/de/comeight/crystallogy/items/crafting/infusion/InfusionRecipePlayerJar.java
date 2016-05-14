@@ -11,7 +11,7 @@ public class InfusionRecipePlayerJar extends InfusionRecipeSimple {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public InfusionRecipePlayerJar() {
-		super("crystalKnife", 500, new ItemStack(Items.glass_bottle),
+		super("playerJar", 500, new ItemStack(Items.glass_bottle),
 				new ItemStack[]{ 	new ItemStack(ItemHandler.pureCrystallDust, 2),
 									new ItemStack(Items.ender_eye, 1),
 									new ItemStack(Items.blaze_powder, 1),},
