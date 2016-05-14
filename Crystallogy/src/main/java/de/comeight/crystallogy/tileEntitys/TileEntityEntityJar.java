@@ -226,9 +226,20 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 	@Override
 	public void update() {
 		if(!hasEntity()){
+			if(threat != null){
+				threat = null;
+			}
 			return;
 		}
 		incTick();
+		
+		if(entity != null && entity.isDead){
+			entity = null;
+			if(!worldObj.isRemote){
+				sync();
+			}
+			return;
+		}
 		
 		if(worldObj.isRemote){
 			if(Utilities.getRandInt(0, 5) == 0){

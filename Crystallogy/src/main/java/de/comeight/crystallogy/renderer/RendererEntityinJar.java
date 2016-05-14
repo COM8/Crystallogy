@@ -29,13 +29,21 @@ public class RendererEntityinJar extends TileEntitySpecialRenderer<TileEntityEnt
 	}
 	
 	private void renderEntity(EntityLivingBase entity, double posX, double posY, double posZ, float partialTicks){
-		if(entity == null){
+		if(entity == null || entity.isDead){
 			return;
 		}
+		float scale = 0.5F;
 		Render<EntityLivingBase> rM = Minecraft.getMinecraft().getRenderManager().getEntityRenderObject(entity);
 		
 		GlStateManager.pushMatrix();
+		GlStateManager.scale(scale, scale, scale);
+		GlStateManager.translate(posX + 0.5, posY, posZ + 0.5);
+		GlStateManager.scale(scale, scale, scale);
+		GlStateManager.translate(posX + 0.5, posY, posZ + 0.5);
+		GlStateManager.scale(scale, scale, scale);
+		GlStateManager.translate(posX + 0.5, posY, posZ + 0.5);
 		rM.doRender(entity, posX + 0.5, posY, posZ + 0.5, 1.0F, partialTicks);
+		rM.doRenderShadowAndFire(entity, posX + 0.5, posY, posZ + 0.5, 1.0F, partialTicks);
 		GlStateManager.popMatrix();
 	}
 	

@@ -1,5 +1,5 @@
 {
-	"parent": "crystallogy:block/entityJar",
+	"parent": "crystallogy:block/playerJar",
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [ 64, 0, 0 ],

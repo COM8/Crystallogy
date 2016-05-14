@@ -16,7 +16,7 @@ public class InfusionRecipeCrystalKnife extends InfusionRecipeSimple {
 									new ItemStack(Items.ender_eye, 1),
 									new ItemStack(Items.blaze_powder, 1),
 									new ItemStack(Items.diamond_sword, 1),},
-				new ItemStack(ItemHandler.crystallKnife));
+				new ItemStack(ItemHandler.playerCrystalKnife));
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------

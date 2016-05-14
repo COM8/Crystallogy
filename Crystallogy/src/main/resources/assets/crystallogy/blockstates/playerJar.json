@@ -1,7 +1,7 @@
 {
     "variants": {
         "normal": [
-            { "model": "crystallogy:entityJar" }
+            { "model": "crystallogy:playerJar" }
         ]
     }
 }

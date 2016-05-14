@@ -27,7 +27,8 @@ public class ItemRenderHandler {
 		registerBasicItemRender(ItemHandler.pureCrystallDust);
 		registerBasicItemRender(ItemHandler.vaporizer);
 		registerBasicItemRender(ItemHandler.vaporizerDirection);
-		registerBasicItemRender(ItemHandler.crystallKnife);
+		registerBasicItemRender(ItemHandler.playerCrystalKnife);
+		registerBasicItemRender(ItemHandler.entityCrystalKnife);
 		registerBasicItemRender(ItemHandler.damDust);
 		registerBasicItemRender(ItemHandler.drowDust);
 		registerBasicItemRender(ItemHandler.fireDust);
