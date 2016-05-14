@@ -69,10 +69,10 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class CommonProxy {
 	// -----------------------------------------------Variabeln:---------------------------------------------
-	// Creative Tabs:
+	//Creative Tabs:
 	public static CrystallogyMainTab crystallogyMainTab = new CrystallogyMainTab();
 	
-	// Network:
+	//Network:
 	public static final SimpleNetworkWrapper NETWORKWRAPPER = NetworkRegistry.INSTANCE.newSimpleChannel(CrystallogyBase.MODID);
 	
 	//Blocks:
