@@ -14,16 +14,21 @@ import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorCombin
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorCombinedHelmet;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorCombinedLeggins;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorPlate;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeBadLuckDust;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeBlindDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeCrystalKnife;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeCrystalKnifeBlade;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeCrystallLight;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeDamDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeDrowDust;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeEnderDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeEntityJar;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeFireCrystall;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeFireDust;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeGlowDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeHammer;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeHungDust;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeLevDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipePlayerJar;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipePoisDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipePureDust;
@@ -96,6 +101,11 @@ public class CommonProxy {
 	private static InfusionRecipeFireDust infusionRecipeFireDust;
 	private static InfusionRecipeDrowDust infusionRecipeDrowDust;
 	private static InfusionRecipePoisDust infusionRecipePoisDust;
+	private static InfusionRecipeBadLuckDust infusionRecipeBadLuckDust;
+	private static InfusionRecipeBlindDust infusionRecipeBlindDust;
+	private static InfusionRecipeEnderDust infusionRecipeEnderDust;
+	private static InfusionRecipeGlowDust infusionRecipeGlowDust;
+	private static InfusionRecipeLevDust infusionRecipeLevDust;
 	private static InfusionRecipeCrystalKnife infusionRecipeCrystalKnife;
 	private static InfusionRecipeCrystalKnifeBlade infusionRecipeCrystalKnifeBlade;
 	private static InfusionRecipePlayerJar infusionRecipePlayerJar;
@@ -170,6 +180,11 @@ public class CommonProxy {
 		infusionRecipeFireDust = new InfusionRecipeFireDust();
 		infusionRecipeDrowDust = new InfusionRecipeDrowDust();
 		infusionRecipePoisDust = new InfusionRecipePoisDust();
+		infusionRecipeBadLuckDust = new InfusionRecipeBadLuckDust();
+		infusionRecipeBlindDust = new InfusionRecipeBlindDust();
+		infusionRecipeEnderDust = new InfusionRecipeEnderDust();
+		infusionRecipeGlowDust = new InfusionRecipeGlowDust();
+		infusionRecipeLevDust = new InfusionRecipeLevDust();
 		infusionRecipeCrystalKnife = new InfusionRecipeCrystalKnife();
 		infusionRecipeCrystalKnifeBlade = new InfusionRecipeCrystalKnifeBlade();
 		infusionRecipePlayerJar = new InfusionRecipePlayerJar();
@@ -193,6 +208,11 @@ public class CommonProxy {
 		InfusionRecipeHandler.addRecipe(infusionRecipeFireDust);
 		InfusionRecipeHandler.addRecipe(infusionRecipePoisDust);
 		InfusionRecipeHandler.addRecipe(infusionRecipeHungDust);
+		InfusionRecipeHandler.addRecipe(infusionRecipeBadLuckDust);
+		InfusionRecipeHandler.addRecipe(infusionRecipeBlindDust);
+		InfusionRecipeHandler.addRecipe(infusionRecipeEnderDust);
+		InfusionRecipeHandler.addRecipe(infusionRecipeGlowDust);
+		InfusionRecipeHandler.addRecipe(infusionRecipeLevDust);
 		InfusionRecipeHandler.addRecipe(infusionRecipeCrystalKnife);
 		InfusionRecipeHandler.addRecipe(infusionRecipeCrystalKnifeBlade);
 		InfusionRecipeHandler.addRecipe(infusionRecipePlayerJar);
@@ -350,6 +370,15 @@ public class CommonProxy {
 				'P', Items.poisonous_potato,
 				'C', ItemHandler.crystallDust_green
 		});
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(BlockHandler.farmersGreen, new Object[] {
+				"IPI",
+				"G_G",
+				"GGG",
+				'I', Items.iron_ingot,
+				'P', "plankWood",
+				'G', new ItemStack(BlockHandler.crystalGlas, 1, 2)
+		}));
 		
 		Utilities.addConsoleText("All recipes are registered.");
 	}
