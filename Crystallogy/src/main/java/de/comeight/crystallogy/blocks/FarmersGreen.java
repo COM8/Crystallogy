@@ -198,7 +198,7 @@ public class FarmersGreen extends BaseBlockTileEntity {
 			TileEntity tE = worldIn.getTileEntity(pos);
 			if(tE instanceof TileEntityFarmersGreen){
 				TileEntityFarmersGreen tEFG = (TileEntityFarmersGreen) tE;
-				if(heldItem != null && heldItem.getItem() == ItemHandler.crystallDust_green){
+				if(heldItem != null && heldItem.getItem() == ItemHandler.fertilizerPotato){
 					int prevState = worldIn.getBlockState(pos).getValue(STATUS);
 					tEFG.refuel();
 					if(prevState == 0){
