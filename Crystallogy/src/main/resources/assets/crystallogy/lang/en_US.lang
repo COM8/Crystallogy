@@ -13,7 +13,7 @@ block.fireCrystall.name=§cFire§r Crystal
 block.compressor.name=Compressor
 block.charger.name=Crystal Charger
 block.crystorya.name=Crystorya
-block.crystalGlas.name=Crystal Glas
+block.crystalGlas.name=Crystal Glass
 
 tile.crystall_red.name=§4Red§r Crystal
 tile.crystall_blue.name=§9Blue§r Crystal
@@ -28,7 +28,7 @@ tile.fireCrystall.name=§cFire§r Crystal
 tile.compressor.name=Compressor
 tile.charger.name=Crystal Charger
 tile.crystorya.name=Crystorya
-tile.crystalGlas.name=Crystal Glas
+tile.crystalGlas.name=Crystal Glass
 
 item.crystallDust_red.name=§4Red§r Crystal Dust
 item.crystallDust_blue.name=§9Blue§r Crystal Dust
