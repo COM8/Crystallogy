@@ -80,12 +80,10 @@ public class BaseCrystalKnife extends BaseItemSword{
 		}
 		else{
 			if(!hasEntity(itemStackIn)){
-				if(playerIn.capabilities.isCreativeMode){
-					saveNBT(itemStackIn, playerIn);
-				}
-				else{
+				if(!playerIn.capabilities.isCreativeMode){
 					playerIn.attackTargetEntityWithCurrentItem(playerIn);
 				}
+				saveNBT(itemStackIn, playerIn);
 			}
 		}
 		return super.onItemRightClick(itemStackIn, worldIn, playerIn, hand);
