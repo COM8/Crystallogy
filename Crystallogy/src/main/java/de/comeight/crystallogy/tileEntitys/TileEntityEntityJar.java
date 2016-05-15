@@ -1,6 +1,8 @@
 package de.comeight.crystallogy.tileEntitys;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.handler.ItemHandler;
@@ -35,6 +37,8 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 	protected EnumThreats threat;
 	protected int threatTick; 
 	protected int tick;
+	protected boolean couldNotLoad;
+	protected NBTTagCompound couldNotLoadCompund;
 	
 	public enum EnumThreats{
 		POISON(new RGBColor(0.0F, 1.0F, 0.0F), ItemHandler.poisDust, 0),
@@ -116,6 +120,8 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 		threatTick = 0;
 		threat = null;
 		entity = null;
+		couldNotLoad = false;
+		couldNotLoadCompund = null;
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -152,8 +158,8 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 	public void writeCustomDataToNBT(NBTTagCompound compound) {
 		if(hasEntity()){
 			compound.setBoolean("hasEntity", true);
-			compound.setInteger("entityId", entity.getEntityId());
 			compound.setString("name", entity.getName());
+			compound.setUniqueId("uuid", entity.getUniqueID());
 		}
 		else{
 			compound.setBoolean("hasEntity", false);
@@ -168,13 +174,22 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 	
 	public void readCustomDataToNBT(NBTTagCompound compound) {
 		if(compound.getBoolean("hasEntity")){
-			int id = compound.getInteger("entityId");
-			Entity ent = worldObj.getEntityByID(id);
-			if(ent instanceof EntityLivingBase){
-				entity = (EntityLivingBase) ent;
+			couldNotLoad = true;
+			couldNotLoadCompund = (NBTTagCompound) compound.copy();
+		}
+		else{
+			this.entity = null;
+		}
+	}
+	
+	protected EntityLivingBase findEntity(UUID uuid){
+		List<Entity> list = worldObj.getLoadedEntityList();
+		for (Entity entity : list) {
+			if(uuid.equals(entity.getUniqueID())){
+				return (EntityLivingBase) entity;
 			}
 		}
-			
+		return null;
 	}
 	
 	@Override
@@ -247,6 +262,10 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 	@Override
 	public void update() {
 		if(!hasEntity()){
+			if(couldNotLoad){ //Load the entity
+				UUID uuid = couldNotLoadCompund.getUniqueId("uuid");
+				entity = findEntity(uuid);
+			}
 			if(threat != null){
 				threat = null;
 			}

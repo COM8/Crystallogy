@@ -1,6 +1,7 @@
 package de.comeight.crystallogy.items.tools;
 
 import java.util.List;
+import java.util.UUID;
 
 import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.blocks.materials.CustomToolMaterials;
@@ -8,10 +9,10 @@ import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.ParticleB;
 import de.comeight.crystallogy.tileEntitys.TileEntityEntityJar;
-import de.comeight.crystallogy.util.Log;
 import de.comeight.crystallogy.util.ToolTipBuilder;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
@@ -61,15 +62,15 @@ public class BaseCrystalKnife extends BaseItemSword{
 	}
 	
 	protected EntityLivingBase getEntity(ItemStack stack, World worldIn){
-		NBTTagCompound c = stack.getTagCompound();
-		String id = c.getString("id");
-		try {	
-			return (EntityLivingBase) worldIn.getEntityByID(Integer.parseInt(id));
-		} 
-		catch (Exception e) {
-			Log.error(e.getMessage());
-			return null;
+		NBTTagCompound compound = stack.getTagCompound();
+		UUID uuid = UUID.fromString(compound.getString("uuid"));
+		List<Entity> list = worldIn.getLoadedEntityList();
+		for (Entity entity : list) {
+			if(uuid.equals(entity.getUniqueID())){
+				return (EntityLivingBase) entity;
+			}
 		}
+		return null;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
@@ -133,7 +134,7 @@ public class BaseCrystalKnife extends BaseItemSword{
 		if(nbtTagCompound == null){
 			stack = saveEmptyNBT(stack);
 			tooltip.add(TextFormatting.GOLD + "Name:" + TextFormatting.RESET + " -");
-			tooltip.add(TextFormatting.GOLD + "ID:" + TextFormatting.RESET + " -");
+			tooltip.add(TextFormatting.GOLD + "UUID:" + TextFormatting.RESET + " -");
 		}
 		else{
 			if(hasEntity(stack)){
@@ -145,7 +146,7 @@ public class BaseCrystalKnife extends BaseItemSword{
 			if(GuiScreen.isShiftKeyDown()){
 				tooltip.add("");
 				tooltip.add(TextFormatting.GOLD + "Name: " + TextFormatting.RESET + nbtTagCompound.getString("name"));
-				tooltip.add(TextFormatting.GOLD + "ID: " + TextFormatting.RESET + nbtTagCompound.getString("id"));
+				tooltip.add(TextFormatting.GOLD + "UUID: " + TextFormatting.RESET + nbtTagCompound.getString("uuid"));
 			}
 			else{
 				ToolTipBuilder.addShiftForMoreDetails(tooltip);
@@ -160,7 +161,7 @@ public class BaseCrystalKnife extends BaseItemSword{
 		NBTTagCompound nbtTagCompound = stack.getTagCompound();
 		
 		nbtTagCompound.setString("name", entity.getName());
-		nbtTagCompound.setString("id", String.valueOf(entity.getEntityId()));
+		nbtTagCompound.setString("uuid", entity.getUniqueID().toString());
 		
 		stack.setTagCompound(nbtTagCompound);
 		return stack;
@@ -174,7 +175,7 @@ public class BaseCrystalKnife extends BaseItemSword{
 		}
 		
 		nbtTagCompound.setString("name", "-");
-		nbtTagCompound.setString("id", "-");
+		nbtTagCompound.setString("uuid", "-");
 
 		stack.setTagCompound(nbtTagCompound);
 		return stack;

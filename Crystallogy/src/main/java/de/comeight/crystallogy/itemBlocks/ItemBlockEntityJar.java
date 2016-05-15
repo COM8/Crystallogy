@@ -32,7 +32,7 @@ public class ItemBlockEntityJar extends BaseItemBlock {
 			if(GuiScreen.isShiftKeyDown()){
 				if(tag.getBoolean("hasEntity")){
 					tooltip.add(TextFormatting.GOLD + "Name: " + TextFormatting.RESET + tag.getString("name"));
-					tooltip.add(TextFormatting.GOLD + "ID: " + TextFormatting.RESET + tag.getString("entityId"));
+					tooltip.add(TextFormatting.GOLD + "UUID: " + TextFormatting.RESET + tag.getUniqueId("uuid").toString());
 				}
 			}
 			else{

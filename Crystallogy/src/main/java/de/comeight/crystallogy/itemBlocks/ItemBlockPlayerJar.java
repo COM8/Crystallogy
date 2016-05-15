@@ -31,8 +31,8 @@ public class ItemBlockPlayerJar extends BaseItemBlock {
 			NBTTagCompound tag = stack.getTagCompound();
 			if(GuiScreen.isShiftKeyDown()){
 				if(tag.getBoolean("hasEntity")){
-					tooltip.add(TextFormatting.GOLD + "Name: " + TextFormatting.RESET + tag.getString("playerName"));
-					tooltip.add(TextFormatting.GOLD + "UUID: " + TextFormatting.RESET + tag.getUniqueId("playerUUID").toString());
+					tooltip.add(TextFormatting.GOLD + "Name: " + TextFormatting.RESET + tag.getString("name"));
+					tooltip.add(TextFormatting.GOLD + "UUID: " + TextFormatting.RESET + tag.getUniqueId("uuid").toString());
 				}
 			}
 			else{

@@ -57,18 +57,6 @@ public class TileEntityPlayerJar extends TileEntityEntityJar {
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
-	public void writeCustomDataToNBT(NBTTagCompound compound) {
-		if(profile != null){
-			compound.setBoolean("hasEntity", true);
-			compound.setString("playerName", profile.getName());
-			compound.setUniqueId("playerUUID", profile.getId());
-		}
-		else{
-			compound.setBoolean("hasPlayer", false);
-		}
-	}
-	
-	@Override
 	public void writeToNBT(NBTTagCompound compound) {
 		writeCustomDataToNBT(compound);
 		super.writeToNBT(compound);
@@ -77,8 +65,8 @@ public class TileEntityPlayerJar extends TileEntityEntityJar {
 	@Override
 	public void readCustomDataToNBT(NBTTagCompound compound) {
 		if(compound.getBoolean("hasEntity")){
-			String name = compound.getString("playerName");
-			UUID uuid = compound.getUniqueId("playerUUID");
+			String name = compound.getString("name");
+			UUID uuid = compound.getUniqueId("uuid");
 			if(!name.equals("")){
 				profile = new GameProfile(uuid, name);
 				if(worldObj != null){
@@ -89,6 +77,18 @@ public class TileEntityPlayerJar extends TileEntityEntityJar {
 		else{
 			this.entity = null;
 			this.profile = null;
+		}
+	}
+	
+	@Override
+	public void writeCustomDataToNBT(NBTTagCompound compound) {
+		if(hasEntity()){
+			compound.setBoolean("hasEntity", true);
+			compound.setString("name", profile.getName());
+			compound.setUniqueId("uuid", profile.getId());
+		}
+		else{
+			compound.setBoolean("hasEntity", false);
 		}
 	}
 	
