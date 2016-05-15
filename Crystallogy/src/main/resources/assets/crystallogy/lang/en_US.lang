@@ -88,5 +88,6 @@ item.armor_combined_legs.name=The hunter's dream Crystal Leggins
 item.armor_combined_feet.name=The hunter's dream Crystal Boots
 item.energyCrystal.name=§5Energy Crystal§r
 item.energyDust.name=Energy Dust
+item.fertilizerPotato.name=Fertilizer Potato
 
 itemGroup.crystallogyMainTab=Crystallogy Maintab

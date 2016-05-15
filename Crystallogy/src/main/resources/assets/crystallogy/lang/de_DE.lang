@@ -88,5 +88,6 @@ item.armor_combined_legs.name=Des Jägers Traum Kristallbeinschutz
 item.armor_combined_feet.name=Des Jägers Traum Kristallstiefel
 item.energyCrystal.name=§5Energiekristal§r
 item.energyDust.name=Energiestaub
+item.fertilizerPotato.name=Dünger Kartoffel
 
 itemGroup.crystallogyMainTab=Crystallogy Hauptfenster

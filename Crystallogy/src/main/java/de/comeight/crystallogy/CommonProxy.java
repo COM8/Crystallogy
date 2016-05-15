@@ -342,6 +342,15 @@ public class CommonProxy {
 		addCrystalGlasRecipe(new ItemStack(ItemHandler.crystallDust_green), new ItemStack(BlockHandler.crystalGlas, 7, 2));
 		addCrystalGlasRecipe(new ItemStack(ItemHandler.crystallDust_yellow), new ItemStack(BlockHandler.crystalGlas, 7, 3));
 		
+		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.fertilizerPotato, 3), new Object[] {
+				"CPC",
+				"BPB",
+				"CPC",
+				'B', new ItemStack(Items.dye, 2, 15),
+				'P', Items.poisonous_potato,
+				'C', ItemHandler.crystallDust_green
+		});
+		
 		Utilities.addConsoleText("All recipes are registered.");
 	}
 	

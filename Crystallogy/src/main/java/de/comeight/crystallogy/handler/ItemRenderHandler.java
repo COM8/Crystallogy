@@ -66,6 +66,7 @@ public class ItemRenderHandler {
 		registerBasicItemRender(ItemHandler.armorBoots_combined);
 		registerBasicItemRender(ItemHandler.energyCrystal);
 		registerBasicItemRender(ItemHandler.energyDust);
+		registerBasicItemRender(ItemHandler.fertilizerPotato);
 		
 		registerItemVariantsRenderer(ItemHandler.crystallHammerHead, 0, "crystallHammerHead_red");
 		registerItemVariantsRenderer(ItemHandler.crystallHammerHead, 1, "crystallHammerHead_blue");
