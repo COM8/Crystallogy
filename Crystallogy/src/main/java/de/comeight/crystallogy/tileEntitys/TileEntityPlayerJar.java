@@ -4,12 +4,20 @@ import java.util.UUID;
 
 import com.mojang.authlib.GameProfile;
 
+import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.entity.PlayerClientDummy;
+import de.comeight.crystallogy.network.NetworkPacketParticle;
+import de.comeight.crystallogy.network.NetworkParticle;
+import de.comeight.crystallogy.particles.ParticleB;
 import de.comeight.crystallogy.util.Log;
+import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.management.PlayerList;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
@@ -86,8 +94,34 @@ public class TileEntityPlayerJar extends TileEntityEntityJar {
 	
 	@Override
 	public void removeEntity(World worldIn, Vec3d pos, boolean release) {
-		profile = null;
-		super.removeEntity(worldIn, pos, release);
+		if(hasEntity()){
+			if(release){
+				entity = null;
+				profile = null;
+				sync();
+				
+				if(worldIn.isRemote){
+					for (int i = 0; i < 5; i++) { //Particel:
+						ParticleB gP = new ParticleB(worldIn, pos.xCoord + 0.5, pos.yCoord, pos.zCoord + 0.5, 0.0, 0.0, 0.0);
+						gP.setParticleMaxAge(120);
+						gP.setRBGColorF(Utilities.getRandFloat(0, 100), Utilities.getRandFloat(0, 100), Utilities.getRandFloat(0, 100));
+						NetworkParticle nP = new NetworkParticle(gP, gP.name);
+						nP.setSize(new Vec3d(1.0, 2.0, 1.0));
+						nP.setNumberOfParticle(30);
+						NetworkPacketParticle pMtS = new NetworkPacketParticle(nP);
+						CommonProxy.NETWORKWRAPPER.sendToServer(pMtS);	
+					}
+					
+					worldIn.addWeatherEffect(new EntityLightningBolt(worldIn, pos.xCoord, pos.yCoord, pos.zCoord, false));
+					worldIn.playSound((EntityPlayer)null, pos.xCoord, pos.yCoord, pos.zCoord, SoundEvents.entity_endermen_stare, SoundCategory.BLOCKS, 1.0F, 1.0F);
+					worldIn.playSound((EntityPlayer)null, pos.xCoord, pos.yCoord, pos.zCoord, SoundEvents.entity_enderdragon_growl, SoundCategory.BLOCKS, 1.0F, 1.0F);
+					worldIn.playSound((EntityPlayer)null, pos.xCoord, pos.yCoord, pos.zCoord, SoundEvents.entity_wither_spawn, SoundCategory.BLOCKS, 1.0F, 0.6F);
+				}
+				else{
+					
+				}
+			}
+		}
 	}
 	
 	@Override
