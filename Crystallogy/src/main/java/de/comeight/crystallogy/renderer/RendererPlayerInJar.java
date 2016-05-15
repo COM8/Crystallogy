@@ -22,6 +22,10 @@ public class RendererPlayerInJar extends TileEntitySpecialRenderer<TileEntityPla
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public void renderTileEntityAt(TileEntityPlayerJar tE, double x, double y, double z, float partialTicks, int destroyStage) {
+		if(!tE.hasEntity()){
+			return;
+		}
+		
 		float partialTick = (float) (720.0 * (System.currentTimeMillis() / 2 & 0x3FFFL) / 0x3FFFL);
 		renderPlayer((PlayerClientDummy)tE.getEntity(), x, y, z, partialTick);
 		renderIngredients(tE.getWorld(), x, y, z, partialTick);
