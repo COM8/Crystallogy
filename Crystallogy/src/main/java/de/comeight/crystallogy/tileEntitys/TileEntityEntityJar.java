@@ -11,11 +11,13 @@ import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.ParticleB;
 import de.comeight.crystallogy.util.RGBColor;
 import de.comeight.crystallogy.util.Utilities;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
@@ -39,7 +41,12 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 		DAMAGE(new RGBColor(1.0F, 0.2F, 0.2F), ItemHandler.damDust, 1),
 		FIRE(new RGBColor(1.0F, 0.0F, 0.0F), ItemHandler.fireDust, 2),
 		DROWN(new RGBColor(0.0F, 0.0F, 1.0F), ItemHandler.drowDust, 3),
-		HUNGER(new RGBColor(0.5F, 0.5F, 0.5F), ItemHandler.hungDust, 4);
+		HUNGER(new RGBColor(0.5F, 0.5F, 0.5F), ItemHandler.hungDust, 4),
+		BADLUCK(new RGBColor(0.2F, 0.1F, 0.0F), ItemHandler.badLuckDust, 5),
+		BLIND(new RGBColor(0.1F, 0.1F, 0.1F), ItemHandler.blindDust, 6),
+		ENDER(new RGBColor(0.5F, 0.0F, 0.5F), ItemHandler.enderDust, 7),
+		GLOW(new RGBColor(0.5F, 0.1F, 0.5F), ItemHandler.glowDust, 8),
+		LEVITATION(new RGBColor(0.3F, 0.3F, 1.0F), ItemHandler.levDust, 9);
 		
 		private final int id;
 		private final RGBColor color;
@@ -50,6 +57,19 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 			this.color = color;
 			this.threatDust = threatDust;
 			this.id = id;			
+		}
+		
+		public static EnumThreats getThreatDust(ItemStack stack){
+			if(!(stack.getItem() instanceof ThreatDust)){
+				return null;
+			}
+			
+			for(EnumThreats threat : values()){
+				if(threat.threatDust == stack.getItem()){
+					return threat;
+				}
+			}
+			return null;
 		}
 		
 		public int getNumOfCalls(){
@@ -148,7 +168,8 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 	
 	public void readCustomDataToNBT(NBTTagCompound compound) {
 		if(compound.getBoolean("hasEntity")){
-			Entity ent = worldObj.getEntityByID(compound.getInteger("entityId"));
+			int id = compound.getInteger("entityId");
+			Entity ent = worldObj.getEntityByID(id);
 			if(ent instanceof EntityLivingBase){
 				entity = (EntityLivingBase) ent;
 			}
@@ -247,6 +268,8 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 				double d2 = Utilities.getRandDouble(0.5, 0.7);
 				double d3 = Utilities.getRandDouble(0.2, 0.6);
 	        	worldObj.spawnParticle(EnumParticleTypes.WATER_WAKE, pos.getX() + d1, pos.getY() + 0.65, pos.getZ() + d2, 0.0, -0.015, 0.0, new int[0]);
+	        	
+	        	spawnThreatParticles();
 	        }
 		}
 		else{
@@ -265,6 +288,16 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 		if(hasEntity()){
 			threat.castOnEntity(entity.getEntityWorld(), entity);
 		}
+	}
+	
+	protected void spawnThreatParticles(){
+		if(threat == null){
+			return;
+		}
+		ParticleB gP = new ParticleB(worldObj, pos.getX() + Utilities.getRandDouble(0.3, 0.7), pos.getY() + Utilities.getRandDouble(0.2, 0.6), pos.getZ() + Utilities.getRandDouble(0.25, 0.9), 0.2, 0.2, 0.2);
+		RGBColor color = threat.getColor();
+		gP.setRBGColorF(color.r, color.g, color.b);
+		Minecraft.getMinecraft().effectRenderer.addEffect(gP);
 	}
 	
 }

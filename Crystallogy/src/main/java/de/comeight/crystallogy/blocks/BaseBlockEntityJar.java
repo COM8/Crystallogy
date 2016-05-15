@@ -3,11 +3,6 @@ package de.comeight.crystallogy.blocks;
 import java.util.List;
 
 import de.comeight.crystallogy.blocks.materials.CustomMaterials;
-import de.comeight.crystallogy.items.threatDusts.DamDust;
-import de.comeight.crystallogy.items.threatDusts.DrowDust;
-import de.comeight.crystallogy.items.threatDusts.FireDust;
-import de.comeight.crystallogy.items.threatDusts.HungDust;
-import de.comeight.crystallogy.items.threatDusts.PoisDust;
 import de.comeight.crystallogy.tileEntitys.TileEntityEntityJar;
 import de.comeight.crystallogy.tileEntitys.TileEntityEntityJar.EnumThreats;
 import net.minecraft.block.state.IBlockState;
@@ -157,29 +152,10 @@ public class BaseBlockEntityJar extends BaseBlockTileEntity {
 	}
 	
 	protected void testForThreatDust(ItemStack stack, TileEntityEntityJar jar, BlockPos pos, EntityPlayer playerIn){
-		boolean success = false;
-		
-		if(stack.getItem() instanceof DamDust){
-			jar.addThreat(EnumThreats.DAMAGE);
-			success = true;
-		}
-		else if(stack.getItem() instanceof DrowDust){
-			jar.addThreat(EnumThreats.DROWN);
-			success = true;
-		}
-		else if(stack.getItem() instanceof PoisDust){
-			jar.addThreat(EnumThreats.POISON);
-			success = true;
-		}
-		else if(stack.getItem() instanceof FireDust){
-			jar.addThreat(EnumThreats.FIRE);
-			success = true;
-		}
-		else if(stack.getItem() instanceof HungDust){
-			jar.addThreat(EnumThreats.HUNGER);
-			success = true;
-		}
-		if(success){
+		EnumThreats threat = EnumThreats.getThreatDust(stack);
+		if(threat != null){
+			jar.addThreat(threat);
+			
 			ItemStack playerIStack = playerIn.getHeldItemMainhand();
 			if (playerIStack != null){
 	            playerIStack.stackSize--;
