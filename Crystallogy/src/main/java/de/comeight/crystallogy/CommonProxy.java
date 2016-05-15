@@ -363,12 +363,13 @@ public class CommonProxy {
 		addCrystalGlasRecipe(new ItemStack(ItemHandler.crystallDust_yellow), new ItemStack(BlockHandler.crystalGlas, 7, 3));
 		
 		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.fertilizerPotato, 3), new Object[] {
-				"CPC",
+				"YPC",
 				"BPB",
-				"CPC",
+				"CPY",
 				'B', new ItemStack(Items.dye, 2, 15),
 				'P', Items.poisonous_potato,
-				'C', ItemHandler.crystallDust_green
+				'C', ItemHandler.crystallDust_green,
+				'y', BlockHandler.crystorya
 		});
 		
 		GameRegistry.addRecipe(new ShapedOreRecipe(BlockHandler.farmersGreen, new Object[] {
