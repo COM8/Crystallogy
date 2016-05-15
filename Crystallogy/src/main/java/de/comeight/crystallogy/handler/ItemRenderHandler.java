@@ -34,6 +34,11 @@ public class ItemRenderHandler {
 		registerBasicItemRender(ItemHandler.fireDust);
 		registerBasicItemRender(ItemHandler.poisDust);
 		registerBasicItemRender(ItemHandler.hungDust);
+		registerBasicItemRender(ItemHandler.badLuckDust);
+		registerBasicItemRender(ItemHandler.blindDust);
+		registerBasicItemRender(ItemHandler.levDust);
+		registerBasicItemRender(ItemHandler.glowDust);
+		registerBasicItemRender(ItemHandler.enderDust);
 		registerBasicItemRender(ItemHandler.crystallHammer_blue);
 		registerBasicItemRender(ItemHandler.crystallHammer_green);
 		registerBasicItemRender(ItemHandler.crystallHammer_red);
