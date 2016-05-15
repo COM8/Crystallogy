@@ -12,8 +12,10 @@ import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -46,6 +48,23 @@ public class FarmersGreen extends BaseBlockTileEntity {
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
+	@Override
+	public void getSubBlocks(Item itemIn, CreativeTabs tab, java.util.List<ItemStack> list) {
+		NBTTagCompound compound = new NBTTagCompound();
+		
+		compound.setInteger("growthLeft", 12000);
+		ItemStack i1 = new  ItemStack(itemIn, 1, 0);
+		i1.setTagCompound(compound);
+	
+		compound = new NBTTagCompound();
+		compound.setInteger("growthLeft", 0);
+		ItemStack i2 = new  ItemStack(itemIn, 1, 1);
+		i2.setTagCompound(compound);
+		
+		list.add(i1);
+		list.add(i2);
+	}
+	
 	public static void setBlockState(int status, World worldIn, BlockPos pos){
 		TileEntity tE = worldIn.getTileEntity(pos);
 		worldIn.setBlockState(pos, worldIn.getBlockState(pos).withProperty(STATUS, status), 3);
