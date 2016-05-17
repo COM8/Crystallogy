@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="net.minecraft.util.EnumBlockRenderType"/>
-<fullyQualifiedTypeName name="net.minecraft.util.EnumFacing"/>
-<fullyQualifiedTypeName name="net.minecraftforge.fml.common.eventhandler.EventBus"/>
-<fullyQualifiedTypeName name="net.minecraft.network.ServerStatusResponse.Version"/>
-<fullyQualifiedTypeName name="net.minecraftforge.fml.relauncher.Side"/>
-</qualifiedTypeNameHistroy>
