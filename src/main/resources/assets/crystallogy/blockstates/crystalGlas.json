@@ -1,8 +1,0 @@
-{
-    "variants": {
-		"color=0": { "model": "crystallogy:crystalGlas_red" },
-		"color=1": { "model": "crystallogy:crystalGlas_blue" },
-		"color=2": { "model": "crystallogy:crystalGlas_green" },
-		"color=3": { "model": "crystallogy:crystalGlas_yellow" }
-    }
-}
