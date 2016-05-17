@@ -357,6 +357,16 @@ public class CommonProxy {
 		}, new ItemStack(BlockHandler.crystallCrusher));
 		GameRegistry.addRecipe(crusher);
 		
+		GameRegistry.addShapedRecipe(new ItemStack(BlockHandler.charger), new Object[] {
+				"OCO",
+				"ORO",
+				"OIO",
+				'O', obsidian,
+				'R', redstone,
+				'C', new ItemStack(ItemHandler.energyCrystal, 1, 12000),
+				'I', iron_block
+		});
+		
 		addCrystalGlasRecipe(new ItemStack(ItemHandler.crystallDust_red), new ItemStack(BlockHandler.crystalGlas, 7, 0));
 		addCrystalGlasRecipe(new ItemStack(ItemHandler.crystallDust_blue), new ItemStack(BlockHandler.crystalGlas, 7, 1));
 		addCrystalGlasRecipe(new ItemStack(ItemHandler.crystallDust_green), new ItemStack(BlockHandler.crystalGlas, 7, 2));
@@ -369,7 +379,7 @@ public class CommonProxy {
 				'B', new ItemStack(Items.dye, 2, 15),
 				'P', Items.poisonous_potato,
 				'C', ItemHandler.crystallDust_green,
-				'y', BlockHandler.crystorya
+				'Y', BlockHandler.crystorya
 		});
 		
 		GameRegistry.addRecipe(new ShapedOreRecipe(BlockHandler.farmersGreen, new Object[] {
