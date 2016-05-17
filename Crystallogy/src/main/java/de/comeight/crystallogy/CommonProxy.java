@@ -386,7 +386,7 @@ public class CommonProxy {
 				'Y', BlockHandler.crystorya
 		});
 		
-		GameRegistry.addRecipe(new ShapedOreRecipe(BlockHandler.farmersGreen, new Object[] {
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BlockHandler.farmersGreen, 1, 1), new Object[] {
 				"IPI",
 				"G_G",
 				"GGG",

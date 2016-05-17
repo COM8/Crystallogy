@@ -56,10 +56,7 @@ public class FarmersGreen extends BaseBlockTileEntity {
 		ItemStack i1 = new  ItemStack(itemIn, 1, 0);
 		i1.setTagCompound(compound);
 	
-		compound = new NBTTagCompound();
-		compound.setInteger("growthLeft", 0);
 		ItemStack i2 = new  ItemStack(itemIn, 1, 1);
-		i2.setTagCompound(compound);
 		
 		list.add(i1);
 		list.add(i2);

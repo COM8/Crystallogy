@@ -34,10 +34,7 @@ public class ItemBlockFarmersGreen extends BaseItemBlock {
 		ItemStack i1 = new  ItemStack(itemIn, 1, 0);
 		i1.setTagCompound(compound);
 	
-		compound = new NBTTagCompound();
-		compound.setInteger("growthLeft", 0);
 		ItemStack i2 = new  ItemStack(itemIn, 1, 1);
-		i2.setTagCompound(compound);
 		
 		subItems.add(i1);
 		subItems.add(i2);
