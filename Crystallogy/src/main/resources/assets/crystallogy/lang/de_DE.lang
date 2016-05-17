@@ -14,6 +14,7 @@ block.compressor.name=Kompressor
 block.charger.name=Kristallladestation
 block.crystorya.name=Crystorya
 block.crystalGlas.name=Kristallglas
+block.farmersGreen.name=Des Farmers Grün
 
 tile.crystall_red.name=§4Roter§r Kristall
 tile.crystall_blue.name=§9Blauer§r Kristall
@@ -29,6 +30,7 @@ tile.compressor.name=Kompressor
 tile.charger.name=Kristallladestation
 tile.crystorya.name=Crystorya
 tile.crystalGlas.name=Kristallglas
+tile.farmersGreen.name=Des Farmers Grün
 
 item.crystallDust_red.name=§4Roter§r Kristallstaub
 item.crystallDust_blue.name=§9Blauer§r Kristallstaub
