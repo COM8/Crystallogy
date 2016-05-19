@@ -4,7 +4,6 @@ import java.util.List;
 
 import de.comeight.crystallogy.blocks.materials.CustomArmorMaterials;
 import de.comeight.crystallogy.handler.ItemHandler;
-import de.comeight.crystallogy.items.EnergyCrystal;
 import de.comeight.crystallogy.util.ToolTipBuilder;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.client.gui.GuiScreen;
@@ -28,7 +27,7 @@ public class Armor_combined extends BaseArmor {
 		return ID + armorType.getName();
 	}
 	
-	private boolean isPlayerWearingFullArmor(EntityPlayer player){
+	public boolean isPlayerWearingFullArmor(EntityPlayer player){
 		if (player.inventory.armorItemInSlot(3) != null && player.inventory.armorItemInSlot(3).getItem() == ItemHandler.armorHelmet_combined
 		        && player.inventory.armorItemInSlot(2) != null && player.inventory.armorItemInSlot(2).getItem() == ItemHandler.armorChestplate_combined
 		        && player.inventory.armorItemInSlot(1) != null && player.inventory.armorItemInSlot(1).getItem() == ItemHandler.armorLeggins_combined
@@ -43,32 +42,42 @@ public class Armor_combined extends BaseArmor {
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
 		int index = -1;
 		if (!isPlayerWearingFullArmor(player) || (index = hasEnergyCrystal(player)) == -1) {
-			player.capabilities.allowFlying = false;
-			player.capabilities.isFlying = false;
-			player.capabilities.disableDamage = false;
-			if(!world.isRemote){
-				player.capabilities.setPlayerWalkSpeed(0.1F);
-				player.capabilities.setFlySpeed(0.05F);
-			}
+			disableCapabilities(world, player);
 		}
 		else{
-			player.capabilities.allowFlying = true;
-			player.capabilities.disableDamage = true;
-			if(!world.isRemote){
-				player.capabilities.setPlayerWalkSpeed(0.12F);
-				player.capabilities.setFlySpeed(0.06F);	
-			}
-			
-			if(!world.isRemote && itemStack.getItem() == ItemHandler.armorChestplate_combined){
-				if(player.capabilities.isFlying){
-					damageEnergyCrystal(player, index);
-				}
-				else{
-					if(Utilities.getRandInt(0, 5) == 0){
+			if(itemStack.getItem() == ItemHandler.armorChestplate_combined){
+				enableCapabilities(world, player);
+				
+				if(!world.isRemote){
+					if(player.capabilities.isFlying){
 						damageEnergyCrystal(player, index);
+					}
+					else{
+						if(Utilities.getRandInt(0, 5) == 0){
+							damageEnergyCrystal(player, index);
+						}
 					}
 				}
 			}
+		}
+	}
+	
+	private void enableCapabilities(World world, EntityPlayer player){
+		player.capabilities.allowFlying = true;
+		player.capabilities.disableDamage = true;
+		if(!world.isRemote){
+			player.capabilities.setPlayerWalkSpeed(0.12F);
+			player.capabilities.setFlySpeed(0.06F);	
+		}
+	}
+	
+	private void disableCapabilities(World world, EntityPlayer player){
+		player.capabilities.allowFlying = false;
+		player.capabilities.isFlying = false;
+		player.capabilities.disableDamage = false;
+		if(!world.isRemote){
+			player.capabilities.setPlayerWalkSpeed(0.1F);
+			player.capabilities.setFlySpeed(0.05F);
 		}
 	}
 	
