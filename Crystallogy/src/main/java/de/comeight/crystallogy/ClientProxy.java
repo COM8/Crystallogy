@@ -1,5 +1,7 @@
 package de.comeight.crystallogy;
 
+import org.lwjgl.input.Keyboard;
+
 import de.comeight.crystallogy.handler.BlockRenderHandler;
 import de.comeight.crystallogy.handler.ItemRenderHandler;
 import de.comeight.crystallogy.handler.ParticleHandler;
@@ -20,6 +22,7 @@ import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
 import de.comeight.crystallogy.tileEntitys.TileEntityEntityJar;
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
 import de.comeight.crystallogy.util.Utilities;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -28,6 +31,10 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
 public class ClientProxy extends CommonProxy{
+	//-----------------------------------------------Variabeln:---------------------------------------------
+	//KeyBinding:
+	public static KeyBinding jetpackKey;
+	
 	
 	//-----------------------------------------------Pre-Init:----------------------------------------------
 	@Override
@@ -44,6 +51,8 @@ public class ClientProxy extends CommonProxy{
         BlockRenderHandler.registerBlockRenderer();
         ItemRenderHandler.registerItemRenderer();
         registerSpecialRenderers();
+        registerKeybinding();
+        registerEventHandlerClient();
     }
 
   //-----------------------------------------------Post-Init:----------------------------------------------
@@ -52,6 +61,7 @@ public class ClientProxy extends CommonProxy{
         super.postInit(e);
     }
     
+  //-----------------------------------------------Sonstige Methoden:-------------------------------------
     private void registerSpecialRenderers(){
     	ClientRegistry.bindTileEntitySpecialRenderer(TileEnityInfuserBlock.class, new RendererInfuserBlockItem());
     	ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlayerJar.class, new RendererPlayerInJar());
@@ -69,4 +79,16 @@ public class ClientProxy extends CommonProxy{
     	
     	Utilities.addConsoleText("Clientside: MessageHandlerOnClient registriert.");
 	}
+    
+    private void registerKeybinding(){
+    	jetpackKey = new KeyBinding("keyBinding.space.name", Keyboard.KEY_SPACE, "Crystallogy");
+    	
+    	ClientRegistry.registerKeyBinding(jetpackKey);
+    	
+    	Utilities.addConsoleText("All keyBindings are registered.");
+    }
+    
+    private void registerEventHandlerClient(){
+    	Utilities.addConsoleText("All eventHandler are registered.");
+    }
 }
