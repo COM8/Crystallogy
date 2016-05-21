@@ -6,6 +6,8 @@ import de.comeight.crystallogy.tileEntitys.TileEntityInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 
@@ -149,15 +151,28 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
     {
         super.readFromNBT(compound);
         readAdditionalData(compound);
-        
     }
 
     @Override
-    public void writeToNBT(NBTTagCompound compound)
+    public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
         writeAdditionalData(compound);
+        return compound;
     }	
+    
+    @Override
+	public SPacketUpdateTileEntity getUpdatePacket() {
+		NBTTagCompound nbt = new NBTTagCompound();
+        writeToNBT(nbt);
+		return new SPacketUpdateTileEntity(pos, 0, nbt);
+	}
+	
+	@Override
+	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
+		super.onDataPacket(net, pkt);
+		readFromNBT(pkt.getNbtCompound());
+	}
     
     @Override
 	public void onCustomDataPacket(NetworkPacketTileEntitySync packet) {

@@ -3,6 +3,8 @@ package de.comeight.crystallogy.tileEntitys;
 import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
 import de.comeight.crystallogy.util.NetworkUtilitis;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
 public abstract class BaseTileEntity extends TileEntity {
@@ -26,6 +28,19 @@ public abstract class BaseTileEntity extends TileEntity {
 			NetworkUtilitis.sendAllAround(packet, worldObj.isRemote);
 		}
 		markDirty();
+	}
+	
+	@Override
+	public SPacketUpdateTileEntity getUpdatePacket() {
+		NBTTagCompound nbt = new NBTTagCompound();
+        writeToNBT(nbt);
+		return new SPacketUpdateTileEntity(pos, 0, nbt);
+	}
+	
+	@Override
+	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
+		super.onDataPacket(net, pkt);
+		readFromNBT(pkt.getNbtCompound());
 	}
 
 }

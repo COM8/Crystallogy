@@ -6,8 +6,6 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.util.Constants;
@@ -92,19 +90,6 @@ public abstract class TileEntityInventory extends BaseTileEntity implements IInv
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
-	@Override
-	public SPacketUpdateTileEntity getUpdatePacket() {
-        NBTTagCompound nbt = new NBTTagCompound();
-        writeToNBT(nbt);
-        return new SPacketUpdateTileEntity(getPos(), 0, nbt);
-    }
-
-    @Override
-    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt){
-        super.onDataPacket(net, pkt);
-        readFromNBT(pkt.getNbtCompound());
-    }
-	
 	@Override
 	public ItemStack decrStackSize(int index, int count) {
 		ItemStack stack = getStackInSlot(index);

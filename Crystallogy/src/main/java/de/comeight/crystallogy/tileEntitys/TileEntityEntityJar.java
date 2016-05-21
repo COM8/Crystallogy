@@ -21,8 +21,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.SoundCategory;
@@ -93,7 +91,6 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 		
 		public NBTTagCompound toNBTTagCompound(NBTTagCompound compound, String key){
 			compound.setInteger(key + "_EnumThreat", id);
-			
 			return compound;
 		}
 		
@@ -207,19 +204,6 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 	public void readFromNBT(NBTTagCompound compound) {
 		readCustomDataToNBT(compound);
 		super.readFromNBT(compound);
-	}
-	
-	@Override
-	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
-		super.onDataPacket(net, pkt);
-		readFromNBT(pkt.getNbtCompound());
-	}
-	
-	@Override
-	public SPacketUpdateTileEntity getUpdatePacket() {
-		NBTTagCompound nbt = new NBTTagCompound();
-        writeToNBT(nbt);
-		return new SPacketUpdateTileEntity(pos, 0, nbt);
 	}
 	
 	public void removeEntity(World worldIn, Vec3d pos, boolean release){

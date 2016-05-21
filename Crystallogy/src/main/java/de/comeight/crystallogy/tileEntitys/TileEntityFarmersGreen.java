@@ -11,8 +11,6 @@ import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -51,19 +49,6 @@ public class TileEntityFarmersGreen extends BaseTileEntity implements ITickable{
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
 		growthLeft = compound.getInteger("growthLeft");
-	}
-	
-	@Override
-	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
-		super.onDataPacket(net, pkt);
-		readFromNBT(pkt.getNbtCompound());
-	}
-	
-	@Override
-	public SPacketUpdateTileEntity getUpdatePacket() {
-		NBTTagCompound nbt = new NBTTagCompound();
-        writeToNBT(nbt);
-		return new SPacketUpdateTileEntity(pos, 0, nbt);
 	}
 	
 	@Override
