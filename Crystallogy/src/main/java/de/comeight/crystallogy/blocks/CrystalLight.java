@@ -1,5 +1,7 @@
 package de.comeight.crystallogy.blocks;
 
+import javax.annotation.Nullable;
+
 import de.comeight.crystallogy.tileEntitys.TileEntityCrystallLight;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -37,8 +39,14 @@ public class CrystalLight extends BaseBlockCutout {
 	
 	@Override
 	public AxisAlignedBB getSelectedBoundingBox(IBlockState blockState, World worldIn, BlockPos pos) {
-		return NULL_AABB;
+		return new AxisAlignedBB(0.4, 0.4, 0.4, 0.6, 0.6, 0.6);
 	}
+	
+	@Nullable
+    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos)
+    {
+        return NULL_AABB;
+    }
 	
 	@Override
 	public boolean hasTileEntity(IBlockState state) {
