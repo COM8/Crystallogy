@@ -205,9 +205,9 @@ public class BaseCrystalKnife extends BaseItemSword{
 					}
 				}
 				worldIn.addWeatherEffect(new EntityLightningBolt(worldIn, pos.xCoord, pos.yCoord, pos.zCoord, false));
-				worldIn.playSound((EntityPlayer)null, pos.xCoord, pos.yCoord, pos.zCoord, SoundEvents.entity_endermen_stare, SoundCategory.NEUTRAL, 1.0F, 1.0F);
-				worldIn.playSound((EntityPlayer)null, pos.xCoord, pos.yCoord, pos.zCoord, SoundEvents.entity_enderdragon_growl, SoundCategory.NEUTRAL, 1.0F, 1.0F);
-				worldIn.playSound((EntityPlayer)null, pos.xCoord, pos.yCoord, pos.zCoord, SoundEvents.entity_wither_spawn, SoundCategory.NEUTRAL, 1.0F, 0.6F);
+				worldIn.playSound((EntityPlayer)null, pos.xCoord, pos.yCoord, pos.zCoord, SoundEvents.ENTITY_ENDERMEN_STARE, SoundCategory.NEUTRAL, 1.0F, 1.0F);
+				worldIn.playSound((EntityPlayer)null, pos.xCoord, pos.yCoord, pos.zCoord, SoundEvents.ENTITY_ENDERMEN_SCREAM, SoundCategory.NEUTRAL, 1.0F, 1.0F);
+				worldIn.playSound((EntityPlayer)null, pos.xCoord, pos.yCoord, pos.zCoord, SoundEvents.ENTITY_WITHER_SPAWN, SoundCategory.NEUTRAL, 1.0F, 0.6F);
 			}
 		}
 		return stack;

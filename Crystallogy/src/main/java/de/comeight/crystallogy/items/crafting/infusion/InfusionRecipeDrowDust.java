@@ -10,7 +10,7 @@ public class InfusionRecipeDrowDust extends InfusionRecipeSimple {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public InfusionRecipeDrowDust() {
-		super("drowDust", 230, new ItemStack(Items.prismarine_shard),
+		super("drowDust", 230, new ItemStack(Items.PRISMARINE_SHARD),
 				new ItemStack[]{ new ItemStack(ItemHandler.crystallDust_blue, 4),},
 				new ItemStack(ItemHandler.drowDust));
 	}

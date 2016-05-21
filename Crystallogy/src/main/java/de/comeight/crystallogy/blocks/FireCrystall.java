@@ -47,7 +47,7 @@ public class FireCrystall extends Crystall {
 	
 	@Override
 	public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-		worldIn.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.block_lava_extinguish, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
+		worldIn.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
 		super.randomTick(worldIn, pos, state, rand);
 	}
 	

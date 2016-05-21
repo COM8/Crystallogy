@@ -2,12 +2,10 @@ package de.comeight.crystallogy.items.crafting.infusion;
 
 import java.util.ArrayList;
 
-import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.particles.ParticleA;
 import de.comeight.crystallogy.particles.ParticleB;
 import de.comeight.crystallogy.particles.ParticleC;
-import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
 import de.comeight.crystallogy.util.RGBColor;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.init.Blocks;
@@ -34,13 +32,13 @@ public class InfusionRecipeVaporizer extends InfusionRecipe {
 		ret.add(new ArrayList<ItemStack>());
 		ret.get(0).add(new ItemStack(ItemHandler.vaporizer));
 		ret.add(new ArrayList<ItemStack>());
-		ret.get(1).add(new ItemStack(Items.dye));
+		ret.get(1).add(new ItemStack(Items.DYE));
 		ret.add(new ArrayList<ItemStack>());
-		ret.get(2).add(new ItemStack(Items.gunpowder));
+		ret.get(2).add(new ItemStack(Items.GUNPOWDER));
 		ret.add(new ArrayList<ItemStack>());
-		ret.get(3).add(new ItemStack(Items.diamond));
-		ret.get(3).add(new ItemStack(Blocks.leaves));
-		ret.get(3).add(new ItemStack(Blocks.dirt));
+		ret.get(3).add(new ItemStack(Items.DIAMOND));
+		ret.get(3).add(new ItemStack(Blocks.LEAVES));
+		ret.get(3).add(new ItemStack(Blocks.DIRT));
 		ret.add(new ArrayList<ItemStack>());
 		ret.get(4).add(new ItemStack(ItemHandler.crystallDust_red));
 		ret.get(4).add(new ItemStack(ItemHandler.crystallDust_blue));
@@ -91,10 +89,10 @@ public class InfusionRecipeVaporizer extends InfusionRecipe {
 		for(int i = 0;i < ingredients.length; i++){
 			ItemStack itemstack = ingredients[i];
 			if(itemstack != null){
-				if(itemstack.getItem() == Items.gunpowder){
+				if(itemstack.getItem() == Items.GUNPOWDER){
 					gunpowder++;
 				}
-				else if(itemstack.getItem() == Items.dye){
+				else if(itemstack.getItem() == Items.DYE){
 					dye++;
 				}
 				else if(itemstack.getItem() == ItemHandler.crystallDust_blue){
@@ -112,13 +110,13 @@ public class InfusionRecipeVaporizer extends InfusionRecipe {
 				else if(itemstack.getItem() == ItemHandler.pureCrystallDust){
 					cP++;
 				}
-				else if(itemstack.getItem() == Items.diamond){
+				else if(itemstack.getItem() == Items.DIAMOND){
 					diamond++;
 				}
-				else if(itemstack.getItem() == Item.getItemFromBlock(Blocks.leaves)){
+				else if(itemstack.getItem() == Item.getItemFromBlock(Blocks.LEAVES)){
 					leave++;
 				}
-				else if(itemstack.getItem() == Item.getItemFromBlock(Blocks.dirt)){
+				else if(itemstack.getItem() == Item.getItemFromBlock(Blocks.DIRT)){
 					dirt++;
 				}
 				else{
@@ -192,7 +190,7 @@ public class InfusionRecipeVaporizer extends InfusionRecipe {
 			for(int i = 0;i < ingredients.length; i++){
 				ItemStack itemstack = ingredients[i];
 				if(itemstack != null){
-					if((item = itemstack.getItem()) == Items.dye){
+					if((item = itemstack.getItem()) == Items.DYE){
 						if(item.getDamage(itemstack) == EnumDyeColor.RED.getDyeDamage()){
 							tagC = (NBTTagCompound) manageColor(new RGBColor(0.1F, -0.1F, -0.1F), tagC).copy();
 						}

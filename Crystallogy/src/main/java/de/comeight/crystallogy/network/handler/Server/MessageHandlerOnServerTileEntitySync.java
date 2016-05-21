@@ -45,7 +45,7 @@ public class MessageHandlerOnServerTileEntitySync implements IMessageHandler<Net
 			return null;
 		}
 		
-		final WorldServer worldServer = sendingPlayer.getServerForPlayer();
+		final WorldServer worldServer = sendingPlayer.getServerWorld();
 		worldServer.addScheduledTask(new Runnable() {
 			public void run() {
 				processMessage(message, worldServer);

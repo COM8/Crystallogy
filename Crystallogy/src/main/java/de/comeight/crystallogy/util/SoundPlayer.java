@@ -3,7 +3,6 @@ package de.comeight.crystallogy.util;
 import de.comeight.crystallogy.CrystallogyBase;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.network.play.server.SPacketSoundEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 
@@ -24,7 +23,7 @@ public class SoundPlayer {
 
 	public static void PlaySoundForPlayer(Entity entity, SoundEvent sound, float volume, float pitch) {
 		if (entity instanceof EntityPlayerMP) {
-			((EntityPlayerMP) entity).playerNetServerHandler.sendPacket(new SPacketSoundEffect(sound, entity.getSoundCategory(), entity.posX, entity.posY, entity.posZ, volume, pitch));
+			//((EntityPlayerMP) entity).playerNetServerHandler.sendPacket(new SPacketSoundEffect(sound, entity.getSoundCategory(), entity.posX, entity.posY, entity.posZ, volume, pitch)); //TODO Reimplement
 		}
 	}
 

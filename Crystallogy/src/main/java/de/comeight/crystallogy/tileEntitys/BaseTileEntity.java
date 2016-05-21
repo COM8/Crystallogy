@@ -1,6 +1,5 @@
 package de.comeight.crystallogy.tileEntitys;
 
-import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
 import de.comeight.crystallogy.util.NetworkUtilitis;
 import net.minecraft.nbt.NBTTagCompound;

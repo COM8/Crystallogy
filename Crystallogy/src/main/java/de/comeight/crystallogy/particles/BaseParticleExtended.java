@@ -34,19 +34,19 @@ public class BaseParticleExtended extends BaseParticle {
 		
 		switch (stage) {
 		case 0:
-			moveEntity(this.xSpeed / 3, 0, 0);
+			moveEntity(this.motionX / 3, 0, 0);
 			break;
 		case 1:
-			moveEntity(0, this.ySpeed / 5, 0);
+			moveEntity(0, this.motionY / 5, 0);
 			break;
 		case 2:
-			moveEntity(0, 0, this.zSpeed / 3);
+			moveEntity(0, 0, this.motionZ / 3);
 			break;
 		case 3:
-			moveEntity(-this.xSpeed / 3 , 0, 0);
+			moveEntity(-this.motionX / 3 , 0, 0);
 			break;
 		case 4:
-			moveEntity(0, 0, -this.zSpeed / 3);
+			moveEntity(0, 0, -this.motionZ / 3);
 			break;
 		default:
 			break;

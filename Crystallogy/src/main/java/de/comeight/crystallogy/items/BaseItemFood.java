@@ -1,7 +1,6 @@
 package de.comeight.crystallogy.items;
 
 import de.comeight.crystallogy.CommonProxy;
-import de.comeight.crystallogy.tabs.CrystallogyMainTab;
 import net.minecraft.item.ItemFood;
 
 public class BaseItemFood extends ItemFood {

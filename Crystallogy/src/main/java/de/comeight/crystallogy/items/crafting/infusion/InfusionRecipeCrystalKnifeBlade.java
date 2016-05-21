@@ -2,7 +2,6 @@ package de.comeight.crystallogy.items.crafting.infusion;
 
 import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class InfusionRecipeCrystalKnifeBlade extends InfusionRecipeSimple {

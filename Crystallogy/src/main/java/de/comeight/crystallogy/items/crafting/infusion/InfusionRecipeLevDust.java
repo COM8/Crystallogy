@@ -10,9 +10,9 @@ public class InfusionRecipeLevDust extends InfusionRecipeSimple {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public InfusionRecipeLevDust() {
-		super("levDust", 230, new ItemStack(Items.feather),
+		super("levDust", 230, new ItemStack(Items.FEATHER),
 				new ItemStack[]{ 	new ItemStack(ItemHandler.crystallDust_yellow, 3),
-									new ItemStack(Items.ghast_tear, 1),},
+									new ItemStack(Items.GHAST_TEAR, 1),},
 				new ItemStack(ItemHandler.levDust));
 	}
 	

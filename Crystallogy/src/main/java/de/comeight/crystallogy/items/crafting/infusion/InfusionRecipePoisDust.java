@@ -10,7 +10,7 @@ public class InfusionRecipePoisDust extends InfusionRecipeSimple {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public InfusionRecipePoisDust() {
-		super("poisDust", 230, new ItemStack(Items.spider_eye),
+		super("poisDust", 230, new ItemStack(Items.SPIDER_EYE),
 				new ItemStack[]{ 	new ItemStack(ItemHandler.crystallDust_green, 3),
 									new ItemStack(ItemHandler.crystallDust_yellow, 1),},
 				new ItemStack(ItemHandler.poisDust));

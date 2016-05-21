@@ -4,11 +4,11 @@ import net.minecraft.block.material.MapColor;
 import net.minecraft.item.ItemStack;
 
 public enum EnumCrystalColor {
-	RED(0, "red", MapColor.redColor),
-	BLUE(1, "blue", MapColor.blueColor),
-	GREEN(2, "green", MapColor.greenColor),
-	YELLOW(3, "yellow", MapColor.yellowColor),
-	GRAY(4, "gray", MapColor.grayColor);
+	RED(0, "red", MapColor.RED),
+	BLUE(1, "blue", MapColor.BLUE),
+	GREEN(2, "green", MapColor.GREEN),
+	YELLOW(3, "yellow", MapColor.YELLOW),
+	GRAY(4, "gray", MapColor.GRAY);
 	
     private static final EnumCrystalColor[] META_LOOKUP = new EnumCrystalColor[values().length];
     private final int meta;

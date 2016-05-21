@@ -2,14 +2,10 @@ package de.comeight.crystallogy.particles;
 
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.EntityFX;
-import net.minecraft.client.particle.IParticleFactory;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class InfusionParticle extends BaseParticle {
 
@@ -125,12 +121,5 @@ public class InfusionParticle extends BaseParticle {
 		this.targetPos = new Vec3d(x, y, z);
 		
 		return s;
-	}
-	
-	@SideOnly(Side.CLIENT)
-	public static class Factory implements IParticleFactory {
-		public EntityFX getEntityFX(int particleID, World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, double xSpeedIn, double ySpeedIn, double zSpeedIn, int... p_178902_15_) {
-			return new InfusionParticle(worldIn, xCoordIn, yCoordIn, zCoordIn, new Vec3d(xCoordIn, yCoordIn, zCoordIn), new Vec3d(xCoordIn + 1, yCoordIn + 1, zCoordIn + 1), 100);
-		}
 	}
 }

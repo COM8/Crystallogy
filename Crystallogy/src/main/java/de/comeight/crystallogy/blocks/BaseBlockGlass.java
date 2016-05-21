@@ -21,7 +21,7 @@ public class BaseBlockGlass extends BlockGlass {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public BaseBlockGlass(Material material, String id){
-		super(Material.glass, false);
+		super(Material.GLASS, false);
 		
 		setUnlocalizedName(id);
 		setRegistryName(id);

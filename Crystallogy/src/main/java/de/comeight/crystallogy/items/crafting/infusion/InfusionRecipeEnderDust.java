@@ -10,10 +10,10 @@ public class InfusionRecipeEnderDust extends InfusionRecipeSimple {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public InfusionRecipeEnderDust() {
-		super("enderDust", 230, new ItemStack(Items.ender_eye),
+		super("enderDust", 230, new ItemStack(Items.ENDER_EYE),
 				new ItemStack[]{ 	new ItemStack(ItemHandler.crystallDust_blue, 2),
 									new ItemStack(ItemHandler.crystallDust_red),
-									new ItemStack(Items.ender_pearl),
+									new ItemStack(Items.ENDER_PEARL),
 									},
 				new ItemStack(ItemHandler.enderDust));
 	}

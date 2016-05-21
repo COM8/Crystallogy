@@ -1,8 +1,6 @@
 package de.comeight.crystallogy.items.tools;
 
 import de.comeight.crystallogy.blocks.materials.CustomToolMaterials;
-import de.comeight.crystallogy.handler.BlockHandler;
-import net.minecraft.item.ItemStack;
 
 public class CrystalSword_green extends BaseItemSword {
 	//-----------------------------------------------Variabeln:---------------------------------------------

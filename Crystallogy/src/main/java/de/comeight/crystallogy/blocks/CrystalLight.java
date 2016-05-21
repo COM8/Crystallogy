@@ -16,7 +16,7 @@ public class CrystalLight extends BaseBlockCutout {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public CrystalLight() {
-		super(Material.carpet, ID);
+		super(Material.CARPET, ID);
 		this.lightOpacity = 0;
 		setLightLevel(1.0F);
 	}

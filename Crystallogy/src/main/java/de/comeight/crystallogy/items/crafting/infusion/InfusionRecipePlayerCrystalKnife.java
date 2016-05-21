@@ -12,9 +12,9 @@ public class InfusionRecipePlayerCrystalKnife extends InfusionRecipeSimple {
 	public InfusionRecipePlayerCrystalKnife() {
 		super("playerCrystalKnife", 500, new ItemStack(ItemHandler.crystalKnifeBlade),
 				new ItemStack[]{ 	new ItemStack(ItemHandler.toolRod, 1),
-									new ItemStack(Items.ender_eye, 1),
-									new ItemStack(Items.blaze_powder, 1),
-									new ItemStack(Items.diamond_sword, 1),},
+									new ItemStack(Items.ENDER_EYE, 1),
+									new ItemStack(Items.BLAZE_POWDER, 1),
+									new ItemStack(Items.DIAMOND_SWORD, 1),},
 				new ItemStack(ItemHandler.playerCrystalKnife));
 	}
 	

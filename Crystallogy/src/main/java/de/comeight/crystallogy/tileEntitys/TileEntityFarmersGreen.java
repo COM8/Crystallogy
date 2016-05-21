@@ -12,7 +12,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
-import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
@@ -42,9 +41,10 @@ public class TileEntityFarmersGreen extends BaseTileEntity implements ITickable{
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
-	public void writeToNBT(NBTTagCompound compound) {
+	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 		compound.setInteger("growthLeft", growthLeft);
+		return compound;
 	}
 	
 	@Override
@@ -60,7 +60,7 @@ public class TileEntityFarmersGreen extends BaseTileEntity implements ITickable{
 	}
 	
 	@Override
-	public Packet<?> getDescriptionPacket() {
+	public SPacketUpdateTileEntity getUpdatePacket() {
 		NBTTagCompound nbt = new NBTTagCompound();
         writeToNBT(nbt);
 		return new SPacketUpdateTileEntity(pos, 0, nbt);

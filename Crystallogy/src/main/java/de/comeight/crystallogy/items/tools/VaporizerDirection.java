@@ -3,7 +3,6 @@ package de.comeight.crystallogy.items.tools;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;

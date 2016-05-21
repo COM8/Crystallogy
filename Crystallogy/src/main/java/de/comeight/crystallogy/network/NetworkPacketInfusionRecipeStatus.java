@@ -3,7 +3,6 @@ package de.comeight.crystallogy.network;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 
 public class NetworkPacketInfusionRecipeStatus extends BaseNetworkPacket {

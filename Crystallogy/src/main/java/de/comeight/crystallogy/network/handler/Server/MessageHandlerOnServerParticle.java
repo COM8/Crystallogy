@@ -42,7 +42,7 @@ public class MessageHandlerOnServerParticle implements IMessageHandler<NetworkPa
 			return null;
 		}
 
-		final WorldServer playerWorldServer = sendingPlayer.getServerForPlayer();
+		final WorldServer playerWorldServer = sendingPlayer.getServerWorld();
 		playerWorldServer.addScheduledTask(new Runnable() {
 			public void run() {
 				processMessage(message, sendingPlayer);

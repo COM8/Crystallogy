@@ -40,10 +40,10 @@ public class FarmersGreen extends BaseBlockTileEntity {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public FarmersGreen() {
-		super(Material.glass, ID);
+		super(Material.GLASS, ID);
 		
 		this.setHardness(0.0F);
-		this.setStepSound(SoundType.GLASS);
+		this.setSoundType(SoundType.GLASS);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(STATUS, 0));
 	}
 	

@@ -2,13 +2,13 @@ package de.comeight.crystallogy.particles;
 
 import de.comeight.crystallogy.util.RGBColor;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.EntityFX;
+import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-public class BaseParticle extends EntityFX{
+public class BaseParticle extends Particle{
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	public static final String NAME = "baseParticle";
 	public String name;

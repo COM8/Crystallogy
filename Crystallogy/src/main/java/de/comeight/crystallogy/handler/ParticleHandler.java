@@ -5,7 +5,6 @@ import java.util.Map;
 import com.google.common.collect.Maps;
 
 import de.comeight.crystallogy.particles.BaseParticle;
-import de.comeight.crystallogy.particles.EnumCrystallogyParticleTypes;
 import de.comeight.crystallogy.particles.InfuserBlockActiveParticle;
 import de.comeight.crystallogy.particles.InfusionParticle;
 import de.comeight.crystallogy.particles.JumpParticleBetweenCrystalls;
@@ -17,9 +16,7 @@ import de.comeight.crystallogy.particles.ParticleD;
 import de.comeight.crystallogy.particles.ParticleE;
 import de.comeight.crystallogy.particles.ParticleF;
 import de.comeight.crystallogy.particles.ParticleNColor;
-import de.comeight.crystallogy.particles.ParticleNColor.Factory;
 import de.comeight.crystallogy.util.Utilities;
-import net.minecraft.client.particle.EffectRenderer;
 import net.minecraft.client.particle.IParticleFactory;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -30,7 +27,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ParticleHandler {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private Map<Integer, IParticleFactory> particleTypes = Maps.<Integer, IParticleFactory>newHashMap(); 
-	private EffectRenderer effectRenderer;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public ParticleHandler() {
@@ -146,25 +142,7 @@ public class ParticleHandler {
 			event.getMap().registerSprite(LightParticle.rL[i]);
 		}
 		
-		registerParticles();
-		
 		Utilities.addConsoleText("All particles are registered.");
-	}
-	
-	private void registerParticles(){
-		this.registerParticle(EnumCrystallogyParticleTypes.PARTICLE_A.getParticleID(), new ParticleA.Factory());
-		this.registerParticle(EnumCrystallogyParticleTypes.PARTICLE_B.getParticleID(), new ParticleB.Factory());
-		this.registerParticle(EnumCrystallogyParticleTypes.PARTICLE_C.getParticleID(), new ParticleC.Factory());
-		this.registerParticle(EnumCrystallogyParticleTypes.PARTICLE_D.getParticleID(), new ParticleD.Factory());
-		this.registerParticle(EnumCrystallogyParticleTypes.PARTICLE_E.getParticleID(), new ParticleE.Factory());
-		this.registerParticle(EnumCrystallogyParticleTypes.PARTICLE_F.getParticleID(), new ParticleF.Factory());
-		
-		this.registerParticle(EnumCrystallogyParticleTypes.PARTICLE_N_COLOR.getParticleID(), new ParticleNColor.Factory());
-		
-		this.registerParticle(EnumCrystallogyParticleTypes.INFUSION_PARTICLE.getParticleID(), new InfusionParticle.Factory());
-		this.registerParticle(EnumCrystallogyParticleTypes.JUMP_PARTICLE_BETWEEN_CRYSTALLS.getParticleID(), new JumpParticleBetweenCrystalls.Factory());
-		this.registerParticle(EnumCrystallogyParticleTypes.LIGHT_PARTICLE.getParticleID(), new InfuserBlockActiveParticle.Factory());
-		//this.registerParticle(EnumCrystallogyParticleTypes.INFUSER_BLOCK_ACTIVE_PARTICLE.getParticleID(), new LightParticle.Factory());
 	}
 	
 }

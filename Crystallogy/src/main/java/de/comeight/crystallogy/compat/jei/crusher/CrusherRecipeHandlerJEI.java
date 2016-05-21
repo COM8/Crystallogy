@@ -1,6 +1,5 @@
 package de.comeight.crystallogy.compat.jei.crusher;
 
-import de.comeight.crystallogy.CrystallogyBase;
 import mezz.jei.api.recipe.IRecipeHandler;
 import mezz.jei.api.recipe.IRecipeWrapper;
 

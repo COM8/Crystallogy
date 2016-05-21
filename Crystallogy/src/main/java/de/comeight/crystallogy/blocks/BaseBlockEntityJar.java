@@ -30,7 +30,7 @@ public class BaseBlockEntityJar extends BaseBlockTileEntity {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public BaseBlockEntityJar(String id) {
-		super(CustomMaterials.glass, id);
+		super(CustomMaterials.GLASS, id);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------

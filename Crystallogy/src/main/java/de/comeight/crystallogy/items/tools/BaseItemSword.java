@@ -1,7 +1,6 @@
 package de.comeight.crystallogy.items.tools;
 
 import de.comeight.crystallogy.CommonProxy;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemSword;
 
 public class BaseItemSword extends ItemSword {

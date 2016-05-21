@@ -26,11 +26,11 @@ public class InfuserBlock extends BaseBlockContainer {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public InfuserBlock() {
-		super(Material.rock, ID);
+		super(Material.ROCK, ID);
 		
 		this.setHarvestLevel("pickaxe", 2);
 		this.setHardness(20.0F);
-		this.setStepSound(SoundType.STONE);
+		this.setSoundType(SoundType.STONE);
 		this.setResistance(20.0F);
 	}
 	

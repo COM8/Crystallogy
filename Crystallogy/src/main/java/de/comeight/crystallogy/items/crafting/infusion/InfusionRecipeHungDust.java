@@ -10,7 +10,7 @@ public class InfusionRecipeHungDust extends InfusionRecipeSimple {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public InfusionRecipeHungDust() {
-		super("hungDust", 230, new ItemStack(Items.rotten_flesh),
+		super("hungDust", 230, new ItemStack(Items.ROTTEN_FLESH),
 				new ItemStack[]{ new ItemStack(ItemHandler.crystallDust_green, 4),},
 				new ItemStack(ItemHandler.hungDust));
 	}

@@ -1,7 +1,6 @@
 package de.comeight.crystallogy.network.handler.Server;
 
 import de.comeight.crystallogy.network.NetworkPacketPlayerCapabilities;
-import de.comeight.crystallogy.util.NetworkUtilitis;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -42,7 +41,7 @@ public class MessageHandlerOnServerPlayerCapabilities implements IMessageHandler
 			return null;
 		}
 
-		final WorldServer playerWorldServer = sendingPlayer.getServerForPlayer();
+		final WorldServer playerWorldServer = sendingPlayer.getServerWorld();
 		playerWorldServer.addScheduledTask(new Runnable() {
 			public void run() {
 				processMessage(message, sendingPlayer);

@@ -11,9 +11,9 @@ public class InfusionRecipeBlindDust extends InfusionRecipeSimple {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public InfusionRecipeBlindDust() {
-		super("blindDust", 230, new ItemStack(Items.iron_helmet),
+		super("blindDust", 230, new ItemStack(Items.IRON_HELMET),
 				new ItemStack[]{ 	new ItemStack(ItemHandler.crystallDust_blue, 3),
-									new ItemStack(Blocks.obsidian)},
+									new ItemStack(Blocks.OBSIDIAN)},
 				new ItemStack(ItemHandler.blindDust));
 	}
 	

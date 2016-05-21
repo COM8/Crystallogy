@@ -13,7 +13,7 @@ public class InfusionRecipeArmorCombinedChestplate extends InfusionRecipeSimple 
 	public InfusionRecipeArmorCombinedChestplate() {
 		super("armorCombinedChestplate", 1000, new ItemStack(ItemHandler.armorChestplate_red),
 				new ItemStack[]{ 	new ItemStack(ItemHandler.armorChestplate_green, 1),
-									new ItemStack(Items.diamond_chestplate, 1),
+									new ItemStack(Items.DIAMOND_CHESTPLATE, 1),
 									EnumCrystalColor.GRAY.getStack(new ItemStack(ItemHandler.armorPlate, 2)),},
 				new ItemStack(ItemHandler.armorChestplate_combined));
 	}

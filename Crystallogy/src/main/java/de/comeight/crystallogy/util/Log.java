@@ -1,7 +1,6 @@
 package de.comeight.crystallogy.util;
 
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.core.Logger;
 
 import de.comeight.crystallogy.CrystallogyBase;
 

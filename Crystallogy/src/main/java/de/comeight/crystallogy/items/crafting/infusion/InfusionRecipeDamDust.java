@@ -10,7 +10,7 @@ public class InfusionRecipeDamDust extends InfusionRecipeSimple {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public InfusionRecipeDamDust() {
-		super("damDust", 230, new ItemStack(Items.fermented_spider_eye),
+		super("damDust", 230, new ItemStack(Items.FERMENTED_SPIDER_EYE),
 				new ItemStack[]{ 	new ItemStack(ItemHandler.crystallDust_green, 2),
 									new ItemStack(ItemHandler.crystallDust_blue, 2),},
 				new ItemStack(ItemHandler.damDust));

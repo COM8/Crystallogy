@@ -56,7 +56,7 @@ public abstract class Crystall extends BaseBlockCutout{
     protected static final AxisAlignedBB CRYSTAL_DOWN_AABB = new AxisAlignedBB(0.3, 0.4, 0.25, 0.7, 1.0, 0.9);
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public Crystall(String ID) {
-		super(Material.glass, ID);
+		super(Material.GLASS, ID);
 		
 		color = new RGBColor(1.0F, 1.0F, 1.0F);
 		this.chance = 5;
@@ -64,7 +64,7 @@ public abstract class Crystall extends BaseBlockCutout{
 		this.setHarvestLevel("pickaxe", 3);
 		this.setLightLevel(0.3F);
 		this.setHardness(5.0F);
-		this.setStepSound(SoundType.GLASS);
+		this.setSoundType(SoundType.GLASS);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.DOWN));
 	}
 	

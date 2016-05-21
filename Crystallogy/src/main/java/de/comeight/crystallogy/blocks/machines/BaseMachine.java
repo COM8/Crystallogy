@@ -30,11 +30,11 @@ public abstract class BaseMachine extends BaseBlockContainer {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public BaseMachine(String id) {
-		super(Material.iron, id);
+		super(Material.IRON, id);
 		
 		this.setHarvestLevel("pickaxe", 2);
 		this.setHardness(30.0F);
-		this.setStepSound(SoundType.ANVIL);
+		this.setSoundType(SoundType.ANVIL);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(ENABLED, false));
 	}
 	

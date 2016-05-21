@@ -11,10 +11,10 @@ public class InfusionRecipeEntityJar extends InfusionRecipeSimple {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public InfusionRecipeEntityJar() {
-		super("entityJar", 500, new ItemStack(Items.glass_bottle),
+		super("entityJar", 500, new ItemStack(Items.GLASS_BOTTLE),
 				new ItemStack[]{ 	new ItemStack(ItemHandler.pureCrystallDust, 2),
-									new ItemStack(Items.ender_eye, 1),
-									new ItemStack(Items.blaze_powder, 1),},
+									new ItemStack(Items.ENDER_EYE, 1),
+									new ItemStack(Items.BLAZE_POWDER, 1),},
 				new ItemStack(BlockHandler.entityJar));
 	}
 	

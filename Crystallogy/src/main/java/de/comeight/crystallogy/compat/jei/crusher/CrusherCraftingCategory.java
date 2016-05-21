@@ -1,7 +1,6 @@
 package de.comeight.crystallogy.compat.jei.crusher;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.annotation.Nonnull;
 
@@ -12,14 +11,13 @@ import de.comeight.crystallogy.items.crafting.BaseRecipe;
 import de.comeight.crystallogy.items.crafting.RecipeCrystalCrusher;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IDrawableAnimated;
+import mezz.jei.api.gui.IDrawableAnimated.StartDirection;
 import mezz.jei.api.gui.IDrawableStatic;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
-import mezz.jei.api.gui.IDrawableAnimated.StartDirection;
 import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public class CrusherCraftingCategory implements IRecipeCategory {

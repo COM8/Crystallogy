@@ -2,10 +2,8 @@ package de.comeight.crystallogy.util;
 
 import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.network.BaseNetworkPacket;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.EnumHandSide;
 
 public class NetworkUtilitis {
 	//-----------------------------------------------Variabeln:---------------------------------------------

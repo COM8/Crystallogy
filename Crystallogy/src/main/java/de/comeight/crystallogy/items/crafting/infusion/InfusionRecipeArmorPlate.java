@@ -2,10 +2,7 @@ package de.comeight.crystallogy.items.crafting.infusion;
 
 import java.util.ArrayList;
 
-import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
-import de.comeight.crystallogy.items.ArmorPlate;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class InfusionRecipeArmorPlate extends InfusionRecipe {

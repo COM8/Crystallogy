@@ -21,11 +21,11 @@ public class InfusionRecipeCrystallLight extends InfusionRecipe {
 	public ArrayList<ArrayList<ItemStack>> getInputsJEI() {
 		ArrayList<ArrayList<ItemStack>> ret = new ArrayList<ArrayList<ItemStack>>();
 		ret.add(new ArrayList<ItemStack>());
-		ret.get(0).add(new ItemStack(Items.flint_and_steel));
+		ret.get(0).add(new ItemStack(Items.FLINT_AND_STEEL));
 		ret.add(new ArrayList<ItemStack>());
-		ret.get(1).add(new ItemStack(Items.glowstone_dust));
+		ret.get(1).add(new ItemStack(Items.GLOWSTONE_DUST));
 		ret.add(new ArrayList<ItemStack>());
-		ret.get(2).add(new ItemStack(Items.glowstone_dust));
+		ret.get(2).add(new ItemStack(Items.GLOWSTONE_DUST));
 		ret.add(new ArrayList<ItemStack>());
 		ret.get(3).add(new ItemStack(ItemHandler.crystallDust_red));
 		ret.get(3).add(new ItemStack(ItemHandler.crystallDust_blue));
@@ -54,7 +54,7 @@ public class InfusionRecipeCrystallLight extends InfusionRecipe {
 
 	@Override
 	public boolean match(ItemStack centerInput, ItemStack[] ingredients) {
-		if(centerInput.getItem() != Items.flint_and_steel){
+		if(centerInput.getItem() != Items.FLINT_AND_STEEL){
 			return false;
 		}
 		
@@ -63,7 +63,7 @@ public class InfusionRecipeCrystallLight extends InfusionRecipe {
 		
 		for (int i = 0; i < ingredients.length; i++) {
 			if(ingredients[i] != null){
-				if(ingredients[i].getItem() == Items.glowstone_dust){
+				if(ingredients[i].getItem() == Items.GLOWSTONE_DUST){
 					glowstone++;
 				}
 				if(ingredients[i].getItem() == ItemHandler.crystallDust_blue || ingredients[i].getItem() == ItemHandler.crystallDust_red || ingredients[i].getItem() == ItemHandler.crystallDust_green || ingredients[i].getItem() == ItemHandler.crystallDust_yellow){

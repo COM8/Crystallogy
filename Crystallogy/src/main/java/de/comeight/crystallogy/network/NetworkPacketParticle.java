@@ -1,8 +1,6 @@
 package de.comeight.crystallogy.network;
 
 import io.netty.buffer.ByteBuf;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 
 public class NetworkPacketParticle extends BaseNetworkPacket {

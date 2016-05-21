@@ -3,7 +3,6 @@ package de.comeight.crystallogy.items.crafting.infusion;
 import java.util.ArrayList;
 
 import de.comeight.crystallogy.handler.ItemHandler;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
@@ -21,7 +20,7 @@ public class InfusionRecipePureDust extends InfusionRecipe {
 		public ArrayList<ArrayList<ItemStack>> getInputsJEI() {
 			ArrayList<ArrayList<ItemStack>> ret = new ArrayList<ArrayList<ItemStack>>();
 			ret.add(new ArrayList<ItemStack>());
-			ret.get(0).add(new ItemStack(Items.water_bucket));
+			ret.get(0).add(new ItemStack(Items.WATER_BUCKET));
 			ret.add(new ArrayList<ItemStack>());
 			ret.get(1).add(new ItemStack(ItemHandler.crystallDust_red));
 			ret.get(1).add(new ItemStack(ItemHandler.crystallDust_blue));
@@ -45,7 +44,7 @@ public class InfusionRecipePureDust extends InfusionRecipe {
 
 		@Override
 		public boolean match(ItemStack centerInput, ItemStack[] ingredients) {
-			if(centerInput.getItem() != Items.water_bucket){
+			if(centerInput.getItem() != Items.WATER_BUCKET){
 				return false;
 			}
 			

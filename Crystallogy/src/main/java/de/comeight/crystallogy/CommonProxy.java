@@ -235,7 +235,7 @@ public class CommonProxy {
 				"PI_",
 				"_G_",
 				
-				'I', Items.iron_ingot,
+				'I', Items.IRON_INGOT,
 				'P', "plankWood",
 				'G', "blockGlassLime",
 		});
@@ -246,9 +246,9 @@ public class CommonProxy {
 				"_C_",
 				"WWW",
 				
-				'C', Blocks.cobblestone,
-				'I', Blocks.crafting_table,
-				'W', Blocks.heavy_weighted_pressure_plate,
+				'C', Blocks.COBBLESTONE,
+				'I', Blocks.CRAFTING_TABLE,
+				'W', Blocks.HEAVY_WEIGHTED_PRESSURE_PLATE,
 		});
 		GameRegistry.addRecipe(infuserBlockRecipe);
 		
@@ -334,7 +334,7 @@ public class CommonProxy {
 																	new ItemStack(ItemHandler.armorLeggins_yellow),
 																	new ItemStack(ItemHandler.armorBoots_yellow));
 		
-		ItemStack redstone = new ItemStack(Items.redstone);
+		ItemStack redstone = new ItemStack(Items.REDSTONE);
 		ItemStack redDust = new ItemStack(ItemHandler.crystallDust_red);
 		IRecipe energyDust = new ShapedRecipes(3, 3, new ItemStack[]{
 				redstone,redstone,redstone,
@@ -343,8 +343,8 @@ public class CommonProxy {
 		}, new ItemStack(ItemHandler.energyDust));
 		GameRegistry.addRecipe(energyDust);
 		
-		ItemStack obsidian = new ItemStack(Blocks.obsidian);
-		ItemStack iron_block = new ItemStack(Blocks.iron_block);
+		ItemStack obsidian = new ItemStack(Blocks.OBSIDIAN);
+		ItemStack iron_block = new ItemStack(Blocks.IRON_BLOCK);
 		IRecipe compressor = new ShapedRecipes(3, 3, new ItemStack[]{
 				obsidian,b,obsidian,
 				obsidian,redstone,obsidian,
@@ -352,8 +352,8 @@ public class CommonProxy {
 		}, new ItemStack(BlockHandler.compressor));
 		GameRegistry.addRecipe(compressor);
 		
-		ItemStack brick_block = new ItemStack(Blocks.brick_block);
-		ItemStack ironIngot = new ItemStack(Items.iron_ingot);
+		ItemStack brick_block = new ItemStack(Blocks.BRICK_BLOCK);
+		ItemStack ironIngot = new ItemStack(Items.IRON_INGOT);
 		IRecipe crusher = new ShapedRecipes(3, 3, new ItemStack[]{
 				brick_block,brick_block,brick_block,
 				ironIngot,null,ironIngot,
@@ -380,8 +380,8 @@ public class CommonProxy {
 				"YPC",
 				"BPB",
 				"CPY",
-				'B', new ItemStack(Items.dye, 2, 15),
-				'P', Items.poisonous_potato,
+				'B', new ItemStack(Items.DYE, 2, 15),
+				'P', Items.POISONOUS_POTATO,
 				'C', ItemHandler.crystallDust_green,
 				'Y', BlockHandler.crystorya
 		});
@@ -390,7 +390,7 @@ public class CommonProxy {
 				"IPI",
 				"G_G",
 				"GGG",
-				'I', Items.iron_ingot,
+				'I', Items.IRON_INGOT,
 				'P', "plankWood",
 				'G', new ItemStack(BlockHandler.crystalGlas, 1, 2)
 		}));

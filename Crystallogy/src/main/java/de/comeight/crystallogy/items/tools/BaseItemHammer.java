@@ -44,10 +44,10 @@ public abstract class BaseItemHammer extends BaseItemPickaxe {
 	
 	protected void breakBlocksArround(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving){
 		Block block = state.getBlock();
-		if(block.getMaterial(state) == Material.air){
+		if(block.getMaterial(state) == Material.AIR){
 			return;
 		}
-		RayTraceResult rTR = getMovingObjectPositionFromPlayer(worldIn, (EntityPlayer) entityLiving, false);
+		RayTraceResult rTR = rayTrace(worldIn, (EntityPlayer) entityLiving, false);
 		ArrayList<BlockPos> list = calcAOE(stack, rTR, worldIn, pos);
 		for(BlockPos p : list){
 			worldIn.destroyBlock(p, true);

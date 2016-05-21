@@ -10,7 +10,7 @@ public class InfusionRecipeToolRod extends InfusionRecipeSimple {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public InfusionRecipeToolRod() {
-		super("toolRod", 200, new ItemStack(Items.stick),
+		super("toolRod", 200, new ItemStack(Items.STICK),
 				new ItemStack[]{ new ItemStack(ItemHandler.pureCrystallDust, 2),},
 				new ItemStack(ItemHandler.toolRod));
 	}

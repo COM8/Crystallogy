@@ -1,7 +1,6 @@
 package de.comeight.crystallogy.tabs;
 
 import de.comeight.crystallogy.handler.BlockHandler;
-import de.comeight.crystallogy.handler.ItemHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.relauncher.Side;

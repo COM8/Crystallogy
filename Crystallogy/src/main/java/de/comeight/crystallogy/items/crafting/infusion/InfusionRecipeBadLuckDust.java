@@ -10,9 +10,9 @@ public class InfusionRecipeBadLuckDust extends InfusionRecipeSimple {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public InfusionRecipeBadLuckDust() {
-		super("badLuckDust", 230, new ItemStack(Items.fishing_rod),
+		super("badLuckDust", 230, new ItemStack(Items.FISHING_ROD),
 				new ItemStack[]{ 	new ItemStack(ItemHandler.crystallDust_yellow, 3),
-									new ItemStack(Items.carrot)},
+									new ItemStack(Items.CARROT)},
 				new ItemStack(ItemHandler.badLuckDust));
 	}
 	

@@ -3,9 +3,7 @@ package de.comeight.crystallogy.items.crafting.infusion;
 import java.util.ArrayList;
 
 import de.comeight.crystallogy.blocks.EnumCrystalColor;
-import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class InfusionRecipeHammer extends InfusionRecipe {

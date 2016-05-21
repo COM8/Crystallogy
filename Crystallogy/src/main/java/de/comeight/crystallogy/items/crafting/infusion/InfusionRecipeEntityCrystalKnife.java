@@ -12,9 +12,9 @@ public class InfusionRecipeEntityCrystalKnife extends InfusionRecipeSimple {
 	public InfusionRecipeEntityCrystalKnife() {
 		super("entityCrystalKnife", 500, new ItemStack(ItemHandler.crystalKnifeBlade),
 				new ItemStack[]{ 	new ItemStack(ItemHandler.toolRod, 1),
-									new ItemStack(Items.ender_eye, 1),
+									new ItemStack(Items.ENDER_EYE, 1),
 									new ItemStack(ItemHandler.crystallDust_blue, 1),
-									new ItemStack(Items.iron_sword, 1),},
+									new ItemStack(Items.IRON_SWORD, 1),},
 				new ItemStack(ItemHandler.entityCrystalKnife));
 	}
 	

@@ -13,7 +13,7 @@ public class InfusionRecipeArmorCombinedBoots extends InfusionRecipeSimple {
 	public InfusionRecipeArmorCombinedBoots() {
 		super("armorCombinedBoots", 1000, new ItemStack(ItemHandler.armorBoots_red),
 				new ItemStack[]{ 	new ItemStack(ItemHandler.armorBoots_green, 1),
-									new ItemStack(Items.diamond_boots, 1),
+									new ItemStack(Items.DIAMOND_BOOTS, 1),
 									EnumCrystalColor.GRAY.getStack(new ItemStack(ItemHandler.armorPlate, 2)),},
 				new ItemStack(ItemHandler.armorBoots_combined));
 	}

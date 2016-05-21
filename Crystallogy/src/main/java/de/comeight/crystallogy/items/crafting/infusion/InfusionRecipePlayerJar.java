@@ -13,8 +13,8 @@ public class InfusionRecipePlayerJar extends InfusionRecipeSimple {
 	public InfusionRecipePlayerJar() {
 		super("playerJar", 500, new ItemStack(BlockHandler.entityJar),
 				new ItemStack[]{ 	new ItemStack(ItemHandler.armorPlate, 2, 4),
-									new ItemStack(Items.ender_eye, 1),
-									new ItemStack(Items.blaze_powder, 1),},
+									new ItemStack(Items.ENDER_EYE, 1),
+									new ItemStack(Items.BLAZE_POWDER, 1),},
 				new ItemStack(BlockHandler.playerJar));
 	}
 	

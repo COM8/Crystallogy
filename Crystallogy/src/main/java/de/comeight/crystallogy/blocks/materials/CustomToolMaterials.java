@@ -1,7 +1,6 @@
 package de.comeight.crystallogy.blocks.materials;
 
 import net.minecraft.item.Item.ToolMaterial;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 
 public class CustomToolMaterials {

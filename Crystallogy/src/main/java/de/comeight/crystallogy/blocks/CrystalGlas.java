@@ -8,7 +8,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 
 public class CrystalGlas extends BaseBlockGlass {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -19,7 +18,7 @@ public class CrystalGlas extends BaseBlockGlass {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public CrystalGlas() {
-		super(Material.glass, ID);
+		super(Material.GLASS, ID);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------    

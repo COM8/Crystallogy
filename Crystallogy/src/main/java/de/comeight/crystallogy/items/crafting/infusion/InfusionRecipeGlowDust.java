@@ -11,10 +11,10 @@ public class InfusionRecipeGlowDust extends InfusionRecipeSimple {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public InfusionRecipeGlowDust() {
-		super("glowDust", 230, new ItemStack(Items.glowstone_dust),
+		super("glowDust", 230, new ItemStack(Items.GLOWSTONE_DUST),
 				new ItemStack[]{ 	new ItemStack(ItemHandler.crystallDust_yellow, 2),
-									new ItemStack(Blocks.glowstone, 1),
-									new ItemStack(Blocks.gold_block, 1)},
+									new ItemStack(Blocks.GLOWSTONE, 1),
+									new ItemStack(Blocks.GOLD_BLOCK, 1)},
 				new ItemStack(ItemHandler.glowDust));
 	}
 	
