@@ -63,8 +63,10 @@ public class Armor_combined extends BaseArmor {
 	}
 	
 	private void enableCapabilities(World world, EntityPlayer player){
-		player.capabilities.allowFlying = true;
-		player.capabilities.disableDamage = true;
+		if(!player.capabilities.isCreativeMode){
+			player.capabilities.allowFlying = true;
+			player.capabilities.disableDamage = true;
+		}
 		if(!world.isRemote){
 			player.capabilities.setPlayerWalkSpeed(0.12F);
 			player.capabilities.setFlySpeed(0.06F);	
@@ -72,9 +74,11 @@ public class Armor_combined extends BaseArmor {
 	}
 	
 	private void disableCapabilities(World world, EntityPlayer player){
-		player.capabilities.allowFlying = false;
-		player.capabilities.isFlying = false;
-		player.capabilities.disableDamage = false;
+		if(!player.capabilities.isCreativeMode){
+			player.capabilities.allowFlying = false;
+			player.capabilities.isFlying = false;
+			player.capabilities.disableDamage = false;
+		}
 		if(!world.isRemote){
 			player.capabilities.setPlayerWalkSpeed(0.1F);
 			player.capabilities.setFlySpeed(0.05F);
