@@ -50,7 +50,7 @@ public abstract class BaseItemHammer extends BaseItemPickaxe {
 		RayTraceResult rTR = rayTrace(worldIn, (EntityPlayer) entityLiving, false);
 		ArrayList<BlockPos> list = calcAOE(stack, rTR, worldIn, pos);
 		for(BlockPos p : list){
-			worldIn.destroyBlock(p, true);
+			mineBlock(worldIn, worldIn.getBlockState(p), p);
 		}
 		
 		if ((double)state.getBlockHardness(worldIn, pos) != 0.0D)
@@ -58,6 +58,11 @@ public abstract class BaseItemHammer extends BaseItemPickaxe {
             stack.damageItem(list.size() + 1, entityLiving);
         }
 		
+	}
+	
+	protected void mineBlock(World worldIn, IBlockState state, BlockPos pos){
+		worldIn.destroyBlock(pos, true);
+		state.getBlock().onBlockDestroyedByPlayer(worldIn, pos, state);
 	}
 	
 	protected ArrayList<BlockPos> calcAOE(ItemStack stack, RayTraceResult rTR, World worldIn, BlockPos pos){
