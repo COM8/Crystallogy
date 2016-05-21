@@ -22,6 +22,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TextComponentString;
@@ -107,6 +108,11 @@ public class FarmersGreen extends BaseBlockTileEntity {
     {
         return BlockRenderLayer.TRANSLUCENT;
     }
+	
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		return new AxisAlignedBB(0.25, 0.0, 0.25, 0.75, 0.71, 0.75);
+	}
 	
 	private ItemStack getItemStackWithData(World world, BlockPos pos){
 		TileEntity tE = world.getTileEntity(pos);
