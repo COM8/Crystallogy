@@ -50,6 +50,7 @@ import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerTile
 import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerUpdateInventory;
 import de.comeight.crystallogy.tabs.CrystallogyMainTab;
 import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
+import de.comeight.crystallogy.tileEntitys.TileEntityCrystalOfHolding;
 import de.comeight.crystallogy.tileEntitys.TileEntityCrystallLight;
 import de.comeight.crystallogy.tileEntitys.TileEntityEntityJar;
 import de.comeight.crystallogy.tileEntitys.TileEntityFarmersGreen;
@@ -163,6 +164,7 @@ public class CommonProxy {
 		GameRegistry.registerTileEntity(TileEntityCompressor.class, BlockHandler.compressor.ID);
 		GameRegistry.registerTileEntity(TileEntityCharger.class, BlockHandler.charger.ID);
 		GameRegistry.registerTileEntity(TileEntityFarmersGreen.class, BlockHandler.farmersGreen.ID);
+		GameRegistry.registerTileEntity(TileEntityCrystalOfHolding.class, BlockHandler.crystalOfHolding.ID);
 		
 		Utilities.addConsoleText("All tileEntitys are registered.");
 		

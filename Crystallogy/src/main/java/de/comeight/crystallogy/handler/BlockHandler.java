@@ -2,6 +2,7 @@ package de.comeight.crystallogy.handler;
 
 import de.comeight.crystallogy.blocks.CrystalGlas;
 import de.comeight.crystallogy.blocks.CrystalLight;
+import de.comeight.crystallogy.blocks.CrystalOfHolding;
 import de.comeight.crystallogy.blocks.Crystall_blue;
 import de.comeight.crystallogy.blocks.Crystall_green;
 import de.comeight.crystallogy.blocks.Crystall_red;
@@ -16,6 +17,7 @@ import de.comeight.crystallogy.blocks.machines.Charger;
 import de.comeight.crystallogy.blocks.machines.Compressor;
 import de.comeight.crystallogy.blocks.machines.CrystallCrusher;
 import de.comeight.crystallogy.itemBlocks.ItemBlockCrystalGlas;
+import de.comeight.crystallogy.itemBlocks.ItemBlockCrystalOfHolding;
 import de.comeight.crystallogy.itemBlocks.ItemBlockEntityJar;
 import de.comeight.crystallogy.itemBlocks.ItemBlockFarmersGreen;
 import de.comeight.crystallogy.itemBlocks.ItemBlockPlayerJar;
@@ -44,6 +46,7 @@ public class BlockHandler {
 	public static FarmersGreen farmersGreen;
 	public static Crystorya crystorya;
 	public static CrystalGlas crystalGlas;
+	public static CrystalOfHolding crystalOfHolding;
 
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public BlockHandler() {
@@ -79,6 +82,7 @@ public class BlockHandler {
 		farmersGreen = new FarmersGreen();
 		crystorya = new Crystorya();
 		crystalGlas = new CrystalGlas();
+		crystalOfHolding = new CrystalOfHolding();
 		
 		registerBlock(crystall_blue, crystall_blue.ID);
 		registerBlock(crystall_green, crystall_green.ID);
@@ -95,6 +99,7 @@ public class BlockHandler {
 		registerBlock(entityJar, new ItemBlockEntityJar(entityJar), entityJar.ID);
 		registerBlock(crystorya, crystorya.ID);
 		registerBlock(crystalGlas, new ItemBlockCrystalGlas(crystalGlas), crystalGlas.ID);
+		registerBlock(crystalOfHolding, new ItemBlockCrystalOfHolding(crystalOfHolding), crystalOfHolding.ID);
 		
 		Utilities.addConsoleText("All blocks are registered.");
 	}
