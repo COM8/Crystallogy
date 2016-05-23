@@ -15,6 +15,7 @@ block.charger.name=Crystal Charger
 block.crystorya.name=Crystorya
 block.crystalGlas.name=Crystal Glass
 block.farmersGreen.name=Farmers Green
+block.crystalOfHolding.name=Crystal Of Holding
 
 tile.crystall_red.name=§4Red§r Crystal
 tile.crystall_blue.name=§9Blue§r Crystal
@@ -31,6 +32,7 @@ tile.charger.name=Crystal Charger
 tile.crystorya.name=Crystorya
 tile.crystalGlas.name=Crystal Glass
 tile.farmersGreen.name=Farmers Green
+tile.crystalOfHolding.name=Crystal Of Holding
 
 item.crystallDust_red.name=§4Red§r Crystal Dust
 item.crystallDust_blue.name=§9Blue§r Crystal Dust
