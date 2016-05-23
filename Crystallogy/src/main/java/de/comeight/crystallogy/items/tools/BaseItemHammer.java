@@ -70,43 +70,36 @@ public abstract class BaseItemHammer extends BaseItemPickaxe {
 		ArrayList<BlockPos> list = new ArrayList<BlockPos>();
 		
 		if(rTR.sideHit == EnumFacing.EAST || rTR.sideHit == EnumFacing.WEST){
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY(), pos.getZ() + 1), refHarvestLevel, list);
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY(), pos.getZ() - 1), refHarvestLevel, list);
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ()), refHarvestLevel, list);
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ()), refHarvestLevel, list);
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ() + 1), refHarvestLevel, list);
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ() - 1), refHarvestLevel, list);
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ() + 1), refHarvestLevel, list);
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ() - 1), refHarvestLevel, list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY(), pos.getZ() + 1), list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY(), pos.getZ() - 1), list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ()), list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ()), list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ() + 1), list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ() - 1), list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ() + 1), list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ() - 1), list);
 		}
 		else if(rTR.sideHit == EnumFacing.SOUTH || rTR.sideHit == EnumFacing.NORTH){
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()), refHarvestLevel, list);
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()), refHarvestLevel, list);
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ()), refHarvestLevel, list);
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ()), refHarvestLevel, list);
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() + 1, pos.getY() + 1, pos.getZ()), refHarvestLevel, list);
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() + 1, pos.getY() - 1, pos.getZ()), refHarvestLevel, list);
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() - 1, pos.getY() + 1, pos.getZ()), refHarvestLevel, list);
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() - 1, pos.getY() - 1, pos.getZ()), refHarvestLevel, list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()), list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()), list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ()), list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ()), list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() + 1, pos.getY() + 1, pos.getZ()), list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() + 1, pos.getY() - 1, pos.getZ()), list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() - 1, pos.getY() + 1, pos.getZ()), list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() - 1, pos.getY() - 1, pos.getZ()), list);
 		}
 		else if(rTR.sideHit == EnumFacing.UP || rTR.sideHit == EnumFacing.DOWN){
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()), refHarvestLevel, list);
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()), refHarvestLevel, list);
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY(), pos.getZ() + 1), refHarvestLevel, list);
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY(), pos.getZ() - 1), refHarvestLevel, list);
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ() + 1), refHarvestLevel, list);
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ() - 1), refHarvestLevel, list);
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ() + 1), refHarvestLevel, list);
-			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ() - 1), refHarvestLevel, list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()), list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()), list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY(), pos.getZ() + 1), list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX(), pos.getY(), pos.getZ() - 1), list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ() + 1), list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ() - 1), list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ() + 1), list);
+			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ() - 1), list);
 		}
 		return list;
-	}
-	
-	protected void canHarvestBlock(ItemStack stack, World worldIn, BlockPos pos, int refHarvestLevel, ArrayList<BlockPos> list){
-		IBlockState state = worldIn.getBlockState(pos);
-		if(state.getBlock().getHarvestLevel(state) <= getHarvestLevel(stack, "pickaxe") && canHarvestBlock(state)){
-			list.add(pos);
-		}
 	}
 	
 }

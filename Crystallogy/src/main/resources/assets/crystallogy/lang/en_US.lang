@@ -97,5 +97,9 @@ item.armor_combined_feet.name=The hunter's dream Crystal Boots
 item.energyCrystal.name=§5Energy Crystal§r
 item.energyDust.name=Energy Dust
 item.fertilizerPotato.name=Fertilizer Potato
+item.crystalPickaxe_red.name=§4Red§r Crystal Pickaxe
+item.crystalPickaxe_blue.name=§9Blue§r Crystal Pickaxe
+item.crystalPickaxe_green.name=§2Green§r Crystal Pickaxe
+item.crystalPickaxe_yellow.name=§eYellow§r Crystal Pickaxe
 
 itemGroup.crystallogyMainTab=Crystallogy Maintab

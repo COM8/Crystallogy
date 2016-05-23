@@ -28,6 +28,10 @@ import de.comeight.crystallogy.items.threatDusts.GlowDust;
 import de.comeight.crystallogy.items.threatDusts.HungDust;
 import de.comeight.crystallogy.items.threatDusts.LevDust;
 import de.comeight.crystallogy.items.threatDusts.PoisDust;
+import de.comeight.crystallogy.items.tools.CrystalPickaxe_blue;
+import de.comeight.crystallogy.items.tools.CrystalPickaxe_green;
+import de.comeight.crystallogy.items.tools.CrystalPickaxe_red;
+import de.comeight.crystallogy.items.tools.CrystalPickaxe_yellow;
 import de.comeight.crystallogy.items.tools.CrystalSword_blue;
 import de.comeight.crystallogy.items.tools.CrystalSword_green;
 import de.comeight.crystallogy.items.tools.CrystalSword_red;
@@ -82,6 +86,10 @@ public class ItemHandler {
 	public static EnergyCrystal energyCrystal;
 	public static EnergyDust energyDust;
 	public static FertilizerPotato fertilizerPotato;
+	public static CrystalPickaxe_red crystalPickaxe_red;
+	public static CrystalPickaxe_blue crystalPickaxe_blue;
+	public static CrystalPickaxe_green crystalPickaxe_green;
+	public static CrystalPickaxe_yellow crystalPickaxe_yellow;
 	
 	//Armor:
 	public static Armor_red armorHelmet_red;
@@ -169,6 +177,10 @@ public class ItemHandler {
 		energyCrystal = new EnergyCrystal();
 		energyDust = new EnergyDust();
 		fertilizerPotato  = new FertilizerPotato();
+		crystalPickaxe_red = new CrystalPickaxe_red();
+		crystalPickaxe_blue = new CrystalPickaxe_blue();
+		crystalPickaxe_green = new CrystalPickaxe_green();
+		crystalPickaxe_yellow = new CrystalPickaxe_yellow();
 		
 		GameRegistry.register(crystallDust_red);
 		GameRegistry.register(crystallDust_green);
@@ -225,6 +237,10 @@ public class ItemHandler {
 		GameRegistry.register(energyCrystal);
 		GameRegistry.register(energyDust);
 		GameRegistry.register(fertilizerPotato);
+		GameRegistry.register(crystalPickaxe_red);
+		GameRegistry.register(crystalPickaxe_blue);
+		GameRegistry.register(crystalPickaxe_green);
+		GameRegistry.register(crystalPickaxe_yellow);
 		
 		Utilities.addConsoleText("All items are registered.");
 	}

@@ -97,5 +97,10 @@ item.armor_combined_feet.name=Des Jägers Traum Kristallstiefel
 item.energyCrystal.name=§5Energiekristal§r
 item.energyDust.name=Energiestaub
 item.fertilizerPotato.name=Dünger Kartoffel
+item.fertilizerPotato.name=Fertilizer Potato
+item.crystalPickaxe_red.name=§4Rote§r Kristallspitzhacke
+item.crystalPickaxe_blue.name=§9Blaue§r Kristallspitzhacke
+item.crystalPickaxe_green.name=§2Grüne§r Kristallspitzhacke
+item.crystalPickaxe_yellow.name=§eGelbe§r Kristallspitzhacke
 
 itemGroup.crystallogyMainTab=Crystallogy Hauptfenster

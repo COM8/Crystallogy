@@ -72,6 +72,10 @@ public class ItemRenderHandler {
 		registerBasicItemRender(ItemHandler.energyCrystal);
 		registerBasicItemRender(ItemHandler.energyDust);
 		registerBasicItemRender(ItemHandler.fertilizerPotato);
+		registerBasicItemRender(ItemHandler.crystalPickaxe_red);
+		registerBasicItemRender(ItemHandler.crystalPickaxe_blue);
+		registerBasicItemRender(ItemHandler.crystalPickaxe_green);
+		registerBasicItemRender(ItemHandler.crystalPickaxe_yellow);
 		
 		registerItemVariantsRenderer(ItemHandler.crystallHammerHead, 0, "crystallHammerHead_red");
 		registerItemVariantsRenderer(ItemHandler.crystallHammerHead, 1, "crystallHammerHead_blue");
