@@ -10,6 +10,7 @@ import de.comeight.crystallogy.items.CrystallHammerHead;
 import de.comeight.crystallogy.items.CrystallSwordBlade;
 import de.comeight.crystallogy.items.EnergyCrystal;
 import de.comeight.crystallogy.items.EnergyDust;
+import de.comeight.crystallogy.items.EntityGrabber;
 import de.comeight.crystallogy.items.FertilizerPotato;
 import de.comeight.crystallogy.items.PureCrystallDust;
 import de.comeight.crystallogy.items.ToolRod;
@@ -90,6 +91,7 @@ public class ItemHandler {
 	public static CrystalPickaxe_blue crystalPickaxe_blue;
 	public static CrystalPickaxe_green crystalPickaxe_green;
 	public static CrystalPickaxe_yellow crystalPickaxe_yellow;
+	public static EntityGrabber entityGrabber;
 	
 	//Armor:
 	public static Armor_red armorHelmet_red;
@@ -181,6 +183,7 @@ public class ItemHandler {
 		crystalPickaxe_blue = new CrystalPickaxe_blue();
 		crystalPickaxe_green = new CrystalPickaxe_green();
 		crystalPickaxe_yellow = new CrystalPickaxe_yellow();
+		entityGrabber = new EntityGrabber();
 		
 		GameRegistry.register(crystallDust_red);
 		GameRegistry.register(crystallDust_green);
@@ -241,6 +244,7 @@ public class ItemHandler {
 		GameRegistry.register(crystalPickaxe_blue);
 		GameRegistry.register(crystalPickaxe_green);
 		GameRegistry.register(crystalPickaxe_yellow);
+		GameRegistry.register(entityGrabber);
 		
 		Utilities.addConsoleText("All items are registered.");
 	}

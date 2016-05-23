@@ -15,10 +15,12 @@ import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientInfu
 import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientParticle;
 import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientTileEntitySync;
 import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientUpdateInventory;
+import de.comeight.crystallogy.renderer.RendererEntityInCrystal;
 import de.comeight.crystallogy.renderer.RendererEntityinJar;
 import de.comeight.crystallogy.renderer.RendererInfuserBlockItem;
 import de.comeight.crystallogy.renderer.RendererPlayerInJar;
 import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
+import de.comeight.crystallogy.tileEntitys.TileEntityCrystalOfHolding;
 import de.comeight.crystallogy.tileEntitys.TileEntityEntityJar;
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
 import de.comeight.crystallogy.util.Utilities;
@@ -66,6 +68,7 @@ public class ClientProxy extends CommonProxy{
     	ClientRegistry.bindTileEntitySpecialRenderer(TileEnityInfuserBlock.class, new RendererInfuserBlockItem());
     	ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlayerJar.class, new RendererPlayerInJar());
     	ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEntityJar.class, new RendererEntityinJar());
+    	ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCrystalOfHolding.class, new RendererEntityInCrystal());
     	
     	Utilities.addConsoleText("All specialRenderers are registered.");
     }

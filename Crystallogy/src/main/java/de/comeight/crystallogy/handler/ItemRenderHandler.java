@@ -76,6 +76,7 @@ public class ItemRenderHandler {
 		registerBasicItemRender(ItemHandler.crystalPickaxe_blue);
 		registerBasicItemRender(ItemHandler.crystalPickaxe_green);
 		registerBasicItemRender(ItemHandler.crystalPickaxe_yellow);
+		registerBasicItemRender(ItemHandler.entityGrabber);
 		
 		registerItemVariantsRenderer(ItemHandler.crystallHammerHead, 0, "crystallHammerHead_red");
 		registerItemVariantsRenderer(ItemHandler.crystallHammerHead, 1, "crystallHammerHead_blue");
