@@ -76,6 +76,8 @@ public class TileEntityFarmersGreen extends BaseTileEntity implements ITickable{
 			if(Utilities.getRandInt(0, 5) == 0){
 				spawnActiveParticle();
 			}
+		}
+		else{
 			applyGrowth();
 		}
 		if(growthLeft <= 0 && worldObj.getBlockState(pos).getValue(FarmersGreen.STATUS) == 3){
@@ -87,16 +89,9 @@ public class TileEntityFarmersGreen extends BaseTileEntity implements ITickable{
 		
 	}
 	
-	private void spawnActiveParticle(){
-		ParticleB gP = new ParticleB(worldObj, pos.getX() + 0.5, pos.getY() + 0.75, pos.getZ() + 0.5, 0.2, 0.2, 0.2);
-		gP.setRBGColorF(Utilities.getRandFloat(0.0F, 0.5F), 1.0F, Utilities.getRandFloat(0.0F, 0.5F));
-		Minecraft.getMinecraft().effectRenderer.addEffect(gP);
-	}
-	
 	private void applyGrowth(){
 		int range = 3;
-		
-		for(int i = 0; i < 2; i++){
+		for(int i = 0; i < 20; i++){
 			BlockPos posGrowth = new BlockPos(pos.getX() + Utilities.getRandInt(-range, range + 1), pos.getY() + Utilities.getRandInt(-range, range + 1), pos.getZ() + Utilities.getRandInt(-range, range + 1));
 			IBlockState state = worldObj.getBlockState(posGrowth);
 			if(state.getBlock() instanceof IPlantable || state.getBlock() instanceof IGrowable){
@@ -104,6 +99,12 @@ public class TileEntityFarmersGreen extends BaseTileEntity implements ITickable{
 				spawnParticlesNetwork(posGrowth);
 			}
 		}
+	}
+	
+	private void spawnActiveParticle(){
+		ParticleB gP = new ParticleB(worldObj, pos.getX() + 0.5, pos.getY() + 0.75, pos.getZ() + 0.5, 0.2, 0.2, 0.2);
+		gP.setRBGColorF(Utilities.getRandFloat(0.0F, 0.5F), 1.0F, Utilities.getRandFloat(0.0F, 0.5F));
+		Minecraft.getMinecraft().effectRenderer.addEffect(gP);
 	}
 	
 	private void spawnParticlesNetwork(BlockPos posGrowth){
