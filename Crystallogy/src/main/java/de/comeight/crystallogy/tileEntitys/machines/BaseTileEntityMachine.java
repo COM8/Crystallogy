@@ -243,7 +243,9 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
 
 		if (flag1) {
 			markDirty();
-			setBlockState();
+			if(!worldObj.isRemote){
+				setBlockState();
+			}
 		}
 	}
 
