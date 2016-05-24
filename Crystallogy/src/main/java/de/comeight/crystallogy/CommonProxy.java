@@ -29,6 +29,7 @@ import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeGlowDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeHammer;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeHungDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeLevDust;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipePickaxe;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipePlayerCrystalKnife;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipePlayerJar;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipePoisDust;
@@ -97,6 +98,7 @@ public class CommonProxy {
 	private static InfusionRecipeToolRod infusionRecipeToolRod;
 	private static InfusionRecipePureDust infusionRecipePureDust;
 	private static InfusionRecipeHammer infusionRecipeHammer;
+	private static InfusionRecipePickaxe infusionRecipePickaxe;
 	private static InfusionRecipeSword infusionRecipeSword;
 	private static InfusionRecipeHungDust infusionRecipeHungDust;
 	private static InfusionRecipeDamDust infusionRecipeDamDust;
@@ -199,6 +201,7 @@ public class CommonProxy {
 		infusionRecipeArmorCombinedLeggins = new InfusionRecipeArmorCombinedLeggins();
 		infusionRecipeArmorCombinedBoots = new InfusionRecipeArmorCombinedBoots();
 		infusionRecipeEntityJar = new InfusionRecipeEntityJar();
+		infusionRecipePickaxe = new InfusionRecipePickaxe();
 		
 		InfusionRecipeHandler.addRecipe(infusionRecipeVaporizer);
 		InfusionRecipeHandler.addRecipe(infusionRecipeCrystallLight);
@@ -228,6 +231,7 @@ public class CommonProxy {
 		InfusionRecipeHandler.addRecipe(infusionRecipeArmorCombinedChestplate);
 		InfusionRecipeHandler.addRecipe(infusionRecipeArmorCombinedLeggins);
 		InfusionRecipeHandler.addRecipe(infusionRecipeArmorCombinedBoots);
+		InfusionRecipeHandler.addRecipe(infusionRecipePickaxe);
 		
 		ItemStack s =  new ItemStack(ItemHandler.vaporizer);
 		s = ((Vaporizer)s.getItem()).saveNBT(s);
