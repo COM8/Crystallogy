@@ -220,7 +220,7 @@ public class CrystalOfHolding extends BaseBlockCutout implements IPlantable {
     {
         int i = ((Integer)state.getValue(AGE)).intValue();
 
-        if (i <= 2 && rand.nextInt(10) == 0)
+        if (i <= 2 && rand.nextInt(30) == 0)
         {
         	if(i == 2){
             	findAndTryPlant(worldIn, pos, rand);
