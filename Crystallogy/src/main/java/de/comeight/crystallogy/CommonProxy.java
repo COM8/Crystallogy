@@ -402,6 +402,15 @@ public class CommonProxy {
 		addCrystalPickaxeHeadPartRecipe(new ItemStack(BlockHandler.crystall_green), new ItemStack(ItemHandler.crystalPickaxeHead, 1, 2));
 		addCrystalPickaxeHeadPartRecipe(new ItemStack(BlockHandler.crystall_yellow), new ItemStack(ItemHandler.crystalPickaxeHead, 1, 3));
 		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ItemHandler.entityGrabber), new Object[] {
+				"I_B",
+				"BIY",
+				"__I",
+				'I', Items.IRON_INGOT,
+				'B', new ItemStack(ItemHandler.armorPlate, 1, 1),
+				'Y', new ItemStack(BlockHandler.crystalGlas, 1, 3)
+		}));
+		
 		Utilities.addConsoleText("All recipes are registered.");
 	}
 	
