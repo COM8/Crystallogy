@@ -103,5 +103,6 @@ item.crystalPickaxe_red.name=§4Red§r Crystal Pickaxe
 item.crystalPickaxe_blue.name=§9Blue§r Crystal Pickaxe
 item.crystalPickaxe_green.name=§2Green§r Crystal Pickaxe
 item.crystalPickaxe_yellow.name=§eYellow§r Crystal Pickaxe
+item.entityGrabber.name=Entity Grabber
 
 itemGroup.crystallogyMainTab=Crystallogy Maintab
