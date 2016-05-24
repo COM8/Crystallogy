@@ -105,5 +105,9 @@ item.crystalPickaxe_blue.name=§9Blaue§r Kristallspitzhacke
 item.crystalPickaxe_green.name=§2Grüne§r Kristallspitzhacke
 item.crystalPickaxe_yellow.name=§eGelbe§r Kristallspitzhacke
 item.entityGrabber.name=Wesensgreifer
+item.crystalPickaxeHead_red.name=§4Rote§r Kristallspitzhackenkopf
+item.crystalPickaxeHead_blue.name=§9Blaue§r Kristallspitzhackenkopf
+item.crystalPickaxeHead_green.name=§2Grüne§r Kristallspitzhackenkopf
+item.crystalPickaxeHead_yellow.name=§eGelbe§r Kristallspitzhackenkopf
 
 itemGroup.crystallogyMainTab=Crystallogy Hauptfenster

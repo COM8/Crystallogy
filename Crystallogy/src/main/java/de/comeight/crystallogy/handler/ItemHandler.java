@@ -2,6 +2,7 @@ package de.comeight.crystallogy.handler;
 
 import de.comeight.crystallogy.items.ArmorPlate;
 import de.comeight.crystallogy.items.CrystalKnifeBlade;
+import de.comeight.crystallogy.items.CrystalPickaxeHead;
 import de.comeight.crystallogy.items.CrystallDust_blue;
 import de.comeight.crystallogy.items.CrystallDust_green;
 import de.comeight.crystallogy.items.CrystallDust_red;
@@ -83,6 +84,7 @@ public class ItemHandler {
 	public static CrystallHammerHead crystallHammerHead;
 	public static CrystallSwordBlade crystallSwordBlade;
 	public static CrystalKnifeBlade crystalKnifeBlade;
+	public static CrystalPickaxeHead crystalPickaxeHead;
 	public static ArmorPlate armorPlate;
 	public static EnergyCrystal energyCrystal;
 	public static EnergyDust energyDust;
@@ -155,6 +157,7 @@ public class ItemHandler {
 		crystallHammerHead = new CrystallHammerHead();
 		crystallSwordBlade = new CrystallSwordBlade();
 		crystalKnifeBlade = new CrystalKnifeBlade();
+		crystalPickaxeHead = new CrystalPickaxeHead();
 		armorHelmet_red = new Armor_red(1, EntityEquipmentSlot.HEAD);
 		armorChestplate_red = new Armor_red(1, EntityEquipmentSlot.CHEST);
 		armorLeggins_red = new Armor_red(1, EntityEquipmentSlot.LEGS);
@@ -216,6 +219,7 @@ public class ItemHandler {
 		GameRegistry.register(crystallHammerHead);
 		GameRegistry.register(crystallSwordBlade);
 		GameRegistry.register(crystalKnifeBlade);
+		GameRegistry.register(crystalPickaxeHead);
 		GameRegistry.register(armorHelmet_red);
 		GameRegistry.register(armorChestplate_red);
 		GameRegistry.register(armorLeggins_red);

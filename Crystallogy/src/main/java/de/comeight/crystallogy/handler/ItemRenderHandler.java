@@ -86,6 +86,10 @@ public class ItemRenderHandler {
 		registerItemVariantsRenderer(ItemHandler.crystallSwordBlade, 1, "crystallSwordBlade_blue");
 		registerItemVariantsRenderer(ItemHandler.crystallSwordBlade, 2, "crystallSwordBlade_green");
 		registerItemVariantsRenderer(ItemHandler.crystallSwordBlade, 3, "crystallSwordBlade_yellow");
+		registerItemVariantsRenderer(ItemHandler.crystalPickaxeHead, 0, "crystalPickaxeHead_red");
+		registerItemVariantsRenderer(ItemHandler.crystalPickaxeHead, 1, "crystalPickaxeHead_blue");
+		registerItemVariantsRenderer(ItemHandler.crystalPickaxeHead, 2, "crystalPickaxeHead_green");
+		registerItemVariantsRenderer(ItemHandler.crystalPickaxeHead, 3, "crystalPickaxeHead_yellow");
 		registerItemVariantsRenderer(ItemHandler.armorPlate, 0, "armorPlate_red");
 		registerItemVariantsRenderer(ItemHandler.armorPlate, 1, "armorPlate_blue");
 		registerItemVariantsRenderer(ItemHandler.armorPlate, 2, "armorPlate_green");
