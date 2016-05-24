@@ -397,7 +397,19 @@ public class CommonProxy {
 				'G', new ItemStack(BlockHandler.crystalGlas, 1, 2)
 		}));
 		
+		addCrystalPickaxeHeadPartRecipe(new ItemStack(BlockHandler.crystall_red), new ItemStack(ItemHandler.crystalPickaxeHead, 1, 0));
+		addCrystalPickaxeHeadPartRecipe(new ItemStack(BlockHandler.crystall_blue), new ItemStack(ItemHandler.crystalPickaxeHead, 1, 1));
+		addCrystalPickaxeHeadPartRecipe(new ItemStack(BlockHandler.crystall_green), new ItemStack(ItemHandler.crystalPickaxeHead, 1, 2));
+		addCrystalPickaxeHeadPartRecipe(new ItemStack(BlockHandler.crystall_yellow), new ItemStack(ItemHandler.crystalPickaxeHead, 1, 3));
+		
 		Utilities.addConsoleText("All recipes are registered.");
+	}
+	
+	protected void addCrystalPickaxeHeadPartRecipe(ItemStack crystal, ItemStack out){
+		GameRegistry.addShapedRecipe(out, new Object[] {
+				"CCC",
+				'C', crystal
+		});
 	}
 	
 	protected void addCrystalGlasRecipe(ItemStack dust, ItemStack glas){
