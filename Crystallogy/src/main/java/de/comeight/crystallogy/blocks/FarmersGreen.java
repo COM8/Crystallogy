@@ -244,7 +244,7 @@ public class FarmersGreen extends BaseBlockTileEntity {
 		TileEntity tE = worldIn.getTileEntity(pos);
 		if(tE instanceof TileEntityFarmersGreen){
 				TileEntityFarmersGreen tEFG = (TileEntityFarmersGreen) tE;
-			if(tEFG.growthLeft > 0 && worldIn.isRemote){
+			if(tEFG.growthLeft > 0){
 				tEFG.sync();
 			}
 		}

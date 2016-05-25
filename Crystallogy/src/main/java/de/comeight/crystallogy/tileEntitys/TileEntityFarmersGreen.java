@@ -53,12 +53,12 @@ public class TileEntityFarmersGreen extends BaseTileEntity implements ITickable{
 	
 	@Override
 	public void onCustomDataPacket(NetworkPacketTileEntitySync packet) {
-		growthLeft = packet.getNBTTagCompound().getInteger("growthLeft");
+		readFromNBT(packet.getNBTTagCompound());
 	}
 
 	@Override
 	public NetworkPacketTileEntitySync getCustomDataPacket(NBTTagCompound compound) {
-		compound.setInteger("growthLeft", growthLeft);
+		writeToNBT(compound);
 		return new NetworkPacketTileEntitySync(pos, compound);
 	}
 
