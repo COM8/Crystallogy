@@ -8,13 +8,17 @@ import net.minecraft.nbt.NBTTagCompound;
 public class TileEntityCrystalOfHolding extends BaseTileEntity {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private Entity entity;
+	NBTTagCompound data;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public TileEntityCrystalOfHolding() {
+		entity = null;
+		data = null;
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	public boolean hasEntity(){
+		markDirty();
 		if(entity != null){
 			return true;
 		}
@@ -22,11 +26,13 @@ public class TileEntityCrystalOfHolding extends BaseTileEntity {
 	}
 	
 	public Entity getEntity() {
+		markDirty();
 		return entity;
 	}
 	
 	public void setEntity(Entity entity) {
 		this.entity = entity;
+		markDirty();
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
@@ -35,7 +41,13 @@ public class TileEntityCrystalOfHolding extends BaseTileEntity {
 	}
 	
 	public void readCustomDataFromNBT(NBTTagCompound compound) {
-		entity = EntityUtils.readEntityFromCompound(compound, worldObj);
+		if(worldObj != null){
+			entity = EntityUtils.readEntityFromCompound(compound, worldObj);
+			data = null;
+		}
+		else{
+			data = compound;
+		}
 	}
 	
 	@Override
@@ -60,6 +72,17 @@ public class TileEntityCrystalOfHolding extends BaseTileEntity {
 	@Override
 	public void onCustomDataPacket(NetworkPacketTileEntitySync packet) {
 		readFromNBT(packet.getNBTTagCompound());
+	}
+
+	@Override
+	public void onLoad() {
+		if(data != null && worldObj != null){
+			readCustomDataFromNBT(data);
+		}
+		
+		if(worldObj.isRemote){
+			requestSync();
+		}
 	}
 	
 }

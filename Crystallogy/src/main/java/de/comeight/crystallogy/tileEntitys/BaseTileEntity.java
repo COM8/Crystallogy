@@ -1,11 +1,14 @@
 package de.comeight.crystallogy.tileEntitys;
 
+import de.comeight.crystallogy.network.NetworkPacketTileEntityRequestSync;
 import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
 import de.comeight.crystallogy.util.NetworkUtilitis;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public abstract class BaseTileEntity extends TileEntity {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -43,4 +46,10 @@ public abstract class BaseTileEntity extends TileEntity {
 		readFromNBT(pkt.getNbtCompound());
 	}
 
+	@SideOnly(Side.CLIENT)
+	public void requestSync(){
+		NetworkPacketTileEntityRequestSync packet = new NetworkPacketTileEntityRequestSync(pos);
+		NetworkUtilitis.sendToServer(packet);
+	}
+	
 }
