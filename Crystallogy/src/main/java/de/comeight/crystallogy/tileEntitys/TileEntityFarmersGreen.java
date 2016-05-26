@@ -6,7 +6,6 @@ import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
 import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.ParticleB;
-import de.comeight.crystallogy.util.EntityUtils;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;

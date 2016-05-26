@@ -13,13 +13,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
-public class Armor_combined extends BaseArmor {
+public class Armor_hunters extends BaseArmor {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	private static final String ID = "armor_combined_";
+	private static final String ID = "armor_hunter_";
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public Armor_combined(int renderIndexIn, EntityEquipmentSlot equipmentSlotIn) {
-		super(CustomArmorMaterials.CRYSTALL_COMBINED, renderIndexIn, equipmentSlotIn, ID + equipmentSlotIn.getName());
+	public Armor_hunters(int renderIndexIn, EntityEquipmentSlot equipmentSlotIn) {
+		super(CustomArmorMaterials.CRYSTALL_HUNTER, renderIndexIn, equipmentSlotIn, ID + equipmentSlotIn.getName());
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -28,10 +28,10 @@ public class Armor_combined extends BaseArmor {
 	}
 	
 	public boolean isPlayerWearingFullArmor(EntityPlayer player){
-		if (player.inventory.armorItemInSlot(3) != null && player.inventory.armorItemInSlot(3).getItem() == ItemHandler.armorHelmet_combined
-		        && player.inventory.armorItemInSlot(2) != null && player.inventory.armorItemInSlot(2).getItem() == ItemHandler.armorChestplate_combined
-		        && player.inventory.armorItemInSlot(1) != null && player.inventory.armorItemInSlot(1).getItem() == ItemHandler.armorLeggins_combined
-		        && player.inventory.armorItemInSlot(0) != null && player.inventory.armorItemInSlot(0).getItem() == ItemHandler.armorBoots_combined) {
+		if (player.inventory.armorItemInSlot(3) != null && player.inventory.armorItemInSlot(3).getItem() == ItemHandler.armorHelmet_hunter
+		        && player.inventory.armorItemInSlot(2) != null && player.inventory.armorItemInSlot(2).getItem() == ItemHandler.armorChestplate_hunter
+		        && player.inventory.armorItemInSlot(1) != null && player.inventory.armorItemInSlot(1).getItem() == ItemHandler.armorLeggins_hunter
+		        && player.inventory.armorItemInSlot(0) != null && player.inventory.armorItemInSlot(0).getItem() == ItemHandler.armorBoots_hunter) {
 		        return true;
 		}
 		return false;
@@ -45,7 +45,7 @@ public class Armor_combined extends BaseArmor {
 			disableCapabilities(world, player);
 		}
 		else{
-			if(itemStack.getItem() == ItemHandler.armorChestplate_combined){
+			if(itemStack.getItem() == ItemHandler.armorChestplate_hunter){
 				enableCapabilities(world, player);
 				
 				if(!world.isRemote){

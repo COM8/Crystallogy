@@ -15,7 +15,7 @@ public class InfusionRecipeArmorCombinedChestplate extends InfusionRecipeSimple 
 				new ItemStack[]{ 	new ItemStack(ItemHandler.armorChestplate_green, 1),
 									new ItemStack(Items.DIAMOND_CHESTPLATE, 1),
 									EnumCrystalColor.GRAY.getStack(new ItemStack(ItemHandler.armorPlate, 2)),},
-				new ItemStack(ItemHandler.armorChestplate_combined));
+				new ItemStack(ItemHandler.armorChestplate_hunter));
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------

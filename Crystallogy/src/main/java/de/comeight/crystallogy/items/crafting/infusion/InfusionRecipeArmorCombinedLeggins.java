@@ -15,7 +15,7 @@ public class InfusionRecipeArmorCombinedLeggins extends InfusionRecipeSimple {
 				new ItemStack[]{ 	new ItemStack(ItemHandler.armorLeggins_green, 1),
 									new ItemStack(Items.DIAMOND_LEGGINGS, 1),
 									EnumCrystalColor.GRAY.getStack(new ItemStack(ItemHandler.armorPlate, 2)),},
-				new ItemStack(ItemHandler.armorLeggins_combined));
+				new ItemStack(ItemHandler.armorLeggins_hunter));
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------

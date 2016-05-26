@@ -15,7 +15,7 @@ public class InfusionRecipeArmorCombinedHelmet extends InfusionRecipeSimple {
 				new ItemStack[]{ 	new ItemStack(ItemHandler.armorHelmet_green, 1),
 									new ItemStack(Items.DIAMOND_HELMET, 1),
 									EnumCrystalColor.GRAY.getStack(new ItemStack(ItemHandler.armorPlate, 2)),},
-				new ItemStack(ItemHandler.armorHelmet_combined));
+				new ItemStack(ItemHandler.armorHelmet_hunter));
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------

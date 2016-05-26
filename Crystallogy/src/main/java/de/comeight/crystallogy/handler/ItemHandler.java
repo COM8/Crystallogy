@@ -15,8 +15,8 @@ import de.comeight.crystallogy.items.FertilizerPotato;
 import de.comeight.crystallogy.items.PureCrystallDust;
 import de.comeight.crystallogy.items.ToolRod;
 import de.comeight.crystallogy.items.armor.Armor_blue;
-import de.comeight.crystallogy.items.armor.Armor_combined;
 import de.comeight.crystallogy.items.armor.Armor_green;
+import de.comeight.crystallogy.items.armor.Armor_hunters;
 import de.comeight.crystallogy.items.armor.Armor_red;
 import de.comeight.crystallogy.items.armor.Armor_yellow;
 import de.comeight.crystallogy.items.threatDusts.BadLuckDust;
@@ -112,10 +112,10 @@ public class ItemHandler {
 	public static Armor_yellow armorChestplate_yellow;
 	public static Armor_yellow armorLeggins_yellow;
 	public static Armor_yellow armorBoots_yellow;
-	public static Armor_combined armorHelmet_combined;
-	public static Armor_combined armorChestplate_combined;
-	public static Armor_combined armorLeggins_combined;
-	public static Armor_combined armorBoots_combined;
+	public static Armor_hunters armorHelmet_hunter;
+	public static Armor_hunters armorChestplate_hunter;
+	public static Armor_hunters armorLeggins_hunter;
+	public static Armor_hunters armorBoots_hunter;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public ItemHandler() {
@@ -175,10 +175,10 @@ public class ItemHandler {
 		armorLeggins_yellow = new Armor_yellow(1, EntityEquipmentSlot.LEGS);
 		armorBoots_yellow = new Armor_yellow(1, EntityEquipmentSlot.FEET);
 		armorPlate = new ArmorPlate();
-		armorHelmet_combined = new Armor_combined(1, EntityEquipmentSlot.HEAD);
-		armorChestplate_combined = new Armor_combined(1, EntityEquipmentSlot.CHEST);
-		armorLeggins_combined = new Armor_combined(1, EntityEquipmentSlot.LEGS);
-		armorBoots_combined = new Armor_combined(1, EntityEquipmentSlot.FEET);
+		armorHelmet_hunter = new Armor_hunters(1, EntityEquipmentSlot.HEAD);
+		armorChestplate_hunter = new Armor_hunters(1, EntityEquipmentSlot.CHEST);
+		armorLeggins_hunter = new Armor_hunters(1, EntityEquipmentSlot.LEGS);
+		armorBoots_hunter = new Armor_hunters(1, EntityEquipmentSlot.FEET);
 		energyCrystal = new EnergyCrystal();
 		energyDust = new EnergyDust();
 		fertilizerPotato  = new FertilizerPotato();
@@ -237,10 +237,10 @@ public class ItemHandler {
 		GameRegistry.register(armorLeggins_yellow);
 		GameRegistry.register(armorBoots_yellow);
 		GameRegistry.register(armorPlate);
-		GameRegistry.register(armorHelmet_combined);
-		GameRegistry.register(armorChestplate_combined);
-		GameRegistry.register(armorLeggins_combined);
-		GameRegistry.register(armorBoots_combined);
+		GameRegistry.register(armorHelmet_hunter);
+		GameRegistry.register(armorChestplate_hunter);
+		GameRegistry.register(armorLeggins_hunter);
+		GameRegistry.register(armorBoots_hunter);
 		GameRegistry.register(energyCrystal);
 		GameRegistry.register(energyDust);
 		GameRegistry.register(fertilizerPotato);
