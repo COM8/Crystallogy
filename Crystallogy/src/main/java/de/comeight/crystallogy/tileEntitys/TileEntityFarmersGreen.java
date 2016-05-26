@@ -6,6 +6,7 @@ import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
 import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.ParticleB;
+import de.comeight.crystallogy.util.EntityUtils;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
@@ -20,6 +21,7 @@ public class TileEntityFarmersGreen extends BaseTileEntity implements ITickable{
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	public int growthLeft;
 	
+	private NBTTagCompound data;
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public TileEntityFarmersGreen() {
 		growthLeft = 0;
@@ -27,27 +29,46 @@ public class TileEntityFarmersGreen extends BaseTileEntity implements ITickable{
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	private boolean isActive(){
-		try {
-			if(worldObj.getBlockState(pos).getValue(FarmersGreen.STATUS) == 3){
-				return true;
-			}
-		} catch (Exception e) {
-			
+		if(getBlockState() == 3){
+			return true;
 		}
 		return false;
 	}
 	
+	private int getBlockState(){
+		return worldObj.getBlockState(pos).getValue(FarmersGreen.STATUS);
+	}
+	
+	private void setBlockState(int state){
+		FarmersGreen.setBlockState(state, worldObj, pos);
+	}
+	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	public void onLoad() {
+		if(worldObj.isRemote){
+			requestSync();
+		}
+	}
+	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
-		compound.setInteger("growthLeft", growthLeft);
+		writeCustomDataToNBT(compound);
 		return compound;
 	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
+		readCustomDataFromNBT(compound);
+	}
+	
+	public void writeCustomDataToNBT(NBTTagCompound compound) {
+		compound.setInteger("growthLeft", growthLeft);
+	}
+	
+	public void readCustomDataFromNBT(NBTTagCompound compound) {
 		growthLeft = compound.getInteger("growthLeft");
 	}
 	
@@ -79,14 +100,16 @@ public class TileEntityFarmersGreen extends BaseTileEntity implements ITickable{
 		}
 		else{
 			applyGrowth();
+			
+			if(growthLeft > 0){
+				growthLeft--;
+			}
+			else{
+				if(isActive()){
+					setBlockState(2);
+				}
+			}
 		}
-		if(growthLeft <= 0 && worldObj.getBlockState(pos).getValue(FarmersGreen.STATUS) == 3){
-			FarmersGreen.setBlockState(2, worldObj, pos);
-		}
-		if(growthLeft > 0){
-			growthLeft--;
-		}
-		
 	}
 	
 	private void applyGrowth(){

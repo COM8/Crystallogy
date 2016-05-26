@@ -220,6 +220,7 @@ public class FarmersGreen extends BaseBlockTileEntity {
 			TileEntity tE = worldIn.getTileEntity(pos);
 			if(tE instanceof TileEntityFarmersGreen){
 				TileEntityFarmersGreen tEFG = (TileEntityFarmersGreen) tE;
+				
 				if(heldItem != null && heldItem.getItem() == ItemHandler.fertilizerPotato){
 					int prevState = worldIn.getBlockState(pos).getValue(STATUS);
 					tEFG.refuel();
@@ -236,19 +237,11 @@ public class FarmersGreen extends BaseBlockTileEntity {
 						}
 					}
 				}
-				if(worldIn.isRemote){
+				if(!worldIn.isRemote){
 					playerIn.addChatComponentMessage(new TextComponentString(TextFormatting.DARK_GREEN + "Growth" + TextFormatting.RESET + " for: " + tEFG.growthLeft + " ticks"));
 				}
 			}
 		}
-		TileEntity tE = worldIn.getTileEntity(pos);
-		if(tE instanceof TileEntityFarmersGreen){
-				TileEntityFarmersGreen tEFG = (TileEntityFarmersGreen) tE;
-			if(tEFG.growthLeft > 0){
-				tEFG.sync();
-			}
-		}
-		
 		return true;
 	}
 	
