@@ -14,7 +14,7 @@ public class CrystallogyBase {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	public static final String MODID = "crystallogy";
 	public static final String MODNAME = "Crystallogy";
-	public static final String VERSION = "0.8.1 Alpha";
+	public static final String VERSION = "0.8.2 Alpha";
 	
 	@SidedProxy(clientSide="de.comeight.crystallogy.ClientProxy", serverSide= "de.comeight.crystallogy.ServerProxy")
 	public static CommonProxy proxy;
