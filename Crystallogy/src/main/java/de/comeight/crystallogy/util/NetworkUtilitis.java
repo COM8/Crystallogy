@@ -39,4 +39,8 @@ public class NetworkUtilitis {
 		}
 	}
 	
+	public static void sendToServer(BaseNetworkPacket msg){
+		CommonProxy.NETWORKWRAPPER.sendToServer(msg);
+	}
+	
 }
