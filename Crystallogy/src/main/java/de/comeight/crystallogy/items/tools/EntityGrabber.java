@@ -21,6 +21,7 @@ public class EntityGrabber extends BaseItem {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public EntityGrabber() {
 		super(ID);
+		setMaxStackSize(1);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
