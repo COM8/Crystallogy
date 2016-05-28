@@ -25,8 +25,8 @@ public class RendererPlayerInJar extends TileEntitySpecialRenderer<TileEntityPla
 		if(!tE.hasEntity()){
 			return;
 		}
-		
-		float partialTick = (float) (720.0 * (System.currentTimeMillis() / 2 & 0x3FFFL) / 0x3FFFL);
+		float partialTick = 0.0F;
+		//float partialTick = (float) (720.0 * (System.currentTimeMillis() / 2 & 0x3FFFL) / 0x3FFFL);
 		renderPlayer((PlayerClientDummy)tE.getEntity(), x, y, z, partialTick);
 		renderIngredients(tE.getWorld(), x, y, z, partialTick);
 	}
