@@ -50,7 +50,6 @@ public abstract class BaseTileEntity extends TileEntity {
 	public void requestSync(){
 		NetworkPacketTileEntityRequestSync packet = new NetworkPacketTileEntityRequestSync(pos);
 		NetworkUtilitis.sendToServer(packet);
-		System.out.println("request Sync");
 	}
 	
 	@Override
