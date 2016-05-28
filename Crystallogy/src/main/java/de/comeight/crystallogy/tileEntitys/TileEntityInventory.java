@@ -173,12 +173,12 @@ public abstract class TileEntityInventory extends BaseTileEntity implements IInv
 	
 	@Override
 	public void onCustomDataPacket(NetworkPacketTileEntitySync packet) {
-		readInventoryFromNBT(packet.getNBTTagCompound());
+		readFromNBT(packet.getNBTTagCompound());
 	}
 
 	@Override
 	public NetworkPacketTileEntitySync getCustomDataPacket(NBTTagCompound compound) {
-		writeInventoryToNBT(compound);
+		writeToNBT(compound);
 		return new NetworkPacketTileEntitySync(pos, compound);
 	}
 	
