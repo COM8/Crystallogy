@@ -79,10 +79,7 @@ public class TileEntityCrystalOfHolding extends BaseTileEntity {
 		if(data != null && worldObj != null){
 			readCustomDataFromNBT(data);
 		}
-		
-		if(worldObj.isRemote){
-			requestSync();
-		}
+		super.onLoad();
 	}
 	
 }
