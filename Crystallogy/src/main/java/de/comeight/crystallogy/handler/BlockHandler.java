@@ -17,6 +17,7 @@ import de.comeight.crystallogy.blocks.machines.ArmorCombiner;
 import de.comeight.crystallogy.blocks.machines.Charger;
 import de.comeight.crystallogy.blocks.machines.Compressor;
 import de.comeight.crystallogy.blocks.machines.CrystallCrusher;
+import de.comeight.crystallogy.blocks.machines.MachineBlock;
 import de.comeight.crystallogy.itemBlocks.ItemBlockCrystalGlas;
 import de.comeight.crystallogy.itemBlocks.ItemBlockCrystalOfHolding;
 import de.comeight.crystallogy.itemBlocks.ItemBlockEntityJar;
@@ -49,6 +50,7 @@ public class BlockHandler {
 	public static CrystalGlas crystalGlas;
 	public static CrystalOfHolding crystalOfHolding;
 	public static ArmorCombiner armorCombiner;
+	public static MachineBlock machineBlock;
 
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public BlockHandler() {
@@ -86,8 +88,10 @@ public class BlockHandler {
 		crystalGlas = new CrystalGlas();
 		crystalOfHolding = new CrystalOfHolding();
 		armorCombiner = new ArmorCombiner();
-		registerBlock(armorCombiner, armorCombiner.ID);
+		machineBlock = new MachineBlock();
 		
+		registerBlock(machineBlock, machineBlock.ID);
+		registerBlock(armorCombiner, armorCombiner.ID);
 		registerBlock(crystall_blue, crystall_blue.ID);
 		registerBlock(crystall_green, crystall_green.ID);
 		registerBlock(crystall_red, crystall_red.ID);

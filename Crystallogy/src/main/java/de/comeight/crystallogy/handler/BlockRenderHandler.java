@@ -34,6 +34,7 @@ public final class BlockRenderHandler {
 		registerRenderer(BlockHandler.crystorya);
 		registerRenderer(BlockHandler.crystalOfHolding);
 		registerRenderer(BlockHandler.armorCombiner);
+		registerRenderer(BlockHandler.machineBlock);
 		
 		Utilities.addConsoleText("All blockrenderer are registered.");
     }

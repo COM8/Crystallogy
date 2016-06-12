@@ -17,6 +17,7 @@ block.crystalGlas.name=Kristallglas
 block.farmersGreen.name=Des Farmers Grün (WIP)
 block.crystalOfHolding.name=Halterkristall
 block.armorCombiner.name=Rüstungs Kombinierer
+block.machineBlock.name=Maschinenblock
 
 tile.crystall_red.name=§4Roter§r Kristall
 tile.crystall_blue.name=§9Blauer§r Kristall
@@ -35,6 +36,7 @@ tile.crystalGlas.name=Kristallglas
 tile.farmersGreen.name=Des Farmers Grün (WIP)
 tile.crystalOfHolding.name=Halterkristall
 tile.armorCombiner.name=Rüstungs Kombinierer
+tile.machineBlock.name=Maschinenblock
 
 item.crystallDust_red.name=§4Roter§r Kristallstaub
 item.crystallDust_blue.name=§9Blauer§r Kristallstaub
