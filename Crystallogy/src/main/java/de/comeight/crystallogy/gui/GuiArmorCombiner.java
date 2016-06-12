@@ -53,7 +53,7 @@ public class GuiArmorCombiner extends GuiContainer{
         drawTexturedModalRect(i, j, 0, 0, xSize, ySize);
         
         double progress = tileEntity.fractionOfCookTimeComplete();
-        drawTexturedModalRect(guiLeft + 81, guiTop + 37, 176, 0, (int)(progress * 15), 13);
+        drawTexturedModalRect(guiLeft + 81, guiTop + 37, 176, 0, (int)(progress * 14), 13);
         
         if(tileEntity.getStackInSlot(0) == null){
         	drawTexturedModalRect(guiLeft + 45, guiTop + 37, 176, 14, 14, 13);
