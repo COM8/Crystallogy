@@ -1,6 +1,7 @@
 package de.comeight.crystallogy;
 
 import de.comeight.crystallogy.blocks.EnumCrystalColor;
+import de.comeight.crystallogy.gui.GuiArmorCombiner;
 import de.comeight.crystallogy.gui.GuiCharger;
 import de.comeight.crystallogy.gui.GuiCompressor;
 import de.comeight.crystallogy.gui.GuiCrystallCrusher;
@@ -59,6 +60,7 @@ import de.comeight.crystallogy.tileEntitys.TileEntityCrystallLight;
 import de.comeight.crystallogy.tileEntitys.TileEntityEntityJar;
 import de.comeight.crystallogy.tileEntitys.TileEntityFarmersGreen;
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
+import de.comeight.crystallogy.tileEntitys.machines.TileEntityArmorCombiner;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCharger;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCompressor;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCrystallCrusher;
@@ -148,6 +150,7 @@ public class CommonProxy {
 		GuiHandlerRegistry.getInstance().registerGuiHandler(GuiHandler.INSTANCE, GuiCrystallCrusher.ID);
 		GuiHandlerRegistry.getInstance().registerGuiHandler(GuiHandler.INSTANCE, GuiCompressor.ID);
 		GuiHandlerRegistry.getInstance().registerGuiHandler(GuiHandler.INSTANCE, GuiCharger.ID);
+		GuiHandlerRegistry.getInstance().registerGuiHandler(GuiHandler.INSTANCE, GuiArmorCombiner.ID);
 		
 		Utilities.addConsoleText("All guis are registered.");
 	}
@@ -172,6 +175,7 @@ public class CommonProxy {
 		GameRegistry.registerTileEntity(TileEntityCharger.class, BlockHandler.charger.ID);
 		GameRegistry.registerTileEntity(TileEntityFarmersGreen.class, BlockHandler.farmersGreen.ID);
 		GameRegistry.registerTileEntity(TileEntityCrystalOfHolding.class, BlockHandler.crystalOfHolding.ID);
+		GameRegistry.registerTileEntity(TileEntityArmorCombiner.class, BlockHandler.armorCombiner.ID);
 		
 		Utilities.addConsoleText("All tileEntitys are registered.");
 		

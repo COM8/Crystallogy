@@ -77,6 +77,10 @@ public class ItemRenderHandler {
 		registerBasicItemRender(ItemHandler.crystalPickaxe_green);
 		registerBasicItemRender(ItemHandler.crystalPickaxe_yellow);
 		registerBasicItemRender(ItemHandler.entityGrabber);
+		registerBasicItemRender(ItemHandler.armorLeggins_combined);
+		registerBasicItemRender(ItemHandler.armorHelmet_combined);
+		registerBasicItemRender(ItemHandler.armorChestplate_combined);
+		registerBasicItemRender(ItemHandler.armorBoots_combined);
 		
 		registerItemVariantsRenderer(ItemHandler.crystallHammerHead, 0, "crystallHammerHead_red");
 		registerItemVariantsRenderer(ItemHandler.crystallHammerHead, 1, "crystallHammerHead_blue");

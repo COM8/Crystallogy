@@ -16,6 +16,7 @@ block.crystorya.name=Crystorya
 block.crystalGlas.name=Kristallglas
 block.farmersGreen.name=Des Farmers Grün (WIP)
 block.crystalOfHolding.name=Halterkristall
+block.armorCombiner.name=Rüstungs Kombinierer
 
 tile.crystall_red.name=§4Roter§r Kristall
 tile.crystall_blue.name=§9Blauer§r Kristall
@@ -33,6 +34,7 @@ tile.crystorya.name=Crystorya
 tile.crystalGlas.name=Kristallglas
 tile.farmersGreen.name=Des Farmers Grün (WIP)
 tile.crystalOfHolding.name=Halterkristall
+tile.armorCombiner.name=Rüstungs Kombinierer
 
 item.crystallDust_red.name=§4Roter§r Kristallstaub
 item.crystallDust_blue.name=§9Blauer§r Kristallstaub
@@ -109,5 +111,9 @@ item.crystalPickaxeHead_red.name=§4Rote§r Kristallspitzhackenkopf
 item.crystalPickaxeHead_blue.name=§9Blaue§r Kristallspitzhackenkopf
 item.crystalPickaxeHead_green.name=§2Grüne§r Kristallspitzhackenkopf
 item.crystalPickaxeHead_yellow.name=§eGelbe§r Kristallspitzhackenkopf
+item.armor_combined_head.name=Kombinierter Kristallhelm
+item.armor_combined_chest.name=Kombinierte Kristallbrustplatte
+item.armor_combined_legs.name=Kombinierter Kristallbeinschutz
+item.armor_combined_feet.name=Kombinierte Kristallstiefel
 
 itemGroup.crystallogyMainTab=Crystallogy Hauptfenster

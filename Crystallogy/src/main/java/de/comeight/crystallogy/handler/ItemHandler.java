@@ -15,6 +15,7 @@ import de.comeight.crystallogy.items.FertilizerPotato;
 import de.comeight.crystallogy.items.PureCrystallDust;
 import de.comeight.crystallogy.items.ToolRod;
 import de.comeight.crystallogy.items.armor.Armor_blue;
+import de.comeight.crystallogy.items.armor.Armor_combined;
 import de.comeight.crystallogy.items.armor.Armor_green;
 import de.comeight.crystallogy.items.armor.Armor_hunters;
 import de.comeight.crystallogy.items.armor.Armor_red;
@@ -116,6 +117,10 @@ public class ItemHandler {
 	public static Armor_hunters armorChestplate_hunter;
 	public static Armor_hunters armorLeggins_hunter;
 	public static Armor_hunters armorBoots_hunter;
+	public static Armor_combined armorHelmet_combined;
+	public static Armor_combined armorChestplate_combined;
+	public static Armor_combined armorLeggins_combined;
+	public static Armor_combined armorBoots_combined;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public ItemHandler() {
@@ -179,6 +184,10 @@ public class ItemHandler {
 		armorChestplate_hunter = new Armor_hunters(1, EntityEquipmentSlot.CHEST);
 		armorLeggins_hunter = new Armor_hunters(1, EntityEquipmentSlot.LEGS);
 		armorBoots_hunter = new Armor_hunters(1, EntityEquipmentSlot.FEET);
+		armorHelmet_combined = new Armor_combined(1, EntityEquipmentSlot.HEAD);
+		armorChestplate_combined = new Armor_combined(1, EntityEquipmentSlot.CHEST);
+		armorLeggins_combined = new Armor_combined(1, EntityEquipmentSlot.LEGS);
+		armorBoots_combined = new Armor_combined(1, EntityEquipmentSlot.FEET);
 		energyCrystal = new EnergyCrystal();
 		energyDust = new EnergyDust();
 		fertilizerPotato  = new FertilizerPotato();
@@ -188,6 +197,10 @@ public class ItemHandler {
 		crystalPickaxe_yellow = new CrystalPickaxe_yellow();
 		entityGrabber = new EntityGrabber();
 		
+		GameRegistry.register(armorHelmet_combined);
+		GameRegistry.register(armorChestplate_combined);
+		GameRegistry.register(armorLeggins_combined);
+		GameRegistry.register(armorBoots_combined);
 		GameRegistry.register(crystallDust_red);
 		GameRegistry.register(crystallDust_green);
 		GameRegistry.register(crystallDust_blue);

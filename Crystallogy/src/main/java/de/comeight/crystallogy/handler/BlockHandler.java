@@ -13,6 +13,7 @@ import de.comeight.crystallogy.blocks.FarmersGreen;
 import de.comeight.crystallogy.blocks.FireCrystall;
 import de.comeight.crystallogy.blocks.InfuserBlock;
 import de.comeight.crystallogy.blocks.PlayerJar;
+import de.comeight.crystallogy.blocks.machines.ArmorCombiner;
 import de.comeight.crystallogy.blocks.machines.Charger;
 import de.comeight.crystallogy.blocks.machines.Compressor;
 import de.comeight.crystallogy.blocks.machines.CrystallCrusher;
@@ -47,6 +48,7 @@ public class BlockHandler {
 	public static Crystorya crystorya;
 	public static CrystalGlas crystalGlas;
 	public static CrystalOfHolding crystalOfHolding;
+	public static ArmorCombiner armorCombiner;
 
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public BlockHandler() {
@@ -83,6 +85,8 @@ public class BlockHandler {
 		crystorya = new Crystorya();
 		crystalGlas = new CrystalGlas();
 		crystalOfHolding = new CrystalOfHolding();
+		armorCombiner = new ArmorCombiner();
+		registerBlock(armorCombiner, armorCombiner.ID);
 		
 		registerBlock(crystall_blue, crystall_blue.ID);
 		registerBlock(crystall_green, crystall_green.ID);

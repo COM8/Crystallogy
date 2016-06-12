@@ -16,6 +16,7 @@ block.crystorya.name=Crystorya
 block.crystalGlas.name=Crystal Glass
 block.farmersGreen.name=Farmers Green (WIP)
 block.crystalOfHolding.name=Crystal Of Holding
+block.armorCombiner.name=Armor Combiner
 
 tile.crystall_red.name=§4Red§r Crystal
 tile.crystall_blue.name=§9Blue§r Crystal
@@ -33,6 +34,7 @@ tile.crystorya.name=Crystorya
 tile.crystalGlas.name=Crystal Glass
 tile.farmersGreen.name=Farmers Green (WIP)
 tile.crystalOfHolding.name=Crystal Of Holding
+tile.armorCombiner.name=Armor Combiner
 
 item.crystallDust_red.name=§4Red§r Crystal Dust
 item.crystallDust_blue.name=§9Blue§r Crystal Dust
@@ -108,5 +110,9 @@ item.crystalPickaxeHead_red.name=§4Red§r Crystal Pickaxe Head
 item.crystalPickaxeHead_blue.name=§9Blue§r Crystal Pickaxe Head
 item.crystalPickaxeHead_green.name=§2Green§r Crystal Pickaxe Head
 item.crystalPickaxeHead_yellow.name=§eYellow§r Crystal Pickaxe Head
+item.armor_combined_head.name=Combined Helmet
+item.armor_combined_chest.name=Combined Chestplate
+item.armor_combined_legs.name=Combined Leggins
+item.armor_combined_feet.name=Combined Boots
 
 itemGroup.crystallogyMainTab=Crystallogy Maintab
