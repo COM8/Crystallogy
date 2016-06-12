@@ -3,7 +3,6 @@ package de.comeight.crystallogy.handler;
 import de.comeight.crystallogy.items.armor.Armor_combined;
 import de.comeight.crystallogy.items.crafting.BaseRecipe;
 import de.comeight.crystallogy.items.crafting.RecipeArmorCombiner;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
@@ -38,7 +37,7 @@ public class ArmorCombinerRecipeHandler extends BaseRecipeHandler{
 		for (BaseRecipe baseRecipe : craftingList) {
 			RecipeArmorCombiner recipe = (RecipeArmorCombiner) baseRecipe;
 			if(input[0] != null && input[0].getItem() instanceof ItemArmor && !(input[0].getItem() instanceof Armor_combined)){
-				if(input[1] != null && input[1].getItem() == Items.DIAMOND && input[1].stackSize >= recipe.numCatalyst){
+				if(input[1] != null && input[1].getItem() == ItemHandler.armorCatalys && input[1].stackSize >= recipe.numCatalyst){
 					if(input[2] != null && input[2].getItem() == recipe.armor && ((ItemArmor) input[0].getItem()).armorType == ((ItemArmor) input[2].getItem()).armorType){
 						return baseRecipe;
 					}
