@@ -3,6 +3,6 @@
     "textures": {
         "top": "crystallogy:blocks/machine_top",
         "front": "crystallogy:blocks/compressor_front_disabled",
-        "side": "crystallogy:blocks/compressor_side"
+        "side": "crystallogy:blocks/machine_side"
     }
 }
