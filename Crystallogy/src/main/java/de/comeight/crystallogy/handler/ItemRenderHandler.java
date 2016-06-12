@@ -81,6 +81,7 @@ public class ItemRenderHandler {
 		registerBasicItemRender(ItemHandler.armorHelmet_combined);
 		registerBasicItemRender(ItemHandler.armorChestplate_combined);
 		registerBasicItemRender(ItemHandler.armorBoots_combined);
+		registerBasicItemRender(ItemHandler.armorCatalys);
 		
 		registerItemVariantsRenderer(ItemHandler.crystallHammerHead, 0, "crystallHammerHead_red");
 		registerItemVariantsRenderer(ItemHandler.crystallHammerHead, 1, "crystallHammerHead_blue");
