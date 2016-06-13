@@ -1,8 +1,12 @@
 package de.comeight.crystallogy.blocks.container;
 
+import com.sun.istack.internal.Nullable;
+
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
 
 public abstract class BaseContainer extends Container {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -34,5 +38,51 @@ public abstract class BaseContainer extends Container {
             this.addSlotToContainer(new Slot(playerInventory, k, 8 + k * 18, 142));
         }
 	}
+	
+	@Nullable
+	@Override
+    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
+    {
+        ItemStack itemstack = null;
+        Slot slot = (Slot)inventorySlots.get(index);
+
+        if (slot != null && slot.getHasStack())
+        {
+            ItemStack itemstack1 = slot.getStack();
+            itemstack = itemstack1.copy();
+
+            if (index < 35)
+            {
+                if (!this.mergeItemStack(itemstack1, 0, inventorySlots.size(), true))
+                {
+                    return null;
+                }
+
+                slot.onSlotChange(itemstack1, itemstack);
+            }
+            else if (!this.mergeItemStack(itemstack1, 0, inventorySlots.size(), false))
+            {
+                return null;
+            }
+
+            if (itemstack1.stackSize == 0)
+            {
+                slot.putStack((ItemStack)null);
+            }
+            else
+            {
+                slot.onSlotChanged();
+            }
+
+            if (itemstack1.stackSize == itemstack.stackSize)
+            {
+                return null;
+            }
+
+            slot.onPickupFromSlot(playerIn, itemstack1);
+        }
+
+        return itemstack;
+    }
 	
 }

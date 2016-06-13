@@ -2,6 +2,7 @@ package de.comeight.crystallogy.tileEntitys.machines;
 
 import de.comeight.crystallogy.blocks.machines.Compressor;
 import de.comeight.crystallogy.handler.ArmorCombinerRecipeHandler;
+import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.items.armor.Armor_combined;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -23,6 +24,7 @@ public class TileEntityArmorCombiner extends BaseTileEntityMachine {
     }
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
 	public void setBlockState(){
 		Compressor.setBlockState(crafting, worldObj, pos);
 	}
@@ -46,4 +48,30 @@ public class TileEntityArmorCombiner extends BaseTileEntityMachine {
         }
     }
 
+	@Override
+	public boolean isItemValidForSlot(int index, ItemStack stack) {
+		if(!super.isItemValidForSlot(index, stack)){
+			switch (index) {
+				case 0:
+					if(stack.getItem() instanceof ItemArmor){
+						return true;
+					}
+					break;
+					
+				case 1:
+					if(stack.getItem() == ItemHandler.armorCatalys){
+						return true;
+					}
+					break;
+
+				case 2:
+					if(stack.getItem() instanceof Armor_combined){
+						return true;
+					}
+					break;
+			}
+		}
+		return false;
+	}
+	
 }
