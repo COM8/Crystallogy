@@ -359,6 +359,12 @@ public class CommonProxy {
 																	new ItemStack(ItemHandler.armorLeggins_yellow),
 																	new ItemStack(ItemHandler.armorBoots_yellow));
 		
+		//Armor Combined:
+		addArmorRecipe(new ItemStack(ItemHandler.combinedArmorCompound), new ItemStack(ItemHandler.armorHelmet_combined),
+				new ItemStack(ItemHandler.armorChestplate_combined),
+				new ItemStack(ItemHandler.armorLeggins_combined),
+				new ItemStack(ItemHandler.armorBoots_combined));
+		
 		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.energyDust), new Object[] {
 				"RRR",
 				"RCR",
