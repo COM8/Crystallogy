@@ -117,5 +117,6 @@ item.armor_combined_chest.name=Combined Chestplate
 item.armor_combined_legs.name=Combined Leggins
 item.armor_combined_feet.name=Combined Boots
 item.armorCatalyst.name=Armor Catalyst
+item.combinedArmorCompound.name=Combined Armor Compound
 
 itemGroup.crystallogyMainTab=Crystallogy Maintab

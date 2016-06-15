@@ -2,6 +2,7 @@ package de.comeight.crystallogy.handler;
 
 import de.comeight.crystallogy.items.ArmorCatalys;
 import de.comeight.crystallogy.items.ArmorPlate;
+import de.comeight.crystallogy.items.CombinedArmorCompound;
 import de.comeight.crystallogy.items.CrystalKnifeBlade;
 import de.comeight.crystallogy.items.CrystalPickaxeHead;
 import de.comeight.crystallogy.items.CrystallDust_blue;
@@ -97,6 +98,7 @@ public class ItemHandler {
 	public static CrystalPickaxe_yellow crystalPickaxe_yellow;
 	public static EntityGrabber entityGrabber;
 	public static ArmorCatalys armorCatalys;
+	public static CombinedArmorCompound combinedArmorCompound;
 	
 	//Armor:
 	public static Armor_red armorHelmet_red;
@@ -199,7 +201,9 @@ public class ItemHandler {
 		crystalPickaxe_yellow = new CrystalPickaxe_yellow();
 		entityGrabber = new EntityGrabber();
 		armorCatalys = new ArmorCatalys();
+		combinedArmorCompound = new CombinedArmorCompound();
 		
+		GameRegistry.register(combinedArmorCompound);
 		GameRegistry.register(armorCatalys);
 		GameRegistry.register(armorHelmet_combined);
 		GameRegistry.register(armorChestplate_combined);

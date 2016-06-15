@@ -118,5 +118,6 @@ item.armor_combined_chest.name=Kombinierte Kristallbrustplatte
 item.armor_combined_legs.name=Kombinierter Kristallbeinschutz
 item.armor_combined_feet.name=Kombinierte Kristallstiefel
 item.armorCatalyst.name=Rüstungs Katalysator
+item.combinedArmorCompound.name=Kombinierte Rüstungsverbindung
 
 itemGroup.crystallogyMainTab=Crystallogy Hauptfenster
