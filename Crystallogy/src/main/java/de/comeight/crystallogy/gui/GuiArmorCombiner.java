@@ -5,8 +5,8 @@ import de.comeight.crystallogy.blocks.container.ContainerArmorCombiner;
 import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityArmorCombiner;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -41,12 +41,15 @@ public class GuiArmorCombiner extends GuiContainer{
     {
         this.fontRendererObj.drawString(NAME, xSize / 2 - fontRendererObj.getStringWidth(NAME) / 2, 6, 4210752);
         this.fontRendererObj.drawString(playerInventory.getDisplayName().getUnformattedText(), 8, ySize - 96 + 2, 4210752);
+        
+        this.fontRendererObj.drawString(String.valueOf((int)(tileEntity.fractionOfCookTimeComplete()*100)) + "%", 8, ySize - 106 + 2, 4210752);
     }
 
 	@Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
     {
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		refreshTileEntity();
+		
         mc.getTextureManager().bindTexture(rL);
         int i = (width - xSize) / 2;
         int j = (height - ySize) / 2;
@@ -62,4 +65,13 @@ public class GuiArmorCombiner extends GuiContainer{
         	drawTexturedModalRect(guiLeft + 117, guiTop + 37, 176, 14, 14, 13);
         }
     }
+	
+	private void refreshTileEntity(){
+		if(tileEntity != null && tileEntity.isInvalid()){
+			TileEntity tE = tileEntity.getWorld().getTileEntity(tileEntity.getPos());
+			if(tE instanceof TileEntityArmorCombiner){
+				tileEntity = (TileEntityArmorCombiner) tE;
+			}
+		}
+	}
 }
