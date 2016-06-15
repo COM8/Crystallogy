@@ -10,6 +10,7 @@ import de.comeight.crystallogy.handler.GuiHandler;
 import de.comeight.crystallogy.handler.GuiHandlerRegistry;
 import de.comeight.crystallogy.handler.InfusionRecipeHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorCatalyst;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorCombinedBoots;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorCombinedChestplate;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorCombinedHelmet;
@@ -31,6 +32,7 @@ import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeGlowDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeHammer;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeHungDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeLevDust;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeMachineBlock;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipePickaxe;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipePlayerCrystalKnife;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipePlayerJar;
@@ -126,6 +128,8 @@ public class CommonProxy {
 	private static InfusionRecipeArmorCombinedLeggins infusionRecipeArmorCombinedLeggins;
 	private static InfusionRecipeArmorCombinedBoots infusionRecipeArmorCombinedBoots;
 	private static InfusionRecipeCrystalOfHolding infusionRecipeCrystalOfHolding;
+	private static InfusionRecipeMachineBlock infusionRecipeMachineBlock;
+	private static InfusionRecipeArmorCatalyst infusionRecipeArmorCatalyst;
 	
 	// -----------------------------------------------Constructor:-------------------------------------------
 	
@@ -212,7 +216,11 @@ public class CommonProxy {
 		infusionRecipeEntityJar = new InfusionRecipeEntityJar();
 		infusionRecipePickaxe = new InfusionRecipePickaxe();
 		infusionRecipeCrystalOfHolding = new InfusionRecipeCrystalOfHolding();
+		infusionRecipeMachineBlock = new InfusionRecipeMachineBlock();
+		infusionRecipeArmorCatalyst = new InfusionRecipeArmorCatalyst();
 		
+		InfusionRecipeHandler.addRecipe(infusionRecipeArmorCatalyst);
+		InfusionRecipeHandler.addRecipe(infusionRecipeMachineBlock);
 		InfusionRecipeHandler.addRecipe(infusionRecipeCrystalOfHolding);
 		InfusionRecipeHandler.addRecipe(infusionRecipeVaporizer);
 		InfusionRecipeHandler.addRecipe(infusionRecipeCrystallLight);
@@ -351,41 +359,56 @@ public class CommonProxy {
 																	new ItemStack(ItemHandler.armorLeggins_yellow),
 																	new ItemStack(ItemHandler.armorBoots_yellow));
 		
-		ItemStack redstone = new ItemStack(Items.REDSTONE);
-		ItemStack redDust = new ItemStack(ItemHandler.crystallDust_red);
-		IRecipe energyDust = new ShapedRecipes(3, 3, new ItemStack[]{
-				redstone,redstone,redstone,
-				redstone,redDust,redstone,
-				redstone,redstone,redstone,
-		}, new ItemStack(ItemHandler.energyDust));
-		GameRegistry.addRecipe(energyDust);
+		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.energyDust), new Object[] {
+				"RRR",
+				"RCR",
+				"RRR",
+				'C', ItemHandler.crystallDust_red,
+				'R', Items.REDSTONE
+		});
 		
-		ItemStack obsidian = new ItemStack(Blocks.OBSIDIAN);
-		ItemStack iron_block = new ItemStack(Blocks.IRON_BLOCK);
-		IRecipe compressor = new ShapedRecipes(3, 3, new ItemStack[]{
-				obsidian,b,obsidian,
-				obsidian,redstone,obsidian,
-				obsidian,iron_block,obsidian,
-		}, new ItemStack(BlockHandler.compressor));
-		GameRegistry.addRecipe(compressor);
+		GameRegistry.addShapedRecipe(new ItemStack(BlockHandler.armorCombiner), new Object[] {
+				"YDR",
+				"BAG",
+				"IMI",
+				'M', BlockHandler.machineBlock,
+				'R', BlockHandler.crystall_red,
+				'B', BlockHandler.crystall_blue,
+				'G', BlockHandler.crystall_green,
+				'Y', BlockHandler.crystall_yellow,
+				'A', ItemHandler.armorChestplate_combined,
+				'D', Blocks.DIAMOND_BLOCK,
+				'I', ItemHandler.armorCatalys
+				
+		});
 		
-		ItemStack brick_block = new ItemStack(Blocks.BRICK_BLOCK);
-		ItemStack ironIngot = new ItemStack(Items.IRON_INGOT);
-		IRecipe crusher = new ShapedRecipes(3, 3, new ItemStack[]{
-				brick_block,brick_block,brick_block,
-				ironIngot,null,ironIngot,
-				ironIngot,ironIngot,ironIngot,
-		}, new ItemStack(BlockHandler.crystallCrusher));
-		GameRegistry.addRecipe(crusher);
+		GameRegistry.addShapedRecipe(new ItemStack(BlockHandler.compressor), new Object[] {
+				"OCO",
+				"ORO",
+				"OMO",
+				'O', Blocks.OBSIDIAN,
+				'R', Items.REDSTONE,
+				'M', BlockHandler.machineBlock,
+				'C', BlockHandler.crystall_blue
+		});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(BlockHandler.crystallCrusher), new Object[] {
+				"BBB",
+				"I_I",
+				"IMI",
+				'B', Blocks.BRICK_BLOCK,
+				'I', Items.IRON_INGOT,
+				'M', BlockHandler.machineBlock
+		});
 		
 		GameRegistry.addShapedRecipe(new ItemStack(BlockHandler.charger), new Object[] {
 				"OCO",
 				"ORO",
-				"OIO",
-				'O', obsidian,
-				'R', redstone,
+				"OMO",
+				'O', Blocks.OBSIDIAN,
+				'R', Items.REDSTONE,
 				'C', new ItemStack(ItemHandler.energyCrystal, 1, 12000),
-				'I', iron_block
+				'M', BlockHandler.machineBlock
 		});
 		
 		addCrystalGlasRecipe(new ItemStack(ItemHandler.crystallDust_red), new ItemStack(BlockHandler.crystalGlas, 7, 0));
