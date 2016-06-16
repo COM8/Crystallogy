@@ -6,6 +6,7 @@ import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.items.armor.Armor_combined;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 
 public class TileEntityArmorCombiner extends BaseTileEntityMachine {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -23,12 +24,21 @@ public class TileEntityArmorCombiner extends BaseTileEntityMachine {
 		return "de.comeight.crystallogy.tileEntityArmorCombiner";
     }
 	
-	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public void setBlockState(){
 		Compressor.setBlockState(crafting, worldObj, pos);
 	}
 	
+	@Override
+	public int[] getSlotsForFace(EnumFacing side) {
+		int[] ret = new int[slotsInput];
+		for(int i = 0; i < slotsInput; i++){
+			ret[i] = i;
+		}
+		return ret;
+	}
+	
+	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public void craftItem()
     {
@@ -50,7 +60,7 @@ public class TileEntityArmorCombiner extends BaseTileEntityMachine {
 
 	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
-		if(!super.isItemValidForSlot(index, stack)){
+		if(super.isItemValidForSlot(index, stack)){
 			switch (index) {
 				case 0:
 					if(stack.getItem() instanceof ItemArmor){
@@ -73,5 +83,4 @@ public class TileEntityArmorCombiner extends BaseTileEntityMachine {
 		}
 		return false;
 	}
-	
 }
