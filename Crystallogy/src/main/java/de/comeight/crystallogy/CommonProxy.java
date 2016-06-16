@@ -18,6 +18,7 @@ import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorCombin
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorPlate;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeBadLuckDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeBlindDust;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeCombinedArmorCompound;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeCrystalKnifeBlade;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeCrystalOfHolding;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeCrystallLight;
@@ -130,6 +131,7 @@ public class CommonProxy {
 	private static InfusionRecipeCrystalOfHolding infusionRecipeCrystalOfHolding;
 	private static InfusionRecipeMachineBlock infusionRecipeMachineBlock;
 	private static InfusionRecipeArmorCatalyst infusionRecipeArmorCatalyst;
+	private static InfusionRecipeCombinedArmorCompound infusionRecipeCombinedArmorCompound;
 	
 	// -----------------------------------------------Constructor:-------------------------------------------
 	
@@ -218,7 +220,9 @@ public class CommonProxy {
 		infusionRecipeCrystalOfHolding = new InfusionRecipeCrystalOfHolding();
 		infusionRecipeMachineBlock = new InfusionRecipeMachineBlock();
 		infusionRecipeArmorCatalyst = new InfusionRecipeArmorCatalyst();
+		infusionRecipeCombinedArmorCompound = new InfusionRecipeCombinedArmorCompound();
 		
+		InfusionRecipeHandler.addRecipe(infusionRecipeCombinedArmorCompound);
 		InfusionRecipeHandler.addRecipe(infusionRecipeArmorCatalyst);
 		InfusionRecipeHandler.addRecipe(infusionRecipeMachineBlock);
 		InfusionRecipeHandler.addRecipe(infusionRecipeCrystalOfHolding);
