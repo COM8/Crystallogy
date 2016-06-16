@@ -251,18 +251,9 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
 
 	@Override
 	public int[] getSlotsForFace(EnumFacing side) {
-		int[] ret;
-		if(side == EnumFacing.DOWN){
-			ret = new int[slotsOutput];
-			for(int i = 0; i < slotsOutput; i++){
-				ret[i] = slotsInput + i;
-			}
-		}
-		else{
-			ret = new int[slotsInput];
-			for(int i = 0; i < slotsInput; i++){
-				ret[i] = i;
-			}
+		int[] ret = new int[slotsInput + slotsOutput];
+		for(int i = 0; i < (slotsInput + slotsOutput); i++){
+			ret[i] = i;
 		}
 		return ret;
 	}
@@ -274,7 +265,10 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
 
 	@Override
 	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
-		return true;
+		if(index > (slotsInput -1)){
+			return true;
+		}
+		return false;
 	}
 	
 }
