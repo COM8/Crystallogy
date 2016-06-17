@@ -24,7 +24,7 @@ group= "de.comeight.crystallogy" // http://maven.apache.org/guides/mini/guide-na
 archivesBaseName = "crystallogy"
 
 minecraft {
-    version = "1.9.4-12.17.0.1945"
+    version = "1.9.4-12.17.0.1965"
     runDir = "run"
 	mappings = "snapshot_20160518"
 }
