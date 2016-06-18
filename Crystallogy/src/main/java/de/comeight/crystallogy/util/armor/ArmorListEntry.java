@@ -12,12 +12,15 @@ import net.minecraftforge.common.util.Constants;
 public class ArmorListEntry {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	public UUID id;
+	public long lastTimeActive;
 	private LinkedList<ItemStack> list;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public ArmorListEntry(UUID id) {
 		this.id = id;
 		this.list = new LinkedList<ItemStack>();
+		
+		setActive();
 	}
 	
 	public ArmorListEntry(NBTTagCompound compound) {
@@ -42,6 +45,8 @@ public class ArmorListEntry {
 		}
 		
 		list.add(armor);
+		
+		setActive();
 	}
 	
 	public ItemStack getArmor(int index){
@@ -49,7 +54,24 @@ public class ArmorListEntry {
 	}
 	
 	public LinkedList<ItemStack> getList() {
+		setActive();
 		return list;
+	}
+	
+	private void setActive(){
+		lastTimeActive = System.currentTimeMillis();
+	}
+	
+	/**
+	 * Checks whether this objects last usage was bevor 1 min (60000 ms).
+	 * 
+	 *  @return true = last usage older than 1 min (60000 ms)
+	 */
+	public boolean isDead(){
+		if((System.currentTimeMillis() - lastTimeActive) > 60000){
+			return true;
+		}
+		return false;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
@@ -67,6 +89,8 @@ public class ArmorListEntry {
 		
 		compound.setTag("armorList", armorList);
 		compound.setUniqueId("id", id);
+		
+		setActive();
 	}
 	
 	public void readFromNBT(NBTTagCompound compound){
@@ -83,5 +107,8 @@ public class ArmorListEntry {
             	list.add(ItemStack.loadItemStackFromNBT(stackTag));
             }
         }
+        
+        setActive();
 	}
+	
 }

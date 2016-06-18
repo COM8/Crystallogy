@@ -3,12 +3,14 @@ package de.comeight.crystallogy.util.armor;
 import java.util.LinkedList;
 import java.util.UUID;
 
+import de.comeight.crystallogy.util.Log;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class CombinedArmorList {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private static LinkedList<ArmorListEntry> list = new LinkedList<ArmorListEntry>();
+	private static long lastCall = System.currentTimeMillis();
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public CombinedArmorList() {
@@ -117,6 +119,8 @@ public class CombinedArmorList {
 		if(entry != null){
 			entry.writeToNBT(compound);
 		}
+		
+		tryCleanup(false);
 	}
 	
 	public static void readFromNBT(NBTTagCompound compound){
@@ -129,5 +133,47 @@ public class CombinedArmorList {
 		else{
 			list.get(index).readFromNBT(compound);
 		}
+		
+		tryCleanup(false);
+	}
+	
+	/**
+	 * Trys to remove old entrys from the list.
+	 * 
+	 * @param force a cleanup run
+	 */
+	public static void tryCleanup(boolean force){
+		if(!force){
+			if((System.currentTimeMillis() - 10000) < lastCall){
+				return;
+			}
+		}
+		lastCall = System.currentTimeMillis();
+		
+		runCleanup();
+	}
+	/**
+	 * Removes entrys which are unused sice 1 min (60000 ms) from the list.
+	 * 
+	 */
+	private static void runCleanup(){
+		long startTime = System.currentTimeMillis();
+		Log.info("Combined Armor List Cleanup -- Started");
+		
+		int count = 0;
+		boolean foundOne;
+		
+		do {
+			foundOne = false;
+			for (int i = 0; i < list.size(); i++) {
+				if(list.get(i).isDead()){
+					list.remove(i);
+					foundOne = true;
+					count++;
+					break;
+				}
+			}
+		} while (foundOne);
+		Log.info("Combined Armor List Cleanup -- Finished in " + (System.currentTimeMillis() - startTime) + " ms. Removed " + count + " of " + list.size() + " entrys.");
 	}
 }

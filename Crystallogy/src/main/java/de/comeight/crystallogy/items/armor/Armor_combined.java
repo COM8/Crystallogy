@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import de.comeight.crystallogy.blocks.materials.CustomArmorMaterials;
 import de.comeight.crystallogy.util.ToolTipBuilder;
+import de.comeight.crystallogy.util.Utilities;
 import de.comeight.crystallogy.util.armor.ArmorListEntry;
 import de.comeight.crystallogy.util.armor.CombinedArmorList;
 import net.minecraft.client.gui.GuiScreen;
@@ -85,7 +86,7 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 	
 	@Override
 	public void onUpdate(ItemStack itemStack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-		if(System.currentTimeMillis() % 50 == 0){
+		if(Utilities.getRandInt(0, 10) == 0 || System.currentTimeMillis() % 50 == 0){
 			manageArmor(itemStack);
 		}
 	}
