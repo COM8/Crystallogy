@@ -9,6 +9,7 @@ import de.comeight.crystallogy.util.ToolTipBuilder;
 import de.comeight.crystallogy.util.armor.ArmorListEntry;
 import de.comeight.crystallogy.util.armor.CombinedArmorList;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -18,7 +19,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
@@ -83,6 +83,13 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 		}
 	}
 	
+	@Override
+	public void onUpdate(ItemStack itemStack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+		if(System.currentTimeMillis() % 50 == 0){
+			manageArmor(itemStack);
+		}
+	}
+	
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
@@ -93,15 +100,21 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 			if(list != null){
 				for (int i = 0; i < list.size(); i++) {
 					ItemArmor armor = (ItemArmor) list.get(i).getItem();
-					tooltip.add(TextFormatting.AQUA + String.valueOf(i + 1) + ": " + TextFormatting.RESET + armor.getItemStackDisplayName(new ItemStack(armor)));
+					tooltip.add(TextFormatting.DARK_AQUA + String.valueOf(i + 1) + ": " + TextFormatting.RESET + armor.getItemStackDisplayName(new ItemStack(armor)));
 					armor.addInformation(stack, playerIn, tooltip, advanced);
 					tooltip.add("");
 				}
 			}
+			else{
+				tooltip.add(TextFormatting.DARK_AQUA + "No armor added!");
+			}
 		}
 		else{
 			if(list != null){
-				tooltip.add(TextFormatting.AQUA + "Size: " + list.size());
+				tooltip.add(TextFormatting.DARK_AQUA + "Size: " + list.size());
+			}
+			else{
+				tooltip.add(TextFormatting.DARK_AQUA + "Size: 0");
 			}
 			ToolTipBuilder.addShiftForMoreDetails(tooltip);
 		}
@@ -115,14 +128,12 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 		return ap;
 	}
 	
-
 	@Override
 	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot) {
 		int iArmor = 0;
 		return iArmor;
 	}
 	
-
 	@Override
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
 		LinkedList<ItemStack> list = getArmorList(stack);
@@ -160,11 +171,21 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 		}
 	}
 	
+	private boolean hasArmorIdStored(ItemStack itemStackIn){
+		if(itemStackIn.hasTagCompound() && itemStackIn.getTagCompound().hasUniqueId("armorListEntryId")){
+			return true;
+		}
+		return false;
+	}
+	
+	private void manageArmor(ItemStack itemStackIn){
+		if(hasArmorIdStored(itemStackIn)){
+			read(itemStackIn);
+		}
+	}
+	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(worldIn.isRemote){
-			playerIn.addChatComponentMessage(new TextComponentString(String.valueOf(CombinedArmorList.hasEntry(getArmorListEntryId(itemStackIn)))));
-		}
 		return super.onItemRightClick(itemStackIn, worldIn, playerIn, hand);
 	}
 	
