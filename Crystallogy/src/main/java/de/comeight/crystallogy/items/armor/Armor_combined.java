@@ -1,17 +1,24 @@
 package de.comeight.crystallogy.items.armor;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 import de.comeight.crystallogy.blocks.materials.CustomArmorMaterials;
 import de.comeight.crystallogy.util.ToolTipBuilder;
+import de.comeight.crystallogy.util.armor.ArmorListEntry;
+import de.comeight.crystallogy.util.armor.CombinedArmorList;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
@@ -21,8 +28,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class Armor_combined extends BaseArmor implements ISpecialArmor{
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private static final String ID = "armor_combined_";
-	
-	private ArrayList<ItemArmor> armorList = new ArrayList<ItemArmor>();
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public Armor_combined(int renderIndexIn, EntityEquipmentSlot equipmentSlotIn) {
@@ -34,17 +39,46 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 		return ID + armorType.getName();
 	}
 	
+	public UUID getArmorListEntryId(ItemStack itemStackIn){
+		if(!itemStackIn.hasTagCompound()){
+			createNewTagCompound(itemStackIn);
+		}
+		if(!itemStackIn.getTagCompound().hasUniqueId("armorListEntryId")){
+			createNewIdTag(itemStackIn);
+		}
+		return itemStackIn.getTagCompound().getUniqueId("armorListEntryId");
+	}
+	
+	public LinkedList<ItemStack> getArmorList(ItemStack itemStackIn){
+		ArmorListEntry entry = CombinedArmorList.getEntry(getArmorListEntryId(itemStackIn));
+		if(entry != null){
+			return entry.getList();
+		}
+		else{
+			return null;
+		}
+	}
+	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
-	public static void addArmor(ItemStack itemStackIn, ItemArmor armor){
+	public static void addArmor(ItemStack itemStackIn, ItemStack armor){
 		if(itemStackIn.getItem() instanceof Armor_combined){
-			Armor_combined armor2 = (Armor_combined) itemStackIn.getItem();
-			armor2.armorList.add(armor);
+			Armor_combined armorCombined = (Armor_combined) itemStackIn.getItem();
+			UUID id = armorCombined.getArmorListEntryId(itemStackIn);
+			CombinedArmorList.addArmor(armor, id);
+			
+			armorCombined.save(itemStackIn);
 		}
 	}
 	
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-		for (ItemArmor armor : armorList) {
+		LinkedList<ItemStack> list = getArmorList(itemStack);
+		if(list == null){
+			return;
+		}
+		
+		for (ItemStack armorStack : list) {
+			ItemArmor armor = (ItemArmor) armorStack.getItem();
 			armor.onArmorTick(world, player, itemStack);
 		}
 	}
@@ -52,16 +86,23 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+		LinkedList<ItemStack> list = getArmorList(stack);
+		
 		if(GuiScreen.isShiftKeyDown()){
 			tooltip.add("");
-			for (ItemArmor armor : armorList) {
-				tooltip.add(TextFormatting.AQUA + armor.getItemStackDisplayName(new ItemStack(armor)));
-				armor.addInformation(stack, playerIn, tooltip, advanced);
-				tooltip.add("");
+			if(list != null){
+				for (int i = 0; i < list.size(); i++) {
+					ItemArmor armor = (ItemArmor) list.get(i).getItem();
+					tooltip.add(TextFormatting.AQUA + String.valueOf(i + 1) + ": " + TextFormatting.RESET + armor.getItemStackDisplayName(new ItemStack(armor)));
+					armor.addInformation(stack, playerIn, tooltip, advanced);
+					tooltip.add("");
+				}
 			}
 		}
 		else{
-			tooltip.add("Size: " + armorList.size());
+			if(list != null){
+				tooltip.add(TextFormatting.AQUA + "Size: " + list.size());
+			}
 			ToolTipBuilder.addShiftForMoreDetails(tooltip);
 		}
 		super.addInformation(stack, playerIn, tooltip, advanced);
@@ -70,25 +111,61 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 
 	@Override
 	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-		return null;
+		ArmorProperties ap = new ArmorProperties(1, 2.0, 1);
+		return ap;
 	}
 	
 
 	@Override
 	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot) {
-		int iArmor = 10;
+		int iArmor = 0;
 		return iArmor;
 	}
 	
 
 	@Override
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
-		for (ItemArmor armor : armorList) {
+		LinkedList<ItemStack> list = getArmorList(stack);
+		if(list == null){
+			return;
+		}
+		
+		for (ItemStack armorStack : list) {
+			ItemArmor armor = (ItemArmor) armorStack.getItem();
 			if(armor instanceof ISpecialArmor){
 				ISpecialArmor armor2 = (ISpecialArmor) armor;
 				armor2.damageArmor(entity, stack, source, damage, slot);
 			}
 		}
+	}
+	
+	private void createNewTagCompound(ItemStack itemStackIn){ 
+		itemStackIn.setTagCompound(new NBTTagCompound());
+	}
+	
+	private void createNewIdTag(ItemStack itemStackIn){
+		NBTTagCompound compound = itemStackIn.getTagCompound();
+		compound.setUniqueId("armorListEntryId", UUID.randomUUID());
+		itemStackIn.setTagCompound(compound);
+	}
+	
+	private void save(ItemStack itemStackIn){
+		UUID id = getArmorListEntryId(itemStackIn);
+		CombinedArmorList.writeToNBT(id, itemStackIn.getTagCompound());
+	}
+	
+	private void read(ItemStack itemStackIn){
+		if(itemStackIn.hasTagCompound()){
+			CombinedArmorList.readFromNBT(itemStackIn.getTagCompound());
+		}
+	}
+	
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
+		if(worldIn.isRemote){
+			playerIn.addChatComponentMessage(new TextComponentString(String.valueOf(CombinedArmorList.hasEntry(getArmorListEntryId(itemStackIn)))));
+		}
+		return super.onItemRightClick(itemStackIn, worldIn, playerIn, hand);
 	}
 	
 }

@@ -45,8 +45,8 @@ public class TileEntityArmorCombiner extends BaseTileEntityMachine {
         if (canCraft())
         {
             ItemStack[] res = recipeHandler.getResults(getInputSlots());
-            Armor_combined.addArmor(res[0], (ItemArmor) getInputSlots()[0].getItem());
-            inventory[2] = res[0];
+            Armor_combined.addArmor(res[0], getInputSlots()[0]);
+            inventory[2] = res[0].copy();
 
             int numCata = ((ArmorCombinerRecipeHandler) recipeHandler).getNumberOfCatalys(getInputSlots());
             inventory[1].stackSize -= numCata;
