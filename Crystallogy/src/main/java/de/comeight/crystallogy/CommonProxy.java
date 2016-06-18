@@ -172,16 +172,16 @@ public class CommonProxy {
 	}
 
 	private void registerTileEntitys() {
-		GameRegistry.registerTileEntity(TileEntityCrystallCrusher.class, BlockHandler.crystallCrusher.ID);
-		GameRegistry.registerTileEntity(TileEnityInfuserBlock.class, BlockHandler.infuserBlock.ID);
-		GameRegistry.registerTileEntity(TileEntityPlayerJar.class, BlockHandler.playerJar.ID);
-		GameRegistry.registerTileEntity(TileEntityEntityJar.class, BlockHandler.entityJar.ID);
-		GameRegistry.registerTileEntity(TileEntityCrystallLight.class, BlockHandler.crystalLight.ID);
-		GameRegistry.registerTileEntity(TileEntityCompressor.class, BlockHandler.compressor.ID);
-		GameRegistry.registerTileEntity(TileEntityCharger.class, BlockHandler.charger.ID);
-		GameRegistry.registerTileEntity(TileEntityFarmersGreen.class, BlockHandler.farmersGreen.ID);
-		GameRegistry.registerTileEntity(TileEntityCrystalOfHolding.class, BlockHandler.crystalOfHolding.ID);
-		GameRegistry.registerTileEntity(TileEntityArmorCombiner.class, BlockHandler.armorCombiner.ID);
+		GameRegistry.registerTileEntity(TileEntityCrystallCrusher.class, "Crystallogy:" + BlockHandler.crystallCrusher.ID);
+		GameRegistry.registerTileEntity(TileEnityInfuserBlock.class, "Crystallogy:" + BlockHandler.infuserBlock.ID);
+		GameRegistry.registerTileEntity(TileEntityPlayerJar.class, "Crystallogy:" + BlockHandler.playerJar.ID);
+		GameRegistry.registerTileEntity(TileEntityEntityJar.class, "Crystallogy:" + BlockHandler.entityJar.ID);
+		GameRegistry.registerTileEntity(TileEntityCrystallLight.class, "Crystallogy:" + BlockHandler.crystalLight.ID);
+		GameRegistry.registerTileEntity(TileEntityCompressor.class, "Crystallogy:" + BlockHandler.compressor.ID);
+		GameRegistry.registerTileEntity(TileEntityCharger.class, "Crystallogy:" + BlockHandler.charger.ID);
+		GameRegistry.registerTileEntity(TileEntityFarmersGreen.class, "Crystallogy:" + BlockHandler.farmersGreen.ID);
+		GameRegistry.registerTileEntity(TileEntityCrystalOfHolding.class, "Crystallogy:" + BlockHandler.crystalOfHolding.ID);
+		GameRegistry.registerTileEntity(TileEntityArmorCombiner.class, "Crystallogy:" + BlockHandler.armorCombiner.ID);
 		
 		Utilities.addConsoleText("All tileEntitys are registered.");
 		
