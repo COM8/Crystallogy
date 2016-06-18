@@ -19,6 +19,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -187,7 +188,26 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		return super.onItemRightClick(itemStackIn, worldIn, playerIn, hand);
+		if(playerIn.isSneaking()){
+			ArmorListEntry entry = CombinedArmorList.removeEntry(getArmorListEntryId(itemStackIn));
+			createNewTagCompound(itemStackIn);
+			createNewIdTag(itemStackIn);
+			if(entry == null){
+				return new ActionResult(EnumActionResult.FAIL, itemStackIn);
+			}
+			
+			for (ItemStack armorStack : entry.getList()) {
+				if (!playerIn.inventory.addItemStackToInventory(armorStack))
+		        {
+					playerIn.dropItem(armorStack, false);
+		        }
+			}
+			
+			return new ActionResult(EnumActionResult.SUCCESS, itemStackIn);
+		}
+		else{
+			return super.onItemRightClick(itemStackIn, worldIn, playerIn, hand);
+		}
 	}
 	
 }
