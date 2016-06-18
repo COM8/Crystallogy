@@ -8,5 +8,7 @@ You can also use your crystals to control / manipulate your friends / entities.
 
 * [Curse Forge](http://minecraft.curseforge.com/projects/crystallogy/files)
 
+* [Wiki](https://github.com/COM8/Crystallogy/wiki)
+
 ##Reporting Bugs:
 Please make sure you're using the latest version to avoid reporting already fixed bugs.
