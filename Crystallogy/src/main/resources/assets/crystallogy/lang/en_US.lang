@@ -112,10 +112,10 @@ item.crystalPickaxeHead_red.name=§4Red§r Crystal Pickaxe Head
 item.crystalPickaxeHead_blue.name=§9Blue§r Crystal Pickaxe Head
 item.crystalPickaxeHead_green.name=§2Green§r Crystal Pickaxe Head
 item.crystalPickaxeHead_yellow.name=§eYellow§r Crystal Pickaxe Head
-item.armor_combined_head.name=Combined Helmet
-item.armor_combined_chest.name=Combined Chestplate
-item.armor_combined_legs.name=Combined Leggins
-item.armor_combined_feet.name=Combined Boots
+item.armor_combined_head.name=Combined Helmet (WIP)
+item.armor_combined_chest.name=Combined Chestplate (WIP)
+item.armor_combined_legs.name=Combined Leggins (WIP)
+item.armor_combined_feet.name=Combined Boots (WIP)
 item.armorCatalyst.name=Armor Catalyst
 item.combinedArmorCompound.name=Combined Armor Compound
 
