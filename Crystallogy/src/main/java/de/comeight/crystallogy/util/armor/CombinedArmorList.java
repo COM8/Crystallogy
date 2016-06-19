@@ -157,8 +157,8 @@ public class CombinedArmorList {
 	 * 
 	 */
 	private static void runCleanup(){
-		long startTime = System.currentTimeMillis();
-		Log.info("Combined Armor List Cleanup -- Started");
+		//long startTime = System.currentTimeMillis();
+		//Log.info("Combined Armor List Cleanup -- Started");
 		
 		int count = 0;
 		boolean foundOne;
@@ -174,6 +174,6 @@ public class CombinedArmorList {
 				}
 			}
 		} while (foundOne);
-		Log.info("Combined Armor List Cleanup -- Finished in " + (System.currentTimeMillis() - startTime) + " ms. Removed " + count + " of " + list.size() + " entrys.");
+		//Log.info("Combined Armor List Cleanup -- Finished in " + (System.currentTimeMillis() - startTime) + " ms. Removed " + count + " of " + list.size() + " entrys.");
 	}
 }
