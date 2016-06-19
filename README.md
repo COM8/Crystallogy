@@ -17,6 +17,7 @@ You can also use your crystals to control / manipulate your friends / entities.
 * Clean up and comment out the code - 10%
 * Fix machine crafting - 100%
 * Redo the recipe for The Hunters Dream Armor - 0%
+* (Add custom sounds - 0%)
 
 ##Reporting Bugs:
 Please make sure you're using the latest version to avoid reporting already fixed bugs.
