@@ -408,7 +408,7 @@ public class CommonProxy {
 				"IMI",
 				'B', Blocks.BRICK_BLOCK,
 				'I', Items.IRON_INGOT,
-				'M', BlockHandler.machineBlock
+				'M', Blocks.IRON_BLOCK
 		});
 		
 		GameRegistry.addShapedRecipe(new ItemStack(BlockHandler.charger), new Object[] {
