@@ -17,7 +17,14 @@ You can also use your crystals to control / manipulate your friends / entities.
 * Clean up and comment out the code - 10%
 * Fix machine crafting - 100%
 * Redo the recipe for The Hunters Dream Armor - 0%
+* Redo the custom particle loader - 0%
 * (Add custom sounds - 0%)
+
+##ToDo for later releases:
+* Make a 3D model for every machine
+* Add Crystal Shields with custom behavior
+* Add a way to return expirience for every machine crafting cycle
+* Add a way to return items for Infusion Crafting (Water Bucket example)
 
 ##Reporting Bugs:
 Please make sure you're using the latest version to avoid reporting already fixed bugs.
