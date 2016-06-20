@@ -61,6 +61,54 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 		}
 	}
 	
+	@Override
+	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
+		LinkedList<ItemStack> list = getArmorList(armor);
+		int priority = 0;
+		double ratio = 0.0;
+		int max = 0;
+		
+		if(list != null){
+			for (ItemStack armorStack : list) {
+				ItemArmor itemArmor = (ItemArmor) armorStack.getItem();
+				if(itemArmor instanceof ISpecialArmor){
+					ISpecialArmor armor2 = (ISpecialArmor) itemArmor;
+					ArmorProperties temp = armor2.getProperties(player, armorStack, source, damage, slot);
+					priority += temp.Priority;
+					ratio += temp.AbsorbRatio;
+					if((max + temp.AbsorbMax) > Integer.MAX_VALUE){
+						max = Integer.MAX_VALUE;
+					}
+				}
+				else{
+					ratio += (double)itemArmor.damageReduceAmount * 0.1;
+					max += itemArmor.toughness * 10;
+				}
+			}
+		}
+		ArmorProperties ap = new ArmorProperties(priority, ratio, max);
+		return ap;
+	}
+	
+	@Override
+	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot) {
+		int iArmor = 0;
+		LinkedList<ItemStack> list = getArmorList(armor);
+		if(list != null){
+			for (ItemStack armorStack : list) {
+				ItemArmor itemArmor = (ItemArmor) armorStack.getItem();
+				if(itemArmor instanceof ISpecialArmor){
+					ISpecialArmor armor2 = (ISpecialArmor) itemArmor;
+					iArmor += armor2.getArmorDisplay(player, armorStack, slot);
+				}
+				else{
+					iArmor += itemArmor.getArmorMaterial().getDamageReductionAmount(CustomArmorMaterials.getSlotFromIndex(slot));
+				}
+			}
+		}
+		return iArmor;
+	}
+	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	public static void addArmor(ItemStack itemStackIn, ItemStack armor){
 		if(itemStackIn.getItem() instanceof Armor_combined){
@@ -78,6 +126,9 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 		if(list == null){
 			return;
 		}
+		
+		int dRA = 0;
+		float tN = 0.0F;
 		
 		for (ItemStack armorStack : list) {
 			ItemArmor armor = (ItemArmor) armorStack.getItem();
@@ -122,19 +173,7 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 		}
 		super.addInformation(stack, playerIn, tooltip, advanced);
 	}
-	
 
-	@Override
-	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-		ArmorProperties ap = new ArmorProperties(1, 2.0, 1);
-		return ap;
-	}
-	
-	@Override
-	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot) {
-		int iArmor = 0;
-		return iArmor;
-	}
 	
 	@Override
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
