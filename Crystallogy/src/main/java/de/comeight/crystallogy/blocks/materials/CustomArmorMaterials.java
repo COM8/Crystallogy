@@ -2,6 +2,7 @@ package de.comeight.crystallogy.blocks.materials;
 
 import de.comeight.crystallogy.CrystallogyBase;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
 
@@ -21,6 +22,14 @@ public class CustomArmorMaterials {
 
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
-
+	public static EntityEquipmentSlot getSlotFromIndex(int slot){
+		for (EntityEquipmentSlot entityEquipmentSlot : EntityEquipmentSlot.values()) {
+			if(entityEquipmentSlot.getSlotIndex() == slot){
+				return entityEquipmentSlot;
+			}
+		}
+		
+		return null;
+	}
 	
 }
