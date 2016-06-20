@@ -5,6 +5,7 @@ import de.comeight.crystallogy.gui.GuiCharger;
 import de.comeight.crystallogy.gui.GuiCompressor;
 import de.comeight.crystallogy.gui.GuiCrystallCrusher;
 import de.comeight.crystallogy.handler.BlockHandler;
+import de.comeight.crystallogy.handler.ConfigHandler;
 import de.comeight.crystallogy.handler.GuiHandler;
 import de.comeight.crystallogy.handler.GuiHandlerRegistry;
 import de.comeight.crystallogy.handler.ItemHandler;
@@ -59,6 +60,9 @@ public class CommonProxy {
 	
 	//Recipes:
 	private static RecipeHandler rH = new RecipeHandler();
+	
+	//Config:
+	private static ConfigHandler cH = new ConfigHandler();
 	
 	// -----------------------------------------------Constructor:-------------------------------------------
 	
@@ -119,6 +123,7 @@ public class CommonProxy {
 		bH.preInit();
 		iH.preInit();
 		rH.preInit();
+		cH.preInit(e);
 		
 		registerNetworkWrappers();
 		registerGuiHandlers();
@@ -129,6 +134,7 @@ public class CommonProxy {
     	bH.init();
 		iH.init();
 		rH.init();
+		cH.init(e);
 		
     	registerTileEntitys();
 		registerWorldGens();
@@ -140,7 +146,7 @@ public class CommonProxy {
     	bH.postInit();
 		iH.postInit();
 		rH.postInit();
+		cH.postInit(e);
     }
-    
     
 }

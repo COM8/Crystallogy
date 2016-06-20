@@ -12,6 +12,9 @@ public class CombinedArmorList {
 	private static LinkedList<ArmorListEntry> list = new LinkedList<ArmorListEntry>();
 	private static long lastCall = System.currentTimeMillis();
 	
+	public static boolean debug = false;
+	public static int minIntervall = 10000;
+	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public CombinedArmorList() {
 		
@@ -139,12 +142,14 @@ public class CombinedArmorList {
 	
 	/**
 	 * Trys to remove old entrys from the list.
+	 * The interval can be set in the config file.
+	 * Default: 10000 ms
 	 * 
 	 * @param force a cleanup run
 	 */
 	public static void tryCleanup(boolean force){
 		if(!force){
-			if((System.currentTimeMillis() - 10000) < lastCall){
+			if((System.currentTimeMillis() - minIntervall) < lastCall){
 				return;
 			}
 		}
@@ -154,12 +159,14 @@ public class CombinedArmorList {
 	}
 	/**
 	 * Removes entrys which are unused sice 1 min (60000 ms) from the list.
+	 * This time can be set in the config file.
 	 * 
 	 */
 	private static void runCleanup(){
-		//long startTime = System.currentTimeMillis();
-		//Log.info("Combined Armor List Cleanup -- Started");
-		
+		long startTime = System.currentTimeMillis();
+		if(debug){
+			Log.info("Combined Armor List Cleanup -- Started");
+		}
 		int count = 0;
 		boolean foundOne;
 		
@@ -174,6 +181,8 @@ public class CombinedArmorList {
 				}
 			}
 		} while (foundOne);
-		//Log.info("Combined Armor List Cleanup -- Finished in " + (System.currentTimeMillis() - startTime) + " ms. Removed " + count + " of " + list.size() + " entrys.");
+		if(debug){
+			Log.info("Combined Armor List Cleanup -- Finished in " + (System.currentTimeMillis() - startTime) + " ms. Removed " + count + " of " + list.size() + " entrys.");
+		}
 	}
 }

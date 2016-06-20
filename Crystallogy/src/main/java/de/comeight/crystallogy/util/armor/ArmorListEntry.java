@@ -15,6 +15,8 @@ public class ArmorListEntry {
 	public long lastTimeActive;
 	private LinkedList<ItemStack> list;
 	
+	public static int timeUnused = 60000;
+	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public ArmorListEntry(UUID id) {
 		this.id = id;
@@ -64,11 +66,12 @@ public class ArmorListEntry {
 	
 	/**
 	 * Checks whether this objects last usage was bevor 1 min (60000 ms).
+	 * This time can be set in the config file.
 	 * 
 	 *  @return true = last usage older than 1 min (60000 ms)
 	 */
 	public boolean isDead(){
-		if((System.currentTimeMillis() - lastTimeActive) > 60000){
+		if((System.currentTimeMillis() - lastTimeActive) > timeUnused){
 			return true;
 		}
 		return false;
