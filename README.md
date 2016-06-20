@@ -12,8 +12,8 @@ You can also use your crystals to control / manipulate your friends / entities.
 
 ##ToDo list for the next big release (0.9 Alpha):
 * Add a new Combined Armor System - 99% - Needs more testing
-* Add a config file - 0%
-* Make EVERYTHING configurable - 0%
+* Add a config file - 100%
+* Make EVERYTHING configurable - 10%
 * Clean up and comment out the code - 10%
 * Fix machine crafting - 100%
 * Redo the recipe for The Hunters Dream Armor - 0%
