@@ -3,6 +3,7 @@ package de.comeight.crystallogy.util.armor;
 import java.util.LinkedList;
 import java.util.UUID;
 
+import de.comeight.crystallogy.handler.ConfigHandler;
 import de.comeight.crystallogy.util.Log;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,9 +12,6 @@ public class CombinedArmorList {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private static LinkedList<ArmorListEntry> list = new LinkedList<ArmorListEntry>();
 	private static long lastCall = System.currentTimeMillis();
-	
-	public static boolean debug = false;
-	public static int minIntervall = 10000;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public CombinedArmorList() {
@@ -149,7 +147,7 @@ public class CombinedArmorList {
 	 */
 	public static void tryCleanup(boolean force){
 		if(!force){
-			if((System.currentTimeMillis() - minIntervall) < lastCall){
+			if((System.currentTimeMillis() - ConfigHandler.minIntervalCombinedArmorList) < lastCall){
 				return;
 			}
 		}
@@ -164,7 +162,7 @@ public class CombinedArmorList {
 	 */
 	private static void runCleanup(){
 		long startTime = System.currentTimeMillis();
-		if(debug){
+		if(ConfigHandler.debugCombinedArmorList){
 			Log.info("Combined Armor List Cleanup -- Started");
 		}
 		int count = 0;
@@ -181,7 +179,7 @@ public class CombinedArmorList {
 				}
 			}
 		} while (foundOne);
-		if(debug){
+		if(ConfigHandler.debugCombinedArmorList){
 			Log.info("Combined Armor List Cleanup -- Finished in " + (System.currentTimeMillis() - startTime) + " ms. Removed " + count + " of " + list.size() + " entrys.");
 		}
 	}

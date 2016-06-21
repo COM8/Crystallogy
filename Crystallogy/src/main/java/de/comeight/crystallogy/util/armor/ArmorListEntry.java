@@ -3,6 +3,7 @@ package de.comeight.crystallogy.util.armor;
 import java.util.LinkedList;
 import java.util.UUID;
 
+import de.comeight.crystallogy.handler.ConfigHandler;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -14,8 +15,6 @@ public class ArmorListEntry {
 	public UUID id;
 	public long lastTimeActive;
 	private LinkedList<ItemStack> list;
-	
-	public static int timeUnused = 60000;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public ArmorListEntry(UUID id) {
@@ -71,7 +70,7 @@ public class ArmorListEntry {
 	 *  @return true = last usage older than 1 min (60000 ms)
 	 */
 	public boolean isDead(){
-		if((System.currentTimeMillis() - lastTimeActive) > timeUnused){
+		if((System.currentTimeMillis() - lastTimeActive) > ConfigHandler.timeUnusedArmorListEntry){
 			return true;
 		}
 		return false;
