@@ -120,5 +120,7 @@ item.armor_combined_feet.name=Kombinierte Kristallstiefel (WIP)
 item.armorCatalyst.name=Rüstungs Katalysator
 item.combinedArmorCompound.name=Kombinierte Rüstungsverbindung
 item.combinedArmorCompound.name=Jäger Rüstungsverbindung
+item.combinedArmorMesh.name=Kombiniertes Rüstungsgitter
+item.hunterArmorMesh.name=Jäger Rüstungsgitter
 
 itemGroup.crystallogyMainTab=Crystallogy Hauptfenster

@@ -2,10 +2,6 @@ package de.comeight.crystallogy.handler;
 
 import de.comeight.crystallogy.blocks.EnumCrystalColor;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorCatalyst;
-import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorCombinedBoots;
-import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorCombinedChestplate;
-import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorCombinedHelmet;
-import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorCombinedLeggins;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorPlate;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeBadLuckDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeBlindDust;
@@ -69,10 +65,6 @@ public class RecipeHandler {
 		private static InfusionRecipePlayerJar infusionRecipePlayerJar;
 		private static InfusionRecipeEntityJar infusionRecipeEntityJar;
 		private static InfusionRecipeArmorPlate infusionRecipeArmorPlate;
-		private static InfusionRecipeArmorCombinedHelmet infusionRecipeArmorCombinedHelmet;
-		private static InfusionRecipeArmorCombinedChestplate infusionRecipeArmorCombinedChestplate;
-		private static InfusionRecipeArmorCombinedLeggins infusionRecipeArmorCombinedLeggins;
-		private static InfusionRecipeArmorCombinedBoots infusionRecipeArmorCombinedBoots;
 		private static InfusionRecipeCrystalOfHolding infusionRecipeCrystalOfHolding;
 		private static InfusionRecipeMachineBlock infusionRecipeMachineBlock;
 		private static InfusionRecipeArmorCatalyst infusionRecipeArmorCatalyst;
@@ -109,10 +101,6 @@ public class RecipeHandler {
 		infusionRecipeCrystalKnifeBlade = new InfusionRecipeCrystalKnifeBlade();
 		infusionRecipePlayerJar = new InfusionRecipePlayerJar();
 		infusionRecipeArmorPlate = new InfusionRecipeArmorPlate();
-		infusionRecipeArmorCombinedHelmet = new InfusionRecipeArmorCombinedHelmet();
-		infusionRecipeArmorCombinedChestplate = new InfusionRecipeArmorCombinedChestplate();
-		infusionRecipeArmorCombinedLeggins = new InfusionRecipeArmorCombinedLeggins();
-		infusionRecipeArmorCombinedBoots = new InfusionRecipeArmorCombinedBoots();
 		infusionRecipeEntityJar = new InfusionRecipeEntityJar();
 		infusionRecipePickaxe = new InfusionRecipePickaxe();
 		infusionRecipeCrystalOfHolding = new InfusionRecipeCrystalOfHolding();
@@ -148,10 +136,6 @@ public class RecipeHandler {
 		InfusionRecipeHandler.addRecipe(infusionRecipePlayerJar);
 		InfusionRecipeHandler.addRecipe(infusionRecipeEntityJar);
 		InfusionRecipeHandler.addRecipe(infusionRecipeArmorPlate);
-		InfusionRecipeHandler.addRecipe(infusionRecipeArmorCombinedHelmet);
-		InfusionRecipeHandler.addRecipe(infusionRecipeArmorCombinedChestplate);
-		InfusionRecipeHandler.addRecipe(infusionRecipeArmorCombinedLeggins);
-		InfusionRecipeHandler.addRecipe(infusionRecipeArmorCombinedBoots);
 		InfusionRecipeHandler.addRecipe(infusionRecipePickaxe);
 	}
 
@@ -225,6 +209,12 @@ public class RecipeHandler {
 				new ItemStack(ItemHandler.armorChestplate_combined),
 				new ItemStack(ItemHandler.armorLeggins_combined),
 				new ItemStack(ItemHandler.armorBoots_combined));
+		
+		//Armor Hunter:
+		addArmorRecipe(new ItemStack(ItemHandler.hunterArmorCompound), new ItemStack(ItemHandler.armorHelmet_hunter),
+				new ItemStack(ItemHandler.armorChestplate_hunter),
+				new ItemStack(ItemHandler.armorLeggins_hunter),
+				new ItemStack(ItemHandler.armorBoots_hunter));
 		
 		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.energyDust), new Object[] {
 				"RRR",
@@ -315,6 +305,16 @@ public class RecipeHandler {
 				'B', new ItemStack(BlockHandler.crystalGlas, 1, 1),
 				'Y', new ItemStack(ItemHandler.armorPlate, 1, 3)
 		});
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(ItemHandler.hunterArmorMesh, new Object[]{
+				"GPG",
+				"PDP",
+				"GPG",
+				
+				'G', "nuggetGold",
+				'P', new ItemStack(ItemHandler.armorPlate, 4, 4),
+				'D', "gemDiamond",
+		}));
 	}
 	
 	private void addCrystalHammerHeadRecipe(ItemStack crystal, ItemStack out){

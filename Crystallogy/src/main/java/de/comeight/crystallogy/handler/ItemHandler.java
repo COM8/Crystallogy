@@ -3,6 +3,7 @@ package de.comeight.crystallogy.handler;
 import de.comeight.crystallogy.items.ArmorCatalys;
 import de.comeight.crystallogy.items.ArmorPlate;
 import de.comeight.crystallogy.items.CombinedArmorCompound;
+import de.comeight.crystallogy.items.CombinedArmorMesh;
 import de.comeight.crystallogy.items.CrystalKnifeBlade;
 import de.comeight.crystallogy.items.CrystalPickaxeHead;
 import de.comeight.crystallogy.items.CrystallDust_blue;
@@ -15,6 +16,7 @@ import de.comeight.crystallogy.items.EnergyCrystal;
 import de.comeight.crystallogy.items.EnergyDust;
 import de.comeight.crystallogy.items.FertilizerPotato;
 import de.comeight.crystallogy.items.HunterArmorCompound;
+import de.comeight.crystallogy.items.HunterArmorMesh;
 import de.comeight.crystallogy.items.PureCrystallDust;
 import de.comeight.crystallogy.items.ToolRod;
 import de.comeight.crystallogy.items.armor.Armor_blue;
@@ -101,6 +103,8 @@ public class ItemHandler {
 	public static ArmorCatalys armorCatalys;
 	public static CombinedArmorCompound combinedArmorCompound;
 	public static HunterArmorCompound hunterArmorCompound;
+	public static CombinedArmorMesh combinedArmorMesh;
+	public static HunterArmorMesh hunterArmorMesh;
 	
 	//Armor:
 	public static Armor_red armorHelmet_red;
@@ -205,7 +209,11 @@ public class ItemHandler {
 		armorCatalys = new ArmorCatalys();
 		combinedArmorCompound = new CombinedArmorCompound();
 		hunterArmorCompound = new HunterArmorCompound();
+		combinedArmorMesh = new CombinedArmorMesh();
+		hunterArmorMesh = new HunterArmorMesh();
 		
+		GameRegistry.register(combinedArmorMesh);
+		GameRegistry.register(hunterArmorMesh);
 		GameRegistry.register(hunterArmorCompound);
 		GameRegistry.register(combinedArmorCompound);
 		GameRegistry.register(armorCatalys);

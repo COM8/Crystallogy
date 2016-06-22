@@ -10,6 +10,8 @@ public class CompressorRecipeHandler extends BaseRecipeHandler{
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public CompressorRecipeHandler() {
 		addRecipe(new RecipeCompressor(new ItemStack[]{new ItemStack(ItemHandler.energyDust, 8)}, new ItemStack[]{new ItemStack(ItemHandler.energyCrystal, 1, ItemHandler.energyCrystal.getMaxDamage())}, 1.0F, 200));
+		
+		addRecipe(new RecipeCompressor(new ItemStack[]{new ItemStack(ItemHandler.hunterArmorMesh, 4)}, new ItemStack[]{new ItemStack(ItemHandler.hunterArmorCompound, 2)}, 1.0F, 1200));
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
