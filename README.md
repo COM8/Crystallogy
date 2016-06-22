@@ -16,7 +16,7 @@ You can also use your crystals to control / manipulate your friends / entities.
 * Make EVERYTHING configurable - 10%
 * Clean up and comment out the code - 10%
 * Fix machine crafting - 100%
-* Redo the recipe for The Hunters Dream Armor - 0%
+* Redo the recipe for The Hunters Dream Armor - 100%
 * Redo the custom particle loader - 0%
 * Make a 3D model for every machine - 100%
 
