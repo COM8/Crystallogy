@@ -2,6 +2,7 @@ package de.comeight.crystallogy.handler;
 
 import de.comeight.crystallogy.items.ArmorCatalys;
 import de.comeight.crystallogy.items.ArmorPlate;
+import de.comeight.crystallogy.items.ChargedCombinedArmorMesh;
 import de.comeight.crystallogy.items.CombinedArmorCompound;
 import de.comeight.crystallogy.items.CombinedArmorMesh;
 import de.comeight.crystallogy.items.CrystalKnifeBlade;
@@ -105,6 +106,7 @@ public class ItemHandler {
 	public static HunterArmorCompound hunterArmorCompound;
 	public static CombinedArmorMesh combinedArmorMesh;
 	public static HunterArmorMesh hunterArmorMesh;
+	public static ChargedCombinedArmorMesh chargedCombinedArmorMesh;
 	
 	//Armor:
 	public static Armor_red armorHelmet_red;
@@ -211,7 +213,9 @@ public class ItemHandler {
 		hunterArmorCompound = new HunterArmorCompound();
 		combinedArmorMesh = new CombinedArmorMesh();
 		hunterArmorMesh = new HunterArmorMesh();
+		chargedCombinedArmorMesh = new ChargedCombinedArmorMesh();
 		
+		GameRegistry.register(chargedCombinedArmorMesh);
 		GameRegistry.register(combinedArmorMesh);
 		GameRegistry.register(hunterArmorMesh);
 		GameRegistry.register(hunterArmorCompound);

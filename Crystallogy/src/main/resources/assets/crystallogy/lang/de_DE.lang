@@ -121,6 +121,7 @@ item.armorCatalyst.name=Rüstungs Katalysator
 item.combinedArmorCompound.name=Kombinierte Rüstungsverbindung
 item.combinedArmorCompound.name=Jäger Rüstungsverbindung
 item.combinedArmorMesh.name=Kombiniertes Rüstungsgitter
+item.chargedCombinedArmorMesh.name=Geladenes Kombiniertes Rüstungsgitter
 item.hunterArmorMesh.name=Jäger Rüstungsgitter
 
 itemGroup.crystallogyMainTab=Crystallogy Hauptfenster
