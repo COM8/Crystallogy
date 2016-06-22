@@ -5,7 +5,7 @@ import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorCataly
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorPlate;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeBadLuckDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeBlindDust;
-import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeCombinedArmorCompound;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeChargedCombinedArmorCompound;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeCrystalKnifeBlade;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeCrystalOfHolding;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeCrystallLight;
@@ -68,7 +68,7 @@ public class RecipeHandler {
 		private static InfusionRecipeCrystalOfHolding infusionRecipeCrystalOfHolding;
 		private static InfusionRecipeMachineBlock infusionRecipeMachineBlock;
 		private static InfusionRecipeArmorCatalyst infusionRecipeArmorCatalyst;
-		private static InfusionRecipeCombinedArmorCompound infusionRecipeCombinedArmorCompound;
+		private static InfusionRecipeChargedCombinedArmorCompound infusionRecipeChargedCombinedArmorCompound;
 
 	//-----------------------------------------------Constructor:-------------------------------------------
 
@@ -106,9 +106,9 @@ public class RecipeHandler {
 		infusionRecipeCrystalOfHolding = new InfusionRecipeCrystalOfHolding();
 		infusionRecipeMachineBlock = new InfusionRecipeMachineBlock();
 		infusionRecipeArmorCatalyst = new InfusionRecipeArmorCatalyst();
-		infusionRecipeCombinedArmorCompound = new InfusionRecipeCombinedArmorCompound();
+		infusionRecipeChargedCombinedArmorCompound = new InfusionRecipeChargedCombinedArmorCompound();
 		
-		InfusionRecipeHandler.addRecipe(infusionRecipeCombinedArmorCompound);
+		InfusionRecipeHandler.addRecipe(infusionRecipeChargedCombinedArmorCompound);
 		InfusionRecipeHandler.addRecipe(infusionRecipeArmorCatalyst);
 		InfusionRecipeHandler.addRecipe(infusionRecipeMachineBlock);
 		InfusionRecipeHandler.addRecipe(infusionRecipeCrystalOfHolding);
@@ -316,16 +316,17 @@ public class RecipeHandler {
 				'D', "gemDiamond"
 		}));
 		
-		GameRegistry.addRecipe(new ShapedOreRecipe(ItemHandler.combinedArmorMesh, new Object[]{
+		
+		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.combinedArmorMesh), new Object[] {
 				"CPG",
 				"PMP",
 				"GPC",
 				
-				'G', "nuggetGold",
+				'G', new ItemStack(BlockHandler.crystalGlas, 1, 1),
 				'P', new ItemStack(ItemHandler.armorPlate, 4, 4),
 				'M', ItemHandler.hunterArmorMesh,
 				'C', ItemHandler.armorCatalys
-		}));
+		});
 	}
 	
 	private void addCrystalHammerHeadRecipe(ItemStack crystal, ItemStack out){
