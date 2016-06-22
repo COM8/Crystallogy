@@ -1,7 +1,8 @@
 {
 	"__comment": "Designed by Com8",
-	"parent": "block/orientable",
+	#"parent": "block/orientable",
 	"textures": {
+		"particle": "crystallogy:blocks/machineBlock_front",
         "texture_top": "crystallogy:blocks/machine_top",
         "machineBlock_front": "crystallogy:blocks/machineBlock_front",
         "machine_side": "crystallogy:blocks/machine_side"
