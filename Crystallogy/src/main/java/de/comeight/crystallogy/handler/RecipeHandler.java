@@ -313,7 +313,18 @@ public class RecipeHandler {
 				
 				'G', "nuggetGold",
 				'P', new ItemStack(ItemHandler.armorPlate, 4, 4),
-				'D', "gemDiamond",
+				'D', "gemDiamond"
+		}));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(ItemHandler.combinedArmorMesh, new Object[]{
+				"CPG",
+				"PMP",
+				"GPC",
+				
+				'G', "nuggetGold",
+				'P', new ItemStack(ItemHandler.armorPlate, 4, 4),
+				'M', ItemHandler.hunterArmorMesh,
+				'C', ItemHandler.armorCatalys
 		}));
 	}
 	
