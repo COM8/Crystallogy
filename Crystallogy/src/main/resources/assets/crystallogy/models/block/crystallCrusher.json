@@ -1,4 +1,6 @@
 {
+	"__comment": "Designed by Com8",
+	"parent": "block/orientable",
 	"textures": {
 		"particle": "blocks/cauldron_inner",
 		"texture": "blocks/cauldron_inner",
