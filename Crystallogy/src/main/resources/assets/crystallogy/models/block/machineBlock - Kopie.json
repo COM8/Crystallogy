@@ -1,8 +1,0 @@
-{
-    "parent": "block/orientable",
-    "textures": {
-        "top": "crystallogy:blocks/machine_top",
-        "front": "crystallogy:blocks/machineBlock_front",
-        "side": "crystallogy:blocks/machine_side"
-    }
-}
