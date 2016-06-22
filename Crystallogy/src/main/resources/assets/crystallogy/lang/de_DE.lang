@@ -119,5 +119,6 @@ item.armor_combined_legs.name=Kombinierter Kristallbeinschutz (WIP)
 item.armor_combined_feet.name=Kombinierte Kristallstiefel (WIP)
 item.armorCatalyst.name=Rüstungs Katalysator
 item.combinedArmorCompound.name=Kombinierte Rüstungsverbindung
+item.combinedArmorCompound.name=Jäger Rüstungsverbindung
 
 itemGroup.crystallogyMainTab=Crystallogy Hauptfenster

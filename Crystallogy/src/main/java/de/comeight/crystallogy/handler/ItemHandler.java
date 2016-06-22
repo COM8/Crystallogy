@@ -14,6 +14,7 @@ import de.comeight.crystallogy.items.CrystallSwordBlade;
 import de.comeight.crystallogy.items.EnergyCrystal;
 import de.comeight.crystallogy.items.EnergyDust;
 import de.comeight.crystallogy.items.FertilizerPotato;
+import de.comeight.crystallogy.items.HunterArmorCompound;
 import de.comeight.crystallogy.items.PureCrystallDust;
 import de.comeight.crystallogy.items.ToolRod;
 import de.comeight.crystallogy.items.armor.Armor_blue;
@@ -99,6 +100,7 @@ public class ItemHandler {
 	public static EntityGrabber entityGrabber;
 	public static ArmorCatalys armorCatalys;
 	public static CombinedArmorCompound combinedArmorCompound;
+	public static HunterArmorCompound hunterArmorCompound;
 	
 	//Armor:
 	public static Armor_red armorHelmet_red;
@@ -202,7 +204,9 @@ public class ItemHandler {
 		entityGrabber = new EntityGrabber();
 		armorCatalys = new ArmorCatalys();
 		combinedArmorCompound = new CombinedArmorCompound();
+		hunterArmorCompound = new HunterArmorCompound();
 		
+		GameRegistry.register(hunterArmorCompound);
 		GameRegistry.register(combinedArmorCompound);
 		GameRegistry.register(armorCatalys);
 		GameRegistry.register(armorHelmet_combined);

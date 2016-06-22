@@ -118,5 +118,6 @@ item.armor_combined_legs.name=Combined Leggins (WIP)
 item.armor_combined_feet.name=Combined Boots (WIP)
 item.armorCatalyst.name=Armor Catalyst
 item.combinedArmorCompound.name=Combined Armor Compound
+item.hunterArmorCompound.name=Hunter Armor Compound
 
 itemGroup.crystallogyMainTab=Crystallogy Maintab
