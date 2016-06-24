@@ -12,15 +12,17 @@ import de.comeight.crystallogy.structures.StructureInfuser;
 import de.comeight.crystallogy.util.StructureAreaDescription;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;
+import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 
-public class TileEnityInfuserBlock extends TileEntityInventory implements ITickable{
+public class TileEnityInfuserBlock extends TileEntityInventory implements ITickable, ISidedInventory{
 
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	public static final int invSize = 1;
@@ -77,6 +79,14 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 		return stacks;
 	}
 	
+	@Override
+	public int[] getSlotsForFace(EnumFacing side) {
+		int[] ret = new int[1];
+		ret[0] = 0;
+		
+		return ret;
+	}
+	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	public void tryInfuse() {
 		if(!active){
@@ -122,9 +132,12 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
     }
     
     @Override
-    public boolean isItemValidForSlot(int slot, ItemStack itemstack)
+    public boolean isItemValidForSlot(int index, ItemStack stack)
     {
-        return slot == 0;
+		if(inventory[index] != null){
+			return false;
+		}
+		return true;
     }
     
     public void updateParticle() {
@@ -197,6 +210,16 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 				infuserBlockActiveParticle = null;
 			}
 		}
+	}
+
+	@Override
+	public boolean canInsertItem(int index, ItemStack itemStackIn, EnumFacing direction) {
+		return isItemValidForSlot(index, itemStackIn);
+	}
+
+	@Override
+	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
+		return true;
 	}
 	
 }
