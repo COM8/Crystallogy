@@ -39,6 +39,10 @@ public abstract class BaseMachine extends BaseBlockContainer {
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	public static void setBlockState(boolean enabled, World worldIn, BlockPos pos){
+		if(worldIn.getBlockState(pos).getValue(ENABLED) == enabled){
+			return;
+		}
+		
 		TileEntity tE = worldIn.getTileEntity(pos);
 		
 		worldIn.setBlockState(pos, worldIn.getBlockState(pos).withProperty(ENABLED, enabled), 3);

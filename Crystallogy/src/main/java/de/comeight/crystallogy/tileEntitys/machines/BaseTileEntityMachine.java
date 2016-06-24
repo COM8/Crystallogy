@@ -1,5 +1,6 @@
 package de.comeight.crystallogy.tileEntitys.machines;
 
+import de.comeight.crystallogy.blocks.machines.BaseMachine;
 import de.comeight.crystallogy.handler.BaseRecipeHandler;
 import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
 import de.comeight.crystallogy.tileEntitys.TileEntityInventory;
@@ -204,6 +205,9 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
 		if (worldObj.isRemote)
         {
         	if(crafting){
+        		if(!worldObj.getBlockState(pos).getValue(BaseMachine.ENABLED)){
+        			setBlockState();
+        		}
         		cookTime++;
         		if (cookTime >= totalCookTime) {
     				cookTime = 1;
