@@ -6,6 +6,8 @@ import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.block.Block;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome.TempCategory;
+import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkGenerator;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.fml.common.IWorldGenerator;
@@ -31,11 +33,16 @@ public class WorldGeneratorFoilage implements IWorldGenerator{
 		chunkX *= 16;
 		chunkZ *= 16;
 		WorldGenCrystorya wgC = new WorldGenCrystorya();
-		
+		Chunk chunk = world.getChunkFromChunkCoords(chunkX, chunkZ);
 	    for (int i = 0; i < chancesToSpawn; i ++) {
 	        int x = chunkX + random.nextInt(16);
 	        int z = chunkZ + random.nextInt(16);
-	        wgC.generate(world, random, world.getHeight(new BlockPos(x, 0, z)));
+	        BlockPos pos = world.getHeight(new BlockPos(x, 0, z));
+	        
+	        TempCategory temp = chunk.getBiome(pos, world.getBiomeProvider()).getTempCategory();
+	        if(temp != TempCategory.COLD && temp != TempCategory.WARM){
+	        	wgC.generate(world, random, pos);
+	        }
 	    }
 	}
 
