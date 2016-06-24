@@ -53,6 +53,9 @@ public abstract class TileEntityInventory extends BaseTileEntity implements IInv
 			stack.stackSize = getInventoryStackLimit();
 		}
 		markDirty();
+		if(!worldObj.isRemote){
+			sync();
+		}
 	}
 	
 	@Override
