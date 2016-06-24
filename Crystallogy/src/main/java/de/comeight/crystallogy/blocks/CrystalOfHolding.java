@@ -173,14 +173,6 @@ public class CrystalOfHolding extends BaseBlockCutout implements IPlantable {
 		}
 	}
 	
-	@Override
-	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
-		if(worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos) && canSustainCrystal(worldIn.getBlockState(pos.down()))){
-			return true;
-		}
-		return false;
-	}
-	
 	private void findAndTryPlant(World worldIn, BlockPos pos, Random rand){
 		Entity ent = getEntity(worldIn, pos);
 		int side = rand.nextInt(4);
@@ -245,7 +237,7 @@ public class CrystalOfHolding extends BaseBlockCutout implements IPlantable {
 		}
 	}
 	
-	protected boolean canSustainCrystal(IBlockState state)
+	public boolean canSustainCrystal(IBlockState state)
     {
         return state.getBlock() == Blocks.SANDSTONE;
     }

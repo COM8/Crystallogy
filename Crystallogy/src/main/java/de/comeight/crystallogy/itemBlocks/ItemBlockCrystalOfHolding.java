@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import de.comeight.crystallogy.blocks.CrystalOfHolding;
+import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.util.EntityUtils;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -99,7 +100,12 @@ public class ItemBlockCrystalOfHolding extends BaseItemBlock {
 			releaseEntity(stack, worldIn, new Vec3d(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5), playerIn);
 			return EnumActionResult.SUCCESS;
 		}
-		return super.onItemUse(stack, playerIn, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+		else if(worldIn.getBlockState(pos.up()).getBlock().isReplaceable(worldIn, pos.up()) && BlockHandler.crystalOfHolding.canSustainCrystal(worldIn.getBlockState(pos))){
+			return super.onItemUse(stack, playerIn, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+		}
+		else{
+			return EnumActionResult.FAIL;
+		}
 	}
 	
 	public void releaseEntity(ItemStack stack, World worldIn, Vec3d pos, EntityPlayer playerIn){
