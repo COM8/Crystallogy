@@ -13,11 +13,9 @@ You can also use your crystals to control / manipulate your friends / entities.
 ##ToDo list for the next big release (0.9 Alpha):
 * Add a new Combined Armor System - 99% - Needs more testing
 * Add a config file - 100%
-* Make EVERYTHING configurable - 10%
 * Clean up and comment out the code - 10%
 * Fix machine crafting - 100%
 * Redo the recipe for The Hunters Dream Armor - 100%
-* Redo the custom particle loader - 0%
 * Make a 3D model for every machine - 100%
 
 ##ToDo for later releases:
@@ -25,6 +23,7 @@ You can also use your crystals to control / manipulate your friends / entities.
 * Add Crystal Shields with custom behavior
 * Add a way to return expirience for every machine crafting cycle
 * Add a way to return items for Infusion Crafting (Water Bucket example)
+* Redo the custom particle loader
 
 ##Reporting Bugs:
 Please make sure you're using the latest version to avoid reporting already fixed bugs.
