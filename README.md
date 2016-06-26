@@ -11,9 +11,9 @@ You can also use your crystals to control / manipulate your friends / entities.
 * [Wiki](https://github.com/COM8/Crystallogy/wiki)
 
 ##ToDo list for the next big release (0.9 Alpha):
-* Add a new Combined Armor System - 99% - Needs more testing
+* Add a new Combined Armor System - 100%
 * Add a config file - 100%
-* Clean up and comment out the code - 10%
+* Clean up and comment out the code - 100%
 * Fix machine crafting - 100%
 * Redo the recipe for The Hunters Dream Armor - 100%
 * Make a 3D model for every machine - 100%
