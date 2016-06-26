@@ -93,10 +93,10 @@ public class CommonProxy {
 	}
 	
 	private void registerWorldGens() {
-		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_green, 8, 5, 64, 128), 0);
-		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_blue, 7, 5, 48, 64), 0);
-		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_yellow, 5, 4, 16, 48), 0);
-		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_red, 5, 3, 0, 16), 0);
+		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_green, ConfigHandler.greenChancesToSpawn, ConfigHandler.greenMaxSize, ConfigHandler.greenCrystalSpawnMin, ConfigHandler.greenCrystalSpawnMax), 0);
+		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_blue, ConfigHandler.blueChancesToSpawn, ConfigHandler.blueMaxSize, ConfigHandler.blueCrystalSpawnMin, ConfigHandler.blueCrystalSpawnMax), 0);
+		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_yellow, ConfigHandler.yellowChancesToSpawn, ConfigHandler.yellowMaxSize, ConfigHandler.yellowCrystalSpawnMin, ConfigHandler.yellowCrystalSpawnMax), 0);
+		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_red, ConfigHandler.redChancesToSpawn, ConfigHandler.redMaxSize, ConfigHandler.redCrystalSpawnMin, ConfigHandler.redCrystalSpawnMax), 0);
 		GameRegistry.registerWorldGenerator(new WorldGeneratorFoilage(3), 20);
 		
 		Utilities.addConsoleText("All worldgens are registered.");

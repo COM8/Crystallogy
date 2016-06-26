@@ -3,6 +3,7 @@ package de.comeight.crystallogy.items.crafting.infusion;
 import java.util.ArrayList;
 
 import de.comeight.crystallogy.CommonProxy;
+import de.comeight.crystallogy.handler.ConfigHandler;
 import de.comeight.crystallogy.handler.InfusionRecipeHandler;
 import de.comeight.crystallogy.network.NetworkPacketInfusionRecipeStatus;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
@@ -46,7 +47,7 @@ public abstract class InfusionRecipe {
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	public int getTotalCookTime(){
-		return totalCookTime;
+		return (int)( (double) totalCookTime * ConfigHandler.infusionTimeMultiplier);
 	}
 	
 	public boolean isActive() {
@@ -117,9 +118,6 @@ public abstract class InfusionRecipe {
 	public void tick(){
 		if(!active){
 			return;
-		}
-		if(worldIn != null){
-			//worldIn.spawnParticle(EnumParticleTypes.LAVA, centerInput.getPos().getX() + 0.5, centerInput.getPos().getY() + 0.8, centerInput.getPos().getZ() + 0.5, 0.0, 0.0, 0.0, new int[0]);
 		}
 		if(!stillActive()){
 			done(false);
