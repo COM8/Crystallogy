@@ -30,6 +30,11 @@ public class CrusherRecipeHandlerJEI implements IRecipeHandler<CrusherRecipeJEI>
 	public boolean isRecipeValid(CrusherRecipeJEI recipe) {
 		return recipe.getInputs().size() > 0 && recipe.getOutputs().size() > 0;
 	}
+
+	@Override
+	public String getRecipeCategoryUid(CrusherRecipeJEI recipe) {
+		return CrusherCraftingCategory.ID;
+	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 

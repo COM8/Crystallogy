@@ -30,6 +30,11 @@ public class CompressorRecipeHandlerJEI implements IRecipeHandler<CompressorReci
 	public boolean isRecipeValid(CompressorRecipeJEI recipe) {
 		return recipe.getInputs().size() > 0 && recipe.getOutputs().size() > 0;
 	}
+
+	@Override
+	public String getRecipeCategoryUid(CompressorRecipeJEI recipe) {
+		return CompressorCraftingCategory.ID;
+	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 

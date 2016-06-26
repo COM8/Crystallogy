@@ -30,6 +30,11 @@ public class ChargerRecipeHandlerJEI implements IRecipeHandler<ChargerRecipeJEI>
 	public boolean isRecipeValid(ChargerRecipeJEI recipe) {
 		return recipe.getInputs().size() > 0 && recipe.getOutputs().size() > 0;
 	}
+
+	@Override
+	public String getRecipeCategoryUid(ChargerRecipeJEI recipe) {
+		return ChargerCraftingCategory.ID;
+	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 

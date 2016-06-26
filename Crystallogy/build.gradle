@@ -19,18 +19,18 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-version = "1.9.4-0.8.5 Alpha"
+version = "1.10-0.9 Alpha"
 group= "de.comeight.crystallogy" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "crystallogy"
 
 minecraft {
-    version = "1.9.4-12.17.0.1965"
+    version = "1.10-12.18.0.1986-1.10.0"
     runDir = "run"
 	mappings = "snapshot_20160518"
 }
 
 dependencies {
-	deobfCompile "mezz.jei:jei_1.9.4:3.4.0.202"
+	deobfCompile "mezz.jei:jei_1.10:3.7.0.218"
 }
 
 repositories {
