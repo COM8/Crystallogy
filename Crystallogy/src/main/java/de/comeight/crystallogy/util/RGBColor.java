@@ -21,6 +21,14 @@ public class RGBColor {
 		this.b = c.getBlue() / 255.0F;
 	}
 	
+	/**
+	 * Creates a new {@link RGBColor}.
+	 * All values have to be between 0.0F and 1.0F!
+	 * 
+	 * @param r red
+	 * @param g green
+	 * @param b blue
+	 */
 	public RGBColor(float r, float g, float b) {
 		this.r = r;
 		this.g = g;
@@ -28,6 +36,14 @@ public class RGBColor {
 	}
 
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
+	/**
+	 * Setter for the RGB Color.
+	 * All values have to be between 0.0F and 1.0F!
+	 * 
+	 * @param r red
+	 * @param g green
+	 * @param b blue
+	 */
 	public void setRGB(float r, float g, float b){
 		this.r = r;
 		this.g = g;
@@ -35,24 +51,32 @@ public class RGBColor {
 	}
 
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	/**
+	 * Reads a RGB Color from a {@link NBTTagCompound}.
+	 * 
+	 * @param compound the {@link NBTTagCompound} the color should get read from
+	 */
 	public void fromNBTTagCompound(NBTTagCompound compound, String key){
 		r = compound.getFloat(key + 'R');
 		g = compound.getFloat(key + 'G');
 		b = compound.getFloat(key + 'B');
 	}
 	
-	public NBTTagCompound toNBTTagCompound(NBTTagCompound compound, String key){
+	/**
+	 * Adds this RGB Color to a given {@link NBTTagCompound}.
+	 * 
+	 * @param compound the {@link NBTTagCompound} the color should get added to
+	 */
+	public void toNBTTagCompound(NBTTagCompound compound, String key){
 		compound.setFloat(key + 'R', r);
 		compound.setFloat(key + 'G', g);
 		compound.setFloat(key + 'B', b);
-		
-		return compound;
 	}
 	
 	/**
+	 * Converts a color string to a RGB Color.
 	 * 
 	 * @param colorStr e.g. "#FFFFFF"
-	 * @return 
 	 */
 	public static Color hex2Rgb(String colorStr) {
 		if(colorStr.length() > 6){
