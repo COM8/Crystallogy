@@ -86,7 +86,7 @@ public class ClientProxy extends CommonProxy{
     private void registerKeybinding(){
     	jetpackKey = new KeyBinding("keyBinding.space.name", Keyboard.KEY_SPACE, "Crystallogy");
     	
-    	ClientRegistry.registerKeyBinding(jetpackKey);
+    	//ClientRegistry.registerKeyBinding(jetpackKey);
     	
     	Utilities.addConsoleText("All keyBindings are registered.");
     }
