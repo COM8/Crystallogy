@@ -37,6 +37,9 @@ public class ClientProxy extends CommonProxy{
 	//KeyBinding:
 	public static KeyBinding jetpackKey;
 	
+	//Particles:
+	private de.comeight.crystallogy.particles2.ParticleHandler pH = new de.comeight.crystallogy.particles2.ParticleHandler();
+	
 	
 	//-----------------------------------------------Pre-Init:----------------------------------------------
 	@Override
@@ -44,6 +47,8 @@ public class ClientProxy extends CommonProxy{
         super.preInit(e);
         MinecraftForge.EVENT_BUS.register(new ParticleHandler());
         registerNetworkWrappers();
+        
+        pH.preInit();
     }
 	
 	//-----------------------------------------------Init:--------------------------------------------------
@@ -55,12 +60,16 @@ public class ClientProxy extends CommonProxy{
         registerSpecialRenderers();
         registerKeybinding();
         registerEventHandlerClient();
+        
+        pH.init();
     }
 
   //-----------------------------------------------Post-Init:----------------------------------------------
     @Override
     public void postInit(FMLPostInitializationEvent e) {
         super.postInit(e);
+        
+        pH.postInit();
     }
     
   //-----------------------------------------------Sonstige Methoden:-------------------------------------
@@ -80,7 +89,7 @@ public class ClientProxy extends CommonProxy{
     	CommonProxy.NETWORKWRAPPER.registerMessage(MessageHandlerOnClientParticle.class, NetworkPacketParticle.class, NetworkPacketParticle.ID_CLIENT, Side.CLIENT);
     	CommonProxy.NETWORKWRAPPER.registerMessage(MessageHandlerOnClientTileEntitySync.class, NetworkPacketTileEntitySync.class, NetworkPacketTileEntitySync.ID_CLIENT, Side.CLIENT);
     	
-    	Utilities.addConsoleText("Clientside: MessageHandlerOnClient registriert.");
+    	Utilities.addConsoleText("Clientside: MessageHandlerOnClient registered.");
 	}
     
     private void registerKeybinding(){
