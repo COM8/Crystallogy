@@ -2,50 +2,42 @@ package de.comeight.crystallogy.particles;
 
 import de.comeight.crystallogy.util.RGBColor;
 import de.comeight.crystallogy.util.Utilities;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class InfuserBlockActiveParticle extends BaseParticle {
+@SideOnly(Side.CLIENT)
+public class ParticleInfuserBlockStatus extends BaseParticle {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	public static ResourceLocation[] rL = getTextures("crystallogy:particles/i_color", "i", 32);
-	public static final String NAME = "i_color";
-	
+	public static final ResourceLocation RL_PARTICLE_INFUSER_BLOCK_STATUS = new ResourceLocation("crystallogy:particles/i/i0");
+
 	private int colorStatus;
 	private int color;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public InfuserBlockActiveParticle(World world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
-		super(NAME, world, x, y, z, velocityX, velocityY, velocityZ);
+	public ParticleInfuserBlockStatus(World worldIn, Vec3d pos) {
+		super(ParticleInformation.ID_PARTICLE_INFUSER_BLOCK_STATUS, RL_PARTICLE_INFUSER_BLOCK_STATUS, worldIn, pos);
+		
+		this.countParticleTextures = 32;
+		
 		this.particleScale = 3.0F;
 		this.colorStatus = 0;
 		this.color = Utilities.getRandInt(0, 16777215);
 	}
 
-	public InfuserBlockActiveParticle() {
-		super();
+	public ParticleInfuserBlockStatus() {
+		super(ParticleInformation.ID_PARTICLE_INFUSER_BLOCK_STATUS, RL_PARTICLE_INFUSER_BLOCK_STATUS);
 	}
-	
-	public InfuserBlockActiveParticle(String s) {
-		super();
-		if(s != null){
-			fromString(s);
-		}
-	}
-	
+
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
-	
+
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
-	protected void updateTexture(){
-		tIndex += annimationSpeed;
-		if(tIndex >= rL.length){
-			tIndex = 0;
-		}
-		TextureAtlasSprite sprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(rL[(int)tIndex].toString());
-		this.setParticleTexture(sprite);
+	public BaseParticle clone(World worldIn, Vec3d pos, TransportParticle tp) {
+		return new ParticleInfuserBlockStatus(worldIn, pos);
 	}
 	
 	@Override
@@ -70,5 +62,5 @@ public class InfuserBlockActiveParticle extends BaseParticle {
 			colorStatus = 0;
 		}
 	}
-	
+
 }

@@ -1,7 +1,5 @@
 package de.comeight.crystallogy.blocks.machines;
 
-import de.comeight.crystallogy.CrystallogyBase;
-import de.comeight.crystallogy.gui.GuiCharger;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

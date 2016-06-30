@@ -1,21 +1,25 @@
 package de.comeight.crystallogy.particles;
 
 import de.comeight.crystallogy.util.Utilities;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class LightParticle extends BaseParticle {
+@SideOnly(Side.CLIENT)
+public class ParticleLight extends BaseParticle {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	public static ResourceLocation[] rL = getTextures("crystallogy:particles/l_color", "l", 32);
-	public static final String NAME = "l_color"; 
+	public static final ResourceLocation RL_PARTICLE_LIGHT = new ResourceLocation("crystallogy:particles/l_color/l0");
 	
 	private double speed;
-	
+
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public LightParticle(World world, double x, double y, double z) {
-		super(NAME, world, x, y, z, 0.0, 0.0, 0.0);
+	public ParticleLight(World worldIn, Vec3d pos) {
+		super(ParticleInformation.ID_PARTICLE_LIGHT, RL_PARTICLE_LIGHT, worldIn, pos);
+		
+		this.countParticleTextures = 32;
+		
 		this.particleMaxAge = Utilities.getRandInt(20, 40);
 		this.particleScale = Utilities.getRandFloat(0.75F, 2.5F);
 		this.speed = Utilities.getRandDouble(0.1, 0.2);
@@ -23,21 +27,17 @@ public class LightParticle extends BaseParticle {
 		setAlphaF(0.5F);
 	}
 
-	public LightParticle() {
+	public ParticleLight() {
+		super(ParticleInformation.ID_PARTICLE_LIGHT, RL_PARTICLE_LIGHT);
 	}
-	
+
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
-	
+
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
-	protected void updateTexture(){
-		tIndex += annimationSpeed;
-		if(tIndex >= rL.length){
-			tIndex = 0;
-		}
-		TextureAtlasSprite sprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(rL[(int)tIndex].toString());
-		this.setParticleTexture(sprite);
+	public BaseParticle clone(World worldIn, Vec3d pos, TransportParticle tp) {
+		return new ParticleLight(worldIn, pos);
 	}
 	
 	@Override
@@ -59,5 +59,5 @@ public class LightParticle extends BaseParticle {
 	private void updateAlpha(){
 		setAlphaF(0.5F - (particleAge / particleMaxAge));
 	}
-	
+
 }

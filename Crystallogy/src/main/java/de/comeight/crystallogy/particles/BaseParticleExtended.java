@@ -1,31 +1,35 @@
 package de.comeight.crystallogy.particles;
 
 import de.comeight.crystallogy.util.Utilities;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BaseParticleExtended extends BaseParticle {
+@SideOnly(Side.CLIENT)
+public abstract class BaseParticleExtended extends BaseParticle{
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	public static final String NAME = "baseParticleExtended";
-	
 	protected int stage;
 	protected int tick;
-
+	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public BaseParticleExtended(String name, World world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
-		super(name, world, x, y, z, velocityX, velocityY, velocityZ);
+	public BaseParticleExtended(String id, ResourceLocation rL, World worldIn, Vec3d pos) {
+		super(id, rL, worldIn, pos);
+		
 		this.stage = Utilities.getRandInt(0, 4);
 		this.tick = Utilities.getRandInt(5, 10);
 		this.particleMaxAge = Utilities.getRandInt(20, 50);
 		this.particleScale = Utilities.getRandFloat(0.5F, 1.5F);
 	}
-
-	public BaseParticleExtended() {
-		super();
+	
+	public BaseParticleExtended(String id, ResourceLocation rL) {
+		super(id, rL);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
-	
 
+	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public void onUpdate() {

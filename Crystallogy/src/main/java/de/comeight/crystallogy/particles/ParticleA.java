@@ -1,45 +1,34 @@
 package de.comeight.crystallogy.particles;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class ParticleA extends BaseParticleExtended {
-	
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	public static ResourceLocation[] rL = getTextures("crystallogy:particles/a", "a", 32);
-	public static final String NAME = "a"; 
+	public static final ResourceLocation RL_PARTICLE_A = new ResourceLocation("crystallogy:particles/a/a0");
 
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public ParticleA(World world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
-		super(NAME, world, x, y, z, velocityX, velocityY, velocityZ);
+	public ParticleA(World worldIn, Vec3d pos) {
+		super(ParticleInformation.ID_PARTICLE_A, RL_PARTICLE_A, worldIn, pos);
+		
+		this.countParticleTextures = 32;
 	}
-	
-	public ParticleA(String s) {
-		super();
-		if(s != null){
-			fromString(s);
-		}
-	}
-	
+
 	public ParticleA() {
-		super();
+		super(ParticleInformation.ID_PARTICLE_A, RL_PARTICLE_A);
 	}
-	
+
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
 
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
-	protected void updateTexture(){
-		//System.out.println(tIndex);
-		tIndex += annimationSpeed;
-		if(tIndex >= rL.length){
-			tIndex = 0;
-		}
-		TextureAtlasSprite sprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(rL[(int)tIndex].toString());
-		this.setParticleTexture(sprite);
+	public BaseParticle clone(World worldIn, Vec3d pos, TransportParticle tp) {
+		return new ParticleA(worldIn, pos);
 	}
 
 }

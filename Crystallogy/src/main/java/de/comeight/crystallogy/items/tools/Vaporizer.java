@@ -2,12 +2,12 @@ package de.comeight.crystallogy.items.tools;
 
 import java.util.List;
 
-import de.comeight.crystallogy.CommonProxy;
-import de.comeight.crystallogy.handler.ParticleHandler;
 import de.comeight.crystallogy.items.BaseItem;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkParticle;
-import de.comeight.crystallogy.particles.BaseParticle;
+import de.comeight.crystallogy.particles.ParticleInformation;
+import de.comeight.crystallogy.particles.TransportParticle;
+import de.comeight.crystallogy.util.NetworkUtilitis;
 import de.comeight.crystallogy.util.RGBColor;
 import de.comeight.crystallogy.util.ToolTipBuilder;
 import de.comeight.crystallogy.util.Utilities;
@@ -43,7 +43,7 @@ public class Vaporizer extends BaseItem {
 		super(ID);
 		this.setMaxStackSize(1);
 		
-		this.particleType = "a";
+		this.particleType = ParticleInformation.ID_PARTICLE_A;
 		this.color = new RGBColor(0.0F, 0.0F, 0.0F);
 		this.maxTime = 60;
 		this.numberOfParticle = 10;
@@ -55,7 +55,7 @@ public class Vaporizer extends BaseItem {
 		super(ID);
 		this.setMaxStackSize(1);
 		
-		this.particleType = "a";
+		this.particleType = ParticleInformation.ID_PARTICLE_A;
 		this.color = new RGBColor(0.0F, 0.0F, 0.0F);
 		this.maxTime = 60;
 		this.numberOfParticle = 10;
@@ -143,16 +143,14 @@ public class Vaporizer extends BaseItem {
 		
 		String type = c.getString("particleType");
 		
-		BaseParticle p = ParticleHandler.getBaseParticleFromType(type);
-		p.setPosition(coords.xCoord, coords.yCoord, coords.zCoord);
-		p.setParticleMaxAge(c.getInteger("maxTime"));
-		NetworkParticle nP = new NetworkParticle(p, type);
-		nP.getParticle().setRBGColorF(c.getFloat("r"), c.getFloat("g"), c.getFloat("b"));
+		TransportParticle tP = new TransportParticle(new Vec3d(coords.xCoord, coords.yCoord, coords.zCoord));
+		tP.maxAge = c.getInteger("maxTime");
+		tP.color = new RGBColor(c.getFloat("r"), c.getFloat("g"), c.getFloat("b"));
+		NetworkParticle nP = new NetworkParticle(tP, type);
 		nP.setSize(new Vec3d(c.getDouble("sizeX"), c.getDouble("sizeY"), c.getDouble("sizeZ")));
 		nP.setNumberOfParticle(c.getInteger("numberOfParticle"));
-		
-		NetworkPacketParticle message = new NetworkPacketParticle(nP);
-		CommonProxy.NETWORKWRAPPER.sendToServer(message);
+		NetworkPacketParticle packet = new NetworkPacketParticle(nP);
+		NetworkUtilitis.sendAllAround(packet, worldIn.isRemote);
 	}
 	
 	@SideOnly(Side.CLIENT)

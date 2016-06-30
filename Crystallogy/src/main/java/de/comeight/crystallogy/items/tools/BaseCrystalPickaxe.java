@@ -1,5 +1,7 @@
 package de.comeight.crystallogy.items.tools;
 
+import java.util.List;
+
 import de.comeight.crystallogy.util.ToolUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -10,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 public class BaseCrystalPickaxe extends BaseItemPickaxe {
@@ -107,6 +110,16 @@ public class BaseCrystalPickaxe extends BaseItemPickaxe {
 				stack.damageItem(1, entityLiving);
 	        }
 		}
+	}
+	
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+		int aoe = getAOE();
+		tooltip.add("Mines a " + TextFormatting.DARK_PURPLE + aoe + "x" + aoe + "x" + aoe + TextFormatting.RESET + " area.");
+		tooltip.add("");
+		tooltip.add("Hold " + TextFormatting.GOLD + TextFormatting.BOLD + "SHIFT" + TextFormatting.RESET + " to mine a " + TextFormatting.DARK_PURPLE + "1x1 " + TextFormatting.RESET + "area!");
+		
+		super.addInformation(stack, playerIn, tooltip, advanced);
 	}
 	
 }

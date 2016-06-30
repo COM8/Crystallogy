@@ -2,13 +2,9 @@ package de.comeight.crystallogy.network.handler.Client;
 
 import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkParticle;
-import de.comeight.crystallogy.particles.ParticleA;
-import de.comeight.crystallogy.particles.ParticleB;
-import de.comeight.crystallogy.particles.ParticleC;
-import de.comeight.crystallogy.particles.ParticleD;
-import de.comeight.crystallogy.particles.ParticleE;
-import de.comeight.crystallogy.particles.ParticleF;
-import de.comeight.crystallogy.particles.ParticleNColor;
+import de.comeight.crystallogy.particles.BaseParticle;
+import de.comeight.crystallogy.particles.ParticleHandler;
+import de.comeight.crystallogy.util.Log;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;
@@ -17,6 +13,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class MessageHandlerOnClientParticle implements IMessageHandler<NetworkPacketParticle, IMessage> {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -41,86 +38,43 @@ public class MessageHandlerOnClientParticle implements IMessageHandler<NetworkPa
 			System.err.println("NetworkPacketParticle was invalid" + message.toString());
 			return null;
 		}
-		Minecraft minecraft = Minecraft.getMinecraft();
-		final WorldClient worldClient = minecraft.theWorld;
+		final Minecraft minecraft = Minecraft.getMinecraft();
 		minecraft.addScheduledTask(new Runnable() {
 			public void run() {
-				processMessage(message, worldClient);
+				processMessage(message, minecraft);
 			}
 		});
 		return null;
 	}
 	
-	private void processMessage(NetworkPacketParticle message, WorldClient worldClient) {
+	@SideOnly(Side.CLIENT)
+	private void processMessage(NetworkPacketParticle message, Minecraft minecraft) {
+		WorldClient worldClient = minecraft.theWorld;
 		NetworkParticle nP = message.getNetworkParticle();
-		Vec3d pos = nP.getParticle().getPos();
-		String type = nP.getType();
+		Vec3d pos = nP.getTransporterParticle().pos;
+		Vec3d size = nP.getSize();
+		BaseParticle p = ParticleHandler.findParticle(nP.getType());
+		if(p == null){
+			Log.warn("Unknown Particle type detected: " + nP.getType());
+			return;
+		}
 		
-		if(type.equals(ParticleA.NAME)){
-			Vec3d size = nP.getSize();
-			for(int i = 0; i < nP.getNumberOfParticle(); i++){
-				ParticleA gP = new ParticleA(worldClient, pos.xCoord + Utilities.getRandDouble(-size.xCoord, size.xCoord), pos.yCoord + Utilities.getRandDouble(0.0, size.yCoord), pos.zCoord + Utilities.getRandDouble(-size.zCoord, size.zCoord), 0.2, 0.2, 0.2);
-				gP.setParticleMaxAge(Utilities.getRandInt((int)(nP.getParticle().getParticleMaxAge()*0.75), nP.getParticle().getParticleMaxAge()));
-				gP.setRBGColorF(nP.getParticle().getRedColorF(), nP.getParticle().getGreenColorF(), nP.getParticle().getBlueColorF());
-				Minecraft.getMinecraft().effectRenderer.addEffect(gP);
+		for(int i = 0; i < nP.getNumberOfParticle(); i++){
+			BaseParticle bP = p.clone(worldClient, new Vec3d(pos.xCoord + Utilities.getRandDouble(-size.xCoord, size.xCoord), pos.yCoord + Utilities.getRandDouble(0.0, size.yCoord), pos.zCoord + Utilities.getRandDouble(-size.zCoord, size.zCoord)), nP.getTransporterParticle());
+			
+			if(nP.getTransporterParticle().randomColor){
+				bP.setRBGColorF(Utilities.getRandFloat(0.0F, 1.0F), Utilities.getRandFloat(0.0F, 1.0F), Utilities.getRandFloat(0.0F, 1.0F));
 			}
-		}
-		else if(type.equals(ParticleB.NAME)){
-			Vec3d size = nP.getSize();
-			for(int i = 0; i < nP.getNumberOfParticle(); i++){
-				ParticleB gP = new ParticleB(worldClient, pos.xCoord + Utilities.getRandDouble(-size.xCoord, size.xCoord), pos.yCoord + Utilities.getRandDouble(0.0, size.yCoord), pos.zCoord + Utilities.getRandDouble(-size.zCoord, size.zCoord), 0.2, 0.2, 0.2);
-				gP.setParticleMaxAge(Utilities.getRandInt((int)(nP.getParticle().getParticleMaxAge()*0.75), nP.getParticle().getParticleMaxAge()));
-				gP.setRBGColorF(nP.getParticle().getRedColorF(), nP.getParticle().getGreenColorF(), nP.getParticle().getBlueColorF());
-				Minecraft.getMinecraft().effectRenderer.addEffect(gP);
+			else{
+				bP.setRBGColorF(nP.getTransporterParticle().color.r, nP.getTransporterParticle().color.g, nP.getTransporterParticle().color.b);
 			}
-		}
-		else if(type.equals(ParticleC.NAME)){
-			Vec3d size = nP.getSize();
-			for(int i = 0; i < nP.getNumberOfParticle(); i++){
-				ParticleC gP = new ParticleC(worldClient, pos.xCoord + Utilities.getRandDouble(-size.xCoord, size.xCoord), pos.yCoord + Utilities.getRandDouble(0.0, size.yCoord), pos.zCoord + Utilities.getRandDouble(-size.zCoord, size.zCoord), 0.2, 0.2, 0.2);
-				gP.setParticleMaxAge(Utilities.getRandInt((int)(nP.getParticle().getParticleMaxAge()*0.75), nP.getParticle().getParticleMaxAge()));
-				gP.setRBGColorF(nP.getParticle().getRedColorF(), nP.getParticle().getGreenColorF(), nP.getParticle().getBlueColorF());
-				Minecraft.getMinecraft().effectRenderer.addEffect(gP);
-			}
-		}
-		else if(type.equals(ParticleD.NAME)){
-			Vec3d size = nP.getSize();
-			for(int i = 0; i < nP.getNumberOfParticle(); i++){
-				ParticleC gP = new ParticleC(worldClient, pos.xCoord + Utilities.getRandDouble(-size.xCoord, size.xCoord), pos.yCoord + Utilities.getRandDouble(0.0, size.yCoord), pos.zCoord + Utilities.getRandDouble(-size.zCoord, size.zCoord), 0.2, 0.2, 0.2);
-				gP.setParticleMaxAge(Utilities.getRandInt((int)(nP.getParticle().getParticleMaxAge()*0.75), nP.getParticle().getParticleMaxAge()));
-				gP.setRBGColorF(nP.getParticle().getRedColorF(), nP.getParticle().getGreenColorF(), nP.getParticle().getBlueColorF());
-				Minecraft.getMinecraft().effectRenderer.addEffect(gP);
-			}
-		}
-		else if(type.equals(ParticleE.NAME)){
-			Vec3d size = nP.getSize();
-			for(int i = 0; i < nP.getNumberOfParticle(); i++){
-				ParticleC gP = new ParticleC(worldClient, pos.xCoord + Utilities.getRandDouble(-size.xCoord, size.xCoord), pos.yCoord + Utilities.getRandDouble(0.0, size.yCoord), pos.zCoord + Utilities.getRandDouble(-size.zCoord, size.zCoord), 0.2, 0.2, 0.2);
-				gP.setParticleMaxAge(Utilities.getRandInt((int)(nP.getParticle().getParticleMaxAge()*0.75), nP.getParticle().getParticleMaxAge()));
-				gP.setRBGColorF(nP.getParticle().getRedColorF(), nP.getParticle().getGreenColorF(), nP.getParticle().getBlueColorF());
-				Minecraft.getMinecraft().effectRenderer.addEffect(gP);
-			}
-		}
-		else if(type.equals(ParticleF.NAME)){
-			Vec3d size = nP.getSize();
-			for(int i = 0; i < nP.getNumberOfParticle(); i++){
-				ParticleC gP = new ParticleC(worldClient, pos.xCoord + Utilities.getRandDouble(-size.xCoord, size.xCoord), pos.yCoord + Utilities.getRandDouble(0.0, size.yCoord), pos.zCoord + Utilities.getRandDouble(-size.zCoord, size.zCoord), 0.2, 0.2, 0.2);
-				gP.setParticleMaxAge(Utilities.getRandInt((int)(nP.getParticle().getParticleMaxAge()*0.75), nP.getParticle().getParticleMaxAge()));
-				gP.setRBGColorF(nP.getParticle().getRedColorF(), nP.getParticle().getGreenColorF(), nP.getParticle().getBlueColorF());
-				Minecraft.getMinecraft().effectRenderer.addEffect(gP);
-			}
-		}
-		else if(type.equals(ParticleNColor.NAME)){
-			Vec3d size = nP.getSize();
-			for(int i = 0; i < nP.getNumberOfParticle(); i++){
-				ParticleNColor gP = new ParticleNColor(worldClient, pos.xCoord + Utilities.getRandDouble(-size.xCoord, size.xCoord), pos.yCoord + Utilities.getRandDouble(0.0, size.yCoord), pos.zCoord + Utilities.getRandDouble(-size.zCoord, size.zCoord), 0.2, 0.2, 0.2);
-				gP.setParticleMaxAge(Utilities.getRandInt((int)(nP.getParticle().getParticleMaxAge()*0.75), nP.getParticle().getParticleMaxAge()));
-				gP.setRBGColorF(Utilities.getRandFloat(0.0F, 1.0F), Utilities.getRandFloat(0.0F, 1.0F), Utilities.getRandFloat(0.0F, 1.0F));
-				Minecraft.getMinecraft().effectRenderer.addEffect(gP);
-			}
-		}
-		else{
-			System.err.println("Unknown particle Type: " + type);
+			
+			int minMaxAge = (int) ((double)nP.getTransporterParticle().maxAge * 0.8);
+			int maxMaxAge = (int) ((double)nP.getTransporterParticle().maxAge * 1.2);
+			bP.setMaxAge(Utilities.getRandInt(minMaxAge, maxMaxAge));
+			bP.multipleParticleScaleBy(nP.getTransporterParticle().scale);
+			
+			Minecraft.getMinecraft().effectRenderer.addEffect(bP);
 		}
 	}
 	

@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class MessageHandlerOnClientUpdateInventory implements IMessageHandler<NetworkPacketUpdateInventory, IMessage> {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -34,17 +35,18 @@ public class MessageHandlerOnClientUpdateInventory implements IMessageHandler<Ne
 			System.err.println("NetworkPacketUpdateInventory was invalid" + message.toString());
 			return null;
 		}
-		Minecraft minecraft = Minecraft.getMinecraft();
-		final WorldClient worldClient = minecraft.theWorld;
+		final Minecraft minecraft = Minecraft.getMinecraft();
 		minecraft.addScheduledTask(new Runnable() {
 			public void run() {
-				processMessage(message, worldClient);
+				processMessage(message, minecraft);
 			}
 		});
 		return null;
 	}
 	
-	private void processMessage(NetworkPacketUpdateInventory message, WorldClient worldClient) {
+	@SideOnly(Side.CLIENT)
+	private void processMessage(NetworkPacketUpdateInventory message, Minecraft minecraft) {
+		WorldClient worldClient = minecraft.theWorld;
 		BlockPos pos = message.getTilePos();
 		TileEntity tE = worldClient.getTileEntity(new BlockPos(pos.getX(), pos.getY(), pos.getZ()));
 		if(tE instanceof TileEntityInventory){

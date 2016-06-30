@@ -8,7 +8,10 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class RendererPlayerInJar extends TileEntitySpecialRenderer<TileEntityPlayerJar> {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	
@@ -27,7 +30,7 @@ public class RendererPlayerInJar extends TileEntitySpecialRenderer<TileEntityPla
 		}
 		float partialTick = 0.0F;
 		//float partialTick = (float) (720.0 * (System.currentTimeMillis() / 2 & 0x3FFFL) / 0x3FFFL);
-		renderPlayer((PlayerClientDummy)tE.getEntity(), x, y, z, partialTick);
+		renderPlayer(new PlayerClientDummy(getWorld(), tE.getProfile()), x, y, z, partialTick);
 		renderIngredients(tE.getWorld(), x, y, z, partialTick);
 	}
 	

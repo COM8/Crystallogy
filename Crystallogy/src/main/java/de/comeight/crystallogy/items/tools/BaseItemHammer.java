@@ -1,6 +1,7 @@
 package de.comeight.crystallogy.items.tools;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -11,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 public abstract class BaseItemHammer extends BaseItemPickaxe {
@@ -100,6 +102,13 @@ public abstract class BaseItemHammer extends BaseItemPickaxe {
 			canHarvestBlock(stack, worldIn, new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ() - 1), list);
 		}
 		return list;
+	}
+	
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+		tooltip.add("Mines a " + TextFormatting.DARK_PURPLE + "3x3 " + TextFormatting.RESET + "area.");
+		
+		super.addInformation(stack, playerIn, tooltip, advanced);
 	}
 	
 }

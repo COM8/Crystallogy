@@ -5,11 +5,12 @@ import java.util.UUID;
 import com.mojang.authlib.GameProfile;
 
 import de.comeight.crystallogy.CommonProxy;
-import de.comeight.crystallogy.entity.PlayerClientDummy;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkParticle;
-import de.comeight.crystallogy.particles.ParticleB;
+import de.comeight.crystallogy.particles.ParticleInformation;
+import de.comeight.crystallogy.particles.TransportParticle;
 import de.comeight.crystallogy.util.Log;
+import de.comeight.crystallogy.util.RGBColor;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
@@ -36,14 +37,14 @@ public class TileEntityPlayerJar extends TileEntityEntityJar {
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	@Override
 	public void setEntity(EntityLivingBase entity) {
-		if(entity instanceof PlayerClientDummy){
-			PlayerClientDummy player = (PlayerClientDummy) entity;
+		if(entity instanceof EntityPlayer){
+			EntityPlayer player = (EntityPlayer) entity;
 			this.profile = player.getGameProfile();
 			
 			super.setEntity(entity);
 		}
 		else{
-			Log.error("Entity is no instance of PlayerClientDummy!");
+			Log.error("Entity is no instance of EntityPlayer!");
 		}
 	}
 	
@@ -53,6 +54,10 @@ public class TileEntityPlayerJar extends TileEntityEntityJar {
 			return true;
 		}
 		return false;
+	}
+	
+	public GameProfile getProfile() {
+		return profile;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
@@ -71,13 +76,24 @@ public class TileEntityPlayerJar extends TileEntityEntityJar {
 			if(!name.equals("")){
 				profile = new GameProfile(uuid, name);
 				if(worldObj != null){
-					entity = new PlayerClientDummy(worldObj, profile);
+					entity = new EntityPlayer(worldObj, profile) {
+						
+						@Override
+						public boolean isSpectator() {
+							return false;
+						}
+						
+						@Override
+						public boolean isCreative() {
+							return false;
+						}
+					};
 				}
 			}
 		}
 		else{
-			this.entity = null;
-			this.profile = null;
+			entity = null;
+			profile = null;
 		}
 	}
 	
@@ -103,14 +119,14 @@ public class TileEntityPlayerJar extends TileEntityEntityJar {
 				
 				if(worldIn.isRemote){
 					for (int i = 0; i < 5; i++) { //Particel:
-						ParticleB gP = new ParticleB(worldIn, pos.xCoord + 0.5, pos.yCoord, pos.zCoord + 0.5, 0.0, 0.0, 0.0);
-						gP.setParticleMaxAge(120);
-						gP.setRBGColorF(Utilities.getRandFloat(0, 100), Utilities.getRandFloat(0, 100), Utilities.getRandFloat(0, 100));
-						NetworkParticle nP = new NetworkParticle(gP, gP.name);
+						TransportParticle tP = new TransportParticle(new Vec3d(pos.xCoord + 0.5, pos.yCoord, pos.zCoord + 0.5));
+						tP.maxAge = 120;
+						tP.color = new RGBColor(Utilities.getRandFloat(0, 100), Utilities.getRandFloat(0, 100), Utilities.getRandFloat(0, 100));
+						NetworkParticle nP = new NetworkParticle(tP, ParticleInformation.ID_PARTICLE_B);
 						nP.setSize(new Vec3d(1.0, 2.0, 1.0));
 						nP.setNumberOfParticle(30);
 						NetworkPacketParticle pMtS = new NetworkPacketParticle(nP);
-						CommonProxy.NETWORKWRAPPER.sendToServer(pMtS);	
+						CommonProxy.NETWORKWRAPPER.sendToServer(pMtS);
 					}
 					
 					worldIn.addWeatherEffect(new EntityLightningBolt(worldIn, pos.xCoord, pos.yCoord, pos.zCoord, false));

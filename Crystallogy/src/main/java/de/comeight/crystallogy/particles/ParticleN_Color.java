@@ -7,19 +7,19 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class ParticleB extends BaseParticleExtended {
+public class ParticleN_Color extends BaseParticleExtended {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	public static final ResourceLocation RL_PARTICLE_B = new ResourceLocation("crystallogy:particles/b/b0");
+	public static final ResourceLocation RL_PARTICLE_N_COLOR = new ResourceLocation("crystallogy:particles/n_color/n0");
 
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public ParticleB(World worldIn, Vec3d pos) {
-		super(ParticleInformation.ID_PARTICLE_B, RL_PARTICLE_B, worldIn, pos);
+	public ParticleN_Color(World worldIn, Vec3d pos) {
+		super(ParticleInformation.ID_PARTICLE_N_COLOR, RL_PARTICLE_N_COLOR, worldIn, pos);
 		
 		this.countParticleTextures = 32;
 	}
 
-	public ParticleB() {
-		super(ParticleInformation.ID_PARTICLE_B, RL_PARTICLE_B);
+	public ParticleN_Color() {
+		super(ParticleInformation.ID_PARTICLE_N_COLOR, RL_PARTICLE_N_COLOR);
 	}
 
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -28,7 +28,7 @@ public class ParticleB extends BaseParticleExtended {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public BaseParticle clone(World worldIn, Vec3d pos, TransportParticle tp) {
-		return new ParticleB(worldIn, pos);
+		return new ParticleN_Color(worldIn, pos);
 	}
 
 }

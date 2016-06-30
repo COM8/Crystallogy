@@ -13,6 +13,7 @@ import de.comeight.crystallogy.items.CrystallDust_red;
 import de.comeight.crystallogy.items.CrystallDust_yellow;
 import de.comeight.crystallogy.items.CrystallHammerHead;
 import de.comeight.crystallogy.items.CrystallSwordBlade;
+import de.comeight.crystallogy.items.EnderonCrystal;
 import de.comeight.crystallogy.items.EnergyCrystal;
 import de.comeight.crystallogy.items.EnergyDust;
 import de.comeight.crystallogy.items.FertilizerPotato;
@@ -107,6 +108,7 @@ public class ItemHandler {
 	public static CombinedArmorMesh combinedArmorMesh;
 	public static HunterArmorMesh hunterArmorMesh;
 	public static ChargedCombinedArmorMesh chargedCombinedArmorMesh;
+	public static EnderonCrystal enderonCrystal;
 	
 	//Armor:
 	public static Armor_red armorHelmet_red;
@@ -214,7 +216,9 @@ public class ItemHandler {
 		combinedArmorMesh = new CombinedArmorMesh();
 		hunterArmorMesh = new HunterArmorMesh();
 		chargedCombinedArmorMesh = new ChargedCombinedArmorMesh();
+		enderonCrystal = new EnderonCrystal();
 		
+		//GameRegistry.register(enderonCrystal);
 		GameRegistry.register(chargedCombinedArmorMesh);
 		GameRegistry.register(combinedArmorMesh);
 		GameRegistry.register(hunterArmorMesh);

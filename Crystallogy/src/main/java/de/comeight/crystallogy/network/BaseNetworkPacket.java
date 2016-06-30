@@ -2,6 +2,7 @@ package de.comeight.crystallogy.network;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public abstract class BaseNetworkPacket implements IMessage{
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -28,4 +29,8 @@ public abstract class BaseNetworkPacket implements IMessage{
 	
 	@Override
 	public abstract void fromBytes(ByteBuf buf);
+	
+	public abstract IMessage handleClient(MessageContext msg);
+
+	public abstract IMessage handleServer(MessageContext msg);
 }

@@ -77,10 +77,10 @@ public class Utilities {
 	
 	public static void printWorldSide(World worldObj){
 		if(worldObj.isRemote){
-			addConsoleText("Side.Client!");
+			Log.debug("Side.Client!");
 		}
 		else{
-			addConsoleText("Side.Server!");
+			Log.debug("Side.Server!");
 		}
 	}
 	

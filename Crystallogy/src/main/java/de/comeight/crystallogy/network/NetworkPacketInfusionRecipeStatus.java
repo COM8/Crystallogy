@@ -1,9 +1,15 @@
 package de.comeight.crystallogy.network;
 
+import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientInfusionRecipeStatus;
+import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerInfusionRecipeStatus;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class NetworkPacketInfusionRecipeStatus extends BaseNetworkPacket {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -11,9 +17,6 @@ public class NetworkPacketInfusionRecipeStatus extends BaseNetworkPacket {
 	protected boolean status;
 	protected boolean successfully;
 	protected int recipeIndex;
-	
-	public static final Byte ID_SERVER = 42;
-	public static final Byte ID_CLIENT = 43;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public NetworkPacketInfusionRecipeStatus(){
@@ -90,6 +93,24 @@ public class NetworkPacketInfusionRecipeStatus extends BaseNetworkPacket {
 			messageValid = false;
 			return;
 		}
+	}
+	
+	@SideOnly(Side.CLIENT)
+	@Override
+	public IMessage handleClient(MessageContext msg) {
+		MessageHandlerOnClientInfusionRecipeStatus handler = new MessageHandlerOnClientInfusionRecipeStatus();
+		handler.onMessage(this, msg);
+		
+		return null;
+	}
+
+	@SideOnly(Side.SERVER)
+	@Override
+	public IMessage handleServer(MessageContext msg) {
+		MessageHandlerOnServerInfusionRecipeStatus handler = new MessageHandlerOnServerInfusionRecipeStatus();
+		handler.onMessage(this, msg);
+		
+		return null;
 	}
 	
 }

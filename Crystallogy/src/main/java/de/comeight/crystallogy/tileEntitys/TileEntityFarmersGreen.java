@@ -6,6 +6,9 @@ import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
 import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.ParticleB;
+import de.comeight.crystallogy.particles.ParticleInformation;
+import de.comeight.crystallogy.particles.TransportParticle;
+import de.comeight.crystallogy.util.RGBColor;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
@@ -15,6 +18,8 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileEntityFarmersGreen extends BaseTileEntity implements ITickable{
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -118,26 +123,29 @@ public class TileEntityFarmersGreen extends BaseTileEntity implements ITickable{
 			IBlockState state = worldObj.getBlockState(posGrowth);
 			if(state.getBlock() instanceof IPlantable || state.getBlock() instanceof IGrowable){
 				state.getBlock().updateTick(worldObj, posGrowth, state, worldObj.rand);
-				spawnParticlesNetwork(posGrowth);
+				if(state != worldObj.getBlockState(posGrowth)){
+					spawnParticlesNetwork(posGrowth);
+				}
 			}
 		}
 	}
 	
+	@SideOnly(Side.CLIENT)
 	private void spawnActiveParticle(){
-		ParticleB gP = new ParticleB(worldObj, pos.getX() + 0.5, pos.getY() + 0.75, pos.getZ() + 0.5, 0.2, 0.2, 0.2);
+		ParticleB gP = new ParticleB(worldObj, new Vec3d(pos.getX() + 0.5, pos.getY() + 0.75, pos.getZ() + 0.5));
 		gP.setRBGColorF(Utilities.getRandFloat(0.0F, 0.5F), 1.0F, Utilities.getRandFloat(0.0F, 0.5F));
 		Minecraft.getMinecraft().effectRenderer.addEffect(gP);
 	}
 	
 	private void spawnParticlesNetwork(BlockPos posGrowth){
-		ParticleB gP = new ParticleB(worldObj, posGrowth.getX() + 0.5, posGrowth.getY(), posGrowth.getZ() + 0.5, 0.0, 0.0, 0.0);
-		gP.setParticleMaxAge(60);
-		gP.setRBGColorF(Utilities.getRandFloat(0.0F, 0.5F), 1.0F, Utilities.getRandFloat(0.0F, 0.5F));
-		NetworkParticle nP = new NetworkParticle(gP, gP.name);
+		TransportParticle tP = new TransportParticle(new Vec3d(posGrowth.getX() + 0.5, posGrowth.getY(), posGrowth.getZ() + 0.5));
+		tP.maxAge = 60;
+		tP.color = new RGBColor(Utilities.getRandFloat(0.0F, 0.5F), 1.0F, Utilities.getRandFloat(0.0F, 0.5F));
+		NetworkParticle nP = new NetworkParticle(tP, ParticleInformation.ID_PARTICLE_B);
 		nP.setSize(new Vec3d(0.0, 0.0, 0.0));
 		nP.setNumberOfParticle(3);
 		NetworkPacketParticle pMtS = new NetworkPacketParticle(nP);
-		CommonProxy.NETWORKWRAPPER.sendToServer(pMtS);
+		CommonProxy.NETWORKWRAPPER.sendToDimension(pMtS, worldObj.provider.getDimension());
 	}
 	
 }

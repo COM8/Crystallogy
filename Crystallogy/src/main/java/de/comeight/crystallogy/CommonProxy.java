@@ -16,6 +16,11 @@ import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkPacketTileEntityRequestSync;
 import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
 import de.comeight.crystallogy.network.NetworkPacketUpdateInventory;
+import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientInfuserBlockEnabled;
+import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientInfusionRecipeStatus;
+import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientParticle;
+import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientTileEntitySync;
+import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientUpdateInventory;
 import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerInfuserBlockEnabled;
 import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerInfusionRecipeStatus;
 import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerParticle;
@@ -50,6 +55,7 @@ public class CommonProxy {
 	public static CrystallogyMainTab crystallogyMainTab = new CrystallogyMainTab();
 	
 	//Network:
+	//public static final CustomNetworkWrapper NETWORKWRAPPER = new CustomNetworkWrapper(CrystallogyBase.MODID);
 	public static final SimpleNetworkWrapper NETWORKWRAPPER = NetworkRegistry.INSTANCE.newSimpleChannel(CrystallogyBase.MODID);
 	
 	//Blocks:
@@ -64,6 +70,8 @@ public class CommonProxy {
 	//Config:
 	private static ConfigHandler cH = new ConfigHandler();
 	
+	private static int networkId = 0;
+	
 	// -----------------------------------------------Constructor:-------------------------------------------
 	
 	
@@ -71,15 +79,23 @@ public class CommonProxy {
 
 	
 	// -----------------------------------------------Sonstige Methoden:-------------------------------------
-	private void registerNetworkWrappers() {
-		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerInfuserBlockEnabled.class, NetworkPacketInfuserBlockEnabled.class, NetworkPacketInfuserBlockEnabled.ID_SERVER, Side.SERVER);
-		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerInfusionRecipeStatus.class, NetworkPacketInfusionRecipeStatus.class, NetworkPacketInfusionRecipeStatus.ID_SERVER, Side.SERVER);
-		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerUpdateInventory.class, NetworkPacketUpdateInventory.class, NetworkPacketUpdateInventory.ID_SERVER, Side.SERVER);
-		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerParticle.class, NetworkPacketParticle.class, NetworkPacketParticle.ID_SERVER, Side.SERVER);
-		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerTileEntitySync.class, NetworkPacketTileEntitySync.class, NetworkPacketTileEntitySync.ID_SERVER, Side.SERVER);
-		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerTileEntityRequestSync.class, NetworkPacketTileEntityRequestSync.class, NetworkPacketTileEntityRequestSync.ID_SERVER, Side.SERVER);
+	private void registerNetworkMessages() {
+		//Server:
+		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerInfuserBlockEnabled.class, NetworkPacketInfuserBlockEnabled.class, networkId++, Side.SERVER);
+		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerInfusionRecipeStatus.class, NetworkPacketInfusionRecipeStatus.class, networkId++, Side.SERVER);
+		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerUpdateInventory.class, NetworkPacketUpdateInventory.class, networkId++, Side.SERVER);
+		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerParticle.class, NetworkPacketParticle.class, networkId++, Side.SERVER);
+		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerTileEntitySync.class, NetworkPacketTileEntitySync.class, networkId++, Side.SERVER);
+		NETWORKWRAPPER.registerMessage(MessageHandlerOnServerTileEntityRequestSync.class, NetworkPacketTileEntityRequestSync.class, networkId++, Side.SERVER);
 		
-		Utilities.addConsoleText("Serverside: MessageHandlerOnServer registered.");
+		//Client:
+		NETWORKWRAPPER.registerMessage(MessageHandlerOnClientInfuserBlockEnabled.class, NetworkPacketInfuserBlockEnabled.class, networkId++, Side.CLIENT);
+    	NETWORKWRAPPER.registerMessage(MessageHandlerOnClientInfusionRecipeStatus.class, NetworkPacketInfusionRecipeStatus.class, networkId++, Side.CLIENT);
+    	NETWORKWRAPPER.registerMessage(MessageHandlerOnClientUpdateInventory.class, NetworkPacketUpdateInventory.class, networkId++, Side.CLIENT);
+    	NETWORKWRAPPER.registerMessage(MessageHandlerOnClientParticle.class, NetworkPacketParticle.class, networkId++, Side.CLIENT);
+    	NETWORKWRAPPER.registerMessage(MessageHandlerOnClientTileEntitySync.class, NetworkPacketTileEntitySync.class, networkId++, Side.CLIENT);
+		
+		Utilities.addConsoleText("All Network Messages are registered.");
 	}
 	
 	private void registerGuiHandlers() {
@@ -125,7 +141,7 @@ public class CommonProxy {
 		rH.preInit();
 		cH.preInit(e);
 		
-		registerNetworkWrappers();
+		registerNetworkMessages();
 		registerGuiHandlers();
     }
 

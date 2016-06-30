@@ -1,17 +1,20 @@
 package de.comeight.crystallogy.network;
 
+import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientTileEntitySync;
+import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerTileEntitySync;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class NetworkPacketTileEntitySync extends BaseNetworkPacket {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private NBTTagCompound compound;
 	private BlockPos pos;
-	
-	public static final Byte ID_SERVER = 48;
-	public static final Byte ID_CLIENT = 49;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public NetworkPacketTileEntitySync() {
@@ -60,6 +63,24 @@ public class NetworkPacketTileEntitySync extends BaseNetworkPacket {
 			messageValid = false;
 			return;
 		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public IMessage handleClient(MessageContext msg) {
+		MessageHandlerOnClientTileEntitySync handler = new MessageHandlerOnClientTileEntitySync();
+		handler.onMessage(this, msg);
+		
+		return null;
+	}
+
+	@SideOnly(Side.SERVER)
+	@Override
+	public IMessage handleServer(MessageContext msg) {
+		MessageHandlerOnServerTileEntitySync handler = new MessageHandlerOnServerTileEntitySync();
+		handler.onMessage(this, msg);
+		
+		return null;
 	}
 	
 }

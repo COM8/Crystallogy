@@ -3,9 +3,7 @@ package de.comeight.crystallogy.items.crafting.infusion;
 import java.util.ArrayList;
 
 import de.comeight.crystallogy.handler.ItemHandler;
-import de.comeight.crystallogy.particles.ParticleA;
-import de.comeight.crystallogy.particles.ParticleB;
-import de.comeight.crystallogy.particles.ParticleC;
+import de.comeight.crystallogy.particles.ParticleInformation;
 import de.comeight.crystallogy.util.RGBColor;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.init.Blocks;
@@ -146,13 +144,13 @@ public class InfusionRecipeVaporizer extends InfusionRecipe {
 		
 		//Type:
 		if(leave == 1){
-			tagC.setString("particleType", ParticleA.NAME);
+			tagC.setString("particleType", ParticleInformation.ID_PARTICLE_A);
 		}
 		if(diamond == 1){
-			tagC.setString("particleType", ParticleB.NAME);
+			tagC.setString("particleType", ParticleInformation.ID_PARTICLE_B);
 		}
 		if(dirt == 1){
-			tagC.setString("particleType", ParticleC.NAME);
+			tagC.setString("particleType", ParticleInformation.ID_PARTICLE_C);
 		}
 		
 		//Size:

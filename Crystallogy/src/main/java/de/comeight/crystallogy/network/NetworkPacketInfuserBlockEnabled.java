@@ -1,9 +1,15 @@
 package de.comeight.crystallogy.network;
 
+import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientInfuserBlockEnabled;
+import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerInfuserBlockEnabled;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class NetworkPacketInfuserBlockEnabled extends BaseNetworkPacket {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -70,6 +76,24 @@ public class NetworkPacketInfuserBlockEnabled extends BaseNetworkPacket {
 			messageValid = false;
 			return;
 		}
+	}
+	
+	@SideOnly(Side.CLIENT)
+	@Override
+	public IMessage handleClient(MessageContext msg) {
+		MessageHandlerOnClientInfuserBlockEnabled handler = new MessageHandlerOnClientInfuserBlockEnabled();
+		handler.onMessage(this, msg);
+		
+		return null;
+	}
+
+	@SideOnly(Side.SERVER)
+	@Override
+	public IMessage handleServer(MessageContext msg) {
+		MessageHandlerOnServerInfuserBlockEnabled handler = new MessageHandlerOnServerInfuserBlockEnabled();
+		handler.onMessage(this, msg);
+		
+		return null;
 	}
 	
 }
