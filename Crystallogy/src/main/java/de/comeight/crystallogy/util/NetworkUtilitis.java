@@ -39,7 +39,7 @@ public class NetworkUtilitis {
 	/**
 	 * Sends a {@link BaseNetworkPacket} to everybody.
 	 * Client: A client sends this {@link BaseNetworkPacket} to all other clients and to the server
-	 * Server: A server sends this {@link BaseNetworkPacket} to ebery client
+	 * Server: A server sends this {@link BaseNetworkPacket} to every client
 	 * 
 	 * @param msg the {@link BaseNetworkPacket} that should get send arround
 	 * @param remote wether the world is remote or not
