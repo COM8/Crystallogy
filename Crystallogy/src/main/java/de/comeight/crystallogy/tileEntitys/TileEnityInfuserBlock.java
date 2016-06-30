@@ -9,6 +9,7 @@ import de.comeight.crystallogy.network.NetworkPacketInfuserBlockEnabled;
 import de.comeight.crystallogy.particles.ParticleInfuserBlockStatus;
 import de.comeight.crystallogy.renderer.InfusionAnimation;
 import de.comeight.crystallogy.structures.StructureInfuser;
+import de.comeight.crystallogy.util.NetworkUtilitis;
 import de.comeight.crystallogy.util.StructureAreaDescription;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;
@@ -147,7 +148,7 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
     public void updateParticle() {
     	if(worldObj != null && !worldObj.isRemote){
     		NetworkPacketInfuserBlockEnabled message = new NetworkPacketInfuserBlockEnabled(new Vec3d(this.pos), active);
-    		CommonProxy.NETWORKWRAPPER.sendToServer(message);
+    		NetworkUtilitis.sendAllAround(message, false);
 		}
 	}
     
