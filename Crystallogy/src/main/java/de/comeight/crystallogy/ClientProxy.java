@@ -4,7 +4,6 @@ import org.lwjgl.input.Keyboard;
 
 import de.comeight.crystallogy.handler.BlockRenderHandler;
 import de.comeight.crystallogy.handler.ItemRenderHandler;
-import de.comeight.crystallogy.handler.ParticleHandler;
 import de.comeight.crystallogy.network.NetworkPacketInfuserBlockEnabled;
 import de.comeight.crystallogy.network.NetworkPacketInfusionRecipeStatus;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
@@ -15,6 +14,7 @@ import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientInfu
 import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientParticle;
 import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientTileEntitySync;
 import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientUpdateInventory;
+import de.comeight.crystallogy.particles.ParticleHandler;
 import de.comeight.crystallogy.renderer.RendererEntityInCrystal;
 import de.comeight.crystallogy.renderer.RendererEntityinJar;
 import de.comeight.crystallogy.renderer.RendererInfuserBlockItem;
@@ -38,14 +38,14 @@ public class ClientProxy extends CommonProxy{
 	public static KeyBinding jetpackKey;
 	
 	//Particles:
-	private de.comeight.crystallogy.particles2.ParticleHandler pH = new de.comeight.crystallogy.particles2.ParticleHandler();
+	private ParticleHandler pH = new ParticleHandler();
 	
 	
 	//-----------------------------------------------Pre-Init:----------------------------------------------
 	@Override
     public void preInit(FMLPreInitializationEvent e) {
         super.preInit(e);
-        MinecraftForge.EVENT_BUS.register(new ParticleHandler());
+        MinecraftForge.EVENT_BUS.register(pH);
         registerNetworkWrappers();
         
         pH.preInit();
@@ -93,9 +93,9 @@ public class ClientProxy extends CommonProxy{
 	}
     
     private void registerKeybinding(){
-    	jetpackKey = new KeyBinding("keyBinding.space.name", Keyboard.KEY_SPACE, "Crystallogy");
+    	jetpackKey = new KeyBinding("Unused", Keyboard.KEY_SPACE, "Crystallogy");
     	
-    	//ClientRegistry.registerKeyBinding(jetpackKey);
+    	ClientRegistry.registerKeyBinding(jetpackKey);
     	
     	Utilities.addConsoleText("All keyBindings are registered.");
     }

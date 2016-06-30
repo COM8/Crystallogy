@@ -2,7 +2,7 @@ package de.comeight.crystallogy.renderer;
 
 import java.util.ArrayList;
 
-import de.comeight.crystallogy.particles.InfusionParticle;
+import de.comeight.crystallogy.particles.ParticleInfusion;
 import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.client.Minecraft;
@@ -13,7 +13,10 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class InfusionAnimation {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private BlockPos center;
@@ -24,7 +27,7 @@ public class InfusionAnimation {
 	
 	private boolean active;
 	private int ticks;
-	private InfusionParticle[] infusionParticles;
+	private ParticleInfusion[] particleInfusion;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public InfusionAnimation(BlockPos center, BlockPos[] surrounding, World world, int timeInMS) {
@@ -36,7 +39,7 @@ public class InfusionAnimation {
 		
 		this.active = false;
 		this.ticks = 0;
-		this.infusionParticles = null;
+		this.particleInfusion = null;
 		
 		setActiveInfusers();
 	}
@@ -59,9 +62,6 @@ public class InfusionAnimation {
 					}
 				}
 			}
-			else{
-				System.out.println("null");
-			}
 		}
 		
 		BlockPos[] a = new BlockPos[list.size()];
@@ -77,13 +77,13 @@ public class InfusionAnimation {
 			return;
 		}
 		
-		infusionParticles = new InfusionParticle[surrounding.length];
+		particleInfusion = new ParticleInfusion[surrounding.length];
 		for (int i = 0; i < surrounding.length; i++) {
 			if (center != null && surrounding[i] != null) {
 				BlockPos p = surrounding[i];
-				this.infusionParticles[i] = new InfusionParticle(world, 0.0, 0.0, 0.0, new Vec3d(p.getX() + 0.5, p.getY() + 0.75, p.getZ() + 0.5), new Vec3d(center.getX() + 0.5, center.getY() + 0.75, center.getZ() + 0.5), timeInMS);
-				this.infusionParticles[i].setRBGColorF(Utilities.getRandFloat(0.0F, 1.0F), Utilities.getRandFloat(0.0F, 1.0F), Utilities.getRandFloat(0.0F, 1.0F));
-				Minecraft.getMinecraft().effectRenderer.addEffect(infusionParticles[i]);
+				this.particleInfusion[i] = new ParticleInfusion(world, new Vec3d(p.getX() + 0.5, p.getY() + 0.75, p.getZ() + 0.5), new Vec3d(center.getX() + 0.5, center.getY() + 0.75, center.getZ() + 0.5), timeInMS);
+				this.particleInfusion[i].setRBGColorF(Utilities.getRandFloat(0.0F, 1.0F), Utilities.getRandFloat(0.0F, 1.0F), Utilities.getRandFloat(0.0F, 1.0F));
+				Minecraft.getMinecraft().effectRenderer.addEffect(particleInfusion[i]);
 			}
 		}
 		
@@ -101,9 +101,9 @@ public class InfusionAnimation {
 			world.playSound(center.getX(), center.getY(), center.getZ(), SoundEvents.ENTITY_WITHER_SPAWN, SoundCategory.BLOCKS, 1.0F, Utilities.getRandFloat(0.55F, 1.25F), false);
 		}
 		
-		for (int i = 0; i < infusionParticles.length; i++) {
-			if(infusionParticles[i] != null){
-				infusionParticles[i].setExpired();
+		for (int i = 0; i < particleInfusion.length; i++) {
+			if(particleInfusion[i] != null){
+				particleInfusion[i].setExpired();
 			}
 		}
 		

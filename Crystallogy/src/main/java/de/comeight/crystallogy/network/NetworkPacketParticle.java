@@ -1,6 +1,7 @@
 package de.comeight.crystallogy.network;
 
 import io.netty.buffer.ByteBuf;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 
 public class NetworkPacketParticle extends BaseNetworkPacket {
@@ -17,7 +18,7 @@ public class NetworkPacketParticle extends BaseNetworkPacket {
 	
 	public NetworkPacketParticle(NetworkParticle nP){
 		if(nP == null){
-			this.messageValid =false;
+			this.messageValid = false;
 		}
 		else{
 			this.nP = nP;
@@ -42,14 +43,16 @@ public class NetworkPacketParticle extends BaseNetworkPacket {
 		if (!messageValid && nP != null) {
 			return;
 		}
-		ByteBufUtils.writeTag(buf, nP.toTag());
+		NBTTagCompound compound = new NBTTagCompound();
+		nP.toNBT(compound);
+		ByteBufUtils.writeTag(buf, compound);
 	}
 
 	@Override
 	public void fromBytes(ByteBuf buf) {
 		try{
 			this.nP = new NetworkParticle();
-			this.nP.fromTag(ByteBufUtils.readTag(buf));
+			this.nP.fromNBT(ByteBufUtils.readTag(buf));
 			messageValid = true;
 		}
 		catch (Exception e) {

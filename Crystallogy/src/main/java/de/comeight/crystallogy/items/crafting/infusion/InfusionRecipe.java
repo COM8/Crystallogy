@@ -9,7 +9,8 @@ import de.comeight.crystallogy.network.NetworkPacketInfusionRecipeStatus;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkPacketUpdateInventory;
 import de.comeight.crystallogy.network.NetworkParticle;
-import de.comeight.crystallogy.particles.ParticleNColor;
+import de.comeight.crystallogy.particles.ParticleInformation;
+import de.comeight.crystallogy.particles.TransportParticle;
 import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -163,8 +164,10 @@ public abstract class InfusionRecipe {
 	
 	protected void spawnParticlesOnClient(boolean successfully){
 		BlockPos pos = centerInput.getPos();
-		ParticleNColor particle = new ParticleNColor(worldIn, pos.getX() + 0.5, pos.getY() + 0.6, pos.getZ() + 0.5, 0.0, 0.0, 0.0);
-		NetworkParticle nP = new NetworkParticle(particle, particle.NAME);
+		TransportParticle tP = new TransportParticle(new Vec3d(pos.getX() + 0.5, pos.getY() + 0.6, pos.getZ() + 0.5));
+		tP.randomColor = true;
+		
+		NetworkParticle nP = new NetworkParticle(tP, ParticleInformation.ID_PARTICLE_N_COLOR);
 		nP.setSize(new Vec3d(0.25, 2.0, 0.25));
 		nP.setNumberOfParticle(30);
 		NetworkPacketParticle pMtS = new NetworkPacketParticle(nP);
@@ -173,8 +176,10 @@ public abstract class InfusionRecipe {
 		if(!successfully){
 			for (int i = 0; i < ingredients.length; i++) {
 				pos = ingredients[i].getPos();
-				particle = new ParticleNColor(worldIn, pos.getX() + 0.5, pos.getY() + 0.6, pos.getZ() + 0.5, 0.0, 0.0, 0.0);
-				nP = new NetworkParticle(particle, particle.NAME);
+				tP = new TransportParticle(new Vec3d(pos.getX() + 0.5, pos.getY() + 0.6, pos.getZ() + 0.5));
+				tP.randomColor = true;
+				
+				nP = new NetworkParticle(tP, ParticleInformation.ID_PARTICLE_N_COLOR);
 				nP.setSize(new Vec3d(0.25, 2.0, 0.25));
 				nP.setNumberOfParticle(30);
 				pMtS = new NetworkPacketParticle(nP);

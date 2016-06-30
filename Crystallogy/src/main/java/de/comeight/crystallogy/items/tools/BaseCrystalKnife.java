@@ -7,8 +7,10 @@ import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.blocks.materials.CustomToolMaterials;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkParticle;
-import de.comeight.crystallogy.particles.ParticleB;
+import de.comeight.crystallogy.particles.ParticleInformation;
+import de.comeight.crystallogy.particles.TransportParticle;
 import de.comeight.crystallogy.tileEntitys.TileEntityEntityJar;
+import de.comeight.crystallogy.util.RGBColor;
 import de.comeight.crystallogy.util.ToolTipBuilder;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.client.gui.GuiScreen;
@@ -194,10 +196,10 @@ public class BaseCrystalKnife extends BaseItemSword{
 			if(release){
 				if(worldIn.isRemote){
 					for (int i = 0; i < 5; i++) { //Particel:
-						ParticleB gP = new ParticleB(worldIn, pos.xCoord, pos.yCoord, pos.zCoord, 0.0, 0.0, 0.0);
-						gP.setParticleMaxAge(120);
-						gP.setRBGColorF(Utilities.getRandFloat(0, 100), Utilities.getRandFloat(0, 100), Utilities.getRandFloat(0, 100));
-						NetworkParticle nP = new NetworkParticle(gP, gP.name);
+						TransportParticle tP = new TransportParticle(new Vec3d(pos.xCoord, pos.yCoord, pos.zCoord));
+						tP.maxAge = 120;
+						tP.color = new RGBColor(Utilities.getRandFloat(0, 100), Utilities.getRandFloat(0, 100), Utilities.getRandFloat(0, 100));
+						NetworkParticle nP = new NetworkParticle(tP, ParticleInformation.ID_PARTICLE_B);
 						nP.setSize(new Vec3d(1.0, 2.0, 1.0));
 						nP.setNumberOfParticle(30);
 						NetworkPacketParticle pMtS = new NetworkPacketParticle(nP);

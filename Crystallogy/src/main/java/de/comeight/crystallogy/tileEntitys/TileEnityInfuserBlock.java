@@ -6,7 +6,7 @@ import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.handler.InfusionRecipeHandler;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipe;
 import de.comeight.crystallogy.network.NetworkPacketInfuserBlockEnabled;
-import de.comeight.crystallogy.particles.InfuserBlockActiveParticle;
+import de.comeight.crystallogy.particles.ParticleInfuserBlockStatus;
 import de.comeight.crystallogy.renderer.InfusionAnimation;
 import de.comeight.crystallogy.structures.StructureInfuser;
 import de.comeight.crystallogy.util.StructureAreaDescription;
@@ -21,6 +21,8 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileEnityInfuserBlock extends TileEntityInventory implements ITickable, ISidedInventory{
 
@@ -31,10 +33,12 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 	private StructureInfuser struct;
 	private boolean active;
 	
-	private InfuserBlockActiveParticle infuserBlockActiveParticle;
 	private InfusionRecipe recipe;
 	
 	private InfusionAnimation infusionAnimation;
+	
+	@SideOnly(Side.CLIENT)
+	private ParticleInfuserBlockStatus particleInfuserBlockStatus;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public TileEnityInfuserBlock() {
@@ -193,21 +197,22 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 		}
 	}
 	
+	@SideOnly(Side.CLIENT)
 	public void changeParticleActive(Boolean status) {
 		if(status){
-			if(infuserBlockActiveParticle == null){
-				infuserBlockActiveParticle = new InfuserBlockActiveParticle(worldObj, this.pos.getX() + 0.5, this.pos.getY() + 1.0, this.pos.getZ() + 0.5, 0, 0, 0);
-				infuserBlockActiveParticle.setParticleMaxAge(10);
-				Minecraft.getMinecraft().effectRenderer.addEffect(infuserBlockActiveParticle);
+			if(particleInfuserBlockStatus == null){
+				particleInfuserBlockStatus = new ParticleInfuserBlockStatus(worldObj, new Vec3d(this.pos.getX() + 0.5, this.pos.getY() + 1.0, this.pos.getZ() + 0.5));
+				particleInfuserBlockStatus.setMaxAge(10);
+				Minecraft.getMinecraft().effectRenderer.addEffect(particleInfuserBlockStatus);
 			}
 			else{
-				infuserBlockActiveParticle.setParticleAge(0);
+				particleInfuserBlockStatus.setParticleAge(0);
 			}
 		}
 		else{
-			if(infuserBlockActiveParticle != null){
-				infuserBlockActiveParticle.setExpired();
-				infuserBlockActiveParticle = null;
+			if(particleInfuserBlockStatus != null){
+				particleInfuserBlockStatus.setExpired();
+				particleInfuserBlockStatus = null;
 			}
 		}
 	}
