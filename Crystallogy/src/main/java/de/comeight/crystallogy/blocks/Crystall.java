@@ -4,12 +4,12 @@ import java.util.Random;
 
 import com.google.common.base.Predicate;
 
-import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.ParticleB;
 import de.comeight.crystallogy.particles.ParticleInformation;
 import de.comeight.crystallogy.particles.TransportParticle;
+import de.comeight.crystallogy.util.NetworkUtilitis;
 import de.comeight.crystallogy.util.RGBColor;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.block.SoundType;
@@ -155,26 +155,27 @@ public abstract class Crystall extends BaseBlockCutout{
 		Minecraft.getMinecraft().effectRenderer.addEffect(p);
 	}
 	
-	protected void addGlitterParticleNetworkChance(World worldIn, BlockPos pos, int chance){
+	protected void addGlitterParticleNetworkChance(World worldIn, BlockPos pos, int chance, int countParticles){
 		if(Utilities.getRandInt(1, chance) == chance){
-			addGlitterParticleNetwork(worldIn, pos);
+			addGlitterParticleNetwork(worldIn, pos, countParticles);
 		}
 	}
 	
-	protected void addGlitterParticleNetwork(World worldIn, BlockPos pos){
-		TransportParticle tP = new TransportParticle(new Vec3d(pos.getX() + Utilities.getRandDouble(0.25, 0.75), pos.getY() + Utilities.getRandDouble(0.25, 0.75), pos.getZ() + Utilities.getRandDouble(0.25, 0.75)));
+	protected void addGlitterParticleNetwork(World worldIn, BlockPos pos, int countParticles){
+		TransportParticle tP = new TransportParticle(new Vec3d(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5));
 		tP.maxAge = 60;
 		tP.color = color;
 		NetworkParticle nP = new NetworkParticle(tP, ParticleInformation.ID_PARTICLE_B);
-		nP.setSize(new Vec3d(0.0, 0.0, 0.0));
+		nP.setSize(new Vec3d(0.25, 0.25, 0.25));
+		nP.setNumberOfParticle(countParticles);
 		NetworkPacketParticle pMtS = new NetworkPacketParticle(nP);
-		CommonProxy.NETWORKWRAPPER.sendToServer(pMtS);
+		NetworkUtilitis.sendAllAround(pMtS, worldIn.isRemote);
 	}
     
 	@Override
 	public void onBlockClicked(World worldIn, BlockPos pos, EntityPlayer playerIn) {
-		for(int i = 0; i < 10; i++){
-			addGlitterParticleNetwork(worldIn, pos);
+		if(!worldIn.isRemote){
+			addGlitterParticleNetwork(worldIn, pos, 10);
 		}
 		
 		super.onBlockClicked(worldIn, pos, playerIn);
@@ -182,9 +183,7 @@ public abstract class Crystall extends BaseBlockCutout{
 	
 	@Override
 	public void onBlockHarvested(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player) {
-		for(int i = 0; i < 50; i++){
-			addGlitterParticleNetwork(worldIn, pos);
-		}
+		addGlitterParticleNetwork(worldIn, pos, 30);
 		super.onBlockHarvested(worldIn, pos, state, player);
 	}
 	
