@@ -111,10 +111,10 @@ public class BaseCrystalKnife extends BaseItemSword{
 	
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-		if(hasEntity(stack)){
-			removeEntity(stack, target.worldObj, attacker.getPositionVector(), true);
-		}
 		if(!(target instanceof EntityPlayer)){
+			if(hasEntity(stack)){
+				removeEntity(stack, target.worldObj, attacker.getPositionVector(), true);
+			}
 			stack = saveNBT(stack, target);
 			super.hitEntity(stack, target, attacker);
 			return true;

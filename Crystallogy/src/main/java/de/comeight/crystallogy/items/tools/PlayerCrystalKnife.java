@@ -5,7 +5,6 @@ import java.util.UUID;
 
 import com.mojang.authlib.GameProfile;
 
-import de.comeight.crystallogy.entity.PlayerClientDummy;
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
 import de.comeight.crystallogy.util.ToolTipBuilder;
 import net.minecraft.client.gui.GuiScreen;
@@ -65,13 +64,37 @@ public class PlayerCrystalKnife extends BaseCrystalKnife{
 			if(worldIn.getTileEntity(pos) instanceof TileEntityPlayerJar){
 				TileEntityPlayerJar tE = (TileEntityPlayerJar) worldIn.getTileEntity(pos);
 				if(!tE.hasEntity()){
-					tE.setEntity(new PlayerClientDummy(worldIn, getGameProfile(stack)));
+					tE.setEntity(new EntityPlayer(worldIn, getGameProfile(stack)) {
+						
+						@Override
+						public boolean isSpectator() {
+							return false;
+						}
+						
+						@Override
+						public boolean isCreative() {
+							return false;
+						}
+					});
 					stack = removeEntity(stack, worldIn, playerIn.getPositionVector(), false);
 				}
 			}
 		}
 		
 		return EnumActionResult.SUCCESS;
+	}
+	
+	@Override
+	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
+		if(hasEntity(stack)){
+			removeEntity(stack, target.worldObj, attacker.getPositionVector(), true);
+		}
+		if(target instanceof EntityPlayer){
+			stack = saveNBT(stack, target);
+			super.hitEntity(stack, target, attacker);
+			return true;
+		}
+		return super.hitEntity(stack, target, attacker);
 	}
 	
 	@SideOnly(Side.CLIENT)

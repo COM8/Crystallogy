@@ -5,7 +5,6 @@ import java.util.UUID;
 import com.mojang.authlib.GameProfile;
 
 import de.comeight.crystallogy.CommonProxy;
-import de.comeight.crystallogy.entity.PlayerClientDummy;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.ParticleInformation;
@@ -38,14 +37,14 @@ public class TileEntityPlayerJar extends TileEntityEntityJar {
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	@Override
 	public void setEntity(EntityLivingBase entity) {
-		if(entity instanceof PlayerClientDummy){
-			PlayerClientDummy player = (PlayerClientDummy) entity;
+		if(entity instanceof EntityPlayer){
+			EntityPlayer player = (EntityPlayer) entity;
 			this.profile = player.getGameProfile();
 			
 			super.setEntity(entity);
 		}
 		else{
-			Log.error("Entity is no instance of PlayerClientDummy!");
+			Log.error("Entity is no instance of EntityPlayer!");
 		}
 	}
 	
@@ -55,6 +54,10 @@ public class TileEntityPlayerJar extends TileEntityEntityJar {
 			return true;
 		}
 		return false;
+	}
+	
+	public GameProfile getProfile() {
+		return profile;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
@@ -73,13 +76,24 @@ public class TileEntityPlayerJar extends TileEntityEntityJar {
 			if(!name.equals("")){
 				profile = new GameProfile(uuid, name);
 				if(worldObj != null){
-					entity = new PlayerClientDummy(worldObj, profile);
+					entity = new EntityPlayer(worldObj, profile) {
+						
+						@Override
+						public boolean isSpectator() {
+							return false;
+						}
+						
+						@Override
+						public boolean isCreative() {
+							return false;
+						}
+					};
 				}
 			}
 		}
 		else{
-			this.entity = null;
-			this.profile = null;
+			entity = null;
+			profile = null;
 		}
 	}
 	
