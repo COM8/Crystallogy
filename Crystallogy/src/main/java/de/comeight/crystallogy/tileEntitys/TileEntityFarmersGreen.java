@@ -123,7 +123,9 @@ public class TileEntityFarmersGreen extends BaseTileEntity implements ITickable{
 			IBlockState state = worldObj.getBlockState(posGrowth);
 			if(state.getBlock() instanceof IPlantable || state.getBlock() instanceof IGrowable){
 				state.getBlock().updateTick(worldObj, posGrowth, state, worldObj.rand);
-				spawnParticlesNetwork(posGrowth);
+				if(state != worldObj.getBlockState(posGrowth)){
+					spawnParticlesNetwork(posGrowth);
+				}
 			}
 		}
 	}
@@ -143,7 +145,7 @@ public class TileEntityFarmersGreen extends BaseTileEntity implements ITickable{
 		nP.setSize(new Vec3d(0.0, 0.0, 0.0));
 		nP.setNumberOfParticle(3);
 		NetworkPacketParticle pMtS = new NetworkPacketParticle(nP);
-		CommonProxy.NETWORKWRAPPER.sendToServer(pMtS);
+		CommonProxy.NETWORKWRAPPER.sendToDimension(pMtS, worldObj.provider.getDimension());
 	}
 	
 }
