@@ -8,7 +8,10 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class RendererPlayerInJar extends TileEntitySpecialRenderer<TileEntityPlayerJar> {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	
