@@ -4,8 +4,6 @@ import de.comeight.crystallogy.particles.TransportParticle;
 import de.comeight.crystallogy.util.Log;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.Vec3d;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class NetworkParticle {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -16,7 +14,6 @@ public class NetworkParticle {
 	private TransportParticle transportParticle;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	@SideOnly(Side.CLIENT)
 	public NetworkParticle() {
 		this.type = "";
 		this.transportParticle = new TransportParticle();

@@ -1,8 +1,14 @@
 package de.comeight.crystallogy.network;
 
+import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientParticle;
+import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerParticle;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class NetworkPacketParticle extends BaseNetworkPacket {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -60,6 +66,24 @@ public class NetworkPacketParticle extends BaseNetworkPacket {
 			messageValid = false;
 			return;
 		}
+	}
+	
+	@SideOnly(Side.CLIENT)
+	@Override
+	public IMessage handleClient(MessageContext msg) {
+		MessageHandlerOnClientParticle handler = new MessageHandlerOnClientParticle();
+		handler.onMessage(this, msg);
+		
+		return null;
+	}
+
+	@SideOnly(Side.SERVER)
+	@Override
+	public IMessage handleServer(MessageContext msg) {
+		MessageHandlerOnServerParticle handler = new MessageHandlerOnServerParticle();
+		handler.onMessage(this, msg);
+		
+		return null;
 	}
 	
 }

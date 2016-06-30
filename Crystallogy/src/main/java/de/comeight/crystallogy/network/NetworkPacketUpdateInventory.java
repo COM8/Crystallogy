@@ -1,10 +1,16 @@
 package de.comeight.crystallogy.network;
 
+import de.comeight.crystallogy.network.handler.Client.MessageHandlerOnClientUpdateInventory;
+import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerUpdateInventory;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Deprecated
 public class NetworkPacketUpdateInventory extends BaseNetworkPacket {
@@ -112,6 +118,24 @@ public class NetworkPacketUpdateInventory extends BaseNetworkPacket {
 			messageValid = false;
 			return;
 		}
+	}
+	
+	@SideOnly(Side.CLIENT)
+	@Override
+	public IMessage handleClient(MessageContext msg) {
+		MessageHandlerOnClientUpdateInventory handler = new MessageHandlerOnClientUpdateInventory();
+		handler.onMessage(this, msg);
+		
+		return null;
+	}
+
+	@SideOnly(Side.SERVER)
+	@Override
+	public IMessage handleServer(MessageContext msg) {
+		MessageHandlerOnServerUpdateInventory handler = new MessageHandlerOnServerUpdateInventory();
+		handler.onMessage(this, msg);
+		
+		return null;
 	}
 	
 }

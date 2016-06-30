@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class MessageHandlerOnClientInfuserBlockEnabled implements IMessageHandler<NetworkPacketInfuserBlockEnabled, IMessage> {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -35,18 +36,20 @@ public class MessageHandlerOnClientInfuserBlockEnabled implements IMessageHandle
 			System.err.println("NetworkPacketInfuserBlockEnabled was invalid" + message.toString());
 			return null;
 		}
-		Minecraft minecraft = Minecraft.getMinecraft();
-		final WorldClient worldClient = minecraft.theWorld;
+		final Minecraft minecraft = Minecraft.getMinecraft();
 		minecraft.addScheduledTask(new Runnable() {
 			public void run() {
-				processMessage(message, worldClient);
+				processMessage(message, minecraft);
 			}
 		});
 		return null;
 	}
 	
-	private void processMessage(NetworkPacketInfuserBlockEnabled message, WorldClient worldClient) {
+	@SideOnly(Side.CLIENT)
+	private void processMessage(NetworkPacketInfuserBlockEnabled message, Minecraft minecraft) {
+		WorldClient worldClient = minecraft.theWorld;
 		Vec3d pos = message.getTilePos();
+		
 		TileEntity tE = worldClient.getTileEntity(new BlockPos(pos.xCoord, pos.yCoord, pos.zCoord));
 		if(tE instanceof TileEnityInfuserBlock){
 			TileEnityInfuserBlock t =  (TileEnityInfuserBlock) tE;

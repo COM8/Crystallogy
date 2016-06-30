@@ -2,7 +2,6 @@ package de.comeight.crystallogy.items.tools;
 
 import java.util.List;
 
-import de.comeight.crystallogy.util.ToolTipBuilder;
 import de.comeight.crystallogy.util.ToolUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

@@ -1,9 +1,14 @@
 package de.comeight.crystallogy.network;
 
+import de.comeight.crystallogy.network.handler.Server.MessageHandlerOnServerTileEntityRequestSync;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class NetworkPacketTileEntityRequestSync extends BaseNetworkPacket {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -64,6 +69,22 @@ public class NetworkPacketTileEntityRequestSync extends BaseNetworkPacket {
 			messageValid = false;
 			return;
 		}
+	}
+	
+	@SideOnly(Side.CLIENT)
+	@Override
+	public IMessage handleClient(MessageContext msg) {
+		
+		return null;
+	}
+
+	@SideOnly(Side.SERVER)
+	@Override
+	public IMessage handleServer(MessageContext msg) {
+		MessageHandlerOnServerTileEntityRequestSync handler = new MessageHandlerOnServerTileEntityRequestSync();
+		handler.onMessage(this, msg);
+		
+		return null;
 	}
 	
 }

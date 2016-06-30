@@ -251,7 +251,7 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 	@Override
 	public void update() {
 		if(!hasEntity()){
-			if(couldNotLoad){ //Load the entity
+			if(couldNotLoad && worldObj.isRemote){ //Load the entity
 				UUID uuid = couldNotLoadCompund.getUniqueId("uuid");
 				entity = findEntity(uuid);
 			}

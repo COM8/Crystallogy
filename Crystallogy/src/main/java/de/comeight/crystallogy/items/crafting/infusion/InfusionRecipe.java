@@ -2,7 +2,6 @@ package de.comeight.crystallogy.items.crafting.infusion;
 
 import java.util.ArrayList;
 
-import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.handler.ConfigHandler;
 import de.comeight.crystallogy.handler.InfusionRecipeHandler;
 import de.comeight.crystallogy.network.NetworkPacketInfusionRecipeStatus;
@@ -12,6 +11,7 @@ import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.ParticleInformation;
 import de.comeight.crystallogy.particles.TransportParticle;
 import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
+import de.comeight.crystallogy.util.NetworkUtilitis;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -170,8 +170,8 @@ public abstract class InfusionRecipe {
 		NetworkParticle nP = new NetworkParticle(tP, ParticleInformation.ID_PARTICLE_N_COLOR);
 		nP.setSize(new Vec3d(0.25, 2.0, 0.25));
 		nP.setNumberOfParticle(30);
-		NetworkPacketParticle pMtS = new NetworkPacketParticle(nP);
-		CommonProxy.NETWORKWRAPPER.sendToServer(pMtS);
+		NetworkPacketParticle packet = new NetworkPacketParticle(nP);
+		NetworkUtilitis.sendAllAround(packet, worldIn.isRemote);
 		
 		if(!successfully){
 			for (int i = 0; i < ingredients.length; i++) {
@@ -182,8 +182,8 @@ public abstract class InfusionRecipe {
 				nP = new NetworkParticle(tP, ParticleInformation.ID_PARTICLE_N_COLOR);
 				nP.setSize(new Vec3d(0.25, 2.0, 0.25));
 				nP.setNumberOfParticle(30);
-				pMtS = new NetworkPacketParticle(nP);
-				CommonProxy.NETWORKWRAPPER.sendToServer(pMtS);
+				packet = new NetworkPacketParticle(nP);
+				NetworkUtilitis.sendAllAround(packet, worldIn.isRemote);
 			}
 		}
 		
@@ -191,13 +191,13 @@ public abstract class InfusionRecipe {
 	
 	protected void startAnimationOnClients(){
 		NetworkPacketInfusionRecipeStatus packet = new NetworkPacketInfusionRecipeStatus(centerInput.getPos(), true, InfusionRecipeHandler.getIndexOfRecipe(this), true);
-		CommonProxy.NETWORKWRAPPER.sendToServer(packet);
+		NetworkUtilitis.sendAllAround(packet, worldIn.isRemote);
 		
 	}
 	
 	protected void stopAnimationOnClients(boolean successfully){
 		NetworkPacketInfusionRecipeStatus packet = new NetworkPacketInfusionRecipeStatus(centerInput.getPos(), false, -1, successfully);
-		CommonProxy.NETWORKWRAPPER.sendToServer(packet);
+		NetworkUtilitis.sendAllAround(packet, worldIn.isRemote);
 	}
 	
 	protected void removeIngredients(){
@@ -213,8 +213,8 @@ public abstract class InfusionRecipe {
 	}
 
 	protected void setItemOnClient(BlockPos pos, ItemStack stack) {
-		NetworkPacketUpdateInventory message = new NetworkPacketUpdateInventory(pos, stack, 0); //TODO update
-		CommonProxy.NETWORKWRAPPER.sendToServer(message);
+		NetworkPacketUpdateInventory packet = new NetworkPacketUpdateInventory(pos, stack, 0); //TODO update
+		NetworkUtilitis.sendAllAround(packet, worldIn.isRemote);
 	}
 	
 	protected boolean compare(ItemStack i1, ItemStack i2){

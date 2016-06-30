@@ -13,6 +13,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class MessageHandlerOnClientParticle implements IMessageHandler<NetworkPacketParticle, IMessage> {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -37,17 +38,18 @@ public class MessageHandlerOnClientParticle implements IMessageHandler<NetworkPa
 			System.err.println("NetworkPacketParticle was invalid" + message.toString());
 			return null;
 		}
-		Minecraft minecraft = Minecraft.getMinecraft();
-		final WorldClient worldClient = minecraft.theWorld;
+		final Minecraft minecraft = Minecraft.getMinecraft();
 		minecraft.addScheduledTask(new Runnable() {
 			public void run() {
-				processMessage(message, worldClient);
+				processMessage(message, minecraft);
 			}
 		});
 		return null;
 	}
 	
-	private void processMessage(NetworkPacketParticle message, WorldClient worldClient) {
+	@SideOnly(Side.CLIENT)
+	private void processMessage(NetworkPacketParticle message, Minecraft minecraft) {
+		WorldClient worldClient = minecraft.theWorld;
 		NetworkParticle nP = message.getNetworkParticle();
 		Vec3d pos = nP.getTransporterParticle().pos;
 		Vec3d size = nP.getSize();

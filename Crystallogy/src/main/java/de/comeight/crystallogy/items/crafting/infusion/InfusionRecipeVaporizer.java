@@ -3,9 +3,6 @@ package de.comeight.crystallogy.items.crafting.infusion;
 import java.util.ArrayList;
 
 import de.comeight.crystallogy.handler.ItemHandler;
-import de.comeight.crystallogy.particles.ParticleA;
-import de.comeight.crystallogy.particles.ParticleB;
-import de.comeight.crystallogy.particles.ParticleC;
 import de.comeight.crystallogy.particles.ParticleInformation;
 import de.comeight.crystallogy.util.RGBColor;
 import de.comeight.crystallogy.util.Utilities;
