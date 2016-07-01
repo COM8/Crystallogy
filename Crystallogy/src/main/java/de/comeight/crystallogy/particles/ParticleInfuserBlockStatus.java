@@ -11,7 +11,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ParticleInfuserBlockStatus extends BaseParticle {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	public static final ResourceLocation RL_PARTICLE_INFUSER_BLOCK_STATUS = new ResourceLocation("crystallogy:particles/i/i0");
+	public static final ResourceLocation RL_PARTICLE_INFUSER_BLOCK_STATUS = new ResourceLocation("crystallogy:particles/i/i");
 
 	private int colorStatus;
 	private int color;

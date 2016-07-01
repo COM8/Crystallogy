@@ -9,7 +9,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ParticleA extends BaseParticleExtended {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	public static final ResourceLocation RL_PARTICLE_A = new ResourceLocation("crystallogy:particles/a/a0");
+	public static final ResourceLocation RL_PARTICLE_A = new ResourceLocation("crystallogy:particles/a/a");
 
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public ParticleA(World worldIn, Vec3d pos) {

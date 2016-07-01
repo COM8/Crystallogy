@@ -10,7 +10,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ParticleEnderon extends BaseParticleExtended {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	public static final ResourceLocation RL_PARTICLE_ENDERON = new ResourceLocation("crystallogy:particles/p/p0");
+	public static final ResourceLocation RL_PARTICLE_ENDERON = new ResourceLocation("crystallogy:particles/p/p");
 
 	protected Vec3d targetPos;
 	
