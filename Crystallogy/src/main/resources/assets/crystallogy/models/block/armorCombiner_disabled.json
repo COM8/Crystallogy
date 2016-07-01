@@ -15,7 +15,7 @@
 			"up":    { "uv": [ 1, 1, 15, 15 ], "texture": "#texture_top" },
 			"north": { "uv": [ 1, 1, 15, 15 ], "texture": "#machineBlock_front" },
 			"south": { "uv": [ 1, 1, 15, 15 ], "texture": "#machine_side" },
-			"west":  { "uv": [ 1, 1, 15, 15 ], "texture": "#machine_side", "cullface": "down" },
+			"west":  { "uv": [ 1, 1, 15, 15 ], "texture": "#machine_side" },
 			"east":  { "uv": [ 1, 1, 15, 15 ], "texture": "#machine_side" }
 		}
 	},
