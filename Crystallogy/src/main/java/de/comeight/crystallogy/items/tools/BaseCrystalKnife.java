@@ -203,7 +203,7 @@ public class BaseCrystalKnife extends BaseItemSword{
 						nP.setSize(new Vec3d(1.0, 2.0, 1.0));
 						nP.setNumberOfParticle(30);
 						NetworkPacketParticle pMtS = new NetworkPacketParticle(nP);
-						CommonProxy.NETWORKWRAPPER.sendToServer(pMtS);	
+						CommonProxy.NETWORKWRAPPER.sendToDimension(pMtS, worldIn.provider.getDimension());	
 					}
 				}
 				worldIn.addWeatherEffect(new EntityLightningBolt(worldIn, pos.xCoord, pos.yCoord, pos.zCoord, false));

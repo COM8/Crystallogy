@@ -49,7 +49,7 @@ public class ItemBlockCrystalOfHolding extends BaseItemBlock {
 		NBTTagCompound compound = stack.getTagCompound();
 		Entity ent = EntityUtils.readEntityFromCompound(compound, worldIn);
 		
-		stack.setTagCompound(getEmptyCompound());
+		stack.setTagCompound(null);
 		return ent;
 	}
 
