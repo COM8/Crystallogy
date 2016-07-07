@@ -15,6 +15,7 @@ public class ParticleInformation {
 	public static final String ID_PARTICLE_INFUSION = "crystallogy:infusion";
 	public static final String ID_PARTICLE_INFUSER_BLOCK_STATUS = "crystallogy:inferBlockstatus";
 	public static final String ID_PARTICLE_ENDERON = "crystallogy:enderon";
+	public static final String ID_PARTICLE_DEBUG = "crystallogy:debug";
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 
