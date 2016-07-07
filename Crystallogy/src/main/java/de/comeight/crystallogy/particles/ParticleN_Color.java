@@ -9,7 +9,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ParticleN_Color extends BaseParticleExtended {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	public static final ResourceLocation RL_PARTICLE_N_COLOR = new ResourceLocation("crystallogy:particles/n_color/n0");
+	public static final ResourceLocation RL_PARTICLE_N_COLOR = new ResourceLocation("crystallogy:particles/n_color/n");
 
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public ParticleN_Color(World worldIn, Vec3d pos) {

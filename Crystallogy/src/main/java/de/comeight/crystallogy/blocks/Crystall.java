@@ -169,12 +169,12 @@ public abstract class Crystall extends BaseBlockCutout{
 		nP.setSize(new Vec3d(0.25, 0.25, 0.25));
 		nP.setNumberOfParticle(countParticles);
 		NetworkPacketParticle pMtS = new NetworkPacketParticle(nP);
-		NetworkUtilitis.sendAllAround(pMtS, worldIn.isRemote);
+		NetworkUtilitis.sendToServer(pMtS);
 	}
     
 	@Override
 	public void onBlockClicked(World worldIn, BlockPos pos, EntityPlayer playerIn) {
-		if(!worldIn.isRemote){
+		if(worldIn.isRemote){
 			addGlitterParticleNetwork(worldIn, pos, 10);
 		}
 		

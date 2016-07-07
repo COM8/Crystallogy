@@ -10,7 +10,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ParticleLight extends BaseParticle {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	public static final ResourceLocation RL_PARTICLE_LIGHT = new ResourceLocation("crystallogy:particles/l_color/l0");
+	public static final ResourceLocation RL_PARTICLE_LIGHT = new ResourceLocation("crystallogy:particles/l_color/l");
 	
 	private double speed;
 

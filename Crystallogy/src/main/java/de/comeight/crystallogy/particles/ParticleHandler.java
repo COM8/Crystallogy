@@ -43,11 +43,6 @@ public class ParticleHandler {
 	}
 	
 	public void registerParticleTextures(TextureStitchEvent.Pre event){
-		event.getMap().registerSprite(ParticleInformation.RL_PARTICLE_1);
-		event.getMap().registerSprite(ParticleInformation.RL_PARTICLE_1W);
-		event.getMap().registerSprite(ParticleInformation.RL_PARTICLE_2);
-		event.getMap().registerSprite(ParticleInformation.RL_PARTICLE_2W);
-		
 		ResourceLocation rL;
 		for (BaseParticle baseParticle : particleList) {
 			rL = baseParticle.rL;

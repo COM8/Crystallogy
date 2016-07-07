@@ -3,13 +3,13 @@ package de.comeight.crystallogy.items.tools;
 import java.util.List;
 import java.util.UUID;
 
-import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.blocks.materials.CustomToolMaterials;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.ParticleInformation;
 import de.comeight.crystallogy.particles.TransportParticle;
 import de.comeight.crystallogy.tileEntitys.TileEntityEntityJar;
+import de.comeight.crystallogy.util.NetworkUtilitis;
 import de.comeight.crystallogy.util.RGBColor;
 import de.comeight.crystallogy.util.ToolTipBuilder;
 import de.comeight.crystallogy.util.Utilities;
@@ -203,7 +203,7 @@ public class BaseCrystalKnife extends BaseItemSword{
 						nP.setSize(new Vec3d(1.0, 2.0, 1.0));
 						nP.setNumberOfParticle(30);
 						NetworkPacketParticle pMtS = new NetworkPacketParticle(nP);
-						CommonProxy.NETWORKWRAPPER.sendToDimension(pMtS, worldIn.provider.getDimension());	
+						NetworkUtilitis.sendToServer(pMtS);
 					}
 				}
 				worldIn.addWeatherEffect(new EntityLightningBolt(worldIn, pos.xCoord, pos.yCoord, pos.zCoord, false));

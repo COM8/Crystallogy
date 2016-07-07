@@ -10,8 +10,10 @@ import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.ParticleInformation;
 import de.comeight.crystallogy.particles.TransportParticle;
 import de.comeight.crystallogy.util.Log;
+import de.comeight.crystallogy.util.NetworkUtilitis;
 import de.comeight.crystallogy.util.RGBColor;
 import de.comeight.crystallogy.util.Utilities;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
@@ -118,16 +120,14 @@ public class TileEntityPlayerJar extends TileEntityEntityJar {
 				sync();
 				
 				if(worldIn.isRemote){
-					for (int i = 0; i < 5; i++) { //Particel:
-						TransportParticle tP = new TransportParticle(new Vec3d(pos.xCoord + 0.5, pos.yCoord, pos.zCoord + 0.5));
-						tP.maxAge = 120;
-						tP.color = new RGBColor(Utilities.getRandFloat(0, 100), Utilities.getRandFloat(0, 100), Utilities.getRandFloat(0, 100));
-						NetworkParticle nP = new NetworkParticle(tP, ParticleInformation.ID_PARTICLE_B);
-						nP.setSize(new Vec3d(1.0, 2.0, 1.0));
-						nP.setNumberOfParticle(30);
-						NetworkPacketParticle pMtS = new NetworkPacketParticle(nP);
-						CommonProxy.NETWORKWRAPPER.sendToDimension(pMtS, worldIn.provider.getDimension());
-					}
+					TransportParticle tP = new TransportParticle(new Vec3d(pos.xCoord + 0.5, pos.yCoord, pos.zCoord + 0.5));
+					tP.maxAge = 120;
+					tP.randomColor = true;
+					NetworkParticle nP = new NetworkParticle(tP, ParticleInformation.ID_PARTICLE_B);
+					nP.setSize(new Vec3d(1.0, 2.0, 1.0));
+					nP.setNumberOfParticle(70);
+					NetworkPacketParticle pMtS = new NetworkPacketParticle(nP);
+					NetworkUtilitis.sendToServer(pMtS);
 					
 					worldIn.addWeatherEffect(new EntityLightningBolt(worldIn, pos.xCoord, pos.yCoord, pos.zCoord, false));
 					worldIn.playSound((EntityPlayer)null, pos.xCoord, pos.yCoord, pos.zCoord, SoundEvents.ENTITY_ENDERMEN_STARE, SoundCategory.BLOCKS, 1.0F, 1.0F);

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import de.comeight.crystallogy.CommonProxy;
 import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.items.threatDusts.ThreatDust;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
@@ -13,6 +12,7 @@ import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.ParticleB;
 import de.comeight.crystallogy.particles.ParticleInformation;
 import de.comeight.crystallogy.particles.TransportParticle;
+import de.comeight.crystallogy.util.NetworkUtilitis;
 import de.comeight.crystallogy.util.RGBColor;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.client.Minecraft;
@@ -226,7 +226,7 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 						nP.setSize(new Vec3d(1.0, 2.0, 1.0));
 						nP.setNumberOfParticle(30);
 						NetworkPacketParticle pMtS = new NetworkPacketParticle(nP);
-						CommonProxy.NETWORKWRAPPER.sendToDimension(pMtS, worldIn.provider.getDimension());	
+						NetworkUtilitis.sendToServer(pMtS);
 					}
 					
 					worldIn.addWeatherEffect(new EntityLightningBolt(worldIn, pos.xCoord, pos.yCoord, pos.zCoord, false));
