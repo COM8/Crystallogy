@@ -74,6 +74,10 @@ public abstract class BaseParticle extends Particle{
 		this.particleAge = particleAge;
 	}
 	
+	public void setCanTickToDeath(boolean canTickToDeath){
+		this.canTickToDeath = canTickToDeath;
+	}
+	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	public abstract BaseParticle clone(World worldIn, Vec3d pos, TransportParticle tp);
 	
