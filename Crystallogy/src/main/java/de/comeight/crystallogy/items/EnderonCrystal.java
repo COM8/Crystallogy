@@ -1,15 +1,22 @@
 package de.comeight.crystallogy.items;
 
+import java.util.List;
+
 import de.comeight.crystallogy.particles.ParticleEnderon;
+import de.comeight.crystallogy.util.ToolTipBuilder;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -17,6 +24,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class EnderonCrystal extends BaseItem {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	public static final String ID = "enderonCrystal";
+	
+	private static final int TELEPORT_TIME = 100;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public EnderonCrystal() {
@@ -39,17 +48,21 @@ public class EnderonCrystal extends BaseItem {
 			}
 			if(shouldTeleportPlayer(itemStackIn)){
 				teleportPlayer(playerIn);
+				playerIn.playSound(SoundEvents.BLOCK_PORTAL_TRAVEL, 1.0F, 1.5F);
 			}
 			
 		}
 		else{
+			if(shouldTeleportPlayer(itemStackIn)){
+				worldIn.playSound(playerIn, playerIn.getPosition(), SoundEvents.BLOCK_PORTAL_TRAVEL, SoundCategory.PLAYERS, 1.0F, Utilities.getRandFloat(0.5F, 1.0F));
+			}
 			updateCompound(itemStackIn, playerIn);
 		}
 		return super.onItemRightClick(itemStackIn, worldIn, playerIn, hand);
 	}
 	
 	private boolean shouldTeleportPlayer(ItemStack itemStackIn){
-		if(itemStackIn.hasTagCompound() && itemStackIn.getTagCompound().getInteger("tick") >= 40){
+		if(itemStackIn.hasTagCompound() && itemStackIn.getTagCompound().getInteger("tick") >= TELEPORT_TIME){
 			return true;
 		}
 		return false;
@@ -62,6 +75,28 @@ public class EnderonCrystal extends BaseItem {
 		Minecraft.getMinecraft().effectRenderer.addEffect(eP);
 	}
 	
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+		if(!stack.hasTagCompound()){
+			createNewCompound(stack, playerIn);
+		}
+		
+		tooltip.add("Hold right-click to charge.");
+		tooltip.add("Can teleport you up to 1000 blocks away.");
+		
+		
+		if(GuiScreen.isShiftKeyDown()){
+			tooltip.add("");
+			int tick = stack.getTagCompound().getInteger("tick");
+			tooltip.add(TextFormatting.DARK_PURPLE + String.valueOf((int)(((double)tick / (double)TELEPORT_TIME)*100)) + "%" + TextFormatting.RESET +  " charged. Don't move or your progress will get reset!");
+		}
+		else{
+			ToolTipBuilder.addShiftForMoreDetails(tooltip);
+		}
+		
+		super.addInformation(stack, playerIn, tooltip, advanced);
+	}
+	
 	private void updateCompound(ItemStack itemStackIn, EntityPlayer playerIn){
 		if(!itemStackIn.hasTagCompound() || !itemStackIn.getTagCompound().hasKey("playerPrevPosX")){
 			createNewCompound(itemStackIn, playerIn);
@@ -69,20 +104,22 @@ public class EnderonCrystal extends BaseItem {
 		}
 		
 		if(playerIn.posX != itemStackIn.getTagCompound().getDouble("playerPrevPosX") || playerIn.posY != itemStackIn.getTagCompound().getDouble("playerPrevPosY") || playerIn.posZ != itemStackIn.getTagCompound().getDouble("playerPrevPosZ")){
-			playerIn.addChatComponentMessage(new TextComponentString("You moved! Progress got RESET!"));
 			createNewCompound(itemStackIn, playerIn);
 			return;
 		}
 		
 		int tick = itemStackIn.getTagCompound().getInteger("tick");
-		if(tick >= 40){
+		if(tick >= TELEPORT_TIME){
 			teleportPlayer(playerIn);
 			playerIn.addChatComponentMessage(new TextComponentString("WOOSH!"));
 			playerIn.inventory.removeStackFromSlot(playerIn.inventory.currentItem);
 		}
 		else{
-			if(tick % 20 == 0){
-				playerIn.addChatComponentMessage(new TextComponentString(String.valueOf(tick / 20)));
+			if(tick == 0 || tick % 5 == 0){
+				int progress = (int) (((double)tick / (double)TELEPORT_TIME)*100);
+				playerIn.addChatComponentMessage(new TextComponentString(TextFormatting.DARK_PURPLE + String.valueOf(progress + "%" + TextFormatting.RESET +  " charged. Don't move or your progress will get reset!")));
+				playerIn.getEntityWorld().playSound(null, playerIn.getPosition(), SoundEvents.ENTITY_ENDERMITE_HURT, SoundCategory.PLAYERS, 1.0F, (float)progress / 50);
+				
 			}
 			tick++;
 			itemStackIn.getTagCompound().setInteger("tick", tick);
@@ -102,7 +139,7 @@ public class EnderonCrystal extends BaseItem {
 		compound.setDouble("playerPrevPosX", playerIn.posX);
 		compound.setDouble("playerPrevPosY", playerIn.posY);
 		compound.setDouble("playerPrevPosZ", playerIn.posZ);
-		compound.setInteger("tick", 1);
+		compound.setInteger("tick", 0);
 		
 		itemStackIn.setTagCompound(compound);
 	}
