@@ -10,6 +10,7 @@ import de.comeight.crystallogy.handler.GuiHandler;
 import de.comeight.crystallogy.handler.GuiHandlerRegistry;
 import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.handler.RecipeHandler;
+import de.comeight.crystallogy.handler.SoundHandler;
 import de.comeight.crystallogy.network.NetworkPacketInfuserBlockEnabled;
 import de.comeight.crystallogy.network.NetworkPacketInfusionRecipeStatus;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
@@ -69,6 +70,9 @@ public class CommonProxy {
 	
 	//Config:
 	private static ConfigHandler cH = new ConfigHandler();
+	
+	//Sounds:
+	private static SoundHandler sH = new SoundHandler();
 	
 	private static int networkId = 0;
 	
@@ -140,6 +144,7 @@ public class CommonProxy {
 		iH.preInit();
 		rH.preInit();
 		cH.preInit(e);
+		sH.preInit();
 		
 		registerNetworkMessages();
 		registerGuiHandlers();
@@ -151,6 +156,7 @@ public class CommonProxy {
 		iH.init();
 		rH.init();
 		cH.init(e);
+		sH.init();
 		
     	registerTileEntitys();
 		registerWorldGens();
@@ -163,6 +169,7 @@ public class CommonProxy {
 		iH.postInit();
 		rH.postInit();
 		cH.postInit(e);
+		sH.postInit();
     }
     
 }
