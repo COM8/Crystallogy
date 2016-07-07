@@ -1,3 +1,17 @@
 {
-	"crusher": { "category": "block", "sounds":["crusher"] }
+	"crusher": { 
+		"category": "block",
+		"subtitle": "crystallogy.subtitle.crusher",
+		"sounds":[ "crystallogy:crusher" ]
+	},
+	"evil_laugh_male_1": { 
+		"category": "block",
+		"subtitle": "crystallogy.subtitle.evil_laugh_male_1",
+		"sounds":[ "crystallogy:evil_laugh_male_1" ]
+	},
+	"evil_laugh_male_2": { 
+		"category": "block",
+		"subtitle": "crystallogy.subtitle.evil_laugh_male_2",
+		"sounds":[ "crystallogy:evil_laugh_male_2" ]
+	}
 }
