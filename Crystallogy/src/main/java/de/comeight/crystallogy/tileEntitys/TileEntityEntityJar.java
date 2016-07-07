@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import de.comeight.crystallogy.handler.ItemHandler;
+import de.comeight.crystallogy.handler.SoundHandler;
 import de.comeight.crystallogy.items.threatDusts.ThreatDust;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
@@ -19,7 +20,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -214,30 +214,39 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 		if(hasEntity()){
 			if(release){
 				entity = null;
-				sync();
+				addEffects(worldIn, pos);
 				
-				if(worldIn.isRemote){
-					for (int i = 0; i < 5; i++) { //Particel:
-						
-						TransportParticle tP = new TransportParticle(new Vec3d(pos.xCoord + 0.5, pos.yCoord, pos.zCoord + 0.5));
-						tP.maxAge = 120;
-						tP.color = new RGBColor(Utilities.getRandFloat(0, 100), Utilities.getRandFloat(0, 100), Utilities.getRandFloat(0, 100));
-						NetworkParticle nP = new NetworkParticle(tP, ParticleInformation.ID_PARTICLE_B);
-						nP.setSize(new Vec3d(1.0, 2.0, 1.0));
-						nP.setNumberOfParticle(30);
-						NetworkPacketParticle pMtS = new NetworkPacketParticle(nP);
-						NetworkUtilitis.sendToServer(pMtS);
-					}
-					
-					worldIn.addWeatherEffect(new EntityLightningBolt(worldIn, pos.xCoord, pos.yCoord, pos.zCoord, false));
-					worldIn.playSound((EntityPlayer)null, pos.xCoord, pos.yCoord, pos.zCoord, SoundEvents.ENTITY_ENDERMEN_STARE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-					worldIn.playSound((EntityPlayer)null, pos.xCoord, pos.yCoord, pos.zCoord, SoundEvents.ENTITY_ENDERDRAGON_GROWL, SoundCategory.BLOCKS, 1.0F, 1.0F);
-					worldIn.playSound((EntityPlayer)null, pos.xCoord, pos.yCoord, pos.zCoord, SoundEvents.ENTITY_WITHER_SPAWN, SoundCategory.BLOCKS, 1.0F, 0.6F);
-				}
-				else{
-					
+				if(!worldIn.isRemote){
+					sync();
 				}
 			}
+		}
+	}
+	
+	protected void addEffects(World worldIn, Vec3d pos){
+		if(worldIn.isRemote){
+			for (int i = 0; i < 5; i++) {
+				
+				TransportParticle tP = new TransportParticle(new Vec3d(pos.xCoord + 0.5, pos.yCoord, pos.zCoord + 0.5));
+				tP.maxAge = 120;
+				tP.color = new RGBColor(Utilities.getRandFloat(0, 100), Utilities.getRandFloat(0, 100), Utilities.getRandFloat(0, 100));
+				NetworkParticle nP = new NetworkParticle(tP, ParticleInformation.ID_PARTICLE_B);
+				nP.setSize(new Vec3d(1.0, 2.0, 1.0));
+				nP.setNumberOfParticle(30);
+				NetworkPacketParticle pMtS = new NetworkPacketParticle(nP);
+				NetworkUtilitis.sendToServer(pMtS);
+			}
+		}
+		
+		worldIn.addWeatherEffect(new EntityLightningBolt(worldIn, pos.xCoord, pos.yCoord, pos.zCoord, false));
+		worldIn.playSound(null, pos.xCoord, pos.yCoord, pos.zCoord, SoundEvents.ENTITY_ENDERMEN_STARE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+		worldIn.playSound(null, pos.xCoord, pos.yCoord, pos.zCoord, SoundEvents.ENTITY_ENDERDRAGON_GROWL, SoundCategory.BLOCKS, 1.0F, 1.0F);
+		worldIn.playSound(null, pos.xCoord, pos.yCoord, pos.zCoord, SoundEvents.ENTITY_WITHER_SPAWN, SoundCategory.BLOCKS, 1.0F, 0.6F);
+		if(Utilities.getRandInt(0, 2) == 0){
+			worldIn.playSound(null, pos.xCoord, pos.yCoord, pos.zCoord, SoundHandler.EVIL_LAUGH_MALE_1, SoundCategory.BLOCKS, Utilities.getRandFloat(0.5F, 1.0F), Utilities.getRandFloat(0.2F, 1.0F));
+		}
+		else{
+			worldIn.playSound(null, pos.xCoord, pos.yCoord, pos.zCoord, SoundHandler.EVIL_LAUGH_MALE_2, SoundCategory.BLOCKS, Utilities.getRandFloat(0.5F, 1.0F), Utilities.getRandFloat(0.2F, 1.0F));
 		}
 	}
 
