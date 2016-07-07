@@ -123,5 +123,6 @@ item.combinedArmorCompound.name=Jäger Rüstungsverbindung
 item.combinedArmorMesh.name=Kombiniertes Rüstungsgitter
 item.chargedCombinedArmorMesh.name=Geladenes Kombiniertes Rüstungsgitter
 item.hunterArmorMesh.name=Jäger Rüstungsgitter
+item.enderonCrystal.name=Enderon Kristall
 
 itemGroup.crystallogyMainTab=Crystallogy Hauptfenster

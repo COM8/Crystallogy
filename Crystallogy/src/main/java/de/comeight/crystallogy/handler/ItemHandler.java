@@ -218,7 +218,7 @@ public class ItemHandler {
 		chargedCombinedArmorMesh = new ChargedCombinedArmorMesh();
 		enderonCrystal = new EnderonCrystal();
 		
-		//GameRegistry.register(enderonCrystal);
+		GameRegistry.register(enderonCrystal);
 		GameRegistry.register(chargedCombinedArmorMesh);
 		GameRegistry.register(combinedArmorMesh);
 		GameRegistry.register(hunterArmorMesh);

@@ -122,5 +122,6 @@ item.hunterArmorCompound.name=Hunter's Armor Compound
 item.combinedArmorMesh.name=Combined Armor Mesh
 item.chargedCombinedArmorMesh.name=Charged Combined Armor Mesh
 item.hunterArmorMesh.name=Hunter's Armor Mesh
+item.enderonCrystal.name=Enderon Crystal
 
 itemGroup.crystallogyMainTab=Crystallogy Maintab
