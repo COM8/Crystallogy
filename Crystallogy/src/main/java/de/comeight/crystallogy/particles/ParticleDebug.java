@@ -10,7 +10,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class ParticleDebug extends BaseParticleExtended {
+public class ParticleDebug extends BaseParticle {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	public static final ResourceLocation RL_PARTICLE_DEBUG = new ResourceLocation("crystallogy:particles/c/c");
 
@@ -36,27 +36,39 @@ public class ParticleDebug extends BaseParticleExtended {
 	
 	@Override
 	public void renderParticle(VertexBuffer worldRendererIn, Entity entityIn, float partialTicks, float rotationX, float rotationZ, float rotationYZ, float rotationXY, float rotationXZ) {
-		float f = (float)this.particleTextureIndexX / 16.0F;
-        float f1 = f + 0.0624375F;
-        float f2 = (float)this.particleTextureIndexY / 16.0F;
-        float f3 = f2 + 0.0624375F;
-        float f4 = 0.1F * this.particleScale;
+		float textureXMin = (float)this.particleTextureIndexX / 16.0F;
+        float textureXMax = textureXMin + 0.0624375F;
+        float textureYMin = (float)this.particleTextureIndexY / 16.0F;
+        float textureYMax = textureYMin + 0.0624375F;
+        float particleScale = 0.1F * this.particleScale;
 
         if (this.particleTexture != null)
         {
-            f = this.particleTexture.getMinU();
-            f1 = this.particleTexture.getMaxU();
-            f2 = this.particleTexture.getMinV();
-            f3 = this.particleTexture.getMaxV();
+            textureXMin = this.particleTexture.getMinU();
+            textureXMax = this.particleTexture.getMaxU();
+            textureYMin = this.particleTexture.getMinV();
+            textureYMax = this.particleTexture.getMaxV();
         }
 
-        float f5 = (float)(this.prevPosX + (this.posX - this.prevPosX) * (double)partialTicks - interpPosX);
-        float f6 = (float)(this.prevPosY + (this.posY - this.prevPosY) * (double)partialTicks - interpPosY);
-        float f7 = (float)(this.prevPosZ + (this.posZ - this.prevPosZ) * (double)partialTicks - interpPosZ);
-        int i = this.getBrightnessForRender(partialTicks);
-        int j = i >> 16 & 65535;
-        int k = i & 65535;
-        Vec3d[] avec3d = new Vec3d[] {new Vec3d((double)(-rotationX * f4 - rotationXY * f4), (double)(-rotationZ * f4), (double)(-rotationYZ * f4 - rotationXZ * f4)), new Vec3d((double)(-rotationX * f4 + rotationXY * f4), (double)(rotationZ * f4), (double)(-rotationYZ * f4 + rotationXZ * f4)), new Vec3d((double)(rotationX * f4 + rotationXY * f4), (double)(rotationZ * f4), (double)(rotationYZ * f4 + rotationXZ * f4)), new Vec3d((double)(rotationX * f4 - rotationXY * f4), (double)(-rotationZ * f4), (double)(rotationYZ * f4 - rotationXZ * f4))};
+        float renderPosX = (float)(this.prevPosX + (this.posX - this.prevPosX) * (double)partialTicks - interpPosX);
+        float renderPosY = (float)(this.prevPosY + (this.posY - this.prevPosY) * (double)partialTicks - interpPosY);
+        float renderPosZ = (float)(this.prevPosZ + (this.posZ - this.prevPosZ) * (double)partialTicks - interpPosZ);
+        int brightness = this.getBrightnessForRender(partialTicks);
+        int brightnessHex = brightness >> 16 & 65535;
+        int brightnessFinal = brightness;
+        
+        Vec3d[] avec3d = new Vec3d[] {	new Vec3d(	(double)(-rotationX * particleScale - rotationXY * particleScale),
+        											(double)(-rotationZ * particleScale),
+        											(double)(-rotationYZ * particleScale - rotationXZ * particleScale)),
+        								new Vec3d(	(double)(-rotationX * particleScale + rotationXY * particleScale), 
+        											(double)(rotationZ * particleScale), 
+        											(double)(-rotationYZ * particleScale + rotationXZ * particleScale)), 
+        								new Vec3d(	(double)(rotationX * particleScale + rotationXY * particleScale), 
+        											(double)(rotationZ * particleScale), 
+        											(double)(rotationYZ * particleScale + rotationXZ * particleScale)), 
+        								new Vec3d(	(double)(rotationX * particleScale - rotationXY * particleScale), 
+        											(double)(-rotationZ * particleScale), 
+        											(double)(rotationYZ * particleScale - rotationXZ * particleScale))};
 
         if (this.field_190014_F != 0.0F)
         {
@@ -72,11 +84,13 @@ public class ParticleDebug extends BaseParticleExtended {
                 avec3d[l] = vec3d.scale(2.0D * avec3d[l].dotProduct(vec3d)).add(avec3d[l].scale((double)(f9 * f9) - vec3d.dotProduct(vec3d))).add(vec3d.crossProduct(avec3d[l]).scale((double)(2.0F * f9)));
             }
         }
-
-        worldRendererIn.pos((double)f5 + avec3d[0].xCoord, (double)f6 + avec3d[0].yCoord, (double)f7 + avec3d[0].zCoord).tex((double)f1, (double)f3).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(j, k).endVertex();
-        worldRendererIn.pos((double)f5 + avec3d[1].xCoord, (double)f6 + avec3d[1].yCoord, (double)f7 + avec3d[1].zCoord).tex((double)f1, (double)f2).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(j, k).endVertex();
-        worldRendererIn.pos((double)f5 + avec3d[2].xCoord, (double)f6 + avec3d[2].yCoord, (double)f7 + avec3d[2].zCoord).tex((double)f, (double)f2).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(j, k).endVertex();
-        worldRendererIn.pos((double)f5 + avec3d[3].xCoord, (double)f6 + avec3d[3].yCoord, (double)f7 + avec3d[3].zCoord).tex((double)f, (double)f3).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(j, k).endVertex();
+  
+        
+        
+        worldRendererIn.pos((double)renderPosX + avec3d[0].xCoord, (double)renderPosY + avec3d[0].yCoord, (double)renderPosZ + avec3d[0].zCoord).tex((double)textureXMax, (double)textureYMax).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(brightnessHex, brightnessFinal).endVertex();
+        worldRendererIn.pos((double)renderPosX + avec3d[1].xCoord, (double)renderPosY + avec3d[1].yCoord, (double)renderPosZ + avec3d[1].zCoord).tex((double)textureXMax, (double)textureYMin).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(brightnessHex, brightnessFinal).endVertex();
+        worldRendererIn.pos((double)renderPosX + avec3d[2].xCoord, (double)renderPosY + avec3d[2].yCoord, (double)renderPosZ + avec3d[2].zCoord).tex((double)textureXMin, (double)textureYMin).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(brightnessHex, brightnessFinal).endVertex();
+        worldRendererIn.pos((double)renderPosX + avec3d[3].xCoord, (double)renderPosY + avec3d[3].yCoord, (double)renderPosZ + avec3d[3].zCoord).tex((double)textureXMin, (double)textureYMax).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(brightnessHex, brightnessFinal).endVertex();
 	}
 
 }
