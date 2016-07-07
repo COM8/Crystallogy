@@ -58,7 +58,7 @@ public class EnderonCrystal extends BaseItem {
 	@SideOnly(Side.CLIENT)
 	private void spawnParticles(World worldIn, Vec3d playerPos){
 		ParticleEnderon eP = new ParticleEnderon(worldIn, getRandomParticleSpawn(playerPos), playerPos.addVector(0.0, 1.0, 0.0));
-		eP.setRBGColorF(1.0F, 1.0F, 0.0F);
+		eP.setRBGColorF(0.2F, 1.0F, 0.0F);
 		Minecraft.getMinecraft().effectRenderer.addEffect(eP);
 	}
 	
