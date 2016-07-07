@@ -2,11 +2,8 @@ package de.comeight.crystallogy.tileEntitys.machines;
 
 import de.comeight.crystallogy.blocks.machines.BaseMachine;
 import de.comeight.crystallogy.handler.BaseRecipeHandler;
-import de.comeight.crystallogy.handler.SoundHandler;
 import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
 import de.comeight.crystallogy.tileEntitys.TileEntityInventory;
-import de.comeight.crystallogy.util.Utilities;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -14,7 +11,6 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
 public abstract class BaseTileEntityMachine extends TileEntityInventory implements ITickable, ISidedInventory{
@@ -213,9 +209,10 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
 	}
 	
 	private void manageSounds(World worldIn){
-		if(soundPlayedLast <= 0){
+		if(soundPlayedLast <= 0 && (totalCookTime - cookTime) > getSoundIntervall() * 0.75){
 			playSound(worldIn);
 			soundPlayedLast = getSoundIntervall();
+			
 		}
 		else{
 			soundPlayedLast--;
@@ -242,11 +239,6 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
         	}
         	return;
         }
-		else{
-			if(crafting){
-				manageSounds(worldObj);
-			}
-		}
 		
         boolean flag1 = false;
         if(crafting){
@@ -257,6 +249,7 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
         	}
         	else{
         		cookTime++;
+        		manageSounds(worldObj);
             	if (cookTime >= totalCookTime) {
     				cookTime = 1;
     				craftItem();
