@@ -89,6 +89,10 @@ public class ItemRenderHandler {
 		registerBasicItemRender(ItemHandler.chargedCombinedArmorMesh);
 		registerBasicItemRender(ItemHandler.enderonCrystal);
 		
+		if(ConfigHandler.enableDebugTool){
+			registerBasicItemRender(ItemHandler.debugTool);
+		}
+		
 		registerItemVariantsRenderer(ItemHandler.crystallHammerHead, 0, "crystallHammerHead_red");
 		registerItemVariantsRenderer(ItemHandler.crystallHammerHead, 1, "crystallHammerHead_blue");
 		registerItemVariantsRenderer(ItemHandler.crystallHammerHead, 2, "crystallHammerHead_green");

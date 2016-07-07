@@ -49,6 +49,7 @@ import de.comeight.crystallogy.items.tools.CrystallHammer_blue;
 import de.comeight.crystallogy.items.tools.CrystallHammer_green;
 import de.comeight.crystallogy.items.tools.CrystallHammer_red;
 import de.comeight.crystallogy.items.tools.CrystallHammer_yellow;
+import de.comeight.crystallogy.items.tools.DebugTool;
 import de.comeight.crystallogy.items.tools.EntityCrystalKnife;
 import de.comeight.crystallogy.items.tools.EntityGrabber;
 import de.comeight.crystallogy.items.tools.PlayerCrystalKnife;
@@ -109,6 +110,7 @@ public class ItemHandler {
 	public static HunterArmorMesh hunterArmorMesh;
 	public static ChargedCombinedArmorMesh chargedCombinedArmorMesh;
 	public static EnderonCrystal enderonCrystal;
+	public static DebugTool debugTool;
 	
 	//Armor:
 	public static Armor_red armorHelmet_red;
@@ -217,6 +219,7 @@ public class ItemHandler {
 		hunterArmorMesh = new HunterArmorMesh();
 		chargedCombinedArmorMesh = new ChargedCombinedArmorMesh();
 		enderonCrystal = new EnderonCrystal();
+		debugTool = new DebugTool();
 		
 		GameRegistry.register(enderonCrystal);
 		GameRegistry.register(chargedCombinedArmorMesh);
@@ -290,6 +293,10 @@ public class ItemHandler {
 		GameRegistry.register(crystalPickaxe_green);
 		GameRegistry.register(crystalPickaxe_yellow);
 		GameRegistry.register(entityGrabber);
+		
+		if(ConfigHandler.enableDebugTool){
+			GameRegistry.register(debugTool);
+		}
 		
 		Utilities.addConsoleText("All items are registered.");
 	}

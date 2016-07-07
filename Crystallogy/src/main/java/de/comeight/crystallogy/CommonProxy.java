@@ -5,6 +5,7 @@ import de.comeight.crystallogy.gui.GuiCharger;
 import de.comeight.crystallogy.gui.GuiCompressor;
 import de.comeight.crystallogy.gui.GuiCrystallCrusher;
 import de.comeight.crystallogy.handler.BlockHandler;
+import de.comeight.crystallogy.handler.ChestGenHandler;
 import de.comeight.crystallogy.handler.ConfigHandler;
 import de.comeight.crystallogy.handler.GuiHandler;
 import de.comeight.crystallogy.handler.GuiHandlerRegistry;
@@ -74,6 +75,9 @@ public class CommonProxy {
 	//Sounds:
 	private static SoundHandler sH = new SoundHandler();
 	
+	//ChestGen:
+	private static ChestGenHandler cGH = new ChestGenHandler();
+	
 	private static int networkId = 0;
 	
 	// -----------------------------------------------Constructor:-------------------------------------------
@@ -140,11 +144,12 @@ public class CommonProxy {
 	
 	// -----------------------------------------------Pre-Init:----------------------------------------------
 	public void preInit(FMLPreInitializationEvent e) {
+		cH.preInit(e);
 		bH.preInit();
 		iH.preInit();
 		rH.preInit();
-		cH.preInit(e);
 		sH.preInit();
+		cGH.preInit();
 		
 		registerNetworkMessages();
 		registerGuiHandlers();
@@ -152,24 +157,25 @@ public class CommonProxy {
 
 	// -----------------------------------------------Init:--------------------------------------------------
     public void init(FMLInitializationEvent e) {
+    	cH.init(e);
     	bH.init();
 		iH.init();
 		rH.init();
-		cH.init(e);
 		sH.init();
+		cGH.init();
 		
     	registerTileEntitys();
 		registerWorldGens();
-		
     }
 
 	// -----------------------------------------------Post-Init:----------------------------------------------
     public void postInit(FMLPostInitializationEvent e) {
+    	cH.postInit(e);
     	bH.postInit();
 		iH.postInit();
 		rH.postInit();
-		cH.postInit(e);
 		sH.postInit();
+		cGH.postInit();
     }
     
 }

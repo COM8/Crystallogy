@@ -46,6 +46,9 @@ public class ConfigHandler {
 	//Infusion:
 	public static double infusionTimeMultiplier = 1.0;
 	
+	//Debug Tool:
+	public static boolean enableDebugTool = false;
+	
 	//-----------------------------------------------Constructor:-------------------------------------------
 
 
@@ -63,7 +66,7 @@ public class ConfigHandler {
 	}
 	
 	private void createBasicConfig(File configFolder){
-		Configuration config = new Configuration(new File(configFolder, CrystallogyBase.MODID + ".cfg"), "1.0");
+		Configuration config = new Configuration(new File(configFolder, CrystallogyBase.MODID + ".cfg"), "1.1");
 		
 		config.load();
 		
@@ -81,6 +84,10 @@ public class ConfigHandler {
 		prop = config.get(CATEGORY_DEBUG, "timeUnused", 60000);
 		prop.setComment("Defines the minimum time until a ArmorListEntry get removed by the custom \"Garbage Collector\" in ms. default=60000");
 		timeUnusedArmorListEntry = prop.getInt();
+		
+		prop = config.get(CATEGORY_DEBUG, "enableDebugTool", false);
+		prop.setComment("Wether the debug tool should be avaidable. default=false");
+		enableDebugTool = prop.getBoolean();
 		
 		//Crystals
 		prop = config.get(CATEGORY_CRYSTALS, "yellowCrystalSpawnMin", 16);
