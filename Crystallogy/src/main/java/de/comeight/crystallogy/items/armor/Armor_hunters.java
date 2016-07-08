@@ -6,6 +6,7 @@ import de.comeight.crystallogy.blocks.materials.CustomArmorMaterials;
 import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.util.ToolTipBuilder;
 import de.comeight.crystallogy.util.Utilities;
+import de.comeight.crystallogy.util.armor.ArmorUtilities;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -27,11 +28,11 @@ public class Armor_hunters extends BaseArmor {
 		return ID + armorType.getName();
 	}
 	
-	public boolean isPlayerWearingFullArmor(EntityPlayer player){
-		if (player.inventory.armorItemInSlot(3) != null && player.inventory.armorItemInSlot(3).getItem() == ItemHandler.armorHelmet_hunter
-		        && player.inventory.armorItemInSlot(2) != null && player.inventory.armorItemInSlot(2).getItem() == ItemHandler.armorChestplate_hunter
-		        && player.inventory.armorItemInSlot(1) != null && player.inventory.armorItemInSlot(1).getItem() == ItemHandler.armorLeggins_hunter
-		        && player.inventory.armorItemInSlot(0) != null && player.inventory.armorItemInSlot(0).getItem() == ItemHandler.armorBoots_hunter) {
+	private boolean isPlayerWearingFullArmor(EntityPlayer player){
+		if (player.inventory.armorItemInSlot(3) != null && ArmorUtilities.hasArmor(player.inventory.armorItemInSlot(3), ItemHandler.armorHelmet_hunter)
+		        && player.inventory.armorItemInSlot(2) != null && ArmorUtilities.hasArmor(player.inventory.armorItemInSlot(2), ItemHandler.armorChestplate_hunter)
+		        && player.inventory.armorItemInSlot(1) != null && ArmorUtilities.hasArmor(player.inventory.armorItemInSlot(1), ItemHandler.armorLeggins_hunter)
+		        && player.inventory.armorItemInSlot(0) != null && ArmorUtilities.hasArmor(player.inventory.armorItemInSlot(0), ItemHandler.armorBoots_hunter)) {
 		        return true;
 		}
 		return false;

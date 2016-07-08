@@ -41,7 +41,7 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 		return ID + armorType.getName();
 	}
 	
-	public UUID getArmorListEntryId(ItemStack itemStackIn){
+	public static UUID getArmorListEntryId(ItemStack itemStackIn){
 		if(!itemStackIn.hasTagCompound()){
 			createNewTagCompound(itemStackIn);
 		}
@@ -51,7 +51,7 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 		return itemStackIn.getTagCompound().getUniqueId("armorListEntryId");
 	}
 	
-	public LinkedList<ItemStack> getArmorList(ItemStack itemStackIn){
+	public static LinkedList<ItemStack> getArmorList(ItemStack itemStackIn){
 		ArmorListEntry entry = CombinedArmorList.getEntry(getArmorListEntryId(itemStackIn));
 		if(entry != null){
 			return entry.getList();
@@ -191,11 +191,11 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 		}
 	}
 	
-	private void createNewTagCompound(ItemStack itemStackIn){ 
+	private static void createNewTagCompound(ItemStack itemStackIn){ 
 		itemStackIn.setTagCompound(new NBTTagCompound());
 	}
 	
-	private void createNewIdTag(ItemStack itemStackIn){
+	private static void createNewIdTag(ItemStack itemStackIn){
 		NBTTagCompound compound = itemStackIn.getTagCompound();
 		compound.setUniqueId("armorListEntryId", UUID.randomUUID());
 		itemStackIn.setTagCompound(compound);
