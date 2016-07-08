@@ -7,6 +7,7 @@ import de.comeight.crystallogy.util.ToolTipBuilder;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -36,6 +37,11 @@ public class EnderonCrystal extends BaseItem {
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	private Vec3d getRandomParticleSpawn(Vec3d playerPos){
 		return new Vec3d(playerPos.xCoord + Utilities.getRandDouble(-4.0, 4.0), playerPos.yCoord + Utilities.getRandDouble(-4.0, 4.0), playerPos.zCoord + Utilities.getRandDouble(-4.0, 4.0));
+	}
+	
+	@Override
+	public boolean hasEffect(ItemStack stack) {
+		return true;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
@@ -142,6 +148,14 @@ public class EnderonCrystal extends BaseItem {
 		compound.setInteger("tick", 0);
 		
 		itemStackIn.setTagCompound(compound);
+	}
+	
+	@Override
+	public boolean onEntityItemUpdate(EntityItem entityItem) {
+		if(entityItem.worldObj.isRemote){
+			spawnParticles(entityItem.worldObj, new Vec3d(entityItem.posX, entityItem.posY - 0.75, entityItem.posZ));
+		}
+		return super.onEntityItemUpdate(entityItem);
 	}
 	
 }
