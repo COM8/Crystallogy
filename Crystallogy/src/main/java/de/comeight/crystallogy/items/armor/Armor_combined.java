@@ -183,16 +183,16 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 		double percent = ((double) damage) / ((double) maxDamage); 
 		
 		if(percent >= 0.75){
-			tooltip.add("Durability: " + TextFormatting.DARK_GREEN + damage + " / " + maxDamage);
+			tooltip.add("Durability: " + TextFormatting.DARK_GREEN + (maxDamage - damage) + " / " + maxDamage);
 		}
 		else if(percent >= 0.5){
-			tooltip.add("Durability: " + TextFormatting.GREEN + damage + " / " + maxDamage);
+			tooltip.add("Durability: " + TextFormatting.GREEN + (maxDamage - damage) + " / " + maxDamage);
 		}
 		else if(percent >= 0.25){
-			tooltip.add("Durability: " + TextFormatting.GOLD + damage + " / " + maxDamage);
+			tooltip.add("Durability: " + TextFormatting.GOLD + (maxDamage - damage) + " / " + maxDamage);
 		}
 		else{
-			tooltip.add("Durability: " + TextFormatting.RED + damage + " / " + maxDamage);
+			tooltip.add("Durability: " + TextFormatting.RED + (maxDamage - damage) + " / " + maxDamage);
 		}
 	}
 	
