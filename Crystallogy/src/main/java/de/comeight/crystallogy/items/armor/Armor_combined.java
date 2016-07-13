@@ -132,7 +132,7 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 		
 		for (ItemStack armorStack : list) {
 			ItemArmor armor = (ItemArmor) armorStack.getItem();
-			armor.onArmorTick(world, player, itemStack);
+			armor.onArmorTick(world, player, armorStack);
 		}
 	}
 	
@@ -154,7 +154,7 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 				for (int i = 0; i < list.size(); i++) {
 					ItemArmor armor = (ItemArmor) list.get(i).getItem();
 					tooltip.add(TextFormatting.DARK_AQUA + String.valueOf(i + 1) + ": " + TextFormatting.RESET + armor.getItemStackDisplayName(new ItemStack(armor)));
-					armor.addInformation(stack, playerIn, tooltip, advanced);
+					armor.addInformation(list.get(i), playerIn, tooltip, advanced);
 					tooltip.add("");
 				}
 			}
@@ -186,7 +186,7 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 			ItemArmor armor = (ItemArmor) armorStack.getItem();
 			if(armor instanceof ISpecialArmor){
 				ISpecialArmor armor2 = (ISpecialArmor) armor;
-				armor2.damageArmor(entity, stack, source, damage, slot);
+				armor2.damageArmor(entity, armorStack, source, damage, slot);
 			}
 		}
 	}
