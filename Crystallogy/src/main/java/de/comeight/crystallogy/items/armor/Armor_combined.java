@@ -34,6 +34,7 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public Armor_combined(int renderIndexIn, EntityEquipmentSlot equipmentSlotIn) {
 		super(CustomArmorMaterials.CRYSTALL_COMBINED, renderIndexIn, equipmentSlotIn, ID + equipmentSlotIn.getName());
+		setMaxDamage(100);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -154,6 +155,7 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 				for (int i = 0; i < list.size(); i++) {
 					ItemArmor armor = (ItemArmor) list.get(i).getItem();
 					tooltip.add(TextFormatting.DARK_AQUA + String.valueOf(i + 1) + ": " + TextFormatting.RESET + armor.getItemStackDisplayName(new ItemStack(armor)));
+					addArmorDurability(list.get(i), tooltip);
 					armor.addInformation(list.get(i), playerIn, tooltip, advanced);
 					tooltip.add("");
 				}
@@ -174,9 +176,29 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 		super.addInformation(stack, playerIn, tooltip, advanced);
 	}
 
+	@SideOnly(Side.CLIENT)
+	private void addArmorDurability(ItemStack stack, List<String> tooltip){
+		int maxDamage = stack.getMaxDamage();
+		int damage = stack.getItemDamage();
+		double percent = ((double) damage) / ((double) maxDamage); 
+		
+		if(percent >= 0.75){
+			tooltip.add("Durability: " + TextFormatting.DARK_GREEN + damage + " / " + maxDamage);
+		}
+		else if(percent >= 0.5){
+			tooltip.add("Durability: " + TextFormatting.GREEN + damage + " / " + maxDamage);
+		}
+		else if(percent >= 0.25){
+			tooltip.add("Durability: " + TextFormatting.GOLD + damage + " / " + maxDamage);
+		}
+		else{
+			tooltip.add("Durability: " + TextFormatting.RED + damage + " / " + maxDamage);
+		}
+	}
 	
 	@Override
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
+		System.out.println("damage");
 		LinkedList<ItemStack> list = getArmorList(stack);
 		if(list == null){
 			return;
