@@ -46,11 +46,11 @@ public abstract class BaseRecipeHandler {
 		return null;
 	}
 	
-	public float getExperience(ItemStack  input[]){
-		if(input == null){
+	public float getExperience(ItemStack output[]){
+		if(output == null){
 			return 0.0F;
 		}
-		BaseRecipe recipe = findRecipe(input);
+		BaseRecipe recipe = findRecipeByOutput(output);
 		if(recipe != null){
 			return recipe.experience;
 		}
@@ -100,6 +100,21 @@ public abstract class BaseRecipeHandler {
 			boolean wrong = false;
 			for(int i = 0; i < baseRecipe.input.length; i++){
 				if(input[i] == null || baseRecipe.input[i].getItem() != input[i].getItem() || baseRecipe.input[i].stackSize > input[i].stackSize){
+					wrong = true;
+				}
+			}
+			if(!wrong){
+				return baseRecipe;
+			}
+		}
+		return null;
+	}
+	
+	public BaseRecipe findRecipeByOutput(ItemStack output[]){
+		for (BaseRecipe baseRecipe : craftingList) {
+			boolean wrong = false;
+			for(int i = 0; i < baseRecipe.getOutput(null).length; i++){
+				if(output[i] == null || baseRecipe.getOutput(null)[i].getItem() != output[i].getItem()){
 					wrong = true;
 				}
 			}
