@@ -44,7 +44,7 @@ public class TileEntityArmorCombiner extends BaseTileEntityMachine {
 	
 	@Override
 	public int getSoundIntervall() {
-		return 80;
+		return 40;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
@@ -95,6 +95,6 @@ public class TileEntityArmorCombiner extends BaseTileEntityMachine {
 	
 	@Override
 	public void playSound(World worldIn) {
-		worldIn.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundHandler.MACHINE_BROKEN, SoundCategory.BLOCKS, Utilities.getRandFloat(0.1F, 0.2F), Utilities.getRandFloat(0.2F, 1.0F));
+		worldIn.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundHandler.ARMORCOMBINER, SoundCategory.BLOCKS, Utilities.getRandFloat(0.2F, 0.5F), Utilities.getRandFloat(0.5F, 1.0F));
 	}
 }

@@ -13,6 +13,7 @@ public class SoundHandler {
 	public static SoundEvent MACHINE_BROKEN;
 	public static SoundEvent EVIL_LAUGH_MALE_1;
 	public static SoundEvent EVIL_LAUGH_MALE_2;
+	public static SoundEvent ARMORCOMBINER;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 
@@ -51,6 +52,11 @@ public class SoundHandler {
 		rL = new ResourceLocation(CrystallogyBase.MODID, "evil_laugh_male_2");
 		EVIL_LAUGH_MALE_2 = new SoundEvent(rL);
 		GameRegistry.register(EVIL_LAUGH_MALE_2, rL);
+		
+		//ARMORCOMBINER:
+		rL = new ResourceLocation(CrystallogyBase.MODID, "armorCombiner");
+		ARMORCOMBINER = new SoundEvent(rL);
+		GameRegistry.register(ARMORCOMBINER, rL);
 	}
 	
 	//-----------------------------------------------Pre-Init:----------------------------------------------

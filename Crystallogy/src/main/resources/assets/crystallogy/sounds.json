@@ -19,6 +19,11 @@
 		"subtitle": "crystallogy.subtitle.machine_broken",
 		"sounds":[ "crystallogy:machine_broken" ]
 	},
+	"armorCombiner": { 
+		"category": "block",
+		"subtitle": "crystallogy.subtitle.armorCombiner",
+		"sounds":[ "crystallogy:armorCombiner" ]
+	},
 	"evil_laugh_male_1": { 
 		"category": "block",
 		"subtitle": "crystallogy.subtitle.evil_laugh_male_1",
