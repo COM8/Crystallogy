@@ -45,7 +45,7 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
 	
 	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
-		if(index > slotsInput){
+		if(index >= slotsInput){
 			return false;
 		}
 		if(inventory[index] != null){
