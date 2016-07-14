@@ -1,6 +1,7 @@
 package de.comeight.crystallogy.items.crafting.infusion;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import de.comeight.crystallogy.handler.ConfigHandler;
 import de.comeight.crystallogy.handler.InfusionRecipeHandler;
@@ -12,6 +13,7 @@ import de.comeight.crystallogy.particles.ParticleInformation;
 import de.comeight.crystallogy.particles.TransportParticle;
 import de.comeight.crystallogy.tileEntitys.TileEnityInfuserBlock;
 import de.comeight.crystallogy.util.NetworkUtilitis;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -96,6 +98,31 @@ public abstract class InfusionRecipe {
 	public abstract ArrayList<ArrayList<ItemStack>> getInputsJEI();
 	
 	public abstract ArrayList<ItemStack> getOutputJEI();
+	
+	public LinkedList<LinkedList<ItemStack>> getReturns(){
+		LinkedList<LinkedList<ItemStack>> list = new LinkedList<LinkedList<ItemStack>>();
+		
+		LinkedList<ItemStack> waterBucket = new LinkedList<ItemStack>();
+		waterBucket.add(new ItemStack(Items.WATER_BUCKET));
+		waterBucket.add(new ItemStack(Items.BUCKET));
+		list.add(waterBucket);
+		
+		LinkedList<ItemStack> lavaBucket = new LinkedList<ItemStack>();
+		lavaBucket.add(new ItemStack(Items.LAVA_BUCKET));
+		lavaBucket.add(new ItemStack(Items.BUCKET));
+		list.add(lavaBucket);
+		
+		return list;
+	}
+	
+	protected ItemStack getleftOver(ItemStack stack){
+		for (LinkedList<ItemStack> list : getReturns()) {
+			if(list.get(0).getItem() == stack.getItem()){
+				return list.get(1);
+			}
+		}
+		return null;
+	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	public abstract boolean match(ItemStack centerInput, ItemStack[] ingredients);
@@ -202,8 +229,9 @@ public abstract class InfusionRecipe {
 	
 	protected void removeIngredients(){
 		for (int i = 0; i < ingredients.length; i++) {
-			ingredients[i].setInventorySlotContents(0, null);
-			setItemOnClient(ingredients[i].getPos(), null);
+			ItemStack leftOver = getleftOver(ingredients[i].getStackInSlot(0));
+			ingredients[i].setInventorySlotContents(0, leftOver);
+			setItemOnClient(ingredients[i].getPos(), leftOver);
 		}
 	}
 	
