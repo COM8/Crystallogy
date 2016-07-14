@@ -40,6 +40,8 @@ public class ParticleHandler {
 		registerParticle(new ParticleLight());
 		registerParticle(new ParticleInfusion());
 		registerParticle(new ParticleInfuserBlockStatus());
+		registerParticle(new ParticleEnderon());
+		registerParticle(new ParticleDebug());
 	}
 	
 	public void registerParticleTextures(TextureStitchEvent.Pre event){

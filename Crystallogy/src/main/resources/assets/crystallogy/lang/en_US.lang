@@ -122,5 +122,14 @@ item.hunterArmorCompound.name=Hunter's Armor Compound
 item.combinedArmorMesh.name=Combined Armor Mesh
 item.chargedCombinedArmorMesh.name=Charged Combined Armor Mesh
 item.hunterArmorMesh.name=Hunter's Armor Mesh
+item.enderonCrystal.name=Enderon Crystal
+item.debugTool.name=Debug Tool
 
 itemGroup.crystallogyMainTab=Crystallogy Maintab
+
+crystallogy.subtitle.crusher=Crusher Crushing
+crystallogy.subtitle.compressor=Compressor Compressing
+crystallogy.subtitle.light_woosh=Light Woosh
+crystallogy.subtitle.machine_broken=Broken Machine
+crystallogy.subtitle.evil_laugh_male_1=Evil Laugh Male
+crystallogy.subtitle.evil_laugh_male_2=Evil Laugh Male

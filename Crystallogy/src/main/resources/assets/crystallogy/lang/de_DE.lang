@@ -123,5 +123,15 @@ item.combinedArmorCompound.name=Jäger Rüstungsverbindung
 item.combinedArmorMesh.name=Kombiniertes Rüstungsgitter
 item.chargedCombinedArmorMesh.name=Geladenes Kombiniertes Rüstungsgitter
 item.hunterArmorMesh.name=Jäger Rüstungsgitter
+item.enderonCrystal.name=Enderon Kristall
+item.hunterArmorMesh.name=Jäger Rüstungsgitter
+item.debugTool.name=Debug Tool
 
 itemGroup.crystallogyMainTab=Crystallogy Hauptfenster
+
+crystallogy.subtitle.crusher=Mahler Mahlt
+crystallogy.subtitle.compressor=Kompressor Komprimiert
+crystallogy.subtitle.light_woosh=Leichtes Woosh
+crystallogy.subtitle.machine_broken=Kaputte Maschine
+crystallogy.subtitle.evil_laugh_male_1=Böses Lachen Man
+crystallogy.subtitle.evil_laugh_male_2=Böses Lachen Man

@@ -5,6 +5,7 @@ import java.util.List;
 import de.comeight.crystallogy.blocks.materials.CustomArmorMaterials;
 import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.util.ToolTipBuilder;
+import de.comeight.crystallogy.util.armor.ArmorUtilities;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -27,10 +28,10 @@ public class Armor_green extends BaseArmor {
 	}
 	
 	private boolean isPlayerWearingFullArmor(EntityPlayer player){
-		if (player.inventory.armorItemInSlot(3) != null && player.inventory.armorItemInSlot(3).getItem() == ItemHandler.armorHelmet_green
-		        && player.inventory.armorItemInSlot(2) != null && player.inventory.armorItemInSlot(2).getItem() == ItemHandler.armorChestplate_green
-		        && player.inventory.armorItemInSlot(1) != null && player.inventory.armorItemInSlot(1).getItem() == ItemHandler.armorLeggins_green
-		        && player.inventory.armorItemInSlot(0) != null && player.inventory.armorItemInSlot(0).getItem() == ItemHandler.armorBoots_green) {
+		if (player.inventory.armorItemInSlot(3) != null && ArmorUtilities.hasArmor(player.inventory.armorItemInSlot(3), ItemHandler.armorHelmet_green)
+		        && player.inventory.armorItemInSlot(2) != null && ArmorUtilities.hasArmor(player.inventory.armorItemInSlot(2), ItemHandler.armorChestplate_green)
+		        && player.inventory.armorItemInSlot(1) != null && ArmorUtilities.hasArmor(player.inventory.armorItemInSlot(1), ItemHandler.armorLeggins_green)
+		        && player.inventory.armorItemInSlot(0) != null && ArmorUtilities.hasArmor(player.inventory.armorItemInSlot(0), ItemHandler.armorBoots_green)) {
 		        return true;
 		}
 		return false;

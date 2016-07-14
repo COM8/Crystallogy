@@ -10,6 +10,7 @@ import de.comeight.crystallogy.handler.GuiHandler;
 import de.comeight.crystallogy.handler.GuiHandlerRegistry;
 import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.handler.RecipeHandler;
+import de.comeight.crystallogy.handler.SoundHandler;
 import de.comeight.crystallogy.network.NetworkPacketInfuserBlockEnabled;
 import de.comeight.crystallogy.network.NetworkPacketInfusionRecipeStatus;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
@@ -69,6 +70,9 @@ public class CommonProxy {
 	
 	//Config:
 	private static ConfigHandler cH = new ConfigHandler();
+	
+	//Sounds:
+	private static SoundHandler sH = new SoundHandler();
 	
 	private static int networkId = 0;
 	
@@ -136,10 +140,11 @@ public class CommonProxy {
 	
 	// -----------------------------------------------Pre-Init:----------------------------------------------
 	public void preInit(FMLPreInitializationEvent e) {
+		cH.preInit(e);
 		bH.preInit();
 		iH.preInit();
 		rH.preInit();
-		cH.preInit(e);
+		sH.preInit();
 		
 		registerNetworkMessages();
 		registerGuiHandlers();
@@ -147,22 +152,23 @@ public class CommonProxy {
 
 	// -----------------------------------------------Init:--------------------------------------------------
     public void init(FMLInitializationEvent e) {
+    	cH.init(e);
     	bH.init();
 		iH.init();
 		rH.init();
-		cH.init(e);
+		sH.init();
 		
     	registerTileEntitys();
 		registerWorldGens();
-		
     }
 
 	// -----------------------------------------------Post-Init:----------------------------------------------
     public void postInit(FMLPostInitializationEvent e) {
+    	cH.postInit(e);
     	bH.postInit();
 		iH.postInit();
 		rH.postInit();
-		cH.postInit(e);
+		sH.postInit();
     }
     
 }

@@ -11,12 +11,15 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.world.World;
 
 public abstract class BaseTileEntityMachine extends TileEntityInventory implements ITickable, ISidedInventory{
 	//-----------------------------------------------Variabeln:---------------------------------------------
     protected int cookTime;
     protected int totalCookTime;
     public boolean crafting;
+    
+    protected int soundPlayedLast;
     
     protected BaseRecipeHandler recipeHandler;
     
@@ -31,6 +34,7 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
 		this.slotsInput = slotsInput;
 		this.slotsOutput = slotsOutput;
 		crafting = false;
+		soundPlayedLast = 0;
 	}
 
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -74,6 +78,10 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
 			ret[i] = getStackInSlot(slotsInput + i);
 		}
 		return ret;
+	}
+	
+	public int getSoundIntervall(){
+		return 20;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
@@ -200,8 +208,23 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
         compound.setBoolean("crushing", crafting);
 	}
 	
+	private void manageSounds(World worldIn){
+		if(soundPlayedLast <= 0 && (totalCookTime - cookTime) > getSoundIntervall() * 0.75){
+			playSound(worldIn);
+			soundPlayedLast = getSoundIntervall();
+			
+		}
+		else{
+			soundPlayedLast--;
+		}
+	}
+	
 	@Override
 	public void update() {
+		if(cookTime == 2){
+			onStartedCrafting(worldObj);
+		}
+		
 		if (worldObj.isRemote)
         {
         	if(crafting){
@@ -216,6 +239,7 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
         	}
         	return;
         }
+		
         boolean flag1 = false;
         if(crafting){
         	if(!canCraft()){
@@ -225,10 +249,12 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
         	}
         	else{
         		cookTime++;
+        		manageSounds(worldObj);
             	if (cookTime >= totalCookTime) {
     				cookTime = 1;
     				craftItem();
     				crafting = false;
+    				onFinishedCrafting(worldObj);
     			}
         	}
         	flag1 = true;
@@ -273,6 +299,18 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
 			return true;
 		}
 		return false;
+	}
+	
+	public void onFinishedCrafting(World worldIn){
+		
+	}
+	
+	public void onStartedCrafting(World worldIn){
+		
+	}
+	
+	public void playSound(World worldIn){
+		
 	}
 	
 }

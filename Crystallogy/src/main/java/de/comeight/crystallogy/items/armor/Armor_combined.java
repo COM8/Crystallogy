@@ -10,6 +10,8 @@ import de.comeight.crystallogy.util.Utilities;
 import de.comeight.crystallogy.util.armor.ArmorListEntry;
 import de.comeight.crystallogy.util.armor.CombinedArmorList;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -34,6 +36,7 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public Armor_combined(int renderIndexIn, EntityEquipmentSlot equipmentSlotIn) {
 		super(CustomArmorMaterials.CRYSTALL_COMBINED, renderIndexIn, equipmentSlotIn, ID + equipmentSlotIn.getName());
+		setMaxDamage(100);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -41,7 +44,7 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 		return ID + armorType.getName();
 	}
 	
-	public UUID getArmorListEntryId(ItemStack itemStackIn){
+	public static UUID getArmorListEntryId(ItemStack itemStackIn){
 		if(!itemStackIn.hasTagCompound()){
 			createNewTagCompound(itemStackIn);
 		}
@@ -51,7 +54,7 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 		return itemStackIn.getTagCompound().getUniqueId("armorListEntryId");
 	}
 	
-	public LinkedList<ItemStack> getArmorList(ItemStack itemStackIn){
+	public static LinkedList<ItemStack> getArmorList(ItemStack itemStackIn){
 		ArmorListEntry entry = CombinedArmorList.getEntry(getArmorListEntryId(itemStackIn));
 		if(entry != null){
 			return entry.getList();
@@ -109,6 +112,38 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 		return iArmor;
 	}
 	
+	@Override
+	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
+		LinkedList<ItemStack> list = getArmorList(stack);
+		if(list == null || list.size() < 1){
+			return super.getArmorTexture(stack, entity, slot, type);
+		}
+		ItemArmor armor = (ItemArmor) list.get(0).getItem();
+		return armor.getArmorTexture(list.get(0), entity, slot, type);
+	}
+	
+	@Override
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {
+		LinkedList<ItemStack> list = getArmorList(itemStack);
+		if(list == null || list.size() < 1){
+			return super.getArmorModel(entityLiving, itemStack, armorSlot, _default);
+		}
+		ItemArmor armor = (ItemArmor) list.get(0).getItem();
+		return armor.getArmorModel(entityLiving, list.get(0), armorSlot, _default);
+	}
+	
+	@Override
+	public void renderHelmetOverlay(ItemStack stack, EntityPlayer player, ScaledResolution resolution, float partialTicks) {
+		LinkedList<ItemStack> list = getArmorList(stack);
+		if(list == null || list.size() < 1){
+			super.renderHelmetOverlay(stack, player, resolution, partialTicks);
+		}
+		else{
+			ItemArmor armor = (ItemArmor) list.get(0).getItem();
+			armor.renderHelmetOverlay(list.get(0), player, resolution, partialTicks);
+		}
+	}
+	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	public static void addArmor(ItemStack itemStackIn, ItemStack armor){
 		if(itemStackIn.getItem() instanceof Armor_combined){
@@ -132,7 +167,7 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 		
 		for (ItemStack armorStack : list) {
 			ItemArmor armor = (ItemArmor) armorStack.getItem();
-			armor.onArmorTick(world, player, itemStack);
+			armor.onArmorTick(world, player, armorStack);
 		}
 	}
 	
@@ -154,7 +189,8 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 				for (int i = 0; i < list.size(); i++) {
 					ItemArmor armor = (ItemArmor) list.get(i).getItem();
 					tooltip.add(TextFormatting.DARK_AQUA + String.valueOf(i + 1) + ": " + TextFormatting.RESET + armor.getItemStackDisplayName(new ItemStack(armor)));
-					armor.addInformation(stack, playerIn, tooltip, advanced);
+					addArmorDurability(list.get(i), tooltip);
+					armor.addInformation(list.get(i), playerIn, tooltip, advanced);
 					tooltip.add("");
 				}
 			}
@@ -174,6 +210,25 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 		super.addInformation(stack, playerIn, tooltip, advanced);
 	}
 
+	@SideOnly(Side.CLIENT)
+	private void addArmorDurability(ItemStack stack, List<String> tooltip){
+		int maxDamage = stack.getMaxDamage();
+		int damage = stack.getItemDamage();
+		double percent = ((double) damage) / ((double) maxDamage); 
+		
+		if(percent >= 0.75){
+			tooltip.add("Durability: " + TextFormatting.RED + (maxDamage - damage) + " / " + maxDamage);
+		}
+		else if(percent >= 0.5){
+			tooltip.add("Durability: " + TextFormatting.GOLD + (maxDamage - damage) + " / " + maxDamage);
+		}
+		else if(percent >= 0.25){
+			tooltip.add("Durability: " + TextFormatting.GREEN + (maxDamage - damage) + " / " + maxDamage);
+		}
+		else{
+			tooltip.add("Durability: " + TextFormatting.DARK_GREEN + (maxDamage - damage) + " / " + maxDamage);
+		}
+	}
 	
 	@Override
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
@@ -186,16 +241,16 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 			ItemArmor armor = (ItemArmor) armorStack.getItem();
 			if(armor instanceof ISpecialArmor){
 				ISpecialArmor armor2 = (ISpecialArmor) armor;
-				armor2.damageArmor(entity, stack, source, damage, slot);
+				armor2.damageArmor(entity, armorStack, source, damage, slot);
 			}
 		}
 	}
 	
-	private void createNewTagCompound(ItemStack itemStackIn){ 
+	private static void createNewTagCompound(ItemStack itemStackIn){ 
 		itemStackIn.setTagCompound(new NBTTagCompound());
 	}
 	
-	private void createNewIdTag(ItemStack itemStackIn){
+	private static void createNewIdTag(ItemStack itemStackIn){
 		NBTTagCompound compound = itemStackIn.getTagCompound();
 		compound.setUniqueId("armorListEntryId", UUID.randomUUID());
 		itemStackIn.setTagCompound(compound);

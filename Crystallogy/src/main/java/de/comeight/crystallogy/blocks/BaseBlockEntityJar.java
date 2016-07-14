@@ -134,7 +134,7 @@ public class BaseBlockEntityJar extends BaseBlockTileEntity {
 			if(jar.hasEntity()){
 				if(playerIn.isSneaking()){
 					//Releas Player
-					jar.removeEntity(worldIn, new Vec3d(pos), true); //TODO Fix no sound playing
+					jar.removeEntity(worldIn, new Vec3d(pos), true);
 					worldIn.notifyNeighborsOfStateChange(pos, this);
 				}
 				else{

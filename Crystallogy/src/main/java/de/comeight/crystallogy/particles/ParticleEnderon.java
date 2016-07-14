@@ -8,7 +8,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class ParticleEnderon extends BaseParticleExtended {
+public class ParticleEnderon extends BaseParticle {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	public static final ResourceLocation RL_PARTICLE_ENDERON = new ResourceLocation("crystallogy:particles/p/p");
 
@@ -22,11 +22,11 @@ public class ParticleEnderon extends BaseParticleExtended {
 	public ParticleEnderon(World worldIn, Vec3d pos, Vec3d targetPos) {
 		super(ParticleInformation.ID_PARTICLE_ENDERON, RL_PARTICLE_ENDERON, worldIn, pos);
 		
-		this.countParticleTextures = 32;
-		
 		this.targetPos = targetPos;
 		this.particleMaxAge = Utilities.getRandInt(20, 50);
 		this.particleScale = Utilities.getRandFloat(0.5F, 1.5F);
+		
+		calcSpeed();
 	}
 
 	public ParticleEnderon() {

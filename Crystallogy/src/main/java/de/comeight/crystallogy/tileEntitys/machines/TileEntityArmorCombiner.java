@@ -3,10 +3,14 @@ package de.comeight.crystallogy.tileEntitys.machines;
 import de.comeight.crystallogy.blocks.machines.Compressor;
 import de.comeight.crystallogy.handler.ArmorCombinerRecipeHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
+import de.comeight.crystallogy.handler.SoundHandler;
 import de.comeight.crystallogy.items.armor.Armor_combined;
+import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.world.World;
 
 public class TileEntityArmorCombiner extends BaseTileEntityMachine {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -36,6 +40,11 @@ public class TileEntityArmorCombiner extends BaseTileEntityMachine {
 			ret[i] = i;
 		}
 		return ret;
+	}
+	
+	@Override
+	public int getSoundIntervall() {
+		return 80;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
@@ -82,5 +91,10 @@ public class TileEntityArmorCombiner extends BaseTileEntityMachine {
 			}
 		}
 		return false;
+	}
+	
+	@Override
+	public void playSound(World worldIn) {
+		worldIn.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundHandler.MACHINE_BROKEN, SoundCategory.BLOCKS, Utilities.getRandFloat(0.1F, 0.2F), Utilities.getRandFloat(0.2F, 1.0F));
 	}
 }
