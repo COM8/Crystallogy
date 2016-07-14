@@ -12,6 +12,7 @@ You can also use your crystals to control / manipulate your friends / entities.
 
 ##ToDo list for the next big release (1.1):
 * Clean up the code - 0%
+* [MORE NOTES TO COME]
 
 ##ToDo for later releases:
 
