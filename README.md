@@ -15,7 +15,7 @@ You can also use your crystals to control / manipulate your friends / entities.
 * [MORE NOTES TO COME]
 
 ##ToDo for later releases:
-
+* [MORE NOTES TO COME]
 
 ##Reporting Bugs:
 Please make sure you're using the latest version to avoid reporting already fixed bugs.
