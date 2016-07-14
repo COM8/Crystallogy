@@ -5,7 +5,6 @@ import de.comeight.crystallogy.gui.GuiCharger;
 import de.comeight.crystallogy.gui.GuiCompressor;
 import de.comeight.crystallogy.gui.GuiCrystallCrusher;
 import de.comeight.crystallogy.handler.BlockHandler;
-import de.comeight.crystallogy.handler.ChestGenHandler;
 import de.comeight.crystallogy.handler.ConfigHandler;
 import de.comeight.crystallogy.handler.GuiHandler;
 import de.comeight.crystallogy.handler.GuiHandlerRegistry;
@@ -74,9 +73,6 @@ public class CommonProxy {
 	
 	//Sounds:
 	private static SoundHandler sH = new SoundHandler();
-	
-	//ChestGen:
-	private static ChestGenHandler cGH = new ChestGenHandler();
 	
 	private static int networkId = 0;
 	
@@ -149,7 +145,6 @@ public class CommonProxy {
 		iH.preInit();
 		rH.preInit();
 		sH.preInit();
-		cGH.preInit();
 		
 		registerNetworkMessages();
 		registerGuiHandlers();
@@ -162,7 +157,6 @@ public class CommonProxy {
 		iH.init();
 		rH.init();
 		sH.init();
-		cGH.init();
 		
     	registerTileEntitys();
 		registerWorldGens();
@@ -175,7 +169,6 @@ public class CommonProxy {
 		iH.postInit();
 		rH.postInit();
 		sH.postInit();
-		cGH.postInit();
     }
     
 }

@@ -3,6 +3,7 @@ package de.comeight.crystallogy;
 import org.lwjgl.input.Keyboard;
 
 import de.comeight.crystallogy.handler.BlockRenderHandler;
+import de.comeight.crystallogy.handler.EventHandler;
 import de.comeight.crystallogy.handler.ItemRenderHandler;
 import de.comeight.crystallogy.particles.ParticleHandler;
 import de.comeight.crystallogy.renderer.RendererEntityInCrystal;
@@ -35,6 +36,7 @@ public class ClientProxy extends CommonProxy{
     public void preInit(FMLPreInitializationEvent e) {
         super.preInit(e);
         MinecraftForge.EVENT_BUS.register(pH);
+        MinecraftForge.EVENT_BUS.register(new EventHandler());
         
         pH.preInit();
     }
