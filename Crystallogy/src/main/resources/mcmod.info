@@ -1,16 +1,16 @@
 [
-{
-  "modid": "crystallogy",
-  "name": "Crystallogy",
-  "description": "Crystallogy is a mod which is based on crystals. You can use these crystals to construct tools and armor. You can also use your crystals to control / manipulate your friends.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/wip-mods/2667161-crystallogy",
-  "updateUrl": "",
-  "authorList": ["COM8"],
-  "credits": "The Forge and FML guys, for making Minecraft Forge. And all the guys at Mojang.",
-  "logoFile": "",
-  "screenshots": [],
-  "dependencies": []
-}
+	{
+		"modid": "crystallogy",
+		"name": "Crystallogy",
+		"description": "Crystallogy is a mod which is based on crystals. You can use these crystals to construct tools and armor. You can also use your crystals to control / manipulate your friends.",
+		"version": "",
+		"mcversion": "",
+		"url": "http://minecraft.curseforge.com/projects/crystallogy",
+		"updateUrl": "",
+		"authorList": ["COM8"],
+		"credits": "The Forge and FML guys, for making Minecraft Forge. And all the guys at Mojang.",
+		"logoFile": "assets/crystallogy/textures/logo.png",
+		"screenshots": ["assets/crystallogy/textures/screenshots/1.png", "assets/crystallogy/textures/screenshots/2.png", "assets/crystallogy/textures/screenshots/3.png", "assets/crystallogy/textures/screenshots/4.png"],
+		"dependencies": []
+	}
 ]
