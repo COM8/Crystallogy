@@ -10,6 +10,8 @@ import de.comeight.crystallogy.util.Utilities;
 import de.comeight.crystallogy.util.armor.ArmorListEntry;
 import de.comeight.crystallogy.util.armor.CombinedArmorList;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -110,6 +112,38 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 		return iArmor;
 	}
 	
+	@Override
+	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
+		LinkedList<ItemStack> list = getArmorList(stack);
+		if(list == null || list.size() < 1){
+			return super.getArmorTexture(stack, entity, slot, type);
+		}
+		ItemArmor armor = (ItemArmor) list.get(0).getItem();
+		return armor.getArmorTexture(list.get(0), entity, slot, type);
+	}
+	
+	@Override
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {
+		LinkedList<ItemStack> list = getArmorList(itemStack);
+		if(list == null || list.size() < 1){
+			return super.getArmorModel(entityLiving, itemStack, armorSlot, _default);
+		}
+		ItemArmor armor = (ItemArmor) list.get(0).getItem();
+		return armor.getArmorModel(entityLiving, list.get(0), armorSlot, _default);
+	}
+	
+	@Override
+	public void renderHelmetOverlay(ItemStack stack, EntityPlayer player, ScaledResolution resolution, float partialTicks) {
+		LinkedList<ItemStack> list = getArmorList(stack);
+		if(list == null || list.size() < 1){
+			super.renderHelmetOverlay(stack, player, resolution, partialTicks);
+		}
+		else{
+			ItemArmor armor = (ItemArmor) list.get(0).getItem();
+			armor.renderHelmetOverlay(list.get(0), player, resolution, partialTicks);
+		}
+	}
+	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	public static void addArmor(ItemStack itemStackIn, ItemStack armor){
 		if(itemStackIn.getItem() instanceof Armor_combined){
@@ -183,22 +217,21 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 		double percent = ((double) damage) / ((double) maxDamage); 
 		
 		if(percent >= 0.75){
-			tooltip.add("Durability: " + TextFormatting.DARK_GREEN + (maxDamage - damage) + " / " + maxDamage);
+			tooltip.add("Durability: " + TextFormatting.RED + (maxDamage - damage) + " / " + maxDamage);
 		}
 		else if(percent >= 0.5){
-			tooltip.add("Durability: " + TextFormatting.GREEN + (maxDamage - damage) + " / " + maxDamage);
-		}
-		else if(percent >= 0.25){
 			tooltip.add("Durability: " + TextFormatting.GOLD + (maxDamage - damage) + " / " + maxDamage);
 		}
+		else if(percent >= 0.25){
+			tooltip.add("Durability: " + TextFormatting.GREEN + (maxDamage - damage) + " / " + maxDamage);
+		}
 		else{
-			tooltip.add("Durability: " + TextFormatting.RED + (maxDamage - damage) + " / " + maxDamage);
+			tooltip.add("Durability: " + TextFormatting.DARK_GREEN + (maxDamage - damage) + " / " + maxDamage);
 		}
 	}
 	
 	@Override
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
-		System.out.println("damage");
 		LinkedList<ItemStack> list = getArmorList(stack);
 		if(list == null){
 			return;
