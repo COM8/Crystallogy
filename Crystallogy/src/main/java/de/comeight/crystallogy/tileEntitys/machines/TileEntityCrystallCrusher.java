@@ -36,7 +36,7 @@ public class TileEntityCrystallCrusher extends BaseTileEntityMachine {
 	
 	@Override
 	public void playSound(World worldIn) {
-		worldIn.playSound((EntityPlayer)null, pos.getX(), pos.getY(), pos.getZ(), SoundHandler.CRUSHER, SoundCategory.BLOCKS, Utilities.getRandFloat(0.5F, 1.0F), Utilities.getRandFloat(0.2F, 1.0F));
+		worldIn.playSound((EntityPlayer)null, pos.getX(), pos.getY(), pos.getZ(), SoundHandler.CRUSHER, SoundCategory.BLOCKS, Utilities.getRandFloat(0.3F, 0.5F), Utilities.getRandFloat(0.2F, 1.0F));
 	}
 
 }
