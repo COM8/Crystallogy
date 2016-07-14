@@ -4,7 +4,6 @@ import de.comeight.crystallogy.tileEntitys.machines.TileEntityCompressor;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnaceOutput;
 
 public class ContainerCompressor extends BaseContainer{
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -32,7 +31,7 @@ public class ContainerCompressor extends BaseContainer{
 	
 	private void addCompressorSlots(InventoryPlayer playerInventory){
         this.addSlotToContainer(new Slot(tileEntity, inputSlot, 56, 35));
-        this.addSlotToContainer(new SlotFurnaceOutput(playerInventory.player, tileEntity, outputSlot, 116, 35));
+        this.addSlotToContainer(new CompressorOutputSlot(tileEntity, outputSlot, 116, 35));
 	}
 
 }

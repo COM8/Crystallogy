@@ -4,7 +4,6 @@ import de.comeight.crystallogy.tileEntitys.machines.TileEntityCharger;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnaceOutput;
 
 public class ContainerCharger extends BaseContainer{
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -34,7 +33,7 @@ public class ContainerCharger extends BaseContainer{
 	private void addCompressorSlots(InventoryPlayer playerInventory){
 		this.addSlotToContainer(new Slot(tileEntity, inputSlot0, 56, 24));
 		this.addSlotToContainer(new Slot(tileEntity, inputSlot1, 56, 45));
-        this.addSlotToContainer(new SlotFurnaceOutput(playerInventory.player, tileEntity, outputSlot, 116, 35));
+        this.addSlotToContainer(new ChargerOutputSlot(tileEntity, outputSlot, 116, 35));
 	}
 	
 }
