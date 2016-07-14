@@ -11,11 +11,10 @@ You can also use your crystals to control / manipulate your friends / entities.
 * [Wiki](https://github.com/COM8/Crystallogy/wiki)
 
 ##ToDo list for the next big release (1.0):
-* Add custom sounds - 0%
-* Add Crystal Shields with custom behavior - 0%
+* Add custom sounds - 90%
 * Add a way to return expirience for every machine crafting cycle - 0%
 * Add a way to return items for Infusion Crafting (Water Bucket example) - 0%
-* Clean up the code - 0%
+* Clean up the code - 10%
 
 ##ToDo for later releases:
 
