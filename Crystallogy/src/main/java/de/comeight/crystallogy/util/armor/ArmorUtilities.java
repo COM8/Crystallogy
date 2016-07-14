@@ -30,9 +30,11 @@ public class ArmorUtilities {
 	public static boolean hasArmor(ItemStack itemStackIn, ItemArmor armor){
 		if(itemStackIn.getItem() instanceof Armor_combined){
 			LinkedList<ItemStack> list = Armor_combined.getArmorList(itemStackIn);
-			for (ItemStack itemStack : list) {
-				if(itemStack.getItem() == armor){
-					return true;
+			if(list != null && list.size() > 0){
+				for (ItemStack itemStack : list) {
+					if(itemStack.getItem() == armor){
+						return true;
+					}
 				}
 			}
 		}
