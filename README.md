@@ -12,8 +12,8 @@ You can also use your crystals to control / manipulate your friends / entities.
 
 ##ToDo list for the next big release (1.0):
 * Add custom sounds - 90%
-* Add a way to return expirience for every machine crafting cycle - 0%
-* Add a way to return items for Infusion Crafting (Water Bucket example) - 0%
+* Add a way to return expirience for every machine crafting cycle - 100%
+* Add a way to return items for Infusion Crafting (Water Bucket example) - 100%
 * Clean up the code - 10%
 
 ##ToDo for later releases:
