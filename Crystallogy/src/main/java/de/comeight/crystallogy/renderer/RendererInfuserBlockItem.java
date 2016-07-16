@@ -7,9 +7,7 @@ import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -33,18 +31,15 @@ public class RendererInfuserBlockItem extends TileEntitySpecialRenderer<TileEnit
 
         GlStateManager.pushMatrix();
         GlStateManager.translate(x, y, z);
-        renderItem(tileInfuserBlock.getWorld(), inputStack);
+        renderItem(inputStack);
         GlStateManager.popMatrix();
     }
 
-    private void renderItem(World world, ItemStack stack)
+    private void renderItem(ItemStack stack)
     {
         RenderItem itemRenderer = Minecraft.getMinecraft().getRenderItem();
         if (stack != null)
         {
-            EntityItem entityitem = new EntityItem(world, 0.0D, 0.0D, 0.0D, stack);
-            entityitem.getEntityItem().stackSize = 1;
-            entityitem.hoverStart = 0.0F;
             GlStateManager.translate(0.5, 0.7, 0.5);
             GlStateManager.pushMatrix();
             GlStateManager.disableLighting();
@@ -54,13 +49,11 @@ public class RendererInfuserBlockItem extends TileEntitySpecialRenderer<TileEnit
             GlStateManager.rotate(rotationAngel, 0.0F, 1.0F, 0.0F);
             GlStateManager.pushAttrib();
             RenderHelper.enableStandardItemLighting();
-            itemRenderer.renderItem(entityitem.getEntityItem(), ItemCameraTransforms.TransformType.GROUND);
+            itemRenderer.renderItem(stack, ItemCameraTransforms.TransformType.GROUND);
             RenderHelper.disableStandardItemLighting();
             GlStateManager.popAttrib();
             GlStateManager.enableLighting();
             GlStateManager.popMatrix();
-        }
-        else{
         }
     }
 }
