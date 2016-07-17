@@ -3,6 +3,7 @@ package de.comeight.crystallogy.util;
 import java.awt.Color;
 
 import net.minecraft.nbt.NBTTagCompound;
+import scala.collection.generic.BitOperations.Int;
 
 public class RGBColor {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -14,11 +15,13 @@ public class RGBColor {
 	public RGBColor() {
 	}
 	
+	/**
+	 * Creates a new {@link RGBColor}.
+	 * 
+	 * @param rgbColor a color based on a {@link Int}
+	 */
 	public RGBColor(int rgbColor) {
-		Color c = hex2Rgb(Integer.toHexString(rgbColor));
-		this.r = c.getRed() / 255.0F;
-		this.g = c.getGreen() / 255.0F;
-		this.b = c.getBlue() / 255.0F;
+		fromInt(rgbColor);
 	}
 	
 	/**
@@ -89,6 +92,29 @@ public class RGBColor {
 	    }
 	    colorStr = "0x" + colorStr;
 		return Color.decode(colorStr);
+	}
+	
+	/**
+	 * Converts a color to a RGB Color with a {@link Int} base.
+	 */
+	public int toInt(){
+		int rgb = (int) (r*255);
+		rgb = (rgb << 8) + (int) (g * 255);
+		rgb = (rgb << 8) + (int) (b * 255);
+		
+		return rgb;
+	}
+	
+	/**
+	 * Reades the {@link Int} value of a rgb color and translates it.
+	 * 
+	 * @param rgb a color based on a {@link Int}
+	 */
+	public void fromInt(int rgb){
+		Color c = hex2Rgb(Integer.toHexString(rgb));
+		this.r = c.getRed() / 255.0F;
+		this.g = c.getGreen() / 255.0F;
+		this.b = c.getBlue() / 255.0F;
 	}
 
 }
