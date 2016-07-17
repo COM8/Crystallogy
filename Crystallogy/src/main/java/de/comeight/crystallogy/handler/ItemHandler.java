@@ -2,6 +2,7 @@ package de.comeight.crystallogy.handler;
 
 import de.comeight.crystallogy.items.ArmorCatalys;
 import de.comeight.crystallogy.items.ArmorPlate;
+import de.comeight.crystallogy.items.BookOfKnowledge;
 import de.comeight.crystallogy.items.ChargedCombinedArmorMesh;
 import de.comeight.crystallogy.items.CombinedArmorCompound;
 import de.comeight.crystallogy.items.CombinedArmorMesh;
@@ -111,6 +112,7 @@ public class ItemHandler {
 	public static ChargedCombinedArmorMesh chargedCombinedArmorMesh;
 	public static EnderonCrystal enderonCrystal;
 	public static DebugTool debugTool;
+	public static BookOfKnowledge bookOfKnowledge;
 	
 	//Armor:
 	public static Armor_red armorHelmet_red;
@@ -220,7 +222,9 @@ public class ItemHandler {
 		chargedCombinedArmorMesh = new ChargedCombinedArmorMesh();
 		enderonCrystal = new EnderonCrystal();
 		debugTool = new DebugTool();
+		bookOfKnowledge = new BookOfKnowledge();
 		
+		GameRegistry.register(bookOfKnowledge);
 		GameRegistry.register(enderonCrystal);
 		GameRegistry.register(chargedCombinedArmorMesh);
 		GameRegistry.register(combinedArmorMesh);

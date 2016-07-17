@@ -88,6 +88,7 @@ public class ItemRenderHandler {
 		registerBasicItemRender(ItemHandler.hunterArmorMesh);
 		registerBasicItemRender(ItemHandler.chargedCombinedArmorMesh);
 		registerBasicItemRender(ItemHandler.enderonCrystal);
+		registerBasicItemRender(ItemHandler.bookOfKnowledge);
 		
 		if(ConfigHandler.enableDebugTool){
 			registerBasicItemRender(ItemHandler.debugTool);

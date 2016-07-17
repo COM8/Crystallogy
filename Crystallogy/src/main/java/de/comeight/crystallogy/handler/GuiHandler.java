@@ -8,6 +8,7 @@ import de.comeight.crystallogy.gui.GuiArmorCombiner;
 import de.comeight.crystallogy.gui.GuiCharger;
 import de.comeight.crystallogy.gui.GuiCompressor;
 import de.comeight.crystallogy.gui.GuiCrystallCrusher;
+import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookMain;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityArmorCombiner;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCharger;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCompressor;
@@ -32,6 +33,7 @@ public class GuiHandler implements IGuiHandler{ //TODO Convert to a list
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+		//System.out.println("Server");
 		TileEntity t = world.getTileEntity(new BlockPos(x,y,z));
 		switch(ID){
 		case GuiCrystallCrusher.ID: //Crusher
@@ -69,6 +71,7 @@ public class GuiHandler implements IGuiHandler{ //TODO Convert to a list
 
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+		//System.out.println("Client");
 		TileEntity t = world.getTileEntity(new BlockPos(x,y,z));
 		switch(ID){
 		case GuiCrystallCrusher.ID:  //Crusher
@@ -99,6 +102,8 @@ public class GuiHandler implements IGuiHandler{ //TODO Convert to a list
 			else{
 				return null;
 			}
+		case GuiBookMain.ID: //Book of Knowledge:
+			return new GuiBookMain();
 		default:
 			return null;
 		}

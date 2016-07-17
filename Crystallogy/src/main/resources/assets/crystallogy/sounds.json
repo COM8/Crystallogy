@@ -1,4 +1,9 @@
 {
+	"bookOpen": { 
+		"category": "block",
+		"subtitle": "crystallogy.subtitle.bookOpen",
+		"sounds":[ "crystallogy:bookOpen" ]
+	},
 	"crusher": { 
 		"category": "block",
 		"subtitle": "crystallogy.subtitle.crusher",

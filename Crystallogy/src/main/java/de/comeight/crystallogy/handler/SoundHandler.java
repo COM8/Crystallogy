@@ -14,6 +14,7 @@ public class SoundHandler {
 	public static SoundEvent EVIL_LAUGH_MALE_1;
 	public static SoundEvent EVIL_LAUGH_MALE_2;
 	public static SoundEvent ARMORCOMBINER;
+	public static SoundEvent BOOKOPEN;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 
@@ -24,7 +25,12 @@ public class SoundHandler {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	private void registerAllSound(){
 		//CRUSHER:
-		ResourceLocation rL = new ResourceLocation(CrystallogyBase.MODID, "crusher");
+		ResourceLocation rL = new ResourceLocation(CrystallogyBase.MODID, "bookOpen");
+		BOOKOPEN = new SoundEvent(rL);
+		GameRegistry.register(BOOKOPEN, rL);
+		
+		//CRUSHER:
+		rL = new ResourceLocation(CrystallogyBase.MODID, "crusher");
 		CRUSHER = new SoundEvent(rL);
 		GameRegistry.register(CRUSHER, rL);
 		

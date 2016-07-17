@@ -124,6 +124,7 @@ item.chargedCombinedArmorMesh.name=Charged Combined Armor Mesh
 item.hunterArmorMesh.name=Hunter's Armor Mesh
 item.enderonCrystal.name=Enderon Crystal
 item.debugTool.name=Debug Tool
+item.bookOfKnowledge.name=§6Book of Knowledge§r
 
 itemGroup.crystallogyMainTab=Crystallogy Maintab
 
