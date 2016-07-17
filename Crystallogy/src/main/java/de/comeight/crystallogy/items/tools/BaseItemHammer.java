@@ -68,6 +68,10 @@ public abstract class BaseItemHammer extends BaseItemPickaxe {
 	}
 	
 	protected ArrayList<BlockPos> calcAOE(ItemStack stack, RayTraceResult rTR, World worldIn, BlockPos pos){
+		if(rTR == null){
+			return new ArrayList<BlockPos>();
+		}
+		
 		int refHarvestLevel = worldIn.getBlockState(pos).getBlock().getHarvestLevel(worldIn.getBlockState(pos));
 		ArrayList<BlockPos> list = new ArrayList<BlockPos>();
 		
