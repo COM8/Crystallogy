@@ -4,7 +4,7 @@ import de.comeight.crystallogy.gui.GuiArmorCombiner;
 import de.comeight.crystallogy.gui.GuiCharger;
 import de.comeight.crystallogy.gui.GuiCompressor;
 import de.comeight.crystallogy.gui.GuiCrystallCrusher;
-import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookMain;
+import de.comeight.crystallogy.gui.bookOfKnowledge.Pages.GuiBookMain;
 import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ConfigHandler;
 import de.comeight.crystallogy.handler.GuiHandler;

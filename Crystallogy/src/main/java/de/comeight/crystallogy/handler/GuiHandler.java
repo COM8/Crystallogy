@@ -8,7 +8,7 @@ import de.comeight.crystallogy.gui.GuiArmorCombiner;
 import de.comeight.crystallogy.gui.GuiCharger;
 import de.comeight.crystallogy.gui.GuiCompressor;
 import de.comeight.crystallogy.gui.GuiCrystallCrusher;
-import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookMain;
+import de.comeight.crystallogy.gui.bookOfKnowledge.Pages.GuiBookMain;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityArmorCombiner;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCharger;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCompressor;

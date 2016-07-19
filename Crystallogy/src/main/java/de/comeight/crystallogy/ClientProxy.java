@@ -2,6 +2,7 @@ package de.comeight.crystallogy;
 
 import org.lwjgl.input.Keyboard;
 
+import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import de.comeight.crystallogy.handler.BlockRenderHandler;
 import de.comeight.crystallogy.handler.EventHandler;
 import de.comeight.crystallogy.handler.ItemRenderHandler;
@@ -60,6 +61,8 @@ public class ClientProxy extends CommonProxy{
         super.postInit(e);
         
         pH.postInit();
+        
+        PageRegistry.registerAllPages();
     }
     
   //-----------------------------------------------Sonstige Methoden:-------------------------------------
