@@ -30,10 +30,10 @@ public class Armor_red extends BaseArmor {
 	}
 	
 	private boolean isPlayerWearingFullArmor(EntityPlayer player){
-		if (player.inventory.armorItemInSlot(3) != null && ArmorUtilities.hasArmor(player.inventory.armorItemInSlot(3), ItemHandler.armorHelmet_red)
-		        && player.inventory.armorItemInSlot(2) != null && ArmorUtilities.hasArmor(player.inventory.armorItemInSlot(2), ItemHandler.armorChestplate_red)
-		        && player.inventory.armorItemInSlot(1) != null && ArmorUtilities.hasArmor(player.inventory.armorItemInSlot(1), ItemHandler.armorLeggins_red)
-		        && player.inventory.armorItemInSlot(0) != null && ArmorUtilities.hasArmor(player.inventory.armorItemInSlot(0), ItemHandler.armorBoots_red)) {
+		if (player.inventory.armorInventory[3] != null && ArmorUtilities.hasArmor(player.inventory.armorInventory[3], ItemHandler.armorHelmet_red)
+		        && player.inventory.armorInventory[2] != null && ArmorUtilities.hasArmor(player.inventory.armorInventory[2], ItemHandler.armorChestplate_red)
+		        && player.inventory.armorInventory[1] != null && ArmorUtilities.hasArmor(player.inventory.armorInventory[1], ItemHandler.armorLeggins_red)
+		        && player.inventory.armorInventory[0] != null && ArmorUtilities.hasArmor(player.inventory.armorInventory[0], ItemHandler.armorBoots_red)) {
 		        return true;
 		}
 		return false;

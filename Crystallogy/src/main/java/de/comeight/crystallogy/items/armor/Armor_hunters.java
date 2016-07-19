@@ -29,10 +29,10 @@ public class Armor_hunters extends BaseArmor {
 	}
 	
 	private boolean isPlayerWearingFullArmor(EntityPlayer player){
-		if (player.inventory.armorItemInSlot(3) != null && ArmorUtilities.hasArmor(player.inventory.armorItemInSlot(3), ItemHandler.armorHelmet_hunter)
-		        && player.inventory.armorItemInSlot(2) != null && ArmorUtilities.hasArmor(player.inventory.armorItemInSlot(2), ItemHandler.armorChestplate_hunter)
-		        && player.inventory.armorItemInSlot(1) != null && ArmorUtilities.hasArmor(player.inventory.armorItemInSlot(1), ItemHandler.armorLeggins_hunter)
-		        && player.inventory.armorItemInSlot(0) != null && ArmorUtilities.hasArmor(player.inventory.armorItemInSlot(0), ItemHandler.armorBoots_hunter)) {
+		if (player.inventory.armorInventory[3] != null && ArmorUtilities.hasArmor(player.inventory.armorInventory[3], ItemHandler.armorHelmet_hunter)
+		        && player.inventory.armorInventory[2] != null && ArmorUtilities.hasArmor(player.inventory.armorInventory[2], ItemHandler.armorChestplate_hunter)
+		        && player.inventory.armorInventory[1] != null && ArmorUtilities.hasArmor(player.inventory.armorInventory[1], ItemHandler.armorLeggins_hunter)
+		        && player.inventory.armorInventory[0] != null && ArmorUtilities.hasArmor(player.inventory.armorInventory[0], ItemHandler.armorBoots_hunter)) {
 		        return true;
 		}
 		return false;
