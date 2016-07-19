@@ -11,6 +11,8 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
@@ -48,7 +50,7 @@ public class Armor_hunters extends BaseArmor {
 		else{
 			if(itemStack.getItem() == ItemHandler.armorChestplate_hunter){
 				enableCapabilities(world, player);
-				
+				player.addPotionEffect(new PotionEffect(Potion.getPotionById(1), 1, 1, true, false));
 				if(!world.isRemote){
 					if(player.capabilities.isFlying){
 						damageEnergyCrystal(player, index);
@@ -68,9 +70,10 @@ public class Armor_hunters extends BaseArmor {
 			player.capabilities.allowFlying = true;
 			player.capabilities.disableDamage = true;
 		}
-		if(!world.isRemote){
-			player.capabilities.setPlayerWalkSpeed(0.12F);
-			player.capabilities.setFlySpeed(0.06F);	
+		if(world.isRemote){
+			//player.capabilities.setPlayerWalkSpeed(0.12F);
+			//player.capabilities.setFlySpeed(0.06F);
+			
 		}
 	}
 	
@@ -80,9 +83,9 @@ public class Armor_hunters extends BaseArmor {
 			player.capabilities.isFlying = false;
 			player.capabilities.disableDamage = false;
 		}
-		if(!world.isRemote){
-			player.capabilities.setPlayerWalkSpeed(0.1F);
-			player.capabilities.setFlySpeed(0.05F);
+		if(world.isRemote){
+			//player.capabilities.setPlayerWalkSpeed(0.1F);
+			//player.capabilities.setFlySpeed(0.05F);
 		}
 	}
 	
