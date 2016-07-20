@@ -1,7 +1,7 @@
 package de.comeight.crystallogy.items;
 
 import de.comeight.crystallogy.CrystallogyBase;
-import de.comeight.crystallogy.gui.bookOfKnowledge.Pages.GuiBookMain;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookMain;
 import de.comeight.crystallogy.handler.SoundHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

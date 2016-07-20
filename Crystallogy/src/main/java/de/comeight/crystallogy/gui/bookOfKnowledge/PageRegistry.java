@@ -2,9 +2,16 @@ package de.comeight.crystallogy.gui.bookOfKnowledge;
 
 import java.util.LinkedList;
 
-import de.comeight.crystallogy.gui.bookOfKnowledge.Pages.GuiBookCrystalDusts;
-import de.comeight.crystallogy.gui.bookOfKnowledge.Pages.GuiBookCrystals;
-import de.comeight.crystallogy.gui.bookOfKnowledge.Pages.GuiBookMain;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookMain;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookBlocks;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookCrystals;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.credits.GuiBookCredits;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.infusion.GuiBookInfusionCrafting;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookArmor;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookCrystalDusts;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookItems;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookTools;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.search.GuiBookSearch;
 
 public class PageRegistry {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -25,7 +32,7 @@ public class PageRegistry {
 		}
 		int i = lastVisited;
 		lastVisited = course.removeLast();
-		return list.get(lastVisited).PAGE;
+		return list.get(i).PAGE;
 	}
 	
 	public static void setCurrentPage(GuiBookPage currentPage) {
@@ -41,6 +48,13 @@ public class PageRegistry {
 		registerPage(new GuiBookMain());
 		registerPage(new GuiBookCrystals());
 		registerPage(new GuiBookCrystalDusts());
+		registerPage(new GuiBookBlocks());
+		registerPage(new GuiBookItems());
+		registerPage(new GuiBookTools());
+		registerPage(new GuiBookCredits());
+		registerPage(new GuiBookSearch());
+		registerPage(new GuiBookInfusionCrafting());
+		registerPage(new GuiBookArmor());
 	}
 	
 	private static void registerPage(GuiBookPage page){

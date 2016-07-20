@@ -2,8 +2,7 @@ package de.comeight.crystallogy.gui.bookOfKnowledge;
 
 import java.util.LinkedList;
 
-import org.lwjgl.opengl.GL11;
-
+import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -56,10 +55,13 @@ public class ScrollBarList {
     
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
     public void drawScreen(int mouseX, int mouseY, int posX, int posY){
-    	drawBackground(posX, posY);
+    	this.posX = posX;
+        this.posY = posY;
+    	
+    	drawBackground(this.posX, this.posY);
     	
     	shouldEnbaleScroll();
-    	drawScrollBar(posX, posY);
+    	drawScrollBar(this.posX, this.posY);
     	
     	int drawStratIndex;
     	int drawEndIndex;
@@ -76,7 +78,7 @@ public class ScrollBarList {
     	}
     	
     	
-    	int relativeHoverIndex = getHoverIndex(mouseX - posX, mouseY - posY);
+    	int relativeHoverIndex = getHoverIndex(mouseX - this.posX, mouseY - this.posY);
     	
     	hoverIndex = relativeHoverIndex;
     	if(hoverIndex != -1){
@@ -86,10 +88,10 @@ public class ScrollBarList {
     	for (int i = drawStratIndex; i < drawEndIndex; i++) {
     		if(list.get(i) != null){
     			if((i - drawStratIndex) == relativeHoverIndex){
-    				drawEntry(i, true, posX, posY + ((i - drawStratIndex) * entryHeigtht));
+    				drawEntry(i, true, this.posX, this.posY + ((i - drawStratIndex) * entryHeigtht));
     			}
     			else{
-    				drawEntry(i, false, posX, posY + ((i - drawStratIndex) * entryHeigtht));
+    				drawEntry(i, false, this.posX, this.posY + ((i - drawStratIndex) * entryHeigtht));
     			}
     		}
 		}
@@ -129,6 +131,9 @@ public class ScrollBarList {
     	if(!scrollEnabeld || clickedMouseButton != 0){
     		return;
     	}
+    	if(mouseX > posX + width || mouseX < posX + width - 10){
+    		return;
+    	}
     	if(mouseY >= (posY + height)){
     		scrollPos = entryHeigtht * list.size() - height;
     	}
@@ -140,24 +145,24 @@ public class ScrollBarList {
     	}
     }
     
-    protected void drawScrollBar(int posX, int posY){
-	    drawTexture(posX + width - 10, posY, 175, 18, 10, 110, BAR);
-	    drawTexture(posX + width - 10, posY + 110, 175, 18, 10, height - 110, BAR);
+    protected void drawScrollBar(int x, int y){
+	    drawTexture(x + width - 10, y, 175, 18, 10, 110, BAR);
+	    drawTexture(x + width - 10, y + 110, 175, 18, 10, height - 110, BAR);
 	    
 	    if(scrollEnabeld){
-	    	int y = (int) ((double)scrollPos / (entryHeigtht * (list.size() - (height) / entryHeigtht)) * (height - 13));
-	        drawTexture(posX + width - 10, posY + y, 233, 1, 10, 13, SCROLL);
+	    	int yScroll = (int) ((double)scrollPos / (entryHeigtht * (list.size() - (height) / entryHeigtht)) * (height - 13));
+	        drawTexture(x + width - 10, y + yScroll, 233, 1, 10, 13, SCROLL);
 	    }
 	    else{
-	    	drawTexture(posX + width - 10, posY, 245, 1, 10, 13, SCROLL);
+	    	drawTexture(x + width - 10, y, 245, 1, 10, 13, SCROLL);
 	    }
     }
     
-    protected void drawBackground(int posX, int posY){
-    	//drawTexture(posX, posY, width, height, Gui.OPTIONS_BACKGROUND);
+    protected void drawBackground(int x, int y){
+    	//drawTexture(x, y, width, height, Gui.OPTIONS_BACKGROUND);
     }
     
-    protected void drawEntry(int index, boolean hover, int posX, int posY){
+    protected void drawEntry(int index, boolean hover, int x, int y){
     	if(index % 2 == 0){
     		final int zLevel = 300;
             final int backgroundColor = 0xF0100010;
@@ -165,11 +170,11 @@ public class ScrollBarList {
     	}
     	
     	if(hover){
-    		//drawTexture(posX, posY, width - 10, entryHeigtht, Gui.ICONS);
-    		list.get(index).drawHover(posX + 5, posY + 5);
+    		//drawTexture(x, y, width - 10, entryHeigtht, Gui.ICONS);
+    		list.get(index).drawHover(x + 5, y + 5);
     	}
     	else{
-    		list.get(index).drawNormal(posX + 5, posY + 5);
+    		list.get(index).drawNormal(x + 5, y + 5);
     	}
     }
     
@@ -177,23 +182,22 @@ public class ScrollBarList {
     	list.add(button);
     }
     
-    public void drawTexture(int posX, int posY, int sizeX, int sizeY, ResourceLocation texture){
-    	drawTexture(posX, posY, 0, 0, sizeX, sizeY, texture);
+    public void drawTexture(int x, int y, int sizeX, int sizeY, ResourceLocation texture){
+    	drawTexture(x, y, 0, 0, sizeX, sizeY, texture);
     }
     
-    public void drawTexture(int posX, int posY, int xStart, int yStart, int sizeX, int sizeY, ResourceLocation texture){
+    public void drawTexture(int x, int y, int xStart, int yStart, int sizeX, int sizeY, ResourceLocation texture){
     	mc.getTextureManager().bindTexture(texture);
-    	GuiUtils.drawTexturedModalRect(posX, posY, xStart, yStart, sizeX, sizeY, 300);
-    	//drawTexturedModalRect(posX, posY, xStart, yStart, sizeX, sizeY);
+    	drawTexturedModalRect(x, y, xStart, yStart, sizeX, sizeY);
     }
     
     /**
      * Draws a textured rectangle using the texture currently bound to the TextureManager
      */
-    public void drawTexturedModalRect(float xCoord, float yCoord, int minU, int minV, int maxU, int maxV)
+    public void drawTexturedModalRect(int xCoord, int yCoord, int minU, int minV, int maxU, int maxV)
     {
     	GlStateManager.pushMatrix();
-		GL11.glDisable(GL11.GL_LIGHTING);
+    	GlStateManager.color(1.0F, 1.0F, 1.0F);
 		
         Tessellator tessellator = Tessellator.getInstance();
         VertexBuffer vertexbuffer = tessellator.getBuffer();
@@ -206,5 +210,4 @@ public class ScrollBarList {
         
         GlStateManager.popMatrix();
     }
-   
 }

@@ -1,11 +1,17 @@
-package de.comeight.crystallogy.gui.bookOfKnowledge;
+package de.comeight.crystallogy.gui.bookOfKnowledge.buttons;
 
+import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPage;
+import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.RenderItem;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.VertexBuffer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -69,13 +75,9 @@ public abstract class BookButton extends GuiButton{
         return this.enabled && this.visible && mouseX >= this.xPosAbs && mouseY >= this.yPosAbs && mouseX < this.xPosAbs + this.width && mouseY < this.yPosAbs + this.height;
     }
 	
-	public void drawNormal(int x, int y){
-
-	}
+	public abstract void drawNormal(int x, int y);
 	
-	public void drawHover(int x, int y){
-
-	}
+	public abstract void drawHover(int x, int y);
 	
 	protected void renderItem(ItemStack stack, int posX, int posY, float scale)
     {
@@ -85,7 +87,7 @@ public abstract class BookButton extends GuiButton{
         	
             GlStateManager.disableLighting();
             RenderHelper.enableStandardItemLighting();
-            
+
             GlStateManager.translate(posX, posY, 0);
             GlStateManager.scale(scale, scale, scale);
 
@@ -100,13 +102,38 @@ public abstract class BookButton extends GuiButton{
         }
     }
 	
-	protected void onClicked(GuiBookPage fromPage){
-		
-	}
+	public abstract void onClicked(GuiBookPage fromPage);
 	
 	protected void openGui(GuiBookPage fromPage, GuiBookPage toPage){
 		PageRegistry.addCourse(fromPage);
 		mc.displayGuiScreen(toPage);
 	}
+	
+	public void drawTexture(int posX, int posY, int sizeX, int sizeY, ResourceLocation texture){
+    	drawTexture(posX, posY, 0, 0, sizeX, sizeY, texture);
+    }
+    
+    public void drawTexture(int posX, int posY, int xStart, int yStart, int sizeX, int sizeY, ResourceLocation texture){
+    	mc.getTextureManager().bindTexture(texture);
+    	drawTexturedModalRect(posX, posY, xStart, yStart, sizeX, sizeY);
+    }
+    
+    @Override
+    public void drawTexturedModalRect(int xCoord, int yCoord, int minU, int minV, int maxU, int maxV)
+    {
+    	GlStateManager.pushMatrix();
+    	GlStateManager.color(1.0F, 1.0F, 1.0F);
+		
+        Tessellator tessellator = Tessellator.getInstance();
+        VertexBuffer vertexbuffer = tessellator.getBuffer();
+        vertexbuffer.begin(7, DefaultVertexFormats.POSITION_TEX);
+        vertexbuffer.pos((double)(xCoord + 0.0F), (double)(yCoord + (float)maxV), 0).tex((double)((float)(minU + 0) * 0.00390625F), (double)((float)(minV + maxV) * 0.00390625F)).endVertex();
+        vertexbuffer.pos((double)(xCoord + (float)maxU), (double)(yCoord + (float)maxV), 0).tex((double)((float)(minU + maxU) * 0.00390625F), (double)((float)(minV + maxV) * 0.00390625F)).endVertex();
+        vertexbuffer.pos((double)(xCoord + (float)maxU), (double)(yCoord + 0.0F), 0).tex((double)((float)(minU + maxU) * 0.00390625F), (double)((float)(minV + 0) * 0.00390625F)).endVertex();
+        vertexbuffer.pos((double)(xCoord + 0.0F), (double)(yCoord + 0.0F), 0).tex((double)((float)(minU + 0) * 0.00390625F), (double)((float)(minV + 0) * 0.00390625F)).endVertex();
+        tessellator.draw();
+        
+        GlStateManager.popMatrix();
+    }
 	
 }

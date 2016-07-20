@@ -1,0 +1,59 @@
+package de.comeight.crystallogy.gui.bookOfKnowledge;
+
+import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCategory;
+import de.comeight.crystallogy.handler.ItemHandler;
+import net.minecraft.item.ItemStack;
+
+public class ArmorScrollBarList extends ScrollBarList {
+	//-----------------------------------------------Variabeln:---------------------------------------------
+
+	
+	//-----------------------------------------------Constructor:-------------------------------------------
+	public ArmorScrollBarList(int width, int height, int posX, int posY, GuiBookPage page) {
+		super(width, height, posX, posY, page);
+		
+		addAllEntrys();
+	}
+	
+	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
+
+	
+	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	private void addAllEntrys(){
+		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.crystallDust_red), 
+																									new ItemStack(ItemHandler.crystallDust_blue), 
+																									new ItemStack(ItemHandler.crystallDust_green), 
+																									new ItemStack(ItemHandler.crystallDust_yellow)}, 60, null));
+
+		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.armorHelmet_blue), 
+																									new ItemStack(ItemHandler.armorChestplate_blue), 
+																									new ItemStack(ItemHandler.armorLeggins_blue), 
+																									new ItemStack(ItemHandler.armorBoots_blue)}, 60, null));
+		
+		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.armorHelmet_red), 
+																									new ItemStack(ItemHandler.armorChestplate_red), 
+																									new ItemStack(ItemHandler.armorLeggins_red), 
+																									new ItemStack(ItemHandler.armorBoots_red)}, 60, null));
+		
+		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.armorHelmet_green), 
+																									new ItemStack(ItemHandler.armorChestplate_green), 
+																									new ItemStack(ItemHandler.armorLeggins_green), 
+																									new ItemStack(ItemHandler.armorBoots_green)}, 60, null));
+		
+		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.armorHelmet_yellow), 
+																									new ItemStack(ItemHandler.armorChestplate_yellow), 
+																									new ItemStack(ItemHandler.armorLeggins_yellow), 
+																									new ItemStack(ItemHandler.armorBoots_yellow)}, 60, null));
+		
+		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.armorHelmet_combined), 
+																									new ItemStack(ItemHandler.armorChestplate_combined), 
+																									new ItemStack(ItemHandler.armorLeggins_combined), 
+																									new ItemStack(ItemHandler.armorBoots_combined)}, 60, null));
+		
+		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.armorHelmet_hunter), 
+																									new ItemStack(ItemHandler.armorChestplate_hunter), 
+																									new ItemStack(ItemHandler.armorLeggins_hunter), 
+																									new ItemStack(ItemHandler.armorBoots_hunter)}, 60, null));
+	}
+	
+}

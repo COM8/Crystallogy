@@ -1,6 +1,7 @@
-package de.comeight.crystallogy.gui.bookOfKnowledge;
+package de.comeight.crystallogy.gui.bookOfKnowledge.buttons;
 
 import de.comeight.crystallogy.CrystallogyBase;
+import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPage;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -17,6 +18,7 @@ public class BookButtonCategory extends BookButton{
 	private int tick;
 	private int frame;
 	private String description;
+	private float scale = 1.0F;
 	
 	private GuiBookPage page;
 	
@@ -43,6 +45,10 @@ public class BookButtonCategory extends BookButton{
 		this.description = description;
 	}
 	
+	public void setScale(float scale) {
+		this.scale = scale;
+	}
+	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public void drawNormal(int x, int y){
@@ -50,10 +56,14 @@ public class BookButtonCategory extends BookButton{
 		
 		GlStateManager.enableLighting();
 		
+		drawDescription(x, y);
+		GlStateManager.translate(x, y, 0);
+		GlStateManager.scale(this.scale, this.scale, this.scale);
+		GlStateManager.translate(-x, -y, 0);
+		
 		drawFrame(x, y, false);
 		drawBackgound(x, y, false);
 		drawItem(x + 3, y + 3, false);
-		drawDescription(x, y);
 		
 		GlStateManager.disableLighting();
 		
@@ -68,7 +78,7 @@ public class BookButtonCategory extends BookButton{
 		
 		drawDescription(x, y);
 		GlStateManager.translate(x - 3, y - 3, 0);
-		GlStateManager.scale(1.2, 1.2, 1.2);
+		GlStateManager.scale(1.2 * this.scale, 1.2 * this.scale, 1.2 * this.scale);
 		GlStateManager.translate(-x, -y, 0);
 		
 		drawFrame(x, y, true);
@@ -101,8 +111,7 @@ public class BookButtonCategory extends BookButton{
 			GlStateManager.translate(x, y, 0);
 			double scale = 0.1;
 	        GlStateManager.scale(scale, scale, scale);
-			mc.getTextureManager().bindTexture(background);
-			drawTexturedModalRect(0, 0, 0, 0, 256, 256);
+	        drawTexture(x, y, 256, 256, background);
 			
 	        GlStateManager.disableLighting();
 			GlStateManager.popMatrix();
@@ -114,10 +123,9 @@ public class BookButtonCategory extends BookButton{
 		GlStateManager.enableLighting();
 		
 		GlStateManager.translate(x, y, 0);
-		double scale = 0.1;
-        GlStateManager.scale(scale, scale, scale);
-		mc.getTextureManager().bindTexture(FRAME);
-		drawTexturedModalRect(0, 0, 0, 0, 256, 256);
+        GlStateManager.scale(0.1, 0.1, 0.1);
+        GlStateManager.translate(-x, -y, 0);
+        drawTexture(x, y, 256, 256, FRAME);
 		
         GlStateManager.disableLighting();
 		GlStateManager.popMatrix();
@@ -148,7 +156,7 @@ public class BookButtonCategory extends BookButton{
 	}
 	
 	@Override
-	protected void onClicked(GuiBookPage fromPage){
+	public void onClicked(GuiBookPage fromPage){
 		if(page != null){
 			openGui(fromPage, page);
 		}

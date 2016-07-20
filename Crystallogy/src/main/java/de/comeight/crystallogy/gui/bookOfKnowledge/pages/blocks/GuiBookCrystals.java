@@ -1,4 +1,4 @@
-package de.comeight.crystallogy.gui.bookOfKnowledge.Pages;
+package de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks;
 
 import de.comeight.crystallogy.CrystallogyBase;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPage;

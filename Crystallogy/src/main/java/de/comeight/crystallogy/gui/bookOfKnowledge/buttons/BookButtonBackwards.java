@@ -1,6 +1,8 @@
-package de.comeight.crystallogy.gui.bookOfKnowledge;
+package de.comeight.crystallogy.gui.bookOfKnowledge.buttons;
 
 import de.comeight.crystallogy.CrystallogyBase;
+import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPage;
+import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
@@ -24,13 +26,7 @@ public class BookButtonBackwards extends BookButton{
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public void drawNormal(int x, int y){
-		GlStateManager.pushMatrix();
-		GlStateManager.enableLighting();
-		
 		drawArrow(x, y, false);
-		
-		GlStateManager.disableLighting();
-		GlStateManager.popMatrix();
 	}
 	
 	@Override
@@ -48,28 +44,24 @@ public class BookButtonBackwards extends BookButton{
 	
 	private void drawArrow(int x, int y, boolean hover){
 		GlStateManager.pushMatrix();
-		GlStateManager.enableLighting();
-		
+
 		GlStateManager.translate(x, y, 0);
 		double scale = 0.1;
         GlStateManager.scale(scale, scale, scale);
-        if(!canGoBack()){
-        	mc.getTextureManager().bindTexture(BUTTON_NO);
-        }
-        else if(hover){
-        	mc.getTextureManager().bindTexture(BUTTON_HOVER);
-        }
-        else{
-        	mc.getTextureManager().bindTexture(BUTTON_NORMAL);
-        }
-		drawTexturedModalRect(0, 0, 0, 0, 256, 256);
+		if (!canGoBack()) {
+			drawTexture(0, 0, 256, 256, BUTTON_NO);
+		} else if (hover) {
+			drawTexture(0, 0, 256, 256, BUTTON_HOVER);
+		} else {
+			drawTexture(0, 0, 256, 256, BUTTON_NORMAL);
+		}
 		
         GlStateManager.disableLighting();
 		GlStateManager.popMatrix();
 	}
 	
 	@Override
-	protected void onClicked(GuiBookPage fromPage) {
+	public void onClicked(GuiBookPage fromPage) {
 		GuiBookPage page = getLastVisitedPage();
 		if(page != null){
 			openGui(fromPage, page);
