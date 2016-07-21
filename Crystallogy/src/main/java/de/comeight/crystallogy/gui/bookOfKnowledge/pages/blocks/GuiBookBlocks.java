@@ -3,6 +3,7 @@ package de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks;
 import de.comeight.crystallogy.gui.bookOfKnowledge.BlocksScrollBarList;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPage;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookUtilities;
+import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCategory;
 import de.comeight.crystallogy.handler.BlockHandler;
 import net.minecraft.item.ItemStack;
@@ -17,7 +18,7 @@ public class GuiBookBlocks extends GuiBookPage {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiBookBlocks() {
 		super("Blocks:");
-		setNextPage(new GuiBookMachines());
+		setNextPage(PageRegistry.MACHINES_PAGE);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -33,7 +34,7 @@ public class GuiBookBlocks extends GuiBookPage {
 		float buttonScale = 1.0F;
 		
 		//Machines:
-		BookButtonCategory machines = new BookButtonCategory(GuiBookPage.getNextButtonId(), chapterButtonX, 40, null, new ItemStack(BlockHandler.compressor), new GuiBookMachines());
+		BookButtonCategory machines = new BookButtonCategory(GuiBookPage.getNextButtonId(), chapterButtonX, 40, null, new ItemStack(BlockHandler.compressor), PageRegistry.MACHINES_PAGE);
 		machines.setScale(buttonScale);
 		machines.setCustomDescription("Machines");
 		buttonList.add(machines);

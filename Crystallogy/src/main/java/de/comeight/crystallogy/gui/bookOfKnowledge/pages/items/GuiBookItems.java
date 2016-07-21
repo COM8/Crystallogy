@@ -3,6 +3,7 @@ package de.comeight.crystallogy.gui.bookOfKnowledge.pages.items;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPage;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookUtilities;
 import de.comeight.crystallogy.gui.bookOfKnowledge.ItemsScrollBarList;
+import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCategory;
 import de.comeight.crystallogy.handler.ItemHandler;
 import net.minecraft.item.ItemStack;
@@ -17,7 +18,7 @@ public class GuiBookItems extends GuiBookPage {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiBookItems() {
 		super("Items:");
-		setNextPage(new GuiBookArmor());
+		setNextPage(PageRegistry.ARMOR_PAGE);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -33,13 +34,13 @@ public class GuiBookItems extends GuiBookPage {
 		float buttonScale = 1.0F;
 		
 		//Armor:
-		BookButtonCategory armor = new BookButtonCategory(GuiBookPage.getNextButtonId(), chapterButtonX, 75, null, new ItemStack(ItemHandler.armorChestplate_hunter), new GuiBookTools());
+		BookButtonCategory armor = new BookButtonCategory(GuiBookPage.getNextButtonId(), chapterButtonX, 75, null, new ItemStack(ItemHandler.armorChestplate_hunter), PageRegistry.ARMOR_PAGE);
 		armor.setScale(buttonScale);
 		armor.setCustomDescription("Armor");
 		buttonList.add(armor);
 		
 		//Tools:
-		BookButtonCategory tools = new BookButtonCategory(GuiBookPage.getNextButtonId(), chapterButtonX, 40, null, new ItemStack(ItemHandler.playerCrystalKnife), new GuiBookTools());
+		BookButtonCategory tools = new BookButtonCategory(GuiBookPage.getNextButtonId(), chapterButtonX, 40, null, new ItemStack(ItemHandler.playerCrystalKnife), PageRegistry.TOOLS_PAGE);
 		tools.setScale(buttonScale);
 		tools.setCustomDescription("Tools");
 		buttonList.add(tools);

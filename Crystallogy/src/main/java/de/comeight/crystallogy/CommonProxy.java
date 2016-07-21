@@ -1,10 +1,10 @@
 package de.comeight.crystallogy;
 
 import de.comeight.crystallogy.gui.GuiArmorCombiner;
+import de.comeight.crystallogy.gui.GuiBookOfKnowledge;
 import de.comeight.crystallogy.gui.GuiCharger;
 import de.comeight.crystallogy.gui.GuiCompressor;
 import de.comeight.crystallogy.gui.GuiCrystallCrusher;
-import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookMain;
 import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ConfigHandler;
 import de.comeight.crystallogy.handler.GuiHandler;
@@ -109,7 +109,7 @@ public class CommonProxy {
 		GuiHandlerRegistry.getInstance().registerGuiHandler(GuiHandler.INSTANCE, GuiCompressor.ID);
 		GuiHandlerRegistry.getInstance().registerGuiHandler(GuiHandler.INSTANCE, GuiCharger.ID);
 		GuiHandlerRegistry.getInstance().registerGuiHandler(GuiHandler.INSTANCE, GuiArmorCombiner.ID);
-		GuiHandlerRegistry.getInstance().registerGuiHandler(GuiHandler.INSTANCE, GuiBookMain.ID);
+		GuiHandlerRegistry.getInstance().registerGuiHandler(GuiHandler.INSTANCE, GuiBookOfKnowledge.ID);
 		
 		Utilities.addConsoleText("All guis are registered.");
 	}

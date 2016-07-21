@@ -2,6 +2,7 @@ package de.comeight.crystallogy.gui.bookOfKnowledge.pages.items;
 
 import de.comeight.crystallogy.gui.bookOfKnowledge.ArmorScrollBarList;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPage;
+import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -13,7 +14,7 @@ public class GuiBookArmor extends GuiBookPage {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiBookArmor() {
 		super("Armor:");
-		setNextPage(new GuiBookTools());
+		setNextPage(PageRegistry.TOOLS_PAGE);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------

@@ -1,26 +1,34 @@
-package de.comeight.crystallogy.gui.bookOfKnowledge.pages.infusion;
+package de.comeight.crystallogy.gui;
 
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPage;
 import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
-import de.comeight.crystallogy.gui.bookOfKnowledge.pages.search.GuiBookSearch;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraft.client.gui.GuiScreen;
 
-@SideOnly(Side.CLIENT)
-public class GuiBookInfusionCrafting extends GuiBookPage {
+public class GuiBookOfKnowledge extends GuiScreen {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	
+	public static final int ID = 4;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public GuiBookInfusionCrafting() {
-		super("Infusion Crafting:");
-		setNextPage(PageRegistry.SEARCH_PAGE);
+	public GuiBookOfKnowledge() {
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
-	
+
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
-
+	@Override
+	public void initGui() {
+		openLastOpenedPage();
+	}
+	
+	private void openLastOpenedPage(){
+		GuiBookPage lastPage = PageRegistry.getCurrentPage();
+		if(lastPage != null){
+			mc.displayGuiScreen(lastPage);
+		}
+		else{
+			mc.displayGuiScreen(PageRegistry.MAIN_PAGE);
+		}
+	}
 	
 }

@@ -5,10 +5,10 @@ import de.comeight.crystallogy.blocks.container.ContainerCharger;
 import de.comeight.crystallogy.blocks.container.ContainerCompressor;
 import de.comeight.crystallogy.blocks.container.ContainerCrystallCrusher;
 import de.comeight.crystallogy.gui.GuiArmorCombiner;
+import de.comeight.crystallogy.gui.GuiBookOfKnowledge;
 import de.comeight.crystallogy.gui.GuiCharger;
 import de.comeight.crystallogy.gui.GuiCompressor;
 import de.comeight.crystallogy.gui.GuiCrystallCrusher;
-import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookMain;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityArmorCombiner;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCharger;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCompressor;
@@ -102,8 +102,8 @@ public class GuiHandler implements IGuiHandler{ //TODO Convert to a list
 			else{
 				return null;
 			}
-		case GuiBookMain.ID: //Book of Knowledge:
-			return new GuiBookMain();
+		case GuiBookOfKnowledge.ID: //Book of Knowledge:
+			return new GuiBookOfKnowledge();
 		default:
 			return null;
 		}

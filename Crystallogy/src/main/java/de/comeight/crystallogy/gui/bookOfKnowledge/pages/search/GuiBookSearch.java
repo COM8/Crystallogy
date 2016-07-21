@@ -1,13 +1,12 @@
 package de.comeight.crystallogy.gui.bookOfKnowledge.pages.search;
 
+import java.io.IOException;
+
 import de.comeight.crystallogy.gui.bookOfKnowledge.AllScrollBarList;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPage;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookUtilities;
-import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCategory;
-import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookMachines;
+import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.credits.GuiBookCredits;
-import de.comeight.crystallogy.handler.BlockHandler;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -19,7 +18,7 @@ public class GuiBookSearch extends GuiBookPage {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiBookSearch() {
 		super("Search:");
-		setNextPage(new GuiBookCredits());
+		setNextPage(PageRegistry.CREDITS_PAGE);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -30,29 +29,20 @@ public class GuiBookSearch extends GuiBookPage {
 	protected void addButtons() {
 		super.addButtons();
 		addScrollingList();
-		
-		int chapterButtonX = xSize / 2 + 10;
-		float buttonScale = 1.0F;
-		
-		//All:
-		BookButtonCategory all = new BookButtonCategory(GuiBookPage.getNextButtonId(), chapterButtonX, 40, null, new ItemStack(BlockHandler.compressor), new GuiBookMachines());
-		all.setScale(buttonScale);
-		all.setCustomDescription("Machines");
-		buttonList.add(all);
 	}
 	
 	private void drawChaptersText(){
-		GuiBookUtilities.drawTextBox(xPosBook + xSize / 2 + 10, yPosBook + 10, xSize / 2 - 10, "Subchapters:");
+		GuiBookUtilities.drawTextBox(xPosBook + xSize / 2 + 10, yPosBook + 10, xSize / 2 - 10, "");
 	}
 	
 	private void addScrollingList(){
-		scrollingList = new AllScrollBarList(xSize / 2 - 20, 210, xPosBook + 10, yPosBook + 20, this);
+		scrollingList = new AllScrollBarList(xSize / 2 - 20, 187, xPosBook + 10, yPosBook + 25, this);
 	}
 	
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		super.drawScreen(mouseX, mouseY, partialTicks);
-        scrollingList.drawScreen(mouseX, mouseY, xPosBook + 10, yPosBook + 20);
+        scrollingList.drawScreen(mouseX, mouseY, xPosBook + 10, yPosBook + 25);
         drawChaptersText();
 	}
 	
@@ -65,6 +55,22 @@ public class GuiBookSearch extends GuiBookPage {
 	@Override
 	protected void mouseClickMove(int mouseX, int mouseY, int clickedMouseButton, long timeSinceLastClick) {
 		scrollingList.mouseClickMove(mouseX, mouseY, clickedMouseButton, timeSinceLastClick);
+	}
+	
+	@Override
+	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
+		super.mouseClicked(mouseX, mouseY, mouseButton);
+		scrollingList.mouseClicked(mouseX, mouseY, mouseButton);
+	}
+	
+	@Override
+	protected void keyTyped(char typedChar, int keyCode) throws IOException {
+		if(scrollingList.searchSelected){
+			scrollingList.keyTyped(typedChar, keyCode);
+		}
+		else{
+			super.keyTyped(typedChar, keyCode);
+		}
 	}
 	
 }

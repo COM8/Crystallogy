@@ -26,7 +26,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiBookPage extends GuiScreen {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	public static final int ID = 4;
 	private static int buttonId = -1;
 	
 	private static final ResourceLocation BOOK = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/book/bookPage.png");
@@ -50,7 +49,6 @@ public class GuiBookPage extends GuiScreen {
     	this.HEADING = heading;
     	
     	calcBookPos();
-	    onGuiOpened();	
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -65,8 +63,7 @@ public class GuiBookPage extends GuiScreen {
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
     protected void openGui(GuiBookPage fromPage, GuiBookPage toPage){
-		PageRegistry.addCourse(fromPage);
-		mc.displayGuiScreen(toPage);
+		PageRegistry.openPage(mc, fromPage, toPage);
 	}
     
     protected void calcBookPos(){

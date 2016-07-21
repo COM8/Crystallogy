@@ -1,12 +1,11 @@
 package de.comeight.crystallogy.gui.bookOfKnowledge;
 
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCategory;
-import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookCrystals;
 import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
 import net.minecraft.item.ItemStack;
 
-public class AllScrollBarList extends ScrollBarList {
+public class AllScrollBarList extends ScrollBarListSearch {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 
 	
@@ -28,14 +27,14 @@ public class AllScrollBarList extends ScrollBarList {
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(BlockHandler.compressor), null));
 		
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(BlockHandler.crystall_red), 
-																																			new ItemStack(BlockHandler.crystall_blue),
+																									new ItemStack(BlockHandler.crystall_blue),
 																									new ItemStack(BlockHandler.crystall_green),
-																									new ItemStack(BlockHandler.crystall_yellow)}, 60, new GuiBookCrystals()));
+																									new ItemStack(BlockHandler.crystall_yellow)}, 60, PageRegistry.CRYSTALS_PAGE));
 		
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(BlockHandler.crystalGlas, 1, 0),
 																									new ItemStack(BlockHandler.crystalGlas, 1, 1),
 																									new ItemStack(BlockHandler.crystalGlas, 1, 2),
-																									new ItemStack(BlockHandler.crystalGlas, 1, 3),}, 60, new GuiBookCrystals()));
+																									new ItemStack(BlockHandler.crystalGlas, 1, 3),}, 60, null));
 		
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(BlockHandler.crystallCrusher), null));
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(BlockHandler.crystalLight), null));
@@ -56,7 +55,7 @@ public class AllScrollBarList extends ScrollBarList {
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.crystallDust_red), 
 																									new ItemStack(ItemHandler.crystallDust_blue), 
 																									new ItemStack(ItemHandler.crystallDust_green), 
-																									new ItemStack(ItemHandler.crystallDust_yellow)}, 60, null));
+																									new ItemStack(ItemHandler.crystallDust_yellow)}, 60, PageRegistry.CRYSTAL_DUST_PAGE));
 
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.armorHelmet_blue), 
 																									new ItemStack(ItemHandler.armorChestplate_blue), 
@@ -94,7 +93,7 @@ public class AllScrollBarList extends ScrollBarList {
 																									new ItemStack(ItemHandler.armorPlate, 1, 1),
 																									new ItemStack(ItemHandler.armorPlate, 1, 2),
 																									new ItemStack(ItemHandler.armorPlate, 1, 3),
-																									new ItemStack(ItemHandler.armorPlate, 1, 4),}, 60, new GuiBookCrystals()));
+																									new ItemStack(ItemHandler.armorPlate, 1, 4),}, 60, null));
 		
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.badLuckDust), 
 																									new ItemStack(ItemHandler.blindDust), 
@@ -120,12 +119,12 @@ public class AllScrollBarList extends ScrollBarList {
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.crystallHammerHead, 1, 0),
 																									new ItemStack(ItemHandler.crystallHammerHead, 1, 1),
 																									new ItemStack(ItemHandler.crystallHammerHead, 1, 2),
-																									new ItemStack(ItemHandler.crystallHammerHead, 1, 3),}, 60, new GuiBookCrystals()));
+																									new ItemStack(ItemHandler.crystallHammerHead, 1, 3),}, 60, null));
 		
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.crystallSwordBlade, 1, 0),
 																									new ItemStack(ItemHandler.crystallSwordBlade, 1, 1),
 																									new ItemStack(ItemHandler.crystallSwordBlade, 1, 2),
-																									new ItemStack(ItemHandler.crystallSwordBlade, 1, 3),}, 60, new GuiBookCrystals()));
+																									new ItemStack(ItemHandler.crystallSwordBlade, 1, 3),}, 60, null));
 		
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.crystalSword_red), 
 																									new ItemStack(ItemHandler.crystalSword_blue), 
@@ -140,7 +139,7 @@ public class AllScrollBarList extends ScrollBarList {
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.crystalPickaxeHead, 1, 0),
 																									new ItemStack(ItemHandler.crystalPickaxeHead, 1, 1),
 																									new ItemStack(ItemHandler.crystalPickaxeHead, 1, 2),
-																									new ItemStack(ItemHandler.crystalPickaxeHead, 1, 3),}, 60, new GuiBookCrystals()));
+																									new ItemStack(ItemHandler.crystalPickaxeHead, 1, 3),}, 60, null));
 		
 		
 		

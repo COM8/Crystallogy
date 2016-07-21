@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookMain;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookBlocks;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookCrystals;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookMachines;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.credits.GuiBookCredits;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.infusion.GuiBookInfusionCrafting;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookArmor;
@@ -12,6 +13,7 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookCrystalDus
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookItems;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookTools;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.search.GuiBookSearch;
+import net.minecraft.client.Minecraft;
 
 public class PageRegistry {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -21,6 +23,20 @@ public class PageRegistry {
 	private static GuiBookPage currentPage;
 	
 	private static int ID = 0;
+	
+	//Pages:
+	public static GuiBookMain MAIN_PAGE = new GuiBookMain();
+	public static GuiBookBlocks BLOCKS_PAGE = new GuiBookBlocks();
+	public static GuiBookItems ITEMS_PAGE = new GuiBookItems();
+	public static GuiBookMachines MACHINES_PAGE = new GuiBookMachines();
+	public static GuiBookTools TOOLS_PAGE = new GuiBookTools();
+	public static GuiBookArmor ARMOR_PAGE = new GuiBookArmor();
+	public static GuiBookSearch SEARCH_PAGE = new GuiBookSearch();
+	public static GuiBookCredits CREDITS_PAGE = new GuiBookCredits();
+	public static GuiBookInfusionCrafting INFUSION_CRAFTING_PAGE = new GuiBookInfusionCrafting();
+	
+	public static GuiBookCrystalDusts CRYSTAL_DUST_PAGE = new GuiBookCrystalDusts();
+	public static GuiBookCrystals CRYSTALS_PAGE = new GuiBookCrystals();
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 
@@ -45,16 +61,17 @@ public class PageRegistry {
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	public static void registerAllPages(){
-		registerPage(new GuiBookMain());
-		registerPage(new GuiBookCrystals());
-		registerPage(new GuiBookCrystalDusts());
-		registerPage(new GuiBookBlocks());
-		registerPage(new GuiBookItems());
-		registerPage(new GuiBookTools());
-		registerPage(new GuiBookCredits());
-		registerPage(new GuiBookSearch());
-		registerPage(new GuiBookInfusionCrafting());
-		registerPage(new GuiBookArmor());
+		registerPage(MAIN_PAGE);
+		registerPage(BLOCKS_PAGE);
+		registerPage(ITEMS_PAGE);
+		registerPage(MACHINES_PAGE);
+		registerPage(TOOLS_PAGE);
+		registerPage(ARMOR_PAGE);
+		registerPage(SEARCH_PAGE);
+		registerPage(CREDITS_PAGE);
+		registerPage(INFUSION_CRAFTING_PAGE);
+		registerPage(CRYSTALS_PAGE);
+		registerPage(CRYSTAL_DUST_PAGE);
 	}
 	
 	private static void registerPage(GuiBookPage page){
@@ -77,6 +94,12 @@ public class PageRegistry {
 	
 	public static boolean canGoBack(){
 		return course.size() > 0;
+	}
+	
+	public static void openPage(Minecraft mc, GuiBookPage fromPage, GuiBookPage toPage){
+		PageRegistry.addCourse(fromPage);
+		mc.displayGuiScreen(toPage);
+		toPage.onGuiOpened();
 	}
 	
 }

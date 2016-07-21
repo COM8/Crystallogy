@@ -5,11 +5,6 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPage;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookUtilities;
 import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCategory;
-import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookBlocks;
-import de.comeight.crystallogy.gui.bookOfKnowledge.pages.credits.GuiBookCredits;
-import de.comeight.crystallogy.gui.bookOfKnowledge.pages.infusion.GuiBookInfusionCrafting;
-import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookItems;
-import de.comeight.crystallogy.gui.bookOfKnowledge.pages.search.GuiBookSearch;
 import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
 import net.minecraft.client.renderer.GlStateManager;
@@ -22,20 +17,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiBookMain extends GuiBookPage {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	public static final int ID = 4;
-	
 	private static final ResourceLocation LOGO = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/logo.png");
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiBookMain() {
 		super("");
-		
-		GuiBookPage lastPage = PageRegistry.getCurrentPage();
-		if(lastPage != null){
-			openGui(null, lastPage);
-		}
-		
-		setNextPage(new GuiBookBlocks());
+		setNextPage(PageRegistry.BLOCKS_PAGE);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -44,7 +31,7 @@ public class GuiBookMain extends GuiBookPage {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	protected void onGuiOpened() {
-		//Has to stay empty
+		super.onGuiOpened();
 	}
 	
 	private void drawIntroText(){
@@ -78,7 +65,7 @@ public class GuiBookMain extends GuiBookPage {
 		BookButtonCategory blocks = new BookButtonCategory(GuiBookPage.getNextButtonId(), chapterButtonX, 40, null, new ItemStack[]{new ItemStack(BlockHandler.crystall_red), 
 																																	new ItemStack(BlockHandler.crystall_blue),
 																																	new ItemStack(BlockHandler.crystall_green),
-																																	new ItemStack(BlockHandler.crystall_yellow)}, 60, new GuiBookBlocks());
+																																	new ItemStack(BlockHandler.crystall_yellow)}, 60, PageRegistry.BLOCKS_PAGE);
 		blocks.setScale(buttonScale);
 		blocks.setCustomDescription("Blocks");
 		buttonList.add(blocks);
@@ -87,25 +74,25 @@ public class GuiBookMain extends GuiBookPage {
 		BookButtonCategory items = new BookButtonCategory(GuiBookPage.getNextButtonId(), chapterButtonX, 75, null, new ItemStack[]{	new ItemStack(ItemHandler.crystallDust_red), 
 																																	new ItemStack(ItemHandler.crystallDust_blue), 
 																																	new ItemStack(ItemHandler.crystallDust_green), 
-																																	new ItemStack(ItemHandler.crystallDust_yellow)}, 60, new GuiBookItems());
+																																	new ItemStack(ItemHandler.crystallDust_yellow)}, 60, PageRegistry.ITEMS_PAGE);
 		items.setScale(buttonScale);
 		items.setCustomDescription("Items");
 		buttonList.add(items);
 		
 		//Infusion Crafting:
-		BookButtonCategory infusion = new BookButtonCategory(GuiBookPage.getNextButtonId(), chapterButtonX, 110, null, new ItemStack(BlockHandler.infuserBlock), new GuiBookInfusionCrafting());
+		BookButtonCategory infusion = new BookButtonCategory(GuiBookPage.getNextButtonId(), chapterButtonX, 110, null, new ItemStack(BlockHandler.infuserBlock), PageRegistry.INFUSION_CRAFTING_PAGE);
 		infusion.setScale(buttonScale);
 		infusion.setCustomDescription("Infusion Crafting");
 		buttonList.add(infusion);
 		
 		//Search:
-		BookButtonCategory search = new BookButtonCategory(GuiBookPage.getNextButtonId(), chapterButtonX, 145, null, new ItemStack(Items.COMPASS), new GuiBookSearch());
+		BookButtonCategory search = new BookButtonCategory(GuiBookPage.getNextButtonId(), chapterButtonX, 145, null, new ItemStack(Items.COMPASS), PageRegistry.SEARCH_PAGE);
 		search.setScale(buttonScale);
 		search.setCustomDescription("Search");
 		buttonList.add(search);
 
 		//Credits:
-		BookButtonCategory credits = new BookButtonCategory(GuiBookPage.getNextButtonId(), chapterButtonX, 180, null, new ItemStack(Items.WRITTEN_BOOK), new GuiBookCredits());
+		BookButtonCategory credits = new BookButtonCategory(GuiBookPage.getNextButtonId(), chapterButtonX, 180, null, new ItemStack(Items.WRITTEN_BOOK), PageRegistry.CREDITS_PAGE);
 		credits.setScale(buttonScale);
 		credits.setCustomDescription("Credits");
 		buttonList.add(credits);

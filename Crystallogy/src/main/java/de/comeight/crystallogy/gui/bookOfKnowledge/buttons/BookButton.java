@@ -105,8 +105,7 @@ public abstract class BookButton extends GuiButton{
 	public abstract void onClicked(GuiBookPage fromPage);
 	
 	protected void openGui(GuiBookPage fromPage, GuiBookPage toPage){
-		PageRegistry.addCourse(fromPage);
-		mc.displayGuiScreen(toPage);
+		PageRegistry.openPage(mc, fromPage, toPage);
 	}
 	
 	public void drawTexture(int posX, int posY, int sizeX, int sizeY, ResourceLocation texture){

@@ -59,11 +59,13 @@ public class ScrollBarList {
         this.posY = posY;
     	
     	drawBackground(this.posX, this.posY);
-    	
     	shouldEnbaleScroll();
     	drawScrollBar(this.posX, this.posY);
-    	
-    	int drawStratIndex;
+    	drawEntrys(mouseX, mouseY);
+    }
+    
+	protected void drawEntrys(int mouseX, int mouseY){
+		int drawStratIndex;
     	int drawEndIndex;
     	if(scrollEnabeld){
     		drawStratIndex = scrollPos / entryHeigtht;
@@ -95,7 +97,7 @@ public class ScrollBarList {
     			}
     		}
 		}
-    }
+	}
     
     protected void shouldEnbaleScroll(){
     	if((height / entryHeigtht) >= list.size()){
@@ -143,6 +145,10 @@ public class ScrollBarList {
     	else{
     		scrollPos = (int) ( ((double)(mouseY - posY) / (double) height) * (entryHeigtht * (list.size() - height / entryHeigtht)));
     	}
+    }
+    
+    public void mouseClicked(int mouseX, int mouseY, int mouseButton){
+    	
     }
     
     protected void drawScrollBar(int x, int y){
