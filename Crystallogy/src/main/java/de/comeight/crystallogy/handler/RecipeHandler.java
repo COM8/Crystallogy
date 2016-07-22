@@ -40,35 +40,35 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 public class RecipeHandler {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	//Infusion Recipes:
-		private static InfusionRecipeVaporizer infusionRecipeVaporizer; 
-		private static InfusionRecipeCrystallLight infusionRecipeCrystallLight;
-		private static InfusionRecipeFireCrystall infusionRecipeFireCrystall;
-		private static InfusionRecipeRefulelVaporizer infusionRecipeRefulelVaporizer;
-		private static InfusionRecipeToolRod infusionRecipeToolRod;
-		private static InfusionRecipePureDust infusionRecipePureDust;
-		private static InfusionRecipeHammer infusionRecipeHammer;
-		private static InfusionRecipePickaxe infusionRecipePickaxe;
-		private static InfusionRecipeSword infusionRecipeSword;
-		private static InfusionRecipeHungDust infusionRecipeHungDust;
-		private static InfusionRecipeDamDust infusionRecipeDamDust;
-		private static InfusionRecipeFireDust infusionRecipeFireDust;
-		private static InfusionRecipeDrowDust infusionRecipeDrowDust;
-		private static InfusionRecipePoisDust infusionRecipePoisDust;
-		private static InfusionRecipeBadLuckDust infusionRecipeBadLuckDust;
-		private static InfusionRecipeBlindDust infusionRecipeBlindDust;
-		private static InfusionRecipeEnderDust infusionRecipeEnderDust;
-		private static InfusionRecipeGlowDust infusionRecipeGlowDust;
-		private static InfusionRecipeLevDust infusionRecipeLevDust;
-		private static InfusionRecipePlayerCrystalKnife infusionRecipePlayerCrystalKnife;
-		private static InfusionRecipeEntityCrystalKnife infusionRecipeEntityCrystalKnife;
-		private static InfusionRecipeCrystalKnifeBlade infusionRecipeCrystalKnifeBlade;
-		private static InfusionRecipePlayerJar infusionRecipePlayerJar;
-		private static InfusionRecipeEntityJar infusionRecipeEntityJar;
-		private static InfusionRecipeArmorPlate infusionRecipeArmorPlate;
-		private static InfusionRecipeCrystalOfHolding infusionRecipeCrystalOfHolding;
-		private static InfusionRecipeMachineBlock infusionRecipeMachineBlock;
-		private static InfusionRecipeArmorCatalyst infusionRecipeArmorCatalyst;
-		private static InfusionRecipeChargedCombinedArmorCompound infusionRecipeChargedCombinedArmorCompound;
+	private static InfusionRecipeVaporizer infusionRecipeVaporizer;
+	private static InfusionRecipeCrystallLight infusionRecipeCrystallLight;
+	private static InfusionRecipeFireCrystall infusionRecipeFireCrystall;
+	private static InfusionRecipeRefulelVaporizer infusionRecipeRefulelVaporizer;
+	private static InfusionRecipeToolRod infusionRecipeToolRod;
+	private static InfusionRecipePureDust infusionRecipePureDust;
+	private static InfusionRecipeHammer infusionRecipeHammer;
+	private static InfusionRecipePickaxe infusionRecipePickaxe;
+	private static InfusionRecipeSword infusionRecipeSword;
+	private static InfusionRecipeHungDust infusionRecipeHungDust;
+	private static InfusionRecipeDamDust infusionRecipeDamDust;
+	private static InfusionRecipeFireDust infusionRecipeFireDust;
+	private static InfusionRecipeDrowDust infusionRecipeDrowDust;
+	private static InfusionRecipePoisDust infusionRecipePoisDust;
+	private static InfusionRecipeBadLuckDust infusionRecipeBadLuckDust;
+	private static InfusionRecipeBlindDust infusionRecipeBlindDust;
+	private static InfusionRecipeEnderDust infusionRecipeEnderDust;
+	private static InfusionRecipeGlowDust infusionRecipeGlowDust;
+	private static InfusionRecipeLevDust infusionRecipeLevDust;
+	private static InfusionRecipePlayerCrystalKnife infusionRecipePlayerCrystalKnife;
+	private static InfusionRecipeEntityCrystalKnife infusionRecipeEntityCrystalKnife;
+	private static InfusionRecipeCrystalKnifeBlade infusionRecipeCrystalKnifeBlade;
+	private static InfusionRecipePlayerJar infusionRecipePlayerJar;
+	private static InfusionRecipeEntityJar infusionRecipeEntityJar;
+	private static InfusionRecipeArmorPlate infusionRecipeArmorPlate;
+	private static InfusionRecipeCrystalOfHolding infusionRecipeCrystalOfHolding;
+	private static InfusionRecipeMachineBlock infusionRecipeMachineBlock;
+	private static InfusionRecipeArmorCatalyst infusionRecipeArmorCatalyst;
+	private static InfusionRecipeChargedCombinedArmorCompound infusionRecipeChargedCombinedArmorCompound;
 
 	//-----------------------------------------------Constructor:-------------------------------------------
 
@@ -78,7 +78,7 @@ public class RecipeHandler {
 
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	private void registerInfusionRecipes(){
-		infusionRecipeVaporizer = new InfusionRecipeVaporizer(); 
+		infusionRecipeVaporizer = new InfusionRecipeVaporizer();
 		infusionRecipeCrystallLight = new InfusionRecipeCrystallLight();
 		infusionRecipeFireCrystall = new InfusionRecipeFireCrystall();
 		infusionRecipeRefulelVaporizer = new InfusionRecipeRefulelVaporizer();
