@@ -40,19 +40,21 @@ public class RendererInfuserBlockItem extends TileEntitySpecialRenderer<TileEnit
         RenderItem itemRenderer = Minecraft.getMinecraft().getRenderItem();
         if (stack != null)
         {
-            GlStateManager.translate(0.5, 0.7, 0.5);
             GlStateManager.pushMatrix();
+            
             GlStateManager.disableLighting();
-
-            float rotationAngel = (float) (720.0 * (System.currentTimeMillis() / 2 & 0x3FFFL) / 0x3FFFL);
-
-            GlStateManager.rotate(rotationAngel, 0.0F, 1.0F, 0.0F);
-            GlStateManager.pushAttrib();
             RenderHelper.enableStandardItemLighting();
+            GlStateManager.color(1.0F, 1.0F, 1.0F);
+            
+            GlStateManager.translate(0.5, 0.7, 0.5);
+            float rotationAngel = (float) (720.0 * (System.currentTimeMillis() / 2 & 0x3FFFL) / 0x3FFFL);
+            GlStateManager.rotate(rotationAngel, 0.0F, 1.0F, 0.0F);
+            
             itemRenderer.renderItem(stack, ItemCameraTransforms.TransformType.GROUND);
+            
             RenderHelper.disableStandardItemLighting();
-            GlStateManager.popAttrib();
             GlStateManager.enableLighting();
+            
             GlStateManager.popMatrix();
         }
     }
