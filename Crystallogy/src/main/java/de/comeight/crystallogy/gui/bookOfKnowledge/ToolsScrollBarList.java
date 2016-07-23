@@ -26,17 +26,17 @@ public class ToolsScrollBarList extends ScrollBarList {
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.crystallHammer_red), 
 																									new ItemStack(ItemHandler.crystallHammer_blue), 
 																									new ItemStack(ItemHandler.crystallHammer_green), 
-																									new ItemStack(ItemHandler.crystallHammer_yellow)}, 60, null));
+																									new ItemStack(ItemHandler.crystallHammer_yellow)}, 1000, null));
 		
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.crystalSword_red), 
 																									new ItemStack(ItemHandler.crystalSword_blue), 
 																									new ItemStack(ItemHandler.crystalSword_green), 
-																									new ItemStack(ItemHandler.crystalSword_yellow)}, 60, null));
+																									new ItemStack(ItemHandler.crystalSword_yellow)}, 1000, null));
 
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.crystalPickaxe_red), 
 																									new ItemStack(ItemHandler.crystalPickaxe_blue), 
 																									new ItemStack(ItemHandler.crystalPickaxe_green), 
-																									new ItemStack(ItemHandler.crystalPickaxe_yellow)}, 60, null));
+																									new ItemStack(ItemHandler.crystalPickaxe_yellow)}, 1000, null));
 		
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.playerCrystalKnife), null));
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.vaporizer), null));

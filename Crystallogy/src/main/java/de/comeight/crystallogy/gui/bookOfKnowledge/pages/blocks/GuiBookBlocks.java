@@ -18,11 +18,13 @@ public class GuiBookBlocks extends GuiBookPage {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiBookBlocks() {
 		super("Blocks:");
-		setNextPage(PageRegistry.MACHINES_PAGE);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
-	
+	@Override
+	public GuiBookPage getNextPage() {
+		return PageRegistry.MACHINES_PAGE;
+	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
@@ -30,7 +32,7 @@ public class GuiBookBlocks extends GuiBookPage {
 		super.addButtons();
 		addScrollingList();
 		
-		int chapterButtonX = xSize / 2 + 10;
+		int chapterButtonX = xSize / 2 + BORDER_RIGHT;
 		float buttonScale = 1.0F;
 		
 		//Machines:
@@ -41,17 +43,17 @@ public class GuiBookBlocks extends GuiBookPage {
 	}
 	
 	private void drawChaptersText(){
-		GuiBookUtilities.drawTextBox(xPosBook + xSize / 2 + 10, yPosBook + 10, xSize / 2 - 10, "Subchapters:");
+		GuiBookUtilities.drawTextBox(xPosBook + xSize / 2 + BORDER_RIGHT, yPosBook + BORDER_TOP, xSize / 2 - BORDER_RIGHT, "Subchapters:");
 	}
 	
 	private void addScrollingList(){
-		scrollingList = new BlocksScrollBarList(xSize / 2 - 20, 210, xPosBook + 10, yPosBook + 20, this);
+		scrollingList = new BlocksScrollBarList(xSize / 2 - 20, 210, xPosBook + BORDER_LEFT - 5, yPosBook + 23, this);
 	}
 	
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		super.drawScreen(mouseX, mouseY, partialTicks);
-        scrollingList.drawScreen(mouseX, mouseY, xPosBook + 10, yPosBook + 20);
+        scrollingList.drawScreen(mouseX, mouseY, xPosBook + BORDER_LEFT - 5, yPosBook + 23);
         drawChaptersText();
 	}
 	

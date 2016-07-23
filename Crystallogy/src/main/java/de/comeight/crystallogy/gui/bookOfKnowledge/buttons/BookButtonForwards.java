@@ -14,13 +14,13 @@ public class BookButtonForwards extends BookButton{
 	private static final ResourceLocation BUTTON_HOVER = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/book/forward_hover.png");
 	private static final ResourceLocation BUTTON_NO = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/book/forward_no.png");
 	
-	private GuiBookPage nextPage;
+	private GuiBookPage page;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public BookButtonForwards(int buttonId, int x, int y, GuiBookPage nextPage) {
+	public BookButtonForwards(int buttonId, int x, int y, GuiBookPage page) {
 		super(buttonId, x, y, 25, 25);
 		
-		this.nextPage = nextPage;
+		this.page = page;
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -51,7 +51,7 @@ public class BookButtonForwards extends BookButton{
 		GlStateManager.translate(x, y, 0);
 		double scale = 0.1;
         GlStateManager.scale(scale, scale, scale);
-		if (nextPage == null) {
+		if (page.getNextPage() == null) {
 			drawTexture(0, 0, 256, 256, BUTTON_NO);
 		} else if (hover) {
 			drawTexture(0, 0, 256, 256, BUTTON_HOVER);
@@ -64,8 +64,8 @@ public class BookButtonForwards extends BookButton{
 	
 	@Override
 	public void onClicked(GuiBookPage fromPage) {
-		if(nextPage != null){
-			openGui(fromPage, nextPage);
+		if(page.getNextPage() != null){
+			openGui(fromPage, page.getNextPage());
 		}
 	}
 }

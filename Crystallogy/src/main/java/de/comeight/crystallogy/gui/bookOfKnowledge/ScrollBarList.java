@@ -152,8 +152,13 @@ public class ScrollBarList {
     }
     
     protected void drawScrollBar(int x, int y){
-	    drawTexture(x + width - 10, y, 175, 18, 10, 110, BAR);
-	    drawTexture(x + width - 10, y + 110, 175, 18, 10, height - 110, BAR);
+    	if(height > 110){
+    		drawTexture(x + width - 10, y, 175, 18, 10, 110, BAR);
+    	    drawTexture(x + width - 10, y + 110, 175, 18, 10, height - 110, BAR);
+    	}
+    	else{
+    		drawTexture(x + width - 10, y, 175, 18, 10, height, BAR);
+    	}
 	    
 	    if(scrollEnabeld){
 	    	int yScroll = (int) ((double)scrollPos / (entryHeigtht * (list.size() - (height) / entryHeigtht)) * (height - 13));

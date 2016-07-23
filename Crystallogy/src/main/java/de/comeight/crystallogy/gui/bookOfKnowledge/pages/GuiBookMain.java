@@ -22,11 +22,13 @@ public class GuiBookMain extends GuiBookPage {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiBookMain() {
 		super("");
-		setNextPage(PageRegistry.BLOCKS_PAGE);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
-
+	@Override
+	public GuiBookPage getNextPage() {
+		return PageRegistry.BLOCKS_PAGE;
+	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
@@ -35,16 +37,16 @@ public class GuiBookMain extends GuiBookPage {
 	}
 	
 	private void drawIntroText(){
-		GuiBookUtilities.drawTextBox(xPosBook + 10, yPosBook + 40, xSize / 2 - 10, 1.0F, "Hi!\n"
+		GuiBookUtilities.drawTextBox(xPosBook + BORDER_LEFT, yPosBook + 50, WRAPWIDTH, 1.0F, "Hi " + mc.thePlayer.getName() + "!\n"
 				+ "Welcome to the Crystallogy Book of Knowledge.\n"
 				+ "This book contains everything you need to know about this mod.\n"
 				+ "\n"
 				+ "On the right side you can see all the different chapters this book is capable of teaching to you.\n"
-				+ "If you prefer, discovering everything by yourself, you can use the \"Arrow Button\" on the lower right side to flip through the different chapters by yourself.");
+				+ "If you prefer, discovering everything by yourself, you can use the \"Arrow Buttons\" on the lower right side to flip through the different chapters by yourself.");
 	}
 	
 	private void drawChaptersText(){
-		GuiBookUtilities.drawTextBox(xPosBook + xSize / 2 + 10, yPosBook + 10, xSize / 2 - 10, "Chapters:");
+		GuiBookUtilities.drawTextBox(xPosBook + xSize / 2 + BORDER_RIGHT, yPosBook + BORDER_TOP, xSize / 2 - 10, "Chapters:");
 	}
 	
 	@Override
@@ -58,14 +60,14 @@ public class GuiBookMain extends GuiBookPage {
 	@Override
 	protected void addButtons() {
 		super.addButtons();
-		int chapterButtonX = xSize / 2 + 10;
+		int chapterButtonX = xSize / 2 + BORDER_RIGHT;
 		float buttonScale = 1.0F;
 		
 		//Blocks:
 		BookButtonCategory blocks = new BookButtonCategory(GuiBookPage.getNextButtonId(), chapterButtonX, 40, null, new ItemStack[]{new ItemStack(BlockHandler.crystall_red), 
 																																	new ItemStack(BlockHandler.crystall_blue),
 																																	new ItemStack(BlockHandler.crystall_green),
-																																	new ItemStack(BlockHandler.crystall_yellow)}, 60, PageRegistry.BLOCKS_PAGE);
+																																	new ItemStack(BlockHandler.crystall_yellow)}, 1000, PageRegistry.BLOCKS_PAGE);
 		blocks.setScale(buttonScale);
 		blocks.setCustomDescription("Blocks");
 		buttonList.add(blocks);
@@ -74,7 +76,7 @@ public class GuiBookMain extends GuiBookPage {
 		BookButtonCategory items = new BookButtonCategory(GuiBookPage.getNextButtonId(), chapterButtonX, 75, null, new ItemStack[]{	new ItemStack(ItemHandler.crystallDust_red), 
 																																	new ItemStack(ItemHandler.crystallDust_blue), 
 																																	new ItemStack(ItemHandler.crystallDust_green), 
-																																	new ItemStack(ItemHandler.crystallDust_yellow)}, 60, PageRegistry.ITEMS_PAGE);
+																																	new ItemStack(ItemHandler.crystallDust_yellow)}, 1000, PageRegistry.ITEMS_PAGE);
 		items.setScale(buttonScale);
 		items.setCustomDescription("Items");
 		buttonList.add(items);
@@ -103,11 +105,11 @@ public class GuiBookMain extends GuiBookPage {
 		GlStateManager.pushMatrix();
 		GlStateManager.color(1.0F, 1.0F, 1.0F);
 		
-		GlStateManager.translate(xPosBook + 10, yPosBook + 10, 0);
-		GlStateManager.scale(0.43, 0.07, 1.0);
-		GlStateManager.translate(-xPosBook - 10, -yPosBook - 10, 0);
+		GlStateManager.translate(xPosBook + BORDER_LEFT, yPosBook + 10, 0);
+		GlStateManager.scale(0.66, 0.12, 1.0);
+		GlStateManager.translate(-xPosBook - BORDER_LEFT, -yPosBook - 10, 0);
 		
-		drawTexture(xPosBook + 10, yPosBook + 10, 255, 255, LOGO);
+		drawTexture(xPosBook + BORDER_LEFT, yPosBook + 10, 255, 255, LOGO);
 		
 		GlStateManager.popMatrix();
 	}

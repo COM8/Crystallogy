@@ -14,11 +14,13 @@ public class GuiBookTools extends GuiBookPage {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiBookTools() {
 		super("Tools:");
-		setNextPage(PageRegistry.INFUSION_CRAFTING_PAGE);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
-	
+	@Override
+	public GuiBookPage getNextPage() {
+		return PageRegistry.INFUSION_CRAFTING_PAGE;
+	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
@@ -28,13 +30,13 @@ public class GuiBookTools extends GuiBookPage {
 	}
 	
 	private void addScrollingList(){
-		scrollingList = new ToolsScrollBarList(xSize / 2 - 20, 175, xPosBook + 10, yPosBook + 20, this);
+		scrollingList = new ToolsScrollBarList(xSize / 2 - 20, 175, xPosBook + BORDER_LEFT - 5, yPosBook + 23, this);
 	}
 	
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		super.drawScreen(mouseX, mouseY, partialTicks);
-        scrollingList.drawScreen(mouseX, mouseY, xPosBook + 10, yPosBook + 20);
+        scrollingList.drawScreen(mouseX, mouseY, xPosBook + BORDER_LEFT - 5, yPosBook + 23);
 	}
 	
 	@Override

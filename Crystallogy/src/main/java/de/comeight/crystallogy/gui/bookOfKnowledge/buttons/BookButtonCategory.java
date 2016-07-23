@@ -13,10 +13,10 @@ public class BookButtonCategory extends BookButton{
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private ResourceLocation background;
 	private static final ResourceLocation FRAME = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/book/frame.png");
-	private ItemStack[] items;
+	protected ItemStack[] items;
 	private int frameDuration;
-	private int tick;
-	private int frame;
+	private long lastFrameInc;
+	protected int frame;
 	private String description;
 	private float scale = 1.0F;
 	
@@ -24,7 +24,7 @@ public class BookButtonCategory extends BookButton{
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public BookButtonCategory(int buttonId, int x, int y, ResourceLocation background, ItemStack item, GuiBookPage page) {
-		this(buttonId, x, y, background, new ItemStack[]{item}, y, page);
+		this(buttonId, x, y, background, new ItemStack[]{item}, 1000, page);
 	}
 	
 	public BookButtonCategory(int buttonId, int x, int y, ResourceLocation background, ItemStack[] items, int frameDuration, GuiBookPage page) {
@@ -35,7 +35,7 @@ public class BookButtonCategory extends BookButton{
 		
 		this.items = items;
 		this.frameDuration = frameDuration;
-		this.tick = frameDuration;
+		this.lastFrameInc = System.currentTimeMillis();
 		this.frame = 0;
 		this.page = page;
 	}
@@ -115,7 +115,7 @@ public class BookButtonCategory extends BookButton{
 		GlStateManager.popMatrix();
 	}
 	
-	private void drawDescription(int x, int y){
+	protected void drawDescription(int x, int y){
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(x + 30, y + 0, 0);
 		GlStateManager.scale(1.0, 1.0, 1.0);
@@ -128,7 +128,7 @@ public class BookButtonCategory extends BookButton{
 		GlStateManager.popMatrix();
 	}
 	
-	private void drawBackgound(int x, int y, boolean hover){
+	protected void drawBackgound(int x, int y, boolean hover){
 		if(background != null){
 			GlStateManager.pushMatrix();
 			GlStateManager.enableLighting();
@@ -143,7 +143,7 @@ public class BookButtonCategory extends BookButton{
 		}
 	}
 	
-	private void drawFrame(int x, int y, boolean hover){
+	protected void drawFrame(int x, int y, boolean hover){
 		GlStateManager.pushMatrix();
 		GlStateManager.enableLighting();
 		
@@ -157,17 +157,16 @@ public class BookButtonCategory extends BookButton{
 	}
 	
 	private void decFrameTime(){
-		tick--;
-		if(tick <= 0){
+		if(System.currentTimeMillis() >= lastFrameInc + frameDuration){
 			frame++;
-			tick = frameDuration;
+			lastFrameInc = System.currentTimeMillis();
 			if(frame >= items.length){
 				frame = 0;
 			}
 		}
 	}
 	
-	private void drawItem(int x, int y, boolean hover){
+	protected void drawItem(int x, int y, boolean hover){
 		if(items != null){
 			if(items.length > 1){
 				renderItem(items[frame], x, y, 1.2F);

@@ -21,6 +21,7 @@ public abstract class BookButton extends GuiButton{
 	protected int xPosAbs;
 	protected int yPosAbs;
 	protected boolean hoverEnabled;
+	public boolean hover;
 	
 	protected Minecraft mc;
 	
@@ -62,10 +63,17 @@ public abstract class BookButton extends GuiButton{
 		this.yPosAbs = y + yPosition;
 		this.hovered = mouseX >= this.xPosAbs && mouseY >= this.yPosAbs && mouseX < this.xPosAbs + this.width && mouseY < this.yPosAbs + this.height;
 		if(!hoverEnabled || getHoverState(hovered) == 1){
+			if(getHoverState(hovered) == 2){
+				hover = true;
+			}
+			else{
+				hover = false;
+			}
 			drawNormal(xPosAbs, yPosAbs);
 		}
 		else if(getHoverState(hovered) == 2){
 			drawHover(xPosAbs, yPosAbs);
+			hover = true;
 		}
 	}
 	
@@ -87,7 +95,7 @@ public abstract class BookButton extends GuiButton{
         	
             GlStateManager.disableLighting();
             RenderHelper.enableStandardItemLighting();
-
+            
             GlStateManager.translate(posX, posY, 0);
             GlStateManager.scale(scale, scale, scale);
 

@@ -26,18 +26,22 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiBookPage extends GuiScreen {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	private static int buttonId = -1;
-	
 	private static final ResourceLocation BOOK = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/book/bookPage.png");
 	/** The X size of the inventory window in pixels. */
-	protected int xSize = 256;
+	protected final int xSize = 384;
     /** The Y size of the inventory window in pixels. */
-    protected int ySize = 256;
+    protected final int ySize = 256;
+    /** The recommend border for if you draw something onto the book. */
+    protected final int BORDER_TOP = 10;
+    /** The recommend border for if you draw something onto the book. */
+    protected final int BORDER_LEFT = 15;
+    /** The recommend border for if you draw something onto the book. */
+    protected final int BORDER_RIGHT = 15;
     
     protected int xPosBook;
     protected int yPosBook;
     
-    protected final int WRAPWIDTH = (int) (xSize / 2.8);
+    protected final int WRAPWIDTH = (int) (xSize / 2) - 20;
     
     protected final String HEADING;
     
@@ -47,18 +51,18 @@ public class GuiBookPage extends GuiScreen {
     public GuiBookPage(String heading) {
     	this.mc = Minecraft.getMinecraft();
     	this.HEADING = heading;
+    	this.nextPage = null;
     	
     	calcBookPos();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
     public static int getNextButtonId(){
-    	buttonId++;
-    	return buttonId;
+    	return GuiBookUtilities.getNextButtonId();
     }
     
-    public void setNextPage(GuiBookPage nextPage) {
-		this.nextPage = nextPage;
+    public GuiBookPage getNextPage() {
+		return nextPage;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
@@ -97,22 +101,29 @@ public class GuiBookPage extends GuiScreen {
 	}
 	
 	protected void addButtons(){
-		buttonList.add(new BookButtonBackwards(getNextButtonId(), 10, 225));
-		buttonList.add(new BookButtonForwards(getNextButtonId(), xSize - 35, 225, nextPage));
+		buttonList.add(new BookButtonBackwards(getNextButtonId(), BORDER_LEFT, 227));
+		buttonList.add(new BookButtonForwards(getNextButtonId(), xSize - 40, 227, this));
 		buttonList.add(new BookButtonHome(getNextButtonId()));
 	}
     
     @Override
 	public void drawBackground(int tint) {
-    	drawTexture(xPosBook, yPosBook, xSize, ySize, BOOK);
+    	GlStateManager.pushMatrix();
+    	
+    	GlStateManager.translate(xPosBook, yPosBook, 0);
+    	GlStateManager.scale(1.5, 1.0, 1.0);
+    	
+    	drawTexture(0, 0, xSize * 2 / 3, ySize, BOOK);
+    	
+    	GlStateManager.popMatrix();
 	}
 	
 	protected void drawHeading(){
 		GlStateManager.pushMatrix();
 		
-		GlStateManager.translate(xPosBook + 15, yPosBook + 10, 0);
+		GlStateManager.translate(xPosBook + BORDER_LEFT, yPosBook + BORDER_TOP, 0);
 		GlStateManager.scale(1.25, 1.25, 1.25);
-		fontRendererObj.drawSplitString(HEADING, 0, 0, WRAPWIDTH, 4210752);
+		GuiBookUtilities.drawTextBox(0, 0, WRAPWIDTH, HEADING);
 		
 		GlStateManager.popMatrix();
 	}
@@ -185,6 +196,7 @@ public class GuiBookPage extends GuiScreen {
     {
     	GlStateManager.pushMatrix();
     	GlStateManager.color(1.0F, 1.0F, 1.0F);
+    	GlStateManager.disableLighting();
 		
         Tessellator tessellator = Tessellator.getInstance();
         VertexBuffer vertexbuffer = tessellator.getBuffer();
@@ -195,6 +207,7 @@ public class GuiBookPage extends GuiScreen {
         vertexbuffer.pos((double)(xCoord + 0.0F), (double)(yCoord + 0.0F), 0).tex((double)((float)(minU + 0) * 0.00390625F), (double)((float)(minV + 0) * 0.00390625F)).endVertex();
         tessellator.draw();
         
+        GlStateManager.enableLighting();
         GlStateManager.popMatrix();
     }
 	

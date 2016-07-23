@@ -6,7 +6,6 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.AllScrollBarList;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPage;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookUtilities;
 import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
-import de.comeight.crystallogy.gui.bookOfKnowledge.pages.credits.GuiBookCredits;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -18,11 +17,13 @@ public class GuiBookSearch extends GuiBookPage {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiBookSearch() {
 		super("Search:");
-		setNextPage(PageRegistry.CREDITS_PAGE);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
-	
+	@Override
+	public GuiBookPage getNextPage() {
+		return PageRegistry.CREDITS_PAGE;
+	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
@@ -32,17 +33,16 @@ public class GuiBookSearch extends GuiBookPage {
 	}
 	
 	private void drawChaptersText(){
-		GuiBookUtilities.drawTextBox(xPosBook + xSize / 2 + 10, yPosBook + 10, xSize / 2 - 10, "");
 	}
 	
 	private void addScrollingList(){
-		scrollingList = new AllScrollBarList(xSize / 2 - 20, 187, xPosBook + 10, yPosBook + 25, this);
+		scrollingList = new AllScrollBarList(xSize / 2 - 20, 187, xPosBook + BORDER_LEFT - 5, yPosBook + 25, this);
 	}
 	
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		super.drawScreen(mouseX, mouseY, partialTicks);
-        scrollingList.drawScreen(mouseX, mouseY, xPosBook + 10, yPosBook + 25);
+        scrollingList.drawScreen(mouseX, mouseY, xPosBook + BORDER_LEFT - 5, yPosBook + 25);
         drawChaptersText();
 	}
 	

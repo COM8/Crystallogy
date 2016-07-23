@@ -18,7 +18,7 @@ public class BookButtonHome extends BookButton {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public BookButtonHome(int buttonId) {
-		super(buttonId, 255 / 2 + 5, 255, 25, 25);
+		super(buttonId, 160, 255, 25, 25);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------

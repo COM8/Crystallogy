@@ -14,11 +14,13 @@ public class GuiBookInfusionCrafting extends GuiBookPage {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiBookInfusionCrafting() {
 		super("Infusion Crafting:");
-		setNextPage(PageRegistry.SEARCH_PAGE);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
-	
+	@Override
+	public GuiBookPage getNextPage() {
+		return PageRegistry.SEARCH_PAGE;
+	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 
