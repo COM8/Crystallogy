@@ -80,21 +80,6 @@ public class BookButtonCategory extends BookButton{
 		
 		GlStateManager.popMatrix();
 	}
-
-	private String removeFormattingCodes(String text) {
-		int i = -1;
-		while ((i = text.indexOf('§')) >= 0) {
-			if (i >= 0) {
-				if (i + 1 >= text.length()) {
-					text = text.substring(0, i) + text.substring(i + 1);
-				} else {
-					text = text.substring(0, i) + text.substring(i + 2);
-				}
-			}
-		}
-
-		return text;
-	}
 	
 	@Override
 	public void drawHover(int x, int y){
