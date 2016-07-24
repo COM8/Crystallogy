@@ -2,6 +2,7 @@ package de.comeight.crystallogy.gui.bookOfKnowledge.buttons;
 
 import de.comeight.crystallogy.CrystallogyBase;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPage;
+import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookUtilities;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -169,11 +170,11 @@ public class BookButtonCategory extends BookButton{
 	protected void drawItem(int x, int y, boolean hover){
 		if(items != null){
 			if(items.length > 1){
-				renderItem(items[frame], x, y, 1.2F);
+				GuiBookUtilities.renderItem(items[frame], x, y, 1.2F);
 				decFrameTime();
 			}
 			else{
-				renderItem(items[frame], x, y, 1.2F);
+				GuiBookUtilities.renderItem(items[frame], x, y, 1.2F);
 			}
 			
 		}

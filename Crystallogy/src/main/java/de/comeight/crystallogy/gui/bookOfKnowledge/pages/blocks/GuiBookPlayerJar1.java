@@ -11,23 +11,23 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class GuiBookEntityJar1 extends GuiBookPageSuggestions {
+public class GuiBookPlayerJar1 extends GuiBookPageSuggestions {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private BookMultiItemRenderer entityJar;
 	
-	private static final ResourceLocation PREVIEW = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/book/blocks/entity_jar_preview.png");
+	private static final ResourceLocation PREVIEW = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/book/blocks/player_jar_preview.png");
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public GuiBookEntityJar1() {
-		super("Entity Jar:");
+	public GuiBookPlayerJar1() {
+		super("Player Jar:");
 		
-		entityJar = new BookMultiItemRenderer(new ItemStack[]{new ItemStack(BlockHandler.entityJar)}, 1000, 5.0F);
+		entityJar = new BookMultiItemRenderer(new ItemStack[]{new ItemStack(BlockHandler.playerJar)}, 1000, 5.0F);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	@Override
 	public GuiBookPage getNextPage() {
-		return PageRegistry.ENTITY_JAR_PAGE_2;
+		return PageRegistry.PLAYER_JAR_PAGE_2;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
@@ -52,11 +52,8 @@ public class GuiBookEntityJar1 extends GuiBookPageSuggestions {
 	}
 	
 	private void drawText(){
-		GuiBookUtilities.drawTextBox(xPosBook + BORDER_LEFT, yPosBook + 110, WRAPWIDTH, 1.0F, "An Entity Jar is used to \"store\" the tags from entities. "
-				+ "To give it a tag you need to shift right-click on it with an Entity Crystal Knife. "
-				+ "The entity only stays stored until the chuck, the entity is in, gets unloaded.");
-		
-		GuiBookUtilities.drawTextBox(xPosBook + xSize / 2 + BORDER_RIGHT, yPosBook + 110, WRAPWIDTH - 10, 1.0F, "Once you managed to get an entity's tag you can use Threat Dusts to \"play\" with it.");
+		GuiBookUtilities.drawTextBox(xPosBook + BORDER_LEFT, yPosBook + 110, WRAPWIDTH, 1.0F, "A Player Jar is used to \"store\" the tags from players. "
+				+ "To give it a tag you need to shift right-click on it with a Player Crystal Knife, tht contains a player's tag.");
 	}
 	
 	private void drawItem(){

@@ -27,7 +27,7 @@ public class GuiBookFarmersGreen1 extends GuiBookPageSuggestions {
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	@Override
 	public GuiBookPage getNextPage() {
-		return PageRegistry.FARMERS_GREEN_2;
+		return PageRegistry.FARMERS_GREEN_PAGE_2;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------

@@ -11,30 +11,32 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class GuiBookEntityJar1 extends GuiBookPageSuggestions {
+public class GuiBookInfuserBlock1 extends GuiBookPageSuggestions {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	private BookMultiItemRenderer entityJar;
+	private BookMultiItemRenderer crystalGlass;
 	
-	private static final ResourceLocation PREVIEW = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/book/blocks/entity_jar_preview.png");
+	private static final ResourceLocation CRYSTAL_GLASS_PREVIEW = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/book/blocks/infuser_block_preview.png");
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public GuiBookEntityJar1() {
-		super("Entity Jar:");
+	public GuiBookInfuserBlock1() {
+		super("Infuser Block:");
 		
-		entityJar = new BookMultiItemRenderer(new ItemStack[]{new ItemStack(BlockHandler.entityJar)}, 1000, 5.0F);
+		crystalGlass = new BookMultiItemRenderer(new ItemStack[]{new ItemStack(BlockHandler.infuserBlock)}, 1000, 5.0F);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	@Override
 	public GuiBookPage getNextPage() {
-		return PageRegistry.ENTITY_JAR_PAGE_2;
+		return PageRegistry.INFUSRER_BLOCK_PAGE_2;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		super.drawScreen(mouseX, mouseY, partialTicks);
 		drawItem();
+		drawUsageChaptersText();
 		drawText();
 		drawImages();
 	}
@@ -43,24 +45,25 @@ public class GuiBookEntityJar1 extends GuiBookPageSuggestions {
 		float scale = 0.7F;
 		GlStateManager.pushMatrix();
 		
-		GlStateManager.translate(xPosBook + xSize / 2 + BORDER_RIGHT, yPosBook + BORDER_TOP, 0);
-		GlStateManager.scale(scale, scale / 1.75F, scale);
+		GlStateManager.translate(xPosBook + xSize / 2 + BORDER_RIGHT, yPosBook + 90, 0);
+		GlStateManager.scale(scale, scale / 1.2F, scale);
 		
-		drawTexture(0, 0, 20, 50, 230, 230, PREVIEW);
+		drawTexture(0, 0, 20, 0, 230, 230, CRYSTAL_GLASS_PREVIEW);
 		
 		GlStateManager.popMatrix();
 	}
 	
 	private void drawText(){
-		GuiBookUtilities.drawTextBox(xPosBook + BORDER_LEFT, yPosBook + 110, WRAPWIDTH, 1.0F, "An Entity Jar is used to \"store\" the tags from entities. "
-				+ "To give it a tag you need to shift right-click on it with an Entity Crystal Knife. "
-				+ "The entity only stays stored until the chuck, the entity is in, gets unloaded.");
-		
-		GuiBookUtilities.drawTextBox(xPosBook + xSize / 2 + BORDER_RIGHT, yPosBook + 110, WRAPWIDTH - 10, 1.0F, "Once you managed to get an entity's tag you can use Threat Dusts to \"play\" with it.");
+		GuiBookUtilities.drawTextBox(xPosBook + BORDER_LEFT, yPosBook + 125, WRAPWIDTH, 1.0F, "The Infuser Block is used for infusing items. It is used to build the Infusion Structure.");
+		GuiBookUtilities.drawTextBox(xPosBook + xSize / 2 + BORDER_RIGHT, yPosBook + 30, WRAPWIDTH - 10, 1.0F, "Place one down and add one on each side (north, south, ...) but leave one block space between them. If you did it right you can see a particle effect above the center Infuser Block.");
 	}
 	
 	private void drawItem(){
-		entityJar.drawItem(xPosBook + 60, yPosBook + 20);
+		crystalGlass.drawItem(xPosBook + 50, yPosBook + 35);
+	}
+	
+	private void drawUsageChaptersText(){
+		GuiBookUtilities.drawTextBox(xPosBook + xSize / 2 + BORDER_RIGHT, yPosBook + BORDER_TOP, WRAPWIDTH, "Usage:");
 	}
 
 	@Override

@@ -5,12 +5,9 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -86,29 +83,6 @@ public abstract class BookButton extends GuiButton{
 	public abstract void drawNormal(int x, int y);
 	
 	public abstract void drawHover(int x, int y);
-	
-	protected void renderItem(ItemStack stack, int posX, int posY, float scale)
-    {
-        if (stack != null)
-        {	
-        	GlStateManager.pushMatrix();
-        	
-            GlStateManager.disableLighting();
-            RenderHelper.enableStandardItemLighting();
-            
-            GlStateManager.translate(posX, posY, 0);
-            GlStateManager.scale(scale, scale, scale);
-
-            RenderItem itemRenderer = Minecraft.getMinecraft().getRenderItem();   
-            itemRenderer.renderItemAndEffectIntoGUI(stack, 0, 0);
-            itemRenderer.renderItemOverlayIntoGUI(mc.fontRendererObj, stack, 0, 0, null);
-            
-            RenderHelper.disableStandardItemLighting();
-            GlStateManager.enableLighting();
-            
-            GlStateManager.popMatrix();
-        }
-    }
 	
 	public abstract void onClicked(GuiBookPage fromPage);
 	

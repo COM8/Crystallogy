@@ -20,11 +20,6 @@ public class ArmorScrollBarList extends ScrollBarList {
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	private void addAllEntrys(){
-		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.crystallDust_red), 
-																									new ItemStack(ItemHandler.crystallDust_blue), 
-																									new ItemStack(ItemHandler.crystallDust_green), 
-																									new ItemStack(ItemHandler.crystallDust_yellow)}, 1000, null));
-
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.armorHelmet_blue), 
 																									new ItemStack(ItemHandler.armorChestplate_blue), 
 																									new ItemStack(ItemHandler.armorLeggins_blue), 

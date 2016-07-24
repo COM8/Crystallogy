@@ -2,6 +2,8 @@ package de.comeight.crystallogy.gui.bookOfKnowledge;
 
 import java.util.List;
 
+import org.lwjgl.opengl.GL11;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
@@ -57,6 +59,8 @@ public class GuiBookUtilities {
         	
             GlStateManager.disableLighting();
             RenderHelper.enableStandardItemLighting();
+            GlStateManager.color(1.0F, 1.0F, 1.0F);
+            
             GlStateManager.translate(posX, posY, 0);
             GlStateManager.scale(scale, scale, scale);
 

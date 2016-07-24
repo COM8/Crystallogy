@@ -16,12 +16,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 
 @SideOnly(Side.CLIENT)
-public class GuiBookEntityJar2 extends GuiBookPageSuggestions {
+public class GuiBookPlayerJar2 extends GuiBookPageSuggestions {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private BookInfusionRecipe recipe;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public GuiBookEntityJar2() {
+	public GuiBookPlayerJar2() {
 		super("");
 		
 		initRecipe();
@@ -32,18 +32,18 @@ public class GuiBookEntityJar2 extends GuiBookPageSuggestions {
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	private void initRecipe(){
-		BookButtonCrafting b = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.GLASS_BOTTLE), null);
-		b.disableFrame();
-		BookButtonCrafting bP = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.BLAZE_POWDER), null);
-		bP.disableFrame();
-		BookButtonCrafting e = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.ENDER_EYE), null);
+		BookButtonCrafting e = new BookButtonCrafting(getNextButtonId(), new ItemStack(BlockHandler.entityJar), PageRegistry.ENTITY_JAR_PAGE_1);
 		e.disableFrame();
-		BookButtonCrafting p = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.pureCrystallDust), PageRegistry.PURE_CRYTAL_DUST_PAGE);
+		BookButtonCrafting b = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.BLAZE_POWDER), null);
+		b.disableFrame();
+		BookButtonCrafting eE = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.ENDER_EYE), null);
+		eE.disableFrame();
+		BookButtonCrafting p = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.armorPlate, 1, 4), PageRegistry.ARMOR_PLATE_PAGE);
 		p.disableFrame();
 		
-		BookButtonCrafting[] input = new BookButtonCrafting[]{b, bP, e, p, p};
+		BookButtonCrafting[] input = new BookButtonCrafting[]{e, p, p, eE, b};
 		
-		BookButtonCrafting output = new BookButtonCrafting(getNextButtonId(), new ItemStack(BlockHandler.entityJar), null);
+		BookButtonCrafting output = new BookButtonCrafting(getNextButtonId(), new ItemStack(BlockHandler.playerJar), null);
 		output.disableFrame();
 		
 		recipe = new BookInfusionRecipe(input, output);
@@ -71,11 +71,16 @@ public class GuiBookEntityJar2 extends GuiBookPageSuggestions {
 
 	@Override
 	protected void populateSuggestionsList() {
-		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.pureCrystallDust), PageRegistry.PURE_CRYTAL_DUST_PAGE));
+		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(BlockHandler.entityJar), PageRegistry.ENTITY_JAR_PAGE_1));
+		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.armorPlate, 1, 0),
+																										new ItemStack(ItemHandler.armorPlate, 1, 1),
+																										new ItemStack(ItemHandler.armorPlate, 1, 2),
+																										new ItemStack(ItemHandler.armorPlate, 1, 3),
+																										new ItemStack(ItemHandler.armorPlate, 1, 4),}, 1000, PageRegistry.ARMOR_PLATE_PAGE));
 		BookButtonCategory infusionButton = new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(BlockHandler.infuserBlock), PageRegistry.INFUSION_CRAFTING_PAGE);
 		infusionButton.setCustomDescription("Infusion Crafting");
 		suggestionsList.addEntry(infusionButton);
-		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.entityCrystalKnife), PageRegistry.ENTITY_CRYSTAL_KNIFE_PAGE));
+		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.playerCrystalKnife), PageRegistry.PLAYER_CRYSTAL_KNIFE_PAGE));
 		BookButtonCategory treatDusts = new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.badLuckDust), 
 																												new ItemStack(ItemHandler.blindDust), 
 																												new ItemStack(ItemHandler.damDust), 
@@ -88,7 +93,6 @@ public class GuiBookEntityJar2 extends GuiBookPageSuggestions {
 																												new ItemStack(ItemHandler.poisDust)}, 1000, PageRegistry.THREAT_DUSTS_PAGE);
 		treatDusts.setCustomDescription("Threat Dusts");
 		suggestionsList.addEntry(treatDusts);
-		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(BlockHandler.playerJar), PageRegistry.PLAYER_JAR_PAGE_1));
 	}
 
 	@Override

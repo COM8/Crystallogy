@@ -14,7 +14,13 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookEntityJar
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookEntityJar2;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookFarmersGreen1;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookFarmersGreen2;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookFireCrystal;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookInfuserBlock1;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookInfuserBlock2;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookMachineBlock;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookMachines;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookPlayerJar1;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookPlayerJar2;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.credits.GuiBookCredits;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.infusion.GuiBookInfusionCrafting;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookArmor;
@@ -54,20 +60,24 @@ public class PageRegistry {
 	public static GuiBookCrystalOfHolding1 CRYSTAL_OF_HOLDING_PAGE_1 = new GuiBookCrystalOfHolding1();
 	public static GuiBookCrystalOfHolding2 CRYSTAL_OF_HOLDING_PAGE_2 = new GuiBookCrystalOfHolding2();
 	public static GuiBookCrystorya CRYSTORYA_PAGE = new GuiBookCrystorya();
-	public static GuiBookEntityJar1 ENTITY_JAR_1 = new GuiBookEntityJar1();
-	public static GuiBookEntityJar2 ENTITY_JAR_2 = new GuiBookEntityJar2();
-	public static GuiBookFarmersGreen1 FARMERS_GREEN_1 = new GuiBookFarmersGreen1();
-	public static GuiBookFarmersGreen2 FARMERS_GREEN_2 = new GuiBookFarmersGreen2();
-	public static GuiBookEntityJar1 PLAYER_JAR_1 = new GuiBookEntityJar1();
-	public static GuiBookEntityJar2 PLAYER_JAR_2 = new GuiBookEntityJar2();
+	public static GuiBookEntityJar1 ENTITY_JAR_PAGE_1 = new GuiBookEntityJar1();
+	public static GuiBookEntityJar2 ENTITY_JAR_PAGE_2 = new GuiBookEntityJar2();
+	public static GuiBookFarmersGreen1 FARMERS_GREEN_PAGE_1 = new GuiBookFarmersGreen1();
+	public static GuiBookFarmersGreen2 FARMERS_GREEN_PAGE_2 = new GuiBookFarmersGreen2();
+	public static GuiBookFireCrystal FIRE_CRYSTAL_PAGE = new GuiBookFireCrystal();
+	public static GuiBookInfuserBlock1 INFUSRER_BLOCK_PAGE_1 = new GuiBookInfuserBlock1();
+	public static GuiBookInfuserBlock2 INFUSRER_BLOCK_PAGE_2 = new GuiBookInfuserBlock2();
+	public static GuiBookMachineBlock MACHINE_BLOCK_PAGE = new GuiBookMachineBlock();
+	public static GuiBookPlayerJar1 PLAYER_JAR_PAGE_1 = new GuiBookPlayerJar1();
+	public static GuiBookPlayerJar2 PLAYER_JAR_PAGE_2 = new GuiBookPlayerJar2();
 	
+	public static GuiBookCrystalOfHolding1 ARMOR_PLATE_PAGE;
 	public static GuiBookCrystalOfHolding1 ENTITY_GRABBER_PAGE;
 	public static GuiBookCrystalOfHolding1 FERTILIZER_POTATO_PAGE;
-	public static GuiBookCrystalOfHolding1 ENTITY_CRYSTAL_KNIFE;
-	public static GuiBookCrystalOfHolding1 PLAYER_CRYSTAL_KNIFE;
-	public static GuiBookCrystalOfHolding1 THREAT_DUSTS;
-	public static GuiBookCrystalOfHolding1 PURE_CRYTAL_DUST;
-	public static GuiBookCrystalOfHolding1 TREAT_DUSTS;
+	public static GuiBookCrystalOfHolding1 ENTITY_CRYSTAL_KNIFE_PAGE;
+	public static GuiBookCrystalOfHolding1 PLAYER_CRYSTAL_KNIFE_PAGE;
+	public static GuiBookCrystalOfHolding1 THREAT_DUSTS_PAGE;
+	public static GuiBookCrystalOfHolding1 PURE_CRYTAL_DUST_PAGE;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 
@@ -110,12 +120,16 @@ public class PageRegistry {
 		registerPage(CRYSTAL_OF_HOLDING_PAGE_1);
 		registerPage(CRYSTAL_OF_HOLDING_PAGE_2);
 		registerPage(CRYSTORYA_PAGE);
-		registerPage(ENTITY_JAR_1);
-		registerPage(ENTITY_JAR_2);
-		registerPage(FARMERS_GREEN_1);
-		registerPage(FARMERS_GREEN_2);
-		registerPage(PLAYER_JAR_1);
-		registerPage(PLAYER_JAR_2);
+		registerPage(ENTITY_JAR_PAGE_1);
+		registerPage(ENTITY_JAR_PAGE_2);
+		registerPage(FARMERS_GREEN_PAGE_1);
+		registerPage(FARMERS_GREEN_PAGE_2);
+		registerPage(FIRE_CRYSTAL_PAGE);
+		registerPage(INFUSRER_BLOCK_PAGE_1);
+		registerPage(INFUSRER_BLOCK_PAGE_2);
+		registerPage(MACHINE_BLOCK_PAGE);
+		registerPage(PLAYER_JAR_PAGE_1);
+		registerPage(PLAYER_JAR_PAGE_2);
 	}
 	
 	private static void registerPage(GuiBookPage page){
