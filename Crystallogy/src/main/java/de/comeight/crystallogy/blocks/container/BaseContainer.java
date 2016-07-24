@@ -41,26 +41,24 @@ public abstract class BaseContainer extends Container {
 	
 	@Nullable
 	@Override
-    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
+	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
     {
         ItemStack itemstack = null;
-        Slot slot = (Slot)inventorySlots.get(index);
+        Slot slot = (Slot)this.inventorySlots.get(index);
 
         if (slot != null && slot.getHasStack())
         {
-            ItemStack itemstack1 = slot.getStack();
+        	ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
 
-            if (index < 35)
+            if (index > 35)
             {
-                if (!this.mergeItemStack(itemstack1, 0, inventorySlots.size(), true))
+                if (!this.mergeItemStack(itemstack1, 0, 35, true))
                 {
                     return null;
                 }
-
-                slot.onSlotChange(itemstack1, itemstack);
             }
-            else if (!this.mergeItemStack(itemstack1, 0, inventorySlots.size(), false))
+            else if (!this.mergeItemStack(itemstack1, 36, 37, false))
             {
                 return null;
             }
@@ -73,13 +71,6 @@ public abstract class BaseContainer extends Container {
             {
                 slot.onSlotChanged();
             }
-
-            if (itemstack1.stackSize == itemstack.stackSize)
-            {
-                return null;
-            }
-
-            slot.onPickupFromSlot(playerIn, itemstack1);
         }
 
         return itemstack;
