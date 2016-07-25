@@ -3,7 +3,12 @@ package de.comeight.crystallogy.gui.bookOfKnowledge;
 import java.util.LinkedList;
 
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookMain;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookArmorCombiner1;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookArmorCombiner2;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookBlocks;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookCompressor;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookCrystalCharger;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookCrystalCrusher;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookCrystalGlass;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookCrystalLight;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookCrystalOfHolding1;
@@ -28,6 +33,7 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookCrystalDus
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookItems;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookTools;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.search.GuiBookSearch;
+import de.comeight.crystallogy.util.Log;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -71,6 +77,15 @@ public class PageRegistry {
 	public static GuiBookPlayerJar1 PLAYER_JAR_PAGE_1 = new GuiBookPlayerJar1();
 	public static GuiBookPlayerJar2 PLAYER_JAR_PAGE_2 = new GuiBookPlayerJar2();
 	
+	public static GuiBookArmorCombiner1 ARMOR_COMBINER_PAGE_1 = new GuiBookArmorCombiner1();
+	public static GuiBookArmorCombiner2 ARMOR_COMBINER_PAGE_2 = new GuiBookArmorCombiner2();
+	public static GuiBookCrystalCharger CRYSTAL_CHARGER_PAGE = new GuiBookCrystalCharger();
+	public static GuiBookCompressor COMPRESSOR_PAGE = new GuiBookCompressor();
+	public static GuiBookCrystalCrusher CRYSTAL_CRUSHER_PAGE = new GuiBookCrystalCrusher();
+	
+	public static GuiBookCrystalOfHolding1 ENERGY_CRYSTAL_PAGE;
+	public static GuiBookCrystalOfHolding1 ARMOR_COMBINED_PAGE;
+	public static GuiBookCrystalOfHolding1 ARMOR_CATALYST_PAGE;
 	public static GuiBookCrystalOfHolding1 ARMOR_PLATE_PAGE;
 	public static GuiBookCrystalOfHolding1 ENTITY_GRABBER_PAGE;
 	public static GuiBookCrystalOfHolding1 FERTILIZER_POTATO_PAGE;
@@ -102,6 +117,9 @@ public class PageRegistry {
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	public static void registerAllPages(){
+		Log.info("Started loading Book of Knowledge...");
+		
+		//Chapters:
 		registerPage(MAIN_PAGE);
 		registerPage(BLOCKS_PAGE);
 		registerPage(ITEMS_PAGE);
@@ -113,6 +131,7 @@ public class PageRegistry {
 		registerPage(INFUSION_CRAFTING_PAGE);
 		registerPage(CRYSTORYA_PAGE);
 		
+		//Blocks:
 		registerPage(CRYSTALS_PAGE);
 		registerPage(CRYSTAL_DUST_PAGE);
 		registerPage(CRYSTAL_GLASS_PAGE);
@@ -130,6 +149,15 @@ public class PageRegistry {
 		registerPage(MACHINE_BLOCK_PAGE);
 		registerPage(PLAYER_JAR_PAGE_1);
 		registerPage(PLAYER_JAR_PAGE_2);
+		
+		//Machines:
+		registerPage(ARMOR_COMBINER_PAGE_1);
+		registerPage(ARMOR_COMBINER_PAGE_2);
+		registerPage(CRYSTAL_CHARGER_PAGE);
+		registerPage(COMPRESSOR_PAGE);
+		registerPage(CRYSTAL_CRUSHER_PAGE);
+		
+		Log.info("Finished loading Book of Knowledge");
 	}
 	
 	private static void registerPage(GuiBookPage page){

@@ -52,7 +52,6 @@ public class BookButtonCategory extends BookButton{
 	
 	public String getDescription() {
 		if(description == null){
-			//return removeFormattingCodes(items[0].getDisplayName());
 			return items[0].getDisplayName();
 		}
 		else{

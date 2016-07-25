@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.util.LinkedList;
 
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCategory;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class ScrollBarListSearch extends ScrollBarList {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private BookSearchField searchField;

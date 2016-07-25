@@ -4,7 +4,10 @@ import de.comeight.crystallogy.util.RGBColor;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class BookSearchField extends GuiTextField {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 

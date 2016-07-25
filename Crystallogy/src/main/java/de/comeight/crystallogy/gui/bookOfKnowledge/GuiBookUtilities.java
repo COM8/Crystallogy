@@ -2,14 +2,20 @@ package de.comeight.crystallogy.gui.bookOfKnowledge;
 
 import java.util.List;
 
-import org.lwjgl.opengl.GL11;
-
+import de.comeight.crystallogy.util.Log;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.RenderItem;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.VertexBuffer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class GuiBookUtilities {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private static int buttonId = -1;
@@ -21,6 +27,7 @@ public class GuiBookUtilities {
 	public static int getNextButtonId(){
 		if(buttonId >= Integer.MAX_VALUE){
 			buttonId = -1;
+			Log.warn("buttonId overflow!");
 		}
 		else{
 			buttonId++;
@@ -50,6 +57,34 @@ public class GuiBookUtilities {
 		
 		GlStateManager.popMatrix();
 	}
+	
+	public static void drawTexture(int posX, int posY, int sizeX, int sizeY, ResourceLocation texture){
+    	drawTexture(posX, posY, 0, 0, sizeX, sizeY, texture);
+    }
+    
+    public static void drawTexture(int posX, int posY, int xStart, int yStart, int sizeX, int sizeY, ResourceLocation texture){
+    	Minecraft.getMinecraft().getTextureManager().bindTexture(texture);
+    	drawTexturedModalRect(posX, posY, xStart, yStart, sizeX, sizeY);
+    }
+    
+    public static void drawTexturedModalRect(int xCoord, int yCoord, int minU, int minV, int maxU, int maxV)
+    {
+    	GlStateManager.pushMatrix();
+    	GlStateManager.color(1.0F, 1.0F, 1.0F);
+    	GlStateManager.disableLighting();
+		
+        Tessellator tessellator = Tessellator.getInstance();
+        VertexBuffer vertexbuffer = tessellator.getBuffer();
+        vertexbuffer.begin(7, DefaultVertexFormats.POSITION_TEX);
+        vertexbuffer.pos((double)(xCoord + 0.0F), (double)(yCoord + (float)maxV), 0).tex((double)((float)(minU + 0) * 0.00390625F), (double)((float)(minV + maxV) * 0.00390625F)).endVertex();
+        vertexbuffer.pos((double)(xCoord + (float)maxU), (double)(yCoord + (float)maxV), 0).tex((double)((float)(minU + maxU) * 0.00390625F), (double)((float)(minV + maxV) * 0.00390625F)).endVertex();
+        vertexbuffer.pos((double)(xCoord + (float)maxU), (double)(yCoord + 0.0F), 0).tex((double)((float)(minU + maxU) * 0.00390625F), (double)((float)(minV + 0) * 0.00390625F)).endVertex();
+        vertexbuffer.pos((double)(xCoord + 0.0F), (double)(yCoord + 0.0F), 0).tex((double)((float)(minU + 0) * 0.00390625F), (double)((float)(minV + 0) * 0.00390625F)).endVertex();
+        tessellator.draw();
+        
+        GlStateManager.enableLighting();
+        GlStateManager.popMatrix();
+    }
 	
 	public static void renderItem(ItemStack stack, int posX, int posY, float scale)
     {

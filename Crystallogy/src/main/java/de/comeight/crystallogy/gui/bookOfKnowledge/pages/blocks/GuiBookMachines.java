@@ -31,7 +31,7 @@ public class GuiBookMachines extends GuiBookPage {
 	}
 	
 	private void addScrollingList(){
-		scrollingList = new MachinesScrollBarList(xSize / 2 - 20, 175, xPosBook + BORDER_LEFT - 5, yPosBook + 23, this);
+		scrollingList = new MachinesScrollBarList(xSize / 2 - 20, 145, xPosBook + BORDER_LEFT - 5, yPosBook + 23, this);
 	}
 	
 	@Override

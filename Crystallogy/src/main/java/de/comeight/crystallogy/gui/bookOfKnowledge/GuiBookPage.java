@@ -182,33 +182,21 @@ public class GuiBookPage extends GuiScreen {
 		calcBookPos();
 	}
 	
+	@Deprecated
 	public void drawTexture(int posX, int posY, int sizeX, int sizeY, ResourceLocation texture){
-    	drawTexture(posX, posY, 0, 0, sizeX, sizeY, texture);
+    	GuiBookUtilities.drawTexture(posX, posY, sizeX, sizeY, texture);
     }
     
+	@Deprecated
     public void drawTexture(int posX, int posY, int xStart, int yStart, int sizeX, int sizeY, ResourceLocation texture){
-    	mc.getTextureManager().bindTexture(texture);
-    	drawTexturedModalRect(posX, posY, xStart, yStart, sizeX, sizeY);
+    	GuiBookUtilities.drawTexture(posX, posY, xStart, yStart, sizeX, sizeY, texture);
     }
     
+	@Deprecated
     @Override
     public void drawTexturedModalRect(int xCoord, int yCoord, int minU, int minV, int maxU, int maxV)
     {
-    	GlStateManager.pushMatrix();
-    	GlStateManager.color(1.0F, 1.0F, 1.0F);
-    	GlStateManager.disableLighting();
-		
-        Tessellator tessellator = Tessellator.getInstance();
-        VertexBuffer vertexbuffer = tessellator.getBuffer();
-        vertexbuffer.begin(7, DefaultVertexFormats.POSITION_TEX);
-        vertexbuffer.pos((double)(xCoord + 0.0F), (double)(yCoord + (float)maxV), 0).tex((double)((float)(minU + 0) * 0.00390625F), (double)((float)(minV + maxV) * 0.00390625F)).endVertex();
-        vertexbuffer.pos((double)(xCoord + (float)maxU), (double)(yCoord + (float)maxV), 0).tex((double)((float)(minU + maxU) * 0.00390625F), (double)((float)(minV + maxV) * 0.00390625F)).endVertex();
-        vertexbuffer.pos((double)(xCoord + (float)maxU), (double)(yCoord + 0.0F), 0).tex((double)((float)(minU + maxU) * 0.00390625F), (double)((float)(minV + 0) * 0.00390625F)).endVertex();
-        vertexbuffer.pos((double)(xCoord + 0.0F), (double)(yCoord + 0.0F), 0).tex((double)((float)(minU + 0) * 0.00390625F), (double)((float)(minV + 0) * 0.00390625F)).endVertex();
-        tessellator.draw();
-        
-        GlStateManager.enableLighting();
-        GlStateManager.popMatrix();
+    	GuiBookUtilities.drawTexturedModalRect(xCoord, yCoord, minU, minV, maxU, maxV);
     }
 	
 }

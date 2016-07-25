@@ -4,7 +4,10 @@ import java.util.LinkedList;
 
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCrafting;
 import net.minecraft.client.Minecraft;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class BookCraftingRecipe {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private BookButtonCrafting output;
