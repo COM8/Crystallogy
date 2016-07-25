@@ -23,9 +23,9 @@ public class ParticleHandler {
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@SubscribeEvent
-	  public void stitcherEventPre(TextureStitchEvent.Pre e) {
-	    registerParticleTextures(e);
-	  }
+	public void stitcherEventPre(TextureStitchEvent.Pre e) {
+		registerParticleTextures(e);
+	}
 	
 	public void registerParticles(){
 		registerParticle(new ParticleA());
