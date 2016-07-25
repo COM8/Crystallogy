@@ -15,8 +15,7 @@ public class EventHandler {
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@SubscribeEvent
-	  public void onLootLoad(LootTableLoadEvent event) {
-	    ChestGenHandler.init(event);
-	  }
-	
+	public void onLootLoad(LootTableLoadEvent event) {
+		ChestGenHandler.init(event);
+	}
 }
