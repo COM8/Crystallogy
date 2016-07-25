@@ -16,7 +16,7 @@ public class GuiCrystallCrusher extends GuiContainer{
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	public static final int ID = 0;
 	
-	private static final ResourceLocation rL = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/GuiCrystallCrusher.png");
+	public static final ResourceLocation rL = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/GuiCrystallCrusher.png");
 	private final InventoryPlayer playerInventory;
 	private TileEntityCrystallCrusher tileEntity;
 	

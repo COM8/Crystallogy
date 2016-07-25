@@ -16,7 +16,7 @@ public class GuiCompressor extends GuiContainer{
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	public static final int ID = 1;
 	
-	private static final ResourceLocation rL = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/GuiCompressor.png");
+	public static final ResourceLocation rL = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/GuiCompressor.png");
 	private final InventoryPlayer playerInventory;
 	private TileEntityCompressor tileEntity;
 	

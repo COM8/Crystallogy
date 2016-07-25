@@ -16,7 +16,7 @@ public class GuiCharger extends GuiContainer{
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	public static final int ID = 2;
 	
-	private static final ResourceLocation rL = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/GuiCharger.png");
+	public static final ResourceLocation rL = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/GuiCharger.png");
 	private final InventoryPlayer playerInventory;
 	private TileEntityCharger tileEntity;
 	
