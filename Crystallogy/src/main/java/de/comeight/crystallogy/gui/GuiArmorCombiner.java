@@ -16,7 +16,7 @@ public class GuiArmorCombiner extends GuiContainer{
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	public static final int ID = 3;
 	
-	private static final ResourceLocation rL = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/GuiArmorCombiner.png");
+	public static final ResourceLocation rL = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/GuiArmorCombiner.png");
 	private final InventoryPlayer playerInventory;
 	private TileEntityArmorCombiner tileEntity;
 	
