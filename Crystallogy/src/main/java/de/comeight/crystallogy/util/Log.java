@@ -6,7 +6,7 @@ import de.comeight.crystallogy.CrystallogyBase;
 
 public final class Log {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	public static final org.apache.logging.log4j.Logger LOGGER = LogManager.getLogger(CrystallogyBase.MODID);
+	public static final org.apache.logging.log4j.Logger LOGGER = LogManager.getLogger(CrystallogyBase.MODNAME);
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 
