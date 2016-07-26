@@ -85,7 +85,7 @@ public class GuiBookEntityJar2 extends GuiBookPageSuggestions {
 																												new ItemStack(ItemHandler.glowDust), 
 																												new ItemStack(ItemHandler.hungDust), 
 																												new ItemStack(ItemHandler.levDust), 
-																												new ItemStack(ItemHandler.poisDust)}, 1000, PageRegistry.THREAT_DUSTS_PAGE);
+																												new ItemStack(ItemHandler.poisDust)}, 1000, PageRegistry.THREAT_DUSTS_PAGE_1);
 		treatDusts.setCustomDescription("Threat Dusts");
 		suggestionsList.addEntry(treatDusts);
 		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(BlockHandler.playerJar), PageRegistry.PLAYER_JAR_PAGE_1));

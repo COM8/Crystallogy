@@ -38,6 +38,7 @@ public class GuiBookMain extends GuiBookPage {
 	
 	private void drawIntroText(){
 		GuiBookUtilities.drawTextBox(xPosBook + BORDER_LEFT, yPosBook + 50, WRAPWIDTH, 1.0F, "Hi " + mc.thePlayer.getName() + "!\n"
+				+ "\n"
 				+ "Welcome to the Crystallogy Book of Knowledge.\n"
 				+ "This book contains everything you need to know about this mod.\n"
 				+ "\n"

@@ -38,7 +38,7 @@ public class GuiBookPlayerJar2 extends GuiBookPageSuggestions {
 		b.disableFrame();
 		BookButtonCrafting eE = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.ENDER_EYE), null);
 		eE.disableFrame();
-		BookButtonCrafting p = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.armorPlate, 1, 4), PageRegistry.ARMOR_PLATE_PAGE);
+		BookButtonCrafting p = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.armorPlate, 1, 4), PageRegistry.ARMOR_PLATE_PAGE_1);
 		p.disableFrame();
 		
 		BookButtonCrafting[] input = new BookButtonCrafting[]{e, p, p, eE, b};
@@ -76,7 +76,7 @@ public class GuiBookPlayerJar2 extends GuiBookPageSuggestions {
 																										new ItemStack(ItemHandler.armorPlate, 1, 1),
 																										new ItemStack(ItemHandler.armorPlate, 1, 2),
 																										new ItemStack(ItemHandler.armorPlate, 1, 3),
-																										new ItemStack(ItemHandler.armorPlate, 1, 4),}, 1000, PageRegistry.ARMOR_PLATE_PAGE));
+																										new ItemStack(ItemHandler.armorPlate, 1, 4),}, 1000, PageRegistry.ARMOR_PLATE_PAGE_1));
 		BookButtonCategory infusionButton = new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(BlockHandler.infuserBlock), PageRegistry.INFUSION_CRAFTING_PAGE);
 		infusionButton.setCustomDescription("Infusion Crafting");
 		suggestionsList.addEntry(infusionButton);
@@ -90,7 +90,7 @@ public class GuiBookPlayerJar2 extends GuiBookPageSuggestions {
 																												new ItemStack(ItemHandler.glowDust), 
 																												new ItemStack(ItemHandler.hungDust), 
 																												new ItemStack(ItemHandler.levDust), 
-																												new ItemStack(ItemHandler.poisDust)}, 1000, PageRegistry.THREAT_DUSTS_PAGE);
+																												new ItemStack(ItemHandler.poisDust)}, 1000, PageRegistry.THREAT_DUSTS_PAGE_1);
 		treatDusts.setCustomDescription("Threat Dusts");
 		suggestionsList.addEntry(treatDusts);
 	}

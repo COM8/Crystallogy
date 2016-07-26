@@ -23,13 +23,13 @@ public class ItemsScrollBarList extends ScrollBarList {
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	private void addAllEntrys(){
-		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.armorCatalys), null));
+		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.armorCatalys), PageRegistry.ARMOR_CATALYST_PAGE));
 		
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.armorPlate, 1, 0),
 																									new ItemStack(ItemHandler.armorPlate, 1, 1),
 																									new ItemStack(ItemHandler.armorPlate, 1, 2),
 																									new ItemStack(ItemHandler.armorPlate, 1, 3),
-																									new ItemStack(ItemHandler.armorPlate, 1, 4),}, 1000, null));
+																									new ItemStack(ItemHandler.armorPlate, 1, 4),}, 1000, PageRegistry.ARMOR_PLATE_PAGE_1));
 		
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.badLuckDust), 
 																									new ItemStack(ItemHandler.blindDust), 
@@ -40,14 +40,14 @@ public class ItemsScrollBarList extends ScrollBarList {
 																									new ItemStack(ItemHandler.glowDust), 
 																									new ItemStack(ItemHandler.hungDust), 
 																									new ItemStack(ItemHandler.levDust), 
-																									new ItemStack(ItemHandler.poisDust)}, 1000, null));
+																									new ItemStack(ItemHandler.poisDust)}, 1000, PageRegistry.THREAT_DUSTS_PAGE_1));
 		
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.chargedCombinedArmorMesh), null));
 		
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.crystallDust_red), 
-				new ItemStack(ItemHandler.crystallDust_blue), 
-				new ItemStack(ItemHandler.crystallDust_green), 
-				new ItemStack(ItemHandler.crystallDust_yellow)}, 1000, PageRegistry.CRYSTAL_DUST_PAGE));
+																									new ItemStack(ItemHandler.crystallDust_blue), 
+																									new ItemStack(ItemHandler.crystallDust_green), 
+																									new ItemStack(ItemHandler.crystallDust_yellow)}, 1000, PageRegistry.CRYSTAL_DUST_PAGE));
 		
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.combinedArmorCompound), null));
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.combinedArmorMesh), null));

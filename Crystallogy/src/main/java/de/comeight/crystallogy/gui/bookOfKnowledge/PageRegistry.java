@@ -29,8 +29,22 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookPlayerJar
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.credits.GuiBookCredits;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.infusion.GuiBookInfusionCrafting;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookArmor;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookArmorCatalyst;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookArmorPlates1;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookArmorPlates2;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookCrystalDusts;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookItems;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookThreatDusts1;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookThreatDusts10;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookThreatDusts11;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookThreatDusts2;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookThreatDusts3;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookThreatDusts4;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookThreatDusts5;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookThreatDusts6;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookThreatDusts7;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookThreatDusts8;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookThreatDusts9;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookTools;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.search.GuiBookSearch;
 import de.comeight.crystallogy.util.Log;
@@ -83,15 +97,28 @@ public class PageRegistry {
 	public static GuiBookCompressor COMPRESSOR_PAGE = new GuiBookCompressor();
 	public static GuiBookCrystalCrusher CRYSTAL_CRUSHER_PAGE = new GuiBookCrystalCrusher();
 	
+	public static GuiBookArmorCatalyst ARMOR_CATALYST_PAGE = new GuiBookArmorCatalyst();
+	public static GuiBookArmorPlates1 ARMOR_PLATE_PAGE_1 = new GuiBookArmorPlates1();;
+	public static GuiBookArmorPlates2 ARMOR_PLATE_PAGE_2 = new GuiBookArmorPlates2();
+	public static GuiBookThreatDusts1 THREAT_DUSTS_PAGE_1 = new GuiBookThreatDusts1();
+	public static GuiBookThreatDusts2 THREAT_DUSTS_PAGE_2 = new GuiBookThreatDusts2();
+	public static GuiBookThreatDusts3 THREAT_DUSTS_PAGE_3 = new GuiBookThreatDusts3();
+	public static GuiBookThreatDusts4 THREAT_DUSTS_PAGE_4 = new GuiBookThreatDusts4();
+	public static GuiBookThreatDusts5 THREAT_DUSTS_PAGE_5 = new GuiBookThreatDusts5();
+	public static GuiBookThreatDusts6 THREAT_DUSTS_PAGE_6 = new GuiBookThreatDusts6();
+	public static GuiBookThreatDusts7 THREAT_DUSTS_PAGE_7 = new GuiBookThreatDusts7();
+	public static GuiBookThreatDusts8 THREAT_DUSTS_PAGE_8 = new GuiBookThreatDusts8();
+	public static GuiBookThreatDusts9 THREAT_DUSTS_PAGE_9 = new GuiBookThreatDusts9();
+	public static GuiBookThreatDusts10 THREAT_DUSTS_PAGE_10 = new GuiBookThreatDusts10();
+	public static GuiBookThreatDusts11 THREAT_DUSTS_PAGE_11 = new GuiBookThreatDusts11();
+	
+	public static GuiBookCrystalOfHolding1 ENERGY_DUST_PAGE;
 	public static GuiBookCrystalOfHolding1 ENERGY_CRYSTAL_PAGE;
 	public static GuiBookCrystalOfHolding1 ARMOR_COMBINED_PAGE;
-	public static GuiBookCrystalOfHolding1 ARMOR_CATALYST_PAGE;
-	public static GuiBookCrystalOfHolding1 ARMOR_PLATE_PAGE;
 	public static GuiBookCrystalOfHolding1 ENTITY_GRABBER_PAGE;
 	public static GuiBookCrystalOfHolding1 FERTILIZER_POTATO_PAGE;
 	public static GuiBookCrystalOfHolding1 ENTITY_CRYSTAL_KNIFE_PAGE;
 	public static GuiBookCrystalOfHolding1 PLAYER_CRYSTAL_KNIFE_PAGE;
-	public static GuiBookCrystalOfHolding1 THREAT_DUSTS_PAGE;
 	public static GuiBookCrystalOfHolding1 PURE_CRYTAL_DUST_PAGE;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
@@ -156,6 +183,22 @@ public class PageRegistry {
 		registerPage(CRYSTAL_CHARGER_PAGE);
 		registerPage(COMPRESSOR_PAGE);
 		registerPage(CRYSTAL_CRUSHER_PAGE);
+		
+		//Items:
+		registerPage(ARMOR_CATALYST_PAGE);
+		registerPage(ARMOR_PLATE_PAGE_1);
+		registerPage(ARMOR_PLATE_PAGE_2);
+		registerPage(THREAT_DUSTS_PAGE_1);
+		registerPage(THREAT_DUSTS_PAGE_2);
+		registerPage(THREAT_DUSTS_PAGE_3);
+		registerPage(THREAT_DUSTS_PAGE_4);
+		registerPage(THREAT_DUSTS_PAGE_5);
+		registerPage(THREAT_DUSTS_PAGE_6);
+		registerPage(THREAT_DUSTS_PAGE_7);
+		registerPage(THREAT_DUSTS_PAGE_8);
+		registerPage(THREAT_DUSTS_PAGE_9);
+		registerPage(THREAT_DUSTS_PAGE_10);
+		registerPage(THREAT_DUSTS_PAGE_11);
 		
 		Log.info("Finished loading Book of Knowledge");
 	}
