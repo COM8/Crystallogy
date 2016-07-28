@@ -16,8 +16,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class InfuserBlock extends BaseBlockContainer {
 
@@ -35,33 +33,12 @@ public class InfuserBlock extends BaseBlockContainer {
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
-	
-	
-	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return new AxisAlignedBB(0.0, 0.0, 0.0, 1.0, 0.555, 1.0);
 	}
 	
-	@SideOnly(Side.CLIENT)
-	@Override
-	public boolean isFullCube(IBlockState state)
-    {
-        return false;
-    }
-
-	@SideOnly(Side.CLIENT)
-	@Override
-	public boolean isFullyOpaque(IBlockState state) {
-		return false;
-	}
-	
-	@SideOnly(Side.CLIENT)
-	@Override
-	public boolean isOpaqueCube(IBlockState state) {
-		return false;
-	}
-	
+	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) { //TODO Rewrite method
 		TileEnityInfuserBlock tE = (TileEnityInfuserBlock) worldIn.getTileEntity(pos);
