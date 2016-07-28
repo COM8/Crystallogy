@@ -44,10 +44,10 @@ public class BookCrusherRecipe {
 	private void drawProgress(int mouseX, int mouseY){
 		GlStateManager.pushMatrix();
 		
-		GlStateManager.translate(x + 69, y, 0);
-		GlStateManager.scale(2.0F, 2.0F, 2.0F);
+		GlStateManager.translate(x + 33, y + 3, 0);
+		GlStateManager.scale(2.5F, 2.5F, 2.5F);
 		
-		GuiBookUtilities.drawTexture(0, 0, 177, 14, progress, 30, GuiCompressor.rL);
+		GuiBookUtilities.drawTexture(0, 0, 0, 0, progress, 15, GuiBookPage.GUI_ELEMENTS);
 		
 		GlStateManager.popMatrix();
 		
@@ -55,15 +55,14 @@ public class BookCrusherRecipe {
 	}
 	
 	private void incProgress(){
-		if(lastInc + 100 < System.currentTimeMillis()){
+		if(lastInc + 200 < System.currentTimeMillis()){
 			progress++;
 			lastInc = System.currentTimeMillis();
 			
-			if(progress > 15){
+			if(progress > 11){
 				progress = 0;
 			}
 		}
-		
 	}
 	
 	public void mouseReleased(int mouseX, int mouseY, int state, GuiBookPage fromPage) {

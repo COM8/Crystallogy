@@ -1,6 +1,7 @@
 package de.comeight.crystallogy.gui.bookOfKnowledge;
 
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCategory;
+import de.comeight.crystallogy.handler.ConfigHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
@@ -41,6 +42,9 @@ public class ToolsScrollBarList extends ScrollBarList {
 																									new ItemStack(ItemHandler.crystalPickaxe_green), 
 																									new ItemStack(ItemHandler.crystalPickaxe_yellow)}, 1000, null));
 		
+		if(ConfigHandler.enableDebugTool){
+			addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.debugTool), null));
+		}
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.playerCrystalKnife), null));
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.vaporizer), null));
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.vaporizerDirection), null));

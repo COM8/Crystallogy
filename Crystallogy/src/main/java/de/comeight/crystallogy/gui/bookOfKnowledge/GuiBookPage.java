@@ -27,6 +27,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class GuiBookPage extends GuiScreen {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private static final ResourceLocation BOOK = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/book/bookPage.png");
+	public static final ResourceLocation GUI_ELEMENTS = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/book/guiEmements.png");
 	/** The X size of the inventory window in pixels. */
 	protected final int xSize = 384;
     /** The Y size of the inventory window in pixels. */
@@ -123,7 +124,7 @@ public class GuiBookPage extends GuiScreen {
 		
 		GlStateManager.translate(xPosBook + BORDER_LEFT, yPosBook + BORDER_TOP, 0);
 		GlStateManager.scale(1.25, 1.25, 1.25);
-		GuiBookUtilities.drawTextBox(0, 0, WRAPWIDTH, HEADING);
+		GuiBookUtilities.drawTextBox(0, 0, WRAPWIDTH / 2 + 10, HEADING);
 		
 		GlStateManager.popMatrix();
 	}

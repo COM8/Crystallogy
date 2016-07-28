@@ -32,7 +32,11 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookArmor;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookArmorCatalyst;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookArmorPlates1;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookArmorPlates2;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookChargedCombinedArmorMesh;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookCombinedArmorCompound;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookCombinedArmorMesh;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookCrystalDusts;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookCrystalKnifeBlade;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookItems;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookThreatDusts1;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookThreatDusts10;
@@ -73,7 +77,6 @@ public class PageRegistry {
 	public static GuiBookCredits CREDITS_PAGE = new GuiBookCredits();
 	public static GuiBookInfusionCrafting INFUSION_CRAFTING_PAGE = new GuiBookInfusionCrafting();
 	
-	public static GuiBookCrystalDusts CRYSTAL_DUST_PAGE = new GuiBookCrystalDusts();
 	public static GuiBookCrystals CRYSTALS_PAGE = new GuiBookCrystals();
 	public static GuiBookCrystalGlass CRYSTAL_GLASS_PAGE = new GuiBookCrystalGlass();
 	public static GuiBookCrystalLight CRYSTAL_LIGHT_PAGE = new GuiBookCrystalLight();
@@ -111,7 +114,15 @@ public class PageRegistry {
 	public static GuiBookThreatDusts9 THREAT_DUSTS_PAGE_9 = new GuiBookThreatDusts9();
 	public static GuiBookThreatDusts10 THREAT_DUSTS_PAGE_10 = new GuiBookThreatDusts10();
 	public static GuiBookThreatDusts11 THREAT_DUSTS_PAGE_11 = new GuiBookThreatDusts11();
+	public static GuiBookChargedCombinedArmorMesh CHARGED_COMBINED_ARMOR_MESH_PAGE = new GuiBookChargedCombinedArmorMesh();
+	public static GuiBookCrystalDusts CRYSTAL_DUST_PAGE = new GuiBookCrystalDusts();
+	public static GuiBookCombinedArmorCompound COMBINED_ARMOR_COMPOUND_PAGE = new GuiBookCombinedArmorCompound();
+	public static GuiBookCombinedArmorMesh COMBINED_ARMOR_MESH_PAGE = new GuiBookCombinedArmorMesh();
+	public static GuiBookCrystalKnifeBlade CRYSTAL_KNIFE_BLADE_PAGE = new GuiBookCrystalKnifeBlade();
 	
+	public static GuiBookCrystalOfHolding1 CRYSTAL_SWORD_BLADE_PAGE;
+	public static GuiBookCrystalOfHolding1 COMBINED_ARMOR_PAGE;
+	public static GuiBookCrystalOfHolding1 HUNTERS_ARMOR_MESH_PAGE;
 	public static GuiBookCrystalOfHolding1 ENERGY_DUST_PAGE;
 	public static GuiBookCrystalOfHolding1 ENERGY_CRYSTAL_PAGE;
 	public static GuiBookCrystalOfHolding1 ARMOR_COMBINED_PAGE;
@@ -160,7 +171,6 @@ public class PageRegistry {
 		
 		//Blocks:
 		registerPage(CRYSTALS_PAGE);
-		registerPage(CRYSTAL_DUST_PAGE);
 		registerPage(CRYSTAL_GLASS_PAGE);
 		registerPage(CRYSTAL_LIGHT_PAGE);
 		registerPage(CRYSTAL_OF_HOLDING_PAGE_1);
@@ -199,6 +209,11 @@ public class PageRegistry {
 		registerPage(THREAT_DUSTS_PAGE_9);
 		registerPage(THREAT_DUSTS_PAGE_10);
 		registerPage(THREAT_DUSTS_PAGE_11);
+		registerPage(CHARGED_COMBINED_ARMOR_MESH_PAGE);
+		registerPage(CRYSTAL_DUST_PAGE);
+		registerPage(COMBINED_ARMOR_COMPOUND_PAGE);
+		registerPage(COMBINED_ARMOR_MESH_PAGE);
+		registerPage(CRYSTAL_KNIFE_BLADE_PAGE);
 		
 		Log.info("Finished loading Book of Knowledge");
 	}
