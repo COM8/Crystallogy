@@ -36,8 +36,15 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookChargedCom
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookCombinedArmorCompound;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookCombinedArmorMesh;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookCrystalDusts;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookCrystalHammerHead;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookCrystalKnifeBlade;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookCrystalPickaxeHead;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookCrystalSwordBlade;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookEnderonCrystal;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookEnergyCrystal;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookEnergyDust;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookItems;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookPureCrystalDust;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookThreatDusts1;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookThreatDusts10;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookThreatDusts11;
@@ -49,6 +56,7 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookThreatDust
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookThreatDusts7;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookThreatDusts8;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookThreatDusts9;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookToolRod;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookTools;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.search.GuiBookSearch;
 import de.comeight.crystallogy.util.Log;
@@ -119,18 +127,26 @@ public class PageRegistry {
 	public static GuiBookCombinedArmorCompound COMBINED_ARMOR_COMPOUND_PAGE = new GuiBookCombinedArmorCompound();
 	public static GuiBookCombinedArmorMesh COMBINED_ARMOR_MESH_PAGE = new GuiBookCombinedArmorMesh();
 	public static GuiBookCrystalKnifeBlade CRYSTAL_KNIFE_BLADE_PAGE = new GuiBookCrystalKnifeBlade();
+	public static GuiBookCrystalHammerHead CRYSTAL_HAMMER_HEAD_PAGE = new GuiBookCrystalHammerHead();
+	public static GuiBookCrystalOfHolding1 CRYSTAL_HAMMER_PAGE;
+	public static GuiBookCrystalSwordBlade CRYSTAL_SWORD_BLADE_PAGE = new GuiBookCrystalSwordBlade();
+	public static GuiBookCrystalPickaxeHead CRYSTAL_PICKAXE_HEAD_PAGE = new GuiBookCrystalPickaxeHead();
+	public static GuiBookEnderonCrystal ENDERON_CRYSTAL_PAGE = new GuiBookEnderonCrystal();
+	public static GuiBookEnergyCrystal ENERGY_CRYSTAL_PAGE = new GuiBookEnergyCrystal();
+	public static GuiBookEnergyDust ENERGY_DUST_PAGE = new GuiBookEnergyDust();
+	public static GuiBookPureCrystalDust PURE_CRYTAL_DUST_PAGE = new GuiBookPureCrystalDust();
+	public static GuiBookToolRod TOOL_ROD_PAGE = new GuiBookToolRod();
 	
-	public static GuiBookCrystalOfHolding1 CRYSTAL_SWORD_BLADE_PAGE;
+	public static GuiBookCrystalOfHolding1 CRYSTAL_PICKAXE_PAGE;
+	public static GuiBookCrystalOfHolding1 CRYSTAL_SWORD_PAGE;
 	public static GuiBookCrystalOfHolding1 COMBINED_ARMOR_PAGE;
+	public static GuiBookCrystalOfHolding1 HUNTERS_ARMOR_PAGE;
 	public static GuiBookCrystalOfHolding1 HUNTERS_ARMOR_MESH_PAGE;
-	public static GuiBookCrystalOfHolding1 ENERGY_DUST_PAGE;
-	public static GuiBookCrystalOfHolding1 ENERGY_CRYSTAL_PAGE;
 	public static GuiBookCrystalOfHolding1 ARMOR_COMBINED_PAGE;
 	public static GuiBookCrystalOfHolding1 ENTITY_GRABBER_PAGE;
 	public static GuiBookCrystalOfHolding1 FERTILIZER_POTATO_PAGE;
 	public static GuiBookCrystalOfHolding1 ENTITY_CRYSTAL_KNIFE_PAGE;
 	public static GuiBookCrystalOfHolding1 PLAYER_CRYSTAL_KNIFE_PAGE;
-	public static GuiBookCrystalOfHolding1 PURE_CRYTAL_DUST_PAGE;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 
@@ -214,6 +230,14 @@ public class PageRegistry {
 		registerPage(COMBINED_ARMOR_COMPOUND_PAGE);
 		registerPage(COMBINED_ARMOR_MESH_PAGE);
 		registerPage(CRYSTAL_KNIFE_BLADE_PAGE);
+		registerPage(CRYSTAL_HAMMER_HEAD_PAGE);
+		registerPage(CRYSTAL_SWORD_BLADE_PAGE);
+		registerPage(CRYSTAL_PICKAXE_HEAD_PAGE);
+		registerPage(ENDERON_CRYSTAL_PAGE);
+		registerPage(ENERGY_CRYSTAL_PAGE);
+		registerPage(ENERGY_DUST_PAGE);
+		registerPage(PURE_CRYTAL_DUST_PAGE);
+		registerPage(TOOL_ROD_PAGE);
 		
 		Log.info("Finished loading Book of Knowledge");
 	}

@@ -37,7 +37,10 @@ public class BookInfusionRecipe {
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
-
+	public void setFrame(int frame){
+		this.frame = frame;
+		this.lastFrame = System.currentTimeMillis();
+	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	public void drawScreen(int mouseX, int mouseY, int x, int y){

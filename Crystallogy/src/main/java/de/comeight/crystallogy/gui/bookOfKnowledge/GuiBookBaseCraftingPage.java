@@ -14,10 +14,17 @@ public abstract class GuiBookBaseCraftingPage extends GuiBookPageSuggestions {
 	private BookCraftingRecipe recipe;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public GuiBookBaseCraftingPage(ItemStack dust) {
-		super(dust.getDisplayName() + ':');
+	public GuiBookBaseCraftingPage(ItemStack stack) {
+		super(stack.getDisplayName() + ':');
 		
-		threatDust = new BookMultiItemRenderer(new ItemStack[]{dust}, 1000, 5.0F);
+		threatDust = new BookMultiItemRenderer(new ItemStack[]{stack}, 1000, 5.0F);
+		initRecipe();
+	}
+	
+	public GuiBookBaseCraftingPage(ItemStack stack[], String name) {
+		super(name);
+		
+		threatDust = new BookMultiItemRenderer(stack, 1000, 5.0F);
 		initRecipe();
 	}
 	

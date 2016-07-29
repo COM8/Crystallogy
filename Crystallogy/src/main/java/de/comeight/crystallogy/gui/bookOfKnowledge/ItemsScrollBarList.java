@@ -56,23 +56,23 @@ public class ItemsScrollBarList extends ScrollBarList {
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.crystallHammerHead, 1, 0),
 																									new ItemStack(ItemHandler.crystallHammerHead, 1, 1),
 																									new ItemStack(ItemHandler.crystallHammerHead, 1, 2),
-																									new ItemStack(ItemHandler.crystallHammerHead, 1, 3),}, 1000, null));
+																									new ItemStack(ItemHandler.crystallHammerHead, 1, 3),}, 1000, PageRegistry.CRYSTAL_HAMMER_HEAD_PAGE));
 		
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.crystallSwordBlade, 1, 0),
 																									new ItemStack(ItemHandler.crystallSwordBlade, 1, 1),
 																									new ItemStack(ItemHandler.crystallSwordBlade, 1, 2),
-																									new ItemStack(ItemHandler.crystallSwordBlade, 1, 3),}, 1000, null));
+																									new ItemStack(ItemHandler.crystallSwordBlade, 1, 3),}, 1000, PageRegistry.CRYSTAL_SWORD_BLADE_PAGE));
 		
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.crystalPickaxeHead, 1, 0),
 																									new ItemStack(ItemHandler.crystalPickaxeHead, 1, 1),
 																									new ItemStack(ItemHandler.crystalPickaxeHead, 1, 2),
-																									new ItemStack(ItemHandler.crystalPickaxeHead, 1, 3),}, 1000, null));
+																									new ItemStack(ItemHandler.crystalPickaxeHead, 1, 3),}, 1000, PageRegistry.CRYSTAL_PICKAXE_HEAD_PAGE));
 		
-		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.enderonCrystal), null));
-		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.energyCrystal), null));
-		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.energyDust), null));
-		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.pureCrystallDust), null));
-		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.toolRod), null));
+		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.enderonCrystal), PageRegistry.ENDERON_CRYSTAL_PAGE));
+		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.energyCrystal), PageRegistry.ENERGY_CRYSTAL_PAGE));
+		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.energyDust), PageRegistry.ENERGY_DUST_PAGE));
+		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.pureCrystallDust), PageRegistry.PURE_CRYTAL_DUST_PAGE));
+		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.toolRod), PageRegistry.TOOL_ROD_PAGE));
 	}
 	
 }
