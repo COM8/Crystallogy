@@ -22,7 +22,7 @@ public class BaseCrystalPickaxe extends BaseItemPickaxe {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public BaseCrystalPickaxe(ToolMaterial material, String id) {
 		super(material, id);
-		setMaxDamage(getMaxDamage() * 3);
+		setMaxDamage(getMaxDamage() * 4);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
