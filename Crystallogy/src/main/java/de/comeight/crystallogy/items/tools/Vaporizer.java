@@ -178,7 +178,7 @@ public class Vaporizer extends BaseItem {
 			if(GuiScreen.isShiftKeyDown()){
 				tooltip.add("");
 				tooltip.add("Type: " + nbtTagCompound.getString("particleType"));
-				tooltip.add("Color: " + TextFormatting.DARK_RED + "R" + TextFormatting.GRAY + "=" + 255 * nbtTagCompound.getFloat("r") + ", " + TextFormatting.DARK_GREEN + "G" + TextFormatting.GRAY + "=" + 255 * nbtTagCompound.getFloat("g") + ", " + TextFormatting.DARK_BLUE + "B" + TextFormatting.RESET + "=" + 255 * nbtTagCompound.getFloat("b"));
+				tooltip.add("Color: " + TextFormatting.DARK_RED + "R" + TextFormatting.GRAY + "=" + 255 * nbtTagCompound.getFloat("r") + ", " + TextFormatting.DARK_GREEN + "G" + TextFormatting.GRAY + "=" + 255 * nbtTagCompound.getFloat("g") + ", " + TextFormatting.DARK_BLUE + "B" + TextFormatting.GRAY + "=" + 255 * nbtTagCompound.getFloat("b"));
 				tooltip.add("Max particle age: " + nbtTagCompound.getInteger("maxTime"));
 				tooltip.add("Size: X= +-" + nbtTagCompound.getDouble("sizeX") + ", Y= +" + nbtTagCompound.getDouble("sizeY") + ", Z= +-" + nbtTagCompound.getDouble("sizeZ"));
 				tooltip.add("Number of particles: " + nbtTagCompound.getInteger("numberOfParticle"));

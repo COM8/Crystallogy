@@ -110,7 +110,7 @@ public abstract class BaseItemHammer extends BaseItemPickaxe {
 	
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-		tooltip.add("Mines a " + TextFormatting.DARK_PURPLE + "3x3 " + TextFormatting.RESET + "area.");
+		tooltip.add("Mines a " + TextFormatting.DARK_PURPLE + "3x3 " + TextFormatting.RESET + TextFormatting.GRAY + "area.");
 		
 		super.addInformation(stack, playerIn, tooltip, advanced);
 	}

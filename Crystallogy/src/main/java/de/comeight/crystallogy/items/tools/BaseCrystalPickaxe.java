@@ -115,9 +115,9 @@ public class BaseCrystalPickaxe extends BaseItemPickaxe {
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		int aoe = getAOE();
-		tooltip.add("Mines a " + TextFormatting.DARK_PURPLE + aoe + "x" + aoe + "x" + aoe + TextFormatting.RESET + " area.");
+		tooltip.add("Mines a " + TextFormatting.DARK_PURPLE + aoe + "x" + aoe + "x" + aoe + TextFormatting.RESET + TextFormatting.GRAY + " area.");
 		tooltip.add("");
-		tooltip.add("Hold " + TextFormatting.GOLD + TextFormatting.BOLD + "SHIFT" + TextFormatting.RESET + " to mine a " + TextFormatting.DARK_PURPLE + "1x1 " + TextFormatting.RESET + "area!");
+		tooltip.add("Hold " + TextFormatting.GOLD + TextFormatting.BOLD + "SHIFT" + TextFormatting.RESET + TextFormatting.GRAY + " to mine a " + TextFormatting.DARK_PURPLE + "1x1 " + TextFormatting.RESET + TextFormatting.GRAY + "area!");
 		
 		super.addInformation(stack, playerIn, tooltip, advanced);
 	}
