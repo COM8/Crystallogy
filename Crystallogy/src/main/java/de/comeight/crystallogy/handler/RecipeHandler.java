@@ -1,6 +1,7 @@
 package de.comeight.crystallogy.handler;
 
 import de.comeight.crystallogy.blocks.EnumCrystalColor;
+import de.comeight.crystallogy.items.crafting.RecipeBookOfKnowledge;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorCatalyst;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorPlate;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeBadLuckDust;
@@ -327,6 +328,8 @@ public class RecipeHandler {
 				'M', ItemHandler.hunterArmorMesh,
 				'C', ItemHandler.armorCatalys
 		});
+		
+		GameRegistry.addRecipe(new RecipeBookOfKnowledge());
 	}
 	
 	private void addCrystalHammerHeadRecipe(ItemStack crystal, ItemStack out){
