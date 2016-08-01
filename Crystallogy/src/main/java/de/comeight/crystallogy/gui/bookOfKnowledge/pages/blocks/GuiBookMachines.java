@@ -3,7 +3,6 @@ package de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPage;
 import de.comeight.crystallogy.gui.bookOfKnowledge.MachinesScrollBarList;
 import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
-import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookItems;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 

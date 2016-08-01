@@ -7,10 +7,8 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import de.comeight.crystallogy.gui.bookOfKnowledge.ScrollBarList;
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCategory;
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCrafting;
-import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookFarmersGreen1;
 import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 

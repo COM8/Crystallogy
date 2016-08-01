@@ -10,7 +10,6 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCrafting;
 import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 
 public class GuiBookArmorPlates1 extends GuiBookPageSuggestions {

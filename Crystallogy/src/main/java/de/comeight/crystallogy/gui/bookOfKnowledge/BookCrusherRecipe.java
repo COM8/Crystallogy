@@ -1,6 +1,5 @@
 package de.comeight.crystallogy.gui.bookOfKnowledge;
 
-import de.comeight.crystallogy.gui.GuiCompressor;
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCrafting;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraftforge.fml.relauncher.Side;

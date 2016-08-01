@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import de.comeight.crystallogy.gui.bookOfKnowledge.AllScrollBarList;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPage;
-import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookUtilities;
 import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
