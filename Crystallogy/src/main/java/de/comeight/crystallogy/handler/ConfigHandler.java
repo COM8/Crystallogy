@@ -11,9 +11,12 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class ConfigHandler {
 	//-----------------------------------------------Variabeln:---------------------------------------------
+	private static final String CONFIG_VERSION = "1.2";
+	
 	private static final String CATEGORY_DEBUG = "debug";
 	private static final String CATEGORY_CRYSTALS = "crystals";
 	private static final String CATEGORY_INFUSUION = "infusionCrafting";
+	private static final String CATEGORY_GAMEPLAY = "gameplay";
 
 	//CombinedArmorList:
 	public static boolean debugCombinedArmorList = false;
@@ -49,6 +52,9 @@ public class ConfigHandler {
 	//Debug Tool:
 	public static boolean enableDebugTool = false;
 	
+	//Book of Knowledge:
+	public static boolean shouldSpawnWithBook = true;
+	
 	//-----------------------------------------------Constructor:-------------------------------------------
 
 
@@ -66,7 +72,7 @@ public class ConfigHandler {
 	}
 	
 	private void createBasicConfig(File configFolder){
-		Configuration config = new Configuration(new File(configFolder, CrystallogyBase.MODID + ".cfg"), "1.1");
+		Configuration config = new Configuration(new File(configFolder, CrystallogyBase.MODID + ".cfg"), CONFIG_VERSION);
 		
 		config.load();
 		
@@ -161,6 +167,11 @@ public class ConfigHandler {
 		prop = config.get(CATEGORY_INFUSUION, "infusionTimeMultiplier", 1.0);
 		prop.setComment("Infusion Crafting multiplier. default = 1.0");
 		infusionTimeMultiplier = prop.getDouble();
+		
+		//Gameplay:
+		prop = config.get(CATEGORY_GAMEPLAY, "shouldSpawnWithBook", true);
+		prop.setComment("Wether the Player should get the Book of Knowledge, if he enters the world for the first time. default=true");
+		shouldSpawnWithBook = prop.getBoolean();
 		
 		config.save();
 	}
