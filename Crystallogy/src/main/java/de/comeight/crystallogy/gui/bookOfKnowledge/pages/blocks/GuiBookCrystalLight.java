@@ -16,7 +16,10 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class GuiBookCrystalLight extends GuiBookPageSuggestions {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private BookMultiItemRenderer crystalLights;

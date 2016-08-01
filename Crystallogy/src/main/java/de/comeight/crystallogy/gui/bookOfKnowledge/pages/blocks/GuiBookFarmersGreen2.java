@@ -11,8 +11,11 @@ import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
+@SideOnly(Side.CLIENT)
 public class GuiBookFarmersGreen2 extends GuiBookPageSuggestions {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private BookCraftingRecipe recipe;

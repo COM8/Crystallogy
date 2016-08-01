@@ -6,7 +6,10 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookUtilities;
 import de.comeight.crystallogy.gui.bookOfKnowledge.ScrollBarList;
 import de.comeight.crystallogy.handler.ItemHandler;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class GuiBookEnderonCrystal extends GuiBookPageSuggestions {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private BookMultiItemRenderer renderer;

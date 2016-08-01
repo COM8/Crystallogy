@@ -9,7 +9,10 @@ import de.comeight.crystallogy.handler.ItemHandler;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class GuiBookEntityCrystalKnife1 extends GuiBookPage {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private BookMultiItemRenderer renderer;

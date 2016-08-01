@@ -10,7 +10,10 @@ import de.comeight.crystallogy.handler.BlockHandler;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class GuiBookPlayerJar1 extends GuiBookPageSuggestions {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private BookMultiItemRenderer entityJar;

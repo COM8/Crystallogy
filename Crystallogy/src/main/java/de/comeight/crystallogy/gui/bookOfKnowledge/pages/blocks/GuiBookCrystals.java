@@ -10,7 +10,10 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCategory;
 import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class GuiBookCrystals extends GuiBookPageSuggestions {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private BookMultiItemRenderer crystals;

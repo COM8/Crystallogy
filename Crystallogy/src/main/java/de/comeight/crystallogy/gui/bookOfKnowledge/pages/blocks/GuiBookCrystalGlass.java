@@ -15,8 +15,11 @@ import de.comeight.crystallogy.handler.ItemHandler;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
+@SideOnly(Side.CLIENT)
 public class GuiBookCrystalGlass extends GuiBookPageSuggestions {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private BookMultiItemRenderer crystalGlass;

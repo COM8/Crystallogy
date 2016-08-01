@@ -8,7 +8,10 @@ import de.comeight.crystallogy.handler.ItemHandler;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class GuiBookYellowCrystalArmor1 extends GuiBookBaseArmorPage1 {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private static final ResourceLocation PREVIEW = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/book/items/armor_preview.png");

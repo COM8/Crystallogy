@@ -8,7 +8,10 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.ScrollBarList;
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCrafting;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public abstract class GuiBookBaseArmorPage2 extends GuiBookPageSuggestions {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private BookCraftingRecipe recipeHelmet;
