@@ -101,8 +101,8 @@ public class GuiBookPage extends GuiScreen {
 	}
 	
 	protected void addButtons(){
-		buttonList.add(new BookButtonBackwards(getNextButtonId(), BORDER_LEFT, 227));
-		buttonList.add(new BookButtonForwards(getNextButtonId(), xSize - 40, 227, this));
+		buttonList.add(new BookButtonBackwards(getNextButtonId(), BORDER_LEFT, 234));
+		buttonList.add(new BookButtonForwards(getNextButtonId(), xSize - 27, 234, this));
 		buttonList.add(new BookButtonHome(getNextButtonId()));
 	}
     
@@ -113,7 +113,7 @@ public class GuiBookPage extends GuiScreen {
     	GlStateManager.translate(xPosBook, yPosBook, 0);
     	GlStateManager.scale(1.5, 1.0, 1.0);
     	
-    	drawTexture(0, 0, xSize * 2 / 3, ySize, BOOK);
+    	GuiBookUtilities.drawTexture(0, 0, xSize * 2 / 3, ySize, BOOK);
     	
     	GlStateManager.popMatrix();
 	}

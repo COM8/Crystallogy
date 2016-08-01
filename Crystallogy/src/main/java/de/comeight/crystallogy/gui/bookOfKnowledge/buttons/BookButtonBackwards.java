@@ -1,19 +1,15 @@
 package de.comeight.crystallogy.gui.bookOfKnowledge.buttons;
 
-import de.comeight.crystallogy.CrystallogyBase;
 import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPage;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class BookButtonBackwards extends BookButton{
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	private static final ResourceLocation BUTTON_NORMAL = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/book/back_normal.png");
-	private static final ResourceLocation BUTTON_HOVER = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/book/back_hover.png");
-	private static final ResourceLocation BUTTON_NO = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/book/back_no.png");
+	
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public BookButtonBackwards(int buttonId, int x, int y) {
@@ -33,8 +29,8 @@ public class BookButtonBackwards extends BookButton{
 	public void drawHover(int x, int y){
 		GlStateManager.pushMatrix();
 
-		GlStateManager.translate(x - 5, y - 5, 0);
-		GlStateManager.scale(1.4, 1.4, 1.4);
+		GlStateManager.translate(x, y - 1, 0);
+		GlStateManager.scale(1.2, 1.2, 1.2);
 		GlStateManager.translate(-x, -y, 0);
 		
 		drawArrow(x, y, true);
@@ -46,14 +42,13 @@ public class BookButtonBackwards extends BookButton{
 		GlStateManager.pushMatrix();
 
 		GlStateManager.translate(x, y, 0);
-		double scale = 0.1;
-        GlStateManager.scale(scale, scale, scale);
+		GlStateManager.scale(0.4F, 0.4F, 0.4F);
 		if (!canGoBack()) {
-			drawTexture(0, 0, 256, 256, BUTTON_NO);
+			drawTexture(0, 0, 416, 0, 35, 40, GuiBookPage.GUI_ELEMENTS);
 		} else if (hover) {
-			drawTexture(0, 0, 256, 256, BUTTON_HOVER);
+			drawTexture(0, 0, 379, 0, 35, 40, GuiBookPage.GUI_ELEMENTS);
 		} else {
-			drawTexture(0, 0, 256, 256, BUTTON_NORMAL);
+			drawTexture(0, 0, 452, 0, 35, 40, GuiBookPage.GUI_ELEMENTS);
 		}
 		
         GlStateManager.disableLighting();

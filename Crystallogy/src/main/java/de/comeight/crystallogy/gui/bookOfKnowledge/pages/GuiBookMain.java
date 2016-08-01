@@ -31,7 +31,7 @@ public class GuiBookMain extends GuiBookPage {
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
-	protected void onGuiOpened() {
+	public void onGuiOpened() {
 		super.onGuiOpened();
 	}
 	

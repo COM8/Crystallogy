@@ -133,9 +133,10 @@ public class BookButtonCategory extends BookButton{
 		GlStateManager.enableLighting();
 		
 		GlStateManager.translate(x, y, 0);
-        GlStateManager.scale(0.1, 0.1, 0.1);
+		float scale = 0.8F;
+		GlStateManager.scale(scale, scale, scale);
         GlStateManager.translate(-x, -y, 0);
-        drawTexture(x, y, 256, 256, FRAME);
+        drawTexture(x - 1, y, 26, 0, 33, 33, GuiBookPage.GUI_ELEMENTS);
 		
         GlStateManager.disableLighting();
 		GlStateManager.popMatrix();

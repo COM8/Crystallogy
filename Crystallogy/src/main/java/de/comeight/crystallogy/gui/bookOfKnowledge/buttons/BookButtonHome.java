@@ -1,20 +1,16 @@
 package de.comeight.crystallogy.gui.bookOfKnowledge.buttons;
 
-import de.comeight.crystallogy.CrystallogyBase;
 import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookMain;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPage;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class BookButtonHome extends BookButton {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	private static final ResourceLocation BUTTON_NORMAL = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/book/home_normal.png");
-	private static final ResourceLocation BUTTON_HOVER = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/book/home_hover.png");
-	private static final ResourceLocation BUTTON_BACKGROUND = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/book/home_background.png");
+	
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public BookButtonHome(int buttonId) {
@@ -32,10 +28,10 @@ public class BookButtonHome extends BookButton {
 		GlStateManager.pushMatrix();
 
 		GlStateManager.translate(x + 4, y + 3, 0);
-		GlStateManager.scale(0.075, 0.075, 0.075);
+		GlStateManager.scale(0.7F, 0.7F, 0.7F);
 		GlStateManager.translate(-x, -y, 0);
 		
-		drawTexture(x, y, 260, 260, BUTTON_NORMAL);
+		drawTexture(x - 1, y, 89, 0, 30, 29, GuiBookPage.GUI_ELEMENTS);
 		
 		GlStateManager.popMatrix();
 	}
@@ -47,10 +43,10 @@ public class BookButtonHome extends BookButton {
 		GlStateManager.pushMatrix();
 
 		GlStateManager.translate(x + 4, y + 3, 0);
-		GlStateManager.scale(0.075, 0.075, 0.075);
+		GlStateManager.scale(0.7F, 0.7F, 0.7F);
 		GlStateManager.translate(-x, -y, 0);
 		
-		drawTexture(x, y, 260, 260, BUTTON_HOVER);
+		drawTexture(x - 1, y, 59, 0, 30, 29, GuiBookPage.GUI_ELEMENTS);
 		
 		GlStateManager.popMatrix();
 	}
@@ -59,10 +55,10 @@ public class BookButtonHome extends BookButton {
 		GlStateManager.pushMatrix();
 
 		GlStateManager.translate(x, y, 0);
-		GlStateManager.scale(0.1, 0.1, 0.1);
+		GlStateManager.scale(2.0F, 2.0F, 2.0F);
 		GlStateManager.translate(-x, -y, 0);
 		
-		drawTexture(x, y, 265, 255, BUTTON_BACKGROUND);
+		drawTexture(x, y, 12, 0, 14, 16, GuiBookPage.GUI_ELEMENTS);
 		
 		GlStateManager.popMatrix();
 	}
