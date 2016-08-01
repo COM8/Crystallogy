@@ -75,7 +75,7 @@ public class GuiBookPage extends GuiScreen {
     	this.yPosBook = (height - ySize) / 2;
 	}
     
-    protected void onGuiOpened(){
+    public void onGuiOpened(){
 		PageRegistry.setCurrentPage(this);
 	}
     
