@@ -87,7 +87,7 @@ public class GuiBookEnergyCrystal extends GuiBookPageSuggestions {
 		suggestionsList.addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.armorHelmet_hunter), 
 																													new ItemStack(ItemHandler.armorChestplate_hunter), 
 																													new ItemStack(ItemHandler.armorLeggins_hunter), 
-																													new ItemStack(ItemHandler.armorBoots_hunter)}, 1000, PageRegistry.HUNTERS_ARMOR_PAGE));
+																													new ItemStack(ItemHandler.armorBoots_hunter)}, 1000, PageRegistry.HUNTERS_ARMOR_PAGE_1));
 	}
 
 	@Override

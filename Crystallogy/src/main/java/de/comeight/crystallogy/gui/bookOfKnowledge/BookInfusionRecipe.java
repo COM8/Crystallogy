@@ -18,7 +18,7 @@ public class BookInfusionRecipe {
 	private int x;
 	private int y;
 	
-	private final int frameDuration = 5000; 
+	private final int frameDuration = 2500; 
 	private long lastFrame;
 	private int frame;
 	
@@ -31,6 +31,12 @@ public class BookInfusionRecipe {
 				e.printStackTrace();
 			}
 		}
+		
+		for (int i = 0; i < input.length; i++) {
+			if(input[i] != null)
+			input[i].disableFrame();
+		}
+		
 		this.input = input;
 		this.output = output;
 		lastFrame = System.currentTimeMillis();
@@ -60,20 +66,20 @@ public class BookInfusionRecipe {
 	}
 	
 	private void drawInput(int mouseX, int mouseY){
-		if(input[0] != null){
+		if(input[0] != null && input[0] != BookButtonCrafting.EMPTY){
 			input[0].drawButton(mouseX, mouseY, x + 30, y + 35);
 		}
 		
-		if(input[1] != null){
+		if(input[1] != null && input[1] != BookButtonCrafting.EMPTY){
 			input[1].drawButton(mouseX, mouseY, x + 30, y);
 		}
-		if(input[2] != null){
+		if(input[2] != null && input[2] != BookButtonCrafting.EMPTY){
 			input[2].drawButton(mouseX, mouseY, x - 5, y + 35);
 		}
-		if(input[3] != null){
+		if(input[3] != null && input[3] != BookButtonCrafting.EMPTY){
 			input[3].drawButton(mouseX, mouseY, x + 65, y + 35);
 		}
-		if(input[4] != null){
+		if(input[4] != null && input[4] != BookButtonCrafting.EMPTY){
 			input[4].drawButton(mouseX, mouseY, x + 30, y + 70);
 		}
 	}

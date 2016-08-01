@@ -10,7 +10,7 @@ public class BookMultiInfusion {
 	
 	private long lastChgange;
 	private int frame;
-	private final int minFrameDuration = 10000; 
+	private final int minFrameDuration = 5000; 
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public BookMultiInfusion(BookInfusionRecipe[] recipes) {

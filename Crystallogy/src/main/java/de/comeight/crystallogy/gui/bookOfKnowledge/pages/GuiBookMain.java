@@ -83,7 +83,7 @@ public class GuiBookMain extends GuiBookPage {
 		buttonList.add(items);
 		
 		//Infusion Crafting:
-		BookButtonCategory infusion = new BookButtonCategory(GuiBookPage.getNextButtonId(), chapterButtonX, 110, null, new ItemStack(BlockHandler.infuserBlock), PageRegistry.INFUSION_CRAFTING_PAGE);
+		BookButtonCategory infusion = new BookButtonCategory(GuiBookPage.getNextButtonId(), chapterButtonX, 110, null, new ItemStack(BlockHandler.infuserBlock), PageRegistry.INFUSION_CRAFTING_PAGE_1);
 		infusion.setScale(buttonScale);
 		infusion.setCustomDescription("Infusion Crafting");
 		buttonList.add(infusion);
@@ -97,7 +97,7 @@ public class GuiBookMain extends GuiBookPage {
 		//Credits:
 		BookButtonCategory credits = new BookButtonCategory(GuiBookPage.getNextButtonId(), chapterButtonX, 180, null, new ItemStack(Items.WRITTEN_BOOK), PageRegistry.CREDITS_PAGE);
 		credits.setScale(buttonScale);
-		credits.setCustomDescription("Credits");
+		credits.setCustomDescription("Credits and Further Information");
 		buttonList.add(credits);
 		
 	}
@@ -110,7 +110,7 @@ public class GuiBookMain extends GuiBookPage {
 		GlStateManager.scale(0.66, 0.12, 1.0);
 		GlStateManager.translate(-xPosBook - BORDER_LEFT, -yPosBook - 10, 0);
 		
-		drawTexture(xPosBook + BORDER_LEFT, yPosBook + 10, 255, 255, LOGO);
+		GuiBookUtilities.drawTexture(xPosBook + BORDER_LEFT, yPosBook + 10, 255, 255, LOGO);
 		
 		GlStateManager.popMatrix();
 	}

@@ -15,7 +15,7 @@ public class GuiBookFarmersGreen1 extends GuiBookPageSuggestions {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private BookMultiItemRenderer entityJar;
 	
-	private static final ResourceLocation PREVIEW = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/book/blocks/farmers_green_preview.png");
+	public static final ResourceLocation PREVIEW = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/book/blocks/farmers_green_preview.png");
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiBookFarmersGreen1() {
@@ -46,7 +46,7 @@ public class GuiBookFarmersGreen1 extends GuiBookPageSuggestions {
 		GlStateManager.translate(xPosBook + xSize / 2 + BORDER_RIGHT, yPosBook + 10, 0);
 		GlStateManager.scale(scale, scale / 1.9F, scale);
 		
-		drawTexture(0, 0, 0, 50, 140, 180, PREVIEW);
+		GuiBookUtilities.drawTexture(0, 0, 0, 50, 140, 180, PREVIEW);
 		
 		GlStateManager.popMatrix();
 	}

@@ -74,7 +74,7 @@ public class GuiBookCombinedArmorCompound extends GuiBookPageSuggestions {
 		suggestionsList.addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.armorHelmet_combined), 
 																													new ItemStack(ItemHandler.armorChestplate_combined), 
 																													new ItemStack(ItemHandler.armorLeggins_combined), 
-																													new ItemStack(ItemHandler.armorBoots_combined)}, 1000, PageRegistry.ARMOR_COMBINED_PAGE));
+																													new ItemStack(ItemHandler.armorBoots_combined)}, 1000, PageRegistry.COMBINED_ARMOR_PAGE_1));
 	}
 
 	@Override

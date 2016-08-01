@@ -76,7 +76,7 @@ public class GuiBookCrystalOfHolding2 extends GuiBookPageSuggestions {
 																													new ItemStack(BlockHandler.crystall_blue), 
 																													new ItemStack(BlockHandler.crystall_green), 
 																													new ItemStack(BlockHandler.crystall_yellow)}, 1000, PageRegistry.CRYSTALS_PAGE));
-		BookButtonCategory infusionButton = new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(BlockHandler.infuserBlock), PageRegistry.INFUSION_CRAFTING_PAGE);
+		BookButtonCategory infusionButton = new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(BlockHandler.infuserBlock), PageRegistry.INFUSION_CRAFTING_PAGE_1);
 		infusionButton.setCustomDescription("Infusion Crafting");
 		suggestionsList.addEntry(infusionButton);
 		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.entityGrabber), PageRegistry.ENTITY_GRABBER_PAGE));

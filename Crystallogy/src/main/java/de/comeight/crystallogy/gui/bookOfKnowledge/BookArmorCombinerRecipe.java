@@ -31,7 +31,7 @@ public class BookArmorCombinerRecipe {
 				this.progress = 0;
 				this.lastInc = System.currentTimeMillis();
 				this.armor = new BookButtonCrafting(GuiBookUtilities.getNextButtonId(), armor, null);
-				this.armorCombined = new BookButtonCrafting(GuiBookUtilities.getNextButtonId(), armorCombined, PageRegistry.ARMOR_COMBINED_PAGE);
+				this.armorCombined = new BookButtonCrafting(GuiBookUtilities.getNextButtonId(), armorCombined, PageRegistry.ARMOR_COMBINER_PAGE_1);
 				
 				int numCatalyst = 0;
 				

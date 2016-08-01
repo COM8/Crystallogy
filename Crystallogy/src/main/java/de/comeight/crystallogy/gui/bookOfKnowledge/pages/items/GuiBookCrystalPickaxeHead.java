@@ -47,8 +47,8 @@ public class GuiBookCrystalPickaxeHead extends GuiBookPageSuggestions {
 		BookButtonCrafting dG = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.crystalPickaxeHead, 1, 2), null);
 		BookButtonCrafting dY = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.crystalPickaxeHead, 1, 3), null);
 		
-		BookButtonCrafting[][] input = new BookButtonCrafting[][]{	{e,e,e},
-																	{cR,cR,cR},
+		BookButtonCrafting[][] input = new BookButtonCrafting[][]{	{cR,cR,cR},
+																	{e,e,e},
 																	{e,e,e}};
 		BookCraftingRecipe recipeRed = new BookCraftingRecipe(input, dR);
 		
@@ -113,7 +113,7 @@ public class GuiBookCrystalPickaxeHead extends GuiBookPageSuggestions {
 		suggestionsList.addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(),0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.crystalPickaxe_red), 
 																													new ItemStack(ItemHandler.crystalPickaxe_blue),
 																													new ItemStack(ItemHandler.crystalPickaxe_green),
-																													new ItemStack(ItemHandler.crystalPickaxe_yellow)}, 1000, PageRegistry.CRYSTAL_PICKAXE_PAGE));
+																													new ItemStack(ItemHandler.crystalPickaxe_yellow)}, 1000, PageRegistry.CRYSTAL_PICKAXE_PAGE_1));
 	}
 
 	@Override

@@ -85,7 +85,7 @@ public class GuiBookCrystalGlass extends GuiBookPageSuggestions {
 	}
 	
 	private void drawText(){
-		GuiBookUtilities.drawTextBox(xPosBook + BORDER_LEFT, yPosBook + 125, xSize / 2 - 12, 1.0F, "Crystal Glass is a glass type created by combining any kind of Crystal Dust with glass.");
+		GuiBookUtilities.drawTextBox(xPosBook + BORDER_LEFT, yPosBook + 125, xSize / 2 - 12, 1.0F, "Crystal Glass is a glass type, created by combining any kind of Crystal Dust with glass.");
 	}
 	
 	private void drawCrystals(){

@@ -58,7 +58,7 @@ public class GuiBookCrystalKnifeBlade extends GuiBookBaseInfusionPage {
 																										new ItemStack(ItemHandler.crystallSwordBlade, 1, 1),
 																										new ItemStack(ItemHandler.crystallSwordBlade, 1, 2),
 																										new ItemStack(ItemHandler.crystallSwordBlade, 1, 3),}, 1000, PageRegistry.CRYSTAL_SWORD_BLADE_PAGE));
-		BookButtonCategory infusionButton = new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(BlockHandler.infuserBlock), PageRegistry.INFUSION_CRAFTING_PAGE);
+		BookButtonCategory infusionButton = new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(BlockHandler.infuserBlock), PageRegistry.INFUSION_CRAFTING_PAGE_1);
 		infusionButton.setCustomDescription("Infusion Crafting");
 		suggestionsList.addEntry(infusionButton);
 	}

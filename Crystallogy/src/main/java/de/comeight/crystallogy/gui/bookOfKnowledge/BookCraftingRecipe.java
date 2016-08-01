@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCrafting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -32,6 +33,18 @@ public class BookCraftingRecipe {
 		
 		drawInput(mouseX, mouseY);
 		drawOutput(mouseX, mouseY);
+		drawArrow();
+	}
+	
+	private void drawArrow(){
+		GlStateManager.pushMatrix();
+		
+		GlStateManager.translate(x + 80, y + 28, 0);
+		GlStateManager.scale(2.5F, 2.5F, 2.5F);
+		
+		GuiBookUtilities.drawTexture(0, 0, 0, 0, 11, 15, GuiBookPage.GUI_ELEMENTS);
+		
+		GlStateManager.popMatrix();
 	}
 	
 	private void drawInput(int mouseX, int mouseY){
@@ -43,7 +56,7 @@ public class BookCraftingRecipe {
 	}
 	
 	private void drawOutput(int mouseX, int mouseY){
-		output.drawButton(mouseX, mouseY, x + 105, y + 25);
+		output.drawButton(mouseX, mouseY, x + 115, y + 25);
 	}
 	
 	public void mouseReleased(int mouseX, int mouseY, int state, GuiBookPage fromPage) {

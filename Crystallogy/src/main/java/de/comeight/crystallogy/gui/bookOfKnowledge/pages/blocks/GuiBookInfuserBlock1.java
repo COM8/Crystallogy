@@ -48,7 +48,7 @@ public class GuiBookInfuserBlock1 extends GuiBookPageSuggestions {
 		GlStateManager.translate(xPosBook + xSize / 2 + BORDER_RIGHT, yPosBook + 90, 0);
 		GlStateManager.scale(scale, scale / 1.2F, scale);
 		
-		drawTexture(0, 0, 20, 0, 230, 230, CRYSTAL_GLASS_PREVIEW);
+		GuiBookUtilities.drawTexture(0, 0, 20, 0, 230, 230, CRYSTAL_GLASS_PREVIEW);
 		
 		GlStateManager.popMatrix();
 	}

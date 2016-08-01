@@ -45,7 +45,7 @@ public class GuiBookCrystalHammerHead extends GuiBookPageSuggestions {
 		BookButtonCrafting dR = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.crystallHammerHead, 1, 0), null);
 		BookButtonCrafting dB = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.crystallHammerHead, 1, 1), null);
 		BookButtonCrafting dG = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.crystallHammerHead, 1, 2), null);
-		BookButtonCrafting dY = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.crystallHammerHead, 1, 3), null);
+		BookButtonCrafting dY = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.crystallHammerHead, 1, 3), null);	
 		
 		BookButtonCrafting[][] input = new BookButtonCrafting[][]{	{cR,cR,cR},
 																	{cR,cR,cR},
@@ -113,7 +113,7 @@ public class GuiBookCrystalHammerHead extends GuiBookPageSuggestions {
 		suggestionsList.addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(),0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.crystallHammer_red), 
 																													new ItemStack(ItemHandler.crystallHammer_blue),
 																													new ItemStack(ItemHandler.crystallHammer_green),
-																													new ItemStack(ItemHandler.crystallHammer_yellow)}, 1000, PageRegistry.CRYSTAL_HAMMER_PAGE));
+																													new ItemStack(ItemHandler.crystallHammer_yellow)}, 1000, PageRegistry.CRYSTAL_HAMMER_PAGE_1));
 	}
 
 	@Override

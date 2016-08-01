@@ -40,7 +40,7 @@ public class GuiBookArmorCombiner2 extends GuiBookPageSuggestions {
 		BookButtonCrafting y = new BookButtonCrafting(getNextButtonId(), new ItemStack(BlockHandler.crystall_yellow), PageRegistry.CRYSTALS_PAGE);
 		BookButtonCrafting m = new BookButtonCrafting(getNextButtonId(), new ItemStack(BlockHandler.machineBlock), PageRegistry.MACHINE_BLOCK_PAGE);
 		BookButtonCrafting a = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.armorCatalys), PageRegistry.ARMOR_CATALYST_PAGE);
-		BookButtonCrafting c = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.armorChestplate_combined), PageRegistry.ARMOR_COMBINED_PAGE);
+		BookButtonCrafting c = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.armorChestplate_combined), PageRegistry.COMBINED_ARMOR_PAGE_1);
 		BookButtonCrafting d = new BookButtonCrafting(getNextButtonId(), new ItemStack(Blocks.DIAMOND_BLOCK), null);
 		
 		BookButtonCrafting[][] input = new BookButtonCrafting[][]{	{y, d, r},
@@ -96,8 +96,8 @@ public class GuiBookArmorCombiner2 extends GuiBookPageSuggestions {
 		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.armorHelmet_combined), 
 																										new ItemStack(ItemHandler.armorChestplate_combined), 
 																										new ItemStack(ItemHandler.armorLeggins_combined), 
-																										new ItemStack(ItemHandler.armorBoots_combined)}, 1000, PageRegistry.ARMOR_COMBINED_PAGE));
-		BookButtonCategory infusionButton = new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(BlockHandler.infuserBlock), PageRegistry.INFUSION_CRAFTING_PAGE);
+																										new ItemStack(ItemHandler.armorBoots_combined)}, 1000, PageRegistry.COMBINED_ARMOR_PAGE_1));
+		BookButtonCategory infusionButton = new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(BlockHandler.infuserBlock), PageRegistry.INFUSION_CRAFTING_PAGE_1);
 		infusionButton.setCustomDescription("Infusion Crafting");
 		suggestionsList.addEntry(infusionButton);
 	}

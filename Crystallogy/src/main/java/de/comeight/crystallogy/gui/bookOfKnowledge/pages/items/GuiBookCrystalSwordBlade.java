@@ -113,7 +113,7 @@ public class GuiBookCrystalSwordBlade extends GuiBookPageSuggestions {
 		suggestionsList.addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(),0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.crystalSword_red), 
 																													new ItemStack(ItemHandler.crystalSword_blue),
 																													new ItemStack(ItemHandler.crystalSword_green),
-																													new ItemStack(ItemHandler.crystalSword_yellow)}, 1000, PageRegistry.CRYSTAL_SWORD_PAGE));
+																													new ItemStack(ItemHandler.crystalSword_yellow)}, 1000, PageRegistry.CRYSTAL_SWORD_PAGE_1));
 	}
 
 	@Override
