@@ -2,13 +2,13 @@ package de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks;
 
 import de.comeight.crystallogy.gui.bookOfKnowledge.BookArmorCombinerRecipe;
 import de.comeight.crystallogy.gui.bookOfKnowledge.BookCraftingRecipe;
-import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPage;
-import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPageSuggestions;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookUtilities;
 import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import de.comeight.crystallogy.gui.bookOfKnowledge.ScrollBarList;
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCategory;
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCrafting;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPage;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPageSuggestions;
 import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
 import net.minecraft.init.Blocks;

@@ -1,7 +1,7 @@
 package de.comeight.crystallogy.gui.bookOfKnowledge.buttons;
 
-import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPage;
 import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;

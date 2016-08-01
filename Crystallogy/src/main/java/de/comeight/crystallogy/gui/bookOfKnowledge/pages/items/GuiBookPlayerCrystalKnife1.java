@@ -2,9 +2,9 @@ package de.comeight.crystallogy.gui.bookOfKnowledge.pages.items;
 
 import de.comeight.crystallogy.CrystallogyBase;
 import de.comeight.crystallogy.gui.bookOfKnowledge.BookMultiItemRenderer;
-import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPage;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookUtilities;
 import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPage;
 import de.comeight.crystallogy.handler.ItemHandler;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;

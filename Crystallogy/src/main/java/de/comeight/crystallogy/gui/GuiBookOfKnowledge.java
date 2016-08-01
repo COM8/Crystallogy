@@ -1,7 +1,7 @@
 package de.comeight.crystallogy.gui;
 
-import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPage;
 import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPage;
 import net.minecraft.client.gui.GuiScreen;
 
 public class GuiBookOfKnowledge extends GuiScreen {

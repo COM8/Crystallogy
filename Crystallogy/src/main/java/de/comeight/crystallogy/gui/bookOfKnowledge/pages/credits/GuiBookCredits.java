@@ -1,7 +1,7 @@
 package de.comeight.crystallogy.gui.bookOfKnowledge.pages.credits;
 
-import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPage;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookUtilities;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPage;
 import de.comeight.crystallogy.util.RGBColor;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

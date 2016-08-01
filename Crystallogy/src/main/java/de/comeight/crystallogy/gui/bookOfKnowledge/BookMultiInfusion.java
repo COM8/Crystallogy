@@ -1,5 +1,6 @@
 package de.comeight.crystallogy.gui.bookOfKnowledge;
 
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPage;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 

@@ -1,6 +1,7 @@
 package de.comeight.crystallogy.gui.bookOfKnowledge;
 
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCrafting;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPage;
 import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
 import net.minecraft.client.renderer.GlStateManager;

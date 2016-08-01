@@ -1,9 +1,9 @@
 package de.comeight.crystallogy.gui.bookOfKnowledge.pages.items;
 
 import de.comeight.crystallogy.gui.bookOfKnowledge.BookMultiItemRenderer;
-import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPageSuggestions;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookUtilities;
 import de.comeight.crystallogy.gui.bookOfKnowledge.ScrollBarList;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPageSuggestions;
 import de.comeight.crystallogy.handler.ItemHandler;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;

@@ -1,10 +1,10 @@
 package de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks;
 
 import de.comeight.crystallogy.gui.bookOfKnowledge.BlocksScrollBarList;
-import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPage;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookUtilities;
 import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCategory;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPage;
 import de.comeight.crystallogy.handler.BlockHandler;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;

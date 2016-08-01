@@ -2,9 +2,9 @@ package de.comeight.crystallogy.gui.bookOfKnowledge.pages.items;
 
 import de.comeight.crystallogy.gui.bookOfKnowledge.BookInfusionRecipe;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookBaseInfusionPage;
-import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPage;
 import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCrafting;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPage;
 import de.comeight.crystallogy.handler.ItemHandler;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;

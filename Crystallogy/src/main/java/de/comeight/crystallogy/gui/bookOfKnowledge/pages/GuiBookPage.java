@@ -1,8 +1,10 @@
-package de.comeight.crystallogy.gui.bookOfKnowledge;
+package de.comeight.crystallogy.gui.bookOfKnowledge.pages;
 
 import java.io.IOException;
 
 import de.comeight.crystallogy.CrystallogyBase;
+import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookUtilities;
+import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButton;
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonBackwards;
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonForwards;

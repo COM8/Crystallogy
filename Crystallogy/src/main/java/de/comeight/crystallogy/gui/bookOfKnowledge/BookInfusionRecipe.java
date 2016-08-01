@@ -3,6 +3,7 @@ package de.comeight.crystallogy.gui.bookOfKnowledge;
 import java.util.LinkedList;
 
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCrafting;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPage;
 import de.comeight.crystallogy.handler.BlockHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;

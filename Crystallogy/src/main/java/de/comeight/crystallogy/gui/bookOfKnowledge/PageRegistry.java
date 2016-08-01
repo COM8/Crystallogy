@@ -3,6 +3,7 @@ package de.comeight.crystallogy.gui.bookOfKnowledge;
 import java.util.LinkedList;
 
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookMain;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPage;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookArmorCombiner1;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookArmorCombiner2;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookBlocks;

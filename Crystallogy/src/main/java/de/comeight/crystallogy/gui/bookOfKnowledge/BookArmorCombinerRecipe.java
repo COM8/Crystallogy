@@ -2,6 +2,7 @@ package de.comeight.crystallogy.gui.bookOfKnowledge;
 
 import de.comeight.crystallogy.gui.GuiArmorCombiner;
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCrafting;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPage;
 import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.items.armor.Armor_combined;
 import net.minecraft.client.renderer.GlStateManager;

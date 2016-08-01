@@ -1,11 +1,11 @@
 package de.comeight.crystallogy.gui.bookOfKnowledge.pages.items;
 
 import de.comeight.crystallogy.gui.bookOfKnowledge.BookCraftingRecipe;
-import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPage;
-import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookPageSuggestions;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookUtilities;
 import de.comeight.crystallogy.gui.bookOfKnowledge.ScrollBarList;
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCrafting;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPage;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPageSuggestions;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
