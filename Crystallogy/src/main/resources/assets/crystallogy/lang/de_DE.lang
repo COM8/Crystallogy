@@ -128,7 +128,7 @@ item.hunterArmorMesh.name=Jäger Rüstungsgitter
 item.debugTool.name=Debug Tool
 item.bookOfKnowledge.name=§6Buch des Wissens§r
 
-itemGroup.crystallogyMainTab=Crystallogy Hauptfenster
+itemGroup.crystallogy=Crystallogy
 
 crystallogy.subtitle.crusher=Mahler Mahlt
 crystallogy.subtitle.compressor=Kompressor Komprimiert

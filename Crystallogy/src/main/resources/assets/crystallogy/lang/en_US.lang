@@ -126,7 +126,7 @@ item.enderonCrystal.name=Enderon Crystal
 item.debugTool.name=Debug Tool
 item.bookOfKnowledge.name=§6Book of Knowledge§r
 
-itemGroup.crystallogyMainTab=Crystallogy Maintab
+itemGroup.crystallogy=Crystallogy
 
 crystallogy.subtitle.crusher=Crusher Crushing
 crystallogy.subtitle.compressor=Compressor Compressing
