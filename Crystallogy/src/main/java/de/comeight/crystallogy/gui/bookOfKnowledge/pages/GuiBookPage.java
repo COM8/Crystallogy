@@ -199,4 +199,19 @@ public class GuiBookPage extends GuiScreen {
     	GuiBookUtilities.drawTexturedModalRect(xCoord, yCoord, minU, minV, maxU, maxV);
     }
 	
+	@Override
+	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
+		super.mouseClicked(mouseX, mouseY, mouseButton);
+		if(mouseButton == 1 && PageRegistry.canGoBack()){
+			goBackOnePage();
+		}
+	}
+	
+	protected void goBackOnePage(){
+		GuiBookPage page = PageRegistry.getLastVisited();
+		if(page != null){
+			mc.displayGuiScreen(page);
+		}
+	}
+	
 }
