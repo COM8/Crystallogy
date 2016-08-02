@@ -41,7 +41,7 @@ public class GuiBookCredits extends GuiBookPage {
 	}
 	
 	private void drawVersion(){
-		GuiBookUtilities.drawTextBox(xPosBook + xSize - 35, yPosBook + BORDER_TOP, WRAPWIDTH, 1.0F, new RGBColor(1.0F, 0.0F, 0.0F).toInt(), "v.1.0");
+		GuiBookUtilities.drawTextBox(xPosBook + xSize - 35, yPosBook + BORDER_TOP, WRAPWIDTH, 1.0F, new RGBColor(1.0F, 0.0F, 0.0F).toInt(), "v.1.1");
 	}
 	
 }
