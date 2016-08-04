@@ -48,7 +48,7 @@ public class CrystallogyMainTab extends CreativeTabs{
 	
 	private boolean sorted(List<ItemStack> list){
 		boolean sorted = true;
-		System.out.println(list.size());
+		//System.out.println(list.size());
 		for (int i = 0; i < list.size() - 1; i++) {
 			String name1 = list.get(i).getDisplayName();
 			String name2 = list.get(i + 1).getDisplayName();
