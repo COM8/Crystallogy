@@ -65,4 +65,9 @@ public class BookButtonCrafting extends BookButtonCategory {
 		}
 	}
 	
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
+	
 }

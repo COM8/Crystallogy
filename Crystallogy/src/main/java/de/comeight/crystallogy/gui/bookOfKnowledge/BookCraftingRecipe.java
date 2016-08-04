@@ -4,7 +4,6 @@ import java.util.LinkedList;
 
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCrafting;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPage;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -14,6 +13,7 @@ public class BookCraftingRecipe {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private BookButtonCrafting output;
 	private BookButtonCrafting[][] input;
+	private BookButtonCrafting hoverButton;
 	
 	private int x;
 	private int y;
@@ -22,6 +22,7 @@ public class BookCraftingRecipe {
 	public BookCraftingRecipe(BookButtonCrafting[][] input, BookButtonCrafting output) {
 		this.input = input;
 		this.output = output;
+		this.hoverButton = null;
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -31,10 +32,11 @@ public class BookCraftingRecipe {
 	public void drawScreen(int mouseX, int mouseY, int x, int y){
 		this.x = x;
 		this.y = y;
+		this.hoverButton = null;
 		
+		drawArrow();
 		drawInput(mouseX, mouseY);
 		drawOutput(mouseX, mouseY);
-		drawArrow();
 	}
 	
 	private void drawArrow(){
@@ -52,25 +54,23 @@ public class BookCraftingRecipe {
 		for(int i = 0; i < input.length; i++){
 			for(int e = 0; e < input[i].length; e++){
 				input[e][i].drawButton(mouseX, mouseY, x + i * 25, y + e * 25);
+				if(input[e][i].hover){
+					hoverButton = input[e][i];
+				}
 			}
 		}
 	}
 	
 	private void drawOutput(int mouseX, int mouseY){
 		output.drawButton(mouseX, mouseY, x + 115, y + 25);
+		if(output.hover){
+			hoverButton = output;
+		}
 	}
 	
 	public void mouseReleased(int mouseX, int mouseY, int state, GuiBookPage fromPage) {
-		LinkedList<BookButtonCrafting> list = new LinkedList<BookButtonCrafting>();
-		for(int i = 0; i < input.length; i++){
-			for(int e = 0; e < input[i].length; e++){
-				if(!checkIfChecked(list, input[i][e])){
-					if(input[i][e].hover && input[i][e].mousePressed(Minecraft.getMinecraft(), mouseX, mouseY)){
-						list.add(input[i][e]);
-						input[i][e].onClicked(fromPage);
-					}
-				}
-			}
+		if(hoverButton != null){
+			hoverButton.onClicked(fromPage);
 		}
 	}
 	

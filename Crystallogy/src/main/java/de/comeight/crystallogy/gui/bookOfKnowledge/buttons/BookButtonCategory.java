@@ -21,7 +21,7 @@ public class BookButtonCategory extends BookButton{
 	private String description;
 	private float scale = 1.0F;
 	
-	private GuiBookPage page;
+	public GuiBookPage page;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public BookButtonCategory(int buttonId, int x, int y, ResourceLocation background, ItemStack item, GuiBookPage page) {
