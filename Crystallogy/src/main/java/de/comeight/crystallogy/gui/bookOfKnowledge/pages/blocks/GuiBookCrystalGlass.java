@@ -78,7 +78,7 @@ public class GuiBookCrystalGlass extends GuiBookPageSuggestions {
 		GlStateManager.translate(xPosBook + BORDER_LEFT, yPosBook + 155, 0);
 		GlStateManager.scale(scale, scale / 1.2F, scale);
 		
-		drawTexture(0, 0, 0, 100, 230, 115, CRYSTAL_GLASS_PREVIEW);
+		GuiBookUtilities.drawTexture(0, 0, 0, 100, 230, 115, CRYSTAL_GLASS_PREVIEW);
 		
 		GlStateManager.popMatrix();
 	}
