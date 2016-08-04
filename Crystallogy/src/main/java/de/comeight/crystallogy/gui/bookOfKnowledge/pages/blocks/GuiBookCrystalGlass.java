@@ -12,12 +12,12 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPage;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPageSuggestions;
 import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
+import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.oredict.OreDictionary;
 
 @SideOnly(Side.CLIENT)
 public class GuiBookCrystalGlass extends GuiBookPageSuggestions {
@@ -40,15 +40,15 @@ public class GuiBookCrystalGlass extends GuiBookPageSuggestions {
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
-
+	
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	private void initRecipe(){
-		BookButtonCrafting g = new BookButtonCrafting(getNextButtonId(), GuiBookUtilities.toItemStackArray(OreDictionary.getOres("blockGlass")), 1000, null);
+		BookButtonCrafting g = new BookButtonCrafting(getNextButtonId(), GuiBookUtilities.toItemStackArray(Utilities.getOresFrom("blockGlass")), 500, null);
 		BookButtonCrafting d = new BookButtonCrafting(getNextButtonId(), new ItemStack[]{	new ItemStack(ItemHandler.crystallDust_red), 
 																							new ItemStack(ItemHandler.crystallDust_blue), 
 																							new ItemStack(ItemHandler.crystallDust_green), 
-																							new ItemStack(ItemHandler.crystallDust_yellow)}, 1000, PageRegistry.CRYSTAL_DUST_PAGE);
+																							new ItemStack(ItemHandler.crystallDust_yellow)}, 1500, PageRegistry.CRYSTAL_DUST_PAGE);
 		
 		BookButtonCrafting[][] input = new BookButtonCrafting[][]{	{g, g, g},
 																	{d, g, d},
@@ -57,7 +57,7 @@ public class GuiBookCrystalGlass extends GuiBookPageSuggestions {
 		BookButtonCrafting output = new BookButtonCrafting(getNextButtonId(), new ItemStack[]{	new ItemStack(BlockHandler.crystalGlas, 7, 0), 
 																								new ItemStack(BlockHandler.crystalGlas, 7, 1),
 																								new ItemStack(BlockHandler.crystalGlas, 7, 2),
-																								new ItemStack(BlockHandler.crystalGlas, 7, 3)}, 1000, null);
+																								new ItemStack(BlockHandler.crystalGlas, 7, 3)}, 1500, null);
 		recipe = new BookCraftingRecipe(input, output);
 	}
 	

@@ -1,11 +1,15 @@
 package de.comeight.crystallogy.util;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import com.sun.org.apache.xml.internal.security.utils.I18n;
 
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class Utilities {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -31,6 +35,22 @@ public class Utilities {
         Random rand = new Random();
         float randomValue = min + (max - min) * rand.nextFloat();
         return randomValue;
+    }
+	
+	public static List<ItemStack> getOresFrom(String name)
+    {
+		List<ItemStack> ores = OreDictionary.getOres(name);
+		List<ItemStack> ores1 = new ArrayList<ItemStack>(); 
+		
+		for (ItemStack ore : ores) {
+			if(ore.getItemDamage() == OreDictionary.WILDCARD_VALUE){
+				ore.getItem().getSubItems(ore.getItem(), null, ores1);
+			}
+			else{
+				ores1.add(ore);
+			}
+		}
+        return ores1;
     }
 
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------

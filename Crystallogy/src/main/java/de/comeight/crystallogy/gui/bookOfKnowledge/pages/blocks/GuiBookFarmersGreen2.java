@@ -9,11 +9,11 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCrafting;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPageSuggestions;
 import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
+import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.oredict.OreDictionary;
 
 @SideOnly(Side.CLIENT)
 public class GuiBookFarmersGreen2 extends GuiBookPageSuggestions {
@@ -34,8 +34,7 @@ public class GuiBookFarmersGreen2 extends GuiBookPageSuggestions {
 	private void initRecipe(){
 		BookButtonCrafting g = new BookButtonCrafting(getNextButtonId(), new ItemStack(BlockHandler.crystalGlas, 1, 2), PageRegistry.CRYSTAL_GLASS_PAGE);
 		BookButtonCrafting i = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.IRON_INGOT), null);
-		BookButtonCrafting p = new BookButtonCrafting(getNextButtonId(), GuiBookUtilities.toItemStackArray(OreDictionary.getOres("plankWood")), 1000, null);
-		
+		BookButtonCrafting p = new BookButtonCrafting(getNextButtonId(), GuiBookUtilities.toItemStackArray(Utilities.getOresFrom("plankWood")), 1000, null);
 		BookButtonCrafting[][] input = new BookButtonCrafting[][]{	{i, p, i},
 																	{g, BookButtonCrafting.EMPTY, g},
 																	{g, g, g}};
@@ -49,7 +48,6 @@ public class GuiBookFarmersGreen2 extends GuiBookPageSuggestions {
 		super.drawScreen(mouseX, mouseY, partialTicks);
 		drawCraftingChaptersText();
 		drawRecipe(mouseX, mouseY);
-		initRecipe();
 	}
 	
 	private void drawRecipe(int mouseX, int mouseY){
