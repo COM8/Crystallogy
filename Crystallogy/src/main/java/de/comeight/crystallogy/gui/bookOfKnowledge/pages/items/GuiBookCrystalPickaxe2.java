@@ -23,13 +23,18 @@ public class GuiBookCrystalPickaxe2 extends GuiBookPageSuggestions {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiBookCrystalPickaxe2() {
 		super("");
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		BookButtonCrafting hG = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.crystalPickaxeHead, 1, 2), PageRegistry.CRYSTAL_PICKAXE_HEAD_PAGE);
 		hG.disableFrame();

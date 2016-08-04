@@ -23,14 +23,18 @@ public class GuiBookEntityJar2 extends GuiBookPageSuggestions {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiBookEntityJar2() {
 		super("");
-		
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		BookButtonCrafting b = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.GLASS_BOTTLE), null);
 		b.disableFrame();

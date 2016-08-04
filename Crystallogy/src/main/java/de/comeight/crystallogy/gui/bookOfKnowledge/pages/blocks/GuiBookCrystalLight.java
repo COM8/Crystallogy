@@ -33,13 +33,18 @@ public class GuiBookCrystalLight extends GuiBookPageSuggestions {
 		super("Crystal Light:");
 		
 		crystalLights = new BookMultiItemRenderer(new ItemStack[]{new ItemStack(BlockHandler.crystalLight)}, 1000, 5.0F);
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		BookButtonCrafting g = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.GLOWSTONE_DUST), null);
 		g.disableFrame();

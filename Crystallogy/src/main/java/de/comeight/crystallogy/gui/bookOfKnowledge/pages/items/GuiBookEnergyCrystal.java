@@ -33,13 +33,18 @@ public class GuiBookEnergyCrystal extends GuiBookPageSuggestions {
 																new ItemStack(ItemHandler.energyCrystal, 1, ItemHandler.energyCrystal.getMaxDamage() / 2),
 																new ItemStack(ItemHandler.energyCrystal, 1, ItemHandler.energyCrystal.getMaxDamage() / 4 * 3),
 																new ItemStack(ItemHandler.energyCrystal, 1, ItemHandler.energyCrystal.getMaxDamage())}, 1000, 5.0F);
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		BookButtonCrafting d = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.energyDust, 8), PageRegistry.ENERGY_DUST_PAGE);
 		BookButtonCrafting cE = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.energyCrystal, 1, ItemHandler.energyCrystal.getMaxDamage()), null);

@@ -22,7 +22,6 @@ public abstract class GuiBookBaseArmorPage2 extends GuiBookPageSuggestions {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiBookBaseArmorPage2() {
 		super("");
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -39,6 +38,12 @@ public abstract class GuiBookBaseArmorPage2 extends GuiBookPageSuggestions {
 	protected abstract ItemArmor getBoots();
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		BookButtonCrafting k = new BookButtonCrafting(getNextButtonId(), getArmorMaterial(), getArmorMaterialPage());
 		BookButtonCrafting e = BookButtonCrafting.EMPTY;

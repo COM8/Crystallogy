@@ -25,14 +25,18 @@ public class GuiBookArmorPlates2 extends GuiBookPageSuggestions {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiBookArmorPlates2() {
 		super("");
-		
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		BookButtonCrafting e = BookButtonCrafting.EMPTY;
 		e.disableFrame();

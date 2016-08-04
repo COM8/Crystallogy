@@ -31,13 +31,18 @@ public class GuiBookCrystalHammerHead extends GuiBookPageSuggestions {
 																new ItemStack(ItemHandler.crystallHammerHead, 1, 1),
 																new ItemStack(ItemHandler.crystallHammerHead, 1, 2),
 																new ItemStack(ItemHandler.crystallHammerHead, 1, 3),}, 1000, 5.0F);
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		BookButtonCrafting cR = new BookButtonCrafting(getNextButtonId(), new ItemStack(BlockHandler.crystall_red), PageRegistry.CRYSTALS_PAGE);
 		BookButtonCrafting cB = new BookButtonCrafting(getNextButtonId(), new ItemStack(BlockHandler.crystall_blue), PageRegistry.CRYSTALS_PAGE);

@@ -28,13 +28,18 @@ public class GuiBookArmorCatalyst extends GuiBookPageSuggestions {
 		super("Armor Catalyst:");
 		
 		crystalLights = new BookMultiItemRenderer(new ItemStack[]{new ItemStack(ItemHandler.armorCatalys)}, 1000, 5.0F);
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		BookButtonCrafting g = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.crystallDust_green), PageRegistry.CRYSTAL_DUST_PAGE);
 		g.disableFrame();

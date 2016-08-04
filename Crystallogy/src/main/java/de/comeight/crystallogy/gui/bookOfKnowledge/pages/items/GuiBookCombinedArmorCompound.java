@@ -27,13 +27,18 @@ public class GuiBookCombinedArmorCompound extends GuiBookPageSuggestions {
 		super("Combined Armor Compound");
 		
 		renderer = new BookMultiItemRenderer(new ItemStack[]{	new ItemStack(ItemHandler.combinedArmorCompound)}, 1000, 5.0F);
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		BookButtonCrafting input = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.chargedCombinedArmorMesh, 4), PageRegistry.COMBINED_ARMOR_COMPOUND_PAGE);
 		BookButtonCrafting output = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.combinedArmorCompound, 2), null);

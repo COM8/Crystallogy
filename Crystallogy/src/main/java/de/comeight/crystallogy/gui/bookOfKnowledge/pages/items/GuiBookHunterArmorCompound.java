@@ -27,13 +27,18 @@ public class GuiBookHunterArmorCompound extends GuiBookPageSuggestions {
 		super("Hunter's Armor Compound");
 		
 		renderer = new BookMultiItemRenderer(new ItemStack[]{	new ItemStack(ItemHandler.hunterArmorCompound)}, 1000, 5.0F);
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		BookButtonCrafting input = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.hunterArmorMesh, 4), PageRegistry.HUNTERS_ARMOR_MESH_PAGE);
 		BookButtonCrafting output = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.hunterArmorCompound, 2), null);

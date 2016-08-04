@@ -29,13 +29,18 @@ public class GuiBookMachineBlock extends GuiBookPageSuggestions {
 		super("Machine Block:");
 		
 		crystalLights = new BookMultiItemRenderer(new ItemStack[]{new ItemStack(BlockHandler.machineBlock)}, 1000, 5.0F);
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		BookButtonCrafting i = new BookButtonCrafting(getNextButtonId(), new ItemStack(Blocks.IRON_BLOCK), null);
 		i.disableFrame();

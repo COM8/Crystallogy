@@ -36,13 +36,18 @@ public class GuiBookCrystalGlass extends GuiBookPageSuggestions {
 																	new ItemStack(BlockHandler.crystalGlas, 1, 1),
 																	new ItemStack(BlockHandler.crystalGlas, 1, 2),
 																	new ItemStack(BlockHandler.crystalGlas, 1, 3)}, 1000, 5.0F);
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		BookButtonCrafting g = new BookButtonCrafting(getNextButtonId(), GuiBookUtilities.toItemStackArray(Utilities.getOresFrom("blockGlass")), 500, null);
 		BookButtonCrafting d = new BookButtonCrafting(getNextButtonId(), new ItemStack[]{	new ItemStack(ItemHandler.crystallDust_red), 

@@ -28,14 +28,18 @@ public class GuiBookPureCrystalDust extends GuiBookPageSuggestions {
 		super("Pure Crystal Dust:");
 		
 		renderer = new BookMultiItemRenderer(new ItemStack[]{	new ItemStack(ItemHandler.pureCrystallDust)}, 1000, 5.0F);
-		
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	protected void initRecipe() {
 		BookButtonCrafting d = new BookButtonCrafting(getNextButtonId(), new ItemStack[]{	new ItemStack(ItemHandler.crystallDust_red), 
 																							new ItemStack(ItemHandler.crystallDust_blue), 

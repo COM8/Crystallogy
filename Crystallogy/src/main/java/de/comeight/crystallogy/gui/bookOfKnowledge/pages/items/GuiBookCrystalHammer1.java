@@ -27,7 +27,6 @@ public class GuiBookCrystalHammer1 extends GuiBookPage {
 																new ItemStack(ItemHandler.crystallHammer_blue), 
 																new ItemStack(ItemHandler.crystallHammer_green), 
 																new ItemStack(ItemHandler.crystallHammer_yellow)}, 1000, 5.0F);
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -37,6 +36,12 @@ public class GuiBookCrystalHammer1 extends GuiBookPage {
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		BookButtonCrafting hR = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.crystallHammerHead, 1, 0), PageRegistry.CRYSTAL_HAMMER_HEAD_PAGE);
 		hR.disableFrame();

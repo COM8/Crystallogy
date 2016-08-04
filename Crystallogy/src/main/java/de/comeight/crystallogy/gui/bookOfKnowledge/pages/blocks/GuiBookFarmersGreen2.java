@@ -23,14 +23,18 @@ public class GuiBookFarmersGreen2 extends GuiBookPageSuggestions {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiBookFarmersGreen2() {
 		super("");
-		
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		BookButtonCrafting g = new BookButtonCrafting(getNextButtonId(), new ItemStack(BlockHandler.crystalGlas, 1, 2), PageRegistry.CRYSTAL_GLASS_PAGE);
 		BookButtonCrafting i = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.IRON_INGOT), null);

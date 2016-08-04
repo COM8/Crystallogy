@@ -20,7 +20,6 @@ public abstract class GuiBookBaseInfusionPage extends GuiBookPageSuggestions {
 		super(dust.getDisplayName() + ':');
 		
 		threatDust = new BookMultiItemRenderer(new ItemStack[]{dust}, 1000, 5.0F);
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -29,6 +28,12 @@ public abstract class GuiBookBaseInfusionPage extends GuiBookPageSuggestions {
 	protected abstract String getDescription();
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		recipe = getRecipe();
 	}

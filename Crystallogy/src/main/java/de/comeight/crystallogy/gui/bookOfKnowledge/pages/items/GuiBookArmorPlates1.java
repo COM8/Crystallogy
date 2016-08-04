@@ -31,7 +31,6 @@ public class GuiBookArmorPlates1 extends GuiBookPageSuggestions {
 															new ItemStack(ItemHandler.armorPlate, 1, 2),
 															new ItemStack(ItemHandler.armorPlate, 1, 3),
 															new ItemStack(ItemHandler.armorPlate, 1, 4)}, 1000, 5.0F);
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -41,6 +40,12 @@ public class GuiBookArmorPlates1 extends GuiBookPageSuggestions {
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		BookButtonCrafting cR = new BookButtonCrafting(getNextButtonId(), new ItemStack(BlockHandler.crystall_red), PageRegistry.CRYSTALS_PAGE);
 		BookButtonCrafting cB = new BookButtonCrafting(getNextButtonId(), new ItemStack(BlockHandler.crystall_blue), PageRegistry.CRYSTALS_PAGE);

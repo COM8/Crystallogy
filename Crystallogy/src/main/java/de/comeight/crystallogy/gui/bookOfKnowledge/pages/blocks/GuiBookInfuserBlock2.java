@@ -22,14 +22,18 @@ public class GuiBookInfuserBlock2 extends GuiBookPageSuggestions {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiBookInfuserBlock2() {
 		super("");
-		
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		BookButtonCrafting c = new BookButtonCrafting(getNextButtonId(), new ItemStack(Blocks.CRAFTING_TABLE), null);
 		BookButtonCrafting s = new BookButtonCrafting(getNextButtonId(), new ItemStack(Blocks.COBBLESTONE), null);

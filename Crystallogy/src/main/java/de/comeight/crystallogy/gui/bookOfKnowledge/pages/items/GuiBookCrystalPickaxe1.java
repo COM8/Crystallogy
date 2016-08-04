@@ -27,7 +27,6 @@ public class GuiBookCrystalPickaxe1 extends GuiBookPage {
 																new ItemStack(ItemHandler.crystalPickaxe_blue), 
 																new ItemStack(ItemHandler.crystalPickaxe_green), 
 																new ItemStack(ItemHandler.crystalPickaxe_yellow)}, 1000, 5.0F);
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -37,6 +36,12 @@ public class GuiBookCrystalPickaxe1 extends GuiBookPage {
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		BookButtonCrafting hR = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.crystalPickaxeHead, 1, 0), PageRegistry.CRYSTAL_PICKAXE_HEAD_PAGE);
 		hR.disableFrame();

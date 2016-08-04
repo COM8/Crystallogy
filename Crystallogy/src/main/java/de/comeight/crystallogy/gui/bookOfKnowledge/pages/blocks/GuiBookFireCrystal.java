@@ -27,13 +27,18 @@ public class GuiBookFireCrystal extends GuiBookPageSuggestions {
 		super("Fire Crystal:");
 		
 		crystalLights = new BookMultiItemRenderer(new ItemStack[]{new ItemStack(BlockHandler.fireCrystall)}, 1000, 5.0F);
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		BookButtonCrafting c = new BookButtonCrafting(getNextButtonId(), new ItemStack(BlockHandler.crystall_red), PageRegistry.CRYSTALS_PAGE);
 		c.disableFrame();

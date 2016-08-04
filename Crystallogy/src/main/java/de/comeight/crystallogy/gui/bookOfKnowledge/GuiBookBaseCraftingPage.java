@@ -20,7 +20,6 @@ public abstract class GuiBookBaseCraftingPage extends GuiBookPageSuggestions {
 		super(stack.getDisplayName() + ':');
 		
 		threatDust = new BookMultiItemRenderer(new ItemStack[]{stack}, 1000, 5.0F);
-		initRecipe();
 	}
 	
 	public GuiBookBaseCraftingPage(ItemStack stack[], String name) {
@@ -36,6 +35,12 @@ public abstract class GuiBookBaseCraftingPage extends GuiBookPageSuggestions {
 	protected abstract String getDescription();
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		recipe = getRecipe();
 	}

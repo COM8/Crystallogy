@@ -22,14 +22,18 @@ public class GuiBookPlayerJar2 extends GuiBookPageSuggestions {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiBookPlayerJar2() {
 		super("");
-		
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		BookButtonCrafting e = new BookButtonCrafting(getNextButtonId(), new ItemStack(BlockHandler.entityJar), PageRegistry.ENTITY_JAR_PAGE_1);
 		e.disableFrame();

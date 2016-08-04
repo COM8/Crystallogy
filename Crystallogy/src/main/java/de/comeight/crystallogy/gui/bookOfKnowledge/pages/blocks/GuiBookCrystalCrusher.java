@@ -29,13 +29,18 @@ public class GuiBookCrystalCrusher extends GuiBookPageSuggestions {
 		super("Crystal Crusher:");
 		
 		crystalGlass = new BookMultiItemRenderer(new ItemStack[]{new ItemStack(BlockHandler.crystallCrusher)}, 1000, 5.0F);
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		BookButtonCrafting iB = new BookButtonCrafting(getNextButtonId(), new ItemStack(Blocks.IRON_BLOCK), null);
 		BookButtonCrafting b = new BookButtonCrafting(getNextButtonId(), new ItemStack(Blocks.BRICK_BLOCK), null);

@@ -29,13 +29,18 @@ public class GuiBookCrystalCharger extends GuiBookPageSuggestions {
 		super("Crystal Charger:");
 		
 		crystalGlass = new BookMultiItemRenderer(new ItemStack[]{new ItemStack(BlockHandler.charger)}, 1000, 5.0F);
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		BookButtonCrafting o = new BookButtonCrafting(getNextButtonId(), new ItemStack(Blocks.OBSIDIAN), null);
 		BookButtonCrafting r = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.REDSTONE), null);

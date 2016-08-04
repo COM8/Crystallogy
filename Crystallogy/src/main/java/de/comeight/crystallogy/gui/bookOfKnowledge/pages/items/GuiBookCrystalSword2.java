@@ -23,13 +23,18 @@ public class GuiBookCrystalSword2 extends GuiBookPageSuggestions {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiBookCrystalSword2() {
 		super("");
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		BookButtonCrafting hG = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.crystallSwordBlade, 1, 2), PageRegistry.CRYSTAL_SWORD_BLADE_PAGE);
 		hG.disableFrame();

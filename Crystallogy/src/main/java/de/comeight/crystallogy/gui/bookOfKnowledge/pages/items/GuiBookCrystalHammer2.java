@@ -23,13 +23,18 @@ public class GuiBookCrystalHammer2 extends GuiBookPageSuggestions {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiBookCrystalHammer2() {
 		super("");
-		initRecipe();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	protected void addButtons() {
+		super.addButtons();
+		initRecipe();
+	}
+	
 	private void initRecipe(){
 		BookButtonCrafting hG = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.crystallHammerHead, 1, 2), PageRegistry.CRYSTAL_HAMMER_HEAD_PAGE);
 		hG.disableFrame();
