@@ -10,9 +10,7 @@ You can also use your crystals to control / manipulate your friends / entities.
 
 * [Wiki](https://github.com/COM8/Crystallogy/wiki)
 
-##ToDo list for the next big release (1.1):
-* Clean up the code - 30%
-* An ingame documentation / wiki book - 99%
+##ToDo list for the next big release (1.2):
 * [MORE NOTES TO COME]
 
 ##ToDo for later releases:
