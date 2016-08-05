@@ -1,5 +1,6 @@
 package de.comeight.crystallogy;
 
+import de.comeight.crystallogy.util.Utilities;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -15,12 +16,15 @@ public class ServerProxy extends CommonProxy {
 
 		
 	// -----------------------------------------------Sonstige Methoden:-------------------------------------
-	
+	private void registerEventHandlerServer(){
+    	Utilities.addConsoleText("All server event Handler are registered.");
+    }
 	
 	// -----------------------------------------------Pre-Init:----------------------------------------------
 	@Override
 	public void preInit(FMLPreInitializationEvent e) {
 		super.preInit(e);
+		registerEventHandlerServer();
 	}
 
 	// -----------------------------------------------Init:--------------------------------------------------

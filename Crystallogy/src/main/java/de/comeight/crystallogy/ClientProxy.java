@@ -4,7 +4,6 @@ import org.lwjgl.input.Keyboard;
 
 import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import de.comeight.crystallogy.handler.BlockRenderHandler;
-import de.comeight.crystallogy.handler.EventHandler;
 import de.comeight.crystallogy.handler.ItemRenderHandler;
 import de.comeight.crystallogy.particles.ParticleHandler;
 import de.comeight.crystallogy.renderer.RendererEntityInCrystal;
@@ -36,8 +35,7 @@ public class ClientProxy extends CommonProxy{
 	@Override
     public void preInit(FMLPreInitializationEvent e) {
         super.preInit(e);
-        MinecraftForge.EVENT_BUS.register(pH);
-        MinecraftForge.EVENT_BUS.register(new EventHandler());
+        registerEventHandlerClient();
         
         pH.preInit();
     }
@@ -50,7 +48,6 @@ public class ClientProxy extends CommonProxy{
         ItemRenderHandler.registerItemRenderer();
         registerSpecialRenderers();
         registerKeybinding();
-        registerEventHandlerClient();
         
         pH.init();
     }
@@ -84,6 +81,7 @@ public class ClientProxy extends CommonProxy{
     }
     
     private void registerEventHandlerClient(){
-    	Utilities.addConsoleText("All eventHandler are registered.");
+    	MinecraftForge.EVENT_BUS.register(pH);
+    	Utilities.addConsoleText("All client event Handler are registered.");
     }
 }

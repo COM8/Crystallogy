@@ -7,6 +7,7 @@ import de.comeight.crystallogy.gui.GuiCompressor;
 import de.comeight.crystallogy.gui.GuiCrystallCrusher;
 import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ConfigHandler;
+import de.comeight.crystallogy.handler.EventHandler;
 import de.comeight.crystallogy.handler.GuiHandler;
 import de.comeight.crystallogy.handler.GuiHandlerRegistry;
 import de.comeight.crystallogy.handler.ItemHandler;
@@ -43,6 +44,7 @@ import de.comeight.crystallogy.tileEntitys.machines.TileEntityCrystallCrusher;
 import de.comeight.crystallogy.util.Utilities;
 import de.comeight.crystallogy.worldGenerators.WorldGenerator;
 import de.comeight.crystallogy.worldGenerators.WorldGeneratorFoilage;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -140,8 +142,15 @@ public class CommonProxy {
 		
 	}
 	
+	private void registerEventHandlerCommon(){
+		MinecraftForge.EVENT_BUS.register(new EventHandler());
+    	Utilities.addConsoleText("All common event Handler are registered.");
+    }
+	
 	// -----------------------------------------------Pre-Init:----------------------------------------------
 	public void preInit(FMLPreInitializationEvent e) {
+		registerEventHandlerCommon();
+		
 		cH.preInit(e);
 		bH.preInit();
 		iH.preInit();
