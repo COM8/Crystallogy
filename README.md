@@ -19,6 +19,8 @@ You can also use your crystals to control / manipulate your friends / entities.
 * Brain system - store parts of your brain in special crystals
 * Soul / Brain trading for a chunk loader
 * Praise the OS system
+* Waila support
+* Crafttweaker support
 * [MORE NOTES TO COME]
 
 ##Reporting Bugs:
