@@ -12,10 +12,13 @@ You can also use your crystals to control / manipulate your friends / entities.
 
 ##ToDo list for the next big release (1.1):
 * Clean up the code - 30%
-* An ingame documentation / wiki book - 80%
+* An ingame documentation / wiki book - 99%
 * [MORE NOTES TO COME]
 
 ##ToDo for later releases:
+* Brain system - store parts of your brain in special crystals
+* Soul / Brain trading for a chunk loader
+* Praise the OS system
 * [MORE NOTES TO COME]
 
 ##Reporting Bugs:
