@@ -113,10 +113,10 @@ public class BlockHandler {
 	}
 	
 	private void registerOreDictionary(){
-		OreDictionary.registerOre("blockGlass", new ItemStack(crystalGlas, 1, 0));
-		OreDictionary.registerOre("blockGlass", new ItemStack(crystalGlas, 1, 1));
+		OreDictionary.registerOre("blockGlass", new ItemStack(crystalGlas, 1, OreDictionary.WILDCARD_VALUE));
+		/*OreDictionary.registerOre("blockGlass", new ItemStack(crystalGlas, 1, 1));
 		OreDictionary.registerOre("blockGlass", new ItemStack(crystalGlas, 1, 2));
-		OreDictionary.registerOre("blockGlass", new ItemStack(crystalGlas, 1, 3));
+		OreDictionary.registerOre("blockGlass", new ItemStack(crystalGlas, 1, 3));*/
 	}
 
 	//-----------------------------------------------Pre-Init:----------------------------------------------
