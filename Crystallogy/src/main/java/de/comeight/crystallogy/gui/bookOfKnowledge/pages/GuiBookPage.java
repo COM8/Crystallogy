@@ -104,6 +104,7 @@ public class GuiBookPage extends GuiScreen {
 		buttonList.add(new BookButtonBackwards(getNextButtonId(), BORDER_LEFT, 234));
 		buttonList.add(new BookButtonForwards(getNextButtonId(), xSize - 27, 234, this));
 		buttonList.add(new BookButtonHome(getNextButtonId()));
+		//buttonList.add(new BookButtonClipToBook(getNextButtonId()));
 	}
     
     @Override

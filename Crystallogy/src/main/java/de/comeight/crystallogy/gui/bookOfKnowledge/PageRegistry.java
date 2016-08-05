@@ -90,6 +90,8 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookYellowCrys
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.search.GuiBookSearch;
 import de.comeight.crystallogy.util.Log;
 import net.minecraft.client.Minecraft;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -102,6 +104,8 @@ public class PageRegistry {
 	private static GuiBookPage currentPage;
 	
 	private static int ID = 0;
+	
+	private static ItemStack book;
 	
 	//Pages:
 	public static GuiBookMain MAIN_PAGE = new GuiBookMain();
@@ -215,6 +219,37 @@ public class PageRegistry {
 	
 	public static GuiBookPage getCurrentPage() {
 		return currentPage;
+	}
+	
+	public static void setBook(ItemStack stack){
+		book = stack;
+	}
+	
+	public static void removeBook(){
+		setBook(null);
+	}
+	
+	public static GuiBookPage getClipedPage(){
+		GuiBookPage page = null;
+		if(book != null && book.hasTagCompound()){
+			NBTTagCompound compound = book.getTagCompound();
+			if(compound.hasKey("clipedPageId")){
+				int id = compound.getInteger("clipedPageId");
+				compound.removeTag("clipedPageId");
+				page = list.get(id).PAGE;
+			}
+		}
+		return page;
+	}
+	
+	public static int getIdFormPage(GuiBookPage page){
+		for (PageRegistryEntry pageRegistryEntry : list) {
+			if(page.getClass() == pageRegistryEntry.PAGE.getClass()){
+				return pageRegistryEntry.ID;
+			}
+		}
+		
+		return -1;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
@@ -331,12 +366,11 @@ public class PageRegistry {
 		if(page == null){
 			return;
 		}
-		for (PageRegistryEntry pageRegistryEntry : list) {
-			if(page.getClass() == pageRegistryEntry.PAGE.getClass()){
-				course.add(lastVisited);
-				lastVisited = pageRegistryEntry.ID;
-				return;
-			}
+		
+		int id = getIdFormPage(page);
+		if(id != -1){
+			course.add(lastVisited);
+			lastVisited = id;
 		}
 	}
 	
@@ -348,6 +382,18 @@ public class PageRegistry {
 		PageRegistry.addCourse(fromPage);
 		mc.displayGuiScreen(toPage);
 		toPage.onGuiOpened();
+	}
+	
+	public static void clipToBook(GuiBookPage page){
+		if(book != null){
+			if(!book.hasTagCompound()){
+				book.setTagCompound(new NBTTagCompound());
+			}
+			int id = getIdFormPage(page);
+			if(id != -1){
+				book.getTagCompound().setInteger("clipedPageId", id);
+			}
+		}
 	}
 	
 }

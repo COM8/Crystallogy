@@ -18,7 +18,18 @@ public class GuiBookOfKnowledge extends GuiScreen {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public void initGui() {
-		openLastOpenedPage();
+		if(!openClipedPage()){
+			openLastOpenedPage();
+		}
+	}
+	
+	private boolean openClipedPage(){
+		GuiBookPage clipedPage = PageRegistry.getClipedPage(); 
+		if(clipedPage == null){
+			return false;
+		}
+		mc.displayGuiScreen(clipedPage);
+		return true;
 	}
 	
 	private void openLastOpenedPage(){

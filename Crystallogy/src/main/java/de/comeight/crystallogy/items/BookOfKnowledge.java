@@ -2,6 +2,7 @@ package de.comeight.crystallogy.items;
 
 import de.comeight.crystallogy.CrystallogyBase;
 import de.comeight.crystallogy.gui.GuiBookOfKnowledge;
+import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import de.comeight.crystallogy.handler.SoundHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -29,7 +30,8 @@ public class BookOfKnowledge extends BaseItem {
 		BlockPos pos = playerIn.getPosition();
 		
 		if (worldIn.isRemote)
-        {	
+        {
+			PageRegistry.setBook(itemStackIn);
 			playerIn.openGui(CrystallogyBase.INSTANCE, GuiBookOfKnowledge.ID, worldIn, pos.getX(), pos.getY(), pos.getZ());
 			playerIn.playSound(SoundHandler.BOOKOPEN, 1.0F, 1.0F);
         }
