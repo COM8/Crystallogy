@@ -38,7 +38,7 @@ public class BaseCrystalPickaxe extends BaseItemPickaxe {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
-		if(!entityLiving.isSneaking()){
+		if(!entityLiving.isSneaking() && state.getBlock().isToolEffective("pickaxe", state)){
 			breakBlocksArround(stack, worldIn, pos, entityLiving);
 		}
 		else{
@@ -98,8 +98,8 @@ public class BaseCrystalPickaxe extends BaseItemPickaxe {
 			stack.damageItem(1, entityLiving);
 			return;
 		}
-		if(state.getBlock().getHarvestLevel(state) <= getHarvestLevel(stack, "pickaxe") && canHarvestBlock(state)){
-			if(block.getMaterial(state) == Material.AIR){
+		if(state.getBlockHardness(worldIn, pos) >= 0 && state.getBlock().getHarvestLevel(state) <= getHarvestLevel(stack, "pickaxe") && canHarvestBlock(state)){
+			if(state.getMaterial() == Material.AIR){
 				return;
 			}
 			

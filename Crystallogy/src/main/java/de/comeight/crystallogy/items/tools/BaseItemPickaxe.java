@@ -27,7 +27,7 @@ public abstract class BaseItemPickaxe extends ItemPickaxe {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	protected void canHarvestBlock(ItemStack stack, World worldIn, BlockPos pos, ArrayList<BlockPos> list){
 		IBlockState state = worldIn.getBlockState(pos);
-		if(state.getBlock().getHarvestLevel(state) <= getHarvestLevel(stack, "pickaxe") && canHarvestBlock(state)){
+		if(state.getBlockHardness(worldIn, pos) >= 0 && state.getBlock().getHarvestLevel(state) <= getHarvestLevel(stack, "pickaxe") && canHarvestBlock(state)){
 			list.add(pos);
 		}
 	}

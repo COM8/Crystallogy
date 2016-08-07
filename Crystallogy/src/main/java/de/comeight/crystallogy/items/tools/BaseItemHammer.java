@@ -32,7 +32,7 @@ public abstract class BaseItemHammer extends BaseItemPickaxe {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState blockIn, BlockPos pos, EntityLivingBase entityLiving) {
-		if(!entityLiving.isSneaking()){
+		if(!entityLiving.isSneaking() && blockIn.getBlock().isToolEffective("pickaxe", blockIn)){
 			breakBlocksArround(stack, worldIn, blockIn, pos, entityLiving);
 		}
 		else{
@@ -46,7 +46,7 @@ public abstract class BaseItemHammer extends BaseItemPickaxe {
 	
 	protected void breakBlocksArround(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving){
 		Block block = state.getBlock();
-		if(block.getMaterial(state) == Material.AIR){
+		if(state.getMaterial() == Material.AIR){
 			return;
 		}
 		RayTraceResult rTR = rayTrace(worldIn, (EntityPlayer) entityLiving, false);
