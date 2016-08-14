@@ -68,4 +68,12 @@ public class InfusionRecipePureDust extends InfusionRecipe {
 			
 			return true;
 		}
+		
+		@Override
+		protected void removeIngredients() {
+			super.removeIngredients();
+			ItemStack bucket = new ItemStack(Items.BUCKET);
+			ingredients[0].setInventorySlotContents(0, bucket);
+			setItemOnClient(ingredients[0].getPos(), bucket);
+		}
 }
