@@ -22,7 +22,7 @@ public class BaseCrystalPickaxe extends BaseItemPickaxe {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public BaseCrystalPickaxe(ToolMaterial material, String id) {
 		super(material, id);
-		setMaxDamage(getMaxDamage() * 4);
+		setMaxDamage(getMaxDamage() * 10);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -67,7 +67,7 @@ public class BaseCrystalPickaxe extends BaseItemPickaxe {
 				break;
 				
 			case EAST:
-				pos = pos.add(aOEHalf, aOEHalf, 0);
+				pos = pos.add(aOEHalf + 1, aOEHalf, 0);
 				break;
 				
 			case NORTH:
@@ -75,7 +75,7 @@ public class BaseCrystalPickaxe extends BaseItemPickaxe {
 				break;
 				
 			case SOUTH:
-				pos = pos.add(0, aOEHalf, aOEHalf);
+				pos = pos.add(0, aOEHalf, aOEHalf + 1);
 				break;
 
 			default:
