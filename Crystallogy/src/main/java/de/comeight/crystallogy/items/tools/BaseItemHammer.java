@@ -23,7 +23,7 @@ public abstract class BaseItemHammer extends BaseItemPickaxe {
 	public BaseItemHammer(ToolMaterial material, String ID) {
 		super(material, ID);
 		
-		setMaxDamage(getMaxDamage() * 5);
+		setMaxDamage(getMaxDamage() * 11);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
