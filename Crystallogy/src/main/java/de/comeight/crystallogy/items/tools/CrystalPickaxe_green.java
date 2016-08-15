@@ -14,7 +14,7 @@ public class CrystalPickaxe_green extends BaseCrystalPickaxe {
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	@Override
 	public int getAOE() {
-		return 2;
+		return 3;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
