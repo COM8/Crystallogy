@@ -101,14 +101,14 @@ public class BaseCrystalPickaxe extends BaseItemPickaxe {
 			case DOWN:
 				pos = pos.add(0, -aOEHalf, 0);
 				if(mode == 1){
-					tryMineBlocks(pos, worldIn, stack, entityLiving, -aOEX, aOEX, 1, 2, -aOEZ, aOEZ);
+					tryMineBlocks(pos, worldIn, stack, entityLiving, -aOEX, aOEX, 2, 3, -aOEZ, aOEZ);
 					return;
 				}
 				break;
 			case UP:
 				pos = pos.add(0, aOEHalf, 0);
 				if(mode == 1){
-					tryMineBlocks(pos, worldIn, stack, entityLiving, -aOEX, aOEX, -1, 0, -aOEZ, aOEZ);
+					tryMineBlocks(pos, worldIn, stack, entityLiving, -aOEX, aOEX, -2, -1, -aOEZ, aOEZ);
 					return;
 				}
 				break;
@@ -116,7 +116,7 @@ public class BaseCrystalPickaxe extends BaseItemPickaxe {
 			case WEST:
 				pos = pos.add(-aOEHalf, aOEHalf, 0);
 				if(mode == 1){
-					tryMineBlocks(pos, worldIn, stack, entityLiving, 1, 2, -aOEY, aOEY, -aOEZ, aOEZ);
+					tryMineBlocks(pos, worldIn, stack, entityLiving, 2, 3, -aOEY, aOEY, -aOEZ, aOEZ);
 					return;
 				}
 				break;
@@ -124,7 +124,7 @@ public class BaseCrystalPickaxe extends BaseItemPickaxe {
 			case EAST:
 				pos = pos.add(aOEHalf + 1, aOEHalf, 0);
 				if(mode == 1){
-					tryMineBlocks(pos, worldIn, stack, entityLiving, -2, -1, -aOEY, aOEY, -aOEZ, aOEZ);
+					tryMineBlocks(pos, worldIn, stack, entityLiving, -3, -2, -aOEY, aOEY, -aOEZ, aOEZ);
 					return;
 				}
 				break;
@@ -132,7 +132,7 @@ public class BaseCrystalPickaxe extends BaseItemPickaxe {
 			case NORTH:
 				pos = pos.add(0, aOEHalf, -aOEHalf);
 				if(mode == 1){
-					tryMineBlocks(pos, worldIn, stack, entityLiving, -aOEX, aOEX, -aOEY, aOEY, 1, 2);
+					tryMineBlocks(pos, worldIn, stack, entityLiving, -aOEX, aOEX, -aOEY, aOEY, 2, 3);
 					return;
 				}
 				break;
@@ -140,7 +140,7 @@ public class BaseCrystalPickaxe extends BaseItemPickaxe {
 			case SOUTH:
 				pos = pos.add(0, aOEHalf, aOEHalf + 1);
 				if(mode == 1){
-					tryMineBlocks(pos, worldIn, stack, entityLiving, -aOEX, aOEX, -aOEY, aOEY, -2, -1);
+					tryMineBlocks(pos, worldIn, stack, entityLiving, -aOEX, aOEX, -aOEY, aOEY, -3, -2);
 					return;
 				}
 				break;
