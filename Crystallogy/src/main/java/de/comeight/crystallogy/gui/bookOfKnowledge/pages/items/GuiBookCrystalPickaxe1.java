@@ -79,13 +79,13 @@ public class GuiBookCrystalPickaxe1 extends GuiBookPage {
 		GuiBookUtilities.drawTextBox(xPosBook + BORDER_LEFT, yPosBook + 120, WRAPWIDTH, 1.0F, "A Crystal Pickaxe is a powerful tool. It can mine a x*x*x area.\n"
 				+ "If you shift right-click you can change the mode.\n"
 				+ "Green Crystal Pickaxe:\n"
-				+ "Modes: 4*4*4, 4*4*1, 1*1*1\n"
-				+ "Blue Crystal Pickaxe:\n"
 				+ "Modes: 6*6*6, 6*6*1, 1*1*1\n"
+				+ "Blue Crystal Pickaxe:\n"
+				+ "Modes: 10*10*10, 10*10*1, 1*1*1\n"
 				+ "Yellow Crystal Pickaxe:\n"
-				+ "Modes: 8*8*8, 8*8*1, 1*1*1\n"
+				+ "Modes: 14*14*14, 14*14*1, 1*1*1\n"
 				+ "Red Crystal Pickaxe:\n"
-				+ "Modes: 10*10*10, 10*10*1, 1*1*1\n");
+				+ "Modes: 18*18*18, 18*18*1, 1*1*1\n");
 	}
 	
 	private void drawItem(){
