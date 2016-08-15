@@ -9,12 +9,13 @@ public class CrystalPickaxe_yellow extends BaseCrystalPickaxe {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public CrystalPickaxe_yellow() {
 		super(CustomToolMaterials.CRYSTALL_YELLOW, ID);
+		setMaxDamage(getMaxDamage() * 2);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	@Override
 	public int getAOE() {
-		return 4;
+		return 7;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
