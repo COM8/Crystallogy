@@ -23,9 +23,9 @@ public class WorldGenCrystorya extends WorldGenerator {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public boolean generate(World worldIn, Random rand, BlockPos pos) {
-		if (worldIn.isAirBlock(pos) && crystorya.canPlaceBlockAt(worldIn, pos))
+		if (worldIn.isAirBlock(pos) && crystorya.canPlaceBlockAt(worldIn, pos) && pos.getY() > 0)
         {
-        	worldIn.setBlockState(pos, crystorya.getDefaultState(), 30);
+        	worldIn.setBlockState(pos, crystorya.getDefaultState(), 3);
         	return true;
         }
 		return false;
