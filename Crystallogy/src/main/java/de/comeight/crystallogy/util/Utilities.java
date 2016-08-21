@@ -21,8 +21,13 @@ public class Utilities {
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	public static int getRandInt(int min, int max) {
         Random rand = new Random();
-        int randomNum = rand.nextInt((max - min) + 1) + min;
-        return randomNum;
+        int bound = (max - min) + 1;
+        if(bound < 0){
+        	return rand.nextInt(bound * -1) * -1 + min;
+        }
+        else{
+        	return rand.nextInt(bound) + min;
+        }
     }
 	
 	public static double getRandDouble(double min, double max) {
