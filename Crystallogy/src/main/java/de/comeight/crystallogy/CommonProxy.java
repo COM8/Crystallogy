@@ -42,7 +42,7 @@ import de.comeight.crystallogy.tileEntitys.machines.TileEntityCharger;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCompressor;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCrystallCrusher;
 import de.comeight.crystallogy.util.Utilities;
-import de.comeight.crystallogy.worldGenerators.WorldGenerator;
+import de.comeight.crystallogy.worldGenerators.WorldGenCaveCrystal;
 import de.comeight.crystallogy.worldGenerators.WorldGeneratorFoilage;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -117,10 +117,11 @@ public class CommonProxy {
 	}
 	
 	private void registerWorldGens() {
-		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_green, ConfigHandler.greenChancesToSpawn, ConfigHandler.greenMaxSize, ConfigHandler.greenCrystalSpawnMin, ConfigHandler.greenCrystalSpawnMax), 0);
-		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_blue, ConfigHandler.blueChancesToSpawn, ConfigHandler.blueMaxSize, ConfigHandler.blueCrystalSpawnMin, ConfigHandler.blueCrystalSpawnMax), 0);
-		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_yellow, ConfigHandler.yellowChancesToSpawn, ConfigHandler.yellowMaxSize, ConfigHandler.yellowCrystalSpawnMin, ConfigHandler.yellowCrystalSpawnMax), 0);
-		GameRegistry.registerWorldGenerator(new WorldGenerator(BlockHandler.crystall_red, ConfigHandler.redChancesToSpawn, ConfigHandler.redMaxSize, ConfigHandler.redCrystalSpawnMin, ConfigHandler.redCrystalSpawnMax), 0);
+		GameRegistry.registerWorldGenerator(new WorldGenCaveCrystal(BlockHandler.crystall_green, ConfigHandler.greenChancesToSpawn, ConfigHandler.greenMaxSize, ConfigHandler.greenCrystalSpawnMin, ConfigHandler.greenCrystalSpawnMax), 0);
+		GameRegistry.registerWorldGenerator(new WorldGenCaveCrystal(BlockHandler.crystall_blue, ConfigHandler.blueChancesToSpawn, ConfigHandler.blueMaxSize, ConfigHandler.blueCrystalSpawnMin, ConfigHandler.blueCrystalSpawnMax), 0);
+		GameRegistry.registerWorldGenerator(new WorldGenCaveCrystal(BlockHandler.crystall_yellow, ConfigHandler.yellowChancesToSpawn, ConfigHandler.yellowMaxSize, ConfigHandler.yellowCrystalSpawnMin, ConfigHandler.yellowCrystalSpawnMax), 0);
+		GameRegistry.registerWorldGenerator(new WorldGenCaveCrystal(BlockHandler.crystall_red, ConfigHandler.redChancesToSpawn, ConfigHandler.redMaxSize, ConfigHandler.redCrystalSpawnMin, ConfigHandler.redCrystalSpawnMax), 0);
+		
 		GameRegistry.registerWorldGenerator(new WorldGeneratorFoilage(3), 20);
 		
 		Utilities.addConsoleText("All worldgens are registered.");
