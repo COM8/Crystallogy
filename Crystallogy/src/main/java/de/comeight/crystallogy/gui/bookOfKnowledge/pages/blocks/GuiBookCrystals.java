@@ -45,9 +45,9 @@ public class GuiBookCrystals extends GuiBookPageSuggestions {
 	}
 	
 	private void drawText(){
-		GuiBookUtilities.drawTextBox(xPosBook + BORDER_LEFT, yPosBook + 120, WRAPWIDTH, 1.0F, "Crystals are the main recourse of Crystallogy and can be found underground.\n"
+		GuiBookUtilities.drawTextBox(xPosBook + BORDER_LEFT, yPosBook + 120, WRAPWIDTH, 1.0F, "Crystals are the main recourse of Crystallogy and can be found underground in caves.\n"
 				+"\n"
-				+ "The best way to find them is, to hunt for them in the dark, because they act as a small light source.");
+				+ "The best way to find them is to hunt for them in the dark, because they emit a small amount of light.");
 		
 		GuiBookUtilities.drawTextBox(xPosBook + xSize / 2 + BORDER_RIGHT, yPosBook + BORDER_TOP, WRAPWIDTH - 10, 1.0F, "Green Crystals can be found at a \"depth\" of 128-64.\n"
 				+"\n"
