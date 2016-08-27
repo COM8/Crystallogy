@@ -11,12 +11,16 @@ You can also use your crystals to control / manipulate your friends / entities.
 * [Wiki](https://github.com/COM8/Crystallogy/wiki)
 
 ##ToDo list for the next big release (1.2):
+* Crystals now only generate in caves
+* Control your caught entities to let them work for you
+* A new crafting mechanism based on infusion crafting
 * [MORE NOTES TO COME]
 
 ##ToDo for later releases:
 * Brain system - store parts of your brain in special crystals
 * Soul / Brain trading for a chunk loader
 * Praise the OS system
+* New models for all machines by MechWarrior99
 * Waila support
 * Crafttweaker support
 * [MORE NOTES TO COME]
