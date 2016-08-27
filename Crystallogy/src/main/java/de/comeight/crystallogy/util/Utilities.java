@@ -20,25 +20,34 @@ public class Utilities {
 
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	public static int getRandInt(int min, int max) {
-        Random rand = new Random();
-        int bound = (max - min) + 1;
-        if(bound < 0){
-        	return rand.nextInt(bound * -1) * -1 + min;
-        }
-        else{
-        	return rand.nextInt(bound) + min;
-        }
+        return getRandInt(min, max, new Random());
     }
 	
+	public static int getRandInt(int min, int max, Random random){
+        int bound = (max - min) + 1;
+        if(bound < 0){
+        	return random.nextInt(bound * -1) * -1 + min;
+        }
+        else{
+        	return random.nextInt(bound) + min;
+        }
+	}
+	
 	public static double getRandDouble(double min, double max) {
-        Random rand = new Random();
-        double randomValue = min + (max - min) * rand.nextDouble();
+        return getRandDouble(min, max, new Random());
+    }
+	
+	public static double getRandDouble(double min, double max, Random random) {
+        double randomValue = min + (max - min) * random.nextDouble();
         return randomValue;
     }
 	
 	public static float getRandFloat(float min, float max) {
-        Random rand = new Random();
-        float randomValue = min + (max - min) * rand.nextFloat();
+		return getRandFloat(min, max, new Random());
+    }
+	
+	public static float getRandFloat(float min, float max, Random random) {
+        float randomValue = min + (max - min) * random.nextFloat();
         return randomValue;
     }
 	
