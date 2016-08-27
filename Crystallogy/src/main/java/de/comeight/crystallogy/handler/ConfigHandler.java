@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class ConfigHandler {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	private static final String CONFIG_VERSION = "1.2";
+	private static final String CONFIG_VERSION = "1.3";
 	
 	private static final String CATEGORY_DEBUG = "debug";
 	private static final String CATEGORY_CRYSTALS = "crystals";
@@ -43,7 +43,7 @@ public class ConfigHandler {
 	
 	public static int redCrystalSpawnMin = 0;
 	public static int redCrystalSpawnMax = 16;
-	public static int redChancesToSpawn = 5;
+	public static int redChancesToSpawn = 7;
 	public static int redMaxSize = 3;
 	
 	//Infusion:
@@ -138,8 +138,8 @@ public class ConfigHandler {
 		prop.setComment("The maximum height where Red Crystals can spawn. default = 16");
 		redCrystalSpawnMax = prop.getInt();
 		
-		prop = config.get(CATEGORY_CRYSTALS, "redChancesToSpawn", 5);
-		prop.setComment("How often should the generator try to spawn Red Crystals? default = 5");
+		prop = config.get(CATEGORY_CRYSTALS, "redChancesToSpawn", 7);
+		prop.setComment("How often should the generator try to spawn Red Crystals? default = 7");
 		redChancesToSpawn = prop.getInt();
 		
 		prop = config.get(CATEGORY_CRYSTALS, "redMaxSize", 3);
