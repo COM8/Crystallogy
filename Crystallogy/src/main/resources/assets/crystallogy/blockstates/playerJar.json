@@ -1,7 +1,8 @@
 {
     "variants": {
-        "normal": [
-            { "model": "crystallogy:playerJar" }
-        ]
+		"facing=north": { "model": "crystallogy:playerJar" },
+		"facing=east":  { "model": "crystallogy:playerJar", "y": 90 },
+		"facing=south": { "model": "crystallogy:playerJar", "y": 180 },
+		"facing=west":  { "model": "crystallogy:playerJar", "y": 270 }
     }
 }

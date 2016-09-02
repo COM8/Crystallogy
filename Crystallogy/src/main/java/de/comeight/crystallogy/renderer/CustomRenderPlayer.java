@@ -23,24 +23,25 @@ public class CustomRenderPlayer extends RenderPlayer {
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
-
+	
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
-	@Override
-	public void doRender(AbstractClientPlayer player, double x, double y, double z, float entityYaw, float partialTicks) {
+	public void doRender(AbstractClientPlayer player, double x, double y, double z, float entityYaw, float partialTicks, float rotation) {
 		float scale = 0.5F;
 		player.setRotationYawHead(partialTicks*0.009F);
 		
 		GlStateManager.pushMatrix();
-		
 		GlStateManager.scale(scale, scale, scale);
 		GlStateManager.translate(x, y, z);
 		GlStateManager.scale(scale, scale, scale);
-		GlStateManager.translate(x, y, z);
+		GlStateManager.translate(x , y, z);
 		
-		GlStateManager.rotate(135.0F, 0.0F, 1.0F, 0.0F);
+		GlStateManager.translate(x, y, z);
+		GlStateManager.rotate(rotation, 0.0F, 1.0F, 0.0F);
+		GlStateManager.translate(-x, -y, -z);
+		
+		GlStateManager.color(1.0F, 1.0F, 1.0F);
         RenderHelper.enableStandardItemLighting();
-        GlStateManager.rotate(-135.0F, 0.0F, 1.0F, 0.0F);
 		super.doRender(player, x, y, z, entityYaw, partialTicks);
 		GlStateManager.popMatrix();
 		

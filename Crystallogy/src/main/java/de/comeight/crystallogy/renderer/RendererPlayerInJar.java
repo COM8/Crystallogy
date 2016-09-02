@@ -1,12 +1,15 @@
 package de.comeight.crystallogy.renderer;
 
+import de.comeight.crystallogy.blocks.BaseBlockEntityJar;
 import de.comeight.crystallogy.entity.PlayerClientDummy;
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -20,7 +23,39 @@ public class RendererPlayerInJar extends TileEntitySpecialRenderer<TileEntityPla
 	
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
+	private float getRotation(World worldIn, BlockPos pos){
+		IBlockState state = worldIn.getBlockState(pos);
+		if(state == null){
+			return 0.0F;
+		}
+		
+		try {
+			switch (state.getValue(BaseBlockEntityJar.FACING)) {
+				case NORTH:
+					
+					return 180.0F;
+					
+				case EAST:
+								
+					return 90.0F;
+					
+				case WEST:
+					
+					return 270.0F;
+					
+				case SOUTH:
+					
+					return 0.0F;
 
+				default:
+					return 0.0F;
+			}
+		} 
+		catch (Exception e) {
+			return 0.0F;
+		}
+		
+	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
@@ -30,18 +65,19 @@ public class RendererPlayerInJar extends TileEntitySpecialRenderer<TileEntityPla
 		}
 		float partialTick = 0.0F;
 		//float partialTick = (float) (720.0 * (System.currentTimeMillis() / 2 & 0x3FFFL) / 0x3FFFL);
-		renderPlayer(new PlayerClientDummy(getWorld(), tE.getProfile()), x, y, z, partialTick);
+		
+		renderPlayer(new PlayerClientDummy(getWorld(), tE.getProfile()), x, y, z, partialTick, getRotation(getWorld(), tE.getPos()));
 		renderIngredients(tE.getWorld(), x, y, z, partialTick);
 	}
 	
-	private void renderPlayer(PlayerClientDummy player, double posX, double posY, double posZ, float partialTicks){
+	private void renderPlayer(PlayerClientDummy player, double posX, double posY, double posZ, float partialTicks, float rotation){
 		if(player == null){
 			return;
 		}
 		CustomRenderPlayer cRP = new CustomRenderPlayer(Minecraft.getMinecraft().getRenderManager());
 		
 		GlStateManager.pushMatrix();
-		cRP.doRender(player, posX + 0.5, posY, posZ + 0.5, 1.0F, partialTicks);
+		cRP.doRender(player, posX + 0.5, posY, posZ + 0.5, 1.0F, partialTicks, rotation);
 		GlStateManager.popMatrix();
 	}
 	
