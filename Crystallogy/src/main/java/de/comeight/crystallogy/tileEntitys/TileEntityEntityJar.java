@@ -262,7 +262,6 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 	@Override
 	public void update() {
 		if(newEntity){ //Load the entity
-			System.out.println("newm");
 			if(entityCompound != null && loadEntityFromCompound(entityCompound)){
 				newEntity = false;
 				entityCompound = null;
