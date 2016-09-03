@@ -67,7 +67,7 @@ public class BaseCrystalKnife extends BaseItemSword{
 	protected EntityLivingBase getEntity(ItemStack stack, World worldIn){
 		NBTTagCompound compound = stack.getTagCompound();
 		UUID uuid = UUID.fromString(compound.getString("uuid"));
-		List<Entity> list = worldIn.getLoadedEntityList();
+		List<Entity> list = worldIn.loadedEntityList;
 		for (Entity entity : list) {
 			if(uuid.equals(entity.getUniqueID())){
 				return (EntityLivingBase) entity;
@@ -98,7 +98,7 @@ public class BaseCrystalKnife extends BaseItemSword{
 		if(hasEntity(stack)){
 			if(worldIn.getTileEntity(pos) instanceof TileEntityEntityJar){
 				TileEntityEntityJar tE = (TileEntityEntityJar) worldIn.getTileEntity(pos);
-				if(!tE.hasEntity()){
+				if(!tE.hasEntity() && worldIn.isRemote){
 					tE.setEntity(getEntity(stack, worldIn));
 					stack = removeEntity(stack, worldIn, playerIn.getPositionVector(), false);
 					return EnumActionResult.SUCCESS;

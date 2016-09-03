@@ -38,8 +38,8 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 	protected EnumThreats threat;
 	protected int threatTick; 
 	protected int tick;
-	protected boolean couldNotLoad;
-	protected NBTTagCompound couldNotLoadCompund;
+	protected boolean newEntity;
+	protected NBTTagCompound entityCompound;
 	
 	public enum EnumThreats{
 		POISON(new RGBColor(0.0F, 1.0F, 0.0F), ItemHandler.poisDust, 0),
@@ -120,8 +120,8 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 		threatTick = 0;
 		threat = null;
 		entity = null;
-		couldNotLoad = false;
-		couldNotLoadCompund = null;
+		newEntity = false;
+		entityCompound = null;
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -143,10 +143,7 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 	}
 	
 	public boolean hasEntity(){
-		if(entity != null){
-			return true;
-		}
-		return false;
+		return entity != null;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
@@ -173,10 +170,10 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 		return compound;
 	}
 	
-	public void readCustomDataToNBT(NBTTagCompound compound) {
+	public void readCustomDataFromNBT(NBTTagCompound compound) {
 		if(compound.getBoolean("hasEntity")){
-			couldNotLoad = true;
-			couldNotLoadCompund = (NBTTagCompound) compound.copy();
+			newEntity = true;
+			entityCompound = (NBTTagCompound) compound.copy();
 		}
 		else{
 			this.entity = null;
@@ -184,7 +181,7 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 	}
 	
 	protected EntityLivingBase findEntity(UUID uuid){
-		List<Entity> list = worldObj.getLoadedEntityList();
+		List<Entity> list = worldObj.loadedEntityList;
 		for (Entity entity : list) {
 			if(uuid.equals(entity.getUniqueID())){
 				return (EntityLivingBase) entity;
@@ -206,7 +203,7 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 	
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
-		readCustomDataToNBT(compound);
+		readCustomDataFromNBT(compound);
 		super.readFromNBT(compound);
 	}
 	
@@ -257,13 +254,25 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 		}
 	}
 	
+	private boolean loadEntityFromCompound(NBTTagCompound compound){
+		entity = findEntity(entityCompound.getUniqueId("uuid"));
+		return entity != null;
+	}
+	
 	@Override
 	public void update() {
-		if(!hasEntity()){
-			if(couldNotLoad && worldObj.isRemote){ //Load the entity
-				UUID uuid = couldNotLoadCompund.getUniqueId("uuid");
-				entity = findEntity(uuid);
+		if(newEntity){ //Load the entity
+			System.out.println("newm");
+			if(entityCompound != null && loadEntityFromCompound(entityCompound)){
+				newEntity = false;
+				entityCompound = null;
 			}
+			else{
+				newEntity = true;
+			}
+		}
+		
+		if(!hasEntity()){
 			if(threat != null){
 				threat = null;
 			}

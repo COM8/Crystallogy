@@ -59,7 +59,7 @@ public class TileEntityPlayerJar extends TileEntityEntityJar {
 	}
 	
 	@Override
-	public void readCustomDataToNBT(NBTTagCompound compound) {
+	public void readCustomDataFromNBT(NBTTagCompound compound) {
 		if(compound.getBoolean("hasEntity")){
 			String name = compound.getString("name");
 			UUID uuid = compound.getUniqueId("uuid");
