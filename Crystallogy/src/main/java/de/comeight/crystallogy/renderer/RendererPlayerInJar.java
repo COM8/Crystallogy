@@ -29,30 +29,21 @@ public class RendererPlayerInJar extends TileEntitySpecialRenderer<TileEntityPla
 			return 0.0F;
 		}
 		
-		try {
-			switch (state.getValue(BaseBlockEntityJar.FACING)) {
-				case NORTH:
-					
-					return 180.0F;
-					
-				case EAST:
-								
-					return 90.0F;
-					
-				case WEST:
-					
-					return 270.0F;
-					
-				case SOUTH:
-					
-					return 0.0F;
+		switch (state.getValue(BaseBlockEntityJar.FACING)) {
+			case NORTH:
+				return 180.0F;
+				
+			case EAST:	
+				return 90.0F;
+				
+			case WEST:
+				return 270.0F;
+				
+			case SOUTH:
+				return 0.0F;
 
-				default:
-					return 0.0F;
-			}
-		} 
-		catch (Exception e) {
-			return 0.0F;
+			default:
+				return 0.0F;
 		}
 		
 	}
@@ -64,7 +55,6 @@ public class RendererPlayerInJar extends TileEntitySpecialRenderer<TileEntityPla
 			return;
 		}
 		float partialTick = 0.0F;
-		//float partialTick = (float) (720.0 * (System.currentTimeMillis() / 2 & 0x3FFFL) / 0x3FFFL);
 		
 		renderPlayer(new PlayerClientDummy(getWorld(), tE.getProfile()), x, y, z, partialTick, getRotation(getWorld(), tE.getPos()));
 		renderIngredients(tE.getWorld(), x, y, z, partialTick);
