@@ -209,7 +209,7 @@ public class BaseBlockEntityJar extends BaseBlockTileEntity {
 		TileEntity tE = worldIn.getTileEntity(pos);
 		if(tE instanceof TileEntityEntityJar && stack.hasTagCompound()){
 			TileEntityEntityJar jar = (TileEntityEntityJar) tE;
-			jar.readCustomDataToNBT(stack.getTagCompound());
+			jar.readCustomDataFromNBT(stack.getTagCompound());
 		}
 	}
 	
