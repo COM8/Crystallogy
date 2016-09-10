@@ -70,11 +70,6 @@ public class Armor_hunters extends BaseArmor {
 			player.capabilities.allowFlying = true;
 			player.capabilities.disableDamage = true;
 		}
-		if(world.isRemote){
-			//player.capabilities.setPlayerWalkSpeed(0.12F);
-			//player.capabilities.setFlySpeed(0.06F);
-			
-		}
 	}
 	
 	private void disableCapabilities(World world, EntityPlayer player){
@@ -82,10 +77,6 @@ public class Armor_hunters extends BaseArmor {
 			player.capabilities.allowFlying = false;
 			player.capabilities.isFlying = false;
 			player.capabilities.disableDamage = false;
-		}
-		if(world.isRemote){
-			//player.capabilities.setPlayerWalkSpeed(0.1F);
-			//player.capabilities.setFlySpeed(0.05F);
 		}
 	}
 	
@@ -112,6 +103,8 @@ public class Armor_hunters extends BaseArmor {
 			tooltip.add(TextFormatting.BLUE + "-Flight");
 			tooltip.add(TextFormatting.BLUE + "-Full damage protection (except void damage)");
 			tooltip.add(TextFormatting.BLUE + "+20% Speed");
+			tooltip.add("");
+			tooltip.add(TextFormatting.DARK_RED + "Requires a charged Energy Crystal!");
 		}
 		else{
 			ToolTipBuilder.addShiftForMoreDetails(tooltip);
