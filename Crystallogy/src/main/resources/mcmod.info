@@ -10,7 +10,7 @@
 		"authorList": ["COM8"],
 		"credits": "The Forge and FML guys, for making Minecraft Forge. And all the guys at Mojang.",
 		"logoFile": "assets/crystallogy/textures/logo.png",
-		"screenshots": ["assets/crystallogy/textures/screenshots/1.png", "assets/crystallogy/textures/screenshots/2.png", "assets/crystallogy/textures/screenshots/3.png", "assets/crystallogy/textures/screenshots/4.png"],
+		"screenshots": [],
 		"dependencies": []
 	}
 ]
