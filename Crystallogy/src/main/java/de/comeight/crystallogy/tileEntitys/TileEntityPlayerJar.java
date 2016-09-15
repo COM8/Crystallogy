@@ -118,7 +118,7 @@ public class TileEntityPlayerJar extends TileEntityEntityJar {
 	protected void tryCastOnEntity(){
 		EntityPlayer ePlayer;
 		if((ePlayer = getPlayerFromServer()) != null){
-			threat.castOnEntity(ePlayer.getEntityWorld(), ePlayer);
+			threat.castOnEntity(ePlayer.getEntityWorld(), ePlayer, threatTick);
 		}
 	}
 	
