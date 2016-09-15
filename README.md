@@ -14,7 +14,7 @@ You can also use your crystals to control / manipulate your friends / entities.
 * Crystals now only generate in caves - 100%
 * Rotatable Entity / Player Jar - 100%
 * Fixed Entity Jar not storing the entity - 100%
-* Control your caught entities to let them work for you - 10%
+* Control your caught entities to let them work for you - 30%
 * Waila support - 0%
 * A new crafting mechanism based on infusion crafting - 0%
 * [MORE NOTES TO COME]
