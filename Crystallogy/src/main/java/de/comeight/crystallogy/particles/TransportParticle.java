@@ -16,7 +16,7 @@ public class TransportParticle {
 	public Vec3d targetPos;
 	public Vec3d startPos;
 	public int timeInTicks = 100;
-	
+	public boolean reverse;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public TransportParticle(Vec3d pos) {
@@ -25,6 +25,7 @@ public class TransportParticle {
 		this.scale = 1.0F;
 		this.color = new RGBColor();
 		this.randomColor = false;
+		this.reverse = false;
 	}
 	
 	public TransportParticle() {
@@ -33,6 +34,7 @@ public class TransportParticle {
 		this.scale = 1.0F;
 		this.color = new RGBColor();
 		this.randomColor = false;
+		this.reverse = false;
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -48,6 +50,7 @@ public class TransportParticle {
 		this.randomColor = compound.getBoolean("randomColor");
 		this.maxAge = compound.getInteger("tPmaxAge");
 		this.scale = compound.getFloat("tPscale");
+		this.reverse = compound.getBoolean("reverse");
 		
 		this.startPos = new Vec3d(compound.getDouble("startPposX"), compound.getDouble("startPposY"), compound.getDouble("startPposZ"));
 		this.targetPos = new Vec3d(compound.getDouble("targetPposX"), compound.getDouble("targetPposY"), compound.getDouble("targetPposZ"));
@@ -60,6 +63,7 @@ public class TransportParticle {
 		compound.setDouble("tPposY", pos.yCoord);
 		compound.setDouble("tPposZ", pos.zCoord);
 		compound.setBoolean("randomColor", randomColor);
+		compound.setBoolean("reverse", reverse);
 		
 		compound.setFloat("tPcolorR", color.r);
 		compound.setFloat("tPcolorG", color.g);

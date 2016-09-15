@@ -39,7 +39,12 @@ public class ParticleEnderon extends BaseParticle {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public BaseParticle clone(World worldIn, Vec3d pos, TransportParticle tp) {
-		return new ParticleEnderon(worldIn, pos, tp.targetPos);
+		if(tp.reverse){
+			return new ParticleEnderon(worldIn, tp.targetPos, pos);
+		}
+		else{
+			return new ParticleEnderon(worldIn, pos, tp.targetPos);
+		}
 	}
 	
 	protected void calcSpeed(){
