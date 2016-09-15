@@ -13,14 +13,14 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class Utilities {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-
+	private static Random rand = new Random();
 
 	//-----------------------------------------------Constructor:-------------------------------------------
 
 
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	public static int getRandInt(int min, int max) {
-        return getRandInt(min, max, new Random());
+        return getRandInt(min, max, rand);
     }
 	
 	public static int getRandInt(int min, int max, Random random){
@@ -34,7 +34,7 @@ public class Utilities {
 	}
 	
 	public static double getRandDouble(double min, double max) {
-        return getRandDouble(min, max, new Random());
+        return getRandDouble(min, max, rand);
     }
 	
 	public static double getRandDouble(double min, double max, Random random) {
@@ -43,7 +43,7 @@ public class Utilities {
     }
 	
 	public static float getRandFloat(float min, float max) {
-		return getRandFloat(min, max, new Random());
+		return getRandFloat(min, max, rand);
     }
 	
 	public static float getRandFloat(float min, float max, Random random) {
