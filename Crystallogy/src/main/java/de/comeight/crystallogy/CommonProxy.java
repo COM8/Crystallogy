@@ -41,9 +41,11 @@ import de.comeight.crystallogy.tileEntitys.machines.TileEntityArmorCombiner;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCharger;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCompressor;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCrystallCrusher;
+import de.comeight.crystallogy.util.ChunkLoadingCallBack;
 import de.comeight.crystallogy.util.Utilities;
 import de.comeight.crystallogy.worldGenerators.WorldGenCaveCrystal;
 import de.comeight.crystallogy.worldGenerators.WorldGeneratorFoilage;
+import net.minecraftforge.common.ForgeChunkManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -181,6 +183,8 @@ public class CommonProxy {
 		iH.postInit();
 		rH.postInit();
 		sH.postInit();
+		
+		ForgeChunkManager.setForcedChunkLoadingCallback(CrystallogyBase.INSTANCE, new ChunkLoadingCallBack());
     }
     
 }
