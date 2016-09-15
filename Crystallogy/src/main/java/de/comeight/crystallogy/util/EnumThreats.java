@@ -1,7 +1,5 @@
 package de.comeight.crystallogy.util;
 
-import java.util.ArrayList;
-
 import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.items.threatDusts.ThreatDust;
 import net.minecraft.entity.EntityLivingBase;
@@ -24,8 +22,7 @@ public enum EnumThreats{
 	
 	private final int id;
 	private final RGBColor color;
-	private ThreatDust threatDust;
-	private static ArrayList<EnumThreats> list = new ArrayList<EnumThreats>();
+	private final ThreatDust threatDust;
 	
 	private EnumThreats(RGBColor color, ThreatDust threatDust, int id){
 		this.color = color;
