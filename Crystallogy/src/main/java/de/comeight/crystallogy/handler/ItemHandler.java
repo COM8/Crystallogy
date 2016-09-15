@@ -1,5 +1,6 @@
 package de.comeight.crystallogy.handler;
 
+import de.comeight.crystallogy.items.AiChanger;
 import de.comeight.crystallogy.items.ArmorCatalys;
 import de.comeight.crystallogy.items.ArmorPlate;
 import de.comeight.crystallogy.items.BookOfKnowledge;
@@ -28,6 +29,7 @@ import de.comeight.crystallogy.items.armor.Armor_green;
 import de.comeight.crystallogy.items.armor.Armor_hunters;
 import de.comeight.crystallogy.items.armor.Armor_red;
 import de.comeight.crystallogy.items.armor.Armor_yellow;
+import de.comeight.crystallogy.items.threatDusts.AiRemoverDust;
 import de.comeight.crystallogy.items.threatDusts.BadLuckDust;
 import de.comeight.crystallogy.items.threatDusts.BlindDust;
 import de.comeight.crystallogy.items.threatDusts.DamDust;
@@ -113,6 +115,8 @@ public class ItemHandler {
 	public static EnderonCrystal enderonCrystal;
 	public static DebugTool debugTool;
 	public static BookOfKnowledge bookOfKnowledge;
+	public static AiChanger aiChanger;
+	public static AiRemoverDust aiRemoverDust;
 	
 	//Armor:
 	public static Armor_red armorHelmet_red;
@@ -223,7 +227,11 @@ public class ItemHandler {
 		enderonCrystal = new EnderonCrystal();
 		debugTool = new DebugTool();
 		bookOfKnowledge = new BookOfKnowledge();
+		aiChanger = new AiChanger();
+		aiRemoverDust = new AiRemoverDust();
 		
+		GameRegistry.register(aiRemoverDust);
+		GameRegistry.register(aiChanger);
 		GameRegistry.register(bookOfKnowledge);
 		GameRegistry.register(enderonCrystal);
 		GameRegistry.register(chargedCombinedArmorMesh);

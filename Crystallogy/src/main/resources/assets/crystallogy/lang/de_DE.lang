@@ -125,6 +125,7 @@ item.hunterArmorMesh.name=Jäger-Rüstungsgitter
 item.enderonCrystal.name=Enderonkristall
 item.debugTool.name=Debug Tool
 item.bookOfKnowledge.name=§6Buch des Wissens§r
+item.aiRemoverDust.name=KI Staub
 
 itemGroup.crystallogy=Crystallogy
 
