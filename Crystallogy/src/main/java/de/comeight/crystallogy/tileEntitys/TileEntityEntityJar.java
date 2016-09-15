@@ -180,13 +180,6 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 	}
 	
 	@Override
-	public void onLoad() {
-		if(worldObj.isRemote){
-			requestSync();
-		}
-	}
-	
-	@Override
 	public void update() {
 		if(newEntity || entity == null){ //Load the entity
 			if(entityCompound != null && loadEntityFromCompound(entityCompound)){
