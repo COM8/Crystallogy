@@ -29,7 +29,7 @@ public class PoisDust extends ThreatDust {
 	}
 	
 	@Override
-	public void castOnEntity(World worldIn, EntityLivingBase entity) {
+	public void castOnEntity(World worldIn, EntityLivingBase entity, int tick) {
 		if(!worldIn.isRemote){
 			entity.addPotionEffect(new PotionEffect(Potion.getPotionById(19), 300, 3, true, true));
 		}

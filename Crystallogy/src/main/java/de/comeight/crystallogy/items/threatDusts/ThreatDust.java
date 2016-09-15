@@ -18,7 +18,9 @@ public abstract class ThreatDust extends BaseItemFood {
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
-
+	public int getTicksBetweenCalls(){
+		return 20;
+	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
@@ -26,6 +28,6 @@ public abstract class ThreatDust extends BaseItemFood {
 		super.onFoodEaten(stack, worldIn, player);	
 	}
 	
-	public abstract void castOnEntity(World worldIn, EntityLivingBase entity);
+	public abstract void castOnEntity(World worldIn, EntityLivingBase entity, int tick);
 	
 }

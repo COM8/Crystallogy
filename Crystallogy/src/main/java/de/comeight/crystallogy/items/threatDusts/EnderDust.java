@@ -18,7 +18,7 @@ public class EnderDust extends ThreatDust {
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
-
+	
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
@@ -29,7 +29,7 @@ public class EnderDust extends ThreatDust {
 	}
 	
 	@Override
-	public void castOnEntity(World worldIn, EntityLivingBase entity) {
+	public void castOnEntity(World worldIn, EntityLivingBase entity, int tick) {
 		teleportEntity(worldIn, entity);
 	}
 	

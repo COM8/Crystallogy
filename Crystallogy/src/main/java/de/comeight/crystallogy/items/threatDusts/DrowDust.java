@@ -28,7 +28,7 @@ public class DrowDust extends ThreatDust {
 	}
 	
 	@Override
-	public void castOnEntity(World worldIn, EntityLivingBase entity) {
+	public void castOnEntity(World worldIn, EntityLivingBase entity, int tick) {
 		if(!worldIn.isRemote){
 			entity.attackEntityFrom(DamageSource.drown, 1.0F);
 		}

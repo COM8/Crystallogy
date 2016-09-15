@@ -27,7 +27,7 @@ public class FireDust extends ThreatDust {
 	}
 	
 	@Override
-	public void castOnEntity(World worldIn, EntityLivingBase entity) {
+	public void castOnEntity(World worldIn, EntityLivingBase entity, int tick) {
 		if(!worldIn.isRemote){
 			entity.setFire(7);
 		}
