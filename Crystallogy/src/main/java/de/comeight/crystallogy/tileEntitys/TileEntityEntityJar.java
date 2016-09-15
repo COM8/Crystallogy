@@ -28,6 +28,7 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -51,7 +52,8 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 		BLIND(new RGBColor(0.1F, 0.1F, 0.1F), ItemHandler.blindDust, 6),
 		ENDER(new RGBColor(0.5F, 0.0F, 0.5F), ItemHandler.enderDust, 7),
 		GLOW(new RGBColor(0.5F, 0.1F, 0.5F), ItemHandler.glowDust, 8),
-		LEVITATION(new RGBColor(0.3F, 0.3F, 1.0F), ItemHandler.levDust, 9);
+		LEVITATION(new RGBColor(0.3F, 0.3F, 1.0F), ItemHandler.levDust, 9),
+		AIREMOVER(new RGBColor(0.1F, 0.1F, 0.1F), ItemHandler.aiRemoverDust, 10);
 		
 		private final int id;
 		private final RGBColor color;
@@ -81,8 +83,12 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 			return threatDust.numOfCalls;
 		}
 		
-		public void castOnEntity(World worldIn, EntityLivingBase entity){
-			threatDust.castOnEntity(worldIn, entity);
+		public int getTicksBetweenCalls(){
+			return threatDust.getTicksBetweenCalls();
+		}
+		
+		public void castOnEntity(World worldIn, EntityLivingBase entity, int count){
+			threatDust.castOnEntity(worldIn, entity, count);
 		}
 		
 		public int getID(){
@@ -249,7 +255,7 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 
 	protected void incTick(){
 		tick++;
-		if(tick >= 20){
+		if(tick >= threat.getTicksBetweenCalls()){
 			tick = 0;
 		}
 	}
@@ -260,11 +266,18 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 	}
 	
 	@Override
+	public void onLoad() {
+		if(worldObj.isRemote){
+			requestSync();
+		}
+	}
+	
+	@Override
 	public void update() {
-		if(newEntity){ //Load the entity
+		if(newEntity || entity == null){ //Load the entity
 			if(entityCompound != null && loadEntityFromCompound(entityCompound)){
 				newEntity = false;
-				entityCompound = null;
+				worldObj.notifyNeighborsOfStateChange(pos, getBlockType());
 			}
 			else{
 				newEntity = true;
@@ -277,7 +290,6 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 			}
 			return;
 		}
-		incTick();
 		
 		if(entity != null && entity.isDead){
 			entity = null;
@@ -293,12 +305,15 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 				double d2 = Utilities.getRandDouble(0.5, 0.7);
 				double d3 = Utilities.getRandDouble(0.2, 0.6);
 	        	worldObj.spawnParticle(EnumParticleTypes.WATER_WAKE, pos.getX() + d1, pos.getY() + 0.65, pos.getZ() + d2, 0.0, -0.015, 0.0, new int[0]);
-	        	
-	        	spawnThreatParticles();
 	        }
 		}
 		else{
-			if(tick == 10 && threat != null){
+			if(threat == null){
+				return;
+			}
+			spawnThreatParticles();
+			incTick();
+			if(tick == 0){
 				threatTick++;
 				tryCastOnEntity();
 				if(threat.getNumOfCalls() <= threatTick){
@@ -311,19 +326,16 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 	
 	protected void tryCastOnEntity(){
 		if(hasEntity()){
-			threat.castOnEntity(entity.getEntityWorld(), entity);
+			threat.castOnEntity(entity.getEntityWorld(), entity, threatTick);
 		}
 	}
 	
-	@SideOnly(Side.CLIENT)
 	protected void spawnThreatParticles(){
 		if(threat == null){
 			return;
 		}
-		ParticleB gP = new ParticleB(worldObj, new Vec3d(pos.getX() + Utilities.getRandDouble(0.3, 0.7), pos.getY() + Utilities.getRandDouble(0.2, 0.6), pos.getZ() + Utilities.getRandDouble(0.25, 0.9)));
-		RGBColor color = threat.getColor();
-		gP.setRBGColorF(color.r, color.g, color.b);
-		Minecraft.getMinecraft().effectRenderer.addEffect(gP);
+		//WorldServer wS = (WorldServer) worldObj;
+		//wS.spawnParticle(EnumParticleTypes.SPELL_MOB_AMBIENT, pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5, 1, threat.getColor().r, threat.getColor().g, threat.getColor().b, 0.1, new int[0]);
 	}
 	
 }
