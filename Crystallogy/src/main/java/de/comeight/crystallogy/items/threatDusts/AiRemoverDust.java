@@ -68,7 +68,7 @@ public class AiRemoverDust extends ThreatDust {
 		nP.setSize(new Vec3d(4.0, 4.0, 4.0));
 		nP.setNumberOfParticle(numberOfParticles);
 		NetworkPacketParticle pMtS = new NetworkPacketParticle(nP);
-		NetworkUtilitis.sendToServer(pMtS);
+		NetworkUtilitis.sendAllAround(pMtS, worldIn.isRemote);
 	}
 	
 	private void lastCast(EntityLiving entity){
