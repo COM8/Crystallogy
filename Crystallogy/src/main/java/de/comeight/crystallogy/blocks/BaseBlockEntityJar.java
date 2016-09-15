@@ -4,7 +4,7 @@ import java.util.List;
 
 import de.comeight.crystallogy.blocks.materials.CustomMaterials;
 import de.comeight.crystallogy.tileEntitys.TileEntityEntityJar;
-import de.comeight.crystallogy.tileEntitys.TileEntityEntityJar.EnumThreats;
+import de.comeight.crystallogy.util.EnumThreats;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
