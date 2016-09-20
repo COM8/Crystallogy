@@ -78,7 +78,7 @@ public class ItemBlockCrystalOfHolding extends BaseItemBlock {
 				tooltip.add(TextFormatting.GOLD + "Name: " + TextFormatting.RESET + tag.getString("id_entity"));
 				tooltip.add("");
 				tooltip.add("Reight click to plant on Sanstone.");
-				tooltip.add("Shift reight click to release entity.");
+				tooltip.add("Shift right click to release entity.");
 			}
 			else{
 				tooltip.add("Has Entity: " + TextFormatting.DARK_RED + "No");
