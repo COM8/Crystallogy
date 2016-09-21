@@ -1,9 +1,22 @@
-package de.comeight.crystallogy.particles;
+package de.comeight.crystallogy.handler;
 
 import java.util.LinkedList;
 
 import javax.annotation.Nonnull;
 
+import de.comeight.crystallogy.particles.BaseParticle;
+import de.comeight.crystallogy.particles.ParticleA;
+import de.comeight.crystallogy.particles.ParticleB;
+import de.comeight.crystallogy.particles.ParticleC;
+import de.comeight.crystallogy.particles.ParticleD;
+import de.comeight.crystallogy.particles.ParticleDebug;
+import de.comeight.crystallogy.particles.ParticleE;
+import de.comeight.crystallogy.particles.ParticleEnderon;
+import de.comeight.crystallogy.particles.ParticleF;
+import de.comeight.crystallogy.particles.ParticleInfuserBlockStatus;
+import de.comeight.crystallogy.particles.ParticleInfusion;
+import de.comeight.crystallogy.particles.ParticleLight;
+import de.comeight.crystallogy.particles.ParticleN_Color;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

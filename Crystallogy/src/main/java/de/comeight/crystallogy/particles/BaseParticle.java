@@ -18,7 +18,7 @@ public abstract class BaseParticle extends Particle{
 	
 	protected double tIndex;
 	protected double annimationSpeed;
-	protected ResourceLocation rL;
+	public ResourceLocation rL;
 	private int renderIndex;
 	protected int countParticleTextures;
 	
