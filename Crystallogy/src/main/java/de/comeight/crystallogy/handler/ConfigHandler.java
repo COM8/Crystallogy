@@ -80,7 +80,7 @@ public class ConfigHandler {
 		
 		//Debug:
 		prop = config.get(CATEGORY_DEBUG, "debug", false);
-		prop.setComment("If true this enables debug informations for the custom \"Garbage Collector\" for unused Combined Armor entrys. default=false");
+		prop.setComment("If true this enables debug informations for the custom \"Garbage Collector\" for unused Combined Armor entries. default=false");
 		debugCombinedArmorList = prop.getBoolean();
 		
 		prop = config.get(CATEGORY_DEBUG, "minIntervall", 10000);
@@ -92,7 +92,7 @@ public class ConfigHandler {
 		timeUnusedArmorListEntry = prop.getInt();
 		
 		prop = config.get(CATEGORY_DEBUG, "enableDebugTool", false);
-		prop.setComment("Wether the debug tool should be avaidable. default=false");
+		prop.setComment("Whether the debug tool should be available. default=false");
 		enableDebugTool = prop.getBoolean();
 		
 		//Crystals
@@ -170,7 +170,7 @@ public class ConfigHandler {
 		
 		//Gameplay:
 		prop = config.get(CATEGORY_GAMEPLAY, "shouldSpawnWithBook", true);
-		prop.setComment("Wether the Player should get the Book of Knowledge, if he enters the world for the first time. default=true");
+		prop.setComment("Whether the Player should get the Book of Knowledge, if he enters the world for the first time. default=true");
 		shouldSpawnWithBook = prop.getBoolean();
 		
 		config.save();
