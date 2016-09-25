@@ -1,5 +1,6 @@
 package de.comeight.crystallogy;
 
+import de.comeight.crystallogy.handler.AiHandler;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -7,7 +8,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class ServerProxy extends CommonProxy {
 	// -----------------------------------------------Variabeln:---------------------------------------------
-	
+	public static AiHandler AI_HANDLER = new AiHandler();
 	
 	// -----------------------------------------------Constructor:-------------------------------------------
 	

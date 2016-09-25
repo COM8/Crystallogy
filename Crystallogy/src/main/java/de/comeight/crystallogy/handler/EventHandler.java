@@ -1,11 +1,17 @@
 package de.comeight.crystallogy.handler;
 
 import de.comeight.crystallogy.CrystallogyBase;
+import de.comeight.crystallogy.ServerProxy;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.LootTableLoadEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.ItemHandlerHelper;
 
 public class EventHandler {
@@ -13,7 +19,7 @@ public class EventHandler {
 	public static final String TAG_PLAYER_GOT_BOOK = CrystallogyBase.MODID + "gotSpawnBook";
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-
+	
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 
@@ -22,6 +28,13 @@ public class EventHandler {
 	@SubscribeEvent
 	public void onLootLoad(LootTableLoadEvent event) {
 		ChestGenHandler.init(event);
+	}
+	
+	@SubscribeEvent
+	public void EntityJoinWorldEvent(EntityJoinWorldEvent event){
+		if(!event.getWorld().isRemote && event.getEntity() instanceof EntityLiving){
+			AiHandler.tryLoadEntitiesAi((EntityLiving) event.getEntity());
+		}
 	}
 	
 	@SubscribeEvent

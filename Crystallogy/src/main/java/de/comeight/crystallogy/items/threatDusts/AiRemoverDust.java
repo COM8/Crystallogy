@@ -1,10 +1,10 @@
 package de.comeight.crystallogy.items.threatDusts;
 
+import de.comeight.crystallogy.handler.AiHandler;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.ParticleInformation;
 import de.comeight.crystallogy.particles.TransportParticle;
-import de.comeight.crystallogy.util.EnumThreats;
 import de.comeight.crystallogy.util.NetworkUtilitis;
 import de.comeight.crystallogy.util.RGBColor;
 import de.comeight.crystallogy.util.Utilities;
@@ -12,7 +12,6 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
@@ -22,7 +21,7 @@ public class AiRemoverDust extends ThreatDust {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public AiRemoverDust() {
-		super(0, 0, false, 2000, ID);
+		super(0, 0, false, 2400, ID);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -89,7 +88,7 @@ public class AiRemoverDust extends ThreatDust {
 	}
 	
 	private void removeAiSuccess(EntityLiving entity){
-		entity.tasks.taskEntries.clear();
+		AiHandler.removeEntityAi(entity);
 	}
 	
 }
