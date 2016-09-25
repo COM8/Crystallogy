@@ -1,9 +1,9 @@
 package de.comeight.crystallogy.network.handler.Client;
 
+import de.comeight.crystallogy.handler.ParticleHandler;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.BaseParticle;
-import de.comeight.crystallogy.particles.ParticleHandler;
 import de.comeight.crystallogy.util.Log;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.client.Minecraft;

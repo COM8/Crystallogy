@@ -5,7 +5,7 @@ import org.lwjgl.input.Keyboard;
 import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import de.comeight.crystallogy.handler.BlockRenderHandler;
 import de.comeight.crystallogy.handler.ItemRenderHandler;
-import de.comeight.crystallogy.particles.ParticleHandler;
+import de.comeight.crystallogy.handler.ParticleHandler;
 import de.comeight.crystallogy.renderer.RendererEntityInCrystal;
 import de.comeight.crystallogy.renderer.RendererEntityinJar;
 import de.comeight.crystallogy.renderer.RendererInfuserBlockItem;
