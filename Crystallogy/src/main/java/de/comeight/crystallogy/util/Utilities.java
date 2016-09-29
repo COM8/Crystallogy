@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.sun.org.apache.xml.internal.security.utils.I18n;
-
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
@@ -119,6 +120,26 @@ public class Utilities {
 	}
 	
 	public static String localizeText(String text){
-		return I18n.translate(text);
+		return I18n.format("item.entityBrain.text", new Object[1]);
+	}
+	
+	public static void saveBlockPosToNBT(NBTTagCompound compound, BlockPos pos, String key){
+		compound.setInteger(key + "_X", pos.getX());
+		compound.setInteger(key + "_Y", pos.getY());
+		compound.setInteger(key + "_Z", pos.getZ());
+	}
+	
+	public static BlockPos readBlockPosFromNBT(NBTTagCompound compound, String key){
+		return new BlockPos(compound.getInteger(key + "_X"), compound.getInteger(key + "_Y"), compound.getInteger(key + "_Z"));
+	}
+	
+	public static void saveVec3dToNBT(NBTTagCompound compound, Vec3d vec, String key){
+		compound.setDouble(key + "_X", vec.xCoord);
+		compound.setDouble(key + "_Y", vec.yCoord);
+		compound.setDouble(key + "_Z", vec.zCoord);
+	}
+	
+	public static Vec3d readVec3dFromNBT(NBTTagCompound compound, String key){
+		return new Vec3d(compound.getDouble(key + "_X"), compound.getDouble(key + "_Y"), compound.getDouble(key + "_Z"));
 	}
 }
