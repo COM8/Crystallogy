@@ -126,6 +126,7 @@ item.enderonCrystal.name=Enderon Crystal
 item.debugTool.name=Debug Tool
 item.bookOfKnowledge.name=§6Book of Knowledge§r
 item.aiRemoverDust.name=AI Dust
+item.entityBrain.name=Entity Brain
 
 itemGroup.crystallogy=Crystallogy
 
@@ -136,3 +137,5 @@ crystallogy.subtitle.machine_broken=Broken Machine
 crystallogy.subtitle.evil_laugh_male_1=Evil Laugh Male
 crystallogy.subtitle.evil_laugh_male_2=Evil Laugh Male
 crystallogy.subtitle.armorCombiner=Armor Combiner
+
+item.entityBrain.text=§5Do you feel now smarter?§r

@@ -90,6 +90,7 @@ public class ItemRenderHandler {
 		registerBasicItemRender(ItemHandler.enderonCrystal);
 		registerBasicItemRender(ItemHandler.bookOfKnowledge);
 		registerBasicItemRender(ItemHandler.aiRemoverDust);
+		registerBasicItemRender(ItemHandler.entityBrain);
 		
 		if(ConfigHandler.enableDebugTool){
 			registerBasicItemRender(ItemHandler.debugTool);

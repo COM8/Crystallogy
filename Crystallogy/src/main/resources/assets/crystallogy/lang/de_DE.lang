@@ -126,6 +126,7 @@ item.enderonCrystal.name=Enderonkristall
 item.debugTool.name=Debug Tool
 item.bookOfKnowledge.name=§6Buch des Wissens§r
 item.aiRemoverDust.name=KI Staub
+item.entityBrain.name=Wesensgehirn
 
 itemGroup.crystallogy=Crystallogy
 
@@ -136,3 +137,5 @@ crystallogy.subtitle.machine_broken=Kaputte Maschine
 crystallogy.subtitle.evil_laugh_male_1=Böses Männerlachen
 crystallogy.subtitle.evil_laugh_male_2=Böses Männerlachen
 crystallogy.subtitle.armorCombiner=Rüstungskombinierer
+
+item.entityBrain.text=§5Fühlst du dich nun schlauer?§r
