@@ -78,7 +78,7 @@ public class EntityBrain extends BaseItemFood{
 		super.onFoodEaten(stack, worldIn, player);
 		switch (stack.getMetadata()) {
 			case 3:
-				addEffectsOnEaten(Utilities.getRandInt(11, 13, new Random()), 300, worldIn, player);
+				addEffectsOnEaten(Utilities.getRandInt(11, 14, new Random()), 300, worldIn, player);
 				break;
 				
 			case 2:
