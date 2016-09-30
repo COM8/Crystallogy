@@ -130,7 +130,12 @@ public class Utilities {
 	}
 	
 	public static BlockPos readBlockPosFromNBT(NBTTagCompound compound, String key){
-		return new BlockPos(compound.getInteger(key + "_X"), compound.getInteger(key + "_Y"), compound.getInteger(key + "_Z"));
+		if(compound.hasKey(key + "_X")){
+			return new BlockPos(compound.getInteger(key + "_X"), compound.getInteger(key + "_Y"), compound.getInteger(key + "_Z"));
+		}
+		else{
+			return null;
+		}
 	}
 	
 	public static void saveVec3dToNBT(NBTTagCompound compound, Vec3d vec, String key){
@@ -140,6 +145,11 @@ public class Utilities {
 	}
 	
 	public static Vec3d readVec3dFromNBT(NBTTagCompound compound, String key){
-		return new Vec3d(compound.getDouble(key + "_X"), compound.getDouble(key + "_Y"), compound.getDouble(key + "_Z"));
+		if(compound.hasKey(key + "_X")){
+			return new Vec3d(compound.getDouble(key + "_X"), compound.getDouble(key + "_Y"), compound.getDouble(key + "_Z"));
+		}
+		else{
+			return null;
+		}
 	}
 }
