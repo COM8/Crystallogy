@@ -57,6 +57,7 @@ import de.comeight.crystallogy.items.tools.DebugTool;
 import de.comeight.crystallogy.items.tools.EntityCrystalKnife;
 import de.comeight.crystallogy.items.tools.EntityGrabber;
 import de.comeight.crystallogy.items.tools.PlayerCrystalKnife;
+import de.comeight.crystallogy.items.tools.SpotPicker;
 import de.comeight.crystallogy.items.tools.Vaporizer;
 import de.comeight.crystallogy.items.tools.VaporizerDirection;
 import de.comeight.crystallogy.util.Utilities;
@@ -119,6 +120,7 @@ public class ItemHandler {
 	public static AiRemoverDust aiRemoverDust;
 	public static EntityBrain entityBrain;
 	public static AreaPicker areaPicker;
+	public static SpotPicker spotPicker;
 	
 	//Armor:
 	public static Armor_red armorHelmet_red;
@@ -232,7 +234,9 @@ public class ItemHandler {
 		aiRemoverDust = new AiRemoverDust();
 		entityBrain = new EntityBrain();
 		areaPicker = new AreaPicker();
+		spotPicker = new SpotPicker();
 		
+		GameRegistry.register(spotPicker);
 		GameRegistry.register(areaPicker);
 		GameRegistry.register(entityBrain);
 		GameRegistry.register(aiRemoverDust);

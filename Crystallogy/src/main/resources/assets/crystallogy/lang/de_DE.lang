@@ -156,9 +156,14 @@ item.entityBrain.onFoodEaten.10=§5Baehh  Baehh Baehh§r
 item.entityBrain.onFoodEaten.11=§5Ich mag diesen Geschmak.§r
 item.entityBrain.onFoodEaten.12=§5Schmekt wie eine Nuss.§r
 item.entityBrain.onFoodEaten.13=§5Irgendwie nussig.§r
-
 item.entityBrain.tooltip=Probier mich!
 
-item.areaPicker.tooltip.0=Links Klick auf einen block, zum speichern der ersten Position
-item.areaPicker.tooltip.1=Shift links Klick auf einen block, zum speichern der zweiten Position
+item.areaPicker.playerMessage.0=Erste Position wurde erfolgreich gespeichert:
+item.areaPicker.playerMessage.1=Zweite Position wurde erfolgreich gespeichert:
+item.areaPicker.tooltip.0=Rechtsklick auf einen block, zum speichern der ersten Position
+item.areaPicker.tooltip.1=Shiftrechtsklick auf einen block, zum speichern der zweiten Position
 item.areaPicker.tooltip.2=Aktuelles Gebiet:
+
+item.spotPicker.playerMessage.0=Position wurde erfolgreich gespeichert:
+item.spotPicker.tooltip.0=Rechtsklick auf einen block, zum speichern der Position
+item.areaPicker.tooltip.1=Aktuelle Position:

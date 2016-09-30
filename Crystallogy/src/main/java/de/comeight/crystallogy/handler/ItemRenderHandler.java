@@ -91,6 +91,7 @@ public class ItemRenderHandler {
 		registerBasicItemRender(ItemHandler.bookOfKnowledge);
 		registerBasicItemRender(ItemHandler.aiRemoverDust);
 		registerBasicItemRender(ItemHandler.areaPicker);
+		registerBasicItemRender(ItemHandler.spotPicker);
 		
 		if(ConfigHandler.enableDebugTool){
 			registerBasicItemRender(ItemHandler.debugTool);
