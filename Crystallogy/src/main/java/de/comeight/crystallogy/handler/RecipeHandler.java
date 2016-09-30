@@ -348,6 +348,22 @@ public class RecipeHandler {
 				'C', BlockHandler.crystall_green,
 				'Q', Items.QUARTZ
 		});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.entityBrain,  1, 0), new Object[] {
+				"BBB",
+				"BSB",
+				"BBB",
+				'B', new ItemStack(ItemHandler.entityBrain,  1, 1),
+				'S', Items.SLIME_BALL
+		});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.entityBrain,  1, 1), new Object[] {
+				"BBB",
+				"BSB",
+				"BBB",
+				'B', new ItemStack(ItemHandler.entityBrain,  1, 2),
+				'S', Items.SLIME_BALL
+		});
 	}
 	
 	private void addCrystalHammerHeadRecipe(ItemStack crystal, ItemStack out){
