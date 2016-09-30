@@ -167,4 +167,4 @@ item.areaPicker.tooltip.2=Current area:
 
 item.spotPicker.playerMessage.0=Successfully saved position:
 item.spotPicker.tooltip.0=Right-click on a block to save the position
-item.areaPicker.tooltip.1=Current position:
+item.spotPicker.tooltip.1=Current position:
