@@ -158,6 +158,7 @@ item.entityBrain.onFoodEaten.11=§5I like this taste.§r
 item.entityBrain.onFoodEaten.12=§5Tastes like a nut.§r
 item.entityBrain.onFoodEaten.13=§5Somehow nutty.§r
 item.entityBrain.tooltip=Try me!
+item.entityBrain.tooltip.1=Yes, I'm eatable!
 
 item.areaPicker.playerMessage.0=Successfully saved primary position:
 item.areaPicker.playerMessage.1=Successfully saved secondary position:

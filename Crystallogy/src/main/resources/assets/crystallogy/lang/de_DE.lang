@@ -157,7 +157,8 @@ item.entityBrain.onFoodEaten.10=§5Baehh  Baehh Baehh§r
 item.entityBrain.onFoodEaten.11=§5Ich mag diesen Geschmak.§r
 item.entityBrain.onFoodEaten.12=§5Schmekt wie eine Nuss.§r
 item.entityBrain.onFoodEaten.13=§5Irgendwie nussig.§r
-item.entityBrain.tooltip=Probier mich!
+item.entityBrain.tooltip.0=Probier mich!
+item.entityBrain.tooltip.1=Ja, ich bin essbar!
 
 item.areaPicker.playerMessage.0=Erste Position wurde erfolgreich gespeichert:
 item.areaPicker.playerMessage.1=Zweite Position wurde erfolgreich gespeichert:

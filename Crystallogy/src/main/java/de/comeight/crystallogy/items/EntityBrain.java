@@ -132,7 +132,10 @@ public class EntityBrain extends BaseItemFood{
 	
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-		tooltip.add(Utilities.localizeText("item.entityBrain.tooltip"));
+		tooltip.add(Utilities.localizeText("item.entityBrain.tooltip.0"));
+		if(stack.getMetadata() == 3){
+			tooltip.add(Utilities.localizeText("item.entityBrain.tooltip.1"));
+		}
 	}
 	
 }
