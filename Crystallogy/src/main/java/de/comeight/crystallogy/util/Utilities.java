@@ -25,9 +25,9 @@ public class Utilities {
     }
 	
 	public static int getRandInt(int min, int max, Random random){
-        int bound = (max - min) + 1;
+        int bound = max - min;
         if(bound < 0){
-        	return random.nextInt(bound * -1) * -1 + min;
+        	return random.nextInt((bound) * -1) * -1 + min;
         }
         else{
         	return random.nextInt(bound) + min;
@@ -120,7 +120,7 @@ public class Utilities {
 	}
 	
 	public static String localizeText(String text){
-		return I18n.format("item.entityBrain.text", new Object[1]);
+		return I18n.format(text, new Object[1]);
 	}
 	
 	public static void saveBlockPosToNBT(NBTTagCompound compound, BlockPos pos, String key){
