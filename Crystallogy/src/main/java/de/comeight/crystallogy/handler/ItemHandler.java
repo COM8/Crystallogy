@@ -40,6 +40,7 @@ import de.comeight.crystallogy.items.threatDusts.GlowDust;
 import de.comeight.crystallogy.items.threatDusts.HungDust;
 import de.comeight.crystallogy.items.threatDusts.LevDust;
 import de.comeight.crystallogy.items.threatDusts.PoisDust;
+import de.comeight.crystallogy.items.tools.AreaPicker;
 import de.comeight.crystallogy.items.tools.CrystalPickaxe_blue;
 import de.comeight.crystallogy.items.tools.CrystalPickaxe_green;
 import de.comeight.crystallogy.items.tools.CrystalPickaxe_red;
@@ -117,6 +118,7 @@ public class ItemHandler {
 	public static BookOfKnowledge bookOfKnowledge;
 	public static AiRemoverDust aiRemoverDust;
 	public static EntityBrain entityBrain;
+	public static AreaPicker areaPicker;
 	
 	//Armor:
 	public static Armor_red armorHelmet_red;
@@ -229,7 +231,9 @@ public class ItemHandler {
 		bookOfKnowledge = new BookOfKnowledge();
 		aiRemoverDust = new AiRemoverDust();
 		entityBrain = new EntityBrain();
+		areaPicker = new AreaPicker();
 		
+		GameRegistry.register(areaPicker);
 		GameRegistry.register(entityBrain);
 		GameRegistry.register(aiRemoverDust);
 		GameRegistry.register(bookOfKnowledge);

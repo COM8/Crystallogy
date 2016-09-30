@@ -130,6 +130,7 @@ item.entityBrain_normal.name=Entity Brain
 item.entityBrain_small.name=Small Entity Brain
 item.entityBrain_tiny.name=Tiny Entity Brain
 item.entityBrain_walnut.name=Walnut Entity Brain
+item.areaPicker.name=Area Picker
 
 itemGroup.crystallogy=Crystallogy
 
@@ -157,3 +158,10 @@ item.entityBrain.onFoodEaten.12=§5Tastes like a nut.§r
 item.entityBrain.onFoodEaten.13=§5Somehow nutty.§r
 
 item.entityBrain.tooltip=Try me!
+
+item.areaPicker.playerMessage.0=Successfully saved primary position:
+item.areaPicker.playerMessage.1=Successfully saved secondary position:
+
+item.areaPicker.tooltip.0=Left-click on a block to save the first position
+item.areaPicker.tooltip.1=Shift left-click an a block to save the second position
+item.areaPicker.tooltip.2=Current area:
