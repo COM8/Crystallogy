@@ -141,4 +141,19 @@ crystallogy.subtitle.evil_laugh_male_1=Böses Männerlachen
 crystallogy.subtitle.evil_laugh_male_2=Böses Männerlachen
 crystallogy.subtitle.armorCombiner=Rüstungskombinierer
 
-item.entityBrain.onFoodEaten=§5Fühlst du dich nun irgendwie "schlauer"?§r
+item.entityBrain.onFoodEaten.0=§5Ooooh heiliges GEHIRN!§r
+item.entityBrain.onFoodEaten.1=§5Wenn man 6.278 mit 35.83943931188277 multipliziert und dann die Wurzel daraus zieht erhält man 15!§r
+item.entityBrain.onFoodEaten.2=§5Das ist zu viel GEHIRN für mich!§r
+item.entityBrain.onFoodEaten.3=§5Fühlst du dich nun irgendwie "schlauer"?§r
+item.entityBrain.onFoodEaten.4=§5Fühlst du dich nun ein bisschen "schlauer"?§r
+item.entityBrain.onFoodEaten.5=Gehirneee!§r
+item.entityBrain.onFoodEaten.6=§5Ich mag Gehirneee!§r
+item.entityBrain.onFoodEaten.7=§5Kikeriki§r
+item.entityBrain.onFoodEaten.8=§5Iaah§r
+item.entityBrain.onFoodEaten.9=§5Grunz Grunz Grunz§r
+item.entityBrain.onFoodEaten.10=§5Baehh  Baehh Baehh§r
+item.entityBrain.onFoodEaten.11=§5Ich mag diesen Geschmak.§r
+item.entityBrain.onFoodEaten.12=§5Schmekt wie eine Nuss.§r
+item.entityBrain.onFoodEaten.13=§5Irgendwie nussig.§r
+
+item.entityBrain.tooltip=Probier mich!
