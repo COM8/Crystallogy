@@ -126,7 +126,10 @@ item.enderonCrystal.name=Enderonkristall
 item.debugTool.name=Debug Tool
 item.bookOfKnowledge.name=§6Buch des Wissens§r
 item.aiRemoverDust.name=KI Staub
-item.entityBrain.name=Wesensgehirn
+item.entityBrain_normal.name=Wesensgehirn
+item.entityBrain_small.name=Kleines Wesensgehirn
+item.entityBrain_tiny.name=Winziges Wesensgehirn
+item.entityBrain_walnut.name=Walnuss Wesensgehirn
 
 itemGroup.crystallogy=Crystallogy
 

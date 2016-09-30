@@ -1,17 +1,21 @@
 package de.comeight.crystallogy.handler;
 
 import de.comeight.crystallogy.CrystallogyBase;
-import de.comeight.crystallogy.ServerProxy;
+import de.comeight.crystallogy.util.Utilities;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.ItemHandlerHelper;
 
 public class EventHandler {
@@ -34,6 +38,24 @@ public class EventHandler {
 	public void EntityJoinWorldEvent(EntityJoinWorldEvent event){
 		if(!event.getWorld().isRemote && event.getEntity() instanceof EntityLiving){
 			AiHandler.tryLoadEntitiesAi((EntityLiving) event.getEntity());
+		}
+	}
+	
+	@SubscribeEvent
+	public void LivingDropsEvent(LivingDropsEvent event){
+		Entity entity = event.getEntity();
+		if(entity instanceof EntityPlayer | entity instanceof EntityVillager){
+			event.getDrops().add(new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, new ItemStack(ItemHandler.entityBrain, 1, 0)));
+		}
+		else if(entity instanceof EntityMob){
+			if(Utilities.getRandInt(0, 7) == 0){
+				event.getDrops().add(new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, new ItemStack(ItemHandler.entityBrain, 1, Utilities.getRandInt(1, 4))));
+			}
+		}
+		else if (entity instanceof EntityAgeable){
+			if(Utilities.getRandInt(0, 5) == 0){
+				event.getDrops().add(new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, new ItemStack(ItemHandler.entityBrain, 1, Utilities.getRandInt(2, 4))));
+			}
 		}
 	}
 	

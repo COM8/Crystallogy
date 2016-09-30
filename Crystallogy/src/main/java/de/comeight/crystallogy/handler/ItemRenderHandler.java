@@ -90,12 +90,15 @@ public class ItemRenderHandler {
 		registerBasicItemRender(ItemHandler.enderonCrystal);
 		registerBasicItemRender(ItemHandler.bookOfKnowledge);
 		registerBasicItemRender(ItemHandler.aiRemoverDust);
-		registerBasicItemRender(ItemHandler.entityBrain);
 		
 		if(ConfigHandler.enableDebugTool){
 			registerBasicItemRender(ItemHandler.debugTool);
 		}
 		
+		registerItemVariantsRenderer(ItemHandler.entityBrain, 0, "entityBrain_normal");
+		registerItemVariantsRenderer(ItemHandler.entityBrain, 1, "entityBrain_small");
+		registerItemVariantsRenderer(ItemHandler.entityBrain, 2, "entityBrain_tiny");
+		registerItemVariantsRenderer(ItemHandler.entityBrain, 3, "entityBrain_walnut");
 		registerItemVariantsRenderer(ItemHandler.crystallHammerHead, 0, "crystallHammerHead_red");
 		registerItemVariantsRenderer(ItemHandler.crystallHammerHead, 1, "crystallHammerHead_blue");
 		registerItemVariantsRenderer(ItemHandler.crystallHammerHead, 2, "crystallHammerHead_green");

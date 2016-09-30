@@ -126,7 +126,10 @@ item.enderonCrystal.name=Enderon Crystal
 item.debugTool.name=Debug Tool
 item.bookOfKnowledge.name=§6Book of Knowledge§r
 item.aiRemoverDust.name=AI Dust
-item.entityBrain.name=Entity Brain
+item.entityBrain_normal.name=Entity Brain
+item.entityBrain_small.name=Small Entity Brain
+item.entityBrain_tiny.name=Tiny Entity Brain
+item.entityBrain_walnut.name=Walnut Entity Brain
 
 itemGroup.crystallogy=Crystallogy
 
@@ -138,4 +141,19 @@ crystallogy.subtitle.evil_laugh_male_1=Evil Laugh Male
 crystallogy.subtitle.evil_laugh_male_2=Evil Laugh Male
 crystallogy.subtitle.armorCombiner=Armor Combiner
 
-item.entityBrain.onFoodEaten=§5Do you feel now somehow "smarter"?§r
+item.entityBrain.onFoodEaten.0=§5Ooooh holy BRAIN!§r
+item.entityBrain.onFoodEaten.1=§5If you multiply 6.278 with 35.83943931188277 and pull the square root out of this result you will get 15!§r
+item.entityBrain.onFoodEaten.2=§5This is too much BRAIN for me!§r
+item.entityBrain.onFoodEaten.3=§5Do you feel now somehow "smarter"?§r
+item.entityBrain.onFoodEaten.4=§5Do you feel now somehow a bit "smarter"?§r
+item.entityBrain.onFoodEaten.5=§5Brainzzz!§r
+item.entityBrain.onFoodEaten.6=§5I like brainzzz!§r
+item.entityBrain.onFoodEaten.7=§5Cock-a-doodle-doo§r
+item.entityBrain.onFoodEaten.8=§5Eeyore§r
+item.entityBrain.onFoodEaten.9=§5Oink Oink Oink§r
+item.entityBrain.onFoodEaten.10=§5Baa Baa Baa§r
+item.entityBrain.onFoodEaten.11=§5I like this taste.§r
+item.entityBrain.onFoodEaten.12=§5Tastes like a nut.§r
+item.entityBrain.onFoodEaten.13=§5Somehow nutty.§r
+
+item.entityBrain.tooltip=Try me!
