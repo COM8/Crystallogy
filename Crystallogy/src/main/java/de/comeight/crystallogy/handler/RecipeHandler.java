@@ -330,6 +330,24 @@ public class RecipeHandler {
 		});
 		
 		GameRegistry.addRecipe(new RecipeBookOfKnowledge());
+		
+		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.areaPicker), new Object[] {
+				"Q_Q",
+				"CCC",
+				"_T_",
+				'T', ItemHandler.toolRod,
+				'C', BlockHandler.crystall_yellow,
+				'Q', Items.QUARTZ
+		});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.spotPicker), new Object[] {
+				"Q_Q",
+				"CCC",
+				"_T_",
+				'T', ItemHandler.toolRod,
+				'C', BlockHandler.crystall_green,
+				'Q', Items.QUARTZ
+		});
 	}
 	
 	private void addCrystalHammerHeadRecipe(ItemStack crystal, ItemStack out){
