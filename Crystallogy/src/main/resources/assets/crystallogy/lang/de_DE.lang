@@ -138,4 +138,4 @@ crystallogy.subtitle.evil_laugh_male_1=Böses Männerlachen
 crystallogy.subtitle.evil_laugh_male_2=Böses Männerlachen
 crystallogy.subtitle.armorCombiner=Rüstungskombinierer
 
-item.entityBrain.text=§5Fühlst du dich nun schlauer?§r
+item.entityBrain.onFoodEaten=§5Fühlst du dich nun irgendwie "schlauer"?§r

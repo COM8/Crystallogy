@@ -42,7 +42,7 @@ public class EntityBrain extends BaseItemFood{
 			player.addPotionEffect(new PotionEffect(Potion.getPotionById(9), 300, 1, false, true));
 		}
 		else{
-			player.addChatMessage(new TextComponentString(Utilities.localizeText("item.entityBrain.text")));
+			player.addChatMessage(new TextComponentString(Utilities.localizeText("item.entityBrain.onFoodEaten")));
 		}
 	}
 	

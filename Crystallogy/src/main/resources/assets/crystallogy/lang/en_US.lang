@@ -138,4 +138,4 @@ crystallogy.subtitle.evil_laugh_male_1=Evil Laugh Male
 crystallogy.subtitle.evil_laugh_male_2=Evil Laugh Male
 crystallogy.subtitle.armorCombiner=Armor Combiner
 
-item.entityBrain.text=§5Do you feel now smarter?§r
+item.entityBrain.onFoodEaten=§5Do you feel now somehow "smarter"?§r
