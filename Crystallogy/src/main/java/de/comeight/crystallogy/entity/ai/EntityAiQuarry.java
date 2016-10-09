@@ -1,15 +1,14 @@
 package de.comeight.crystallogy.entity.ai;
 
+import java.util.List;
+
+import de.comeight.crystallogy.util.EnumCustomAis;
 import de.comeight.crystallogy.util.Utilities;
-import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.ai.EntityAILeapAtTarget;
-import net.minecraft.entity.ai.EntityAIMoveToBlock;
-import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.passive.EntityPig;
-import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -45,10 +44,13 @@ public class EntityAiQuarry extends EntityAiMoveToPos {
 		this.miningProgress = 0;
 	}
 	
+	public EntityAiQuarry() {
+	}
+	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	@Override
-	protected int getAiID() {
-		return 3;
+	public int getAiID() {
+		return EnumCustomAis.QUARRY.ID;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
@@ -61,8 +63,8 @@ public class EntityAiQuarry extends EntityAiMoveToPos {
 	}
 	
 	@Override
-	public void redFromNBT(NBTTagCompound compound) {
-		super.redFromNBT(compound);
+	public void readFromNBT(NBTTagCompound compound) {
+		super.readFromNBT(compound);
 		startPos = Utilities.readBlockPosFromNBT(compound, "startPos");
 		currentPos = Utilities.readBlockPosFromNBT(compound, "currentPos");
 		endPos = Utilities.readBlockPosFromNBT(compound, "endPos");
@@ -163,6 +165,22 @@ public class EntityAiQuarry extends EntityAiMoveToPos {
 	
 	private void breakBlock(BlockPos pos){
 		world.destroyBlock(pos, true);
+	}
+	
+	public static void addAdvancedTooltip(ItemStack stack, EntityPlayer playerIn, List<String> tooltip){
+		NBTTagCompound compound = stack.getTagCompound();
+		BlockPos p1 = Utilities.readBlockPosFromNBT(compound, "areaMin");
+		BlockPos p2 = Utilities.readBlockPosFromNBT(compound, "areaMax");
+		
+		tooltip.add("§5Area:");
+		if(p1 == null || p2 == null){
+			tooltip.add("-");
+		}
+		else{
+			tooltip.add("X: §6" + p1.getX() + " - " + p2.getX());
+			tooltip.add("Y: §6" + p1.getY() + " - " + p2.getY());
+			tooltip.add("Z: §6" + p1.getZ() + " - " + p2.getZ());
+		}
 	}
 	
 }

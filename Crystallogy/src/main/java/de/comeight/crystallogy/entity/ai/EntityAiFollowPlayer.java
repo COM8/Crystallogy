@@ -1,14 +1,15 @@
 package de.comeight.crystallogy.entity.ai;
 
+import java.util.List;
 import java.util.UUID;
 
-import net.minecraft.client.Minecraft;
+import de.comeight.crystallogy.util.EnumCustomAis;
+import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
+import net.minecraft.util.math.BlockPos;
 
 public class EntityAiFollowPlayer extends EntityAiMoveToPos {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -24,14 +25,17 @@ public class EntityAiFollowPlayer extends EntityAiMoveToPos {
 		super(aiOwner);
 	}
 	
+	public EntityAiFollowPlayer() {
+	}
+	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	private boolean isPlayerReachable(){
 		return playerTarget != null && aiOwner.dimension == playerTarget.dimension;
 	}
 	
 	@Override
-	protected int getAiID() {
-		return 2;
+	public int getAiID() {
+		return EnumCustomAis.FOLLOW_PLAYER.ID;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
@@ -83,8 +87,8 @@ public class EntityAiFollowPlayer extends EntityAiMoveToPos {
 	}
 	
 	@Override
-	public void redFromNBT(NBTTagCompound compound) {
-		super.redFromNBT(compound);
+	public void readFromNBT(NBTTagCompound compound) {
+		super.readFromNBT(compound);
 		playerTarget = findPlayerInWorld(compound.getUniqueId("playerUUID"));
 	}
 	
@@ -95,6 +99,14 @@ public class EntityAiFollowPlayer extends EntityAiMoveToPos {
 			}
 		}
 		return null;
+	}
+	
+	public static void addAdvancedTooltip(ItemStack stack, EntityPlayer playerIn, List<String> tooltip){
+		NBTTagCompound compound = stack.getTagCompound();
+		BlockPos p1 = Utilities.readBlockPosFromNBT(compound, "targetPos");
+		tooltip.add("§5Player:");
+		tooltip.add("Name: §6" + compound.getString("playerName"));
+		tooltip.add("UUID: §6" + compound.getUniqueId("playerUUID"));
 	}
 	
 }

@@ -159,6 +159,7 @@ item.entityBrain.onFoodEaten.12=§5Tastes like a nut.§r
 item.entityBrain.onFoodEaten.13=§5Somehow nutty.§r
 item.entityBrain.tooltip.0=Try me!
 item.entityBrain.tooltip.1=Yes, I'm eatable!
+item.entityBrain.tooltip.2=§5AI:
 
 item.areaPicker.playerMessage.0=Successfully saved primary position:
 item.areaPicker.playerMessage.1=Successfully saved secondary position:
@@ -169,3 +170,9 @@ item.areaPicker.tooltip.2=Current area:
 item.spotPicker.playerMessage.0=Successfully saved position:
 item.spotPicker.tooltip.0=Right-click on a block to save the position
 item.spotPicker.tooltip.1=Current position:
+
+ai.type.0=Empty
+ai.type.1=Move to position
+ai.type.2=Follow player
+ai.type.3=Quarry
+ai.type.4=Pickup items

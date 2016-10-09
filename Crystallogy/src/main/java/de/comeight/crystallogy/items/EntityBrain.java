@@ -5,8 +5,11 @@ import java.util.Random;
 
 import de.comeight.crystallogy.entity.ai.EntityAiPickupItems;
 import de.comeight.crystallogy.entity.ai.EntityAiQuarry;
+import de.comeight.crystallogy.handler.AiHandler;
 import de.comeight.crystallogy.util.EnumEntityBrains;
+import de.comeight.crystallogy.util.ToolTipBuilder;
 import de.comeight.crystallogy.util.Utilities;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,7 +22,6 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -70,6 +72,11 @@ public class EntityBrain extends BaseItemFood{
 			return 2;
 		}
 		return 0;
+	}
+	
+	@Override
+	public boolean hasEffect(ItemStack stack) {
+		return stack.hasTagCompound() && stack.getTagCompound().hasKey("aiType");
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
@@ -135,6 +142,17 @@ public class EntityBrain extends BaseItemFood{
 		tooltip.add(Utilities.localizeText("item.entityBrain.tooltip.0"));
 		if(stack.getMetadata() == 3){
 			tooltip.add(Utilities.localizeText("item.entityBrain.tooltip.1"));
+		}
+		if(stack.hasTagCompound() && stack.getTagCompound().hasKey("aiType")){
+			tooltip.add("");
+			tooltip.add(Utilities.localizeText("item.entityBrain.tooltip.2") + "§6 " + Utilities.localizeText("ai.type." + stack.getTagCompound().getInteger("aiType")));
+			if(GuiScreen.isShiftKeyDown()){
+				tooltip.add("");
+				AiHandler.addAdvancedTooltip(stack, playerIn, tooltip);
+			}
+			else{
+			ToolTipBuilder.addShiftForMoreDetails(tooltip);	
+			}
 		}
 	}
 	

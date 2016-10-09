@@ -159,6 +159,7 @@ item.entityBrain.onFoodEaten.12=§5Schmekt wie eine Nuss.§r
 item.entityBrain.onFoodEaten.13=§5Irgendwie nussig.§r
 item.entityBrain.tooltip.0=Probier mich!
 item.entityBrain.tooltip.1=Ja, ich bin essbar!
+item.entityBrain.tooltip.2=§5KI:
 
 item.areaPicker.playerMessage.0=Erste Position wurde erfolgreich gespeichert:
 item.areaPicker.playerMessage.1=Zweite Position wurde erfolgreich gespeichert:
@@ -169,3 +170,9 @@ item.areaPicker.tooltip.2=Aktuelles Gebiet:
 item.spotPicker.playerMessage.0=Position wurde erfolgreich gespeichert:
 item.spotPicker.tooltip.0=Rechtsklick auf einen block, zum speichern der Position
 item.spotPicker.tooltip.1=Aktuelle Position:
+
+ai.type.0=Leer
+ai.type.1=Zu Position bewegen
+ai.type.2=Spieler folgen
+ai.type.3=Steinbruch
+ai.type.4=Items aufheben
