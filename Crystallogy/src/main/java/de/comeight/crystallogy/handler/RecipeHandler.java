@@ -13,6 +13,10 @@ import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeCrystallLig
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeDamDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeDrowDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeEnderDust;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeEntityBrainFollowPlayer;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeEntityBrainMoveToPos;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeEntityBrainPickupItems;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeEntityBrainQuarry;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeEntityCrystalKnife;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeEntityJar;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeFireCrystall;
@@ -70,7 +74,11 @@ public class RecipeHandler {
 	public static InfusionRecipeMachineBlock infusionRecipeMachineBlock;
 	public static InfusionRecipeArmorCatalyst infusionRecipeArmorCatalyst;
 	public static InfusionRecipeChargedCombinedArmorCompound infusionRecipeChargedCombinedArmorCompound;
-
+	public static InfusionRecipeEntityBrainQuarry infusionRecipeEntityBrainQuarry;
+	public static InfusionRecipeEntityBrainPickupItems infusionRecipeEntityBrainPickupItems;
+	public static InfusionRecipeEntityBrainMoveToPos infusionRecipeEntityBrainMoveToPos;
+	public static InfusionRecipeEntityBrainFollowPlayer infusionRecipeEntityBrainFollowPlayer;
+	
 	//-----------------------------------------------Constructor:-------------------------------------------
 
 
@@ -108,7 +116,15 @@ public class RecipeHandler {
 		infusionRecipeMachineBlock = new InfusionRecipeMachineBlock();
 		infusionRecipeArmorCatalyst = new InfusionRecipeArmorCatalyst();
 		infusionRecipeChargedCombinedArmorCompound = new InfusionRecipeChargedCombinedArmorCompound();
+		infusionRecipeEntityBrainQuarry = new InfusionRecipeEntityBrainQuarry();
+		infusionRecipeEntityBrainPickupItems = new InfusionRecipeEntityBrainPickupItems();
+		infusionRecipeEntityBrainMoveToPos = new InfusionRecipeEntityBrainMoveToPos();
+		infusionRecipeEntityBrainFollowPlayer = new InfusionRecipeEntityBrainFollowPlayer();
 		
+		InfusionRecipeHandler.addRecipe(infusionRecipeEntityBrainFollowPlayer);
+		InfusionRecipeHandler.addRecipe(infusionRecipeEntityBrainMoveToPos);
+		InfusionRecipeHandler.addRecipe(infusionRecipeEntityBrainPickupItems);
+		InfusionRecipeHandler.addRecipe(infusionRecipeEntityBrainQuarry);
 		InfusionRecipeHandler.addRecipe(infusionRecipeChargedCombinedArmorCompound);
 		InfusionRecipeHandler.addRecipe(infusionRecipeArmorCatalyst);
 		InfusionRecipeHandler.addRecipe(infusionRecipeMachineBlock);

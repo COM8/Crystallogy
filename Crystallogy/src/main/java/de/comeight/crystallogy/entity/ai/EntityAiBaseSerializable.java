@@ -1,20 +1,25 @@
 package de.comeight.crystallogy.entity.ai;
 
+import java.util.List;
+
+import de.comeight.crystallogy.handler.AiHandler;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 public abstract class EntityAiBaseSerializable extends EntityAIBase {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-
+	protected boolean saved;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public EntityAiBaseSerializable() {
-		
+		saved = false;
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
-	protected abstract int getAiID();
+	public abstract int getAiID();
 	
 	protected NBTTagCompound getCompound(EntityLiving entity){
 		NBTTagCompound compound = entity.getEntityData().getCompoundTag("customAi_" + getAiID());
@@ -29,20 +34,30 @@ public abstract class EntityAiBaseSerializable extends EntityAIBase {
 		entity.getEntityData().setTag("customAi_" + getAiID(), compound);
 	}
 	
+	@Override
+	public boolean shouldExecute() {
+		return AiHandler.isCustomAiEnabled;
+	}
+	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	public abstract void writeToNBT(NBTTagCompound compound);
 	
-	public abstract void redFromNBT(NBTTagCompound compound);
+	public abstract void readFromNBT(NBTTagCompound compound);
 	
 	public void saveData(EntityLiving entity){
 		NBTTagCompound compound = getCompound(entity);
 		writeToNBT(compound);
 		setCompound(entity, compound);
+		saved = true;
 	}
 	
 	public void readData(EntityLiving entity){
 		NBTTagCompound compound = getCompound(entity);
-		redFromNBT(compound);
+		readFromNBT(compound);
+	}
+	
+	public static void addAdvancedTooltip(ItemStack stack, EntityPlayer playerIn, List<String> tooltip){
+		
 	}
 	
 }

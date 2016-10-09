@@ -1,12 +1,16 @@
 package de.comeight.crystallogy.entity.ai;
 
+import java.util.List;
+
 import de.comeight.crystallogy.handler.AiHandler;
+import de.comeight.crystallogy.util.EnumCustomAis;
 import de.comeight.crystallogy.util.Utilities;
-import javafx.geometry.Side;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.passive.EntityTameable;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNavigate;
 import net.minecraft.util.EnumFacing;
@@ -62,6 +66,10 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 		setMutexBits(1);
 	}
 	
+	public EntityAiMoveToPos() {
+		aiOwnerPathfinder = null;
+	}
+	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	protected boolean isNearTargetPosition(){
 		return aiOwner.getPositionVector().squareDistanceTo(targetPos) <= 2;
@@ -78,8 +86,8 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 	}
 	
 	@Override
-	protected int getAiID() {
-		return 1;
+	public int getAiID() {
+		return EnumCustomAis.MOVE_TO_POS.ID;
 	}
 	
 	private boolean isEmptyBlock(BlockPos pos)
@@ -91,7 +99,12 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public boolean shouldExecute() {
-		saveData(aiOwner);
+		if(!saved){
+			saveData(aiOwner);
+		}
+		if(!super.shouldExecute()){
+			return false;
+		}
 		if(aiOwner instanceof EntityTameable){
 			EntityTameable pet = (EntityTameable) aiOwner;
 			if(pet.isSitting()){
@@ -214,10 +227,16 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 	}
 
 	@Override
-	public void redFromNBT(NBTTagCompound compound) {
+	public void readFromNBT(NBTTagCompound compound) {
 		targetPos = Utilities.readVec3dFromNBT(compound, "targetPos");
 		movementSpeed = compound.getDouble("movementSpeed");
 		forceMoveTo = compound.getBoolean("forceMoveTo");
+	}
+	
+	public static void addAdvancedTooltip(ItemStack stack, EntityPlayer playerIn, List<String> tooltip){
+		NBTTagCompound compound = stack.getTagCompound();
+		BlockPos p1 = Utilities.readBlockPosFromNBT(compound, "targetPos");
+		tooltip.add("§5Target Position: §6X=" + p1.getX() + " Y=" + p1.getY() + " Z=" + p1.getZ());
 	}
 	
 }

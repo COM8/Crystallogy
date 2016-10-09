@@ -1,8 +1,12 @@
 package de.comeight.crystallogy.entity.ai;
 
+import java.util.List;
+
+import de.comeight.crystallogy.util.EnumCustomAis;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -39,10 +43,13 @@ public class EntityAiPickupItems extends EntityAiMoveToPos{
 		this.waitCounter = 0;
 	}
 	
+	public EntityAiPickupItems() {
+	}
+	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	@Override
-	protected int getAiID() {
-		return 4;
+	public int getAiID() {
+		return EnumCustomAis.PICKUP_ITEMS.ID;
 	}
 	
 	private EntityItem getNextTarget(){
@@ -100,8 +107,8 @@ public class EntityAiPickupItems extends EntityAiMoveToPos{
 	}
 	
 	@Override
-	public void redFromNBT(NBTTagCompound compound) {
-		super.redFromNBT(compound);
+	public void readFromNBT(NBTTagCompound compound) {
+		super.readFromNBT(compound);
 		itemsTargetPos = Utilities.readBlockPosFromNBT(compound, "itemsTargetPos");
 		area = Utilities.readBlockPosFromNBT(compound, "area");
 		deliveringItems = compound.getBoolean("deliveringItems");
@@ -110,7 +117,7 @@ public class EntityAiPickupItems extends EntityAiMoveToPos{
 	
 	@Override
 	public boolean continueExecuting() {
-		return !(isDone() && aiOwner.getDistanceSqToCenter(itemsTargetPos) < 2);
+		return !(isDone() && aiOwner.getDistanceSqToCenter(itemsTargetPos) < 2.5);
 	}
 	
 	@Override
@@ -276,6 +283,31 @@ public class EntityAiPickupItems extends EntityAiMoveToPos{
 			setItemStackOnNBT(stack);
 		}
 		return false;
+	}
+	
+	public static void addAdvancedTooltip(ItemStack stack, EntityPlayer playerIn, List<String> tooltip){
+		NBTTagCompound compound = stack.getTagCompound();
+		BlockPos p1 = Utilities.readBlockPosFromNBT(compound, "areaMin");
+		BlockPos p2 = Utilities.readBlockPosFromNBT(compound, "areaMax");
+		BlockPos p3 = Utilities.readBlockPosFromNBT(compound, "itemsTargetPos");
+		
+		tooltip.add("§5Area:");
+		if(p1 == null || p2 == null){
+			tooltip.add("-");
+		}
+		else{
+			tooltip.add("X: §6" + p1.getX() + " - " + p2.getX());
+			tooltip.add("Y: §6" + p1.getY() + " - " + p2.getY());
+			tooltip.add("Z: §6" + p1.getZ() + " - " + p2.getZ());
+		}
+		
+		tooltip.add("");
+		if(p3 == null){
+			tooltip.add("§5Items target Position: §6-");
+		}
+		else{
+			tooltip.add("§5Items target Position: §6X=" + p3.getX() + " Y=" + p3.getY() + " Z=" + p3.getZ());
+		}
 	}
 	
 }
