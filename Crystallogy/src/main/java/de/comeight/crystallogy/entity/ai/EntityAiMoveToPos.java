@@ -164,9 +164,10 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 		if(targetPos == null){
 			return;
 		}
-		if(requestedTeleport && teleportCooldown == 0){
+		if(requestedTeleport && teleportCooldown <= 0){
 			teleportNearTarget();
 			requestedTeleport = false;
+			noMotionTicks = 0;
 			return;
 		}
 		if(targetPos.distanceTo(aiOwner.getPositionVector()) > 16){
