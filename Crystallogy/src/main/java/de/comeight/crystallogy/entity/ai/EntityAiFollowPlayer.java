@@ -14,11 +14,16 @@ import net.minecraft.util.math.BlockPos;
 public class EntityAiFollowPlayer extends EntityAiMoveToPos {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private EntityPlayer playerTarget;
+	private UUID playerUUID;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public EntityAiFollowPlayer(EntityLiving aiOwner, EntityPlayer playerTarget, double movementSpeed) {
-		super(aiOwner, playerTarget.getPositionVector(), movementSpeed);
-		this.playerTarget = playerTarget;
+	public EntityAiFollowPlayer(EntityLiving aiOwner, UUID playerUUID, double movementSpeed) {
+		super(aiOwner, null, movementSpeed);
+		this.playerTarget = findPlayerInWorld(playerUUID);
+		this.playerUUID = playerUUID;
+		if(playerTarget != null){
+			setTargetPos(playerTarget.getPositionVector());
+		}
 	}
 	
 	public EntityAiFollowPlayer(EntityLiving aiOwner) {
@@ -42,8 +47,8 @@ public class EntityAiFollowPlayer extends EntityAiMoveToPos {
 	@Override
 	public boolean continueExecuting() {
 		updatePlayerPos();
-		if(isPlayerReachable() &&  super.continueExecuting()){
-			return playerTarget.getEntityWorld() == aiOwner.getEntityWorld();
+		if(isPlayerReachable() &&  super.continueExecuting() && playerTarget != null && playerTarget.getEntityWorld() == aiOwner.getEntityWorld()){
+			return true;
 		}
 		else{
 			return false;
@@ -52,6 +57,14 @@ public class EntityAiFollowPlayer extends EntityAiMoveToPos {
 	
 	@Override
 	public boolean shouldExecute() {
+		if(playerTarget == null){
+			playerTarget = findPlayerInWorld(playerUUID);
+		}
+		
+		if(playerTarget == null){
+			return false;
+		}
+		setTargetPos(playerTarget.getPositionVector());
 		if(isPlayerReachable()){
 			updatePlayerPos();
 			if(isPlayerReachable() &&  super.shouldExecute()){
@@ -62,8 +75,10 @@ public class EntityAiFollowPlayer extends EntityAiMoveToPos {
 	}
 	
 	private void updatePlayerPos(){
-		setTargetPos(playerTarget.getPositionVector());
-		saveData(aiOwner);
+		if(playerTarget != null){
+			setTargetPos(playerTarget.getPositionVector());
+			saveData(aiOwner);
+		}
 	}
 	
 	@Override
@@ -84,12 +99,14 @@ public class EntityAiFollowPlayer extends EntityAiMoveToPos {
 	public void writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 		compound.setUniqueId("playerUUID", playerTarget.getUniqueID());
+		compound.setUniqueId("playerUUID", playerUUID);
 	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
-		playerTarget = findPlayerInWorld(compound.getUniqueId("playerUUID"));
+		this.playerUUID = compound.getUniqueId("playerUUID");
+		playerTarget = findPlayerInWorld(playerUUID);
 	}
 	
 	private EntityPlayer findPlayerInWorld(UUID playerUUID){
