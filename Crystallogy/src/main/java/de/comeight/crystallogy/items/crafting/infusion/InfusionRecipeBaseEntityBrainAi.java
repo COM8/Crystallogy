@@ -1,12 +1,9 @@
 package de.comeight.crystallogy.items.crafting.infusion;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 import de.comeight.crystallogy.handler.ItemHandler;
-import de.comeight.crystallogy.util.EnumCustomAis;
 import de.comeight.crystallogy.util.Utilities;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
@@ -49,12 +46,12 @@ public abstract class InfusionRecipeBaseEntityBrainAi extends InfusionRecipe {
 		}
 		
 		if(pos1.getY() > pos2.getY()){
-			yMin = pos2.getY();
-			yMax = pos1.getY();
-		}
-		else{
 			yMin = pos1.getY();
 			yMax = pos2.getY();
+		}
+		else{
+			yMin = pos2.getY();
+			yMax = pos1.getY();
 		}
 		
 		if(pos1.getZ() > pos2.getZ()){
