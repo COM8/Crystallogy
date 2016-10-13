@@ -102,7 +102,7 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 		if(!saved){
 			saveData(aiOwner);
 		}
-		if(!super.shouldExecute()){
+		if(!super.shouldExecute() || targetPos == null){
 			return false;
 		}
 		if(aiOwner instanceof EntityTameable){
@@ -119,7 +119,12 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 	
 	@Override
 	public boolean continueExecuting() {
-		return !aiOwnerPathfinder.noPath();
+		if(aiOwnerPathfinder.noPath() || targetPos == null){
+			return false;
+		}
+		else{
+			return true;
+		}
 	}
 	
 	@Override
@@ -156,6 +161,9 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 	}
 	
 	protected void recalcPath(){
+		if(targetPos == null){
+			return;
+		}
 		if(requestedTeleport && teleportCooldown == 0){
 			teleportNearTarget();
 			requestedTeleport = false;
