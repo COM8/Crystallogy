@@ -17,6 +17,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
 public class EntityMagicStoneOfForgetfulness extends EntityThrowable{
@@ -48,7 +49,7 @@ public class EntityMagicStoneOfForgetfulness extends EntityThrowable{
 		if (result.entityHit != null)
         {
             result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), 1.0F);
-            if(Utilities.getRandInt(0, 3) == 0 && result.entityHit instanceof EntityLiving){
+            if(Utilities.getRandInt(0, 2) == 0 && result.entityHit instanceof EntityLiving){
             	removeAi((EntityLiving) result.entityHit);
             }
             spawnHitParticle();
@@ -78,7 +79,9 @@ public class EntityMagicStoneOfForgetfulness extends EntityThrowable{
 				if(task.action instanceof EntityAiBaseSerializable){
 					entity.tasks.removeTask(task.action);
 					foundOne = true;
-					System.out.println(worldObj.isRemote);
+					EntityLivingBase e = getThrower();
+					e.addChatMessage(new TextComponentString("Successfully removed custom Ai!"));
+					System.out.println("removed");
 					break;
 				}
 			}	
