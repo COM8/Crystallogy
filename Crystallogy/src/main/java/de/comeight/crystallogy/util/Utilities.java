@@ -124,6 +124,9 @@ public class Utilities {
 	}
 	
 	public static void saveBlockPosToNBT(NBTTagCompound compound, BlockPos pos, String key){
+		if(pos == null){
+			return;
+		}
 		compound.setInteger(key + "_X", pos.getX());
 		compound.setInteger(key + "_Y", pos.getY());
 		compound.setInteger(key + "_Z", pos.getZ());
@@ -139,6 +142,9 @@ public class Utilities {
 	}
 	
 	public static void saveVec3dToNBT(NBTTagCompound compound, Vec3d vec, String key){
+		if(vec == null){
+			return;
+		}
 		compound.setDouble(key + "_X", vec.xCoord);
 		compound.setDouble(key + "_Y", vec.yCoord);
 		compound.setDouble(key + "_Z", vec.zCoord);
