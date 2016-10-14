@@ -7,6 +7,7 @@ import de.comeight.crystallogy.gui.GuiCompressor;
 import de.comeight.crystallogy.gui.GuiCrystallCrusher;
 import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ConfigHandler;
+import de.comeight.crystallogy.handler.EntityHandler;
 import de.comeight.crystallogy.handler.EventHandler;
 import de.comeight.crystallogy.handler.GuiHandler;
 import de.comeight.crystallogy.handler.GuiHandlerRegistry;
@@ -78,6 +79,9 @@ public class CommonProxy {
 	
 	//Sounds:
 	private static SoundHandler sH = new SoundHandler();
+	
+	//Entities:
+	private static EntityHandler eH = new EntityHandler();
 	
 	private static int networkId = 0;
 	
@@ -159,6 +163,7 @@ public class CommonProxy {
 		iH.preInit();
 		rH.preInit();
 		sH.preInit();
+		eH.preInit();
 		
 		registerNetworkMessages();
 		registerGuiHandlers();
@@ -171,6 +176,7 @@ public class CommonProxy {
 		iH.init();
 		rH.init();
 		sH.init();
+		eH.init();
 		
     	registerTileEntitys();
 		registerWorldGens();
@@ -183,6 +189,7 @@ public class CommonProxy {
 		iH.postInit();
 		rH.postInit();
 		sH.postInit();
+		eH.postInit();
 		
 		ForgeChunkManager.setForcedChunkLoadingCallback(CrystallogyBase.INSTANCE, new ChunkLoadingCallBack());
     }

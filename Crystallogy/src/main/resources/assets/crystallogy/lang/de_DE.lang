@@ -132,6 +132,7 @@ item.entityBrain_tiny.name=Winziges Kreaturengehirn
 item.entityBrain_walnut.name=Walnuss-Kreaturengehirn
 item.areaPicker.name=Bereichsauswähler
 item.spotPicker.name=Positionsauswähler
+item.magicStoneOfForgetfulness.name=§5Magischer Stein der Vergesslichkeit§r
 
 itemGroup.crystallogy=Crystallogy
 

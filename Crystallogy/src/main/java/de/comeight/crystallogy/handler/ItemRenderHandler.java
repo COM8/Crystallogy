@@ -92,6 +92,7 @@ public class ItemRenderHandler {
 		registerBasicItemRender(ItemHandler.aiRemoverDust);
 		registerBasicItemRender(ItemHandler.areaPicker);
 		registerBasicItemRender(ItemHandler.spotPicker);
+		registerBasicItemRender(ItemHandler.magicStoneOfForgetfulness);
 		
 		if(ConfigHandler.enableDebugTool){
 			registerBasicItemRender(ItemHandler.debugTool);

@@ -132,6 +132,7 @@ item.entityBrain_tiny.name=Tiny Entity Brain
 item.entityBrain_walnut.name=Walnut Entity Brain
 item.areaPicker.name=Area Picker
 item.spotPicker.name=Spot Picker
+item.magicStoneOfForgetfulness.name=§5Magic Stone of Forgetfulness§r
 
 itemGroup.crystallogy=Crystallogy
 

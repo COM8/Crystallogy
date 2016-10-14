@@ -21,6 +21,7 @@ import de.comeight.crystallogy.items.EntityBrain;
 import de.comeight.crystallogy.items.FertilizerPotato;
 import de.comeight.crystallogy.items.HunterArmorCompound;
 import de.comeight.crystallogy.items.HunterArmorMesh;
+import de.comeight.crystallogy.items.MagicStoneOfForgetfulness;
 import de.comeight.crystallogy.items.PureCrystallDust;
 import de.comeight.crystallogy.items.ToolRod;
 import de.comeight.crystallogy.items.armor.Armor_blue;
@@ -121,6 +122,7 @@ public class ItemHandler {
 	public static EntityBrain entityBrain;
 	public static AreaPicker areaPicker;
 	public static SpotPicker spotPicker;
+	public static MagicStoneOfForgetfulness magicStoneOfForgetfulness;
 	
 	//Armor:
 	public static Armor_red armorHelmet_red;
@@ -235,7 +237,9 @@ public class ItemHandler {
 		entityBrain = new EntityBrain();
 		areaPicker = new AreaPicker();
 		spotPicker = new SpotPicker();
+		magicStoneOfForgetfulness = new MagicStoneOfForgetfulness();
 		
+		GameRegistry.register(magicStoneOfForgetfulness);
 		GameRegistry.register(spotPicker);
 		GameRegistry.register(areaPicker);
 		GameRegistry.register(entityBrain);
