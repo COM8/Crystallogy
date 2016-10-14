@@ -3,15 +3,12 @@ package de.comeight.crystallogy.items;
 import java.util.List;
 import java.util.Random;
 
-import de.comeight.crystallogy.entity.ai.EntityAiPickupItems;
-import de.comeight.crystallogy.entity.ai.EntityAiQuarry;
 import de.comeight.crystallogy.handler.AiHandler;
 import de.comeight.crystallogy.util.EnumEntityBrains;
 import de.comeight.crystallogy.util.ToolTipBuilder;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
@@ -19,7 +16,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -38,15 +34,6 @@ public class EntityBrain extends BaseItemFood{
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
-	private void setAi(EntityLiving entity, EntityPlayer player){
-		if(player.isSneaking()){
-			entity.tasks.addTask(Integer.MIN_VALUE, new EntityAiPickupItems(entity, entity.getPosition(), new BlockPos(16, 2 ,16)));
-		}
-		else{
-			entity.tasks.addTask(Integer.MIN_VALUE, new EntityAiQuarry(entity, entity.getPosition().add(0, -1, 0), new BlockPos(16, -2 ,16)));	
-		}
-	}
-	
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
 		return super.getUnlocalizedName() + "_" + EnumEntityBrains.byMetadata(stack.getMetadata()).getName();
