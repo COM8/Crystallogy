@@ -225,11 +225,10 @@ public class BaseBlockEntityJar extends BaseBlockTileEntity {
 					worldIn.notifyNeighborsOfStateChange(pos, this);
 				}
 				else{
-					ItemStack stack = null;
-					if((stack = playerIn.getHeldItemMainhand())!= null){
+					if(heldItem != null){
 						//Use threat dust
 						if(!worldIn.isRemote){
-							testForThreatDust(stack, jar, pos, playerIn);
+							testForUsableItem(heldItem, jar, pos, playerIn);
 						}
 					}
 				}
@@ -238,7 +237,7 @@ public class BaseBlockEntityJar extends BaseBlockTileEntity {
 		return true;
 	}
 	
-	protected void testForThreatDust(ItemStack stack, TileEntityEntityJar jar, BlockPos pos, EntityPlayer playerIn){
+	protected void testForUsableItem(ItemStack stack, TileEntityEntityJar jar, BlockPos pos, EntityPlayer playerIn){
 		EnumThreats threat = EnumThreats.getThreatDust(stack);
 		if(threat != null){
 			jar.addThreat(threat);
@@ -248,11 +247,6 @@ public class BaseBlockEntityJar extends BaseBlockTileEntity {
 	            playerIStack.stackSize--;
 	        }
 		}
-	}
-	
-	@Override
-	public void onBlockClicked(World worldIn, BlockPos pos, EntityPlayer playerIn) {
-		super.onBlockClicked(worldIn, pos, playerIn);
 	}
 	
 	@Override

@@ -3,6 +3,7 @@ package de.comeight.crystallogy.tileEntitys;
 import java.util.List;
 import java.util.UUID;
 
+import de.comeight.crystallogy.handler.AiHandler;
 import de.comeight.crystallogy.handler.SoundHandler;
 import de.comeight.crystallogy.network.NetworkPacketParticle;
 import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
@@ -14,6 +15,7 @@ import de.comeight.crystallogy.util.NetworkUtilitis;
 import de.comeight.crystallogy.util.RGBColor;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.init.SoundEvents;
@@ -70,6 +72,13 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 	public void addThreat(EnumThreats threat){
 		threatTick = 0;
 		this.threat = threat;
+	}
+	
+	public void addCustomAi(NBTTagCompound compound){
+		Entity e = getEntity();
+		if(e != null && e instanceof EntityLiving){
+			AiHandler.addAiToEntity((EntityLiving) getEntity(), compound);
+		}
 	}
 	
 	public void writeCustomDataToNBT(NBTTagCompound compound) {
