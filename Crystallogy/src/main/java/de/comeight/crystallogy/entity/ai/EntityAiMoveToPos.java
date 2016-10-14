@@ -210,7 +210,7 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 	}
 	
 	protected boolean shouldRecalcPath(){
-		if(prevPos.distanceTo(aiOwner.getPositionVector()) < 0.25 && !isNearTargetPosition()){
+		if(prevPos.distanceTo(aiOwner.getPositionVector()) < 0 && !isNearTargetPosition()){
 			noMotionTicks++;
 		}
 		else{
