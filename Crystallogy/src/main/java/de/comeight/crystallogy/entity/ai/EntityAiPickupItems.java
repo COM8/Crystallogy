@@ -18,6 +18,7 @@ import net.minecraft.util.math.Vec3d;
 public class EntityAiPickupItems extends EntityAiMoveToPos{
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private BlockPos itemsTargetPos;
+	private BlockPos areaRefPos;
 	private BlockPos area;
 	private EntityItem currentTarget;
 	private boolean deliveringItems;
@@ -26,9 +27,10 @@ public class EntityAiPickupItems extends EntityAiMoveToPos{
 	private boolean maxStackSizeReached;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public EntityAiPickupItems(EntityLiving aiOwner, BlockPos itemsTargetPos, BlockPos area) {
+	public EntityAiPickupItems(EntityLiving aiOwner, BlockPos itemsTargetPos, BlockPos areaStartPos, BlockPos area) {
 		super(aiOwner, new Vec3d(itemsTargetPos.add(0.5, 0.5, 0.5)), 1.0);
 		this.itemsTargetPos = itemsTargetPos;
+		this.areaRefPos = areaStartPos;
 		this.area = area;
 		this.currentTarget = null;
 		this.deliveringItems = false;
@@ -72,25 +74,25 @@ public class EntityAiPickupItems extends EntityAiMoveToPos{
 	}
 	
 	private AxisAlignedBB getAreaBoundingBox(){
-		int xMin = itemsTargetPos.getX();
-		int yMin = itemsTargetPos.getY();
-		int zMin = itemsTargetPos.getZ();
+		int xMin = areaRefPos.getX();
+		int yMin = areaRefPos.getY() - 1;
+		int zMin = areaRefPos.getZ();
 		
-		int xMax = itemsTargetPos.getX() + area.getX();
-		int yMax = itemsTargetPos.getY() + area.getY();
-		int zMax = itemsTargetPos.getZ() + area.getZ();
+		int xMax = areaRefPos.getX() + area.getX() + 1;
+		int yMax = areaRefPos.getY() + area.getY() + 1;
+		int zMax = areaRefPos.getZ() + area.getZ() + 1;
 		if(area.getX() < 0){
 			xMin += area.getX();
-			xMax = itemsTargetPos.getX();
+			xMax = areaRefPos.getX() + 1;
 		}
 		if(area.getY() < 0){
-			yMin += area.getY();
-			yMax = itemsTargetPos.getY();
+			yMin += area.getY() - 1;
+			yMax = areaRefPos.getY() + 1;
 		}
 		
 		if(area.getZ() < 0){
 			zMin += area.getZ();
-			zMax = itemsTargetPos.getZ();
+			zMax = areaRefPos.getZ() + 1;
 		}
 		
 		return new AxisAlignedBB(xMin, yMin, zMin, xMax, yMax, zMax);
@@ -101,6 +103,7 @@ public class EntityAiPickupItems extends EntityAiMoveToPos{
 	public void writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 		Utilities.saveBlockPosToNBT(compound, itemsTargetPos, "itemsTargetPos");
+		Utilities.saveBlockPosToNBT(compound, areaRefPos, "areaRefPos");
 		Utilities.saveBlockPosToNBT(compound, area, "area");
 		compound.setBoolean("deliveringItems", deliveringItems);
 		compound.setBoolean("maxStackSizeReached", maxStackSizeReached);
@@ -110,6 +113,7 @@ public class EntityAiPickupItems extends EntityAiMoveToPos{
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
 		itemsTargetPos = Utilities.readBlockPosFromNBT(compound, "itemsTargetPos");
+		areaRefPos = Utilities.readBlockPosFromNBT(compound, "areaRefPos");
 		area = Utilities.readBlockPosFromNBT(compound, "area");
 		deliveringItems = compound.getBoolean("deliveringItems");
 		maxStackSizeReached = compound.getBoolean("maxStackSizeReached");
