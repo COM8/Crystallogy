@@ -27,12 +27,7 @@ public class EntityAiQuarry extends EntityAiMoveToPos {
 		super(aiOwner, new Vec3d(startPos), 1.0);
 		this.startPos = startPos;
 		this.currentPos = startPos;
-		if((startPos.getY() - size.getY()) >= 0){
-			this.endPos = startPos.add(size.getX() - 1, -size.getY() + 1, size.getZ() - 1);	
-		}
-		else{
-			this.endPos = startPos.add(size.getX() - 1, -startPos.getY() + 1, size.getZ() - 1);
-		}
+		this.endPos = startPos.add(size.getX(), -size.getY(), size.getZ());
 		this.done = false;
 		this.miningProgress = 0;
 		this.forceMoveTo = true;
@@ -93,7 +88,7 @@ public class EntityAiQuarry extends EntityAiMoveToPos {
 		super.updateTask();
 		if(isNearTargetPosition()|| aiOwnerPathfinder.noPath()){
 			incMiningProgress();
-			if(miningProgress == MAX_MINING_TICKS){
+			if(miningProgress >= MAX_MINING_TICKS){
 				mineNextBlock();	
 			}
 		}
@@ -117,9 +112,9 @@ public class EntityAiQuarry extends EntityAiMoveToPos {
 			return false;
 		}
 		
-		if(currentPos.getX() == endPos.getX()){
-			if(currentPos.getZ() == endPos.getZ()){
-				if(currentPos.getY() == endPos.getY()){
+		if(currentPos.getX() >= endPos.getX()){
+			if(currentPos.getZ() >= endPos.getZ()){
+				if(currentPos.getY() <= endPos.getY()){
 					return false;
 				}
 				currentPos = new BlockPos(startPos.getX(), currentPos.getY() -1, startPos.getZ());
