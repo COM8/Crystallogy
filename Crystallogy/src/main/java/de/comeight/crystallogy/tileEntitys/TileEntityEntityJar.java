@@ -140,6 +140,8 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 		if(hasEntity()){
 			if(release){
 				entity = null;
+				entityCompound = null;
+				newEntity = false;
 				addEffects(worldIn, pos);
 				
 				if(!worldIn.isRemote){
