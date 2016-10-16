@@ -105,6 +105,8 @@ public class TileEntityPlayerJar extends TileEntityEntityJar {
 			if(release){
 				entity = null;
 				profile = null;
+				entityCompound = null;
+				newEntity = false;
 				addEffects(worldIn, pos);
 				
 				if(!worldIn.isRemote){
