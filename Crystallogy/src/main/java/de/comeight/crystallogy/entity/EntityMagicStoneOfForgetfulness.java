@@ -81,7 +81,6 @@ public class EntityMagicStoneOfForgetfulness extends EntityThrowable{
 					foundOne = true;
 					EntityLivingBase e = getThrower();
 					e.addChatMessage(new TextComponentString("Successfully removed custom Ai!"));
-					System.out.println("removed");
 					break;
 				}
 			}	
