@@ -170,7 +170,7 @@ public class PageRegistry {
 	public static GuiBookFertilizerPotato FERTILIZER_POTATO_PAGE = new GuiBookFertilizerPotato();
 	public static GuiBookHunterArmorCompound HUNTERS_ARMOR_COMPOUND_PAGE = new GuiBookHunterArmorCompound();
 	public static GuiBookHuntersArmorMesh HUNTERS_ARMOR_MESH_PAGE = new GuiBookHuntersArmorMesh();
-	public static GuiBookPureCrystalDust PURE_CRYTAL_DUST_PAGE = new GuiBookPureCrystalDust();
+	public static GuiBookPureCrystalDust PURE_CRYSTAL_DUST_PAGE = new GuiBookPureCrystalDust();
 	public static GuiBookToolRod TOOL_ROD_PAGE = new GuiBookToolRod();
 	
 	public static GuiBookEntityCrystalKnife1 ENTITY_CRYSTAL_KNIFE_PAGE_1 = new GuiBookEntityCrystalKnife1();
@@ -322,7 +322,7 @@ public class PageRegistry {
 		registerPage(FERTILIZER_POTATO_PAGE);
 		registerPage(HUNTERS_ARMOR_COMPOUND_PAGE);
 		registerPage(HUNTERS_ARMOR_MESH_PAGE);
-		registerPage(PURE_CRYTAL_DUST_PAGE);
+		registerPage(PURE_CRYSTAL_DUST_PAGE);
 		registerPage(TOOL_ROD_PAGE);
 		
 		//Tools:

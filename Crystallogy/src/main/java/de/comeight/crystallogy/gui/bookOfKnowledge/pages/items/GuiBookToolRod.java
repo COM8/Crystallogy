@@ -25,7 +25,7 @@ public class GuiBookToolRod extends GuiBookBaseInfusionPage {
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	@Override
 	protected BookInfusionRecipe getRecipe() {
-		BookButtonCrafting p = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.pureCrystallDust), PageRegistry.PURE_CRYTAL_DUST_PAGE);
+		BookButtonCrafting p = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.pureCrystallDust), PageRegistry.PURE_CRYSTAL_DUST_PAGE);
 		p.disableFrame();
 		BookButtonCrafting s = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.STICK), null);
 		s.disableFrame();
@@ -48,7 +48,7 @@ public class GuiBookToolRod extends GuiBookBaseInfusionPage {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	protected void populateSuggestionsList() {
-		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.pureCrystallDust), PageRegistry.PURE_CRYTAL_DUST_PAGE));
+		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.pureCrystallDust), PageRegistry.PURE_CRYSTAL_DUST_PAGE));
 		suggestionsList.addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.crystallHammer_red), 
 																													new ItemStack(ItemHandler.crystallHammer_blue), 
 																													new ItemStack(ItemHandler.crystallHammer_green), 

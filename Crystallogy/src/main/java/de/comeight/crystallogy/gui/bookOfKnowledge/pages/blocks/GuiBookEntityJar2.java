@@ -42,7 +42,7 @@ public class GuiBookEntityJar2 extends GuiBookPageSuggestions {
 		bP.disableFrame();
 		BookButtonCrafting e = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.ENDER_EYE), null);
 		e.disableFrame();
-		BookButtonCrafting p = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.pureCrystallDust), PageRegistry.PURE_CRYTAL_DUST_PAGE);
+		BookButtonCrafting p = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.pureCrystallDust), PageRegistry.PURE_CRYSTAL_DUST_PAGE);
 		p.disableFrame();
 		
 		BookButtonCrafting[] input = new BookButtonCrafting[]{b, bP, e, p, p};
@@ -75,7 +75,7 @@ public class GuiBookEntityJar2 extends GuiBookPageSuggestions {
 
 	@Override
 	protected void populateSuggestionsList() {
-		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.pureCrystallDust), PageRegistry.PURE_CRYTAL_DUST_PAGE));
+		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.pureCrystallDust), PageRegistry.PURE_CRYSTAL_DUST_PAGE));
 		BookButtonCategory infusionButton = new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(BlockHandler.infuserBlock), PageRegistry.INFUSION_CRAFTING_PAGE_1);
 		infusionButton.setCustomDescription("Infusion Crafting");
 		suggestionsList.addEntry(infusionButton);

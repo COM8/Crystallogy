@@ -40,7 +40,7 @@ public class GuiBookInfusionCrafting2 extends GuiBookPageSuggestions {
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	protected void initRecipe() {
-		BookButtonCrafting p = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.pureCrystallDust), PageRegistry.PURE_CRYTAL_DUST_PAGE);
+		BookButtonCrafting p = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.pureCrystallDust), PageRegistry.PURE_CRYSTAL_DUST_PAGE);
 		BookButtonCrafting s = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.STICK), null);
 		
 		BookButtonCrafting[] input = new BookButtonCrafting[]{s, p, p, null, null};
