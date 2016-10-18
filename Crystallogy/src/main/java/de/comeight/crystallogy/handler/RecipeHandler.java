@@ -26,6 +26,7 @@ import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeHammer;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeHungDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeLevDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeMachineBlock;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeMagicStoneOfForgetfulness;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipePickaxe;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipePlayerCrystalKnife;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipePlayerJar;
@@ -78,6 +79,7 @@ public class RecipeHandler {
 	public static InfusionRecipeEntityBrainPickupItems infusionRecipeEntityBrainPickupItems;
 	public static InfusionRecipeEntityBrainMoveToPos infusionRecipeEntityBrainMoveToPos;
 	public static InfusionRecipeEntityBrainFollowPlayer infusionRecipeEntityBrainFollowPlayer;
+	public static InfusionRecipeMagicStoneOfForgetfulness infusionRecipeMagicStoneOfForgetfulness;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 
@@ -120,7 +122,9 @@ public class RecipeHandler {
 		infusionRecipeEntityBrainPickupItems = new InfusionRecipeEntityBrainPickupItems();
 		infusionRecipeEntityBrainMoveToPos = new InfusionRecipeEntityBrainMoveToPos();
 		infusionRecipeEntityBrainFollowPlayer = new InfusionRecipeEntityBrainFollowPlayer();
+		infusionRecipeMagicStoneOfForgetfulness = new InfusionRecipeMagicStoneOfForgetfulness();
 		
+		InfusionRecipeHandler.addRecipe(infusionRecipeMagicStoneOfForgetfulness);
 		InfusionRecipeHandler.addRecipe(infusionRecipeEntityBrainFollowPlayer);
 		InfusionRecipeHandler.addRecipe(infusionRecipeEntityBrainMoveToPos);
 		InfusionRecipeHandler.addRecipe(infusionRecipeEntityBrainPickupItems);
