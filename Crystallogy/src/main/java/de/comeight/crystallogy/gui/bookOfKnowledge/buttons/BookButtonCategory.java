@@ -105,10 +105,10 @@ public class BookButtonCategory extends BookButton{
 		GlStateManager.translate(x + 30, y + 0, 0);
 		GlStateManager.scale(1.0, 1.0, 1.0);
 		if(description == null){
-			mc.fontRendererObj.drawSplitString(items[frame].getDisplayName(), 0, 0, 60, 4210752);
+			mc.fontRendererObj.drawSplitString(items[frame].getDisplayName(), 0, 0, 120, 4210752);
 		}
 		else{
-			mc.fontRendererObj.drawSplitString(description, 0, 0, 60, 4210752);
+			mc.fontRendererObj.drawSplitString(description, 0, 0, 120, 4210752);
 		}
 		GlStateManager.popMatrix();
 	}

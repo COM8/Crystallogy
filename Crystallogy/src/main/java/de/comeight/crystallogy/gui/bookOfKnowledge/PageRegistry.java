@@ -67,6 +67,7 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookHuntersArm
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookHuntersDreamArmor1;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookHuntersDreamArmor2;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookItems;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookMagicStoneOfForgetfulness;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookPlayerCrystalKnife1;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookPlayerCrystalKnife2;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookPureCrystalDust;
@@ -170,6 +171,7 @@ public class PageRegistry {
 	public static GuiBookFertilizerPotato FERTILIZER_POTATO_PAGE = new GuiBookFertilizerPotato();
 	public static GuiBookHunterArmorCompound HUNTERS_ARMOR_COMPOUND_PAGE = new GuiBookHunterArmorCompound();
 	public static GuiBookHuntersArmorMesh HUNTERS_ARMOR_MESH_PAGE = new GuiBookHuntersArmorMesh();
+	public static GuiBookMagicStoneOfForgetfulness MAGIC_STONE_OF_FORGETFULNESS = new GuiBookMagicStoneOfForgetfulness();
 	public static GuiBookPureCrystalDust PURE_CRYSTAL_DUST_PAGE = new GuiBookPureCrystalDust();
 	public static GuiBookToolRod TOOL_ROD_PAGE = new GuiBookToolRod();
 	
@@ -322,6 +324,7 @@ public class PageRegistry {
 		registerPage(FERTILIZER_POTATO_PAGE);
 		registerPage(HUNTERS_ARMOR_COMPOUND_PAGE);
 		registerPage(HUNTERS_ARMOR_MESH_PAGE);
+		registerPage(MAGIC_STONE_OF_FORGETFULNESS);
 		registerPage(PURE_CRYSTAL_DUST_PAGE);
 		registerPage(TOOL_ROD_PAGE);
 		
