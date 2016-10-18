@@ -125,7 +125,7 @@ public class ScrollBarList {
     	if(System.currentTimeMillis() < lastMouseEvent){
     		return;
     	}
-    	if(hoverIndex >= 0){
+    	if(hoverIndex >= 0 && hoverIndex > list.size()){
 			list.get(hoverIndex).onClicked(page);
 		}
     }
