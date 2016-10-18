@@ -23,6 +23,7 @@ public class AreaPicker extends BaseItem{
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public AreaPicker() {
 		super(ID);
+		setMaxStackSize(1);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
