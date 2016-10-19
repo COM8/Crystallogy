@@ -55,7 +55,7 @@ public class BookInfusionRecipe {
 		this.y = y;
 		
 		drawInfuserBlock();
-		if(frame == 1){
+		if(frame == 0){
 			drawInput(mouseX, mouseY);
 			GuiBookUtilities.drawTextBox(x - 10, y + 10, 100, 1.2F, "Input:");
 		}
