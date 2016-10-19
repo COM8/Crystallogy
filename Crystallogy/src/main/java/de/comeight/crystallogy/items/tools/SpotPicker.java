@@ -23,6 +23,7 @@ public class SpotPicker extends BaseItem{
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public SpotPicker() {
 		super(ID);
+		setMaxStackSize(1);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
