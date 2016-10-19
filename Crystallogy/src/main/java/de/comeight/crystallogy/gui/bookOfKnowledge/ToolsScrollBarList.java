@@ -25,6 +25,7 @@ public class ToolsScrollBarList extends ScrollBarList {
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	private void addAllEntrys(){
+		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.areaPicker), PageRegistry.AREA_PICKER_PAGE));
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.entityCrystalKnife), PageRegistry.ENTITY_CRYSTAL_KNIFE_PAGE_1));
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.entityGrabber), PageRegistry.ENTITY_GRABBER_PAGE));
 		
@@ -47,6 +48,7 @@ public class ToolsScrollBarList extends ScrollBarList {
 			addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.debugTool), PageRegistry.DEBUG_TOOL_PAGE));
 		}
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.playerCrystalKnife), PageRegistry.PLAYER_CRYSTAL_KNIFE_PAGE_1));
+		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.spotPicker), PageRegistry.SPOT_PICKER_PAGE));
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.vaporizer), null));
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.vaporizerDirection), null));
 	}

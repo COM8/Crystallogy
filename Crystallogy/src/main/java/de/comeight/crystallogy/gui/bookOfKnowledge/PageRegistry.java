@@ -28,6 +28,7 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookMachines;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookPlayerJar1;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookPlayerJar2;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.credits.GuiBookCredits;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookAreaPicker;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookArmor;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookArmorCatalyst;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookArmorPlates1;
@@ -71,6 +72,7 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookPlayerCrys
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookPureCrystalDust;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookRedCrystalArmor1;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookRedCrystalArmor2;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookSpotPicker;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookThreatDustsAiDust;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookThreatDustsBadLuck;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookThreatDustsBlindDust;
@@ -180,6 +182,7 @@ public class PageRegistry {
 	public static GuiBookPureCrystalDust PURE_CRYSTAL_DUST_PAGE = new GuiBookPureCrystalDust();
 	public static GuiBookToolRod TOOL_ROD_PAGE = new GuiBookToolRod();
 	
+	public static GuiBookAreaPicker AREA_PICKER_PAGE = new GuiBookAreaPicker();
 	public static GuiBookEntityCrystalKnife1 ENTITY_CRYSTAL_KNIFE_PAGE_1 = new GuiBookEntityCrystalKnife1();
 	public static GuiBookEntityCrystalKnife2 ENTITY_CRYSTAL_KNIFE_PAGE_2 = new GuiBookEntityCrystalKnife2();
 	public static GuiBookEntityGrabber ENTITY_GRABBER_PAGE = new GuiBookEntityGrabber();
@@ -192,6 +195,7 @@ public class PageRegistry {
 	public static GuiBookDebugTool DEBUG_TOOL_PAGE = new GuiBookDebugTool();
 	public static GuiBookPlayerCrystalKnife1 PLAYER_CRYSTAL_KNIFE_PAGE_1 = new GuiBookPlayerCrystalKnife1();
 	public static GuiBookPlayerCrystalKnife2 PLAYER_CRYSTAL_KNIFE_PAGE_2 = new GuiBookPlayerCrystalKnife2();
+	public static GuiBookSpotPicker SPOT_PICKER_PAGE = new GuiBookSpotPicker();
 	
 	public static GuiBookBlueCrystalArmor1 BLUE_CRYSTAL_ARMOR_PAGE_1 = new GuiBookBlueCrystalArmor1();
 	public static GuiBookBlueCrystalArmor2 BLUE_CRYSTAL_ARMOR_PAGE_2 = new GuiBookBlueCrystalArmor2();
@@ -334,6 +338,7 @@ public class PageRegistry {
 		registerPage(TOOL_ROD_PAGE);
 		
 		//Tools:
+		registerPage(AREA_PICKER_PAGE);
 		registerPage(ENTITY_CRYSTAL_KNIFE_PAGE_1);
 		registerPage(ENTITY_CRYSTAL_KNIFE_PAGE_2);
 		registerPage(ENTITY_GRABBER_PAGE);
@@ -343,6 +348,7 @@ public class PageRegistry {
 		registerPage(CRYSTAL_PICKAXE_PAGE_2);
 		registerPage(CRYSTAL_SWORD_PAGE_1);
 		registerPage(CRYSTAL_SWORD_PAGE_2);
+		registerPage(SPOT_PICKER_PAGE);
 		
 		registerPage(DEBUG_TOOL_PAGE);
 		registerPage(PLAYER_CRYSTAL_KNIFE_PAGE_1);
