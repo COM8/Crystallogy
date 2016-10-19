@@ -55,6 +55,10 @@ public class ScrollBarList {
     
     
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+    public void addEntry(BookButtonCategory button){
+    	list.add(button);
+    }
+    
     public void drawScreen(int mouseX, int mouseY, int posX, int posY){
     	this.posX = posX;
         this.posY = posY;
@@ -188,10 +192,6 @@ public class ScrollBarList {
     	else{
     		list.get(index).drawNormal(x + 5, y + 5);
     	}
-    }
-    
-    public void addEntry(BookButtonCategory button){
-    	list.add(button);
     }
     
     public void drawTexture(int x, int y, int sizeX, int sizeY, ResourceLocation texture){

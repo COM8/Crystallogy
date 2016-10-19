@@ -49,6 +49,10 @@ public class ScrollBarListSearch extends ScrollBarList {
 		fullList.add(button);
 	}
 	
+	public void addEntrys(LinkedList<BookButtonCategory> list) {
+		fullList.addAll(list);
+	}
+	
 	private void shrinkList(String text){
 		if(prevText.equals("")){
 			list = fullList;
