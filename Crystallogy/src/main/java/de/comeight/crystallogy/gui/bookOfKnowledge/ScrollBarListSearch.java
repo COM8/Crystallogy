@@ -15,13 +15,14 @@ public class ScrollBarListSearch extends ScrollBarList {
 	public boolean searchSelected = false;
 	
 	private LinkedList<BookButtonCategory> fullList = new LinkedList<BookButtonCategory>();
-	private String prevText = "x";
+	private static String prevText = "";
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public ScrollBarListSearch(int width, int height, int posX, int posY, GuiBookPage page) {
 		super(width, height, posX, posY, page);
 		
 		searchField = new BookSearchField(GuiBookPage.getNextButtonId(), mc.fontRendererObj, 0, 0, width - 14, 10);
+		searchField.setText(prevText);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -30,7 +31,7 @@ public class ScrollBarListSearch extends ScrollBarList {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public void drawScreen(int mouseX, int mouseY, int posX, int posY) {
-		if(!prevText.equals(searchField.getText())){
+	if(!prevText.equals(searchField.getText())){
 			prevText = searchField.getText();
 			shrinkList(prevText);
 		}
@@ -51,10 +52,11 @@ public class ScrollBarListSearch extends ScrollBarList {
 	
 	public void addEntrys(LinkedList<BookButtonCategory> list) {
 		fullList.addAll(list);
+		shrinkList(prevText);
 	}
 	
 	private void shrinkList(String text){
-		if(prevText.equals("")){
+		if(prevText.isEmpty()){
 			list = fullList;
 		}
 		else{
