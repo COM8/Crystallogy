@@ -2,6 +2,7 @@ package de.comeight.crystallogy.handler;
 
 import de.comeight.crystallogy.blocks.EnumCrystalColor;
 import de.comeight.crystallogy.items.crafting.RecipeBookOfKnowledge;
+import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeAiDust;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorCatalyst;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeArmorPlate;
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipeBadLuckDust;
@@ -80,6 +81,7 @@ public class RecipeHandler {
 	public static InfusionRecipeEntityBrainMoveToPos infusionRecipeEntityBrainMoveToPos;
 	public static InfusionRecipeEntityBrainFollowPlayer infusionRecipeEntityBrainFollowPlayer;
 	public static InfusionRecipeMagicStoneOfForgetfulness infusionRecipeMagicStoneOfForgetfulness;
+	public static InfusionRecipeAiDust infusionRecipeAiDust;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 
@@ -123,7 +125,9 @@ public class RecipeHandler {
 		infusionRecipeEntityBrainMoveToPos = new InfusionRecipeEntityBrainMoveToPos();
 		infusionRecipeEntityBrainFollowPlayer = new InfusionRecipeEntityBrainFollowPlayer();
 		infusionRecipeMagicStoneOfForgetfulness = new InfusionRecipeMagicStoneOfForgetfulness();
+		infusionRecipeAiDust = new InfusionRecipeAiDust();
 		
+		InfusionRecipeHandler.addRecipe(infusionRecipeAiDust);
 		InfusionRecipeHandler.addRecipe(infusionRecipeMagicStoneOfForgetfulness);
 		InfusionRecipeHandler.addRecipe(infusionRecipeEntityBrainFollowPlayer);
 		InfusionRecipeHandler.addRecipe(infusionRecipeEntityBrainMoveToPos);
