@@ -1,4 +1,4 @@
-package de.comeight.crystallogy.gui.bookOfKnowledge.pages.infusion;
+package de.comeight.crystallogy.gui.bookOfKnowledge.pages.mechanisms;
 
 import de.comeight.crystallogy.CrystallogyBase;
 import de.comeight.crystallogy.gui.bookOfKnowledge.BookInfusionRecipe;

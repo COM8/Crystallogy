@@ -1,4 +1,4 @@
-package de.comeight.crystallogy.gui.bookOfKnowledge.pages.infusion;
+package de.comeight.crystallogy.gui.bookOfKnowledge.pages.mechanisms;
 
 import de.comeight.crystallogy.CrystallogyBase;
 import de.comeight.crystallogy.gui.bookOfKnowledge.BookInfusionRecipe;
@@ -33,10 +33,7 @@ public class GuiBookInfusionCrafting2 extends GuiBookPageSuggestions {
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
-	@Override
-	public GuiBookPage getNextPage() {
-		return PageRegistry.SEARCH_PAGE;
-	}
+
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	protected void initRecipe() {

@@ -82,11 +82,12 @@ public class GuiBookMain extends GuiBookPage {
 		items.setCustomDescription("Items");
 		buttonList.add(items);
 		
-		//Infusion Crafting:
-		BookButtonCategory infusion = new BookButtonCategory(GuiBookPage.getNextButtonId(), chapterButtonX, 110, null, new ItemStack(BlockHandler.infuserBlock), PageRegistry.INFUSION_CRAFTING_PAGE_1);
-		infusion.setScale(buttonScale);
-		infusion.setCustomDescription("Infusion Crafting");
-		buttonList.add(infusion);
+		//Mechanisms:
+		BookButtonCategory mechanisms = new BookButtonCategory(GuiBookPage.getNextButtonId(), chapterButtonX, 110, null, new ItemStack[]{	new ItemStack(BlockHandler.infuserBlock), 
+																																			new ItemStack(ItemHandler.entityBrain)}, 1000, PageRegistry.MECHANISMS_PAGE);
+		mechanisms.setScale(buttonScale);
+		mechanisms.setCustomDescription("Mechanisms");
+		buttonList.add(mechanisms);
 		
 		//Search:
 		BookButtonCategory search = new BookButtonCategory(GuiBookPage.getNextButtonId(), chapterButtonX, 145, null, new ItemStack(Items.COMPASS), PageRegistry.SEARCH_PAGE);

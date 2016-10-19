@@ -19,7 +19,7 @@ public class GuiBookTools extends GuiBookPage {
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	@Override
 	public GuiBookPage getNextPage() {
-		return PageRegistry.INFUSION_CRAFTING_PAGE_1;
+		return PageRegistry.MECHANISMS_PAGE;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------

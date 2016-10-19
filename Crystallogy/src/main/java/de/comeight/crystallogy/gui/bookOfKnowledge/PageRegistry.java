@@ -28,8 +28,6 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookMachines;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookPlayerJar1;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookPlayerJar2;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.credits.GuiBookCredits;
-import de.comeight.crystallogy.gui.bookOfKnowledge.pages.infusion.GuiBookInfusionCrafting1;
-import de.comeight.crystallogy.gui.bookOfKnowledge.pages.infusion.GuiBookInfusionCrafting2;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookArmor;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookArmorCatalyst;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookArmorPlates1;
@@ -89,6 +87,9 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookToolRod;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookTools;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookYellowCrystalArmor1;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookYellowCrystalArmor2;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.mechanisms.GuiBookInfusionCrafting1;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.mechanisms.GuiBookInfusionCrafting2;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.mechanisms.GuiBookMechanisms;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.search.GuiBookSearch;
 import de.comeight.crystallogy.util.Log;
 import net.minecraft.client.Minecraft;
@@ -118,6 +119,8 @@ public class PageRegistry {
 	public static GuiBookArmor ARMOR_PAGE = new GuiBookArmor();
 	public static GuiBookSearch SEARCH_PAGE = new GuiBookSearch();
 	public static GuiBookCredits CREDITS_PAGE = new GuiBookCredits();
+	public static GuiBookMechanisms MECHANISMS_PAGE = new GuiBookMechanisms();
+	
 	public static GuiBookInfusionCrafting1 INFUSION_CRAFTING_PAGE_1 = new GuiBookInfusionCrafting1();
 	public static GuiBookInfusionCrafting2 INFUSION_CRAFTING_PAGE_2 = new GuiBookInfusionCrafting2();
 	
@@ -269,8 +272,7 @@ public class PageRegistry {
 		registerPage(ARMOR_PAGE);
 		registerPage(SEARCH_PAGE);
 		registerPage(CREDITS_PAGE);
-		registerPage(INFUSION_CRAFTING_PAGE_1);
-		registerPage(INFUSION_CRAFTING_PAGE_2);
+		registerPage(MECHANISMS_PAGE);
 		
 		//Blocks:
 		registerPage(CRYSTALS_PAGE);
@@ -359,6 +361,10 @@ public class PageRegistry {
 		registerPage(COMBINED_ARMOR_PAGE_2);
 		registerPage(HUNTERS_ARMOR_PAGE_1);
 		registerPage(HUNTERS_ARMOR_PAGE_2);
+		
+		//Mechanisms:
+		registerPage(INFUSION_CRAFTING_PAGE_1);
+		registerPage(INFUSION_CRAFTING_PAGE_2);
 		
 		Log.info("Finished loading Book of Knowledge");
 	}
