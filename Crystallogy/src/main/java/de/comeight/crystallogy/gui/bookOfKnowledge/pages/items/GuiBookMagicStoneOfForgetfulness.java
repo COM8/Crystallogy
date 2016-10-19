@@ -49,7 +49,7 @@ public class GuiBookMagicStoneOfForgetfulness extends GuiBookPageSuggestions {
 		
 		BookButtonCrafting[] input = new BookButtonCrafting[]{c, p, p, p, p};
 		
-		BookButtonCrafting output = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.magicStoneOfForgetfulness), null);
+		BookButtonCrafting output = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.magicStoneOfForgetfulness, 8), null);
 		output.disableFrame();
 		
 		recipe = new BookInfusionRecipe(input, output);
