@@ -12,27 +12,30 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class GuiBookThreatDusts2 extends GuiBookBaseInfusionPage {
+public class GuiBookThreatDustsEnderDust extends GuiBookBaseInfusionPage {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	
+	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public GuiBookThreatDusts2() {
-		super(new ItemStack(ItemHandler.badLuckDust));
+	public GuiBookThreatDustsEnderDust() {
+		super(new ItemStack(ItemHandler.enderDust));
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	@Override
 	protected BookInfusionRecipe getRecipe() {
-		BookButtonCrafting f = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.FISHING_ROD), null);
-		f.disableFrame();
-		BookButtonCrafting c = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.CARROT), null);
-		c.disableFrame();
-		BookButtonCrafting y = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.crystallDust_yellow), PageRegistry.CRYSTAL_DUST_PAGE);
-		y.disableFrame();
+		BookButtonCrafting e = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.ENDER_EYE), null);
+		e.disableFrame();
+		BookButtonCrafting p = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.ENDER_PEARL), null);
+		p.disableFrame();
+		BookButtonCrafting b = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.crystallDust_blue), PageRegistry.CRYSTAL_DUST_PAGE);
+		b.disableFrame();
+		BookButtonCrafting r = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.crystallDust_red), PageRegistry.CRYSTAL_DUST_PAGE);
+		r.disableFrame();
 		
-		BookButtonCrafting[] input = new BookButtonCrafting[]{f, c, y, y, y};
+		BookButtonCrafting[] input = new BookButtonCrafting[]{e, p, r, b, b};
 		
-		BookButtonCrafting output = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.badLuckDust), null);
+		BookButtonCrafting output = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.enderDust), null);
 		output.disableFrame();
 		
 		return new BookInfusionRecipe(input, output);
@@ -40,14 +43,15 @@ public class GuiBookThreatDusts2 extends GuiBookBaseInfusionPage {
 
 	@Override
 	protected String getDescription() {
-		return "Gives the target the Bad Luck Potion Effect for 15 seconds.";
+		return "Teleports the target 5 times a couple blocks away.";
 	}
 	
 	@Override
 	public GuiBookPage getNextPage() {
-		return PageRegistry.THREAT_DUSTS_PAGE_3;
+		return PageRegistry.THREAT_DUSTS_FIRE_DUST_PAGE;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+
 	
 }

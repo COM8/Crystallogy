@@ -71,7 +71,7 @@ public class AllScrollBarList extends ScrollBarListSearch {
 																									new ItemStack(ItemHandler.glowDust), 
 																									new ItemStack(ItemHandler.hungDust), 
 																									new ItemStack(ItemHandler.levDust), 
-																									new ItemStack(ItemHandler.poisDust)}, 1000, PageRegistry.THREAT_DUSTS_PAGE_1));
+																									new ItemStack(ItemHandler.poisDust)}, 1000, PageRegistry.THREAT_DUSTS_MAIN_PAGE));
 		
 		addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.chargedCombinedArmorMesh), PageRegistry.CHARGED_COMBINED_ARMOR_MESH_PAGE));
 		

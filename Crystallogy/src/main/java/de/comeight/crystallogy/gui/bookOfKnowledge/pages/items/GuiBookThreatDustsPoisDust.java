@@ -4,7 +4,6 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.BookInfusionRecipe;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookBaseInfusionPage;
 import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCrafting;
-import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPage;
 import de.comeight.crystallogy.handler.ItemHandler;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -12,26 +11,28 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class GuiBookThreatDusts5 extends GuiBookBaseInfusionPage {
+public class GuiBookThreatDustsPoisDust extends GuiBookBaseInfusionPage {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-
+	
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public GuiBookThreatDusts5() {
-		super(new ItemStack(ItemHandler.drowDust));
+	public GuiBookThreatDustsPoisDust() {
+		super(new ItemStack(ItemHandler.poisDust));
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	@Override
 	protected BookInfusionRecipe getRecipe() {
-		BookButtonCrafting p = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.PRISMARINE_SHARD), null);
-		p.disableFrame();
-		BookButtonCrafting b = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.crystallDust_blue), PageRegistry.CRYSTAL_DUST_PAGE);
-		b.disableFrame();
+		BookButtonCrafting f = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.SPIDER_EYE), null);
+		f.disableFrame();
+		BookButtonCrafting g = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.crystallDust_green), PageRegistry.CRYSTAL_DUST_PAGE);
+		g.disableFrame();
+		BookButtonCrafting y = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.crystallDust_yellow), PageRegistry.CRYSTAL_DUST_PAGE);
+		y.disableFrame();
 		
-		BookButtonCrafting[] input = new BookButtonCrafting[]{p, b, b, b, b};
+		BookButtonCrafting[] input = new BookButtonCrafting[]{f, y, g, g, g};
 		
-		BookButtonCrafting output = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.drowDust), null);
+		BookButtonCrafting output = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.poisDust), null);
 		output.disableFrame();
 		
 		return new BookInfusionRecipe(input, output);
@@ -39,15 +40,10 @@ public class GuiBookThreatDusts5 extends GuiBookBaseInfusionPage {
 
 	@Override
 	protected String getDescription() {
-		return "Damages the target eleven times one damage. The Damage Source is drowning.";
-	}
-	
-	@Override
-	public GuiBookPage getNextPage() {
-		return PageRegistry.THREAT_DUSTS_PAGE_6;
+		return "Gives the target the Poison Potion Effect for 15 seconds.";
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
-
+	
 	
 }

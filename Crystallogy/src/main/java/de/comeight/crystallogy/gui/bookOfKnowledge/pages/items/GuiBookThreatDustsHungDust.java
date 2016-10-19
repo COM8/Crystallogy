@@ -12,28 +12,26 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class GuiBookThreatDusts10 extends GuiBookBaseInfusionPage {
+public class GuiBookThreatDustsHungDust extends GuiBookBaseInfusionPage {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public GuiBookThreatDusts10() {
-		super(new ItemStack(ItemHandler.levDust));
+	public GuiBookThreatDustsHungDust() {
+		super(new ItemStack(ItemHandler.hungDust));
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	@Override
 	protected BookInfusionRecipe getRecipe() {
-		BookButtonCrafting f = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.FEATHER), null);
-		f.disableFrame();
-		BookButtonCrafting g = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.GHAST_TEAR), null);
+		BookButtonCrafting r = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.ROTTEN_FLESH), null);
+		r.disableFrame();
+		BookButtonCrafting g = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.crystallDust_green), PageRegistry.CRYSTAL_DUST_PAGE);
 		g.disableFrame();
-		BookButtonCrafting y = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.crystallDust_yellow), PageRegistry.CRYSTAL_DUST_PAGE);
-		y.disableFrame();
 		
-		BookButtonCrafting[] input = new BookButtonCrafting[]{f, g, y, y, y};
+		BookButtonCrafting[] input = new BookButtonCrafting[]{r, g, g, g, g};
 		
-		BookButtonCrafting output = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.levDust), null);
+		BookButtonCrafting output = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.hungDust), null);
 		output.disableFrame();
 		
 		return new BookInfusionRecipe(input, output);
@@ -41,15 +39,15 @@ public class GuiBookThreatDusts10 extends GuiBookBaseInfusionPage {
 
 	@Override
 	protected String getDescription() {
-		return "Gives the target the Levitation Potion Effect for 15 seconds.";
+		return "Gives the target the Hunger Potion Effect for 15 seconds.";
 	}
 	
 	@Override
 	public GuiBookPage getNextPage() {
-		return PageRegistry.THREAT_DUSTS_PAGE_11;
+		return PageRegistry.THREAT_DUSTS_LEV_DUST_PAGE;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
-
+	
 	
 }

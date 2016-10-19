@@ -93,7 +93,7 @@ public class GuiBookPlayerJar2 extends GuiBookPageSuggestions {
 																												new ItemStack(ItemHandler.glowDust), 
 																												new ItemStack(ItemHandler.hungDust), 
 																												new ItemStack(ItemHandler.levDust), 
-																												new ItemStack(ItemHandler.poisDust)}, 1000, PageRegistry.THREAT_DUSTS_PAGE_1);
+																												new ItemStack(ItemHandler.poisDust)}, 1000, PageRegistry.THREAT_DUSTS_MAIN_PAGE);
 		treatDusts.setCustomDescription("Threat Dusts");
 		suggestionsList.addEntry(treatDusts);
 	}

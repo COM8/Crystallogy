@@ -16,17 +16,17 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class GuiBookThreatDusts1 extends GuiBookPageSuggestions {
+public class GuiBookThreatDustsMainPage extends GuiBookPageSuggestions {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	private BookMultiItemRenderer crystalLights;
+	private BookMultiItemRenderer itemRenderer;
 	
 	private static final ResourceLocation PREVIEW = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/book/items/threat_dust_preview.png");
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public GuiBookThreatDusts1() {
+	public GuiBookThreatDustsMainPage() {
 		super("Threat Dusts:");
 		
-		crystalLights = new BookMultiItemRenderer(new ItemStack[]{	new ItemStack(ItemHandler.badLuckDust), 
+		itemRenderer = new BookMultiItemRenderer(new ItemStack[]{	new ItemStack(ItemHandler.badLuckDust), 
 																	new ItemStack(ItemHandler.blindDust), 
 																	new ItemStack(ItemHandler.damDust), 
 																	new ItemStack(ItemHandler.drowDust), 
@@ -41,7 +41,7 @@ public class GuiBookThreatDusts1 extends GuiBookPageSuggestions {
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	@Override
 	public GuiBookPage getNextPage() {
-		return PageRegistry.THREAT_DUSTS_PAGE_2;
+		return PageRegistry.THREAT_DUSTS_AI_DUST_PAGE;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
@@ -71,7 +71,7 @@ public class GuiBookThreatDusts1 extends GuiBookPageSuggestions {
 	}
 	
 	private void drawItem(){
-		crystalLights.drawItem(xPosBook + 50, yPosBook + 30);
+		itemRenderer.drawItem(xPosBook + 50, yPosBook + 30);
 	}
 
 	@Override
@@ -81,16 +81,17 @@ public class GuiBookThreatDusts1 extends GuiBookPageSuggestions {
 
 	@Override
 	protected void populateSuggestionsList() {
-		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.badLuckDust), PageRegistry.THREAT_DUSTS_PAGE_2));
-		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.blindDust), PageRegistry.THREAT_DUSTS_PAGE_3));
-		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.damDust), PageRegistry.THREAT_DUSTS_PAGE_4));
-		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.drowDust), PageRegistry.THREAT_DUSTS_PAGE_5));
-		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.enderDust), PageRegistry.THREAT_DUSTS_PAGE_6));
-		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.fireDust), PageRegistry.THREAT_DUSTS_PAGE_7));
-		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.glowDust), PageRegistry.THREAT_DUSTS_PAGE_8));
-		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.hungDust), PageRegistry.THREAT_DUSTS_PAGE_9));
-		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.levDust), PageRegistry.THREAT_DUSTS_PAGE_10));
-		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.poisDust), PageRegistry.THREAT_DUSTS_PAGE_11));
+		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.aiRemoverDust), PageRegistry.THREAT_DUSTS_AI_DUST_PAGE));
+		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.badLuckDust), PageRegistry.THREAT_DUSTS_BAD_LUCK_PAGE));
+		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.blindDust), PageRegistry.THREAT_DUSTS_BLIND_DUST_PAGE));
+		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.damDust), PageRegistry.THREAT_DUSTS_DAM_DUST_PAGE));
+		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.drowDust), PageRegistry.THREAT_DUSTS_DROW_DUST_PAGE));
+		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.enderDust), PageRegistry.THREAT_DUSTS_ENDER_DUST_PAGE));
+		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.fireDust), PageRegistry.THREAT_DUSTS_FIRE_DUST_PAGE));
+		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.glowDust), PageRegistry.THREAT_DUSTS_GLOW_DUST_PAGE));
+		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.hungDust), PageRegistry.THREAT_DUSTS_HUNG_DUST_PAGE));
+		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.levDust), PageRegistry.THREAT_DUSTS_LEV_DUST_PAGE));
+		suggestionsList.addEntry(new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.poisDust), PageRegistry.THREAT_DUSTS_POIS_DUST_PAGE));
 	}
 
 	@Override

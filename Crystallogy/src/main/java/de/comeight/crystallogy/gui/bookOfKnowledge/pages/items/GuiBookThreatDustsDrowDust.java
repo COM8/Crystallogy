@@ -12,30 +12,26 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class GuiBookThreatDusts6 extends GuiBookBaseInfusionPage {
+public class GuiBookThreatDustsDrowDust extends GuiBookBaseInfusionPage {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	
+
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public GuiBookThreatDusts6() {
-		super(new ItemStack(ItemHandler.enderDust));
+	public GuiBookThreatDustsDrowDust() {
+		super(new ItemStack(ItemHandler.drowDust));
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	@Override
 	protected BookInfusionRecipe getRecipe() {
-		BookButtonCrafting e = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.ENDER_EYE), null);
-		e.disableFrame();
-		BookButtonCrafting p = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.ENDER_PEARL), null);
+		BookButtonCrafting p = new BookButtonCrafting(getNextButtonId(), new ItemStack(Items.PRISMARINE_SHARD), null);
 		p.disableFrame();
 		BookButtonCrafting b = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.crystallDust_blue), PageRegistry.CRYSTAL_DUST_PAGE);
 		b.disableFrame();
-		BookButtonCrafting r = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.crystallDust_red), PageRegistry.CRYSTAL_DUST_PAGE);
-		r.disableFrame();
 		
-		BookButtonCrafting[] input = new BookButtonCrafting[]{e, p, r, b, b};
+		BookButtonCrafting[] input = new BookButtonCrafting[]{p, b, b, b, b};
 		
-		BookButtonCrafting output = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.enderDust), null);
+		BookButtonCrafting output = new BookButtonCrafting(getNextButtonId(), new ItemStack(ItemHandler.drowDust), null);
 		output.disableFrame();
 		
 		return new BookInfusionRecipe(input, output);
@@ -43,12 +39,12 @@ public class GuiBookThreatDusts6 extends GuiBookBaseInfusionPage {
 
 	@Override
 	protected String getDescription() {
-		return "Teleports the target 5 times a couple blocks away.";
+		return "Damages the target eleven times one damage. The Damage Source is drowning.";
 	}
 	
 	@Override
 	public GuiBookPage getNextPage() {
-		return PageRegistry.THREAT_DUSTS_PAGE_7;
+		return PageRegistry.THREAT_DUSTS_ENDER_DUST_PAGE;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------

@@ -13,12 +13,12 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class GuiBookThreatDusts8 extends GuiBookBaseInfusionPage {
+public class GuiBookThreatDustsGlowDust extends GuiBookBaseInfusionPage {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public GuiBookThreatDusts8() {
+	public GuiBookThreatDustsGlowDust() {
 		super(new ItemStack(ItemHandler.glowDust));
 	}
 	
@@ -49,7 +49,7 @@ public class GuiBookThreatDusts8 extends GuiBookBaseInfusionPage {
 	
 	@Override
 	public GuiBookPage getNextPage() {
-		return PageRegistry.THREAT_DUSTS_PAGE_9;
+		return PageRegistry.THREAT_DUSTS_HUNG_DUST_PAGE;
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
