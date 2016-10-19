@@ -1,6 +1,7 @@
 package de.comeight.crystallogy.items.crafting.infusion;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.comeight.crystallogy.blocks.EnumCrystalColor;
 import de.comeight.crystallogy.handler.ItemHandler;
@@ -22,13 +23,13 @@ public class InfusionRecipePickaxe extends InfusionRecipe {
 	}
 	
 	@Override
-	public ArrayList<ArrayList<ItemStack>> getInputsJEI() {
+	public ArrayList<List<ItemStack>> getInputsJEI() {
 		ItemStack hR = new ItemStack(ItemHandler.crystalPickaxeHead, 1, 0);
 		ItemStack hB = new ItemStack(ItemHandler.crystalPickaxeHead, 1, 1);
 		ItemStack hG = new ItemStack(ItemHandler.crystalPickaxeHead, 1, 2);
 		ItemStack hY = new ItemStack(ItemHandler.crystalPickaxeHead, 1, 3);
 		
-		ArrayList<ArrayList<ItemStack>> ret = new ArrayList<ArrayList<ItemStack>>();
+		ArrayList<List<ItemStack>> ret = new ArrayList<List<ItemStack>>();
 		ret.add(new ArrayList<ItemStack>());
 		ret.get(0).add(new ItemStack(ItemHandler.toolRod));
 		ret.add(new ArrayList<ItemStack>());

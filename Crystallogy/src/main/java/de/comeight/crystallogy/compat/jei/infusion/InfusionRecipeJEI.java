@@ -4,14 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipe;
+import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.BlankRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 
 public class InfusionRecipeJEI extends BlankRecipeWrapper {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	private ArrayList<ArrayList<ItemStack>> inputs = new ArrayList<ArrayList<ItemStack>>();
-	private ArrayList<ItemStack> outputs = new ArrayList<ItemStack>();
+	private ArrayList<List<ItemStack>> inputs;
+	private ArrayList<ItemStack> outputs;
 	private int totalCookTime;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
@@ -23,13 +24,19 @@ public class InfusionRecipeJEI extends BlankRecipeWrapper {
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	@Override
-	public List<ArrayList<ItemStack>> getInputs() {
+	public List<List<ItemStack>> getInputs() {
 		return inputs;
 	}
 	
 	@Override
 	public List getOutputs() {
 		return outputs;
+	}
+	
+	@Override
+	public void getIngredients(IIngredients ingredients) {
+		ingredients.setInputLists(ItemStack.class, inputs);
+		ingredients.setOutputs(ItemStack.class, outputs);
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------

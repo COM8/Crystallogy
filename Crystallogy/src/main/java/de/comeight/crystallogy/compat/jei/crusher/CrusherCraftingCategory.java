@@ -15,6 +15,7 @@ import mezz.jei.api.gui.IDrawableAnimated.StartDirection;
 import mezz.jei.api.gui.IDrawableStatic;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
+import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
@@ -81,6 +82,11 @@ public class CrusherCraftingCategory implements IRecipeCategory {
 			group.setFromRecipe(INPUT_SLOT, recipe.getInputs());
 			group.setFromRecipe(OUTPUT_SLOT, recipe.getOutputs());
 		}
+	}
+	
+	@Override
+	public void setRecipe(IRecipeLayout recipeLayout, IRecipeWrapper recipeWrapper, IIngredients ingredients) {
+		setRecipe(recipeLayout, recipeWrapper);
 	}
 	
 	public static ArrayList<CrusherRecipeJEI> getRecipes(){

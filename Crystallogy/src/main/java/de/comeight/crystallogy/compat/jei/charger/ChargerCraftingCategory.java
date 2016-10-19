@@ -15,6 +15,7 @@ import mezz.jei.api.gui.IDrawableAnimated.StartDirection;
 import mezz.jei.api.gui.IDrawableStatic;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
+import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
@@ -83,6 +84,7 @@ public class ChargerCraftingCategory implements IRecipeCategory {
 			group.setFromRecipe(INPUT_SLOT1, recipe.getInputs().get(0));
 			group.setFromRecipe(INPUT_SLOT2, recipe.getInputs().get(1));
 			group.setFromRecipe(OUTPUT_SLOT, recipe.getOutputs());
+			
 		}
 	}
 	
@@ -94,6 +96,11 @@ public class ChargerCraftingCategory implements IRecipeCategory {
 		}
 		
 		return recipes;
+	}
+	
+	@Override
+	public void setRecipe(IRecipeLayout recipeLayout, IRecipeWrapper recipeWrapper, IIngredients ingredients) {
+		setRecipe(recipeLayout, recipeWrapper);
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
@@ -109,4 +116,5 @@ public class ChargerCraftingCategory implements IRecipeCategory {
 	public void drawAnimations(Minecraft minecraft) {
 		progress.draw(minecraft, 80, 7);
 	}
+	
 }

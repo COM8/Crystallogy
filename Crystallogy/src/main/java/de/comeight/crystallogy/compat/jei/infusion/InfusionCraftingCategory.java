@@ -11,6 +11,7 @@ import de.comeight.crystallogy.items.crafting.infusion.InfusionRecipe;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
+import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
@@ -81,6 +82,11 @@ public class InfusionCraftingCategory implements IRecipeCategory {
 			group.init(OUTPUT, true, 122, 42);
 			group.setFromRecipe(OUTPUT, recipe.getOutputs());
 		}
+	}
+	
+	@Override
+	public void setRecipe(IRecipeLayout recipeLayout, IRecipeWrapper recipeWrapper, IIngredients ingredients) {
+		setRecipe(recipeLayout, recipeWrapper);
 	}
 	
 	public static ArrayList<InfusionRecipeJEI> getRecipes(){

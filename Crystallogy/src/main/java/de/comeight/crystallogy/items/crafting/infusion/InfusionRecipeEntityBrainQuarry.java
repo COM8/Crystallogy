@@ -1,6 +1,7 @@
 package de.comeight.crystallogy.items.crafting.infusion;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.util.EnumCustomAis;
@@ -26,8 +27,8 @@ public class InfusionRecipeEntityBrainQuarry extends InfusionRecipeBaseEntityBra
 	}
 
 	@Override
-	public ArrayList<ArrayList<ItemStack>> getInputsJEI() {
-		ArrayList<ArrayList<ItemStack>> ret = new ArrayList<ArrayList<ItemStack>>();
+	public ArrayList<List<ItemStack>> getInputsJEI() {
+		ArrayList<List<ItemStack>> ret = new ArrayList<List<ItemStack>>();
 		ret.add(new ArrayList<ItemStack>());
 		ret.get(0).add(new ItemStack(ItemHandler.entityBrain, 1, 0));
 		

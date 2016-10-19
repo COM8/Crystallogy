@@ -4,18 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.comeight.crystallogy.items.crafting.RecipeCompressor;
+import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.BlankRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 
 public class CompressorRecipeJEI extends BlankRecipeWrapper {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	private ArrayList<ItemStack> inputs = new ArrayList<ItemStack>();
-	private ArrayList<ItemStack> outputs = new ArrayList<ItemStack>();
+	private List<ItemStack> inputs;
+	private List<ItemStack> outputs;
 	private int totalCookTime;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public CompressorRecipeJEI(RecipeCompressor recipe) {
+		this.inputs = new ArrayList<ItemStack>();
+		this.outputs = new ArrayList<ItemStack>();
 		ItemStack[] inputsIS = recipe.input;
 		ItemStack[] outputsIS = recipe.getOutput(inputsIS);
 		
@@ -37,6 +40,12 @@ public class CompressorRecipeJEI extends BlankRecipeWrapper {
 	@Override
 	public List getOutputs() {
 		return outputs;
+	}
+	
+	@Override
+	public void getIngredients(IIngredients ingredients) {
+		ingredients.setInputs(ItemStack.class, inputs);
+		ingredients.setOutputs(ItemStack.class, outputs);
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------

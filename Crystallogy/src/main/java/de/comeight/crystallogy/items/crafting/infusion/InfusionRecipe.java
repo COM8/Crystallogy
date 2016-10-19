@@ -2,6 +2,7 @@ package de.comeight.crystallogy.items.crafting.infusion;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import de.comeight.crystallogy.handler.ConfigHandler;
 import de.comeight.crystallogy.handler.InfusionRecipeHandler;
@@ -50,7 +51,7 @@ public abstract class InfusionRecipe {
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	public int getTotalCookTime(){
-		return (int)( (double) totalCookTime * ConfigHandler.infusionTimeMultiplier);
+		return (int)( totalCookTime * ConfigHandler.infusionTimeMultiplier);
 	}
 	
 	public boolean isActive() {
@@ -95,7 +96,7 @@ public abstract class InfusionRecipe {
 		return positions;
 	}
 	
-	public abstract ArrayList<ArrayList<ItemStack>> getInputsJEI();
+	public abstract ArrayList<List<ItemStack>> getInputsJEI();
 	
 	public abstract ArrayList<ItemStack> getOutputJEI();
 	

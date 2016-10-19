@@ -1,6 +1,7 @@
 package de.comeight.crystallogy.items.crafting.infusion;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.particles.ParticleInformation;
@@ -25,8 +26,8 @@ public class InfusionRecipeVaporizer extends InfusionRecipe {
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	@Override
-	public ArrayList<ArrayList<ItemStack>> getInputsJEI() {
-		ArrayList<ArrayList<ItemStack>> ret = new ArrayList<ArrayList<ItemStack>>();
+	public ArrayList<List<ItemStack>> getInputsJEI() {
+		ArrayList<List<ItemStack>> ret = new ArrayList<List<ItemStack>>();
 		ret.add(new ArrayList<ItemStack>());
 		ret.get(0).add(new ItemStack(ItemHandler.vaporizer));
 		ret.add(new ArrayList<ItemStack>());
@@ -139,7 +140,7 @@ public class InfusionRecipeVaporizer extends InfusionRecipe {
 		output = new ItemStack(ItemHandler.vaporizer);
 		NBTTagCompound tagC = new NBTTagCompound();
 		if(tagC2 != null){
-			tagC = (NBTTagCompound) tagC2.copy();
+			tagC = tagC2.copy();
 		}
 		
 		//Type:
@@ -167,19 +168,19 @@ public class InfusionRecipeVaporizer extends InfusionRecipe {
 		}
 		if(cR > 0){
 			tagC.setInteger("numberOfParticle", tagC.getInteger("numberOfParticle") + cR * 10);
-			tagC = (NBTTagCompound) manageColor(new RGBColor(0.1F, -0.1F, -0.1F), tagC).copy();
+			tagC = manageColor(new RGBColor(0.1F, -0.1F, -0.1F), tagC).copy();
 		}
 		if(cG > 0){
 			tagC.setInteger("numberOfParticle", tagC.getInteger("numberOfParticle") + cG * 10);
-			tagC = (NBTTagCompound) manageColor(new RGBColor(-0.1F, 0.1F, -0.1F), tagC).copy();
+			tagC = manageColor(new RGBColor(-0.1F, 0.1F, -0.1F), tagC).copy();
 		}
 		if(cB > 0){
 			tagC.setInteger("numberOfParticle", tagC.getInteger("numberOfParticle") + cB * 10);
-			tagC = (NBTTagCompound) manageColor(new RGBColor(-0.1F, -0.1F, 0.1F), tagC).copy();
+			tagC = manageColor(new RGBColor(-0.1F, -0.1F, 0.1F), tagC).copy();
 		}
 		if(cY > 0){
 			tagC.setInteger("numberOfParticle", tagC.getInteger("numberOfParticle") + cY * 10);
-			tagC = (NBTTagCompound) manageColor(new RGBColor(0.1F, 0.1F, -0.1F), tagC).copy();
+			tagC = manageColor(new RGBColor(0.1F, 0.1F, -0.1F), tagC).copy();
 		}
 		
 		//Color:
@@ -190,25 +191,25 @@ public class InfusionRecipeVaporizer extends InfusionRecipe {
 				if(itemstack != null){
 					if((item = itemstack.getItem()) == Items.DYE){
 						if(item.getDamage(itemstack) == EnumDyeColor.RED.getDyeDamage()){
-							tagC = (NBTTagCompound) manageColor(new RGBColor(0.1F, -0.1F, -0.1F), tagC).copy();
+							tagC = manageColor(new RGBColor(0.1F, -0.1F, -0.1F), tagC).copy();
 						}
 						if(item.getDamage(itemstack) == EnumDyeColor.GREEN.getDyeDamage()){
-							tagC = (NBTTagCompound) manageColor(new RGBColor(-0.1F, 0.1F, -0.1F), tagC).copy();
+							tagC = manageColor(new RGBColor(-0.1F, 0.1F, -0.1F), tagC).copy();
 						}
 						if(item.getDamage(itemstack) == EnumDyeColor.BLUE.getDyeDamage()){
-							tagC = (NBTTagCompound) manageColor(new RGBColor(-0.1F, -0.1F, 0.1F), tagC).copy();
+							tagC = manageColor(new RGBColor(-0.1F, -0.1F, 0.1F), tagC).copy();
 						}
 						if(item.getDamage(itemstack) == EnumDyeColor.YELLOW.getDyeDamage()){
-							tagC = (NBTTagCompound) manageColor(new RGBColor(0.1F, 0.1F, -0.1F), tagC).copy();
+							tagC = manageColor(new RGBColor(0.1F, 0.1F, -0.1F), tagC).copy();
 						}
 						if(item.getDamage(itemstack) == EnumDyeColor.WHITE.getDyeDamage()){
-							tagC = (NBTTagCompound) manageColor(new RGBColor(0.1F, 0.1F, 0.1F), tagC).copy();
+							tagC = manageColor(new RGBColor(0.1F, 0.1F, 0.1F), tagC).copy();
 						}
 						if(item.getDamage(itemstack) == EnumDyeColor.BLACK.getDyeDamage()){
-							tagC = (NBTTagCompound) manageColor(new RGBColor(-0.1F, -0.1F, -0.1F), tagC).copy();
+							tagC = manageColor(new RGBColor(-0.1F, -0.1F, -0.1F), tagC).copy();
 						}
 						if(item.getDamage(itemstack) == EnumDyeColor.PURPLE.getDyeDamage()){
-							tagC = (NBTTagCompound) manageColor(new RGBColor(0.1F, -0.1F, 0.1F), tagC).copy();
+							tagC = manageColor(new RGBColor(0.1F, -0.1F, 0.1F), tagC).copy();
 						}
 					}
 				}
@@ -222,15 +223,15 @@ public class InfusionRecipeVaporizer extends InfusionRecipe {
 	private NBTTagCompound manageColor(RGBColor modifire, NBTTagCompound nbtTag){
 		RGBColor c = new RGBColor();
 		c.r = nbtTag.getFloat("r");
-		c.r = (float) Utilities.calcNewColorPercentage((float) c.r, modifire.r);
+		c.r = (float) Utilities.calcNewColorPercentage(c.r, modifire.r);
 		nbtTag.setFloat("r", c.r);
 		
 		c.g = nbtTag.getFloat("g");
-		c.g = (float) Utilities.calcNewColorPercentage((float) c.g, modifire.g);
+		c.g = (float) Utilities.calcNewColorPercentage(c.g, modifire.g);
 		nbtTag.setFloat("g", c.g);
 		
 		c.b = nbtTag.getFloat("b");
-		c.b = (float) Utilities.calcNewColorPercentage((float) c.b, modifire.b);
+		c.b = (float) Utilities.calcNewColorPercentage(c.b, modifire.b);
 		nbtTag.setFloat("b", c.b);
 		return nbtTag;
 	}

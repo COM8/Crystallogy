@@ -24,13 +24,13 @@ group= "de.comeight.crystallogy" // http://maven.apache.org/guides/mini/guide-na
 archivesBaseName = "crystallogy"
 
 minecraft {
-    version = "1.10.2-12.18.1.2076"
+    version = "1.10.2-12.18.2.2107"
     runDir = "run"
 	mappings = "snapshot_20160518"
 }
 
 dependencies {
-	deobfCompile "mezz.jei:jei_1.10.2:3.9.0.246"
+	deobfCompile "mezz.jei:jei_1.10.2:3.12.8.325"
 }
 
 repositories {

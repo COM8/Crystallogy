@@ -4,18 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.comeight.crystallogy.items.crafting.RecipeCharger;
+import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.BlankRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 
 public class ChargerRecipeJEI extends BlankRecipeWrapper {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	private ArrayList<ArrayList<ItemStack>> inputs = new ArrayList<ArrayList<ItemStack>>();
-	private ArrayList<ItemStack> outputs = new ArrayList<ItemStack>();
+	private List<List<ItemStack>> inputs;
+	private List<ItemStack> outputs;
 	private int totalCookTime;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public ChargerRecipeJEI(RecipeCharger recipe) {
+		this.inputs = new ArrayList<List<ItemStack>>();
+		this.outputs = new ArrayList<ItemStack>();
 		ItemStack[] inputsIS = recipe.input;
 		ItemStack[] outputsIS = recipe.getOutput(inputsIS);
 		
@@ -33,13 +36,19 @@ public class ChargerRecipeJEI extends BlankRecipeWrapper {
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	@Override
-	public List<ArrayList<ItemStack>> getInputs() {
+	public List<List<ItemStack>> getInputs() {
 		return inputs;
 	}
 	
 	@Override
 	public List getOutputs() {
 		return outputs;
+	}
+	
+	@Override
+	public void getIngredients(IIngredients ingredients) {
+		ingredients.setInputLists(ItemStack.class, inputs);
+		ingredients.setOutputs(ItemStack.class, outputs);
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
