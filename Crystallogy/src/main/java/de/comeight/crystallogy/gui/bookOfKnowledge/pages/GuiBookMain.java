@@ -42,7 +42,7 @@ public class GuiBookMain extends GuiBookPage {
 				+ "This book contains everything you need to know about this mod.\n"
 				+ "\n"
 				+ "On the right side you can see all the different chapters this book is capable of teaching to you.\n"
-				+ "If you prefer, discovering everything by yourself, you can use the \"Arrow Buttons\" on the lower right side to flip through the different chapters by yourself."
+				+ "If you prefer, discovering everything by yourself, you can use the \"Arrow Buttons\" on the lower right side to flip through the different chapters by yourself. "
 				+ "If you perform a right-click, you can go back one page at a time.");
 	}
 	
