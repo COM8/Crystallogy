@@ -1,4 +1,4 @@
-package de.comeight.crystallogy.blocks.container;
+package de.comeight.crystallogy.blocks.container.slots;
 
 import javax.annotation.Nullable;
 

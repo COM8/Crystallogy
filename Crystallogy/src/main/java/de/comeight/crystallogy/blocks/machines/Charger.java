@@ -1,7 +1,7 @@
 package de.comeight.crystallogy.blocks.machines;
 
 import de.comeight.crystallogy.CrystallogyBase;
-import de.comeight.crystallogy.gui.GuiCharger;
+import de.comeight.crystallogy.handler.GuiHandler;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCharger;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,7 +29,7 @@ public class Charger extends BaseMachine {
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!worldIn.isRemote)
         {	
-			playerIn.openGui(CrystallogyBase.INSTANCE, GuiCharger.ID, worldIn, pos.getX(), pos.getY(), pos.getZ());
+			playerIn.openGui(CrystallogyBase.INSTANCE, GuiHandler.CHARGER_ID, worldIn, pos.getX(), pos.getY(), pos.getZ());
         }
 		return true;
 	}

@@ -1,10 +1,5 @@
 package de.comeight.crystallogy;
 
-import de.comeight.crystallogy.gui.GuiArmorCombiner;
-import de.comeight.crystallogy.gui.GuiBookOfKnowledge;
-import de.comeight.crystallogy.gui.GuiCharger;
-import de.comeight.crystallogy.gui.GuiCompressor;
-import de.comeight.crystallogy.gui.GuiCrystallCrusher;
 import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ConfigHandler;
 import de.comeight.crystallogy.handler.EntityHandler;
@@ -42,6 +37,7 @@ import de.comeight.crystallogy.tileEntitys.machines.TileEntityArmorCombiner;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCharger;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCompressor;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCrystallCrusher;
+import de.comeight.crystallogy.tileEntitys.machines.TileEntityDissectingTable;
 import de.comeight.crystallogy.util.ChunkLoadingCallBack;
 import de.comeight.crystallogy.util.Utilities;
 import de.comeight.crystallogy.worldGenerators.WorldGenCaveCrystal;
@@ -113,11 +109,12 @@ public class CommonProxy {
 	
 	private void registerGuiHandlers() {
 		NetworkRegistry.INSTANCE.registerGuiHandler(CrystallogyBase.INSTANCE, GuiHandlerRegistry.getInstance());
-		GuiHandlerRegistry.getInstance().registerGuiHandler(GuiHandler.INSTANCE, GuiCrystallCrusher.ID);
-		GuiHandlerRegistry.getInstance().registerGuiHandler(GuiHandler.INSTANCE, GuiCompressor.ID);
-		GuiHandlerRegistry.getInstance().registerGuiHandler(GuiHandler.INSTANCE, GuiCharger.ID);
-		GuiHandlerRegistry.getInstance().registerGuiHandler(GuiHandler.INSTANCE, GuiArmorCombiner.ID);
-		GuiHandlerRegistry.getInstance().registerGuiHandler(GuiHandler.INSTANCE, GuiBookOfKnowledge.ID);
+		GuiHandlerRegistry.getInstance().registerGuiHandler(GuiHandler.INSTANCE, GuiHandler.CRYSTAL_CRUSHER_ID);
+		GuiHandlerRegistry.getInstance().registerGuiHandler(GuiHandler.INSTANCE, GuiHandler.COMPRESSOR_ID);
+		GuiHandlerRegistry.getInstance().registerGuiHandler(GuiHandler.INSTANCE, GuiHandler.CHARGER_ID);
+		GuiHandlerRegistry.getInstance().registerGuiHandler(GuiHandler.INSTANCE, GuiHandler.ARMOR_COMBINER_ID);
+		GuiHandlerRegistry.getInstance().registerGuiHandler(GuiHandler.INSTANCE, GuiHandler.BOOK_OF_KNOWLEDGE_ID);
+		GuiHandlerRegistry.getInstance().registerGuiHandler(GuiHandler.INSTANCE, GuiHandler.DISSECTING_TABLE_ID);
 		
 		Utilities.addConsoleText("All guis are registered.");
 	}
@@ -144,6 +141,7 @@ public class CommonProxy {
 		GameRegistry.registerTileEntity(TileEntityFarmersGreen.class, "Crystallogy:" + BlockHandler.farmersGreen.ID);
 		GameRegistry.registerTileEntity(TileEntityCrystalOfHolding.class, "Crystallogy:" + BlockHandler.crystalOfHolding.ID);
 		GameRegistry.registerTileEntity(TileEntityArmorCombiner.class, "Crystallogy:" + BlockHandler.armorCombiner.ID);
+		GameRegistry.registerTileEntity(TileEntityDissectingTable.class, "Crystallogy:" + BlockHandler.dessectingTable.ID);
 		
 		Utilities.addConsoleText("All tileEntitys are registered.");
 		

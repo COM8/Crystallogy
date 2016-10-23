@@ -2,6 +2,7 @@ package de.comeight.crystallogy.blocks.container;
 
 import com.sun.istack.internal.Nullable;
 
+import de.comeight.crystallogy.blocks.container.slots.ChargerOutputSlot;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCharger;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;

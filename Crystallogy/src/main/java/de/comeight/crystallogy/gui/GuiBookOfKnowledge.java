@@ -6,7 +6,7 @@ import net.minecraft.client.gui.GuiScreen;
 
 public class GuiBookOfKnowledge extends GuiScreen {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	public static final int ID = 4;
+	
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiBookOfKnowledge() {

@@ -18,6 +18,7 @@ block.farmersGreen.name=Farmers Green
 block.crystalOfHolding.name=Crystal Of Holding
 block.armorCombiner.name=Armor Combiner
 block.machineBlock.name=Machine Block
+block.dissectingTable.name=Dissecting Table
 
 tile.crystall_red.name=§4Red§r Crystal
 tile.crystall_blue.name=§9Blue§r Crystal
@@ -37,6 +38,7 @@ tile.farmersGreen.name=Farmers Green
 tile.crystalOfHolding.name=Crystal Of Holding
 tile.armorCombiner.name=Armor Combiner
 tile.machineBlock.name=Machine Block
+tile.dissectingTable.name=Dissecting Table
 
 item.crystallDust_red.name=§4Red§r Crystal Dust
 item.crystallDust_blue.name=§9Blue§r Crystal Dust

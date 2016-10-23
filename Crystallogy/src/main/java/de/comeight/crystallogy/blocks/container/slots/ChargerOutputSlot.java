@@ -1,15 +1,15 @@
-package de.comeight.crystallogy.blocks.container;
+package de.comeight.crystallogy.blocks.container.slots;
 
-import de.comeight.crystallogy.handler.CompressorRecipeHandler;
+import de.comeight.crystallogy.handler.ChargerRecipeHandler;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 
-public class CompressorOutputSlot extends BaseOutputSlot {
+public class ChargerOutputSlot extends BaseOutputSlot {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public CompressorOutputSlot(IInventory inventoryIn, int index, int xPosition, int yPosition) {
+	public ChargerOutputSlot(IInventory inventoryIn, int index, int xPosition, int yPosition) {
 		super(inventoryIn, index, xPosition, yPosition);
 	}
 	
@@ -19,7 +19,7 @@ public class CompressorOutputSlot extends BaseOutputSlot {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	protected float getXPFromRecipeHandler(ItemStack stack) {
-		return CompressorRecipeHandler.INSTANCE.getExperience(new ItemStack[]{stack});
+		return ChargerRecipeHandler.INSTANCE.getExperience(new ItemStack[]{stack});
 	}
 	
 }

@@ -1,5 +1,6 @@
 package de.comeight.crystallogy.blocks.container;
 
+import de.comeight.crystallogy.blocks.container.slots.CompressorOutputSlot;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCompressor;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
