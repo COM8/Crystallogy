@@ -2,13 +2,11 @@ package de.comeight.crystallogy.renderer;
 
 import de.comeight.crystallogy.blocks.machines.BaseMachine;
 import de.comeight.crystallogy.handler.BlockHandler;
-import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityDissectingTable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;
@@ -20,18 +18,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class RendererDissectingTable extends TileEntitySpecialRenderer<TileEntityDissectingTable>
 {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	private ItemStack brainStack;
-	private double scale;
+	private double scaleBrain;
 	private boolean growing;
 	private final double FACTOR = 0.0005;
 	private long lastScaling;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public RendererDissectingTable() {
-		brainStack = new ItemStack(ItemHandler.entityBrain, 1, 1);
-		scale = 2;
-		growing = true;
-		lastScaling = System.currentTimeMillis();
+		this.scaleBrain = 1.4;
+		this.growing = true;
+		this.lastScaling = System.currentTimeMillis();
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -48,33 +44,31 @@ public class RendererDissectingTable extends TileEntitySpecialRenderer<TileEntit
     	
         GlStateManager.pushMatrix();
         GlStateManager.translate(x, y, z);
-        renderItem(brainStack, (EnumFacing)state.getValue(BaseMachine.FACING));
+        
+        renderBrain(tE.getStackInSlot(2), (EnumFacing)state.getValue(BaseMachine.FACING));
+        renderKnife(tE.getStackInSlot(1), (EnumFacing)state.getValue(BaseMachine.FACING));   
         GlStateManager.popMatrix();
     }
 
-    private void renderItem(ItemStack stack, EnumFacing enumfacing)
+    private void renderBrain(ItemStack stack, EnumFacing enumfacing)
     {
-    	if(enumfacing == null){
-    		return;
-    	}
-    	if(lastScaling + 5 <= System.currentTimeMillis()){
-    		scale();
-    		lastScaling = System.currentTimeMillis();
-    	}
-    	
-        RenderItem itemRenderer = Minecraft.getMinecraft().getRenderItem();
-        if (stack != null)
+        if (stack != null && enumfacing != null)
         {
+        	if(lastScaling + 5 <= System.currentTimeMillis()){
+        		scale();
+        		lastScaling = System.currentTimeMillis();
+        	}
+        	
             GlStateManager.pushMatrix();
             
             GlStateManager.disableLighting();
             RenderHelper.enableStandardItemLighting();
-            translate(enumfacing);
-            GlStateManager.scale(scale, scale, scale);
+            translate(enumfacing, 0.5, 0.75, 0.22);
+            GlStateManager.scale(scaleBrain, scaleBrain, scaleBrain);
             
-            rotate(enumfacing);
+            rotateBrain(enumfacing);
             
-            itemRenderer.renderItem(stack, ItemCameraTransforms.TransformType.GROUND);
+            Minecraft.getMinecraft().getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.GROUND);
             
             RenderHelper.disableStandardItemLighting();
             GlStateManager.enableLighting();
@@ -83,22 +77,44 @@ public class RendererDissectingTable extends TileEntitySpecialRenderer<TileEntit
         }
     }
     
-    private void translate(EnumFacing enumfacing) {
+    private void renderKnife(ItemStack stack, EnumFacing enumfacing)
+    {
+    	if (stack != null && enumfacing != null)
+        {
+            GlStateManager.pushMatrix();
+            
+            GlStateManager.disableLighting();
+            RenderHelper.enableStandardItemLighting();
+            translate(enumfacing, 0.1, 0.9, 0.5);
+            GlStateManager.scale(1.5, 1.5, 1.5);
+            
+            rotateKnife(enumfacing);
+            
+            Minecraft.getMinecraft().getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.GROUND);
+            
+            RenderHelper.disableStandardItemLighting();
+            GlStateManager.enableLighting();
+            
+            GlStateManager.popMatrix();
+        }
+    }
+    
+    private void translate(EnumFacing enumfacing, double xOffset, double yOffset, double zOffset) {
 		switch (enumfacing) {
 			case NORTH:
-				GlStateManager.translate(0.5, 0.7, 0.2);
+				GlStateManager.translate(xOffset, yOffset, zOffset);
 				break;
 				
 			case EAST:
-				GlStateManager.translate(0.8, 0.7, 0.5);
+				GlStateManager.translate(1.0 - zOffset, yOffset, xOffset);
 				break;
 				
 			case SOUTH:
-				GlStateManager.translate(0.5, 0.7, 0.8);
+				GlStateManager.translate(1 - xOffset, yOffset, zOffset);
 				break;
 				
 			case WEST:
-				GlStateManager.translate(0.2, 0.7, 0.5);
+				GlStateManager.translate(1.0 - zOffset, yOffset, 1 - xOffset);
 				break;
 
 			default:
@@ -106,7 +122,7 @@ public class RendererDissectingTable extends TileEntitySpecialRenderer<TileEntit
 		}
 	}
     
-	private void rotate(EnumFacing enumfacing) {
+	private void rotateBrain(EnumFacing enumfacing) {
 		switch (enumfacing) {
 			case NORTH:
 				GlStateManager.rotate(90.0F, 1.0F, 0.0F, 0.0F);
@@ -135,22 +151,51 @@ public class RendererDissectingTable extends TileEntitySpecialRenderer<TileEntit
 				break;
 		}
 	}
+	
+	private void rotateKnife(EnumFacing enumfacing) {
+		switch (enumfacing) {
+			case NORTH:
+				GlStateManager.rotate(180.0F, 1.0F, 0.0F, 0.0F);
+	            GlStateManager.rotate(-25.0F, 1.0F, 0.0F, 0.0F);
+				break;
+				
+			case EAST:
+				GlStateManager.rotate(90.0F, 1.0F, 0.0F, 0.0F);
+	            GlStateManager.rotate(90.0F, 0.0F, 0.0F, 1.0F);
+	            GlStateManager.rotate(65.0F, 1.0F, 0.0F, 0.0F);
+				break;
+				
+			case SOUTH:
+				GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
+	            GlStateManager.rotate(155.0F, 1.0F, 0.0F, 0.0F);
+				break;
+				
+			case WEST:
+				GlStateManager.rotate(90.0F, 1.0F, 0.0F, 0.0F);
+	            GlStateManager.rotate(-90.0F, 0.0F, 0.0F, 1.0F);
+	            GlStateManager.rotate(65.0F, 1.0F, 0.0F, 0.0F);
+				break;
+
+			default:
+				break;
+		}
+	}
     
     private void scale(){
     	if(growing){
-    		if(scale >= 2.1){
+    		if(scaleBrain >= 1.475){
         		growing = false;
         	}
     		else{
-    			scale += FACTOR;	
+    			scaleBrain += FACTOR;	
     		}
     	}
     	else{
-    		if(scale <= 2.0){
+    		if(scaleBrain <= 1.4){
         		growing = true;
         	}
     		else{
-    			scale -= FACTOR;
+    			scaleBrain -= FACTOR;
     		}
     	}
     }
