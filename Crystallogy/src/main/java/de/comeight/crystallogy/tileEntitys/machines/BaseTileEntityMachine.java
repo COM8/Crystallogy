@@ -185,11 +185,13 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
     
     @Override
 	public void onCustomDataPacket(NetworkPacketTileEntitySync packet) {
+    	readFromNBT(packet.getNBTTagCompound());
     	readAdditionalData(packet.getNBTTagCompound());
 	}
 	
 	@Override
 	public NetworkPacketTileEntitySync getCustomDataPacket(NBTTagCompound compound) {
+		writeToNBT(compound);
 		writeAdditionalData(compound);
 		return new NetworkPacketTileEntitySync(pos, compound);
 	}
