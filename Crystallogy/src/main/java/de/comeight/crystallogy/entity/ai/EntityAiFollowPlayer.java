@@ -10,6 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 
 public class EntityAiFollowPlayer extends EntityAiMoveToPos {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -121,9 +122,9 @@ public class EntityAiFollowPlayer extends EntityAiMoveToPos {
 	public static void addAdvancedTooltip(ItemStack stack, EntityPlayer playerIn, List<String> tooltip){
 		NBTTagCompound compound = stack.getTagCompound();
 		BlockPos p1 = Utilities.readBlockPosFromNBT(compound, "targetPos");
-		tooltip.add("§5Player:");
-		tooltip.add("Name: §6" + compound.getString("playerName"));
-		tooltip.add("UUID: §6" + compound.getUniqueId("playerUUID"));
+		tooltip.add(TextFormatting.DARK_PURPLE + "Player:");
+		tooltip.add("Name: " + TextFormatting.GOLD + compound.getString("playerName"));
+		tooltip.add("UUID: " + TextFormatting.GOLD + compound.getUniqueId("playerUUID"));
 	}
 	
 }

@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.TextFormatting;
 
 public class EntityAiQuarry extends EntityAiMoveToPos {
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -167,14 +168,14 @@ public class EntityAiQuarry extends EntityAiMoveToPos {
 		BlockPos p1 = Utilities.readBlockPosFromNBT(compound, "areaMin");
 		BlockPos p2 = Utilities.readBlockPosFromNBT(compound, "areaMax");
 		
-		tooltip.add("§5Area:");
+		tooltip.add(TextFormatting.DARK_PURPLE + "Area:");
 		if(p1 == null || p2 == null){
 			tooltip.add("-");
 		}
 		else{
-			tooltip.add("X: §6" + p1.getX() + " - " + p2.getX());
-			tooltip.add("Y: §6" + p1.getY() + " - " + p2.getY());
-			tooltip.add("Z: §6" + p1.getZ() + " - " + p2.getZ());
+			tooltip.add("X: " + TextFormatting.GOLD + p1.getX() + " - " + p2.getX());
+			tooltip.add("Y: " + TextFormatting.GOLD + p1.getY() + " - " + p2.getY());
+			tooltip.add("Z: " + TextFormatting.GOLD + p1.getZ() + " - " + p2.getZ());
 		}
 	}
 	

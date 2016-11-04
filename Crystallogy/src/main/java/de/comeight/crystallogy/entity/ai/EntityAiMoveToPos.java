@@ -17,6 +17,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 public class EntityAiMoveToPos extends EntityAiBaseSerializable {
@@ -245,7 +246,7 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 	public static void addAdvancedTooltip(ItemStack stack, EntityPlayer playerIn, List<String> tooltip){
 		NBTTagCompound compound = stack.getTagCompound();
 		BlockPos p1 = Utilities.readBlockPosFromNBT(compound, "targetPos");
-		tooltip.add("§5Target Position: §6X=" + p1.getX() + " Y=" + p1.getY() + " Z=" + p1.getZ());
+		tooltip.add(TextFormatting.DARK_PURPLE + "Target Position: " + TextFormatting.GOLD + "X=" + p1.getX() + " Y=" + p1.getY() + " Z=" + p1.getZ());
 	}
 	
 }

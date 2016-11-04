@@ -14,6 +14,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.TextFormatting;
 
 public class EntityAiPickupItems extends EntityAiMoveToPos{
 	//-----------------------------------------------Variabeln:---------------------------------------------
@@ -295,22 +296,22 @@ public class EntityAiPickupItems extends EntityAiMoveToPos{
 		BlockPos p2 = Utilities.readBlockPosFromNBT(compound, "areaMax");
 		BlockPos p3 = Utilities.readBlockPosFromNBT(compound, "itemsTargetPos");
 		
-		tooltip.add("§5Area:");
+		tooltip.add(TextFormatting.DARK_PURPLE + "Area:");
 		if(p1 == null || p2 == null){
 			tooltip.add("-");
 		}
 		else{
-			tooltip.add("X: §6" + p1.getX() + " - " + p2.getX());
-			tooltip.add("Y: §6" + p1.getY() + " - " + p2.getY());
-			tooltip.add("Z: §6" + p1.getZ() + " - " + p2.getZ());
+			tooltip.add("X: " + TextFormatting.GOLD + p1.getX() + " - " + p2.getX());
+			tooltip.add("Y: " + TextFormatting.GOLD + p1.getY() + " - " + p2.getY());
+			tooltip.add("Z: " + TextFormatting.GOLD + p1.getZ() + " - " + p2.getZ());
 		}
 		
 		tooltip.add("");
 		if(p3 == null){
-			tooltip.add("§5Items target Position: §6-");
+			tooltip.add(TextFormatting.DARK_PURPLE + "Items target Position: " + TextFormatting.GOLD + "-");
 		}
 		else{
-			tooltip.add("§5Items target Position: §6X=" + p3.getX() + " Y=" + p3.getY() + " Z=" + p3.getZ());
+			tooltip.add(TextFormatting.DARK_PURPLE + "Items target Position: " + TextFormatting.GOLD + "X=" + p3.getX() + " Y=" + p3.getY() + " Z=" + p3.getZ());
 		}
 	}
 	

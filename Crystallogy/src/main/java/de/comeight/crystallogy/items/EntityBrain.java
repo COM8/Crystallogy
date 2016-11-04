@@ -17,6 +17,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -132,7 +133,7 @@ public class EntityBrain extends BaseItemFood{
 		}
 		if(stack.hasTagCompound() && stack.getTagCompound().hasKey("aiType")){
 			tooltip.add("");
-			tooltip.add(Utilities.localizeText("item.entityBrain.tooltip.2") + "§6 " + Utilities.localizeText("ai.type." + stack.getTagCompound().getInteger("aiType")));
+			tooltip.add(Utilities.localizeText("item.entityBrain.tooltip.2") + TextFormatting.GOLD + ' ' + Utilities.localizeText("ai.type." + stack.getTagCompound().getInteger("aiType")));
 			if(GuiScreen.isShiftKeyDown()){
 				tooltip.add("");
 				AiHandler.addAdvancedTooltip(stack, playerIn, tooltip);
