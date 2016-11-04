@@ -4,15 +4,19 @@ import java.util.List;
 import java.util.Random;
 
 import de.comeight.crystallogy.handler.AiHandler;
+import de.comeight.crystallogy.util.EnumCustomAis;
 import de.comeight.crystallogy.util.EnumEntityBrains;
 import de.comeight.crystallogy.util.ToolTipBuilder;
 import de.comeight.crystallogy.util.Utilities;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.SoundCategory;
@@ -47,6 +51,47 @@ public class EntityBrain extends BaseItemFood{
         {
             subItems.add(new ItemStack(itemIn, 1, i));
         }
+		
+		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
+		if(player == null){
+			return;
+		}
+		NBTTagCompound compound = new NBTTagCompound();
+		ItemStack brainStack = new ItemStack(itemIn);
+		
+		//Quarry:
+		compound.setInteger("aiType", EnumCustomAis.QUARRY.ID);
+		Utilities.saveBlockPosToNBT(compound, player.getPosition().add(-10, -player.getPosition().getY(), -10), "areaMin");
+		Utilities.saveBlockPosToNBT(compound, player.getPosition().add(10, 0, 10), "areaMax");
+		brainStack.setTagCompound(compound);
+		subItems.add(brainStack);
+		brainStack = new ItemStack(itemIn);
+		compound = new NBTTagCompound();
+		
+		//Follow Player:
+		compound.setInteger("aiType", EnumCustomAis.FOLLOW_PLAYER.ID);
+		compound.setString("playerName", player.getName());
+		compound.setUniqueId("playerUUID", player.getUniqueID());
+		brainStack.setTagCompound(compound);
+		subItems.add(brainStack);
+		brainStack = new ItemStack(itemIn);
+		compound = new NBTTagCompound();
+		
+		//Move to Position:
+		compound.setInteger("aiType", EnumCustomAis.MOVE_TO_POS.ID);
+		Utilities.saveBlockPosToNBT(compound, Minecraft.getMinecraft().thePlayer.getPosition(), "targetPos");
+		brainStack.setTagCompound(compound);
+		subItems.add(brainStack);
+		brainStack = new ItemStack(itemIn);
+		compound = new NBTTagCompound();
+		
+		//Pickup Items:
+		Utilities.saveBlockPosToNBT(compound, player.getPosition().add(-10, -3, -10), "areaMin");
+		Utilities.saveBlockPosToNBT(compound, player.getPosition().add(10, 3, 10), "areaMax");
+		Utilities.saveBlockPosToNBT(compound, player.getPosition(), "itemsTargetPos");
+		compound.setInteger("aiType", EnumCustomAis.PICKUP_ITEMS.ID);
+		subItems.add(brainStack);
+		brainStack.setTagCompound(compound);
 	}
 	
 	@Override
