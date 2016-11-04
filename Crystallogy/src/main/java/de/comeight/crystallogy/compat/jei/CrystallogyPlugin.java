@@ -6,6 +6,8 @@ import de.comeight.crystallogy.compat.jei.charger.ChargerCraftingCategory;
 import de.comeight.crystallogy.compat.jei.charger.ChargerRecipeHandlerJEI;
 import de.comeight.crystallogy.compat.jei.compressor.CompressorCraftingCategory;
 import de.comeight.crystallogy.compat.jei.compressor.CompressorRecipeHandlerJEI;
+import de.comeight.crystallogy.compat.jei.craftingTable.CustomCraftingRecipeHandler;
+import de.comeight.crystallogy.compat.jei.craftingTable.CustomCraftingRecipeWrapper;
 import de.comeight.crystallogy.compat.jei.crusher.CrusherCraftingCategory;
 import de.comeight.crystallogy.compat.jei.crusher.CrusherRecipeHandlerJEI;
 import de.comeight.crystallogy.compat.jei.infusion.InfusionCraftingCategory;
@@ -36,12 +38,13 @@ public class CrystallogyPlugin extends BlankModPlugin {
 		
 		registry.addRecipeCategories(new CrusherCraftingCategory(), new InfusionCraftingCategory(), new CompressorCraftingCategory(), new ChargerCraftingCategory());
 		
-		registry.addRecipeHandlers(new CrusherRecipeHandlerJEI(), new InfusionRecipeHandlerJEI(), new CompressorRecipeHandlerJEI(), new ChargerRecipeHandlerJEI());
+		registry.addRecipeHandlers(new CrusherRecipeHandlerJEI(), new InfusionRecipeHandlerJEI(), new CompressorRecipeHandlerJEI(), new ChargerRecipeHandlerJEI(), new CustomCraftingRecipeHandler());
 		
 		registry.addRecipes(CrusherCraftingCategory.getRecipes());
 		registry.addRecipes(InfusionCraftingCategory.getRecipes());
 		registry.addRecipes(CompressorCraftingCategory.getRecipes());
 		registry.addRecipes(ChargerCraftingCategory.getRecipes());
+		registry.addRecipes(CustomCraftingRecipeWrapper.getRecipes());
 		
 		registry.addRecipeClickArea(GuiCrystallCrusher.class, 80, 35, 30, 16, CrusherCraftingCategory.ID);
 		registry.addRecipeClickArea(GuiCompressor.class, 80, 35, 30, 16, CompressorCraftingCategory.ID);

@@ -51,7 +51,7 @@ public class CrusherRecipeJEI extends BlankRecipeWrapper {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
-		minecraft.fontRendererObj.drawString("Total Cook Time: " + totalCookTime, 47, 15, 4210752);
+		minecraft.fontRendererObj.drawString("Total Cook Time: " + totalCookTime, 47, 0, 4210752);
 	}
 	
 }

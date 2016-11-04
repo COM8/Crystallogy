@@ -61,32 +61,23 @@ public class InfusionCraftingCategory implements IRecipeCategory {
 	public IDrawable getBackground() {
 		return background;
 	}
-
-	@Nonnull
+	
 	@Override
 	public void setRecipe(IRecipeLayout recipeLayout, IRecipeWrapper recipeWrapper) {
-		IGuiItemStackGroup group = recipeLayout.getItemStacks();
-		group.init(CENTERSLOT, true, 52, 42);
-		group.init(SURROUNDING_1, true, 24, 42);
-		group.init(SURROUNDING_2, true, 52, 70);
-		group.init(SURROUNDING_3, true, 80, 42);
-		group.init(SURROUNDING_4, true, 52, 12);
-		
-		if(recipeWrapper instanceof InfusionRecipeJEI){
-			InfusionRecipeJEI recipe = (InfusionRecipeJEI) recipeWrapper;
-			
-			for (int i = 0; i < recipe.getInputs().size(); i++) {
-				group.setFromRecipe(i, recipe.getInputs().get(i));
-			}
-			
-			group.init(OUTPUT, true, 122, 42);
-			group.setFromRecipe(OUTPUT, recipe.getOutputs());
-		}
 	}
 	
 	@Override
 	public void setRecipe(IRecipeLayout recipeLayout, IRecipeWrapper recipeWrapper, IIngredients ingredients) {
-		setRecipe(recipeLayout, recipeWrapper);
+		IGuiItemStackGroup group = recipeLayout.getItemStacks();
+		
+		group.init(CENTERSLOT, true, 67, 42);
+		group.init(SURROUNDING_1, true, 39, 42);
+		group.init(SURROUNDING_2, true, 67, 70);
+		group.init(SURROUNDING_3, true, 95, 42);
+		group.init(SURROUNDING_4, true, 67, 12);
+		group.init(OUTPUT, false, 137, 42);
+		
+		group.set(ingredients);
 	}
 	
 	public static ArrayList<InfusionRecipeJEI> getRecipes(){
@@ -102,13 +93,13 @@ public class InfusionCraftingCategory implements IRecipeCategory {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public void drawExtras(Minecraft minecraft) {
-		slotsDrawable.draw(minecraft, 52, 42);
-		slotsDrawable.draw(minecraft, 24, 42);
-		slotsDrawable.draw(minecraft, 52, 70);
-		slotsDrawable.draw(minecraft, 80, 42);
-		slotsDrawable.draw(minecraft, 52, 12);
+		slotsDrawable.draw(minecraft, 67, 42);
+		slotsDrawable.draw(minecraft, 39, 42);
+		slotsDrawable.draw(minecraft, 67, 70);
+		slotsDrawable.draw(minecraft, 95, 42);
+		slotsDrawable.draw(minecraft, 67, 12);
 		
-		slotsDrawable.draw(minecraft, 122, 42);
+		slotsDrawable.draw(minecraft, 137, 42);
 	}
 
 	@Override

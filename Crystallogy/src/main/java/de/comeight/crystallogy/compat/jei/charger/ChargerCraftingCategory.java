@@ -36,7 +36,7 @@ public class ChargerCraftingCategory implements IRecipeCategory {
 	@Nonnull
 	private final IDrawableAnimated progress;
 	
-	private static final ResourceLocation rL = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/jei/arrow.png");
+	public static final ResourceLocation rL = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/GuiCompressor.png");
 	
 	private static final int INPUT_SLOT1 = 0;
 	private static final int INPUT_SLOT2 = 1;
@@ -44,9 +44,9 @@ public class ChargerCraftingCategory implements IRecipeCategory {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public ChargerCraftingCategory() {
-		background = CrystallogyPlugin.jeiHelper.getGuiHelper().createBlankDrawable(172, 58);
-		progressBackground = CrystallogyPlugin.jeiHelper.getGuiHelper().createDrawable(rL, 0, 0, 22, 14, 0, 0, 0, 0);
-		IDrawableStatic temp = CrystallogyPlugin.jeiHelper.getGuiHelper().createDrawable(rL, 0, 15, 22, 31, 0, 0, 0, 0);
+		background = CrystallogyPlugin.jeiHelper.getGuiHelper().createBlankDrawable(172, 50);
+		progressBackground = CrystallogyPlugin.jeiHelper.getGuiHelper().createDrawable(rL, 80, 35, 22, 15);
+		IDrawableStatic temp = CrystallogyPlugin.jeiHelper.getGuiHelper().createDrawable(rL, 177, 14, 22, 16);
 		progress = CrystallogyPlugin.jeiHelper.getGuiHelper().createAnimatedDrawable(temp, 20, StartDirection.LEFT, false);
 		slotsDrawable = CrystallogyPlugin.jeiHelper.getGuiHelper().getSlotDrawable();
 	}
@@ -73,19 +73,6 @@ public class ChargerCraftingCategory implements IRecipeCategory {
 	@Nonnull
 	@Override
 	public void setRecipe(IRecipeLayout recipeLayout, IRecipeWrapper recipeWrapper) {
-		IGuiItemStackGroup group = recipeLayout.getItemStacks();
-		group.init(INPUT_SLOT1, true, 56, 24);
-		group.init(INPUT_SLOT2, true, 56, 54);
-		group.init(OUTPUT_SLOT, false, 116, 35);
-		
-		if(recipeWrapper instanceof ChargerRecipeJEI){
-			ChargerRecipeJEI recipe = (ChargerRecipeJEI) recipeWrapper;
-			
-			group.setFromRecipe(INPUT_SLOT1, recipe.getInputs().get(0));
-			group.setFromRecipe(INPUT_SLOT2, recipe.getInputs().get(1));
-			group.setFromRecipe(OUTPUT_SLOT, recipe.getOutputs());
-			
-		}
 	}
 	
 	public static ArrayList<ChargerRecipeJEI> getRecipes(){
@@ -100,21 +87,25 @@ public class ChargerCraftingCategory implements IRecipeCategory {
 	
 	@Override
 	public void setRecipe(IRecipeLayout recipeLayout, IRecipeWrapper recipeWrapper, IIngredients ingredients) {
-		setRecipe(recipeLayout, recipeWrapper);
+		IGuiItemStackGroup group = recipeLayout.getItemStacks();
+		group.init(INPUT_SLOT1, true, 56, 14);
+		group.init(INPUT_SLOT2, true, 56, 34);
+		group.init(OUTPUT_SLOT, false, 116, 25);
+		group.set(ingredients);
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public void drawExtras(Minecraft minecraft) {
-		progressBackground.draw(minecraft, 80, 7);
-		slotsDrawable.draw(minecraft, 116, 35);
-		slotsDrawable.draw(minecraft, 56, 24);
-		slotsDrawable.draw(minecraft, 56, 54);
+		progressBackground.draw(minecraft, 80, 26);
+		slotsDrawable.draw(minecraft, 116, 25);
+		slotsDrawable.draw(minecraft, 56, 14);
+		slotsDrawable.draw(minecraft, 56, 34);
 	}
 
 	@Override
 	public void drawAnimations(Minecraft minecraft) {
-		progress.draw(minecraft, 80, 7);
+		progress.draw(minecraft, 80, 25);
 	}
 	
 }

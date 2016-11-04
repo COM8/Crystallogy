@@ -4,6 +4,7 @@ import de.comeight.crystallogy.CrystallogyBase;
 import de.comeight.crystallogy.blocks.container.ContainerDissectingTable;
 import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityDissectingTable;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -16,10 +17,11 @@ public class GuiDissectingTable extends BaseGuiCointainer{
 	public static final ResourceLocation rL = new ResourceLocation(CrystallogyBase.MODID + ":" + "textures/guis/GuiDissectingTable.png");
 	private TileEntityDissectingTable tileEntity;
 	
+	private GuiButton doItButton;
+	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiDissectingTable(InventoryPlayer playerInventory, TileEntityDissectingTable tileEntity) {
 		super(new ContainerDissectingTable(playerInventory, tileEntity), playerInventory, BlockHandler.dessectingTable.getLocalizedName());
-		
 		this.tileEntity = tileEntity;
 	}	
 
@@ -36,6 +38,13 @@ public class GuiDissectingTable extends BaseGuiCointainer{
         super.drawGuiContainerForegroundLayer(mouseX, mouseY);
         fontRendererObj.drawString(String.valueOf((int)(tileEntity.fractionOfCookTimeComplete() * 100)) + "%", 8, 5, 4210752);
     }
+	
+	@Override
+	public void initGui() {
+		super.initGui();
+		doItButton = new GuiButton(0, 0, 0, "Do!");
+		buttonList.add(doItButton);
+	}
 	
 	@Override
 	protected void drawText() {
