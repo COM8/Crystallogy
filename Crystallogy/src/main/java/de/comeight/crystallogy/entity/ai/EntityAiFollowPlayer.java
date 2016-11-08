@@ -10,6 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 
 public class EntityAiFollowPlayer extends EntityAiMoveToPos {
@@ -22,6 +23,7 @@ public class EntityAiFollowPlayer extends EntityAiMoveToPos {
 		super(aiOwner, null, movementSpeed);
 		this.playerTarget = findPlayerInWorld(playerUUID);
 		this.playerUUID = playerUUID;
+		this.forceMoveTo = true;
 		if(playerTarget != null){
 			setTargetPos(playerTarget.getPositionVector());
 		}
@@ -44,32 +46,43 @@ public class EntityAiFollowPlayer extends EntityAiMoveToPos {
 		return EnumCustomAis.FOLLOW_PLAYER.ID;
 	}
 	
+	private void setPlayerPosition(){
+		BlockPos pos = playerTarget.getPosition();
+		BlockPos p = null;
+		for(int i = pos.getY(); i >= 0; i--){
+			p = new BlockPos(pos.getX(), i, pos.getZ());
+			if(aiOwnerPathfinder.canEntityStandOnPos(p)){
+				if(getTargetPos().distanceTo(new Vec3d(p)) < 1.5){
+					return;
+				}
+				setTargetPos(new Vec3d(p));
+				return;
+			}
+		}
+		setTargetPos(playerTarget.getPositionVector());
+	}
+	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public boolean continueExecuting() {
 		updatePlayerPos();
-		if(isPlayerReachable() &&  super.continueExecuting() && playerTarget != null && playerTarget.getEntityWorld() == aiOwner.getEntityWorld()){
-			return true;
-		}
-		else{
-			return false;
-		}
+		return isPlayerReachable() && super.continueExecuting();
 	}
 	
 	@Override
 	public boolean shouldExecute() {
 		if(playerTarget == null){
 			playerTarget = findPlayerInWorld(playerUUID);
-		}
+			if(playerTarget == null){
+				return false;
+			}
+		}		
 		
-		if(playerTarget == null){
-			return false;
-		}
-		setTargetPos(playerTarget.getPositionVector());
+		setPlayerPosition();
 		if(isPlayerReachable()){
 			updatePlayerPos();
-			if(isPlayerReachable() &&  super.shouldExecute()){
-				return playerTarget.getEntityWorld() == aiOwner.getEntityWorld();
+			if(isPlayerReachable()){
+				return super.shouldExecute();
 			}
 		}
 		return false;
@@ -77,22 +90,8 @@ public class EntityAiFollowPlayer extends EntityAiMoveToPos {
 	
 	private void updatePlayerPos(){
 		if(playerTarget != null){
-			setTargetPos(playerTarget.getPositionVector());
+			setPlayerPosition();
 			saveData(aiOwner);
-		}
-	}
-	
-	@Override
-	protected boolean shouldRecalcPath() {
-		if(super.shouldRecalcPath()){
-			return true;
-		}
-		else{
-			if(getTargetPos().distanceTo(playerTarget.getPositionVector()) > 2){
-				timeSincePathRecalc = 0;
-				return true;
-			}
-			return false;
 		}
 	}
 	

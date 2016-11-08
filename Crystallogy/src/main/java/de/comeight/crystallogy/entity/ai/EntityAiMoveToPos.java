@@ -114,18 +114,13 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 		}
 		else if(aiOwnerPathfinder.canEntityStandOnPos(new BlockPos(targetPos)) && !isNearTargetPosition()){
 			return true;
-		}
+		}		
 		return false;
 	}
 	
 	@Override
 	public boolean continueExecuting() {
-		if(aiOwnerPathfinder.noPath() || targetPos == null){
-			return false;
-		}
-		else{
-			return true;
-		}
+		return (aiOwnerPathfinder.noPath() && !newTargetPos) || (targetPos == null && !newTargetPos);
 	}
 	
 	@Override
@@ -181,7 +176,7 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 					requestedTeleport = true;
 				}
 			}
-			else{
+			else {
 				aiOwnerPathfinder.tryMoveToXYZ(targetPos.xCoord, targetPos.yCoord, targetPos.zCoord, movementSpeed);
 			}
 		}
@@ -219,8 +214,8 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 		}
 		prevPos = aiOwner.getPositionVector();
 		
-		timeSincePathRecalc++;
-		if (timeSincePathRecalc >= 10 || newTargetPos)
+		++timeSincePathRecalc;
+		if (timeSincePathRecalc >= 20 || newTargetPos)
         {
 			newTargetPos = false;
             timeSincePathRecalc = 0;
