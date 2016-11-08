@@ -1,5 +1,6 @@
 package de.comeight.crystallogy.network.handler.Client;
 
+import de.comeight.crystallogy.handler.ConfigHandler;
 import de.comeight.crystallogy.network.NetworkPacketTileEntitySync;
 import de.comeight.crystallogy.tileEntitys.BaseTileEntity;
 import net.minecraft.client.Minecraft;
@@ -53,7 +54,7 @@ public class MessageHandlerOnClientTileEntitySync implements IMessageHandler<Net
 			BaseTileEntity bTE = (BaseTileEntity) tE;
 			bTE.onCustomDataPacket(message);
 		}
-		else{
+		else if(ConfigHandler.enableDubugMessagesInLog){
 			System.out.println("No / Wrong TileEntity in NetworkPacketTileEntitySync!");
 		}
 	}

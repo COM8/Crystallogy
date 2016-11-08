@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class ConfigHandler {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	private static final String CONFIG_VERSION = "1.3";
+	private static final String CONFIG_VERSION = "1.4";
 	
 	private static final String CATEGORY_DEBUG = "debug";
 	private static final String CATEGORY_CRYSTALS = "crystals";
@@ -55,6 +55,9 @@ public class ConfigHandler {
 	//Book of Knowledge:
 	public static boolean shouldSpawnWithBook = true;
 	
+	//Debug Misc:
+	public static boolean enableDubugMessagesInLog = false;
+	
 	//-----------------------------------------------Constructor:-------------------------------------------
 
 
@@ -94,6 +97,10 @@ public class ConfigHandler {
 		prop = config.get(CATEGORY_DEBUG, "enableDebugTool", false);
 		prop.setComment("Whether the debug tool should be available. default=false");
 		enableDebugTool = prop.getBoolean();
+		
+		prop = config.get(CATEGORY_DEBUG, "enableDubugMessagesInLog", false);
+		prop.setComment("Whether there should be debug messages added to the log. default=false");
+		enableDubugMessagesInLog = prop.getBoolean();
 		
 		//Crystals
 		prop = config.get(CATEGORY_CRYSTALS, "yellowCrystalSpawnMin", 16);
