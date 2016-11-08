@@ -68,7 +68,7 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 	}
 	
 	public EntityAiMoveToPos() {
-		aiOwnerPathfinder = null;
+		this.aiOwnerPathfinder = null;
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -171,7 +171,7 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 			noMotionTicks = 0;
 			return;
 		}
-		if(targetPos.distanceTo(aiOwner.getPositionVector()) > 16){
+		if(targetPos.distanceTo(aiOwner.getPositionVector()) > 64){
 			requestedTeleport = true;
 		}
 		else{
