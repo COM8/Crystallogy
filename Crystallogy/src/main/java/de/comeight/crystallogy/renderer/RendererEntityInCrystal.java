@@ -1,7 +1,9 @@
 package de.comeight.crystallogy.renderer;
 
 import de.comeight.crystallogy.blocks.CrystalOfHolding;
+import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.tileEntitys.TileEntityCrystalOfHolding;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
@@ -30,9 +32,10 @@ public class RendererEntityInCrystal extends TileEntitySpecialRenderer<TileEntit
 			return;
 		}
 		
-		int state = tE.getWorld().getBlockState(tE.getPos()).getValue(CrystalOfHolding.AGE);
-		
-		renderEntity((EntityLivingBase) entity, state, x, y, z, partialTicks);
+		IBlockState state = tE.getWorld().getBlockState(tE.getPos());
+		if(state != null && state.getBlock() == BlockHandler.crystalOfHolding){
+			renderEntity((EntityLivingBase) entity, state.getValue(CrystalOfHolding.AGE), x, y, z, partialTicks);
+		}
 	}
 	
 	private void renderEntity(EntityLivingBase entity, int state, double posX, double posY, double posZ, float partialTicks){
