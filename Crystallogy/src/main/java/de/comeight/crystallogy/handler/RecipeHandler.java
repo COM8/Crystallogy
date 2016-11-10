@@ -165,6 +165,17 @@ public class RecipeHandler {
 	}
 
 	private void registerCraftingRecipes(){
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BlockHandler.dessectingTable), new Object[]{
+				"BSG",
+				"PSP",
+				"P_P",
+				
+				'B', Items.BOOK,
+				'G', ItemHandler.crystallDust_green,
+				'P', "plankWood",
+				'S', "slabWood",
+		}));
+		
 		GameRegistry.addRecipe(new ShapedOreRecipe(ItemHandler.vaporizer.getItemStack(), new Object[]{
 				"III",
 				"PI_",
