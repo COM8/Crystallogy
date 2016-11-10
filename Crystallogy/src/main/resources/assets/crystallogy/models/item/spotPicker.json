@@ -92,8 +92,8 @@
         "scale": [ 1, 1, 1 ]
     },
     "gui": {
-        "rotation": [ -1, 38, 38 ],
-        "translation": [ -1.12, 3.59, 0 ],
+        "rotation": [ 34, 24, -35 ],
+        "translation": [ 1.32, 2.46, 0 ],
         "scale": [ 1.5, 1.5, 1.5 ]
     }
 }
