@@ -1,64 +1,6 @@
 {
-"__comment": "Designed by COM8",
-"textures": {
-    "particle": "blocks/planks_oak",
-    "texture": "blocks/planks_oak",
-    "crystall_red": "crystallogy:blocks/crystall_yellow"
-},
-"elements": [ 
-{
-    "from": [ 6, 0, 4 ],
-    "to": [ 10, 4, 12 ],
-    "faces": {
-        "down":  { "uv": [ 10, 12, 6, 4 ], "texture": "#crystall_red" },
-        "up":    { "uv": [ 6, 4, 10, 12 ], "texture": "#crystall_red" },
-        "north": { "uv": [ 6, 12, 10, 16 ], "texture": "#crystall_red" },
-        "south": { "uv": [ 6, 12, 10, 16 ], "texture": "#crystall_red" },
-        "west":  { "uv": [ 4, 12, 12, 16 ], "texture": "#crystall_red" },
-        "east":  { "uv": [ 4, 12, 12, 16 ], "texture": "#crystall_red" }
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "crystallogy:items/crystallHammerHead_yellow"
     }
-}
-],
-"display": {
-    "thirdperson_righthand": {
-        "rotation": [ 0, 0, 0 ],
-        "translation": [ 0, 7.94, 0 ],
-        "scale": [ 1, 1, 1 ]
-    },
-    "thirdperson_lefthand": {
-        "rotation": [ 0, 0, 0 ],
-        "translation": [ 0, 7.94, 0 ],
-        "scale": [ 1, 1, 1 ]
-    },
-    "head": {
-        "rotation": [ 0, 0, 0 ],
-        "translation": [ 0, 14.36, 0 ],
-        "scale": [ 1, 1, 1 ]
-    },
-    "ground": {
-        "rotation": [ 0, 0, 0 ],
-        "translation": [ 0, 4.54, 0 ],
-        "scale": [ 1, 1, 1 ]
-    },
-    "fixed": {
-        "rotation": [ 0, 90, 0 ],
-        "translation": [ 0, 4.91, -1.89 ],
-        "scale": [ 1, 1, 1 ]
-    },
-    "firstperson_righthand": {
-        "rotation": [ 0, 0, 0 ],
-        "translation": [ 0, 6.05, 0 ],
-        "scale": [ 1, 1, 1 ]
-    },
-    "firstperson_lefthand": {
-        "rotation": [ 0, 0, 0 ],
-        "translation": [ 0, 6.05, 0 ],
-        "scale": [ 1, 1, 1 ]
-    },
-    "gui": {
-        "rotation": [ 54, 139, -48 ],
-        "translation": [ -3.78, 3.02, 0 ],
-        "scale": [ 1, 1, 1 ]
-    }
-}
 }
