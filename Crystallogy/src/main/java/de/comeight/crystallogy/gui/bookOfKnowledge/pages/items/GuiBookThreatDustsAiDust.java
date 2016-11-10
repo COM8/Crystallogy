@@ -50,7 +50,8 @@ public class GuiBookThreatDustsAiDust extends GuiBookBaseInfusionPage {
 
 	@Override
 	protected String getDescription() {
-		return "Has a 60% chance to remove the ai from an entity. If it fails, the entity will die and it has no effect on a player";
+		return "Has a 60% chance to remove the ai from an entity. If it fails, the entity will die.\n"
+				+ "It will not have any effect on a the player, if it gets eaten by one.";
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
