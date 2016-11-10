@@ -14,12 +14,13 @@ You can also use your crystals to control / manipulate your friends / entities.
 * Crystals now only generate in caves - 100%
 * Rotatable Entity / Player Jar - 100%
 * Fixed Entity Jar not storing the entity - 100%
-* Control your caught entities to let them work for you - 80%
-* Waila support - 0%
-* (A new crafting mechanism based on infusion crafting - 0%)
+* New icons for the hammers, pickaxes and swords - 100%
+* Control your caught entities to let them work for you - 92%
+* Waila support - 20%
 * [MORE NOTES TO COME]
 
 ##ToDo for later releases:
+* (A new crafting mechanism based on infusion crafting - 0%)
 * Brain system - store parts of your brain in special crystals
 * Soul / Brain trading for a chunk loader
 * Praise the OS system
