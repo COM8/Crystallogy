@@ -110,11 +110,11 @@ public class RendererDissectingTable extends TileEntitySpecialRenderer<TileEntit
 				break;
 				
 			case SOUTH:
-				GlStateManager.translate(1 - xOffset, yOffset, zOffset);
+				GlStateManager.translate(1 - xOffset, yOffset, 1 - zOffset);
 				break;
 				
 			case WEST:
-				GlStateManager.translate(1.0 - zOffset, yOffset, 1 - xOffset);
+				GlStateManager.translate(zOffset, yOffset, 1 - xOffset);
 				break;
 
 			default:
