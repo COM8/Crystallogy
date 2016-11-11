@@ -3,6 +3,7 @@ package de.comeight.crystallogy.entity.ai;
 import java.util.List;
 
 import de.comeight.crystallogy.util.EnumCustomAis;
+import de.comeight.crystallogy.util.NBTTags;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -53,17 +54,17 @@ public class EntityAiQuarry extends EntityAiMoveToPos {
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
-		Utilities.saveBlockPosToNBT(compound, startPos, "startPos");
-		Utilities.saveBlockPosToNBT(compound, currentPos, "currentPos");
-		Utilities.saveBlockPosToNBT(compound, endPos, "endPos");
+		Utilities.saveBlockPosToNBT(compound, startPos, NBTTags.START_POS);
+		Utilities.saveBlockPosToNBT(compound, currentPos, NBTTags.CURRENT_POS);
+		Utilities.saveBlockPosToNBT(compound, endPos, NBTTags.END_POS);
 	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
-		startPos = Utilities.readBlockPosFromNBT(compound, "startPos");
-		currentPos = Utilities.readBlockPosFromNBT(compound, "currentPos");
-		endPos = Utilities.readBlockPosFromNBT(compound, "endPos");
+		startPos = Utilities.readBlockPosFromNBT(compound, NBTTags.START_POS);
+		currentPos = Utilities.readBlockPosFromNBT(compound, NBTTags.CURRENT_POS);
+		endPos = Utilities.readBlockPosFromNBT(compound, NBTTags.END_POS);
 	}
 	
 	@Override
@@ -165,8 +166,8 @@ public class EntityAiQuarry extends EntityAiMoveToPos {
 	
 	public static void addAdvancedTooltip(ItemStack stack, EntityPlayer playerIn, List<String> tooltip){
 		NBTTagCompound compound = stack.getTagCompound();
-		BlockPos p1 = Utilities.readBlockPosFromNBT(compound, "areaMin");
-		BlockPos p2 = Utilities.readBlockPosFromNBT(compound, "areaMax");
+		BlockPos p1 = Utilities.readBlockPosFromNBT(compound, NBTTags.AREA_MIN);
+		BlockPos p2 = Utilities.readBlockPosFromNBT(compound, NBTTags.AREA_MAX);
 		
 		tooltip.add(TextFormatting.DARK_PURPLE + "Area:");
 		if(p1 == null || p2 == null){

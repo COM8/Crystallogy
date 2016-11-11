@@ -3,6 +3,7 @@ package de.comeight.crystallogy.entity.ai;
 import java.util.List;
 
 import de.comeight.crystallogy.util.EnumCustomAis;
+import de.comeight.crystallogy.util.NBTTags;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
@@ -103,21 +104,21 @@ public class EntityAiPickupItems extends EntityAiMoveToPos{
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
-		Utilities.saveBlockPosToNBT(compound, itemsTargetPos, "itemsTargetPos");
-		Utilities.saveBlockPosToNBT(compound, areaRefPos, "areaRefPos");
-		Utilities.saveBlockPosToNBT(compound, area, "area");
-		compound.setBoolean("deliveringItems", deliveringItems);
-		compound.setBoolean("maxStackSizeReached", maxStackSizeReached);
+		Utilities.saveBlockPosToNBT(compound, itemsTargetPos, NBTTags.ITEMS_TARGET_POS);
+		Utilities.saveBlockPosToNBT(compound, areaRefPos, NBTTags.AREA_REF_POS);
+		Utilities.saveBlockPosToNBT(compound, area, NBTTags.AREA);
+		compound.setBoolean(NBTTags.DELIVERING_ITEMS, deliveringItems);
+		compound.setBoolean(NBTTags.MAX_STACKSIZE_REACHED, maxStackSizeReached);
 	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
-		itemsTargetPos = Utilities.readBlockPosFromNBT(compound, "itemsTargetPos");
-		areaRefPos = Utilities.readBlockPosFromNBT(compound, "areaRefPos");
-		area = Utilities.readBlockPosFromNBT(compound, "area");
-		deliveringItems = compound.getBoolean("deliveringItems");
-		maxStackSizeReached = compound.getBoolean("maxStackSizeReached");
+		itemsTargetPos = Utilities.readBlockPosFromNBT(compound, NBTTags.ITEMS_TARGET_POS);
+		areaRefPos = Utilities.readBlockPosFromNBT(compound, NBTTags.AREA_REF_POS);
+		area = Utilities.readBlockPosFromNBT(compound, NBTTags.AREA);
+		deliveringItems = compound.getBoolean(NBTTags.DELIVERING_ITEMS);
+		maxStackSizeReached = compound.getBoolean(NBTTags.MAX_STACKSIZE_REACHED);
 	}
 	
 	@Override
@@ -222,13 +223,13 @@ public class EntityAiPickupItems extends EntityAiMoveToPos{
 		NBTTagCompound compound = getCompound(aiOwner);
 		NBTTagCompound itemsCompound = new NBTTagCompound();
 		stack.writeToNBT(itemsCompound);
-		compound.setTag("itemsCompound", itemsCompound);
+		compound.setTag(NBTTags.ITEMS_COMPOUND, itemsCompound);
 		setCompound(aiOwner, compound);
 	}
 	
 	private ItemStack getRemoveItemStackOnNBT(){
 		NBTTagCompound compound = getCompound(aiOwner);
-		NBTTagCompound itemsCompound = (NBTTagCompound) compound.getTag("itemsCompound");
+		NBTTagCompound itemsCompound = (NBTTagCompound) compound.getTag(NBTTags.ITEMS_COMPOUND);
 		if(itemsCompound == null){
 			return null;
 		}
@@ -240,7 +241,7 @@ public class EntityAiPickupItems extends EntityAiMoveToPos{
 	
 	private ItemStack getItemStackOnCompound(){
 		NBTTagCompound compound = getCompound(aiOwner);
-		NBTTagCompound itemsCompound = (NBTTagCompound) compound.getTag("itemsCompound");
+		NBTTagCompound itemsCompound = (NBTTagCompound) compound.getTag(NBTTags.ITEMS_COMPOUND);
 		if(itemsCompound == null){
 			return null;
 		}
@@ -292,9 +293,9 @@ public class EntityAiPickupItems extends EntityAiMoveToPos{
 	
 	public static void addAdvancedTooltip(ItemStack stack, EntityPlayer playerIn, List<String> tooltip){
 		NBTTagCompound compound = stack.getTagCompound();
-		BlockPos p1 = Utilities.readBlockPosFromNBT(compound, "areaMin");
-		BlockPos p2 = Utilities.readBlockPosFromNBT(compound, "areaMax");
-		BlockPos p3 = Utilities.readBlockPosFromNBT(compound, "itemsTargetPos");
+		BlockPos p1 = Utilities.readBlockPosFromNBT(compound, NBTTags.AREA_MIN);
+		BlockPos p2 = Utilities.readBlockPosFromNBT(compound, NBTTags.AREA_MAX);
+		BlockPos p3 = Utilities.readBlockPosFromNBT(compound, NBTTags.ITEMS_TARGET_POS);
 		
 		tooltip.add(TextFormatting.DARK_PURPLE + "Area:");
 		if(p1 == null || p2 == null){

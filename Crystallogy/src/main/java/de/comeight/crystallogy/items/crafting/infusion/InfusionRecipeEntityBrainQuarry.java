@@ -5,6 +5,7 @@ import java.util.List;
 
 import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.util.EnumCustomAis;
+import de.comeight.crystallogy.util.NBTTags;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -51,9 +52,9 @@ public class InfusionRecipeEntityBrainQuarry extends InfusionRecipeBaseEntityBra
 		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 		ItemStack s = new ItemStack(ItemHandler.entityBrain, 1, 0);
 		NBTTagCompound compound = new NBTTagCompound();
-		compound.setInteger("aiType", EnumCustomAis.QUARRY.ID);
-		Utilities.saveBlockPosToNBT(compound, new BlockPos(0, 3, 0), "areaMin");
-		Utilities.saveBlockPosToNBT(compound, new BlockPos(5, 0, 5), "areaMax");
+		compound.setInteger(NBTTags.CUSTOM_AI_TYPE, EnumCustomAis.QUARRY.ID);
+		Utilities.saveBlockPosToNBT(compound, new BlockPos(0, 3, 0), NBTTags.AREA_MIN);
+		Utilities.saveBlockPosToNBT(compound, new BlockPos(5, 0, 5), NBTTags.AREA_MAX);
 		s.setTagCompound(compound);
 		ret.add(s);
 		return ret;
@@ -109,9 +110,9 @@ public class InfusionRecipeEntityBrainQuarry extends InfusionRecipeBaseEntityBra
 			return false;
 		}
 		
-		Utilities.saveBlockPosToNBT(compound, area[0], "areaMin");
-		Utilities.saveBlockPosToNBT(compound, area[1], "areaMax");
-		compound.setInteger("aiType", EnumCustomAis.QUARRY.ID);
+		Utilities.saveBlockPosToNBT(compound, area[0], NBTTags.AREA_MIN);
+		Utilities.saveBlockPosToNBT(compound, area[1], NBTTags.AREA_MAX);
+		compound.setInteger(NBTTags.CUSTOM_AI_TYPE, EnumCustomAis.QUARRY.ID);
 		output = new ItemStack(ItemHandler.entityBrain, 1, 0);
 		output.setTagCompound(compound);
 		return true;

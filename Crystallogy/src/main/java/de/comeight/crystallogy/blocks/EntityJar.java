@@ -3,6 +3,7 @@ package de.comeight.crystallogy.blocks;
 import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.tileEntitys.TileEntityEntityJar;
 import de.comeight.crystallogy.util.EnumThreats;
+import de.comeight.crystallogy.util.NBTTags;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -37,7 +38,7 @@ public class EntityJar extends BaseBlockEntityJar {
 			removeItem = true;
 		} else if (stack.getItem() == ItemHandler.entityBrain && stack.getItemDamage() == 0) {
 			NBTTagCompound compound = stack.getTagCompound();
-			if (compound != null && compound.hasKey("aiType")) {
+			if (compound != null && compound.hasKey(NBTTags.CUSTOM_AI_TYPE)) {
 				jar.addCustomAi(stack.getTagCompound());
 				removeItem = true;
 			}

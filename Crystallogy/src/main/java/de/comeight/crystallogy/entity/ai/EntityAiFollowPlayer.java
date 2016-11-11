@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import de.comeight.crystallogy.util.EnumCustomAis;
+import de.comeight.crystallogy.util.NBTTags;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
@@ -98,14 +99,13 @@ public class EntityAiFollowPlayer extends EntityAiMoveToPos {
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
-		compound.setUniqueId("playerUUID", playerTarget.getUniqueID());
-		compound.setUniqueId("playerUUID", playerUUID);
+		compound.setUniqueId(NBTTags.ENTITY_UUID, playerUUID);
 	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
-		this.playerUUID = compound.getUniqueId("playerUUID");
+		this.playerUUID = compound.getUniqueId(NBTTags.ENTITY_UUID);
 		playerTarget = findPlayerInWorld(playerUUID);
 	}
 	
@@ -120,10 +120,10 @@ public class EntityAiFollowPlayer extends EntityAiMoveToPos {
 	
 	public static void addAdvancedTooltip(ItemStack stack, EntityPlayer playerIn, List<String> tooltip){
 		NBTTagCompound compound = stack.getTagCompound();
-		BlockPos p1 = Utilities.readBlockPosFromNBT(compound, "targetPos");
+		BlockPos p1 = Utilities.readBlockPosFromNBT(compound, NBTTags.TARGET_POS);
 		tooltip.add(TextFormatting.DARK_PURPLE + "Player:");
-		tooltip.add("Name: " + TextFormatting.GOLD + compound.getString("playerName"));
-		tooltip.add("UUID: " + TextFormatting.GOLD + compound.getUniqueId("playerUUID"));
+		tooltip.add("Name: " + TextFormatting.GOLD + compound.getString(NBTTags.ENTITY_NAME));
+		tooltip.add("UUID: " + TextFormatting.GOLD + compound.getUniqueId(NBTTags.ENTITY_UUID));
 	}
 	
 }

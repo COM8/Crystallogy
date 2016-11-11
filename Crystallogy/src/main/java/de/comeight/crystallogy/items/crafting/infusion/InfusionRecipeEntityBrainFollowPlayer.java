@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.util.EnumCustomAis;
+import de.comeight.crystallogy.util.NBTTags;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
@@ -43,7 +44,7 @@ public class InfusionRecipeEntityBrainFollowPlayer extends InfusionRecipeBaseEnt
 		ret.add(new ArrayList<ItemStack>());
 		ItemStack stack = new ItemStack(ItemHandler.playerCrystalKnife);
 		NBTTagCompound compound = new NBTTagCompound();
-		compound.setString("name", "Any Player!");
+		compound.setString(NBTTags.ENTITY_NAME, "Any Player!");
 		stack.setTagCompound(compound);
 		ret.get(4).add(stack);
 		
@@ -55,8 +56,8 @@ public class InfusionRecipeEntityBrainFollowPlayer extends InfusionRecipeBaseEnt
 		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 		ItemStack s = new ItemStack(ItemHandler.entityBrain, 1, 0);
 		NBTTagCompound compound = new NBTTagCompound();
-		compound.setInteger("aiType", EnumCustomAis.FOLLOW_PLAYER.ID);
-		compound.setString("playerName", "Any Player!");
+		compound.setInteger(NBTTags.CUSTOM_AI_TYPE, EnumCustomAis.FOLLOW_PLAYER.ID);
+		compound.setString(NBTTags.ENTITY_NAME, "Any Player!");
 		s.setTagCompound(compound);
 		ret.add(s);
 		return ret;
@@ -86,8 +87,8 @@ public class InfusionRecipeEntityBrainFollowPlayer extends InfusionRecipeBaseEnt
 			ItemStack itemstack = ingredients[i];
 			if(itemstack != null){
 				if(itemstack.getItem() == ItemHandler.playerCrystalKnife && ItemHandler.playerCrystalKnife.hasEntity(itemstack)){
-					compound.setString("playerName", itemstack.getTagCompound().getString("name"));
-					compound.setUniqueId("playerUUID", UUID.fromString(itemstack.getTagCompound().getString("uuid")));
+					compound.setString(NBTTags.ENTITY_NAME, itemstack.getTagCompound().getString(NBTTags.ENTITY_NAME));
+					compound.setUniqueId(NBTTags.ENTITY_UUID, UUID.fromString(itemstack.getTagCompound().getString(NBTTags.ENTITY_UUID)));
 					playerCrystalKnife++;
 				}
 				else if(itemstack.getItem() == ItemHandler.energyCrystal && itemstack.getItemDamage() == 0){
@@ -105,7 +106,7 @@ public class InfusionRecipeEntityBrainFollowPlayer extends InfusionRecipeBaseEnt
 		if(energyCrystal != 1 || pureCrystalDust != 2 || playerCrystalKnife != 1){
 			return false;
 		}
-		compound.setInteger("aiType", EnumCustomAis.FOLLOW_PLAYER.ID);
+		compound.setInteger(NBTTags.CUSTOM_AI_TYPE, EnumCustomAis.FOLLOW_PLAYER.ID);
 		output = new ItemStack(ItemHandler.entityBrain, 1, 0);
 		output.setTagCompound(compound);
 		

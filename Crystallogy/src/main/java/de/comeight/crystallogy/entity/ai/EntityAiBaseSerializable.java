@@ -3,6 +3,7 @@ package de.comeight.crystallogy.entity.ai;
 import java.util.List;
 
 import de.comeight.crystallogy.handler.AiHandler;
+import de.comeight.crystallogy.util.NBTTags;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,7 +23,7 @@ public abstract class EntityAiBaseSerializable extends EntityAIBase {
 	public abstract int getAiID();
 	
 	protected NBTTagCompound getCompound(EntityLiving entity){
-		NBTTagCompound compound = entity.getEntityData().getCompoundTag("customAi_" + getAiID());
+		NBTTagCompound compound = entity.getEntityData().getCompoundTag(NBTTags.CUSTOM_AI_ID + getAiID());
 		if(compound == null){
 			setCompound(entity, new NBTTagCompound());
 			getCompound(entity);
@@ -31,7 +32,7 @@ public abstract class EntityAiBaseSerializable extends EntityAIBase {
 	}
 	
 	protected void setCompound(EntityLiving entity, NBTTagCompound compound){
-		entity.getEntityData().setTag("customAi_" + getAiID(), compound);
+		entity.getEntityData().setTag(NBTTags.CUSTOM_AI_ID + getAiID(), compound);
 	}
 	
 	@Override

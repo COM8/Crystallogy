@@ -6,6 +6,7 @@ import java.util.Random;
 import de.comeight.crystallogy.handler.AiHandler;
 import de.comeight.crystallogy.util.EnumCustomAis;
 import de.comeight.crystallogy.util.EnumEntityBrains;
+import de.comeight.crystallogy.util.NBTTags;
 import de.comeight.crystallogy.util.ToolTipBuilder;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.client.Minecraft;
@@ -60,36 +61,36 @@ public class EntityBrain extends BaseItemFood{
 		ItemStack brainStack = new ItemStack(itemIn);
 		
 		//Quarry:
-		compound.setInteger("aiType", EnumCustomAis.QUARRY.ID);
-		Utilities.saveBlockPosToNBT(compound, player.getPosition().add(-10, -player.getPosition().getY(), -10), "areaMin");
-		Utilities.saveBlockPosToNBT(compound, player.getPosition().add(10, 0, 10), "areaMax");
+		compound.setInteger(NBTTags.CUSTOM_AI_TYPE, EnumCustomAis.QUARRY.ID);
+		Utilities.saveBlockPosToNBT(compound, player.getPosition().add(-10, -player.getPosition().getY(), -10), NBTTags.AREA_MIN);
+		Utilities.saveBlockPosToNBT(compound, player.getPosition().add(10, 0, 10), NBTTags.AREA_MAX);
 		brainStack.setTagCompound(compound);
 		subItems.add(brainStack);
 		brainStack = new ItemStack(itemIn);
 		compound = new NBTTagCompound();
 		
 		//Follow Player:
-		compound.setInteger("aiType", EnumCustomAis.FOLLOW_PLAYER.ID);
-		compound.setString("playerName", player.getName());
-		compound.setUniqueId("playerUUID", player.getUniqueID());
+		compound.setInteger(NBTTags.CUSTOM_AI_TYPE, EnumCustomAis.FOLLOW_PLAYER.ID);
+		compound.setString(NBTTags.ENTITY_NAME, player.getName());
+		compound.setUniqueId(NBTTags.ENTITY_UUID, player.getUniqueID());
 		brainStack.setTagCompound(compound);
 		subItems.add(brainStack);
 		brainStack = new ItemStack(itemIn);
 		compound = new NBTTagCompound();
 		
 		//Move to Position:
-		compound.setInteger("aiType", EnumCustomAis.MOVE_TO_POS.ID);
-		Utilities.saveBlockPosToNBT(compound, Minecraft.getMinecraft().thePlayer.getPosition(), "targetPos");
+		compound.setInteger(NBTTags.CUSTOM_AI_TYPE, EnumCustomAis.MOVE_TO_POS.ID);
+		Utilities.saveBlockPosToNBT(compound, Minecraft.getMinecraft().thePlayer.getPosition(), NBTTags.TARGET_POS);
 		brainStack.setTagCompound(compound);
 		subItems.add(brainStack);
 		brainStack = new ItemStack(itemIn);
 		compound = new NBTTagCompound();
 		
 		//Pickup Items:
-		Utilities.saveBlockPosToNBT(compound, player.getPosition().add(-10, -3, -10), "areaMin");
-		Utilities.saveBlockPosToNBT(compound, player.getPosition().add(10, 3, 10), "areaMax");
-		Utilities.saveBlockPosToNBT(compound, player.getPosition(), "itemsTargetPos");
-		compound.setInteger("aiType", EnumCustomAis.PICKUP_ITEMS.ID);
+		Utilities.saveBlockPosToNBT(compound, player.getPosition().add(-10, -3, -10), NBTTags.AREA_MIN);
+		Utilities.saveBlockPosToNBT(compound, player.getPosition().add(10, 3, 10), NBTTags.AREA_MAX);
+		Utilities.saveBlockPosToNBT(compound, player.getPosition(), NBTTags.ITEMS_TARGET_POS);
+		compound.setInteger(NBTTags.CUSTOM_AI_TYPE, EnumCustomAis.PICKUP_ITEMS.ID);
 		subItems.add(brainStack);
 		brainStack.setTagCompound(compound);
 	}
@@ -109,7 +110,7 @@ public class EntityBrain extends BaseItemFood{
 	
 	@Override
 	public boolean hasEffect(ItemStack stack) {
-		return stack.hasTagCompound() && stack.getTagCompound().hasKey("aiType");
+		return stack.hasTagCompound() && stack.getTagCompound().hasKey(NBTTags.CUSTOM_AI_TYPE);
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
@@ -176,9 +177,9 @@ public class EntityBrain extends BaseItemFood{
 		if(stack.getMetadata() == 3){
 			tooltip.add(Utilities.localizeText("item.entityBrain.tooltip.1"));
 		}
-		if(stack.hasTagCompound() && stack.getTagCompound().hasKey("aiType")){
+		if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBTTags.CUSTOM_AI_TYPE)){
 			tooltip.add("");
-			tooltip.add(Utilities.localizeText("item.entityBrain.tooltip.2") + TextFormatting.GOLD + ' ' + Utilities.localizeText("ai.type." + stack.getTagCompound().getInteger("aiType")));
+			tooltip.add(Utilities.localizeText("item.entityBrain.tooltip.2") + TextFormatting.GOLD + ' ' + Utilities.localizeText("ai.type." + stack.getTagCompound().getInteger(NBTTags.CUSTOM_AI_TYPE)));
 			if(GuiScreen.isShiftKeyDown()){
 				tooltip.add("");
 				AiHandler.addAdvancedTooltip(stack, playerIn, tooltip);

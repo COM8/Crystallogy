@@ -11,6 +11,7 @@ import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.ParticleInformation;
 import de.comeight.crystallogy.particles.TransportParticle;
 import de.comeight.crystallogy.util.EnumThreats;
+import de.comeight.crystallogy.util.NBTTags;
 import de.comeight.crystallogy.util.NetworkUtilitis;
 import de.comeight.crystallogy.util.RGBColor;
 import de.comeight.crystallogy.util.Utilities;
@@ -83,12 +84,12 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 	
 	public void writeCustomDataToNBT(NBTTagCompound compound) {
 		if(hasEntity()){
-			compound.setBoolean("hasEntity", true);
-			compound.setString("name", entity.getName());
-			compound.setUniqueId("uuid", entity.getUniqueID());
+			compound.setBoolean(NBTTags.HAS_ENTITY, true);
+			compound.setString(NBTTags.ENTITY_NAME, entity.getName());
+			compound.setUniqueId(NBTTags.ENTITY_UUID, entity.getUniqueID());
 		}
 		else{
-			compound.setBoolean("hasEntity", false);
+			compound.setBoolean(NBTTags.HAS_ENTITY, false);
 		}
 	}
 	
@@ -100,7 +101,7 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 	}
 	
 	public void readCustomDataFromNBT(NBTTagCompound compound) {
-		if(compound.getBoolean("hasEntity")){
+		if(compound.getBoolean(NBTTags.HAS_ENTITY)){
 			newEntity = true;
 			entityCompound = (NBTTagCompound) compound.copy();
 		}
@@ -186,7 +187,7 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 	}
 	
 	private boolean loadEntityFromCompound(NBTTagCompound compound){
-		entity = findEntity(entityCompound.getUniqueId("uuid"));
+		entity = findEntity(entityCompound.getUniqueId(NBTTags.ENTITY_UUID));
 		return entity != null;
 	}
 	

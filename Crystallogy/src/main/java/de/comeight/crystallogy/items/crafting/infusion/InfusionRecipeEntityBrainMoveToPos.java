@@ -5,6 +5,7 @@ import java.util.List;
 
 import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.util.EnumCustomAis;
+import de.comeight.crystallogy.util.NBTTags;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -47,8 +48,8 @@ public class InfusionRecipeEntityBrainMoveToPos extends InfusionRecipeBaseEntity
 		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 		ItemStack s = new ItemStack(ItemHandler.entityBrain, 1, 0);
 		NBTTagCompound compound = new NBTTagCompound();
-		compound.setInteger("aiType", EnumCustomAis.MOVE_TO_POS.ID);
-		Utilities.saveBlockPosToNBT(compound, new BlockPos(0, 3, 0), "targetPos");
+		compound.setInteger(NBTTags.CUSTOM_AI_TYPE, EnumCustomAis.MOVE_TO_POS.ID);
+		Utilities.saveBlockPosToNBT(compound, new BlockPos(0, 3, 0), NBTTags.TARGET_POS);
 		s.setTagCompound(compound);
 		ret.add(s);
 		return ret;
@@ -99,8 +100,8 @@ public class InfusionRecipeEntityBrainMoveToPos extends InfusionRecipeBaseEntity
 		if(spotPicker != 1 || pureCrystalDust != 2 || lead != 1){
 			return false;
 		}
-		Utilities.saveBlockPosToNBT(compound, targetPos, "targetPos");
-		compound.setInteger("aiType", EnumCustomAis.MOVE_TO_POS.ID);
+		Utilities.saveBlockPosToNBT(compound, targetPos, NBTTags.TARGET_POS);
+		compound.setInteger(NBTTags.CUSTOM_AI_TYPE, EnumCustomAis.MOVE_TO_POS.ID);
 		output = new ItemStack(ItemHandler.entityBrain, 1, 0);
 		output.setTagCompound(compound);
 		

@@ -5,6 +5,7 @@ import java.util.List;
 
 import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.util.EnumCustomAis;
+import de.comeight.crystallogy.util.NBTTags;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -47,7 +48,7 @@ public class InfusionRecipeEntityBrainPickupItems extends InfusionRecipeBaseEnti
 		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 		ItemStack s = new ItemStack(ItemHandler.entityBrain, 1, 0);
 		NBTTagCompound compound = new NBTTagCompound();
-		compound.setInteger("aiType", EnumCustomAis.PICKUP_ITEMS.ID);
+		compound.setInteger(NBTTags.CUSTOM_AI_TYPE, EnumCustomAis.PICKUP_ITEMS.ID);
 		saveDataToCompound(compound, new BlockPos(0, 3, 0), new BlockPos(0, 0, 0), new BlockPos(0, 3, 0));
 		s.setTagCompound(compound);
 		ret.add(s);
@@ -109,7 +110,7 @@ public class InfusionRecipeEntityBrainPickupItems extends InfusionRecipeBaseEnti
 			return false;
 		}
 		saveDataToCompound(compound, area[0], area[1], itemsTargetPos);
-		compound.setInteger("aiType", EnumCustomAis.PICKUP_ITEMS.ID);
+		compound.setInteger(NBTTags.CUSTOM_AI_TYPE, EnumCustomAis.PICKUP_ITEMS.ID);
 		output = new ItemStack(ItemHandler.entityBrain, 1, 0);
 		output.setTagCompound(compound);
 		
@@ -117,9 +118,9 @@ public class InfusionRecipeEntityBrainPickupItems extends InfusionRecipeBaseEnti
 	}
 	
 	private void saveDataToCompound(NBTTagCompound compound, BlockPos areaMin, BlockPos areaMax, BlockPos itemsTargetPos){
-		Utilities.saveBlockPosToNBT(compound, areaMin, "areaMin");
-		Utilities.saveBlockPosToNBT(compound, areaMax, "areaMax");
-		Utilities.saveBlockPosToNBT(compound, itemsTargetPos, "itemsTargetPos");
+		Utilities.saveBlockPosToNBT(compound, areaMin, NBTTags.AREA_MIN);
+		Utilities.saveBlockPosToNBT(compound, areaMax, NBTTags.AREA_MAX);
+		Utilities.saveBlockPosToNBT(compound, itemsTargetPos, NBTTags.ITEMS_TARGET_POS);
 	}
 	
 }

@@ -5,6 +5,7 @@ import java.util.UUID;
 import com.mojang.authlib.GameProfile;
 
 import de.comeight.crystallogy.util.Log;
+import de.comeight.crystallogy.util.NBTTags;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -60,9 +61,9 @@ public class TileEntityPlayerJar extends TileEntityEntityJar {
 	
 	@Override
 	public void readCustomDataFromNBT(NBTTagCompound compound) {
-		if(compound.getBoolean("hasEntity")){
-			String name = compound.getString("name");
-			UUID uuid = compound.getUniqueId("uuid");
+		if(compound.getBoolean(NBTTags.HAS_ENTITY)){
+			String name = compound.getString(NBTTags.ENTITY_NAME);
+			UUID uuid = compound.getUniqueId(NBTTags.ENTITY_UUID);
 			if(!name.equals("")){
 				profile = new GameProfile(uuid, name);
 				if(worldObj != null){
@@ -90,12 +91,12 @@ public class TileEntityPlayerJar extends TileEntityEntityJar {
 	@Override
 	public void writeCustomDataToNBT(NBTTagCompound compound) {
 		if(hasEntity()){
-			compound.setBoolean("hasEntity", true);
-			compound.setString("name", profile.getName());
-			compound.setUniqueId("uuid", profile.getId());
+			compound.setBoolean(NBTTags.HAS_ENTITY, true);
+			compound.setString(NBTTags.ENTITY_NAME, profile.getName());
+			compound.setUniqueId(NBTTags.ENTITY_UUID, profile.getId());
 		}
 		else{
-			compound.setBoolean("hasEntity", false);
+			compound.setBoolean(NBTTags.HAS_ENTITY, false);
 		}
 	}
 	
