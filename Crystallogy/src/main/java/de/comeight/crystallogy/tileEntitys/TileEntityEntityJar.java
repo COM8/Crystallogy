@@ -54,6 +54,9 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 
 	public void setEntity(EntityLivingBase entity) {
 		this.entity = entity;
+		if(entity != null && entity instanceof EntityLiving){
+			((EntityLiving) entity).enablePersistence();
+		}
 		sync();
 	}
 	
