@@ -30,7 +30,7 @@ public class EntityAiPickupItems extends EntityAiMoveToPos{
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public EntityAiPickupItems(EntityLiving aiOwner, BlockPos itemsTargetPos, BlockPos areaStartPos, BlockPos area) {
-		super(aiOwner, new Vec3d(itemsTargetPos.add(0.5, 0.5, 0.5)), 1.0);
+		super(aiOwner, new Vec3d(itemsTargetPos.add(0.5, 0.5, 0.5)), 1.1);
 		this.itemsTargetPos = itemsTargetPos;
 		this.areaRefPos = areaStartPos;
 		this.area = area;

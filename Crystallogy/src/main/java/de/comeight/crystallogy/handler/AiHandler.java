@@ -107,14 +107,14 @@ public class AiHandler {
 		if(compound !=  null && compound.hasKey(NBTTags.CUSTOM_AI_TYPE)){
 			switch (EnumCustomAis.fromID(compound.getInteger(NBTTags.CUSTOM_AI_TYPE))) {
 				case MOVE_TO_POS:
-					entity.tasks.addTask(Integer.MIN_VALUE, new EntityAiMoveToPos(entity, new Vec3d(Utilities.readBlockPosFromNBT(compound, NBTTags.TARGET_POS)), 1.0F));
+					entity.tasks.addTask(Integer.MIN_VALUE, new EntityAiMoveToPos(entity, new Vec3d(Utilities.readBlockPosFromNBT(compound, NBTTags.TARGET_POS)), 1.1F));
 					break;
 					
 				case FOLLOW_PLAYER:
 					UUID uuid = compound.getUniqueId(NBTTags.ENTITY_UUID);
 					for(EntityPlayer player: entity.getEntityWorld().playerEntities){
 						if(player.getUniqueID().equals(uuid)){
-							entity.tasks.addTask(Integer.MIN_VALUE, new EntityAiFollowPlayer(entity, uuid, 1.0F));
+							entity.tasks.addTask(Integer.MIN_VALUE, new EntityAiFollowPlayer(entity, uuid, 1.1F));
 						}
 					}
 					break;

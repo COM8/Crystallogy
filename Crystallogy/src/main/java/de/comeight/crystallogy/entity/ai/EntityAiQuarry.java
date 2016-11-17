@@ -26,7 +26,7 @@ public class EntityAiQuarry extends EntityAiMoveToPos {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public EntityAiQuarry(EntityLiving aiOwner, BlockPos startPos, BlockPos size) {
-		super(aiOwner, new Vec3d(startPos), 1.0);
+		super(aiOwner, new Vec3d(startPos), 1.1);
 		this.startPos = startPos;
 		this.currentPos = startPos;
 		this.endPos = startPos.add(size.getX(), -size.getY(), size.getZ());
