@@ -4,6 +4,7 @@ import java.util.List;
 
 import de.comeight.crystallogy.handler.AiHandler;
 import de.comeight.crystallogy.util.EnumCustomAis;
+import de.comeight.crystallogy.util.NBTTags;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -112,15 +113,15 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 				return false;
 			}
 		}
-		else if(aiOwnerPathfinder.canEntityStandOnPos(new BlockPos(targetPos)) && !isNearTargetPosition()){
+		if(aiOwnerPathfinder.canEntityStandOnPos(new BlockPos(targetPos)) && !isNearTargetPosition()){
 			return true;
-		}		
+		}
 		return false;
 	}
 	
 	@Override
 	public boolean continueExecuting() {
-		return (aiOwnerPathfinder.noPath() && !newTargetPos) || (targetPos == null && !newTargetPos);
+		return !(aiOwnerPathfinder.noPath() && !newTargetPos) || (targetPos == null && newTargetPos);
 	}
 	
 	@Override
@@ -166,7 +167,7 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 			noMotionTicks = 0;
 			return;
 		}
-		if(targetPos.distanceTo(aiOwner.getPositionVector()) > 64){
+		if(targetPos.distanceTo(aiOwner.getPositionVector()) > 16){
 			requestedTeleport = true;
 		}
 		else{
@@ -206,7 +207,7 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 	}
 	
 	protected boolean shouldRecalcPath(){
-		if(prevPos.distanceTo(aiOwner.getPositionVector()) <= 0 && !isNearTargetPosition()){
+		if(prevPos.distanceTo(aiOwner.getPositionVector()) <= 0 && !isNearTargetPosition() && aiOwner.onGround){
 			noMotionTicks++;
 		}
 		else{
@@ -219,28 +220,28 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
         {
 			newTargetPos = false;
             timeSincePathRecalc = 0;
-            return !aiOwner.getLeashed();
+            return !aiOwner.getLeashed() && aiOwner.onGround;
         }
 		return false;
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
-		Utilities.saveVec3dToNBT(compound, targetPos, "targetPos");
-		compound.setDouble("movementSpeed", movementSpeed);
-		compound.setBoolean("forceMoveTo", forceMoveTo);
+		Utilities.saveVec3dToNBT(compound, targetPos, NBTTags.TARGET_POS);
+		compound.setDouble(NBTTags.MOVEMENT_SPEED, movementSpeed);
+		compound.setBoolean(NBTTags.FORCE_MOVE_TO, forceMoveTo);
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
-		targetPos = Utilities.readVec3dFromNBT(compound, "targetPos");
-		movementSpeed = compound.getDouble("movementSpeed");
-		forceMoveTo = compound.getBoolean("forceMoveTo");
+		targetPos = Utilities.readVec3dFromNBT(compound, NBTTags.TARGET_POS);
+		movementSpeed = compound.getDouble(NBTTags.MOVEMENT_SPEED);
+		forceMoveTo = compound.getBoolean(NBTTags.FORCE_MOVE_TO);
 	}
 	
 	public static void addAdvancedTooltip(ItemStack stack, EntityPlayer playerIn, List<String> tooltip){
 		NBTTagCompound compound = stack.getTagCompound();
-		BlockPos p1 = Utilities.readBlockPosFromNBT(compound, "targetPos");
+		BlockPos p1 = Utilities.readBlockPosFromNBT(compound, NBTTags.TARGET_POS);
 		tooltip.add(TextFormatting.DARK_PURPLE + "Target Position: " + TextFormatting.GOLD + "X=" + p1.getX() + " Y=" + p1.getY() + " Z=" + p1.getZ());
 	}
 	

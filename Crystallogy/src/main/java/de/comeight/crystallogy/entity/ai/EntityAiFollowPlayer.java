@@ -24,7 +24,7 @@ public class EntityAiFollowPlayer extends EntityAiMoveToPos {
 		super(aiOwner, null, movementSpeed);
 		this.playerTarget = findPlayerInWorld(playerUUID);
 		this.playerUUID = playerUUID;
-		this.forceMoveTo = true;
+		//this.forceMoveTo = true;
 		if(playerTarget != null){
 			setTargetPos(playerTarget.getPositionVector());
 		}

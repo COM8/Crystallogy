@@ -23,7 +23,7 @@ public abstract class EntityAiBaseSerializable extends EntityAIBase {
 	public abstract int getAiID();
 	
 	protected NBTTagCompound getCompound(EntityLiving entity){
-		NBTTagCompound compound = entity.getEntityData().getCompoundTag(NBTTags.CUSTOM_AI_ID + getAiID());
+		NBTTagCompound compound = entity.getEntityData().getCompoundTag(NBTTags.CUSTOM_AI_TYPE + getAiID());
 		if(compound == null){
 			setCompound(entity, new NBTTagCompound());
 			getCompound(entity);
@@ -32,7 +32,7 @@ public abstract class EntityAiBaseSerializable extends EntityAIBase {
 	}
 	
 	protected void setCompound(EntityLiving entity, NBTTagCompound compound){
-		entity.getEntityData().setTag(NBTTags.CUSTOM_AI_ID + getAiID(), compound);
+		entity.getEntityData().setTag(NBTTags.CUSTOM_AI_TYPE + getAiID(), compound);
 	}
 	
 	@Override
