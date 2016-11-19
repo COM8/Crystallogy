@@ -44,7 +44,7 @@ public class EntityJar extends BaseBlockEntityJar {
 			}
 		}
 
-		if (removeItem) {
+		if (removeItem && !playerIn.capabilities.isCreativeMode) {
 			ItemStack playerIStack = playerIn.getHeldItemMainhand();
 			if (playerIStack != null) {
 				playerIStack.stackSize--;

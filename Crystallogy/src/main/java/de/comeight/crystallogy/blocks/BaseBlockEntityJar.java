@@ -243,7 +243,7 @@ public class BaseBlockEntityJar extends BaseBlockTileEntity {
 			jar.addThreat(threat);
 			
 			ItemStack playerIStack = playerIn.getHeldItemMainhand();
-			if (playerIStack != null){
+			if (playerIStack != null && !playerIn.capabilities.isCreativeMode){
 	            playerIStack.stackSize--;
 	        }
 		}
