@@ -102,6 +102,8 @@ public class InfusionRecipeEntityBrainMoveToPos extends InfusionRecipeBaseEntity
 		}
 		Utilities.saveBlockPosToNBT(compound, targetPos, NBTTags.TARGET_POS);
 		compound.setInteger(NBTTags.CUSTOM_AI_TYPE, EnumCustomAis.MOVE_TO_POS.ID);
+		compound.setBoolean(NBTTags.FORCE_MOVE_TO, false);
+		compound.setBoolean(NBTTags.RUN_CONTINUOUSLY, false);
 		output = new ItemStack(ItemHandler.entityBrain, 1, 0);
 		output.setTagCompound(compound);
 		

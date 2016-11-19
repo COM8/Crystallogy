@@ -58,6 +58,8 @@ public class InfusionRecipeEntityBrainFollowPlayer extends InfusionRecipeBaseEnt
 		NBTTagCompound compound = new NBTTagCompound();
 		compound.setInteger(NBTTags.CUSTOM_AI_TYPE, EnumCustomAis.FOLLOW_PLAYER.ID);
 		compound.setString(NBTTags.ENTITY_NAME, "Any Player!");
+		compound.setBoolean(NBTTags.FORCE_MOVE_TO, false);
+		compound.setBoolean(NBTTags.RUN_CONTINUOUSLY, false);
 		s.setTagCompound(compound);
 		ret.add(s);
 		return ret;
@@ -107,6 +109,8 @@ public class InfusionRecipeEntityBrainFollowPlayer extends InfusionRecipeBaseEnt
 			return false;
 		}
 		compound.setInteger(NBTTags.CUSTOM_AI_TYPE, EnumCustomAis.FOLLOW_PLAYER.ID);
+		compound.setBoolean(NBTTags.FORCE_MOVE_TO, false);
+		compound.setBoolean(NBTTags.RUN_CONTINUOUSLY, false);
 		output = new ItemStack(ItemHandler.entityBrain, 1, 0);
 		output.setTagCompound(compound);
 		

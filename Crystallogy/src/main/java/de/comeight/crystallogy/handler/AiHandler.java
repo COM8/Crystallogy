@@ -1,8 +1,10 @@
 package de.comeight.crystallogy.handler;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
+import de.comeight.crystallogy.entity.ai.EntityAiBaseSerializable;
 import de.comeight.crystallogy.entity.ai.EntityAiFollowPlayer;
 import de.comeight.crystallogy.entity.ai.EntityAiMoveToPos;
 import de.comeight.crystallogy.entity.ai.EntityAiPickupItems;
@@ -11,6 +13,7 @@ import de.comeight.crystallogy.util.EnumCustomAis;
 import de.comeight.crystallogy.util.NBTTags;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.ai.EntityAITasks.EntityAITaskEntry;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -68,6 +71,15 @@ public class AiHandler {
 		addedCustomAi(EnumCustomAis.EMPTY.ID, entity);
 	}
 	
+	public static void removeCustomAi(EntityAiBaseSerializable ai, EntityLiving entity) {
+		for (Iterator<EntityAITaskEntry> iterator = entity.tasks.taskEntries.iterator(); iterator.hasNext(); ) {
+			EntityAITaskEntry task = iterator.next();
+		    if (task.action == ai) {
+		        iterator.remove();
+		    }
+		}
+	}
+	
 	public static void addedCustomAi(int id, EntityLiving entity){
 		NBTTagCompound compound = entity.getEntityData();
 		if(compound == null){
@@ -107,14 +119,20 @@ public class AiHandler {
 		if(compound !=  null && compound.hasKey(NBTTags.CUSTOM_AI_TYPE)){
 			switch (EnumCustomAis.fromID(compound.getInteger(NBTTags.CUSTOM_AI_TYPE))) {
 				case MOVE_TO_POS:
-					entity.tasks.addTask(Integer.MIN_VALUE, new EntityAiMoveToPos(entity, new Vec3d(Utilities.readBlockPosFromNBT(compound, NBTTags.TARGET_POS)), 1.1F));
+					EntityAiMoveToPos aiMtP = new EntityAiMoveToPos(entity, new Vec3d(Utilities.readBlockPosFromNBT(compound, NBTTags.TARGET_POS)), 1.1);
+					aiMtP.setForceMoveTo(compound.getBoolean(NBTTags.FORCE_MOVE_TO));
+					aiMtP.setRun_continously(compound.getBoolean(NBTTags.RUN_CONTINUOUSLY));
+					entity.tasks.addTask(Integer.MIN_VALUE, aiMtP);
 					break;
 					
 				case FOLLOW_PLAYER:
 					UUID uuid = compound.getUniqueId(NBTTags.ENTITY_UUID);
 					for(EntityPlayer player: entity.getEntityWorld().playerEntities){
 						if(player.getUniqueID().equals(uuid)){
-							entity.tasks.addTask(Integer.MIN_VALUE, new EntityAiFollowPlayer(entity, uuid, 1.1F));
+							EntityAiFollowPlayer aiFP = new EntityAiFollowPlayer(entity, uuid, 1.1F);
+							aiFP.setForceMoveTo(compound.getBoolean(NBTTags.FORCE_MOVE_TO));
+							aiFP.setRun_continously(compound.getBoolean(NBTTags.RUN_CONTINUOUSLY));
+							entity.tasks.addTask(Integer.MIN_VALUE, aiFP);
 						}
 					}
 					break;
@@ -124,7 +142,10 @@ public class AiHandler {
 					BlockPos pMax = Utilities.readBlockPosFromNBT(compound, NBTTags.AREA_MAX);
 					BlockPos area = pMax.add(-pMin.getX(), -pMin.getY(), -pMin.getZ());
 					area = new BlockPos(area.getX(), -area.getY(), area.getZ());
-					entity.tasks.addTask(Integer.MIN_VALUE, new EntityAiQuarry(entity, pMin, area));
+					EntityAiQuarry aiQ = new EntityAiQuarry(entity, pMin, area);
+					aiQ.setForceMoveTo(compound.getBoolean(NBTTags.FORCE_MOVE_TO));
+					aiQ.setRun_continously(compound.getBoolean(NBTTags.RUN_CONTINUOUSLY));
+					entity.tasks.addTask(Integer.MIN_VALUE, aiQ);
 					break;
 					
 				case PICKUP_ITEMS:
@@ -133,7 +154,10 @@ public class AiHandler {
 					area = pMax.add(-pMin.getX(), -pMin.getY(), -pMin.getZ());
 					area = new BlockPos(area.getX(), -area.getY(), area.getZ());
 					BlockPos itemsTargetPos = Utilities.readBlockPosFromNBT(compound, NBTTags.ITEMS_TARGET_POS);
-					entity.tasks.addTask(Integer.MIN_VALUE, new EntityAiPickupItems(entity, itemsTargetPos, pMin, area));
+					EntityAiPickupItems aiPI = new EntityAiPickupItems(entity, itemsTargetPos, pMin, area);
+					aiPI.setForceMoveTo(compound.getBoolean(NBTTags.FORCE_MOVE_TO));
+					aiPI.setRun_continously(compound.getBoolean(NBTTags.RUN_CONTINUOUSLY));
+					entity.tasks.addTask(Integer.MIN_VALUE, aiPI);
 					break;
 					
 				default:

@@ -1,21 +1,30 @@
 package de.comeight.crystallogy.tileEntitys.machines;
 
+import java.util.Random;
+
 import de.comeight.crystallogy.blocks.machines.DessectingTable;
+import de.comeight.crystallogy.handler.AiHandler;
 import de.comeight.crystallogy.handler.CrystalCrusherRecipeHandler;
 import de.comeight.crystallogy.handler.SoundHandler;
+import de.comeight.crystallogy.util.NBTTags;
 import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.client.config.GuiCheckBox;
 
 public class TileEntityDissectingTable extends BaseTileEntityMachine {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	public static final String ID = "tileEntityDissectingTable";
 	private int brainParts;
 	private boolean progressReverse;
-	private boolean running;
+	public boolean running;
+	private GuiCheckBox checkboxes[];
     
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public TileEntityDissectingTable() {
@@ -24,6 +33,7 @@ public class TileEntityDissectingTable extends BaseTileEntityMachine {
 		this.progressReverse = false;
 		this.running = false;
 		this.totalCookTime = 160;
+		this.checkboxes = null;
 	}
 
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -47,11 +57,11 @@ public class TileEntityDissectingTable extends BaseTileEntityMachine {
 	}
 	
 	public boolean isReady(){
-		return getBrainPartsFullnes() >= 0.2 && getStackInSlot(1) != null && getStackInSlot(2) != null;
+		return getBrainPartsFullnes() >= 0.25 && getStackInSlot(1) != null && getStackInSlot(2) != null;
 	}
 	
 	public ItemStack getBrain(){
-		return getStackInSlot(1);
+		return getStackInSlot(2);
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
@@ -109,8 +119,27 @@ public class TileEntityDissectingTable extends BaseTileEntityMachine {
 		cookTime = 0;
 		progressReverse = false;
 		
-		if(successfully){
-			
+		if(successfully && checkboxes != null){
+			NBTTagCompound compound = getBrain().getTagCompound();
+			if(checkboxes[0].visible){
+				compound.setBoolean(NBTTags.FORCE_MOVE_TO, checkboxes[1].isChecked());
+			}
+			if(checkboxes[1].visible){
+				compound.setBoolean(NBTTags.RUN_CONTINUOUSLY, checkboxes[0].isChecked());
+			}
+			if(checkboxes[2].visible){
+				//compound.setBoolean(NBTTags.RUN_CONTINUOUSLY, checkboxes[2].isChecked());
+			}
+			getBrain().setTagCompound(compound);
+			ItemStack knife = getStackInSlot(1);
+			if(knife != null){
+				knife.attemptDamageItem(2, new Random());
+				if(knife.getItemDamage() >= knife.getMaxDamage()){
+					setInventorySlotContents(1, null);
+					worldObj.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.ENTITY_ITEM_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
+				}
+			}
+			sync();
 		}
 		else{
 			
@@ -174,7 +203,8 @@ public class TileEntityDissectingTable extends BaseTileEntityMachine {
 	}
 	
 	
-	public void go(){
+	public void go(GuiCheckBox checkboxes[]){
+		this.checkboxes = checkboxes;
 		this.running = true;
 		this.cookTime = 0;
 		this.sync();

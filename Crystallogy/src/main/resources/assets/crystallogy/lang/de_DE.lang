@@ -163,6 +163,8 @@ item.entityBrain.onFoodEaten.13=§5Irgendwie nussig.§r
 item.entityBrain.tooltip.0=Probier mich!
 item.entityBrain.tooltip.1=Ja, ich bin essbar!
 item.entityBrain.tooltip.2=§5KI:
+item.entityBrain.tooltip.3=§5Ununterbrochen:
+item.entityBrain.tooltip.4=§5Erzwungene Bewegung:
 
 item.areaPicker.playerMessage.0=Erste Position wurde erfolgreich gespeichert:
 item.areaPicker.playerMessage.1=Zweite Position wurde erfolgreich gespeichert:

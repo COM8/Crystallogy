@@ -24,7 +24,6 @@ import net.minecraft.world.World;
 public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private Vec3d targetPos;
-	protected EntityLiving aiOwner;
 	protected World world;
 	protected double movementSpeed;
 	protected final PathNavigate aiOwnerPathfinder;
@@ -38,6 +37,7 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public EntityAiMoveToPos(EntityLiving aiOwner, Vec3d targetPos, double movementSpeed) {
+		super(aiOwner);
 		this.aiOwner = aiOwner;
 		this.targetPos = targetPos;
 		this.movementSpeed = movementSpeed;
@@ -55,6 +55,7 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 	}
 	
 	public EntityAiMoveToPos(EntityLiving aiOwner){
+		super(aiOwner);
 		this.aiOwner = aiOwner;
 		this.aiOwnerPathfinder = aiOwner.getNavigator();
 		this.timeSincePathRecalc = 0;
@@ -69,6 +70,7 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 	}
 	
 	public EntityAiMoveToPos() {
+		super(null);
 		this.aiOwnerPathfinder = null;
 	}
 	
@@ -98,6 +100,14 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
         return iblockstate.getMaterial() == Material.AIR ? true : !iblockstate.isFullCube();
     }
 	
+	public boolean isForceMoveTo() {
+		return forceMoveTo;
+	}
+
+	public void setForceMoveTo(boolean forceMoveTo) {
+		this.forceMoveTo = forceMoveTo;
+	}
+
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public boolean shouldExecute() {
@@ -120,7 +130,7 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 	}
 	
 	@Override
-	public boolean continueExecuting() {
+	public boolean continueExecutingCustom() {
 		return !(aiOwnerPathfinder.noPath() && !newTargetPos) || (targetPos == null && newTargetPos);
 	}
 	
@@ -167,7 +177,7 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 			noMotionTicks = 0;
 			return;
 		}
-		if(targetPos.distanceTo(aiOwner.getPositionVector()) > 16){
+		if(targetPos.distanceTo(aiOwner.getPositionVector()) > 16 && forceMoveTo){
 			requestedTeleport = true;
 		}
 		else{
@@ -227,6 +237,7 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
+		super.writeToNBT(compound);
 		Utilities.saveVec3dToNBT(compound, targetPos, NBTTags.TARGET_POS);
 		compound.setDouble(NBTTags.MOVEMENT_SPEED, movementSpeed);
 		compound.setBoolean(NBTTags.FORCE_MOVE_TO, forceMoveTo);
@@ -234,6 +245,7 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
+		super.readFromNBT(compound);
 		targetPos = Utilities.readVec3dFromNBT(compound, NBTTags.TARGET_POS);
 		movementSpeed = compound.getDouble(NBTTags.MOVEMENT_SPEED);
 		forceMoveTo = compound.getBoolean(NBTTags.FORCE_MOVE_TO);

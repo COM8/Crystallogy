@@ -24,7 +24,6 @@ public class EntityAiFollowPlayer extends EntityAiMoveToPos {
 		super(aiOwner, null, movementSpeed);
 		this.playerTarget = findPlayerInWorld(playerUUID);
 		this.playerUUID = playerUUID;
-		this.forceMoveTo = true;
 		if(playerTarget != null){
 			setTargetPos(playerTarget.getPositionVector());
 		}
@@ -65,9 +64,9 @@ public class EntityAiFollowPlayer extends EntityAiMoveToPos {
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
-	public boolean continueExecuting() {
+	public boolean continueExecutingCustom() {
 		updatePlayerPos();
-		return isPlayerReachable() && super.continueExecuting();
+		return isPlayerReachable() && super.continueExecutingCustom();
 	}
 	
 	@Override

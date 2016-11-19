@@ -37,6 +37,7 @@ public class EntityBrain extends BaseItemFood{
 		setAlwaysEdible();
 		setHasSubtypes(true);
         setMaxDamage(0);
+        setMaxStackSize(8);
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -64,6 +65,8 @@ public class EntityBrain extends BaseItemFood{
 		compound.setInteger(NBTTags.CUSTOM_AI_TYPE, EnumCustomAis.QUARRY.ID);
 		Utilities.saveBlockPosToNBT(compound, player.getPosition().add(-10, -player.getPosition().getY(), -10), NBTTags.AREA_MIN);
 		Utilities.saveBlockPosToNBT(compound, player.getPosition().add(10, 0, 10), NBTTags.AREA_MAX);
+		compound.setBoolean(NBTTags.FORCE_MOVE_TO, false);
+		compound.setBoolean(NBTTags.RUN_CONTINUOUSLY, false);
 		brainStack.setTagCompound(compound);
 		subItems.add(brainStack);
 		brainStack = new ItemStack(itemIn);
@@ -73,6 +76,8 @@ public class EntityBrain extends BaseItemFood{
 		compound.setInteger(NBTTags.CUSTOM_AI_TYPE, EnumCustomAis.FOLLOW_PLAYER.ID);
 		compound.setString(NBTTags.ENTITY_NAME, player.getName());
 		compound.setUniqueId(NBTTags.ENTITY_UUID, player.getUniqueID());
+		compound.setBoolean(NBTTags.FORCE_MOVE_TO, false);
+		compound.setBoolean(NBTTags.RUN_CONTINUOUSLY, false);
 		brainStack.setTagCompound(compound);
 		subItems.add(brainStack);
 		brainStack = new ItemStack(itemIn);
@@ -81,6 +86,8 @@ public class EntityBrain extends BaseItemFood{
 		//Move to Position:
 		compound.setInteger(NBTTags.CUSTOM_AI_TYPE, EnumCustomAis.MOVE_TO_POS.ID);
 		Utilities.saveBlockPosToNBT(compound, Minecraft.getMinecraft().thePlayer.getPosition(), NBTTags.TARGET_POS);
+		compound.setBoolean(NBTTags.FORCE_MOVE_TO, false);
+		compound.setBoolean(NBTTags.RUN_CONTINUOUSLY, false);
 		brainStack.setTagCompound(compound);
 		subItems.add(brainStack);
 		brainStack = new ItemStack(itemIn);
@@ -91,6 +98,8 @@ public class EntityBrain extends BaseItemFood{
 		Utilities.saveBlockPosToNBT(compound, player.getPosition().add(10, 3, 10), NBTTags.AREA_MAX);
 		Utilities.saveBlockPosToNBT(compound, player.getPosition(), NBTTags.ITEMS_TARGET_POS);
 		compound.setInteger(NBTTags.CUSTOM_AI_TYPE, EnumCustomAis.PICKUP_ITEMS.ID);
+		compound.setBoolean(NBTTags.FORCE_MOVE_TO, false);
+		compound.setBoolean(NBTTags.RUN_CONTINUOUSLY, false);
 		subItems.add(brainStack);
 		brainStack.setTagCompound(compound);
 	}
@@ -178,9 +187,13 @@ public class EntityBrain extends BaseItemFood{
 			tooltip.add(Utilities.localizeText("item.entityBrain.tooltip.1"));
 		}
 		if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBTTags.CUSTOM_AI_TYPE)){
+			NBTTagCompound compound = stack.getTagCompound();
 			tooltip.add("");
 			tooltip.add(Utilities.localizeText("item.entityBrain.tooltip.2") + TextFormatting.GOLD + ' ' + Utilities.localizeText("ai.type." + stack.getTagCompound().getInteger(NBTTags.CUSTOM_AI_TYPE)));
 			if(GuiScreen.isShiftKeyDown()){
+				tooltip.add("");
+				tooltip.add(Utilities.localizeText("item.entityBrain.tooltip.3") + " " + TextFormatting.GOLD + compound.getBoolean(NBTTags.RUN_CONTINUOUSLY));
+				tooltip.add(Utilities.localizeText("item.entityBrain.tooltip.4") + " " + TextFormatting.GOLD + compound.getBoolean(NBTTags.FORCE_MOVE_TO));
 				tooltip.add("");
 				AiHandler.addAdvancedTooltip(stack, playerIn, tooltip);
 			}

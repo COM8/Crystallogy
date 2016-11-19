@@ -111,6 +111,8 @@ public class InfusionRecipeEntityBrainPickupItems extends InfusionRecipeBaseEnti
 		}
 		saveDataToCompound(compound, area[0], area[1], itemsTargetPos);
 		compound.setInteger(NBTTags.CUSTOM_AI_TYPE, EnumCustomAis.PICKUP_ITEMS.ID);
+		compound.setBoolean(NBTTags.FORCE_MOVE_TO, false);
+		compound.setBoolean(NBTTags.RUN_CONTINUOUSLY, false);
 		output = new ItemStack(ItemHandler.entityBrain, 1, 0);
 		output.setTagCompound(compound);
 		

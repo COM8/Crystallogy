@@ -5,8 +5,11 @@ import de.comeight.crystallogy.blocks.container.ContainerDissectingTable;
 import de.comeight.crystallogy.gui.parts.GuiButtonDissectingTable;
 import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityDissectingTable;
+import de.comeight.crystallogy.util.NBTTags;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.config.GuiCheckBox;
@@ -21,17 +24,28 @@ public class GuiDissectingTable extends BaseGuiCointainer{
 	
 	private GuiButton goButton;
 	private GuiCheckBox checkboxes[];
+	private ItemStack prevStack;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiDissectingTable(InventoryPlayer playerInventory, TileEntityDissectingTable tileEntity) {
 		super(new ContainerDissectingTable(playerInventory, tileEntity), playerInventory, BlockHandler.dessectingTable.getLocalizedName());
 		this.tileEntity = tileEntity;
+		this.prevStack = null;
 	}	
 
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	@Override
 	protected ResourceLocation getBackground() {
 		return rL;
+	}
+	
+	private boolean areCheckboxesDifferent(){
+		ItemStack brain;
+		if((brain = tileEntity.getBrain()) != null && brain.hasTagCompound()){
+			NBTTagCompound compound = brain.getTagCompound();
+			return (checkboxes[0].isChecked() != compound.getBoolean(NBTTags.FORCE_MOVE_TO)) || (checkboxes[1].isChecked() != compound.getBoolean(NBTTags.RUN_CONTINUOUSLY));
+		}
+		return false;
 	}
 
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------	
@@ -49,13 +63,14 @@ public class GuiDissectingTable extends BaseGuiCointainer{
 		buttonList.add(goButton);
 		
 		checkboxes = new GuiCheckBox[3];
-		checkboxes[0] = new GuiCheckBox(1, guiLeft + 120, guiTop + 20, "Single Run", false);
-		checkboxes[1] = new GuiCheckBox(1, guiLeft, guiTop + 10, "Allow Teleport", false);
-		checkboxes[2] = new GuiCheckBox(1, guiLeft, guiTop + 20, "chbx3", false);
+		checkboxes[0] = new GuiCheckBox(1, guiLeft + 120, guiTop + 35, "X25E", false);
+		checkboxes[1] = new GuiCheckBox(1, guiLeft + 50, guiTop + 20, "X59U", false);
+		checkboxes[2] = new GuiCheckBox(1, guiLeft + 35, guiTop + 50, "X99P", false);
 		
 		for (int i = 0; i < checkboxes.length; i++) {
 			buttonList.add(checkboxes[i]);
 		}
+		manageCheckboxes();
 	}
 	
 	@Override
@@ -67,18 +82,45 @@ public class GuiDissectingTable extends BaseGuiCointainer{
 	@Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
     {
-		goButton.enabled = tileEntity.isReady();
+		manageCheckboxes();
+		goButton.enabled = tileEntity.isReady() && areCheckboxesDifferent();
 		super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
 		int brainTank = (int) (tileEntity.getBrainPartsFullnes() * 40);
         drawTexturedModalRect(guiLeft + 8, guiTop + 54 - brainTank, 176, 0, 16, brainTank);
         int size = (int)(tileEntity.fractionOfCookTimeComplete() * 63);
-        size = 63;
         drawTexturedModalRect(guiLeft + 25, guiTop + 3, 25, 173, size, 80);
         drawTexturedModalRect(guiLeft + 25 + 126 - size, guiTop + 3, 152 - size, 173, size, 80);
     }
 	
+	private void manageCheckboxes(){
+		for (int i = 0; i < checkboxes.length; i++) {
+			checkboxes[i].enabled = !tileEntity.running;
+		}
+		ItemStack brain;
+		if((brain = tileEntity.getBrain()) != null && brain.hasTagCompound()){
+			NBTTagCompound compound = brain.getTagCompound();
+			checkboxes[0].visible = compound.hasKey(NBTTags.FORCE_MOVE_TO);
+			checkboxes[1].visible = compound.hasKey(NBTTags.RUN_CONTINUOUSLY);
+			checkboxes[2].visible = false;
+			
+			if(prevStack == null){
+				checkboxes[0].setIsChecked(compound.getBoolean(NBTTags.FORCE_MOVE_TO));
+				checkboxes[1].setIsChecked(compound.getBoolean(NBTTags.RUN_CONTINUOUSLY));
+				checkboxes[2].setIsChecked(false);
+				prevStack = brain;
+			}
+			
+		}
+		else{
+			prevStack = null;
+			checkboxes[0].visible = false;
+			checkboxes[1].visible = false;
+			checkboxes[2].visible = false;
+		}
+	}
+	
 	public void go(){
-		tileEntity.go();
+		tileEntity.go(checkboxes);
 	}
 
 	@Override

@@ -77,11 +77,11 @@ public class EntityAiPickupItems extends EntityAiMoveToPos{
 	
 	private AxisAlignedBB getAreaBoundingBox(){
 		int xMin = areaRefPos.getX();
-		int yMin = areaRefPos.getY() - 1;
+		int yMin = areaRefPos.getY() - area.getY();
 		int zMin = areaRefPos.getZ();
 		
 		int xMax = areaRefPos.getX() + area.getX() + 1;
-		int yMax = areaRefPos.getY() + area.getY() + 1;
+		int yMax = areaRefPos.getY() + 2;
 		int zMax = areaRefPos.getZ() + area.getZ() + 1;
 		if(area.getX() < 0){
 			xMin += area.getX();
@@ -91,12 +91,10 @@ public class EntityAiPickupItems extends EntityAiMoveToPos{
 			yMin += area.getY() - 1;
 			yMax = areaRefPos.getY() + 1;
 		}
-		
 		if(area.getZ() < 0){
 			zMin += area.getZ();
 			zMax = areaRefPos.getZ() + 1;
 		}
-		
 		return new AxisAlignedBB(xMin, yMin, zMin, xMax, yMax, zMax);
 	}
 	
@@ -122,7 +120,7 @@ public class EntityAiPickupItems extends EntityAiMoveToPos{
 	}
 	
 	@Override
-	public boolean continueExecuting() {
+	public boolean continueExecutingCustom() {
 		return !(isDone() && aiOwner.getDistanceSqToCenter(itemsTargetPos) < 2.5);
 	}
 	
@@ -151,7 +149,7 @@ public class EntityAiPickupItems extends EntityAiMoveToPos{
 				else if(!maxStackSizeReached){
 					currentTarget = getNearestEqualStack(getItemStackOnCompound());
 					
-					if(currentTarget == null || currentTarget.getDistanceSqToEntity(aiOwner) > aiOwner.getDistanceSqToCenter(itemsTargetPos)){
+					if(currentTarget == null || currentTarget.getDistanceSqToEntity(aiOwner) > aiOwner.getDistanceSqToCenter(itemsTargetPos) + 5){
 						currentTarget = null;
 						return;
 					}

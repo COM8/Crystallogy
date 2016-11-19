@@ -163,6 +163,8 @@ item.entityBrain.onFoodEaten.13=§5Somehow nutty.§r
 item.entityBrain.tooltip.0=Try me!
 item.entityBrain.tooltip.1=Yes, I'm eatable!
 item.entityBrain.tooltip.2=§5AI:
+item.entityBrain.tooltip.3=§5Continuously:
+item.entityBrain.tooltip.4=§5Force moveto:
 
 item.areaPicker.playerMessage.0=Successfully saved primary position:
 item.areaPicker.playerMessage.1=Successfully saved secondary position:

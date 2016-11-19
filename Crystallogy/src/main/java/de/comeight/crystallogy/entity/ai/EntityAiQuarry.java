@@ -68,8 +68,13 @@ public class EntityAiQuarry extends EntityAiMoveToPos {
 	}
 	
 	@Override
-	public boolean continueExecuting() {
+	public boolean continueExecutingCustom() {
+		if(done && run_continously){
+			currentPos = startPos;
+			done = false;
+		}
 		return !done;
+		//return true;
 	}
 	
 	@Override
@@ -88,7 +93,7 @@ public class EntityAiQuarry extends EntityAiMoveToPos {
 	@Override
 	public void updateTask(){
 		super.updateTask();
-		if(isNearTargetPosition()|| aiOwnerPathfinder.noPath()){
+		if(isNearTargetPosition() || aiOwnerPathfinder.noPath()){
 			incMiningProgress();
 			if(miningProgress >= MAX_MINING_TICKS){
 				mineNextBlock();	
@@ -142,17 +147,18 @@ public class EntityAiQuarry extends EntityAiMoveToPos {
 		if(canMineBlock(currentPos)){
 			breakBlock(currentPos);
 		}
- 
+		
+		int tryes = 0;
 		do {
 			if(!incPos()){
 				done = true;
-				aiOwner.tasks.removeTask(this);
 				break;
 			}
 			else{
 				saveData(aiOwner);
 			}
-		} while (!canMineBlock(currentPos));
+			tryes++;
+		} while (!canMineBlock(currentPos) || tryes < 10);
 	}
 	
 	private boolean canMineBlock(BlockPos pos){

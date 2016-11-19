@@ -113,6 +113,8 @@ public class InfusionRecipeEntityBrainQuarry extends InfusionRecipeBaseEntityBra
 		Utilities.saveBlockPosToNBT(compound, area[0], NBTTags.AREA_MIN);
 		Utilities.saveBlockPosToNBT(compound, area[1], NBTTags.AREA_MAX);
 		compound.setInteger(NBTTags.CUSTOM_AI_TYPE, EnumCustomAis.QUARRY.ID);
+		compound.setBoolean(NBTTags.FORCE_MOVE_TO, false);
+		compound.setBoolean(NBTTags.RUN_CONTINUOUSLY, false);
 		output = new ItemStack(ItemHandler.entityBrain, 1, 0);
 		output.setTagCompound(compound);
 		return true;

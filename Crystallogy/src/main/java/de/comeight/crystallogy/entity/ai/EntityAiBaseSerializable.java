@@ -13,10 +13,14 @@ import net.minecraft.nbt.NBTTagCompound;
 public abstract class EntityAiBaseSerializable extends EntityAIBase {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	protected boolean saved;
+	protected boolean run_continously;
+	protected EntityLiving aiOwner;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public EntityAiBaseSerializable() {
-		saved = false;
+	public EntityAiBaseSerializable(EntityLiving aiOwner) {
+		this.saved = false;
+		this.run_continously = false;
+		this.aiOwner = aiOwner;
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -40,10 +44,37 @@ public abstract class EntityAiBaseSerializable extends EntityAIBase {
 		return AiHandler.isCustomAiEnabled;
 	}
 	
-	//-----------------------------------------------Sonstige Methoden:-------------------------------------
-	public abstract void writeToNBT(NBTTagCompound compound);
+	public boolean isRun_continously() {
+		return run_continously;
+	}
+
+	public void setRun_continously(boolean run_continously) {
+		this.run_continously = run_continously;
+	}
 	
-	public abstract void readFromNBT(NBTTagCompound compound);
+	protected boolean continueExecutingCustom(){
+		return false;
+	}
+
+	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@Override
+	public boolean continueExecuting() {
+		if(!continueExecutingCustom()){
+			if(!run_continously){
+				AiHandler.removeCustomAi(this, aiOwner);
+			}
+			return false;
+		}
+		return true;
+	}
+	
+	public void writeToNBT(NBTTagCompound compound){
+		compound.setBoolean(NBTTags.RUN_CONTINUOUSLY, run_continously);
+	}
+	
+	public void readFromNBT(NBTTagCompound compound){
+		run_continously = compound.getBoolean(NBTTags.RUN_CONTINUOUSLY);
+	}
 	
 	public void saveData(EntityLiving entity){
 		NBTTagCompound compound = getCompound(entity);
