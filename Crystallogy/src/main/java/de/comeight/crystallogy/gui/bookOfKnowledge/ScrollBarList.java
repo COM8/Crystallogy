@@ -33,6 +33,7 @@ public class ScrollBarList {
 	protected boolean scrollEnabeld = true;
 	protected int scrollPos = 0;
 	protected int hoverIndex = -1;
+	protected boolean scrolling;
 	
 	protected LinkedList<BookButtonCategory> list = new LinkedList<BookButtonCategory>();
 	
@@ -48,6 +49,7 @@ public class ScrollBarList {
         this.height = height;
         this.posX = posX;
         this.posY = posY;
+        this.scrolling = false;
     }
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -121,11 +123,16 @@ public class ScrollBarList {
     }
     
     public void mouseReleased(int mouseX, int mouseY){
+    	if(scrolling){
+    		scrolling = false;
+    		return;
+    	}
     	if(shouldWaitForInput){
     		lastMouseEvent = System.currentTimeMillis() + 100;
     		shouldWaitForInput = false;
     		return;
     	}
+    	
     	if(System.currentTimeMillis() < lastMouseEvent){
     		return;
     	}
@@ -138,9 +145,11 @@ public class ScrollBarList {
     	if(!scrollEnabeld || clickedMouseButton != 0){
     		return;
     	}
-    	if(mouseX > posX + width || mouseX < posX + width - 10){
+    	if((mouseX > posX + width || mouseX < posX + width - 10) && !scrolling){
     		return;
     	}
+    	scrolling = true;
+    	
     	if(mouseY >= (posY + height)){
     		scrollPos = entryHeigtht * list.size() - height;
     	}
