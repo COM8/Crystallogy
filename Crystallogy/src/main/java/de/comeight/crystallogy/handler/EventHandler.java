@@ -44,7 +44,7 @@ public class EventHandler {
 	@SubscribeEvent
 	public void LivingDropsEvent(LivingDropsEvent event){
 		Entity entity = event.getEntity();
-		if(entity instanceof EntityPlayer | entity instanceof EntityVillager){
+		if(entity instanceof EntityPlayer || entity instanceof EntityVillager){
 			event.getDrops().add(new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, new ItemStack(ItemHandler.entityBrain, 1, 0)));
 		}
 		else if(entity instanceof EntityMob){
