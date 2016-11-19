@@ -1,5 +1,6 @@
 package de.comeight.crystallogy;
 
+import de.comeight.crystallogy.commands.CommandDisableCustomAi;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -7,6 +8,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
 @Mod(modid = CrystallogyBase.MODID, version = CrystallogyBase.VERSION, name = CrystallogyBase.MODNAME)
 public class CrystallogyBase {
@@ -46,5 +48,10 @@ public class CrystallogyBase {
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@EventHandler
+	public void serverLoad(FMLServerStartingEvent event)
+	{
+		event.registerServerCommand(new CommandDisableCustomAi());
+	}
 	
 }
