@@ -72,7 +72,7 @@ public class GuiBookMagicStoneOfForgetfulness extends GuiBookPageSuggestions {
 		GuiBookUtilities.drawTextBox(xPosBook + BORDER_LEFT, yPosBook + 120, WRAPWIDTH, 1.0F, "The Magic Stone of Forgetfulness is used to remove a custom ai from an entity."
 				+ "\n"
 				+ "\n"
-				+ "You have to throw it on your target and once it hits it you have a about 50% that it works."
+				+ "You have to throw it on your target and once it hits it you have an about 50% that it works."
 				+ "\n"
 				+ "\n"
 				+ "It also does 1 damage to every entity it hits and it has a 60% chance to destroy glass.");
