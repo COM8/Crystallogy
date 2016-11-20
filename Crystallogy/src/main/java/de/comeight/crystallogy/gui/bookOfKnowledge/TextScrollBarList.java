@@ -56,23 +56,6 @@ public class TextScrollBarList extends ScrollBarList {
 	}
 	
 	@Override
-	public void mouseReleased(int mouseX, int mouseY){
-		if(scrolling){
-    		scrolling = false;
-    		return;
-    	}
-    	if(shouldWaitForInput){
-    		lastMouseEvent = System.currentTimeMillis() + 100;
-    		shouldWaitForInput = false;
-    		return;
-    	}
-    	
-    	if(System.currentTimeMillis() < lastMouseEvent){
-    		return;
-    	}
-    }
-	
-	@Override
 	protected void shouldEnbaleScroll(){
     	if((height / getEntryHeight()) >= getEntrysSize()){
     		scrollEnabeld = false;
