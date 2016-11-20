@@ -20,7 +20,7 @@ You can also use your crystals to control / manipulate your friends / entities.
 * [MORE NOTES TO COME]
 
 ##ToDo for later releases:
-* (A new crafting mechanism based on infusion crafting - 0%)
+* A new crafting mechanism based on infusion crafting
 * Brain system - store parts of your brain in special crystals
 * Soul / Brain trading for a chunk loader
 * Praise the OS system
