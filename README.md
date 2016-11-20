@@ -15,7 +15,7 @@ You can also use your crystals to control / manipulate your friends / entities.
 * Rotatable Entity / Player Jar - 100%
 * Fixed Entity Jar not storing the entity - 100%
 * New icons for the hammers, pickaxes and swords - 100%
-* Control your caught entities to let them work for you - 92%
+* Control your caught entities to let them work for you - 95%
 * Waila support - 20%
 * [MORE NOTES TO COME]
 
