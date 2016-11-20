@@ -25,8 +25,8 @@ public abstract class GuiBookPageSuggestions extends GuiBookPage{
 	protected abstract void drawSuggestionsList(int mouseX, int mouseY);
 	
 	@Override
-	protected void addButtons() {
-		super.addButtons();
+	protected void addGuiElements() {
+		super.addGuiElements();
 		createSuggestionsList();
 		populateSuggestionsList();
 	}
@@ -47,6 +47,7 @@ public abstract class GuiBookPageSuggestions extends GuiBookPage{
 	
 	@Override
 	protected void mouseClickMove(int mouseX, int mouseY, int clickedMouseButton, long timeSinceLastClick) {
+		super.mouseClickMove(mouseX, mouseY, clickedMouseButton, timeSinceLastClick);
 		if(suggestionsList != null){
 			suggestionsList.mouseClickMove(mouseX, mouseY, clickedMouseButton, timeSinceLastClick);
 		}

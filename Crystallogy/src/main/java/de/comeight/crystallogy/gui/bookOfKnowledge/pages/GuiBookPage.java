@@ -1,9 +1,12 @@
 package de.comeight.crystallogy.gui.bookOfKnowledge.pages;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import de.comeight.crystallogy.CrystallogyBase;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookUtilities;
+import de.comeight.crystallogy.gui.bookOfKnowledge.IGuiClickable;
 import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButton;
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonBackwards;
@@ -47,12 +50,14 @@ public class GuiBookPage extends GuiScreen {
     
     protected GuiBookPage nextPage;
     
+    private List<IGuiClickable> guiElements;
+    
 	//-----------------------------------------------Constructor:-------------------------------------------
     public GuiBookPage(String heading) {
     	this.mc = Minecraft.getMinecraft();
     	this.HEADING = heading;
     	this.nextPage = null;
-    	
+    	this.guiElements = new ArrayList<IGuiClickable>();
     	calcBookPos();
 	}
 	
@@ -64,11 +69,20 @@ public class GuiBookPage extends GuiScreen {
     public GuiBookPage getNextPage() {
 		return nextPage;
 	}
+    
+    protected IGuiClickable getGuiElementById(int id){
+    	return guiElements.get(id);
+    }
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
     protected void openGui(GuiBookPage fromPage, GuiBookPage toPage){
 		PageRegistry.openPage(mc, fromPage, toPage);
 	}
+    
+    protected int addGuiElement(IGuiClickable element){
+    	guiElements.add(element);
+    	return guiElements.size() - 1;
+    }
     
     protected void calcBookPos(){
 		this.xPosBook = (width - xSize) / 2;
@@ -98,6 +112,7 @@ public class GuiBookPage extends GuiScreen {
     @Override
 	public void initGui() {
 		addButtons();
+		addGuiElements();
 	}
 	
 	protected void addButtons(){
@@ -105,6 +120,10 @@ public class GuiBookPage extends GuiScreen {
 		buttonList.add(new BookButtonForwards(getNextButtonId(), xSize - 27, 234, this));
 		buttonList.add(new BookButtonHome(getNextButtonId()));
 		//buttonList.add(new BookButtonClipToBook(getNextButtonId()));
+	}
+	
+	protected void addGuiElements(){
+		
 	}
     
     @Override
@@ -183,28 +202,37 @@ public class GuiBookPage extends GuiScreen {
 		calcBookPos();
 	}
 	
-	@Deprecated
-	public void drawTexture(int posX, int posY, int sizeX, int sizeY, ResourceLocation texture){
-    	GuiBookUtilities.drawTexture(posX, posY, sizeX, sizeY, texture);
-    }
-    
-	@Deprecated
-    public void drawTexture(int posX, int posY, int xStart, int yStart, int sizeX, int sizeY, ResourceLocation texture){
-    	GuiBookUtilities.drawTexture(posX, posY, xStart, yStart, sizeX, sizeY, texture);
-    }
-    
-	@Deprecated
-    @Override
-    public void drawTexturedModalRect(int xCoord, int yCoord, int minU, int minV, int maxU, int maxV)
-    {
-    	GuiBookUtilities.drawTexturedModalRect(xCoord, yCoord, minU, minV, maxU, maxV);
-    }
-	
 	@Override
 	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
 		super.mouseClicked(mouseX, mouseY, mouseButton);
 		if(mouseButton == 1 && PageRegistry.canGoBack()){
 			goBackOnePage();
+		}
+		
+		for (IGuiClickable element : guiElements) {
+			if(element != null){
+				element.mouseClicked(mouseX, mouseY, mouseButton);
+			}
+		}
+	}
+	
+	@Override
+	protected void mouseReleased(int mouseX, int mouseY, int state) {
+		super.mouseReleased(mouseX, mouseY, state);
+		for (IGuiClickable element : guiElements) {
+			if(element != null){
+				element.mouseReleased(mouseX, mouseY);
+			}
+		}
+	}
+	
+	@Override
+	protected void mouseClickMove(int mouseX, int mouseY, int clickedMouseButton, long timeSinceLastClick) {
+		super.mouseClickMove(mouseX, mouseY, clickedMouseButton, timeSinceLastClick);
+		for (IGuiClickable element : guiElements) {
+			if(element != null){
+				element.mouseClickMove(mouseX, mouseY, clickedMouseButton, timeSinceLastClick);
+			}
 		}
 	}
 	

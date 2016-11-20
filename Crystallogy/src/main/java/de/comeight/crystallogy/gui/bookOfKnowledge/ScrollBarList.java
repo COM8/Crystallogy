@@ -3,23 +3,20 @@ package de.comeight.crystallogy.gui.bookOfKnowledge;
 import java.util.LinkedList;
 
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCategory;
+import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonScrollBarUpDown;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPage;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.config.GuiUtils;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class ScrollBarList {
+public class ScrollBarList implements IGuiClickable{
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	protected final Minecraft mc = Minecraft.getMinecraft();
 	private GuiBookPage page;
-	private long lastMouseEvent;
+	protected long lastMouseEvent;
 	protected Long mouseCooldownUntil = 0L;
 	protected boolean shouldWaitForInput = true;
 	
@@ -27,8 +24,6 @@ public class ScrollBarList {
 	protected int height;
 	protected int posX;
 	protected int posY;
-	
-	protected final int entryHeigtht = 35;
 	
 	protected boolean scrollEnabeld = true;
 	protected int scrollPos = 0;
@@ -39,7 +34,8 @@ public class ScrollBarList {
 	
 	protected final ResourceLocation BAR = new ResourceLocation("textures/gui/container/creative_inventory/tab_items.png");
 	protected final ResourceLocation SCROLL = new ResourceLocation("textures/gui/container/creative_inventory/tabs.png");
-	protected final int SCROLL_BAR_WIDTH = 10; 
+	protected final int SCROLL_BAR_WIDTH = 10;
+	//protected BookButtonScrollBarUpDown[] navButtons;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
     public ScrollBarList(int width, int height, int posX, int posY, GuiBookPage page)
@@ -50,13 +46,30 @@ public class ScrollBarList {
         this.posX = posX;
         this.posY = posY;
         this.scrolling = false;
+        //this.navButtons = new BookButtonScrollBarUpDown[2];
+        //navButtons[0] = new BookButtonScrollBarUpDown(0, posX + width - 15, posY, true, this);
+        //navButtons[1] = new BookButtonScrollBarUpDown(1, posX + width - 15, posY + height - 10, false, this);
     }
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
+    protected int getEntryHeight(){
+    	return 35;
+    }
     
+    protected int getEntrysSize(){
+    	return list.size();
+    }
     
     
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+    public void nextEntry(){
+    	
+    }
+    
+    public void prevEntry(){
+    	
+    }
+    
     public void addEntry(BookButtonCategory button){
     	list.add(button);
     }
@@ -69,21 +82,32 @@ public class ScrollBarList {
     	shouldEnbaleScroll();
     	drawScrollBar(this.posX, this.posY);
     	drawEntrys(mouseX, mouseY);
+    	
+    	/*if(height >= 40){
+    		navButtons[0].enabled = true;
+    		navButtons[0].drawButton(mouseX, mouseY, posX + width - 15, posY);
+    		navButtons[1].enabled = true;
+    		//navButtons[1].drawButton(mouseX, mouseY, posX, posY + height - 10);
+    	}
+    	else{
+    		navButtons[0].enabled = false;
+    		navButtons[1].enabled = false;
+    	}*/
     }
     
 	protected void drawEntrys(int mouseX, int mouseY){
 		int drawStratIndex;
     	int drawEndIndex;
     	if(scrollEnabeld){
-    		drawStratIndex = scrollPos / entryHeigtht;
-        	drawEndIndex = drawStratIndex + (height / entryHeigtht);
-        	if(drawEndIndex >= list.size()){
-        		drawEndIndex = list.size();
+    		drawStratIndex = scrollPos / getEntryHeight();
+        	drawEndIndex = drawStratIndex + (height / getEntryHeight());
+        	if(drawEndIndex >= getEntrysSize()){
+        		drawEndIndex = getEntrysSize();
         	}
     	}
     	else{
     		drawStratIndex = 0;
-        	drawEndIndex = list.size();
+        	drawEndIndex = getEntrysSize();
     	}
     	
     	
@@ -97,17 +121,17 @@ public class ScrollBarList {
     	for (int i = drawStratIndex; i < drawEndIndex; i++) {
     		if(list.get(i) != null){
     			if((i - drawStratIndex) == relativeHoverIndex){
-    				drawEntry(i, true, this.posX, this.posY + ((i - drawStratIndex) * entryHeigtht));
+    				drawEntry(i, true, this.posX, this.posY + ((i - drawStratIndex) * getEntryHeight()));
     			}
     			else{
-    				drawEntry(i, false, this.posX, this.posY + ((i - drawStratIndex) * entryHeigtht));
+    				drawEntry(i, false, this.posX, this.posY + ((i - drawStratIndex) * getEntryHeight()));
     			}
     		}
 		}
 	}
     
     protected void shouldEnbaleScroll(){
-    	if((height / entryHeigtht) >= list.size()){
+    	if((height / getEntryHeight()) >= getEntrysSize()){
     		scrollEnabeld = false;
     	}
     	else{
@@ -119,9 +143,10 @@ public class ScrollBarList {
     	if(mouseX < 0 || mouseY < 0 || mouseX > width - 10 || mouseY > height){
     		return -1;
     	}
-    	return mouseY / entryHeigtht;
+    	return mouseY / getEntryHeight();
     }
     
+    @Override
     public void mouseReleased(int mouseX, int mouseY){
     	if(scrolling){
     		scrolling = false;
@@ -136,11 +161,15 @@ public class ScrollBarList {
     	if(System.currentTimeMillis() < lastMouseEvent){
     		return;
     	}
-    	if(hoverIndex >= 0 && hoverIndex < list.size()){
+    	//navButtons[0].mouseReleased(mouseX, mouseY);
+    	//navButtons[1].mouseReleased(mouseX, mouseY);
+    	
+    	if(hoverIndex >= 0 && hoverIndex < getEntrysSize()){
 			list.get(hoverIndex).onClicked(page);
 		}
     }
     
+    @Override
     public void mouseClickMove(int mouseX, int mouseY, int clickedMouseButton, long timeSinceLastClick) {
     	if(!scrollEnabeld || clickedMouseButton != 0){
     		return;
@@ -150,17 +179,18 @@ public class ScrollBarList {
     	}
     	scrolling = true;
     	
-    	if(mouseY >= (posY + height)){
-    		scrollPos = entryHeigtht * list.size() - height;
+    	if(mouseY >= (posY + height - 10)){
+    		scrollPos = getEntryHeight() * getEntrysSize() - height;
     	}
-    	else if(mouseY <= posY){
+    	else if(mouseY <= posY + 10){
     		scrollPos = 0;
     	}
     	else{
-    		scrollPos = (int) ( ((double)(mouseY - posY) / (double) height) * (entryHeigtht * (list.size() - height / entryHeigtht)));
+    		scrollPos = (int) ( ((double)(mouseY - posY) / (double) height) * (getEntryHeight() * (getEntrysSize() - height / getEntryHeight())));
     	}
     }
     
+    @Override
     public void mouseClicked(int mouseX, int mouseY, int mouseButton){
     	
     }
@@ -175,7 +205,7 @@ public class ScrollBarList {
     	}
 	    
 	    if(scrollEnabeld){
-	    	int yScroll = (int) ((double)scrollPos / (entryHeigtht * (list.size() - (height) / entryHeigtht)) * (height - 13));
+	    	int yScroll = (int) ((double)scrollPos / (getEntryHeight() * (getEntrysSize() - (height) / getEntryHeight())) * (height - 13));
 	        drawTexture(x + width - 10, y + yScroll, 233, 1, 10, 13, SCROLL);
 	    }
 	    else{
@@ -195,7 +225,7 @@ public class ScrollBarList {
     	}
     	
     	if(hover){
-    		//drawTexture(x, y, width - 10, entryHeigtht, Gui.ICONS);
+    		//drawTexture(x, y, width - 10, getEntryHeight(), Gui.ICONS);
     		list.get(index).drawHover(x + 5, y + 5);
     	}
     	else{
@@ -209,26 +239,6 @@ public class ScrollBarList {
     
     public void drawTexture(int x, int y, int xStart, int yStart, int sizeX, int sizeY, ResourceLocation texture){
     	mc.getTextureManager().bindTexture(texture);
-    	drawTexturedModalRect(x, y, xStart, yStart, sizeX, sizeY);
-    }
-    
-    /**
-     * Draws a textured rectangle using the texture currently bound to the TextureManager
-     */
-    public void drawTexturedModalRect(int xCoord, int yCoord, int minU, int minV, int maxU, int maxV)
-    {
-    	GlStateManager.pushMatrix();
-    	GlStateManager.color(1.0F, 1.0F, 1.0F);
-		
-        Tessellator tessellator = Tessellator.getInstance();
-        VertexBuffer vertexbuffer = tessellator.getBuffer();
-        vertexbuffer.begin(7, DefaultVertexFormats.POSITION_TEX);
-        vertexbuffer.pos((double)(xCoord + 0.0F), (double)(yCoord + (float)maxV), 0).tex((double)((float)(minU + 0) * 0.00390625F), (double)((float)(minV + maxV) * 0.00390625F)).endVertex();
-        vertexbuffer.pos((double)(xCoord + (float)maxU), (double)(yCoord + (float)maxV), 0).tex((double)((float)(minU + maxU) * 0.00390625F), (double)((float)(minV + maxV) * 0.00390625F)).endVertex();
-        vertexbuffer.pos((double)(xCoord + (float)maxU), (double)(yCoord + 0.0F), 0).tex((double)((float)(minU + maxU) * 0.00390625F), (double)((float)(minV + 0) * 0.00390625F)).endVertex();
-        vertexbuffer.pos((double)(xCoord + 0.0F), (double)(yCoord + 0.0F), 0).tex((double)((float)(minU + 0) * 0.00390625F), (double)((float)(minV + 0) * 0.00390625F)).endVertex();
-        tessellator.draw();
-        
-        GlStateManager.popMatrix();
+    	GuiBookUtilities.drawTexturedModalRect(x, y, xStart, yStart, sizeX, sizeY);
     }
 }
