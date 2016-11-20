@@ -49,7 +49,7 @@ public class GuiBookEntityJar1 extends GuiBookPageSuggestions {
 		GlStateManager.translate(xPosBook + xSize / 2 + BORDER_RIGHT, yPosBook + BORDER_TOP, 0);
 		GlStateManager.scale(scale, scale / 1.75F, scale);
 		
-		drawTexture(0, 0, 20, 50, 230, 230, PREVIEW);
+		GuiBookUtilities.drawTexture(0, 0, 20, 50, 230, 230, PREVIEW);
 		
 		GlStateManager.popMatrix();
 	}

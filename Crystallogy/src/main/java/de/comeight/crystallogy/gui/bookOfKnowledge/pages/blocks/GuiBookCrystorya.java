@@ -48,7 +48,7 @@ public class GuiBookCrystorya extends GuiBookPageSuggestions {
 		GlStateManager.translate(xPosBook + BORDER_LEFT, yPosBook + 155, 0);
 		GlStateManager.scale(scale, scale / 1.5F, scale);
 		
-		drawTexture(0, 0, 0, 35, 250, 170, PREVIEW);
+		GuiBookUtilities.drawTexture(0, 0, 0, 35, 250, 170, PREVIEW);
 		
 		GlStateManager.popMatrix();
 	}

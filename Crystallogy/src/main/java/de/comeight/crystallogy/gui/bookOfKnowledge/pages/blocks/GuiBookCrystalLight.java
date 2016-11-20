@@ -81,7 +81,7 @@ public class GuiBookCrystalLight extends GuiBookPageSuggestions {
 		GlStateManager.translate(xPosBook + BORDER_LEFT, yPosBook + 160, 0);
 		GlStateManager.scale(scale, scale / 1.35F, scale);
 		
-		drawTexture(0, 0, 0, 50, 250, 120, PREVIEW);
+		GuiBookUtilities.drawTexture(0, 0, 0, 50, 250, 120, PREVIEW);
 		
 		GlStateManager.popMatrix();
 	}

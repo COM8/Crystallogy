@@ -49,7 +49,7 @@ public class GuiBookCrystalOfHolding1 extends GuiBookPageSuggestions {
 		GlStateManager.translate(xPosBook + xSize / 2 + BORDER_RIGHT, yPosBook + 70, 0);
 		GlStateManager.scale(scale, scale / 2.5F, scale);
 		
-		drawTexture(0, 0, 0, 0, 260, 250, PREVIEW);
+		GuiBookUtilities.drawTexture(0, 0, 0, 0, 260, 250, PREVIEW);
 		
 		GlStateManager.popMatrix();
 	}
