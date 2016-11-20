@@ -48,13 +48,18 @@ public class EventHandler {
 			event.getDrops().add(new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, new ItemStack(ItemHandler.entityBrain, 1, 0)));
 		}
 		else if(entity instanceof EntityMob){
-			if(Utilities.getRandInt(0, 7) == 0){
+			if(Utilities.getRandInt(0, 2) == 0){
 				event.getDrops().add(new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, new ItemStack(ItemHandler.entityBrain, 1, Utilities.getRandInt(1, 4))));
 			}
 		}
 		else if (entity instanceof EntityAgeable){
-			if(Utilities.getRandInt(0, 5) == 0){
+			if(Utilities.getRandInt(0, 2) == 0){
 				event.getDrops().add(new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, new ItemStack(ItemHandler.entityBrain, 1, Utilities.getRandInt(2, 4))));
+			}
+		}
+		else{
+			if(Utilities.getRandInt(0, 2) == 0){
+				event.getDrops().add(new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, new ItemStack(ItemHandler.entityBrain, 1, Utilities.getRandInt(1, 4))));
 			}
 		}
 	}
