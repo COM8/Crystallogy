@@ -74,8 +74,8 @@ public class ScrollBarListSearch extends ScrollBarList {
 		int drawStratIndex;
     	int drawEndIndex;
     	if(scrollEnabeld){
-    		drawStratIndex = scrollPos / entryHeigtht;
-        	drawEndIndex = drawStratIndex + ((height - 12) / entryHeigtht);
+    		drawStratIndex = scrollPos / getEntryHeight();
+        	drawEndIndex = drawStratIndex + ((height - 12) / getEntryHeight());
         	if(drawEndIndex >= list.size()){
         		drawEndIndex = list.size();
         	}
@@ -96,10 +96,10 @@ public class ScrollBarListSearch extends ScrollBarList {
     	for (int i = drawStratIndex; i < drawEndIndex; i++) {
     		if(list.get(i) != null){
     			if((i - drawStratIndex) == relativeHoverIndex){
-    				drawEntry(i, true, this.posX, this.posY + 12 + ((i - drawStratIndex) * entryHeigtht));
+    				drawEntry(i, true, this.posX, this.posY + 12 + ((i - drawStratIndex) * getEntryHeight()));
     			}
     			else{
-    				drawEntry(i, false, this.posX, this.posY + 12 + ((i - drawStratIndex) * entryHeigtht));
+    				drawEntry(i, false, this.posX, this.posY + 12 + ((i - drawStratIndex) * getEntryHeight()));
     			}
     		}
 		}
@@ -119,7 +119,7 @@ public class ScrollBarListSearch extends ScrollBarList {
     	if(mouseX < 0 || mouseY < 12 || mouseX > width - 10 || mouseY > height){
     		return -1;
     	}
-    	return (mouseY - 12) / entryHeigtht;
+    	return (mouseY - 12) / getEntryHeight();
     }
 	
 }
