@@ -2,6 +2,7 @@ package de.comeight.crystallogy.entity.ai;
 
 import java.util.List;
 
+import de.comeight.crystallogy.handler.AiHandler;
 import de.comeight.crystallogy.util.EnumCustomAis;
 import de.comeight.crystallogy.util.NBTTags;
 import de.comeight.crystallogy.util.Utilities;
@@ -117,6 +118,10 @@ public class EntityAiPickupItems extends EntityAiMoveToPos{
 		area = Utilities.readBlockPosFromNBT(compound, NBTTags.AREA);
 		deliveringItems = compound.getBoolean(NBTTags.DELIVERING_ITEMS);
 		maxStackSizeReached = compound.getBoolean(NBTTags.MAX_STACKSIZE_REACHED);
+		
+		if(areaRefPos == null || area == null || itemsTargetPos == null){
+			AiHandler.removeCustomAi(this, aiOwner);
+		}
 	}
 	
 	@Override
@@ -126,7 +131,7 @@ public class EntityAiPickupItems extends EntityAiMoveToPos{
 	
 	@Override
 	public boolean shouldExecute() {
-		return super.shouldExecute() || !isDone() || aiOwner.getDistanceSqToCenter(itemsTargetPos) > 2;
+		return super.shouldExecute() || !isDone() || (itemsTargetPos != null && aiOwner.getDistanceSqToCenter(itemsTargetPos) > 2);
 	}
 	
 	@Override
