@@ -62,14 +62,17 @@ public class EntityAiPickupItems extends EntityAiMoveToPos{
 	}
 	
 	private EntityItem getNearestEqualStack(ItemStack stack){
+		EntityItem eIStack = null;
 		for (EntityItem entityitem : world.getEntitiesWithinAABB(EntityItem.class, getAreaBoundingBox()))
         {
 			ItemStack iStack = entityitem.getEntityItem();
             if(ItemStack.areItemsEqual(stack, iStack) && ItemStack.areItemStackTagsEqual(stack, iStack)){
-            	return entityitem;
+            	if(eIStack == null || aiOwner.getDistanceSqToEntity(eIStack) > aiOwner.getDistanceSqToEntity(entityitem)){
+            		eIStack = entityitem;
+            	}
             }
         }
-		return null;
+		return eIStack;
 	}
 	
 	private boolean isDone(){
@@ -154,7 +157,7 @@ public class EntityAiPickupItems extends EntityAiMoveToPos{
 				else if(!maxStackSizeReached){
 					currentTarget = getNearestEqualStack(getItemStackOnCompound());
 					
-					if(currentTarget == null || currentTarget.getDistanceSqToEntity(aiOwner) > aiOwner.getDistanceSqToCenter(itemsTargetPos) + 5){
+					if(currentTarget == null || currentTarget.getDistanceSqToEntity(aiOwner) > aiOwner.getDistanceSqToCenter(itemsTargetPos) + 5.0){
 						currentTarget = null;
 						return;
 					}
