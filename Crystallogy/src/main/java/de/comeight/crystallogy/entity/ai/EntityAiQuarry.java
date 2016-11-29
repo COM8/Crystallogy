@@ -154,11 +154,9 @@ public class EntityAiQuarry extends EntityAiMoveToPos {
 				done = true;
 				break;
 			}
-			else{
-				saveData(aiOwner);
-			}
 			tryes++;
-		} while (!canMineBlock(currentPos) || tryes < 10);
+		} while (!canMineBlock(currentPos) && tryes < 10);
+		saveData(aiOwner);
 	}
 	
 	private boolean canMineBlock(BlockPos pos){
