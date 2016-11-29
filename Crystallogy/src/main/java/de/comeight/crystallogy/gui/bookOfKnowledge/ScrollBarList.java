@@ -153,13 +153,16 @@ public class ScrollBarList implements IGuiClickable{
     		return;
     	}
     	if(shouldWaitForInput){
-    		lastMouseEvent = System.currentTimeMillis() + 100;
+    		lastMouseEvent = System.currentTimeMillis();
     		shouldWaitForInput = false;
     		return;
     	}
     	
-    	if(System.currentTimeMillis() < lastMouseEvent){
+    	if(System.currentTimeMillis() < lastMouseEvent + 100){
     		return;
+    	}
+    	else{
+    		lastMouseEvent = System.currentTimeMillis();
     	}
     	//navButtons[0].mouseReleased(mouseX, mouseY);
     	//navButtons[1].mouseReleased(mouseX, mouseY);
