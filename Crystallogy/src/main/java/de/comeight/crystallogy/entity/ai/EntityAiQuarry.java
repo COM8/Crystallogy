@@ -104,7 +104,9 @@ public class EntityAiQuarry extends EntityAiMoveToPos {
 	
 	private void moveHead(){
 		Vec3d tPos = getTargetPos();
-		aiOwner.getLookHelper().setLookPosition(tPos.xCoord + 0.5, tPos.yCoord, tPos.zCoord + 0.5, (float)aiOwner.getHorizontalFaceSpeed(), (float)aiOwner.getVerticalFaceSpeed());
+		if(tPos != null){
+			aiOwner.getLookHelper().setLookPosition(tPos.xCoord + 0.5, tPos.yCoord, tPos.zCoord + 0.5, (float)aiOwner.getHorizontalFaceSpeed(), (float)aiOwner.getVerticalFaceSpeed());
+		}
 	}
 	
 	private void incMiningProgress(){
@@ -139,7 +141,6 @@ public class EntityAiQuarry extends EntityAiMoveToPos {
 		else{
 			currentPos = currentPos.add(-1, 0, 0);
 		}
-		setTargetPos(new Vec3d(currentPos.add(0, 1, 0)));
 		return true;
 	}
 	
@@ -156,6 +157,9 @@ public class EntityAiQuarry extends EntityAiMoveToPos {
 			}
 			tryes++;
 		} while (!canMineBlock(currentPos) && tryes < 10);
+		if(canMineBlock(currentPos)){
+			setTargetPos(new Vec3d(currentPos.add(0, 1, 0)));
+		}
 		saveData(aiOwner);
 	}
 	
