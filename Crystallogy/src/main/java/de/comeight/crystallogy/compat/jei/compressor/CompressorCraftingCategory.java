@@ -51,6 +51,11 @@ public class CompressorCraftingCategory implements IRecipeCategory {
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------	
+	@Override
+	public IDrawable getIcon() {
+		return null;
+	}
+	
 	@Nonnull
 	@Override
 	public String getUid() {

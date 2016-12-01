@@ -36,6 +36,7 @@ public class ParticleDebug extends BaseParticle {
 	
 	@Override
 	public void renderParticle(VertexBuffer worldRendererIn, Entity entityIn, float partialTicks, float rotationX, float rotationZ, float rotationYZ, float rotationXY, float rotationXZ) {
+		super.renderParticle(worldRendererIn, entityIn, partialTicks, rotationX, rotationZ, rotationYZ, rotationXY, rotationXZ);
 		float textureXMin = (float)this.particleTextureIndexX / 16.0F;
         float textureXMax = textureXMin + 0.0624375F;
         float textureYMin = (float)this.particleTextureIndexY / 16.0F;
@@ -70,13 +71,13 @@ public class ParticleDebug extends BaseParticle {
         											(double)(-rotationZ * particleScale), 
         											(double)(rotationYZ * particleScale - rotationXZ * particleScale))};
 
-        if (this.field_190014_F != 0.0F)
+        if (this.particleAngle != 0.0F)
         {
-            float f8 = this.field_190014_F + (this.field_190014_F - this.field_190015_G) * partialTicks;
+            float f8 = this.particleAngle + (this.particleAngle - this.prevParticleAngle) * partialTicks;
             float f9 = MathHelper.cos(f8 * 0.5F);
-            float f10 = MathHelper.sin(f8 * 0.5F) * (float)field_190016_K.xCoord;
-            float f11 = MathHelper.sin(f8 * 0.5F) * (float)field_190016_K.yCoord;
-            float f12 = MathHelper.sin(f8 * 0.5F) * (float)field_190016_K.zCoord;
+            float f10 = MathHelper.sin(f8 * 0.5F) * (float)cameraViewDir.xCoord;
+            float f11 = MathHelper.sin(f8 * 0.5F) * (float)cameraViewDir.yCoord;
+            float f12 = MathHelper.sin(f8 * 0.5F) * (float)cameraViewDir.zCoord;
             Vec3d vec3d = new Vec3d((double)f10, (double)f11, (double)f12);
 
             for (int l = 0; l < 4; ++l)

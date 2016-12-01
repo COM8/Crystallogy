@@ -52,6 +52,11 @@ public class ChargerCraftingCategory implements IRecipeCategory {
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------	
+	@Override
+	public IDrawable getIcon() {
+		return null;
+	}
+	
 	@Nonnull
 	@Override
 	public String getUid() {
