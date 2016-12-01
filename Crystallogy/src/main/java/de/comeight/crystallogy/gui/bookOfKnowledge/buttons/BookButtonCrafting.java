@@ -54,7 +54,7 @@ public class BookButtonCrafting extends BookButtonCategory {
 	private void drawToolTip(int mouseX, int mouseY, int x, int y){
 		if(items[frame] != null){
 			List<String> tooltip = items[frame].getTooltip(mc.thePlayer, false);
-			GuiUtils.drawHoveringText(tooltip, x + 10, y + 15, 200, 200, 200, mc.fontRendererObj);
+			GuiUtils.drawHoveringText(tooltip, x + 10, y + 15, mc.displayWidth, mc.displayHeight, 200, mc.fontRendererObj);
 		}
 	}
 	
