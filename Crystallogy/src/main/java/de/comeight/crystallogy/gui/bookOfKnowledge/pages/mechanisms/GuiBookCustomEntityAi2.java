@@ -120,6 +120,8 @@ public class GuiBookCustomEntityAi2 extends GuiBookPageSuggestions {
 		suggestionsList.addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(),0, 0, null, new ItemStack(ItemHandler.areaPicker), PageRegistry.AREA_PICKER_PAGE));
 		suggestionsList.addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(),0, 0, null, new ItemStack(ItemHandler.spotPicker), PageRegistry.SPOT_PICKER_PAGE));
 		suggestionsList.addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(),0, 0, null, new ItemStack(ItemHandler.playerCrystalKnife), PageRegistry.PLAYER_CRYSTAL_KNIFE_PAGE_1));
+		suggestionsList.addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(),0, 0, null, new ItemStack(ItemHandler.magicStoneOfForgetfulness), PageRegistry.MAGIC_STONE_OF_FORGETFULNESS));
+		suggestionsList.addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(),0, 0, null, new ItemStack(BlockHandler.entityJar), PageRegistry.ENTITY_JAR_PAGE_1));
 		BookButtonCategory infusionButton = new BookButtonCategory(getNextButtonId(), 0, 0, null, new ItemStack(BlockHandler.infuserBlock), PageRegistry.INFUSION_CRAFTING_PAGE_1);
 		infusionButton.setCustomDescription("Infusion Crafting");
 		suggestionsList.addEntry(infusionButton);
