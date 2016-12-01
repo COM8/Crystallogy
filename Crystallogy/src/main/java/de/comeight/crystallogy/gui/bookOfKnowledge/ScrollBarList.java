@@ -180,6 +180,9 @@ public class ScrollBarList implements IGuiClickable{
     	if((mouseX > posX + width || mouseX < posX + width - 10) && !scrolling){
     		return;
     	}
+    	if((mouseY > posY + height || mouseY < posY) && !scrolling){
+    		return;
+    	}
     	scrolling = true;
     	
     	if(mouseY >= (posY + height - 10)){
