@@ -100,10 +100,10 @@ public class GuiBookCustomEntityAi1 extends GuiBookPageSuggestions {
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		super.drawScreen(mouseX, mouseY, partialTicks);
+		drawImage();
 		drawText(mouseX, mouseY);
 		drawCraftingChaptersText();
 		drawRecipe(mouseX, mouseY);
-		drawImage();
 	}
 	
 	private void drawImage(){
