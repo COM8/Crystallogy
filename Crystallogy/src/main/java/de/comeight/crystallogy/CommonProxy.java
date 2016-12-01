@@ -141,7 +141,7 @@ public class CommonProxy {
 		GameRegistry.registerTileEntity(TileEntityFarmersGreen.class, "Crystallogy:" + BlockHandler.farmersGreen.ID);
 		GameRegistry.registerTileEntity(TileEntityCrystalOfHolding.class, "Crystallogy:" + BlockHandler.crystalOfHolding.ID);
 		GameRegistry.registerTileEntity(TileEntityArmorCombiner.class, "Crystallogy:" + BlockHandler.armorCombiner.ID);
-		GameRegistry.registerTileEntity(TileEntityDissectingTable.class, "Crystallogy:" + BlockHandler.dessectingTable.ID);
+		GameRegistry.registerTileEntity(TileEntityDissectingTable.class, "Crystallogy:" + BlockHandler.dissectingTable.ID);
 		
 		Utilities.addConsoleText("All tileEntitys are registered.");
 		

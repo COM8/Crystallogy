@@ -16,12 +16,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class DessectingTable extends BaseMachine{
+public class DissectingTable extends BaseMachine{
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	public final static String ID = "dissectingTable";
 
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public DessectingTable(){
+	public DissectingTable(){
 		super(ID);
 		this.setHarvestLevel("axe", 0);
 		this.setHardness(5.0F);

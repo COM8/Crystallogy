@@ -16,6 +16,7 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookCrystalOf
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookCrystalOfHolding2;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookCrystals;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookCrystorya;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookDissectingTable;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookEntityJar1;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookEntityJar2;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.blocks.GuiBookFarmersGreen1;
@@ -153,6 +154,7 @@ public class PageRegistry {
 	public static GuiBookCrystalCharger CRYSTAL_CHARGER_PAGE = new GuiBookCrystalCharger();
 	public static GuiBookCompressor COMPRESSOR_PAGE = new GuiBookCompressor();
 	public static GuiBookCrystalCrusher CRYSTAL_CRUSHER_PAGE = new GuiBookCrystalCrusher();
+	public static GuiBookDissectingTable DISSECTING_TABLE_PAGE = new GuiBookDissectingTable();
 	
 	public static GuiBookArmorCatalyst ARMOR_CATALYST_PAGE = new GuiBookArmorCatalyst();
 	public static GuiBookArmorPlates1 ARMOR_PLATE_PAGE_1 = new GuiBookArmorPlates1();;
@@ -308,6 +310,7 @@ public class PageRegistry {
 		registerPage(CRYSTAL_CHARGER_PAGE);
 		registerPage(COMPRESSOR_PAGE);
 		registerPage(CRYSTAL_CRUSHER_PAGE);
+		registerPage(DISSECTING_TABLE_PAGE);
 		
 		//Items:
 		registerPage(ARMOR_CATALYST_PAGE);

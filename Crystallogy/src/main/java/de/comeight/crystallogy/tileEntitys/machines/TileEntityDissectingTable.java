@@ -2,7 +2,7 @@ package de.comeight.crystallogy.tileEntitys.machines;
 
 import java.util.Random;
 
-import de.comeight.crystallogy.blocks.machines.DessectingTable;
+import de.comeight.crystallogy.blocks.machines.DissectingTable;
 import de.comeight.crystallogy.handler.AiHandler;
 import de.comeight.crystallogy.handler.CrystalCrusherRecipeHandler;
 import de.comeight.crystallogy.handler.SoundHandler;
@@ -53,7 +53,7 @@ public class TileEntityDissectingTable extends BaseTileEntityMachine {
 	}
 	
 	public void setBlockState(){
-		DessectingTable.setBlockState(crafting, worldObj, pos);
+		DissectingTable.setBlockState(crafting, worldObj, pos);
 	}
 	
 	public boolean isReady(){

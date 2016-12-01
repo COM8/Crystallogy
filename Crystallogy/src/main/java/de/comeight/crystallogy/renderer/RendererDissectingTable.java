@@ -38,7 +38,7 @@ public class RendererDissectingTable extends TileEntitySpecialRenderer<TileEntit
     public void renderTileEntityAt(TileEntityDissectingTable tE, double x, double y, double z, float partialTicks, int destroyStage)
     {
     	IBlockState state = getWorld().getBlockState(tE.getPos());
-    	if(state == null || state.getBlock() != BlockHandler.dessectingTable){
+    	if(state == null || state.getBlock() != BlockHandler.dissectingTable){
     		return;
     	}
     	

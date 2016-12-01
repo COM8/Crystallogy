@@ -28,7 +28,7 @@ public class GuiDissectingTable extends BaseGuiCointainer{
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public GuiDissectingTable(InventoryPlayer playerInventory, TileEntityDissectingTable tileEntity) {
-		super(new ContainerDissectingTable(playerInventory, tileEntity), playerInventory, BlockHandler.dessectingTable.getLocalizedName());
+		super(new ContainerDissectingTable(playerInventory, tileEntity), playerInventory, BlockHandler.dissectingTable.getLocalizedName());
 		this.tileEntity = tileEntity;
 		this.prevStack = null;
 	}	
