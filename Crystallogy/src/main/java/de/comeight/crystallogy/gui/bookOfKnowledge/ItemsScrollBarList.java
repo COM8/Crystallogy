@@ -76,7 +76,7 @@ public class ItemsScrollBarList extends ScrollBarList {
 		list.add(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack[]{	new ItemStack(ItemHandler.entityBrain, 1, 0),
 																									new ItemStack(ItemHandler.entityBrain, 1, 1),
 																									new ItemStack(ItemHandler.entityBrain, 1, 2),
-																									new ItemStack(ItemHandler.entityBrain, 1, 3),}, 1000, PageRegistry.ENTITY_BRAIN_PAGE_1));
+																									new ItemStack(ItemHandler.entityBrain, 1, 3),}, 1000, PageRegistry.ENTITY_BRAIN_PAGE));
 		
 		list.add(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.enderonCrystal), PageRegistry.ENDERON_CRYSTAL_PAGE));
 		list.add(new BookButtonCategory(GuiBookPage.getNextButtonId(), 0, 0, null, new ItemStack(ItemHandler.energyCrystal), PageRegistry.ENERGY_CRYSTAL_PAGE));
