@@ -165,7 +165,7 @@ public class RecipeHandler {
 	}
 
 	private void registerCraftingRecipes(){
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BlockHandler.dessectingTable), new Object[]{
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BlockHandler.dissectingTable), new Object[]{
 				"BSG",
 				"PSP",
 				"P_P",

@@ -116,7 +116,7 @@ public class GuiBookCustomEntityAi2 extends GuiBookPageSuggestions {
 
 	@Override
 	protected void populateSuggestionsList() {
-		suggestionsList.addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(),0, 0, null, new ItemStack(BlockHandler.dessectingTable), PageRegistry.CRYSTALS_PAGE));
+		suggestionsList.addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(),0, 0, null, new ItemStack(BlockHandler.dissectingTable), PageRegistry.DISSECTING_TABLE_PAGE));
 		suggestionsList.addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(),0, 0, null, new ItemStack(ItemHandler.areaPicker), PageRegistry.AREA_PICKER_PAGE));
 		suggestionsList.addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(),0, 0, null, new ItemStack(ItemHandler.spotPicker), PageRegistry.SPOT_PICKER_PAGE));
 		suggestionsList.addEntry(new BookButtonCategory(GuiBookPage.getNextButtonId(),0, 0, null, new ItemStack(ItemHandler.playerCrystalKnife), PageRegistry.PLAYER_CRYSTAL_KNIFE_PAGE_1));
