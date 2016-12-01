@@ -55,7 +55,7 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookDebugTool;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookEnderonCrystal;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookEnergyCrystal;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookEnergyDust;
-import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookEntityBrain1;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookEntityBrain;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookEntityCrystalKnife1;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookEntityCrystalKnife2;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookEntityGrabber;
@@ -90,6 +90,8 @@ import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookToolRod;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookTools;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookYellowCrystalArmor1;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.items.GuiBookYellowCrystalArmor2;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.mechanisms.GuiBookCustomEntityAi1;
+import de.comeight.crystallogy.gui.bookOfKnowledge.pages.mechanisms.GuiBookCustomEntityAi2;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.mechanisms.GuiBookInfusionCrafting1;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.mechanisms.GuiBookInfusionCrafting2;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.mechanisms.GuiBookMechanisms;
@@ -126,6 +128,8 @@ public class PageRegistry {
 	
 	public static GuiBookInfusionCrafting1 INFUSION_CRAFTING_PAGE_1 = new GuiBookInfusionCrafting1();
 	public static GuiBookInfusionCrafting2 INFUSION_CRAFTING_PAGE_2 = new GuiBookInfusionCrafting2();
+	public static GuiBookCustomEntityAi1 CUSTOM_ENTITY_AI_PAGE_1 = new GuiBookCustomEntityAi1();
+	public static GuiBookCustomEntityAi2 CUSTOM_ENTITY_AI_PAGE_2 = new GuiBookCustomEntityAi2();
 	
 	public static GuiBookCrystals CRYSTALS_PAGE = new GuiBookCrystals();
 	public static GuiBookCrystalGlass CRYSTAL_GLASS_PAGE = new GuiBookCrystalGlass();
@@ -194,7 +198,7 @@ public class PageRegistry {
 	public static GuiBookCrystalSword1 CRYSTAL_SWORD_PAGE_1 = new GuiBookCrystalSword1();
 	public static GuiBookCrystalSword2 CRYSTAL_SWORD_PAGE_2 = new GuiBookCrystalSword2();
 	public static GuiBookDebugTool DEBUG_TOOL_PAGE = new GuiBookDebugTool();
-	public static GuiBookEntityBrain1 ENTITY_BRAIN_PAGE_1 = new GuiBookEntityBrain1();
+	public static GuiBookEntityBrain ENTITY_BRAIN_PAGE = new GuiBookEntityBrain();
 	public static GuiBookPlayerCrystalKnife1 PLAYER_CRYSTAL_KNIFE_PAGE_1 = new GuiBookPlayerCrystalKnife1();
 	public static GuiBookPlayerCrystalKnife2 PLAYER_CRYSTAL_KNIFE_PAGE_2 = new GuiBookPlayerCrystalKnife2();
 	public static GuiBookSpotPicker SPOT_PICKER_PAGE = new GuiBookSpotPicker();
@@ -329,7 +333,7 @@ public class PageRegistry {
 		registerPage(CRYSTAL_HAMMER_HEAD_PAGE);
 		registerPage(CRYSTAL_SWORD_BLADE_PAGE);
 		registerPage(CRYSTAL_PICKAXE_HEAD_PAGE);
-		registerPage(ENTITY_BRAIN_PAGE_1);
+		registerPage(ENTITY_BRAIN_PAGE);
 		registerPage(ENDERON_CRYSTAL_PAGE);
 		registerPage(ENERGY_CRYSTAL_PAGE);
 		registerPage(ENERGY_DUST_PAGE);
@@ -374,6 +378,8 @@ public class PageRegistry {
 		//Mechanisms:
 		registerPage(INFUSION_CRAFTING_PAGE_1);
 		registerPage(INFUSION_CRAFTING_PAGE_2);
+		registerPage(CUSTOM_ENTITY_AI_PAGE_1);
+		registerPage(CUSTOM_ENTITY_AI_PAGE_2);
 		
 		Log.info("Finished loading Book of Knowledge");
 	}

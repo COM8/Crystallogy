@@ -3,10 +3,10 @@ package de.comeight.crystallogy.gui.bookOfKnowledge.pages.items;
 import de.comeight.crystallogy.gui.bookOfKnowledge.BookCraftingRecipe;
 import de.comeight.crystallogy.gui.bookOfKnowledge.BookMultiItemRenderer;
 import de.comeight.crystallogy.gui.bookOfKnowledge.GuiBookUtilities;
+import de.comeight.crystallogy.gui.bookOfKnowledge.PageRegistry;
 import de.comeight.crystallogy.gui.bookOfKnowledge.TextScrollBarList;
 import de.comeight.crystallogy.gui.bookOfKnowledge.buttons.BookButtonCrafting;
 import de.comeight.crystallogy.gui.bookOfKnowledge.pages.GuiBookPage;
-import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -14,7 +14,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class GuiBookEntityBrain1 extends GuiBookPage {
+public class GuiBookEntityBrain extends GuiBookPage {
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private BookMultiItemRenderer itemRenderer;
 	
@@ -24,7 +24,7 @@ public class GuiBookEntityBrain1 extends GuiBookPage {
 	private TextScrollBarList tbx1;
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
-	public GuiBookEntityBrain1() {
+	public GuiBookEntityBrain() {
 		super("Entity Brain:");
 		
 		itemRenderer = new BookMultiItemRenderer(	new ItemStack[]{new ItemStack(ItemHandler.entityBrain, 1, 0),
@@ -34,7 +34,10 @@ public class GuiBookEntityBrain1 extends GuiBookPage {
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
-
+	@Override
+	public GuiBookPage getNextPage() {
+		return PageRegistry.CUSTOM_ENTITY_AI_PAGE_1;
+	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
@@ -46,6 +49,11 @@ public class GuiBookEntityBrain1 extends GuiBookPage {
 	@Override
 	protected void addGuiElements() {
 		super.addGuiElements();
+		initTextBoxes();
+		addGuiElement(tbx1);
+	}
+	
+	protected void initTextBoxes(){
 		tbx1 = new TextScrollBarList(WRAPWIDTH, 100, xPosBook + BORDER_LEFT, yPosBook + 120, this);
 		tbx1.setText("Entity Brains are rare drops, dropped by every kind of entity.\n"
 				+ "\n"
@@ -62,7 +70,6 @@ public class GuiBookEntityBrain1 extends GuiBookPage {
 				+ "\n"
 				+ "-The Walnut Entity Brain:\n"
 				+ "Dropped by agressive mobs on their death.");
-		addGuiElement(tbx1);
 	}
 	
 	private void initRecipe(){

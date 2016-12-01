@@ -37,7 +37,7 @@ public class GuiBookMechanisms extends GuiBookPage {
 		buttonList.add(infusion);
 		
 		//Custom Entity Ai:
-		BookButtonCategory ai = new BookButtonCategory(GuiBookPage.getNextButtonId(), BORDER_LEFT, 80, null, new ItemStack(ItemHandler.entityBrain), PageRegistry.BLUE_CRYSTAL_ARMOR_PAGE_1);
+		BookButtonCategory ai = new BookButtonCategory(GuiBookPage.getNextButtonId(), BORDER_LEFT, 80, null, new ItemStack(ItemHandler.entityBrain), PageRegistry.CUSTOM_ENTITY_AI_PAGE_1);
 		ai.setCustomDescription("Custom Entity Ai");
 		ai.setScale(buttonScale);
 		buttonList.add(ai);
