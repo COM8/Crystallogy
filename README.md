@@ -16,8 +16,8 @@ You can also use your crystals to control / manipulate your friends / entities.
 * Fixed Entity Jar not storing the entity - 100%
 * New icons for the hammers, pickaxes and swords - 100%
 * Control your caught entities to let them work for you - 100%
-* Waila support - 20%
-* Documentation for the Book of Knowledge - 50%
+* Documentation for the Book of Knowledge - 100%
+* Waila support - 30%
 * [MORE NOTES TO COME]
 
 ##ToDo for later releases:
