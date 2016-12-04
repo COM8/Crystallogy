@@ -61,9 +61,9 @@ public abstract class Crystall extends BaseBlockCutout{
 		color = new RGBColor(1.0F, 1.0F, 1.0F);
 		this.chance = 5;
 		
-		this.setHarvestLevel("pickaxe", 3);
+		this.setHarvestLevel("pickaxe", 2);
 		this.setLightLevel(0.3F);
-		this.setHardness(5.0F);
+		this.setHardness(2.0F);
 		this.setSoundType(SoundType.GLASS);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.DOWN));
 	}
