@@ -1,6 +1,6 @@
 package de.comeight.crystallogy.blocks.container;
 
-import com.sun.istack.internal.Nullable;
+import javax.annotation.Nullable;
 
 import de.comeight.crystallogy.blocks.container.slots.ChargerOutputSlot;
 import de.comeight.crystallogy.tileEntitys.machines.TileEntityCharger;

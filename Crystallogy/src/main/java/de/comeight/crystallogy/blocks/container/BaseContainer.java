@@ -1,6 +1,6 @@
 package de.comeight.crystallogy.blocks.container;
 
-import com.sun.istack.internal.Nullable;
+import javax.annotation.Nullable;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
