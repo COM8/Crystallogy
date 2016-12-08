@@ -6,6 +6,7 @@ import java.util.UUID;
 import com.mojang.authlib.GameProfile;
 
 import de.comeight.crystallogy.tileEntitys.TileEntityPlayerJar;
+import de.comeight.crystallogy.util.NBTTags;
 import de.comeight.crystallogy.util.ToolTipBuilder;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.EntityLivingBase;
@@ -35,8 +36,8 @@ public class PlayerCrystalKnife extends BaseCrystalKnife{
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	private GameProfile getGameProfile(ItemStack stack){
 		NBTTagCompound c = stack.getTagCompound();
-		String name = c.getString("name");
-		String uuid = c.getString("uuid");
+		String name = c.getString(NBTTags.ENTITY_NAME);
+		String uuid = c.getString(NBTTags.ENTITY_UUID);
 		GameProfile p = new GameProfile(UUID.fromString(uuid), name);
 		return p;
 	}
@@ -49,8 +50,8 @@ public class PlayerCrystalKnife extends BaseCrystalKnife{
 		if(entity instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer) entity;
 			
-			nbtTagCompound.setString("name", player.getGameProfile().getName());
-			nbtTagCompound.setString("uuid", player.getGameProfile().getId().toString());
+			nbtTagCompound.setString(NBTTags.ENTITY_NAME, player.getGameProfile().getName());
+			nbtTagCompound.setString(NBTTags.ENTITY_UUID, player.getGameProfile().getId().toString());
 			
 			stack.setTagCompound(nbtTagCompound);
 		}
@@ -115,8 +116,8 @@ public class PlayerCrystalKnife extends BaseCrystalKnife{
 			}
 			if(GuiScreen.isShiftKeyDown()){
 				tooltip.add("");
-				tooltip.add(TextFormatting.GOLD + "Name: " + TextFormatting.RESET + nbtTagCompound.getString("name"));
-				tooltip.add(TextFormatting.GOLD + "UUID: " + TextFormatting.RESET + nbtTagCompound.getString("uuid"));
+				tooltip.add(TextFormatting.GOLD + "Name: " + TextFormatting.RESET + nbtTagCompound.getString(NBTTags.ENTITY_NAME));
+				tooltip.add(TextFormatting.GOLD + "UUID: " + TextFormatting.RESET + nbtTagCompound.getString(NBTTags.ENTITY_UUID));
 			}
 			else{
 				ToolTipBuilder.addShiftForMoreDetails(tooltip);
@@ -129,7 +130,7 @@ public class PlayerCrystalKnife extends BaseCrystalKnife{
 		stack = super.saveEmptyNBT(stack);
 		NBTTagCompound nbtTagCompound = stack.getTagCompound();
 	
-		nbtTagCompound.setString("uuid", "-");
+		nbtTagCompound.setString(NBTTags.ENTITY_UUID, "-");
 
 		stack.setTagCompound(nbtTagCompound);
 		return stack;
@@ -139,8 +140,8 @@ public class PlayerCrystalKnife extends BaseCrystalKnife{
 		stack = saveEmptyNBT(stack);
 		NBTTagCompound nbtTagCompound = stack.getTagCompound();
 		
-		nbtTagCompound.setString("name", player.getGameProfile().getName());
-		nbtTagCompound.setString("uuid", player.getGameProfile().getId().toString());
+		nbtTagCompound.setString(NBTTags.ENTITY_NAME, player.getGameProfile().getName());
+		nbtTagCompound.setString(NBTTags.ENTITY_UUID, player.getGameProfile().getId().toString());
 		
 		stack.setTagCompound(nbtTagCompound);
 		return stack;

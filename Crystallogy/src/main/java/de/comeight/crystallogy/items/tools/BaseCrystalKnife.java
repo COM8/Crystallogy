@@ -10,6 +10,7 @@ import de.comeight.crystallogy.network.NetworkParticle;
 import de.comeight.crystallogy.particles.ParticleInformation;
 import de.comeight.crystallogy.particles.TransportParticle;
 import de.comeight.crystallogy.tileEntitys.TileEntityEntityJar;
+import de.comeight.crystallogy.util.NBTTags;
 import de.comeight.crystallogy.util.NetworkUtilitis;
 import de.comeight.crystallogy.util.RGBColor;
 import de.comeight.crystallogy.util.ToolTipBuilder;
@@ -56,7 +57,7 @@ public class BaseCrystalKnife extends BaseItemSword{
 	
 	public boolean hasEntity(ItemStack stack){
 		NBTTagCompound c = stack.getTagCompound();
-		if(c == null||c.getString("name") == null||c.getString("name").equals("-")||c.getString("name").equals("")){
+		if(c == null||c.getString(NBTTags.ENTITY_NAME) == null||c.getString(NBTTags.ENTITY_NAME).equals("-")||c.getString(NBTTags.ENTITY_NAME).equals("")){
 			return false;
 		}
         else {
@@ -66,7 +67,7 @@ public class BaseCrystalKnife extends BaseItemSword{
 	
 	protected EntityLivingBase getEntity(ItemStack stack, World worldIn){
 		NBTTagCompound compound = stack.getTagCompound();
-		UUID uuid = UUID.fromString(compound.getString("uuid"));
+		UUID uuid = UUID.fromString(compound.getString(NBTTags.ENTITY_UUID));
 		List<Entity> list = worldIn.loadedEntityList;
 		for (Entity entity : list) {
 			if(uuid.equals(entity.getUniqueID())){
@@ -148,8 +149,8 @@ public class BaseCrystalKnife extends BaseItemSword{
 			}
 			if(GuiScreen.isShiftKeyDown()){
 				tooltip.add("");
-				tooltip.add(TextFormatting.GOLD + "Name: " + TextFormatting.RESET + nbtTagCompound.getString("name"));
-				tooltip.add(TextFormatting.GOLD + "UUID: " + TextFormatting.RESET + nbtTagCompound.getString("uuid"));
+				tooltip.add(TextFormatting.GOLD + "Name: " + TextFormatting.RESET + nbtTagCompound.getString(NBTTags.ENTITY_NAME));
+				tooltip.add(TextFormatting.GOLD + "UUID: " + TextFormatting.RESET + nbtTagCompound.getString(NBTTags.ENTITY_UUID));
 			}
 			else{
 				ToolTipBuilder.addShiftForMoreDetails(tooltip);
@@ -163,8 +164,8 @@ public class BaseCrystalKnife extends BaseItemSword{
 		stack = saveEmptyNBT(stack);
 		NBTTagCompound nbtTagCompound = stack.getTagCompound();
 		
-		nbtTagCompound.setString("name", entity.getName());
-		nbtTagCompound.setString("uuid", entity.getUniqueID().toString());
+		nbtTagCompound.setString(NBTTags.ENTITY_NAME, entity.getName());
+		nbtTagCompound.setString(NBTTags.ENTITY_UUID, entity.getUniqueID().toString());
 		
 		stack.setTagCompound(nbtTagCompound);
 		return stack;
@@ -177,8 +178,8 @@ public class BaseCrystalKnife extends BaseItemSword{
 			nbtTagCompound = new NBTTagCompound();
 		}
 		
-		nbtTagCompound.setString("name", "-");
-		nbtTagCompound.setString("uuid", "-");
+		nbtTagCompound.setString(NBTTags.ENTITY_NAME, "-");
+		nbtTagCompound.setString(NBTTags.ENTITY_UUID, "-");
 
 		stack.setTagCompound(nbtTagCompound);
 		return stack;
