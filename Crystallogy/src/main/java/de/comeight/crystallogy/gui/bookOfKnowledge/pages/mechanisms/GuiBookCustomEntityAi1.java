@@ -76,7 +76,10 @@ public class GuiBookCustomEntityAi1 extends GuiBookPageSuggestions {
 				+ "This Ai allows an entity to collect dropped items for you and it also puts them in a container you specified before.\n"
 				+ "\n"
 				+ "To apply one of these Ais you have to right-click with them on a filled Entity Jar.\n"
-				+ "To remove the ai from an entity again, simply just throw a couple Magic Stones of Forgetfulness on the entity.");
+				+ "To remove the ai from an entity again, simply just throw a couple Magic Stones of Forgetfulness on the entity.\n"
+				+ "\n"
+				+ "The server owner is able to diable ALL Custom Ais by the use of the following command:\n"
+				+ "/disableCustomAis <true/false>");
 	}
 	
 	private void initRecipe(){
