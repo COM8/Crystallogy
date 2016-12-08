@@ -56,7 +56,7 @@ public class GuiBookCustomEntityAi2 extends GuiBookPageSuggestions {
 				+ "The Player Crystal Knife specifies the player the entity should follow.\n"
 				+ "\n"
 				+ "If you want to specifie, what should happen if the entity finishes it's job "
-				+ "or wether it should get teleported to it's target if it gets stuck in some place,"
+				+ "or wether it should get teleported to it's target if it gets stuck in some place, "
 				+ "you can use the Dissecting Table for this.");
 	}
 	
