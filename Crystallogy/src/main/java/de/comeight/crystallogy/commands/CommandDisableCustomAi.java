@@ -19,7 +19,7 @@ public class CommandDisableCustomAi extends CommandBase {
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public CommandDisableCustomAi() {
 		aliases = new ArrayList<String>();
-		aliases.add("disableCustomAi");
+		aliases.add("disableCustomAis");
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -33,12 +33,12 @@ public class CommandDisableCustomAi extends CommandBase {
 	
 	@Override
 	public String getCommandName() {
-		return "disableCustomAi";
+		return "disableCustomAis";
 	}
 
 	@Override
 	public String getCommandUsage(ICommandSender sender) {
-		return "disableCustomAi <true/false>";
+		return "disableCustomAis <true/false>";
 	}
 
 	@Override
@@ -54,10 +54,10 @@ public class CommandDisableCustomAi extends CommandBase {
 			AiHandler.isCustomAiEnabled = b;
 		}
 		if(AiHandler.isCustomAiEnabled){
-			sender.addChatMessage(new TextComponentString("Crystallogy custom Ai: " + TextFormatting.DARK_GREEN + "enabled"));
+			sender.addChatMessage(new TextComponentString("Crystallogy custom Ais: " + TextFormatting.DARK_GREEN + "enabled"));
 		}
 		else{
-			sender.addChatMessage(new TextComponentString("Crystallogy custom Ai: " + TextFormatting.RED + "disabled"));
+			sender.addChatMessage(new TextComponentString("Crystallogy custom Ais: " + TextFormatting.RED + "disabled"));
 		}
 	}
 	
