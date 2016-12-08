@@ -42,6 +42,17 @@ public class PlayerCrystalKnife extends BaseCrystalKnife{
 		return p;
 	}
 	
+	@Override
+	public boolean hasEntity(ItemStack stack){
+		NBTTagCompound c = stack.getTagCompound();
+		if(!super.hasEntity(stack) || c.getString(NBTTags.ENTITY_UUID) == null||c.getString(NBTTags.ENTITY_UUID).equals("-")||c.getString(NBTTags.ENTITY_UUID).equals("")){
+			return false;
+		}
+        else {
+			return true;
+		}
+	}
+	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public ItemStack saveNBT(ItemStack stack, EntityLivingBase entity){
