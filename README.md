@@ -10,14 +10,9 @@ You can also use your crystals to control / manipulate your friends / entities.
 
 * [Wiki](https://github.com/COM8/Crystallogy/wiki)
 
-##ToDo list for the next big release (1.2):
-* Crystals now only generate in caves - 100%
-* Rotatable Entity / Player Jar - 100%
-* Fixed Entity Jar not storing the entity - 100%
-* New icons for the hammers, pickaxes and swords - 100%
-* Control your caught entities to let them work for you - 100%
-* Documentation for the Book of Knowledge - 100%
-* Waila support - 30%
+##ToDo list for the next big release (1.3):
+* Rewrite everything
+* 1.11.x support
 * [MORE NOTES TO COME]
 
 ##ToDo for later releases:
