@@ -114,15 +114,16 @@ public abstract class Crystall extends BaseBlockCutout{
 		}
 	}
 	
-	//-----------------------------------------------Sonstige Methoden:-------------------------------------
-	@SideOnly(Side.CLIENT)
 	@Override
-	public void randomDisplayTick(IBlockState state, World worldIn, BlockPos pos, Random rand) {
-		if(worldIn.isRemote){	//Client Side Welt?
-			addGlitterParticleChance(worldIn, pos, chance);
-		}
+	public boolean isBlockSolid(IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+		return false;
 	}
-		
+	
+	@Override
+	public boolean isSideSolid(IBlockState base_state, IBlockAccess world, BlockPos pos, EnumFacing side) {
+		return false;
+	}
+	
 	@SideOnly(Side.CLIENT)
 	@Override
     public BlockRenderLayer getBlockLayer()
@@ -132,6 +133,15 @@ public abstract class Crystall extends BaseBlockCutout{
 	
 	protected void setParticleColor(RGBColor color){
 		this.color = color;
+	}
+	
+	//-----------------------------------------------Sonstige Methoden:-------------------------------------
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void randomDisplayTick(IBlockState state, World worldIn, BlockPos pos, Random rand) {
+		if(worldIn.isRemote){	//Client Side Welt?
+			addGlitterParticleChance(worldIn, pos, chance);
+		}
 	}
 	
 	@SideOnly(Side.CLIENT)
