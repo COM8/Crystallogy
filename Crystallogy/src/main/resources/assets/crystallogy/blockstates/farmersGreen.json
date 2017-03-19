@@ -1,8 +1,0 @@
-{
-    "variants": {
-		"status=0": { "model": "crystallogy:farmersGreen_closed_empty" },
-		"status=1":  { "model": "crystallogy:farmersGreen_closed_full" },
-		"status=2": { "model": "crystallogy:farmersGreen_open_empty" },
-		"status=3":  { "model": "crystallogy:farmersGreen_open_full" }
-    }
-}

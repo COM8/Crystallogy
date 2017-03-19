@@ -1,8 +1,0 @@
-{
-    "variants": {
-		"facing=north": { "model": "crystallogy:entityJar" },
-		"facing=east":  { "model": "crystallogy:entityJar", "y": 90 },
-		"facing=south": { "model": "crystallogy:entityJar", "y": 180 },
-		"facing=west":  { "model": "crystallogy:entityJar", "y": 270 }
-    }
-}
