@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "age=0": { "model": "crystallogy:crystalOfHolding_0" },
+        "age=1": { "model": "crystallogy:crystalOfHolding_1" },
+        "age=2": { "model": "crystallogy:crystalOfHolding_2" }
+    }
+}

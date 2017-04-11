@@ -1,0 +1,42 @@
+{
+	"bookOpen": { 
+		"category": "block",
+		"subtitle": "crystallogy.subtitle.bookOpen",
+		"sounds":[ "crystallogy:bookOpen" ]
+	},
+	"crusher": { 
+		"category": "block",
+		"subtitle": "crystallogy.subtitle.crusher",
+		"sounds":[ "crystallogy:crusher" ]
+	},
+	"compressor": { 
+		"category": "block",
+		"subtitle": "crystallogy.subtitle.compressor",
+		"sounds":[ "crystallogy:compressor" ]
+	},
+	"light_woosh": { 
+		"category": "block",
+		"subtitle": "crystallogy.subtitle.light_woosh",
+		"sounds":[ "crystallogy:light_woosh" ]
+	},
+	"machine_broken": { 
+		"category": "block",
+		"subtitle": "crystallogy.subtitle.machine_broken",
+		"sounds":[ "crystallogy:machine_broken" ]
+	},
+	"armorCombiner": { 
+		"category": "block",
+		"subtitle": "crystallogy.subtitle.armorCombiner",
+		"sounds":[ "crystallogy:armorCombiner" ]
+	},
+	"evil_laugh_male_1": { 
+		"category": "block",
+		"subtitle": "crystallogy.subtitle.evil_laugh_male_1",
+		"sounds":[ "crystallogy:evil_laugh_male_1" ]
+	},
+	"evil_laugh_male_2": { 
+		"category": "block",
+		"subtitle": "crystallogy.subtitle.evil_laugh_male_2",
+		"sounds":[ "crystallogy:evil_laugh_male_2" ]
+	}
+}

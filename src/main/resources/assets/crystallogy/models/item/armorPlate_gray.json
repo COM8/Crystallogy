@@ -1,0 +1,62 @@
+{
+"__comment": "Designed by COM8",
+"textures": {
+    "texture": "crystallogy:blocks/crystall_gray"
+},
+"elements": [ 
+{
+    "from": [ 4, 0, 5.5 ],
+    "to": [ 12, 1.5, 9.5 ],
+    "faces": {
+        "down":  { "uv": [ 12, 9.5, 4, 5.5 ], "texture": "#texture" },
+        "up":    { "uv": [ 4, 5.5, 12, 9.5 ], "texture": "#texture" },
+        "north": { "uv": [ 4, 14.5, 12, 16 ], "texture": "#texture" },
+        "south": { "uv": [ 4, 14.5, 12, 16 ], "texture": "#texture" },
+        "west":  { "uv": [ 5.5, 14.5, 9.5, 16 ], "texture": "#texture" },
+        "east":  { "uv": [ 6.5, 14.5, 10.5, 16 ], "texture": "#texture" }
+    }
+}
+],
+"display": {
+    "thirdperson_righthand": {
+        "rotation": [ 0, 90, -35 ],
+        "translation": [ 0, 6.61, -3.97 ],
+        "scale": [ 1, 1, 1 ]
+    },
+    "thirdperson_lefthand": {
+        "rotation": [ 0, 90, -35 ],
+        "translation": [ 0, 6.61, -3.97 ],
+        "scale": [ 1, 1, 1 ]
+    },
+    "head": {
+        "rotation": [ 0, 0, 0 ],
+        "translation": [ 0, 14.36, 0 ],
+        "scale": [ 1, 1, 1 ]
+    },
+    "ground": {
+        "rotation": [ 0, 0, 0 ],
+        "translation": [ 0, 4.16, 0 ],
+        "scale": [ 1, 1, 1 ]
+    },
+    "fixed": {
+        "rotation": [ 0, 0, 0 ],
+        "translation": [ 0, 8.31, -1.51 ],
+        "scale": [ 1, 1, 1 ]
+    },
+    "firstperson_righthand": {
+        "rotation": [ 0, 0, 0 ],
+        "translation": [ 0, 6.61, 0 ],
+        "scale": [ 1, 1, 1 ]
+    },
+    "firstperson_lefthand": {
+        "rotation": [ 0, 0, 0 ],
+        "translation": [ 0, 6.61, 0 ],
+        "scale": [ 1, 1, 1 ]
+    },
+    "gui": {
+        "rotation": [ 28, -43, 0 ],
+        "translation": [ -0.76, 9.45, 0 ],
+        "scale": [ 1.5, 1.5, 1.5 ]
+    }
+}
+}
