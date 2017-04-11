@@ -1,4 +1,0 @@
-1. Create a Gui class
-2. Give the Gui an unequiped id
-3. Add the Gui to the GuiHandler class
-4. Register the Gui in the commenProxy class in the method registerGuiHandlers()
