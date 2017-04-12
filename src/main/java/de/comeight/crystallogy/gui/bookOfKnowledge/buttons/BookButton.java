@@ -60,12 +60,7 @@ public abstract class BookButton extends GuiButton{
 		this.yPosAbs = y + yPosition;
 		this.hovered = mouseX >= this.xPosAbs && mouseY >= this.yPosAbs && mouseX < this.xPosAbs + this.width && mouseY < this.yPosAbs + this.height;
 		if(!hoverEnabled || getHoverState(hovered) == 1){
-			if(getHoverState(hovered) == 2){
-				hover = true;
-			}
-			else{
-				hover = false;
-			}
+            hover = getHoverState(hovered) == 2;
 			drawNormal(xPosAbs, yPosAbs);
 		}
 		else if(getHoverState(hovered) == 2){

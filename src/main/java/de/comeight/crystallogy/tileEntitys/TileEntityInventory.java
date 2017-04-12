@@ -65,12 +65,7 @@ public abstract class TileEntityInventory extends BaseTileEntity implements IInv
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player) {
-		if(worldObj.getTileEntity(pos) == this && player.getDistanceSq(pos.getX() +0.5, pos.getY() + 0.5, pos.getZ() + 0.5) < 64){
-			return true;
-		}
-		else{
-			return false;
-		}
+        return worldObj.getTileEntity(pos) == this && player.getDistanceSq(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5) < 64;
 	}
 
 	@Override

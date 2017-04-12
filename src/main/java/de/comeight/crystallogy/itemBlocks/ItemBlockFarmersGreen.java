@@ -2,6 +2,7 @@ package de.comeight.crystallogy.itemBlocks;
 
 import java.util.List;
 
+import de.comeight.crystallogy.blocks.FarmersGreen;
 import de.comeight.crystallogy.handler.BlockHandler;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
@@ -17,7 +18,7 @@ public class ItemBlockFarmersGreen extends BaseItemBlock {
 	
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public ItemBlockFarmersGreen(Block block) {
-		super(block, BlockHandler.farmersGreen.ID);
+		super(block, FarmersGreen.ID);
 		setMaxStackSize(1);
 		setHasSubtypes(true);
         setMaxDamage(0);

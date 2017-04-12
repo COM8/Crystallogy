@@ -70,11 +70,8 @@ public class ArmorListEntry {
 	 *  @return true = last usage older than 1 min (60000 ms)
 	 */
 	public boolean isDead(){
-		if((System.currentTimeMillis() - lastTimeActive) > ConfigHandler.timeUnusedArmorListEntry){
-			return true;
-		}
-		return false;
-	}
+        return (System.currentTimeMillis() - lastTimeActive) > ConfigHandler.timeUnusedArmorListEntry;
+    }
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	public void writeToNBT(NBTTagCompound compound){

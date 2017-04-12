@@ -11,7 +11,7 @@ public enum EnumCustomAis {
 	public final int ID;
 	public final String NAME;
 	
-	private EnumCustomAis(int id, String name){
+	EnumCustomAis(int id, String name){
 		this.ID = id;
 		this.NAME = name;
 	}

@@ -45,12 +45,7 @@ public class PlayerCrystalKnife extends BaseCrystalKnife{
 	@Override
 	public boolean hasEntity(ItemStack stack){
 		NBTTagCompound c = stack.getTagCompound();
-		if(!super.hasEntity(stack) || c.getString(NBTTags.ENTITY_UUID) == null||c.getString(NBTTags.ENTITY_UUID).equals("-")||c.getString(NBTTags.ENTITY_UUID).equals("")){
-			return false;
-		}
-        else {
-			return true;
-		}
+        return !(!super.hasEntity(stack) || c.getString(NBTTags.ENTITY_UUID) == null || c.getString(NBTTags.ENTITY_UUID).equals("-") || c.getString(NBTTags.ENTITY_UUID).equals(""));
 	}
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------

@@ -19,11 +19,8 @@ public class TileEntityCrystalOfHolding extends BaseTileEntity {
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	public boolean hasEntity(){
 		markDirty();
-		if(entity != null){
-			return true;
-		}
-		return false;
-	}
+        return entity != null;
+    }
 	
 	public Entity getEntity() {
 		markDirty();

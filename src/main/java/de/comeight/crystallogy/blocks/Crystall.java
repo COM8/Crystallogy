@@ -77,14 +77,14 @@ public abstract class Crystall extends BaseBlockCutout{
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		return ((EnumFacing) state.getValue(FACING)).getIndex();
+		return state.getValue(FACING).getIndex();
 	}
 	
 	private void setDefaultStatus(World worldIn, BlockPos pos, IBlockState state)
     {
         if (!worldIn.isRemote)
         {
-        	EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
+        	EnumFacing enumfacing = state.getValue(FACING);
             worldIn.setBlockState(pos, state.withProperty(FACING, enumfacing), 2);
         }
     }
@@ -96,7 +96,7 @@ public abstract class Crystall extends BaseBlockCutout{
 	
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		switch ((EnumFacing)state.getValue(FACING)){
+		switch (state.getValue(FACING)){
 			case NORTH:
 				return CRYSTAL_NORTH_AABB;
 			case SOUTH:
@@ -217,7 +217,7 @@ public abstract class Crystall extends BaseBlockCutout{
     	IBlockState iblockstate = worldIn.getBlockState(pos.offset(facing.getOpposite()));
     	
     	if(iblockstate.getBlock() instanceof Crystall){
-    		EnumFacing enumfacing = (EnumFacing)iblockstate.getValue(FACING);
+    		EnumFacing enumfacing = iblockstate.getValue(FACING);
 
             if (enumfacing == facing)
             {
@@ -231,18 +231,18 @@ public abstract class Crystall extends BaseBlockCutout{
     @Override
     public IBlockState withRotation(IBlockState state, Rotation rot)
     {
-        return state.withProperty(FACING, rot.rotate((EnumFacing)state.getValue(FACING)));
+        return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }
 
     @Override
     public IBlockState withMirror(IBlockState state, Mirror mirrorIn)
     {
-        return state.withRotation(mirrorIn.toRotation((EnumFacing)state.getValue(FACING)));
+        return state.withRotation(mirrorIn.toRotation(state.getValue(FACING)));
     }
 
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {FACING});
+        return new BlockStateContainer(this, FACING);
     }
 }

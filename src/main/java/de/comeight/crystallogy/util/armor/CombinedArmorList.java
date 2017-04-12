@@ -109,11 +109,8 @@ public class CombinedArmorList {
 	 * @param id the {@link UUID} of the ArmorListEntry you try to find
 	 */
 	public static boolean hasEntry(UUID id){
-		if(findEntryPos(id) < 0){
-			return false;
-		}
-		return true;
-	}
+        return findEntryPos(id) >= 0;
+    }
 	
 	public static void writeToNBT(UUID id, NBTTagCompound compound){
 		ArmorListEntry entry = getEntry(id);

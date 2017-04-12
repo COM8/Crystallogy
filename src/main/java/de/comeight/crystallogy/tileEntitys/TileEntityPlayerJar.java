@@ -41,11 +41,8 @@ public class TileEntityPlayerJar extends TileEntityEntityJar {
 	
 	@Override
 	public boolean hasEntity() {
-		if(profile != null){
-			return true;
-		}
-		return false;
-	}
+        return profile != null;
+    }
 	
 	public GameProfile getProfile() {
 		return profile;

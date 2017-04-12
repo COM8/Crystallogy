@@ -22,10 +22,7 @@ public class BrainSlot extends SpecificItemSlot {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public boolean isItemValid(ItemStack stack) {
-		if(super.isItemValid(stack) && stack.getItemDamage() == 0){
-			return true;
-		}
-		return false;
-	}
+        return super.isItemValid(stack) && stack.getItemDamage() == 0;
+    }
 	
 }

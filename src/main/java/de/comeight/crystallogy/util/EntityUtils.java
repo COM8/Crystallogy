@@ -25,11 +25,8 @@ public abstract class EntityUtils {
 	 * Checks wether the given {@link NBTTagCompound} contains an entity
 	 */
 	public static boolean hasEntity(NBTTagCompound compound){
-		if(compound != null && compound.getBoolean("hasEntity")){
-			return true;
-		}
-		return false;
-	}
+        return compound != null && compound.getBoolean("hasEntity");
+    }
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	/**

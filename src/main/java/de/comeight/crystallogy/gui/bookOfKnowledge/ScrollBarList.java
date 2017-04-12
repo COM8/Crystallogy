@@ -131,12 +131,7 @@ public class ScrollBarList implements IGuiClickable{
 	}
     
     protected void shouldEnbaleScroll(){
-    	if((height / getEntryHeight()) >= getEntrysSize()){
-    		scrollEnabeld = false;
-    	}
-    	else{
-    		scrollEnabeld = true;
-    	}
+        scrollEnabeld = (height / getEntryHeight()) < getEntrysSize();
     }
     
     protected int getHoverIndex(int mouseX, int mouseY){

@@ -129,11 +129,8 @@ public abstract class BaseRecipeHandler {
 		if(input == null){
 			return false;
 		}
-		if(findRecipe(input) != null){
-			return true;
-		}
-		return false;
-	}
+        return findRecipe(input) != null;
+    }
 	
 	public void addRecipe(BaseRecipe recipe){
 		craftingList.add(recipe);

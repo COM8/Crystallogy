@@ -45,8 +45,8 @@ public class RendererDissectingTable extends TileEntitySpecialRenderer<TileEntit
         GlStateManager.pushMatrix();
         GlStateManager.translate(x, y, z);
         
-        renderBrain(tE.getStackInSlot(2), (EnumFacing)state.getValue(BaseMachine.FACING));
-        renderKnife(tE.getStackInSlot(1), (EnumFacing)state.getValue(BaseMachine.FACING));   
+        renderBrain(tE.getStackInSlot(2), state.getValue(BaseMachine.FACING));
+        renderKnife(tE.getStackInSlot(1), state.getValue(BaseMachine.FACING));
         GlStateManager.popMatrix();
     }
 

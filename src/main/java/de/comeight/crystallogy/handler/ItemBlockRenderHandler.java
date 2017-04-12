@@ -1,6 +1,7 @@
 package de.comeight.crystallogy.handler;
 
 import de.comeight.crystallogy.CrystallogyBase;
+import de.comeight.crystallogy.blocks.PlayerJar;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -19,7 +20,7 @@ public class ItemBlockRenderHandler {
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	private void registerItemBlockRenderer(){
-		registerRenderer(BlockHandler.playerJar.ID);
+		registerRenderer(PlayerJar.ID);
 	}
 	
 	private void registerRenderer(String id){

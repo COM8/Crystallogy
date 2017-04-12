@@ -57,12 +57,7 @@ public class BaseCrystalKnife extends BaseItemSword{
 	
 	public boolean hasEntity(ItemStack stack){
 		NBTTagCompound c = stack.getTagCompound();
-		if(c == null||c.getString(NBTTags.ENTITY_NAME) == null||c.getString(NBTTags.ENTITY_NAME).equals("-")||c.getString(NBTTags.ENTITY_NAME).equals("")){
-			return false;
-		}
-        else {
-			return true;
-		}
+        return !(c == null || c.getString(NBTTags.ENTITY_NAME) == null || c.getString(NBTTags.ENTITY_NAME).equals("-") || c.getString(NBTTags.ENTITY_NAME).equals(""));
 	}
 	
 	protected EntityLivingBase getEntity(ItemStack stack, World worldIn){

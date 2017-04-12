@@ -68,11 +68,8 @@ public class EnderonCrystal extends BaseItem {
 	}
 	
 	private boolean shouldTeleportPlayer(ItemStack itemStackIn){
-		if(itemStackIn.hasTagCompound() && itemStackIn.getTagCompound().getInteger("tick") >= TELEPORT_TIME){
-			return true;
-		}
-		return false;
-	}
+        return itemStackIn.hasTagCompound() && itemStackIn.getTagCompound().getInteger("tick") >= TELEPORT_TIME;
+    }
 	
 	@SideOnly(Side.CLIENT)
 	private void spawnParticles(World worldIn, Vec3d playerPos){

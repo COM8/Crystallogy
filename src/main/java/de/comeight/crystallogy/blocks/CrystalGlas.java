@@ -48,7 +48,7 @@ public class CrystalGlas extends BaseBlockGlass {
 	
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {COLOR});
+		return new BlockStateContainer(this, COLOR);
 	}
 	
 }

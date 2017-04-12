@@ -97,7 +97,7 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 	private boolean isEmptyBlock(BlockPos pos)
     {
         IBlockState iblockstate = world.getBlockState(pos);
-        return iblockstate.getMaterial() == Material.AIR ? true : !iblockstate.isFullCube();
+        return iblockstate.getMaterial() == Material.AIR || !iblockstate.isFullCube();
     }
 	
 	public boolean isForceMoveTo() {
@@ -123,11 +123,8 @@ public class EntityAiMoveToPos extends EntityAiBaseSerializable {
 				return false;
 			}
 		}
-		if(aiOwnerPathfinder.canEntityStandOnPos(new BlockPos(targetPos)) && !isNearTargetPosition()){
-			return true;
-		}
-		return false;
-	}
+        return aiOwnerPathfinder.canEntityStandOnPos(new BlockPos(targetPos)) && !isNearTargetPosition();
+    }
 	
 	@Override
 	public boolean continueExecutingCustom() {

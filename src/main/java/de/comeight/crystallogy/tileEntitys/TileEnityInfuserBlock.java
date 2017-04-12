@@ -66,7 +66,7 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 	
 	protected ItemStack[] getSurroundingItemStacks(){
 		ArrayList<ItemStack> list = new ArrayList<ItemStack>();
-		BlockPos surr[] = struct.getSurroundingPedals(pos);
+		BlockPos surr[] = StructureInfuser.getSurroundingPedals(pos);
 		for (int i = 0; i < surr.length; i++) {
 			TileEntity tE = worldObj.getTileEntity(surr[i]);
 			if(tE instanceof TileEnityInfuserBlock){
@@ -103,7 +103,7 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 			}
 			else{
 				if((recipe = InfusionRecipeHandler.matchRecipes(getStackInSlot(0), getSurroundingItemStacks())) != null){
-					recipe.cook(pos, struct.getSurroundingPedals(pos), worldObj);
+					recipe.cook(pos, StructureInfuser.getSurroundingPedals(pos), worldObj);
 				}
 				else{
 					//System.out.println("Recipe not found!");
@@ -138,10 +138,7 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
     @Override
     public boolean isItemValidForSlot(int index, ItemStack stack)
     {
-		if(inventory[index] != null){
-			return false;
-		}
-		return true;
+        return inventory[index] == null;
     }
     
     public void updateParticle() {
@@ -156,7 +153,7 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 		if(!worldObj.isRemote){ // Server:
 			if(recipe != null && recipe.isActive()){
 				recipe.tick();
-				worldObj.spawnParticle(EnumParticleTypes.LAVA, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, 0.0, 0.0, 0.0, new int[0]);
+				worldObj.spawnParticle(EnumParticleTypes.LAVA, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, 0.0, 0.0, 0.0);
 			}
 			
 			if(tick % 4 == 0){
@@ -187,7 +184,7 @@ public class TileEnityInfuserBlock extends TileEntityInventory implements ITicka
 	public void changeRecipeStatus(boolean status, WorldClient worldClient, int recipeIndex, boolean successfully){ //Client Animation
 		if(status){
 			recipe = InfusionRecipeHandler.getRecipe(recipeIndex);
-			infusionAnimation = new InfusionAnimation(pos, struct.getSurroundingPedals(pos), worldObj, recipe.getTotalCookTime());
+			infusionAnimation = new InfusionAnimation(pos, StructureInfuser.getSurroundingPedals(pos), worldObj, recipe.getTotalCookTime());
 			infusionAnimation.start();
 		}
 		else{

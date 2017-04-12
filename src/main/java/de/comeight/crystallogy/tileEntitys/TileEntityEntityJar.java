@@ -106,7 +106,7 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 	public void readCustomDataFromNBT(NBTTagCompound compound) {
 		if(compound.getBoolean(NBTTags.HAS_ENTITY)){
 			newEntity = true;
-			entityCompound = (NBTTagCompound) compound.copy();
+			entityCompound = compound.copy();
 		}
 		else{
 			this.entity = null;
@@ -226,7 +226,7 @@ public class TileEntityEntityJar extends BaseTileEntity implements ITickable{
 				double d1 = Utilities.getRandDouble(0.5, 0.7);
 				double d2 = Utilities.getRandDouble(0.5, 0.7);
 				double d3 = Utilities.getRandDouble(0.2, 0.6);
-	        	worldObj.spawnParticle(EnumParticleTypes.WATER_WAKE, pos.getX() + d1, pos.getY() + 0.65, pos.getZ() + d2, 0.0, -0.015, 0.0, new int[0]);
+	        	worldObj.spawnParticle(EnumParticleTypes.WATER_WAKE, pos.getX() + d1, pos.getY() + 0.65, pos.getZ() + d2, 0.0, -0.015, 0.0);
 	        }
 		}
 		else{

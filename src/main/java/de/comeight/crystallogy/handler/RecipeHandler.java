@@ -206,15 +206,13 @@ public class RecipeHandler {
 		addCrystalSwordBladeRecipe(new ItemStack(BlockHandler.crystall_green), EnumCrystalColor.GREEN.getStack(new ItemStack(ItemHandler.crystallSwordBlade)));
 		addCrystalSwordBladeRecipe(new ItemStack(BlockHandler.crystall_yellow), EnumCrystalColor.YELLOW.getStack(new ItemStack(ItemHandler.crystallSwordBlade)));
 
-		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.armorPlate, 4, 4), new Object[] {
-				"RG",
-				"BY",
-				
-				'R', BlockHandler.crystall_red,
-				'G', BlockHandler.crystall_green,
-				'B', BlockHandler.crystall_blue,
-				'Y', BlockHandler.crystall_yellow
-		});
+		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.armorPlate, 4, 4), "RG",
+                "BY",
+
+                'R', BlockHandler.crystall_red,
+                'G', BlockHandler.crystall_green,
+                'B', BlockHandler.crystall_blue,
+                'Y', BlockHandler.crystall_yellow);
 		
 		//Armor Red:
 		addArmorRecipe(new ItemStack(ItemHandler.armorPlate, 1, 0), new ItemStack(ItemHandler.armorHelmet_red),
@@ -252,72 +250,59 @@ public class RecipeHandler {
 				new ItemStack(ItemHandler.armorLeggins_hunter),
 				new ItemStack(ItemHandler.armorBoots_hunter));
 		
-		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.energyDust), new Object[] {
-				"RRR",
-				"RCR",
-				"RRR",
-				'C', ItemHandler.crystallDust_red,
-				'R', Items.REDSTONE
-		});
+		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.energyDust), "RRR",
+                "RCR",
+                "RRR",
+                'C', ItemHandler.crystallDust_red,
+                'R', Items.REDSTONE);
 		
-		GameRegistry.addShapedRecipe(new ItemStack(BlockHandler.armorCombiner), new Object[] {
-				"YDR",
-				"BAG",
-				"IMI",
-				'M', BlockHandler.machineBlock,
-				'R', BlockHandler.crystall_red,
-				'B', BlockHandler.crystall_blue,
-				'G', BlockHandler.crystall_green,
-				'Y', BlockHandler.crystall_yellow,
-				'A', ItemHandler.armorChestplate_combined,
-				'D', Blocks.DIAMOND_BLOCK,
-				'I', ItemHandler.armorCatalys
-				
-		});
+		GameRegistry.addShapedRecipe(new ItemStack(BlockHandler.armorCombiner), "YDR",
+                "BAG",
+                "IMI",
+                'M', BlockHandler.machineBlock,
+                'R', BlockHandler.crystall_red,
+                'B', BlockHandler.crystall_blue,
+                'G', BlockHandler.crystall_green,
+                'Y', BlockHandler.crystall_yellow,
+                'A', ItemHandler.armorChestplate_combined,
+                'D', Blocks.DIAMOND_BLOCK,
+                'I', ItemHandler.armorCatalys);
 		
-		GameRegistry.addShapedRecipe(new ItemStack(BlockHandler.compressor), new Object[] {
-				"OCO",
-				"ORO",
-				"OMO",
-				'O', Blocks.OBSIDIAN,
-				'R', Items.REDSTONE,
-				'M', BlockHandler.machineBlock,
-				'C', BlockHandler.crystall_blue
-		});
+		GameRegistry.addShapedRecipe(new ItemStack(BlockHandler.compressor), "OCO",
+                "ORO",
+                "OMO",
+                'O', Blocks.OBSIDIAN,
+                'R', Items.REDSTONE,
+                'M', BlockHandler.machineBlock,
+                'C', BlockHandler.crystall_blue);
 		
-		GameRegistry.addShapedRecipe(new ItemStack(BlockHandler.crystallCrusher), new Object[] {
-				"BBB",
-				"I_I",
-				"IMI",
-				'B', Blocks.BRICK_BLOCK,
-				'I', Items.IRON_INGOT,
-				'M', Blocks.IRON_BLOCK
-		});
+		GameRegistry.addShapedRecipe(new ItemStack(BlockHandler.crystallCrusher), "BBB",
+                "I_I",
+                "IMI",
+                'B', Blocks.BRICK_BLOCK,
+                'I', Items.IRON_INGOT,
+                'M', Blocks.IRON_BLOCK);
 		
-		GameRegistry.addShapedRecipe(new ItemStack(BlockHandler.charger), new Object[] {
-				"OCO",
-				"ORO",
-				"OMO",
-				'O', Blocks.OBSIDIAN,
-				'R', Items.REDSTONE,
-				'C', new ItemStack(ItemHandler.energyCrystal, 1, 12000),
-				'M', BlockHandler.machineBlock
-		});
+		GameRegistry.addShapedRecipe(new ItemStack(BlockHandler.charger), "OCO",
+                "ORO",
+                "OMO",
+                'O', Blocks.OBSIDIAN,
+                'R', Items.REDSTONE,
+                'C', new ItemStack(ItemHandler.energyCrystal, 1, 12000),
+                'M', BlockHandler.machineBlock);
 		
 		addCrystalGlasRecipe(new ItemStack(ItemHandler.crystallDust_red), new ItemStack(BlockHandler.crystalGlas, 7, 0));
 		addCrystalGlasRecipe(new ItemStack(ItemHandler.crystallDust_blue), new ItemStack(BlockHandler.crystalGlas, 7, 1));
 		addCrystalGlasRecipe(new ItemStack(ItemHandler.crystallDust_green), new ItemStack(BlockHandler.crystalGlas, 7, 2));
 		addCrystalGlasRecipe(new ItemStack(ItemHandler.crystallDust_yellow), new ItemStack(BlockHandler.crystalGlas, 7, 3));
 		
-		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.fertilizerPotato, 3), new Object[] {
-				"YPC",
-				"BPB",
-				"CPY",
-				'B', new ItemStack(Items.DYE, 2, 15),
-				'P', Items.POISONOUS_POTATO,
-				'C', ItemHandler.crystallDust_green,
-				'Y', BlockHandler.crystorya
-		});
+		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.fertilizerPotato, 3), "YPC",
+                "BPB",
+                "CPY",
+                'B', new ItemStack(Items.DYE, 2, 15),
+                'P', Items.POISONOUS_POTATO,
+                'C', ItemHandler.crystallDust_green,
+                'Y', BlockHandler.crystorya);
 		
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BlockHandler.farmersGreen, 1, 1), new Object[] {
 				"IPI",
@@ -333,14 +318,12 @@ public class RecipeHandler {
 		addCrystalPickaxeHeadPartRecipe(new ItemStack(BlockHandler.crystall_green), new ItemStack(ItemHandler.crystalPickaxeHead, 1, 2));
 		addCrystalPickaxeHeadPartRecipe(new ItemStack(BlockHandler.crystall_yellow), new ItemStack(ItemHandler.crystalPickaxeHead, 1, 3));
 		
-		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.entityGrabber), new Object[] {
-				"IB_",
-				"BIY",
-				"__I",
-				'I', Items.IRON_INGOT,
-				'B', new ItemStack(BlockHandler.crystalGlas, 1, 1),
-				'Y', new ItemStack(ItemHandler.armorPlate, 1, 3)
-		});
+		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.entityGrabber), "IB_",
+                "BIY",
+                "__I",
+                'I', Items.IRON_INGOT,
+                'B', new ItemStack(BlockHandler.crystalGlas, 1, 1),
+                'Y', new ItemStack(ItemHandler.armorPlate, 1, 3));
 		
 		GameRegistry.addRecipe(new ShapedOreRecipe(ItemHandler.hunterArmorMesh, new Object[]{
 				"GPG",
@@ -353,75 +336,59 @@ public class RecipeHandler {
 		}));
 		
 		
-		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.combinedArmorMesh), new Object[] {
-				"CPG",
-				"PMP",
-				"GPC",
-				
-				'G', new ItemStack(BlockHandler.crystalGlas, 1, 1),
-				'P', new ItemStack(ItemHandler.armorPlate, 4, 4),
-				'M', ItemHandler.hunterArmorMesh,
-				'C', ItemHandler.armorCatalys
-		});
+		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.combinedArmorMesh), "CPG",
+                "PMP",
+                "GPC",
+
+                'G', new ItemStack(BlockHandler.crystalGlas, 1, 1),
+                'P', new ItemStack(ItemHandler.armorPlate, 4, 4),
+                'M', ItemHandler.hunterArmorMesh,
+                'C', ItemHandler.armorCatalys);
 		
 		GameRegistry.addRecipe(new RecipeBookOfKnowledge());
 		
-		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.areaPicker), new Object[] {
-				"Q_Q",
-				"CCC",
-				"_T_",
-				'T', ItemHandler.toolRod,
-				'C', BlockHandler.crystall_yellow,
-				'Q', Items.QUARTZ
-		});
+		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.areaPicker), "Q_Q",
+                "CCC",
+                "_T_",
+                'T', ItemHandler.toolRod,
+                'C', BlockHandler.crystall_yellow,
+                'Q', Items.QUARTZ);
 		
-		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.spotPicker), new Object[] {
-				"Q_Q",
-				"CCC",
-				"_T_",
-				'T', ItemHandler.toolRod,
-				'C', BlockHandler.crystall_green,
-				'Q', Items.QUARTZ
-		});
+		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.spotPicker), "Q_Q",
+                "CCC",
+                "_T_",
+                'T', ItemHandler.toolRod,
+                'C', BlockHandler.crystall_green,
+                'Q', Items.QUARTZ);
 		
-		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.entityBrain,  1, 0), new Object[] {
-				"BBB",
-				"BSB",
-				"BBB",
-				'B', new ItemStack(ItemHandler.entityBrain,  1, 1),
-				'S', Items.SLIME_BALL
-		});
+		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.entityBrain,  1, 0), "BBB",
+                "BSB",
+                "BBB",
+                'B', new ItemStack(ItemHandler.entityBrain,  1, 1),
+                'S', Items.SLIME_BALL);
 		
-		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.entityBrain,  1, 1), new Object[] {
-				"BBB",
-				"BSB",
-				"BBB",
-				'B', new ItemStack(ItemHandler.entityBrain,  1, 2),
-				'S', Items.SLIME_BALL
-		});
+		GameRegistry.addShapedRecipe(new ItemStack(ItemHandler.entityBrain,  1, 1), "BBB",
+                "BSB",
+                "BBB",
+                'B', new ItemStack(ItemHandler.entityBrain,  1, 2),
+                'S', Items.SLIME_BALL);
 	}
 	
 	private void addCrystalHammerHeadRecipe(ItemStack crystal, ItemStack out){
-		GameRegistry.addShapedRecipe(out, new Object[] {
-				"CCC",
-				"CCC",
-				'C', crystal
-		});
+		GameRegistry.addShapedRecipe(out, "CCC",
+                "CCC",
+                'C', crystal);
 	}
 	
 	private void addCrystalSwordBladeRecipe(ItemStack crystal, ItemStack out){
-		GameRegistry.addShapedRecipe(out, new Object[] {
-				"C",
-				"C",
-				'C', crystal
-		});
+		GameRegistry.addShapedRecipe(out, "C",
+                "C",
+                'C', crystal);
 	}
 	
 	private void addCrystalPickaxeHeadPartRecipe(ItemStack crystal, ItemStack out){
-		GameRegistry.addShapedRecipe(out, new Object[] {
-				"CCC",
-				'C', crystal
-		});
+		GameRegistry.addShapedRecipe(out, "CCC",
+                'C', crystal);
 	}
 	
 	private void addCrystalGlasRecipe(ItemStack dust, ItemStack glas){
@@ -436,35 +403,27 @@ public class RecipeHandler {
 	}
 	
 	private void addArmorRecipe(ItemStack s, ItemStack helmet, ItemStack chestplate, ItemStack leggins, ItemStack boots){
-		GameRegistry.addShapedRecipe(helmet, new Object[] {
-				"SSS",
-				"S_S",
-				
-				'S', s
-		});
+		GameRegistry.addShapedRecipe(helmet, "SSS",
+                "S_S",
+
+                'S', s);
 		
-		GameRegistry.addShapedRecipe(chestplate, new Object[] {
-				"S_S",
-				"SSS",
-				"SSS",
-				
-				'S', s
-		});
+		GameRegistry.addShapedRecipe(chestplate, "S_S",
+                "SSS",
+                "SSS",
+
+                'S', s);
 		
-		GameRegistry.addShapedRecipe(leggins, new Object[] {
-				"SSS",
-				"S_S",
-				"S_S",
-				
-				'S', s
-		});
+		GameRegistry.addShapedRecipe(leggins, "SSS",
+                "S_S",
+                "S_S",
+
+                'S', s);
 		
-		GameRegistry.addShapedRecipe(boots, new Object[] {
-				"S_S",
-				"S_S",
-				
-				'S', s
-		});
+		GameRegistry.addShapedRecipe(boots, "S_S",
+                "S_S",
+
+                'S', s);
 	}
 	
 	//-----------------------------------------------Pre-Init:----------------------------------------------

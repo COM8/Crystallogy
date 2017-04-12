@@ -47,7 +47,7 @@ public class CrystalOfHolding extends BaseBlockCutout implements IPlantable {
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
     {
-        return CRYSTAL_OF_HOLDING_AABB[((Integer)state.getValue(AGE)).intValue()];
+        return CRYSTAL_OF_HOLDING_AABB[state.getValue(AGE).intValue()];
     }
 	
 	@Override
@@ -86,7 +86,7 @@ public class CrystalOfHolding extends BaseBlockCutout implements IPlantable {
 
     public int getMetaFromState(IBlockState state)
     {
-        return ((Integer)state.getValue(AGE)).intValue();
+        return state.getValue(AGE).intValue();
     }
     
     @Nullable
@@ -109,7 +109,7 @@ public class CrystalOfHolding extends BaseBlockCutout implements IPlantable {
         Random rand = world instanceof World ? ((World)world).rand : new Random();
         int count = 1;
 
-        if (((Integer)state.getValue(AGE)) >= 2)
+        if (state.getValue(AGE) >= 2)
         {
             count = 2 + rand.nextInt(3) + (fortune > 0 ? rand.nextInt(fortune + 1) : 0);
         }
@@ -210,7 +210,7 @@ public class CrystalOfHolding extends BaseBlockCutout implements IPlantable {
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
     {
-        int i = ((Integer)state.getValue(AGE)).intValue();
+        int i = state.getValue(AGE).intValue();
 
         if (i <= 2 && rand.nextInt(30) == 0)
         {
@@ -249,7 +249,7 @@ public class CrystalOfHolding extends BaseBlockCutout implements IPlantable {
 	
 	protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {AGE});
+        return new BlockStateContainer(this, AGE);
     }
 	
 }

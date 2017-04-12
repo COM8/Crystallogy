@@ -41,16 +41,16 @@ public class VaporizerDirection extends Vaporizer {
 		for (int j = 0; j < 5; j++) {
 			double r = Utilities.getRandDouble(-0.05, 0.05);
 			if(f < 0.25){
-				worldIn.spawnParticle(EnumParticleTypes.FLAME, x - 0.35, y, z + 0.75, moveX + r, 0.0D + r, moveZ + r, new int[0]);
+				worldIn.spawnParticle(EnumParticleTypes.FLAME, x - 0.35, y, z + 0.75, moveX + r, 0.0D + r, moveZ + r);
 			}
 			else if(f < 0.5){
-				worldIn.spawnParticle(EnumParticleTypes.FLAME, x - 0.75, y, z - 0.35, -moveX + r, 0.0D + r, moveZ + r, new int[0]);	
+				worldIn.spawnParticle(EnumParticleTypes.FLAME, x - 0.75, y, z - 0.35, -moveX + r, 0.0D + r, moveZ + r);
 			}
 			else if(f < 0.75){
-				worldIn.spawnParticle(EnumParticleTypes.FLAME, x + 0.35, y, z -0.75, moveX + r, 0.0D + r, -moveZ + r, new int[0]);
+				worldIn.spawnParticle(EnumParticleTypes.FLAME, x + 0.35, y, z -0.75, moveX + r, 0.0D + r, -moveZ + r);
 			}
 			else{
-				worldIn.spawnParticle(EnumParticleTypes.FLAME, x + 0.75, y, z + 0.35, moveX + r, 0.0D + r, moveZ + r, new int[0]);
+				worldIn.spawnParticle(EnumParticleTypes.FLAME, x + 0.75, y, z + 0.35, moveX + r, 0.0D + r, moveZ + r);
 			}	
 		}
 		if(stack.getItemDamage() < 200){

@@ -139,11 +139,8 @@ public class EntityAiPickupItems extends EntityAiMoveToPos{
 	
 	@Override
 	protected boolean shouldRecalcPath() {
-		if(super.shouldRecalcPath() || (aiOwnerPathfinder.noPath() && !isDone())){
-			return true;
-		}
-		return false;
-	}
+        return super.shouldRecalcPath() || (aiOwnerPathfinder.noPath() && !isDone());
+    }
 	
 	@Override
 	public void updateTask() {

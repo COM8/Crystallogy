@@ -44,7 +44,7 @@ public class GuiBookPage extends GuiScreen {
     protected int xPosBook;
     protected int yPosBook;
     
-    protected final int WRAPWIDTH = (int) (xSize / 2) - 20;
+    protected final int WRAPWIDTH = xSize / 2 - 20;
     
     protected final String HEADING;
     

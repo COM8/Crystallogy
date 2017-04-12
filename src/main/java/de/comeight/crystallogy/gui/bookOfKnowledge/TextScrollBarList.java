@@ -57,12 +57,7 @@ public class TextScrollBarList extends ScrollBarList {
 	
 	@Override
 	protected void shouldEnbaleScroll(){
-    	if((height / getEntryHeight()) >= getEntrysSize()){
-    		scrollEnabeld = false;
-    	}
-    	else{
-    		scrollEnabeld = true;
-    	}
+        scrollEnabeld = (height / getEntryHeight()) < getEntrysSize();
     }
 	
 }

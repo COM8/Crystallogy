@@ -93,25 +93,25 @@ public class BlockHandler {
 		machineBlock = new MachineBlock();
 		dissectingTable = new DissectingTable();
 		
-		registerBlock(dissectingTable, dissectingTable.ID);
-		registerBlock(machineBlock, machineBlock.ID);
-		registerBlock(armorCombiner, armorCombiner.ID);
-		registerBlock(crystall_blue, crystall_blue.ID);
-		registerBlock(crystall_green, crystall_green.ID);
-		registerBlock(crystall_red, crystall_red.ID);
-		registerBlock(crystall_yellow, crystall_yellow.ID);
-		registerBlock(fireCrystall, fireCrystall.ID);
-		registerBlock(crystallCrusher, crystallCrusher.ID);
-		registerBlock(compressor, compressor.ID);
-		registerBlock(charger, charger.ID);
-		registerBlock(infuserBlock, infuserBlock.ID);
-		registerBlock(crystalLight, crystalLight.ID);
-		registerBlock(farmersGreen, new ItemBlockFarmersGreen(farmersGreen), farmersGreen.ID);
-		registerBlock(playerJar, new ItemBlockPlayerJar(playerJar), playerJar.ID);
-		registerBlock(entityJar, new ItemBlockEntityJar(entityJar), entityJar.ID);
-		registerBlock(crystorya, crystorya.ID);
-		registerBlock(crystalGlas, new ItemBlockCrystalGlas(crystalGlas), crystalGlas.ID);
-		registerBlock(crystalOfHolding, new ItemBlockCrystalOfHolding(crystalOfHolding), crystalOfHolding.ID);
+		registerBlock(dissectingTable, DissectingTable.ID);
+		registerBlock(machineBlock, MachineBlock.ID);
+		registerBlock(armorCombiner, ArmorCombiner.ID);
+		registerBlock(crystall_blue, Crystall_blue.ID);
+		registerBlock(crystall_green, Crystall_green.ID);
+		registerBlock(crystall_red, Crystall_red.ID);
+		registerBlock(crystall_yellow, Crystall_yellow.ID);
+		registerBlock(fireCrystall, FireCrystall.ID);
+		registerBlock(crystallCrusher, CrystallCrusher.ID);
+		registerBlock(compressor, Compressor.ID);
+		registerBlock(charger, Charger.ID);
+		registerBlock(infuserBlock, InfuserBlock.ID);
+		registerBlock(crystalLight, CrystalLight.ID);
+		registerBlock(farmersGreen, new ItemBlockFarmersGreen(farmersGreen), FarmersGreen.ID);
+		registerBlock(playerJar, new ItemBlockPlayerJar(playerJar), PlayerJar.ID);
+		registerBlock(entityJar, new ItemBlockEntityJar(entityJar), EntityJar.ID);
+		registerBlock(crystorya, Crystorya.ID);
+		registerBlock(crystalGlas, new ItemBlockCrystalGlas(crystalGlas), CrystalGlas.ID);
+		registerBlock(crystalOfHolding, new ItemBlockCrystalOfHolding(crystalOfHolding), CrystalOfHolding.ID);
 		
 		Utilities.addConsoleText("All blocks are registered.");
 	}

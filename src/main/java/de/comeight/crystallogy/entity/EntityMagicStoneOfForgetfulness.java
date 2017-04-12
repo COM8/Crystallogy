@@ -64,7 +64,7 @@ public class EntityMagicStoneOfForgetfulness extends EntityThrowable{
         	}
         	else{
         		setDead();
-        		worldObj.playSound((EntityPlayer)null, posX, posY, posZ, SoundEvents.ENTITY_ARMORSTAND_HIT, SoundCategory.NEUTRAL, 0.5F, 0.4F / (rand.nextFloat() * 0.4F + 0.8F));
+        		worldObj.playSound(null, posX, posY, posZ, SoundEvents.ENTITY_ARMORSTAND_HIT, SoundCategory.NEUTRAL, 0.5F, 0.4F / (rand.nextFloat() * 0.4F + 0.8F));
         	}
         }
 		spawnBreakParticle();
@@ -93,7 +93,7 @@ public class EntityMagicStoneOfForgetfulness extends EntityThrowable{
 		}
 		for (int k = 0; k < 8; ++k)
         {
-            this.worldObj.spawnParticle(EnumParticleTypes.ITEM_CRACK, this.posX, this.posY, this.posZ, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, new int[] {Item.getIdFromItem(Item.getItemFromBlock(Blocks.COBBLESTONE))});
+            this.worldObj.spawnParticle(EnumParticleTypes.ITEM_CRACK, this.posX, this.posY, this.posZ, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, Item.getIdFromItem(Item.getItemFromBlock(Blocks.COBBLESTONE)));
         }
 	}
 	
@@ -103,7 +103,7 @@ public class EntityMagicStoneOfForgetfulness extends EntityThrowable{
 		}
 		for (int k = 0; k < 20; ++k)
         {
-            this.worldObj.spawnParticle(EnumParticleTypes.ITEM_CRACK, this.posX, this.posY, this.posZ, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, new int[] {Item.getIdFromItem(Items.APPLE)});
+            this.worldObj.spawnParticle(EnumParticleTypes.ITEM_CRACK, this.posX, this.posY, this.posZ, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, Item.getIdFromItem(Items.APPLE));
         }
 	}
 	

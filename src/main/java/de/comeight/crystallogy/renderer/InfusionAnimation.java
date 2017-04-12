@@ -114,9 +114,9 @@ public class InfusionAnimation {
 		double x = center.getX() + Utilities.getRandDouble(0.1, 0.9);
 		double y = center.getY() + Utilities.getRandDouble(0.5, 1.3);
 		double z = center.getZ() + Utilities.getRandDouble(0.1, 0.9);
-		world.spawnParticle(EnumParticleTypes.DRAGON_BREATH, x, y, z, 0.0, 0.0, 0.0, new int[0]);
+		world.spawnParticle(EnumParticleTypes.DRAGON_BREATH, x, y, z, 0.0, 0.0, 0.0);
 		if(ticks % 4 == 0){
-			world.spawnParticle(EnumParticleTypes.LAVA, x, y, z, 0.0, 0.0, 0.0, new int[0]);
+			world.spawnParticle(EnumParticleTypes.LAVA, x, y, z, 0.0, 0.0, 0.0);
 		}
 		if(ticks == 0){
 			world.playSound(center.getX(), center.getY(), center.getZ(), SoundEvents.ENTITY_GENERIC_BURN, SoundCategory.BLOCKS, 1.0F, 0.75F, false);

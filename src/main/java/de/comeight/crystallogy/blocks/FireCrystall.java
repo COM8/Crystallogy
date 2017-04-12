@@ -61,13 +61,13 @@ public class FireCrystall extends Crystall {
 	
 	private void spawnParticles(World worldIn, BlockPos pos){
 		if(Utilities.getRandInt(0, 10) == 0){
-			worldIn.spawnParticle(EnumParticleTypes.LAVA, pos.getX() + Utilities.getRandDouble(0.3, 0.7), pos.getY() + Utilities.getRandDouble(0.0, 0.7), pos.getZ() +Utilities.getRandDouble(0.25, 0.9), 0.0D, 0.0D, 0.0D, new int[0]);
+			worldIn.spawnParticle(EnumParticleTypes.LAVA, pos.getX() + Utilities.getRandDouble(0.3, 0.7), pos.getY() + Utilities.getRandDouble(0.0, 0.7), pos.getZ() +Utilities.getRandDouble(0.25, 0.9), 0.0D, 0.0D, 0.0D);
 		}
 		if(Utilities.getRandInt(0, 3) == 0){
-			worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, pos.getX() + Utilities.getRandDouble(0.3, 0.7), pos.getY() + Utilities.getRandDouble(0.0, 0.7), pos.getZ() +Utilities.getRandDouble(0.25, 0.9), 0.0D, 0.0D, 0.0D, new int[0]);
+			worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, pos.getX() + Utilities.getRandDouble(0.3, 0.7), pos.getY() + Utilities.getRandDouble(0.0, 0.7), pos.getZ() +Utilities.getRandDouble(0.25, 0.9), 0.0D, 0.0D, 0.0D);
 		}
 		if(Utilities.getRandInt(0, 3) == 0){
-			worldIn.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + Utilities.getRandDouble(0.3, 0.7), pos.getY() + Utilities.getRandDouble(0.0, 0.7), pos.getZ() +Utilities.getRandDouble(0.25, 0.9), 0.0D, 0.0D, 0.0D, new int[0]);
+			worldIn.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + Utilities.getRandDouble(0.3, 0.7), pos.getY() + Utilities.getRandDouble(0.0, 0.7), pos.getZ() +Utilities.getRandDouble(0.25, 0.9), 0.0D, 0.0D, 0.0D);
 		}
 	}
 	

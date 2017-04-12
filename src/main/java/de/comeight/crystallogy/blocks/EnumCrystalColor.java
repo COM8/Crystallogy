@@ -15,7 +15,7 @@ public enum EnumCrystalColor {
     private final String name;
     private final MapColor mapColor;
     
-    private EnumCrystalColor(int meta, String name, MapColor mapColorIn)
+    EnumCrystalColor(int meta, String name, MapColor mapColorIn)
     {
         this.meta = meta;
         this.name = name;

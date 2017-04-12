@@ -1,5 +1,7 @@
 package de.comeight.crystallogy;
 
+import de.comeight.crystallogy.blocks.*;
+import de.comeight.crystallogy.blocks.machines.*;
 import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ConfigHandler;
 import de.comeight.crystallogy.handler.EntityHandler;
@@ -141,17 +143,17 @@ public class CommonProxy {
 	}
 
 	private void registerTileEntitys() {
-		GameRegistry.registerTileEntity(TileEntityCrystallCrusher.class, "Crystallogy:" + BlockHandler.crystallCrusher.ID);
-		GameRegistry.registerTileEntity(TileEnityInfuserBlock.class, "Crystallogy:" + BlockHandler.infuserBlock.ID);
-		GameRegistry.registerTileEntity(TileEntityPlayerJar.class, "Crystallogy:" + BlockHandler.playerJar.ID);
-		GameRegistry.registerTileEntity(TileEntityEntityJar.class, "Crystallogy:" + BlockHandler.entityJar.ID);
-		GameRegistry.registerTileEntity(TileEntityCrystallLight.class, "Crystallogy:" + BlockHandler.crystalLight.ID);
-		GameRegistry.registerTileEntity(TileEntityCompressor.class, "Crystallogy:" + BlockHandler.compressor.ID);
-		GameRegistry.registerTileEntity(TileEntityCharger.class, "Crystallogy:" + BlockHandler.charger.ID);
-		GameRegistry.registerTileEntity(TileEntityFarmersGreen.class, "Crystallogy:" + BlockHandler.farmersGreen.ID);
-		GameRegistry.registerTileEntity(TileEntityCrystalOfHolding.class, "Crystallogy:" + BlockHandler.crystalOfHolding.ID);
-		GameRegistry.registerTileEntity(TileEntityArmorCombiner.class, "Crystallogy:" + BlockHandler.armorCombiner.ID);
-		GameRegistry.registerTileEntity(TileEntityDissectingTable.class, "Crystallogy:" + BlockHandler.dissectingTable.ID);
+		GameRegistry.registerTileEntity(TileEntityCrystallCrusher.class, "Crystallogy:" + CrystallCrusher.ID);
+		GameRegistry.registerTileEntity(TileEnityInfuserBlock.class, "Crystallogy:" + InfuserBlock.ID);
+		GameRegistry.registerTileEntity(TileEntityPlayerJar.class, "Crystallogy:" + PlayerJar.ID);
+		GameRegistry.registerTileEntity(TileEntityEntityJar.class, "Crystallogy:" + EntityJar.ID);
+		GameRegistry.registerTileEntity(TileEntityCrystallLight.class, "Crystallogy:" + CrystalLight.ID);
+		GameRegistry.registerTileEntity(TileEntityCompressor.class, "Crystallogy:" + Compressor.ID);
+		GameRegistry.registerTileEntity(TileEntityCharger.class, "Crystallogy:" + Charger.ID);
+		GameRegistry.registerTileEntity(TileEntityFarmersGreen.class, "Crystallogy:" + FarmersGreen.ID);
+		GameRegistry.registerTileEntity(TileEntityCrystalOfHolding.class, "Crystallogy:" + CrystalOfHolding.ID);
+		GameRegistry.registerTileEntity(TileEntityArmorCombiner.class, "Crystallogy:" + ArmorCombiner.ID);
+		GameRegistry.registerTileEntity(TileEntityDissectingTable.class, "Crystallogy:" + DissectingTable.ID);
 		
 		Utilities.addConsoleText("All tileEntitys are registered.");
 		

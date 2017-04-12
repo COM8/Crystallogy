@@ -49,11 +49,8 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
 			return false;
 		}
 		if(inventory[index] != null){
-			if(inventory[index].getItem() == stack.getItem() && inventory[index].stackSize < inventory[index].getMaxStackSize()){
-				return true;
-			}
-			return false;
-		}
+            return inventory[index].getItem() == stack.getItem() && inventory[index].stackSize < inventory[index].getMaxStackSize();
+        }
 		return true;
 	}
 	
@@ -297,11 +294,8 @@ public abstract class BaseTileEntityMachine extends TileEntityInventory implemen
 
 	@Override
 	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
-		if(index > (slotsInput -1)){
-			return true;
-		}
-		return false;
-	}
+        return index > (slotsInput - 1);
+    }
 	
 	public void onFinishedCrafting(World worldIn){
 		

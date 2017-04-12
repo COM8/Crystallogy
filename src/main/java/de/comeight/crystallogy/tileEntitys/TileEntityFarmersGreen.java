@@ -33,11 +33,8 @@ public class TileEntityFarmersGreen extends BaseTileEntity implements ITickable{
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
 	private boolean isActive(){
-		if(getBlockState() == 3){
-			return true;
-		}
-		return false;
-	}
+        return getBlockState() == 3;
+    }
 	
 	private int getBlockState(){
 		return worldObj.getBlockState(pos).getValue(FarmersGreen.STATUS);

@@ -34,11 +34,8 @@ public class EnergyCrystal extends BaseItem {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public boolean hasEffect(ItemStack stack) {
-		if(stack.getItemDamage() != stack.getMaxDamage()){
-			return true;
-		}
-		return false;
-	}
+        return stack.getItemDamage() != stack.getMaxDamage();
+    }
 	
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {

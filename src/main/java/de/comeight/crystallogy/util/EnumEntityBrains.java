@@ -11,7 +11,7 @@ public enum EnumEntityBrains {
 	private final int META;
 	private final String NAME;
 	
-	private EnumEntityBrains(int meta, String name){
+	EnumEntityBrains(int meta, String name){
 		this.META = meta;
 		this.NAME = name;
 	}

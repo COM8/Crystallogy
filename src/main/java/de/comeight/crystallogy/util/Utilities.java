@@ -71,7 +71,7 @@ public class Utilities {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	public static double calcNewColorPercentage(double color, double modifire){
 		color += modifire;
-		color = (double) Utilities.round((float) color, 2);
+		color = Utilities.round((float) color, 2);
 		if(color > 1.0){
 			color = 1.0;
 		}

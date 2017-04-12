@@ -148,7 +148,7 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 	public static void addArmor(ItemStack itemStackIn, ItemStack armor){
 		if(itemStackIn.getItem() instanceof Armor_combined){
 			Armor_combined armorCombined = (Armor_combined) itemStackIn.getItem();
-			UUID id = armorCombined.getArmorListEntryId(itemStackIn);
+			UUID id = getArmorListEntryId(itemStackIn);
 			CombinedArmorList.addArmor(armor, id);
 			
 			armorCombined.save(itemStackIn);
@@ -268,11 +268,8 @@ public class Armor_combined extends BaseArmor implements ISpecialArmor{
 	}
 	
 	private boolean hasArmorIdStored(ItemStack itemStackIn){
-		if(itemStackIn.hasTagCompound() && itemStackIn.getTagCompound().hasUniqueId("armorListEntryId")){
-			return true;
-		}
-		return false;
-	}
+        return itemStackIn.hasTagCompound() && itemStackIn.getTagCompound().hasUniqueId("armorListEntryId");
+    }
 	
 	private void manageArmor(ItemStack itemStackIn){
 		if(hasArmorIdStored(itemStackIn)){

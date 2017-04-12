@@ -84,11 +84,8 @@ public class EntityAiQuarry extends EntityAiMoveToPos {
 	
 	@Override
 	protected boolean shouldRecalcPath() {
-		if(super.shouldRecalcPath() || aiOwnerPathfinder.noPath()){
-			return true;
-		}
-		return false;
-	}
+        return super.shouldRecalcPath() || aiOwnerPathfinder.noPath();
+    }
 	
 	@Override
 	public void updateTask(){

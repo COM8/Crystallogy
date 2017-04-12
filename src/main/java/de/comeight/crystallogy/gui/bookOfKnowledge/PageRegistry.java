@@ -157,8 +157,8 @@ public class PageRegistry {
 	public static GuiBookDissectingTable DISSECTING_TABLE_PAGE = new GuiBookDissectingTable();
 	
 	public static GuiBookArmorCatalyst ARMOR_CATALYST_PAGE = new GuiBookArmorCatalyst();
-	public static GuiBookArmorPlates1 ARMOR_PLATE_PAGE_1 = new GuiBookArmorPlates1();;
-	public static GuiBookArmorPlates2 ARMOR_PLATE_PAGE_2 = new GuiBookArmorPlates2();
+	public static GuiBookArmorPlates1 ARMOR_PLATE_PAGE_1 = new GuiBookArmorPlates1();
+    public static GuiBookArmorPlates2 ARMOR_PLATE_PAGE_2 = new GuiBookArmorPlates2();
 	public static GuiBookThreatDustsMainPage THREAT_DUSTS_MAIN_PAGE = new GuiBookThreatDustsMainPage();
 	public static GuiBookThreatDustsAiDust THREAT_DUSTS_AI_DUST_PAGE = new GuiBookThreatDustsAiDust();
 	public static GuiBookThreatDustsBadLuck THREAT_DUSTS_BAD_LUCK_PAGE = new GuiBookThreatDustsBadLuck();

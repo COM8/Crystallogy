@@ -24,7 +24,7 @@ public enum EnumThreats{
 	private final RGBColor color;
 	private final ThreatDust threatDust;
 	
-	private EnumThreats(RGBColor color, ThreatDust threatDust, int id){
+	EnumThreats(RGBColor color, ThreatDust threatDust, int id){
 		this.color = color;
 		this.threatDust = threatDust;
 		this.id = id;			

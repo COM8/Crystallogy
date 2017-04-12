@@ -1,5 +1,12 @@
 package de.comeight.crystallogy.handler;
 
+import de.comeight.crystallogy.blocks.Crystall_blue;
+import de.comeight.crystallogy.blocks.Crystall_green;
+import de.comeight.crystallogy.blocks.Crystall_red;
+import de.comeight.crystallogy.blocks.Crystall_yellow;
+import de.comeight.crystallogy.items.EnderonCrystal;
+import de.comeight.crystallogy.items.EnergyDust;
+import de.comeight.crystallogy.items.threatDusts.*;
 import net.minecraft.item.Item;
 import net.minecraft.world.storage.loot.LootEntryItem;
 import net.minecraft.world.storage.loot.LootPool;
@@ -27,12 +34,12 @@ public class ChestGenHandler {
 		LootPool pool = event.getTable().getPool("main");
 		
 		if(pool != null){
-			pool.addEntry(new LootEntryItem(Item.getItemFromBlock(BlockHandler.crystall_green), 7, 10, getCount(1, 5), new LootCondition[0], BlockHandler.crystall_green.ID));
-			pool.addEntry(new LootEntryItem(Item.getItemFromBlock(BlockHandler.crystall_red), 7, 10, getCount(1, 5), new LootCondition[0], BlockHandler.crystall_red.ID));
-			pool.addEntry(new LootEntryItem(Item.getItemFromBlock(BlockHandler.crystall_blue), 7, 10, getCount(1, 5), new LootCondition[0], BlockHandler.crystall_blue.ID));
-			pool.addEntry(new LootEntryItem(Item.getItemFromBlock(BlockHandler.crystall_yellow), 7, 10, getCount(1, 5), new LootCondition[0], BlockHandler.crystall_yellow.ID));
+			pool.addEntry(new LootEntryItem(Item.getItemFromBlock(BlockHandler.crystall_green), 7, 10, getCount(1, 5), new LootCondition[0], Crystall_green.ID));
+			pool.addEntry(new LootEntryItem(Item.getItemFromBlock(BlockHandler.crystall_red), 7, 10, getCount(1, 5), new LootCondition[0], Crystall_red.ID));
+			pool.addEntry(new LootEntryItem(Item.getItemFromBlock(BlockHandler.crystall_blue), 7, 10, getCount(1, 5), new LootCondition[0], Crystall_blue.ID));
+			pool.addEntry(new LootEntryItem(Item.getItemFromBlock(BlockHandler.crystall_yellow), 7, 10, getCount(1, 5), new LootCondition[0], Crystall_yellow.ID));
 			
-			pool.addEntry(new LootEntryItem(ItemHandler.enderonCrystal, 10, 10, getCount(1, 1), new LootCondition[0], ItemHandler.enderonCrystal.ID));
+			pool.addEntry(new LootEntryItem(ItemHandler.enderonCrystal, 10, 10, getCount(1, 1), new LootCondition[0], EnderonCrystal.ID));
 		}
 	}
 
@@ -40,18 +47,18 @@ public class ChestGenHandler {
 		LootPool pool = event.getTable().getPool("main");
 		
 		if(pool != null){
-			pool.addEntry(new LootEntryItem(Item.getItemFromBlock(BlockHandler.crystall_green), 7, 10, getCount(1, 5), new LootCondition[0], BlockHandler.crystall_green.ID));
-			pool.addEntry(new LootEntryItem(Item.getItemFromBlock(BlockHandler.crystall_red), 7, 10, getCount(1, 5), new LootCondition[0], BlockHandler.crystall_red.ID));
-			pool.addEntry(new LootEntryItem(Item.getItemFromBlock(BlockHandler.crystall_blue), 7, 10, getCount(1, 5), new LootCondition[0], BlockHandler.crystall_blue.ID));
-			pool.addEntry(new LootEntryItem(Item.getItemFromBlock(BlockHandler.crystall_yellow), 7, 10, getCount(1, 5), new LootCondition[0], BlockHandler.crystall_yellow.ID));
+			pool.addEntry(new LootEntryItem(Item.getItemFromBlock(BlockHandler.crystall_green), 7, 10, getCount(1, 5), new LootCondition[0], Crystall_green.ID));
+			pool.addEntry(new LootEntryItem(Item.getItemFromBlock(BlockHandler.crystall_red), 7, 10, getCount(1, 5), new LootCondition[0], Crystall_red.ID));
+			pool.addEntry(new LootEntryItem(Item.getItemFromBlock(BlockHandler.crystall_blue), 7, 10, getCount(1, 5), new LootCondition[0], Crystall_blue.ID));
+			pool.addEntry(new LootEntryItem(Item.getItemFromBlock(BlockHandler.crystall_yellow), 7, 10, getCount(1, 5), new LootCondition[0], Crystall_yellow.ID));
 			
-			pool.addEntry(new LootEntryItem(ItemHandler.badLuckDust, 5, 10, getCount(1, 1), new LootCondition[0], ItemHandler.badLuckDust.ID));
-			pool.addEntry(new LootEntryItem(ItemHandler.blindDust, 5, 10, getCount(1, 1), new LootCondition[0], ItemHandler.blindDust.ID));
-			pool.addEntry(new LootEntryItem(ItemHandler.damDust, 5, 10, getCount(1, 1), new LootCondition[0], ItemHandler.damDust.ID));
-			pool.addEntry(new LootEntryItem(ItemHandler.enderDust, 5, 10, getCount(1, 1), new LootCondition[0], ItemHandler.enderDust.ID));
-			pool.addEntry(new LootEntryItem(ItemHandler.energyDust, 5, 10, getCount(1, 1), new LootCondition[0], ItemHandler.energyDust.ID));
-			pool.addEntry(new LootEntryItem(ItemHandler.fireDust, 5, 10, getCount(1, 1), new LootCondition[0], ItemHandler.fireDust.ID));
-			pool.addEntry(new LootEntryItem(ItemHandler.glowDust, 5, 10, getCount(1, 1), new LootCondition[0], ItemHandler.glowDust.ID));
+			pool.addEntry(new LootEntryItem(ItemHandler.badLuckDust, 5, 10, getCount(1, 1), new LootCondition[0], BadLuckDust.ID));
+			pool.addEntry(new LootEntryItem(ItemHandler.blindDust, 5, 10, getCount(1, 1), new LootCondition[0], BlindDust.ID));
+			pool.addEntry(new LootEntryItem(ItemHandler.damDust, 5, 10, getCount(1, 1), new LootCondition[0], DamDust.ID));
+			pool.addEntry(new LootEntryItem(ItemHandler.enderDust, 5, 10, getCount(1, 1), new LootCondition[0], EnderDust.ID));
+			pool.addEntry(new LootEntryItem(ItemHandler.energyDust, 5, 10, getCount(1, 1), new LootCondition[0], EnergyDust.ID));
+			pool.addEntry(new LootEntryItem(ItemHandler.fireDust, 5, 10, getCount(1, 1), new LootCondition[0], FireDust.ID));
+			pool.addEntry(new LootEntryItem(ItemHandler.glowDust, 5, 10, getCount(1, 1), new LootCondition[0], GlowDust.ID));
 		}
 	}
 	
@@ -59,15 +66,15 @@ public class ChestGenHandler {
 		LootPool pool = event.getTable().getPool("main");
 		
 		if(pool != null){
-			pool.addEntry(new LootEntryItem(Item.getItemFromBlock(BlockHandler.crystall_red), 7, 10, getCount(1, 5), new LootCondition[0], BlockHandler.crystall_red.ID));
+			pool.addEntry(new LootEntryItem(Item.getItemFromBlock(BlockHandler.crystall_red), 7, 10, getCount(1, 5), new LootCondition[0], Crystall_red.ID));
 			
-			pool.addEntry(new LootEntryItem(ItemHandler.badLuckDust, 5, 10, getCount(1, 1), new LootCondition[0], ItemHandler.badLuckDust.ID));
-			pool.addEntry(new LootEntryItem(ItemHandler.blindDust, 5, 10, getCount(1, 1), new LootCondition[0], ItemHandler.blindDust.ID));
-			pool.addEntry(new LootEntryItem(ItemHandler.damDust, 5, 10, getCount(1, 1), new LootCondition[0], ItemHandler.damDust.ID));
-			pool.addEntry(new LootEntryItem(ItemHandler.enderDust, 5, 10, getCount(1, 1), new LootCondition[0], ItemHandler.enderDust.ID));
-			pool.addEntry(new LootEntryItem(ItemHandler.energyDust, 5, 10, getCount(1, 1), new LootCondition[0], ItemHandler.energyDust.ID));
-			pool.addEntry(new LootEntryItem(ItemHandler.fireDust, 5, 10, getCount(1, 1), new LootCondition[0], ItemHandler.fireDust.ID));
-			pool.addEntry(new LootEntryItem(ItemHandler.glowDust, 5, 10, getCount(1, 1), new LootCondition[0], ItemHandler.glowDust.ID));
+			pool.addEntry(new LootEntryItem(ItemHandler.badLuckDust, 5, 10, getCount(1, 1), new LootCondition[0], BadLuckDust.ID));
+			pool.addEntry(new LootEntryItem(ItemHandler.blindDust, 5, 10, getCount(1, 1), new LootCondition[0], BlindDust.ID));
+			pool.addEntry(new LootEntryItem(ItemHandler.damDust, 5, 10, getCount(1, 1), new LootCondition[0], DamDust.ID));
+			pool.addEntry(new LootEntryItem(ItemHandler.enderDust, 5, 10, getCount(1, 1), new LootCondition[0], EnderDust.ID));
+			pool.addEntry(new LootEntryItem(ItemHandler.energyDust, 5, 10, getCount(1, 1), new LootCondition[0], EnergyDust.ID));
+			pool.addEntry(new LootEntryItem(ItemHandler.fireDust, 5, 10, getCount(1, 1), new LootCondition[0], FireDust.ID));
+			pool.addEntry(new LootEntryItem(ItemHandler.glowDust, 5, 10, getCount(1, 1), new LootCondition[0], GlowDust.ID));
 		}
 	}
 	
@@ -75,7 +82,7 @@ public class ChestGenHandler {
 		LootPool pool = event.getTable().getPool("main");
 		
 		if(pool != null){
-			pool.addEntry(new LootEntryItem(Item.getItemFromBlock(BlockHandler.crystall_yellow), 7, 10, getCount(1, 5), new LootCondition[0], BlockHandler.crystall_yellow.ID));
+			pool.addEntry(new LootEntryItem(Item.getItemFromBlock(BlockHandler.crystall_yellow), 7, 10, getCount(1, 5), new LootCondition[0], Crystall_yellow.ID));
 		}
 	}
 	
@@ -83,7 +90,7 @@ public class ChestGenHandler {
 		LootPool pool = event.getTable().getPool("main");
 		
 		if(pool != null){
-			pool.addEntry(new LootEntryItem(Item.getItemFromBlock(BlockHandler.crystall_green), 7, 10, getCount(1, 5), new LootCondition[0], BlockHandler.crystall_green.ID));
+			pool.addEntry(new LootEntryItem(Item.getItemFromBlock(BlockHandler.crystall_green), 7, 10, getCount(1, 5), new LootCondition[0], Crystall_green.ID));
 		}
 	}
 	
@@ -91,15 +98,15 @@ public class ChestGenHandler {
 		LootPool pool = event.getTable().getPool("main");
 		
 		if(pool != null){
-			pool.addEntry(new LootEntryItem(ItemHandler.enderonCrystal, 5, 10, getCount(1, 1), new LootCondition[0], ItemHandler.enderonCrystal.ID));
+			pool.addEntry(new LootEntryItem(ItemHandler.enderonCrystal, 5, 10, getCount(1, 1), new LootCondition[0], EnderonCrystal.ID));
 			
-			pool.addEntry(new LootEntryItem(ItemHandler.badLuckDust, 5, 10, getCount(1, 1), new LootCondition[0], ItemHandler.badLuckDust.ID));
-			pool.addEntry(new LootEntryItem(ItemHandler.blindDust, 5, 10, getCount(1, 1), new LootCondition[0], ItemHandler.blindDust.ID));
-			pool.addEntry(new LootEntryItem(ItemHandler.damDust, 5, 10, getCount(1, 1), new LootCondition[0], ItemHandler.damDust.ID));
-			pool.addEntry(new LootEntryItem(ItemHandler.enderDust, 5, 10, getCount(1, 1), new LootCondition[0], ItemHandler.enderDust.ID));
-			pool.addEntry(new LootEntryItem(ItemHandler.energyDust, 5, 10, getCount(1, 1), new LootCondition[0], ItemHandler.energyDust.ID));
-			pool.addEntry(new LootEntryItem(ItemHandler.fireDust, 5, 10, getCount(1, 1), new LootCondition[0], ItemHandler.fireDust.ID));
-			pool.addEntry(new LootEntryItem(ItemHandler.glowDust, 5, 10, getCount(1, 1), new LootCondition[0], ItemHandler.glowDust.ID));
+			pool.addEntry(new LootEntryItem(ItemHandler.badLuckDust, 5, 10, getCount(1, 1), new LootCondition[0], BadLuckDust.ID));
+			pool.addEntry(new LootEntryItem(ItemHandler.blindDust, 5, 10, getCount(1, 1), new LootCondition[0], BlindDust.ID));
+			pool.addEntry(new LootEntryItem(ItemHandler.damDust, 5, 10, getCount(1, 1), new LootCondition[0], DamDust.ID));
+			pool.addEntry(new LootEntryItem(ItemHandler.enderDust, 5, 10, getCount(1, 1), new LootCondition[0], EnderDust.ID));
+			pool.addEntry(new LootEntryItem(ItemHandler.energyDust, 5, 10, getCount(1, 1), new LootCondition[0], EnergyDust.ID));
+			pool.addEntry(new LootEntryItem(ItemHandler.fireDust, 5, 10, getCount(1, 1), new LootCondition[0], FireDust.ID));
+			pool.addEntry(new LootEntryItem(ItemHandler.glowDust, 5, 10, getCount(1, 1), new LootCondition[0], GlowDust.ID));
 			
 		}
 	}

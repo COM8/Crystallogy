@@ -163,7 +163,7 @@ public class FarmersGreen extends BaseBlockTileEntity {
 	@Override
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {STATUS});
+        return new BlockStateContainer(this, STATUS);
     }
 	
 	@Override

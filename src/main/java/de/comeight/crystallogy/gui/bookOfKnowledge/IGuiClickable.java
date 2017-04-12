@@ -12,10 +12,10 @@ public interface IGuiClickable {
 	
 	
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
-	public abstract void mouseReleased(int mouseX, int mouseY);
+    void mouseReleased(int mouseX, int mouseY);
 	
-	public abstract void mouseClicked(int mouseX, int mouseY, int mouseButton);
+	void mouseClicked(int mouseX, int mouseY, int mouseButton);
 	
-	public abstract void mouseClickMove(int mouseX, int mouseY, int clickedMouseButton, long timeSinceLastClick);
+	void mouseClickMove(int mouseX, int mouseY, int clickedMouseButton, long timeSinceLastClick);
 	
 }
