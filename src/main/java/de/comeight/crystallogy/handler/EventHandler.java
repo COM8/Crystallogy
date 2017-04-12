@@ -45,21 +45,21 @@ public class EventHandler {
 	public void LivingDropsEvent(LivingDropsEvent event){
 		Entity entity = event.getEntity();
 		if(entity instanceof EntityPlayer || entity instanceof EntityVillager){
-			event.getDrops().add(new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, new ItemStack(ItemHandler.entityBrain, 1, 0)));
+			dropEntityBrain(event, 0);
 		}
 		else if(entity instanceof EntityMob){
 			if(Utilities.getRandInt(0, 2) == 0){
-				event.getDrops().add(new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, new ItemStack(ItemHandler.entityBrain, 1, Utilities.getRandInt(1, 4))));
+				dropEntityBrain(event, Utilities.getRandInt(1, 4));
 			}
 		}
 		else if (entity instanceof EntityAgeable){
 			if(Utilities.getRandInt(0, 2) == 0){
-				event.getDrops().add(new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, new ItemStack(ItemHandler.entityBrain, 1, Utilities.getRandInt(2, 4))));
+				dropEntityBrain(event, Utilities.getRandInt(2, 4));
 			}
 		}
 		else{
 			if(Utilities.getRandInt(0, 2) == 0){
-				event.getDrops().add(new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, new ItemStack(ItemHandler.entityBrain, 1, Utilities.getRandInt(1, 4))));
+				dropEntityBrain(event, Utilities.getRandInt(1, 4));
 			}
 		}
 	}
@@ -78,5 +78,38 @@ public class EventHandler {
 				compound.setBoolean(TAG_PLAYER_GOT_BOOK, true);
 			}
 		}
+	}
+
+	private void dropEntityBrain(LivingDropsEvent event, int brainType) {
+		switch (brainType) {
+			case 0:
+				if(ConfigHandler.disableDropEntityBrainNormal) {
+					return;
+				}
+				break;
+
+			case 1:
+				if(ConfigHandler.disableDropEntityBrainSmall) {
+					return;
+				}
+				break;
+
+			case 2:
+				if(ConfigHandler.disableDropEntityBrainTiny) {
+					return;
+				}
+				break;
+
+			case 3:
+				if(ConfigHandler.disableDropEntityBrainWalnut) {
+					return;
+				}
+				break;
+
+			default:
+				break;
+		}
+		Entity entity = event.getEntity();
+		event.getDrops().add(new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, new ItemStack(ItemHandler.entityBrain, 1, brainType)));
 	}
 }

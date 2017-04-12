@@ -120,13 +120,23 @@ public class CommonProxy {
 	}
 	
 	private void registerWorldGens() {
-		GameRegistry.registerWorldGenerator(new WorldGenCrystal(BlockHandler.crystall_green, ConfigHandler.greenChancesToSpawn, ConfigHandler.greenMaxSize, ConfigHandler.greenCrystalSpawnMin, ConfigHandler.greenCrystalSpawnMax), 0);
-		GameRegistry.registerWorldGenerator(new WorldGenCrystal(BlockHandler.crystall_blue, ConfigHandler.blueChancesToSpawn, ConfigHandler.blueMaxSize, ConfigHandler.blueCrystalSpawnMin, ConfigHandler.blueCrystalSpawnMax), 0);
-		GameRegistry.registerWorldGenerator(new WorldGenCrystal(BlockHandler.crystall_yellow, ConfigHandler.yellowChancesToSpawn, ConfigHandler.yellowMaxSize, ConfigHandler.yellowCrystalSpawnMin, ConfigHandler.yellowCrystalSpawnMax), 0);
-		GameRegistry.registerWorldGenerator(new WorldGenCrystal(BlockHandler.crystall_red, ConfigHandler.redChancesToSpawn, ConfigHandler.redMaxSize, ConfigHandler.redCrystalSpawnMin, ConfigHandler.redCrystalSpawnMax), 0);
-		
-		GameRegistry.registerWorldGenerator(new WorldGeneratorFoilage(3), 20);
-		
+		if(!ConfigHandler.disableRedCrystalWorldGeneration) {
+			GameRegistry.registerWorldGenerator(new WorldGenCrystal(BlockHandler.crystall_green, ConfigHandler.greenChancesToSpawn, ConfigHandler.greenMaxSize, ConfigHandler.greenCrystalSpawnMin, ConfigHandler.greenCrystalSpawnMax), 0);
+		}
+		if(!ConfigHandler.disableBlueCrystalWorldGeneration) {
+			GameRegistry.registerWorldGenerator(new WorldGenCrystal(BlockHandler.crystall_blue, ConfigHandler.blueChancesToSpawn, ConfigHandler.blueMaxSize, ConfigHandler.blueCrystalSpawnMin, ConfigHandler.blueCrystalSpawnMax), 0);
+		}
+		if(!ConfigHandler.disableGreenCrystalWorldGeneration) {
+			GameRegistry.registerWorldGenerator(new WorldGenCrystal(BlockHandler.crystall_yellow, ConfigHandler.yellowChancesToSpawn, ConfigHandler.yellowMaxSize, ConfigHandler.yellowCrystalSpawnMin, ConfigHandler.yellowCrystalSpawnMax), 0);
+		}
+		if(!ConfigHandler.disableYellowCrystalWorldGeneration) {
+			GameRegistry.registerWorldGenerator(new WorldGenCrystal(BlockHandler.crystall_red, ConfigHandler.redChancesToSpawn, ConfigHandler.redMaxSize, ConfigHandler.redCrystalSpawnMin, ConfigHandler.redCrystalSpawnMax), 0);
+		}
+
+		if(!ConfigHandler.disableCrystoryaWorldGeneration) {
+			GameRegistry.registerWorldGenerator(new WorldGeneratorFoilage(ConfigHandler.crystoryaChancesToSpawn), 20);
+		}
+
 		Utilities.addConsoleText("All worldgens are registered.");
 	}
 

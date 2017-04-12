@@ -54,7 +54,7 @@ public class MessageHandlerOnClientTileEntitySync implements IMessageHandler<Net
 			BaseTileEntity bTE = (BaseTileEntity) tE;
 			bTE.onCustomDataPacket(message);
 		}
-		else if(ConfigHandler.enableDubugMessagesInLog){
+		else if(ConfigHandler.enableDebugMessagesInLog){
 			System.out.println("No / Wrong TileEntity in NetworkPacketTileEntitySync!");
 		}
 	}
