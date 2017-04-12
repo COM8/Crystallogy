@@ -122,19 +122,19 @@ public class ConfigHandler {
 		prop.setComment("Disable world generation for red crystals. default=false");
 		disableRedCrystalWorldGeneration = prop.getBoolean();
 
-		prop = config.get(WORLD_GENERATION, "disableRedCrystalWorldGeneration", false);
+		prop = config.get(WORLD_GENERATION, "disableBlueCrystalWorldGeneration", false);
 		prop.setComment("Disable world generation for blue crystals. default=false");
 		disableBlueCrystalWorldGeneration = prop.getBoolean();
 
-		prop = config.get(WORLD_GENERATION, "disableRedCrystalWorldGeneration", false);
+		prop = config.get(WORLD_GENERATION, "disableGreenCrystalWorldGeneration", false);
 		prop.setComment("Disable world generation for green crystals. default=false");
 		disableGreenCrystalWorldGeneration = prop.getBoolean();
 
-		prop = config.get(WORLD_GENERATION, "disableRedCrystalWorldGeneration", false);
+		prop = config.get(WORLD_GENERATION, "disableYellowCrystalWorldGeneration", false);
 		prop.setComment("Disable world generation for yellow crystals. default=false");
 		disableYellowCrystalWorldGeneration = prop.getBoolean();
 
-		prop = config.get(WORLD_GENERATION, "disableRedCrystalWorldGeneration", false);
+		prop = config.get(WORLD_GENERATION, "disableCrystoryaWorldGeneration", false);
 		prop.setComment("Disable world generation crystorya. default=false");
 		disableCrystoryaWorldGeneration = prop.getBoolean();
 
