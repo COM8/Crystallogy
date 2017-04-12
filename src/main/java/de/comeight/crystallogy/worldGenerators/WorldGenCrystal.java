@@ -5,7 +5,6 @@ import java.util.Random;
 import com.google.common.base.Predicate;
 
 import de.comeight.crystallogy.blocks.Crystall;
-import de.comeight.crystallogy.util.Utilities;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.state.pattern.BlockMatcher;
 import net.minecraft.init.Blocks;
@@ -15,7 +14,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkGenerator;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class WorldGenCrystal implements IWorldGenerator{
@@ -62,13 +60,13 @@ public class WorldGenCrystal implements IWorldGenerator{
 	    if (MIN_SPAWN_HEIGHT < 0 || MAX_SPAWN_HEIGHT > 256 || MIN_SPAWN_HEIGHT > MAX_SPAWN_HEIGHT){
 	    	throw new IllegalArgumentException("Illegal Height Arguments for WorldGenerator! minHeight=" + MIN_SPAWN_HEIGHT + ", maxheight=" + MAX_SPAWN_HEIGHT + ", block=" + CRYSTAL.toString());
 	    }
-	    int x = 0;
-	    int y = 0;
-	    int z = 0;
-	    int height = 0;
+	    int x;
+	    int y;
+	    int z;
+	    int height;
 	    for (int i = 0; i < MAX_SPOTS; i ++) {
-	        x = chunkX + Utilities.getRandInt(0, 16, random);
-	        z = chunkZ + Utilities.getRandInt(0, 16, random);
+	        x = chunkX + random.nextInt(16);
+	        z = chunkZ + random.nextInt(16);
 	        height = world.getHeight(new BlockPos(x, 0, z)).getY() - 1;
 	        if(MAX_SPAWN_HEIGHT > height){
 	        	if(MIN_SPAWN_HEIGHT >= height){
@@ -78,7 +76,7 @@ public class WorldGenCrystal implements IWorldGenerator{
 	        else{
 	        	height = MAX_SPAWN_HEIGHT;
 	        }
-	        y = Utilities.getRandInt(MIN_SPAWN_HEIGHT, height, random);
+	        y = MIN_SPAWN_HEIGHT + random.nextInt(height - MIN_SPAWN_HEIGHT);
 	        generateCrystalsAt(world, random, new BlockPos(x, y, z));
 	    }
 	}

@@ -16,10 +16,12 @@ public class WorldGeneratorFoilage implements IWorldGenerator{
 	//-----------------------------------------------Variabeln:---------------------------------------------
 	private Block block;
 	private int chancesToSpawn;
+	private WorldGenCrystorya wgC;
 
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public WorldGeneratorFoilage(int chancesToSpawn) {
 		this.chancesToSpawn = chancesToSpawn;
+		this.wgC = new WorldGenCrystorya();
 	}
 
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -32,7 +34,6 @@ public class WorldGeneratorFoilage implements IWorldGenerator{
 		}
 		chunkX *= 16;
 		chunkZ *= 16;
-		WorldGenCrystorya wgC = new WorldGenCrystorya();
 		Chunk chunk = world.getChunkFromChunkCoords(chunkX, chunkZ);
 	    for (int i = 0; i < chancesToSpawn; i ++) {
 	        int x = chunkX + random.nextInt(16);

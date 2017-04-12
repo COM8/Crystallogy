@@ -13,11 +13,12 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class WorldGenerator implements IWorldGenerator{
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	private Block BLOCK;
+	private final Block BLOCK;
 	private final int CHANCES_TO_SPAWN;
 	private final int MAX_SPAWN_HEIGHT;
 	private final int MIN_SPAWN_HEIGHT;
 	private final int MAX_SPAWN_SIZE;
+	private final WorldGenMinable WGM;
 
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public WorldGenerator(Block block, int chancesToSpawn, int maxSize, int minHeight, int maxHeight) {
@@ -26,6 +27,7 @@ public class WorldGenerator implements IWorldGenerator{
 		this.MAX_SPAWN_HEIGHT = maxHeight;
 		this.MIN_SPAWN_HEIGHT = minHeight;
 		this.MAX_SPAWN_SIZE = maxSize;
+		this.WGM = new WorldGenMinable(BLOCK.getDefaultState(), MAX_SPAWN_SIZE);
 	}
 
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -43,10 +45,7 @@ public class WorldGenerator implements IWorldGenerator{
 	    	int x = chunkX + Utilities.getRandInt(0, 16, random);
 	        int y = Utilities.getRandInt(MIN_SPAWN_HEIGHT, MAX_SPAWN_HEIGHT, random);
 	        int z = chunkZ + Utilities.getRandInt(0, 16, random);
-	        BlockPos pos = new BlockPos(x, y, z);
-	        
-	        WorldGenMinable wgM = new WorldGenMinable(BLOCK.getDefaultState(), MAX_SPAWN_SIZE);
-	        wgM.generate(world, random, pos);
+			WGM.generate(world, random, new BlockPos(x, y, z));
 	    }
 	}
 
