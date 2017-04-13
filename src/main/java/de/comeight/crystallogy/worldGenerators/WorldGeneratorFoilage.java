@@ -44,6 +44,9 @@ public class WorldGeneratorFoilage implements IWorldGenerator{
 	        if(temp != TempCategory.COLD && temp != TempCategory.WARM){
 	        	wgC.generate(world, random, pos);
 	        }
+	        else {
+	        	break;
+			}
 	    }
 	}
 
