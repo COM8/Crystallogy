@@ -1,7 +1,6 @@
 package de.comeight.crystallogy;
 
 import de.comeight.crystallogy.handler.BlockRenderHandler;
-import de.comeight.crystallogy.handler.ItemBlockRenderHandler;
 import de.comeight.crystallogy.handler.ItemRenderHandler;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -12,7 +11,6 @@ public class ClientProxy extends CommonProxy{
     //-----------------------------------------------Attributes:--------------------------------------------
     ItemRenderHandler iRH = new ItemRenderHandler();
     BlockRenderHandler bRH = new BlockRenderHandler();
-    ItemBlockRenderHandler iBRH = new ItemBlockRenderHandler();
 
     //-----------------------------------------------Constructor:-------------------------------------------
 
@@ -33,7 +31,6 @@ public class ClientProxy extends CommonProxy{
 
         iRH.preInit(e);
         bRH.preInit(e);
-        iBRH.preInit(e);
     }
 
     //-----------------------------------------------Init:--------------------------------------------------
@@ -43,7 +40,6 @@ public class ClientProxy extends CommonProxy{
 
         iRH.init(e);
         bRH.init(e);
-        iBRH.init(e);
     }
 
     //-----------------------------------------------Post-Init:---------------------------------------------
@@ -53,6 +49,5 @@ public class ClientProxy extends CommonProxy{
 
         iRH.postInit(e);
         bRH.postInit(e);
-        iBRH.postInit(e);
     }
 }

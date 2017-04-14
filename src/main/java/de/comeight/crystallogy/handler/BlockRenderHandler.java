@@ -2,10 +2,9 @@ package de.comeight.crystallogy.handler;
 
 import de.comeight.crystallogy.Crystallogy;
 import de.comeight.crystallogy.util.Logger;
-import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -22,13 +21,22 @@ public class BlockRenderHandler {
 
     //-----------------------------------------------Misc Methods:------------------------------------------
     private void registerBlockRenderer() {
+        registerRenderer(BlockHandler.ITEM_BLOCK_CRYSTAL_ORE_RED);
+        registerRenderer(BlockHandler.ITEM_BLOCK_CRYSTAL_ORE_BLUE);
+        registerRenderer(BlockHandler.ITEM_BLOCK_CRYSTAL_ORE_GREEN);
+        registerRenderer(BlockHandler.ITEM_BLOCK_CRYSTAL_ORE_YELLOW);
+        registerRenderer(BlockHandler.ITEM_BLOCK_CRYSTAL_ORE_WHITE);
+
         Logger.info("All block renderer got registered.");
     }
 
-    private void registerRenderer(Block block) {
-        Item item = Item.getItemFromBlock(block);
-        ModelResourceLocation iMRL = new ModelResourceLocation(Crystallogy.MOD_ID + ":" + block.getUnlocalizedName().substring(5), "inventory");
-        Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, iMRL);
+    private void registerRenderer(ItemBlock itemBlock, int meta, String modelName) {
+        ModelResourceLocation mRL = new ModelResourceLocation(Crystallogy.MOD_ID + ':' + modelName, "inventory");
+        ModelLoader.setCustomModelResourceLocation(itemBlock, meta, mRL);
+    }
+
+    private void registerRenderer (ItemBlock itemBlock) {
+        registerRenderer(itemBlock, 0, itemBlock.getUnlocalizedName().substring(5));
     }
 
     //-----------------------------------------------Events:------------------------------------------------
@@ -36,11 +44,11 @@ public class BlockRenderHandler {
 
     //-----------------------------------------------Pre-Init:----------------------------------------------
     public void preInit(FMLPreInitializationEvent e) {
+        registerBlockRenderer();
     }
 
     //-----------------------------------------------Init:--------------------------------------------------
     public void init(FMLInitializationEvent e) {
-        registerBlockRenderer();
     }
 
     //-----------------------------------------------Post-Init:---------------------------------------------
