@@ -10,22 +10,8 @@ You can also use your crystals to control / manipulate your friends / entities.
 
 * [Wiki](https://github.com/COM8/Crystallogy/wiki)
 
-## ToDo list for the next big release (1.3):
-* Rewrite everything
-* 1.11.x support
-* Redo the Book of Knowledge
-* Customizable Thread Dusts
-* A new crafting mechanism based on infusion crafting
-* A new Mana system
-* [MORE NOTES TO COME]
-
-## ToDo for later releases:
-* Brain system - store parts of your brain in special crystals
-* Soul / Brain trading for a chunk loader
-* Praise the OS system
-* New models for all machines by MechWarrior99
-* Crafttweaker support
-* [MORE NOTES TO COME]
+## Known issues:
+* There is a "small" client side memory leak that I'm currently unable to fix. For more information please visit [Issue #26](https://github.com/COM8/Crystallogy/issues/26).
 
 ## Reporting Bugs:
 Please make sure you're using the latest version to avoid reporting already fixed bugs.
