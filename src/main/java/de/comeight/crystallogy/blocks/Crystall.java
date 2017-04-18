@@ -145,11 +145,6 @@ public abstract class Crystall extends BaseBlockCutout{
 	}
 	
 	@SideOnly(Side.CLIENT)
-	protected void addGlitterParticleChance(World worldIn, BlockPos pos){
-		addGlitterParticleChance(worldIn, pos, this.chance);
-	}
-	
-	@SideOnly(Side.CLIENT)
 	protected void addGlitterParticleChance(World worldIn, BlockPos pos, int chance){
 		if(Utilities.getRandInt(1, chance) == chance){
 			addGlitterParticle(worldIn, pos);
@@ -158,17 +153,10 @@ public abstract class Crystall extends BaseBlockCutout{
 	
 	@SideOnly(Side.CLIENT)
 	protected void addGlitterParticle(World worldIn, BlockPos pos){
-		
 		Vec3d pPos = new Vec3d(pos.getX() + Utilities.getRandDouble(0.3, 0.7), pos.getY() + Utilities.getRandDouble(0.2, 0.6), pos.getZ() + Utilities.getRandDouble(0.25, 0.9));
 		ParticleB p = new ParticleB(worldIn, pPos);
 		p.setRBGColorF(color.r, color.g, color.b);
 		Minecraft.getMinecraft().effectRenderer.addEffect(p);
-	}
-	
-	protected void addGlitterParticleNetworkChance(World worldIn, BlockPos pos, int chance, int countParticles){
-		if(Utilities.getRandInt(1, chance) == chance){
-			addGlitterParticleNetwork(worldIn, pos, countParticles);
-		}
 	}
 	
 	protected void addGlitterParticleNetwork(World worldIn, BlockPos pos, int countParticles){

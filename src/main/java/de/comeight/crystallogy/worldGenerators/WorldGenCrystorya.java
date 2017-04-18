@@ -10,11 +10,10 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenCrystorya extends WorldGenerator {
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	private Crystorya crystorya;
+
 
 	//-----------------------------------------------Constructor:-------------------------------------------
 	public WorldGenCrystorya() {
-		crystorya = BlockHandler.crystorya;
 	}
 	
 	//-----------------------------------------------Set-, Get-Methoden:------------------------------------
@@ -23,9 +22,9 @@ public class WorldGenCrystorya extends WorldGenerator {
 	//-----------------------------------------------Sonstige Methoden:-------------------------------------
 	@Override
 	public boolean generate(World worldIn, Random rand, BlockPos pos) {
-		if (worldIn.isAirBlock(pos) && crystorya.canPlaceBlockAt(worldIn, pos) && pos.getY() > 0)
+		if (worldIn.isAirBlock(pos) && BlockHandler.crystorya.canPlaceBlockAt(worldIn, pos) && pos.getY() > 0)
         {
-        	worldIn.setBlockState(pos, crystorya.getDefaultState(), 3);
+        	worldIn.setBlockState(pos, BlockHandler.crystorya.getDefaultState(), 3);
         	return true;
         }
 		return false;

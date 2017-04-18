@@ -14,7 +14,6 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class WorldGeneratorFoilage implements IWorldGenerator{
 	//-----------------------------------------------Variabeln:---------------------------------------------
-	private Block block;
 	private int chancesToSpawn;
 	private WorldGenCrystorya wgC;
 
