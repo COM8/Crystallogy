@@ -1,6 +1,8 @@
 package de.comeight.crystallogy.blocks.crystals;
 
 import de.comeight.crystallogy.blocks.BaseBlockCutout;
+import de.comeight.crystallogy.handler.ItemHandler;
+import de.comeight.crystallogy.util.enums.EnumCrystalColor;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -10,22 +12,36 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.List;
+import java.util.Random;
+
 public abstract class CrystalOre extends BaseBlockCutout {
     //-----------------------------------------------Attributes:--------------------------------------------
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
+    public final EnumCrystalColor color;
 
     //-----------------------------------------------Constructor:-------------------------------------------
-    public CrystalOre(String id) {
+    public CrystalOre(String id, EnumCrystalColor color) {
         super(Material.GLASS, id);
 
-        setHarvestLevel("pickaxe", 2);
+        this.color = color;
+
+        setHarvestLevel("pickax", 2);
         setLightLevel(0.3F);
+        setLightOpacity(0);
         setSoundType(SoundType.GLASS);
         setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
         setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.DOWN));
@@ -74,6 +90,46 @@ public abstract class CrystalOre extends BaseBlockCutout {
     @Override
     public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
         return getStateFromMeta(meta).withProperty(FACING, facing);
+    }
+
+    @Override
+    public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+        java.util.List<ItemStack> list = super.getDrops(world, pos, state, fortune);
+
+        Random rand = world instanceof World ? ((World)world).rand : new Random();
+
+        int count = fortune + 4;
+        for (int i = 0; i < count; ++i)
+        {
+            if(rand.nextInt(2) == 0) {
+                list.add(new ItemStack(ItemHandler.CRYSTAL_SHARD, 1, color.getMeta()));
+            }
+        }
+
+        count = fortune / 2 + 1;
+        for (int i = 0; i < count; ++i)
+        {
+            if(rand.nextInt(2) == 0) {
+                list.add(new ItemStack(ItemHandler.CRYSTAL_DUST, 1, color.getMeta()));
+            }
+        }
+
+        if(rand.nextInt(5) == 0) {
+            list.add(new ItemStack(Blocks.COBBLESTONE));
+        }
+
+        return list;
+    }
+
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+        return null;
+    }
+
+    @Override
+    public int getExpDrop(IBlockState state, IBlockAccess world, BlockPos pos, int fortune) {
+        Random rand = world instanceof World ? ((World)world).rand : new Random();
+        return MathHelper.getInt(rand, 2, 5);
     }
 
     //-----------------------------------------------Misc Methods:------------------------------------------
