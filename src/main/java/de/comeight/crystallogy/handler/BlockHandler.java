@@ -11,17 +11,16 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class BlockHandler {
     //-----------------------------------------------Attributes:--------------------------------------------
-    //Blocks:
-    public static final CrystalOreRed CRYSTAL_ORE_RED = new CrystalOreRed();
-    public static final ItemBlock ITEM_BLOCK_CRYSTAL_ORE_RED = new ItemBlock(CRYSTAL_ORE_RED);
-    public static final CrystalOreBlue CRYSTAL_ORE_BLUE = new CrystalOreBlue();
-    public static final ItemBlock ITEM_BLOCK_CRYSTAL_ORE_BLUE = new ItemBlock(CRYSTAL_ORE_BLUE);
-    public static final CrystalOreGreen CRYSTAL_ORE_GREEN = new CrystalOreGreen();
-    public static final ItemBlock ITEM_BLOCK_CRYSTAL_ORE_GREEN = new ItemBlock(CRYSTAL_ORE_GREEN);
-    public static final CrystalOreYellow CRYSTAL_ORE_YELLOW = new CrystalOreYellow();
-    public static final ItemBlock ITEM_BLOCK_CRYSTAL_ORE_YELLOW = new ItemBlock(CRYSTAL_ORE_YELLOW);
-    public static final CrystalOreWhite CRYSTAL_ORE_WHITE = new CrystalOreWhite();
-    public static final ItemBlock ITEM_BLOCK_CRYSTAL_ORE_WHITE = new ItemBlock(CRYSTAL_ORE_WHITE);
+    public static CrystalOreRed CRYSTAL_ORE_RED;
+    public static ItemBlock ITEM_BLOCK_CRYSTAL_ORE_RED;
+    public static CrystalOreBlue CRYSTAL_ORE_BLUE;
+    public static ItemBlock ITEM_BLOCK_CRYSTAL_ORE_BLUE;
+    public static CrystalOreGreen CRYSTAL_ORE_GREEN;
+    public static ItemBlock ITEM_BLOCK_CRYSTAL_ORE_GREEN;
+    public static CrystalOreYellow CRYSTAL_ORE_YELLOW;
+    public static ItemBlock ITEM_BLOCK_CRYSTAL_ORE_YELLOW ;
+    public static CrystalOreWhite CRYSTAL_ORE_WHITE;
+    public static ItemBlock ITEM_BLOCK_CRYSTAL_ORE_WHITE;
 
     //-----------------------------------------------Constructor:-------------------------------------------
 
@@ -30,7 +29,22 @@ public class BlockHandler {
 
 
     //-----------------------------------------------Misc Methods:------------------------------------------
+    private void createBlocks() {
+        CRYSTAL_ORE_RED = new CrystalOreRed();
+        ITEM_BLOCK_CRYSTAL_ORE_RED = new ItemBlock(CRYSTAL_ORE_RED);
+        CRYSTAL_ORE_BLUE = new CrystalOreBlue();
+        ITEM_BLOCK_CRYSTAL_ORE_BLUE = new ItemBlock(CRYSTAL_ORE_BLUE);
+        CRYSTAL_ORE_GREEN = new CrystalOreGreen();
+        ITEM_BLOCK_CRYSTAL_ORE_GREEN = new ItemBlock(CRYSTAL_ORE_GREEN);
+        CRYSTAL_ORE_YELLOW = new CrystalOreYellow();
+        ITEM_BLOCK_CRYSTAL_ORE_YELLOW = new ItemBlock(CRYSTAL_ORE_YELLOW);
+        CRYSTAL_ORE_WHITE = new CrystalOreWhite();
+        ITEM_BLOCK_CRYSTAL_ORE_WHITE = new ItemBlock(CRYSTAL_ORE_WHITE);
+    }
+
     private void registerAllBlocks() {
+        createBlocks();
+
         registerBlock(CRYSTAL_ORE_RED, ITEM_BLOCK_CRYSTAL_ORE_RED);
         registerBlock(CRYSTAL_ORE_BLUE, ITEM_BLOCK_CRYSTAL_ORE_BLUE);
         registerBlock(CRYSTAL_ORE_GREEN, ITEM_BLOCK_CRYSTAL_ORE_GREEN);

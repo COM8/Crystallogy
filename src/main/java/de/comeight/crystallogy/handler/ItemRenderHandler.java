@@ -1,12 +1,12 @@
 package de.comeight.crystallogy.handler;
 
 import de.comeight.crystallogy.Crystallogy;
+import de.comeight.crystallogy.items.CrystalShard;
 import de.comeight.crystallogy.util.Logger;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.ModelBakery;
+import de.comeight.crystallogy.util.enums.EnumCrystalColor;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -22,7 +22,12 @@ public class ItemRenderHandler {
 
 
     //-----------------------------------------------Misc Methods:------------------------------------------
-    private void registerBlockRenderer() {
+    private void registerItemRenderer() {
+        for (int i = 0; i < 5; i++) {
+            registerBasicItemRender(ItemHandler.CRYSTAL_SHARD, i, ItemHandler.CRYSTAL_SHARD.getUnlocalizedName().substring(5) + '_' + EnumCrystalColor.fromMeta(i));
+            registerBasicItemRender(ItemHandler.CRYSTAL_DUST, i, ItemHandler.CRYSTAL_DUST.getUnlocalizedName().substring(5) + '_' + EnumCrystalColor.fromMeta(i));
+        }
+
         Logger.info("All item renderer got registered.");
     }
 
@@ -31,23 +36,21 @@ public class ItemRenderHandler {
     }
 
     private static void registerBasicItemRender(Item item, int meta, String filePath){
-        Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, meta, new ModelResourceLocation(Crystallogy.MOD_ID + ":" + filePath, "inventory"));
+        ModelResourceLocation mRL =  new ModelResourceLocation(Crystallogy.MOD_ID + ":" + filePath, "inventory");
+        ModelLoader.setCustomModelResourceLocation(item, meta, mRL);
     }
 
-    private static void registerItemVariantsRenderer(Item item, int meta, String filePath){
-        registerBasicItemRender(item, meta, filePath);
-        ModelBakery.registerItemVariants(item, new ResourceLocation(Crystallogy.MOD_ID + ":" + filePath));
-    }
     //-----------------------------------------------Events:------------------------------------------------
 
 
     //-----------------------------------------------Pre-Init:----------------------------------------------
     public void preInit(FMLPreInitializationEvent e) {
+        registerItemRenderer();
     }
 
     //-----------------------------------------------Init:--------------------------------------------------
     public void init(FMLInitializationEvent e) {
-        registerBlockRenderer();
+
     }
 
     //-----------------------------------------------Post-Init:---------------------------------------------
