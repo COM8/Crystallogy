@@ -26,7 +26,20 @@ public class ItemRenderHandler {
         for (int i = 0; i < 5; i++) {
             registerBasicItemRender(ItemHandler.CRYSTAL_SHARD, i, ItemHandler.CRYSTAL_SHARD.getUnlocalizedName().substring(5) + '_' + EnumCrystalColor.fromMeta(i));
             registerBasicItemRender(ItemHandler.CRYSTAL_DUST, i, ItemHandler.CRYSTAL_DUST.getUnlocalizedName().substring(5) + '_' + EnumCrystalColor.fromMeta(i));
+            registerBasicItemRender(ItemHandler.CRYSTAL_HAMMER_HEAD, i, ItemHandler.CRYSTAL_HAMMER_HEAD.getUnlocalizedName().substring(5) + '_' + EnumCrystalColor.fromMeta(i));
+            registerBasicItemRender(ItemHandler.CRYSTAL_PICKAXE_HEAD, i, ItemHandler.CRYSTAL_PICKAXE_HEAD.getUnlocalizedName().substring(5) + '_' + EnumCrystalColor.fromMeta(i));
+            registerBasicItemRender(ItemHandler.CRYSTAL_SWORD_BLADE, i, ItemHandler.CRYSTAL_SWORD_BLADE.getUnlocalizedName().substring(5) + '_' + EnumCrystalColor.fromMeta(i));
         }
+        registerBasicItemRender(ItemHandler.CRYSTAL_PICKAXE_RED);
+        registerBasicItemRender(ItemHandler.CRYSTAL_PICKAXE_BLUE);
+        registerBasicItemRender(ItemHandler.CRYSTAL_PICKAXE_GREEN);
+        registerBasicItemRender(ItemHandler.CRYSTAL_PICKAXE_YELLOW);
+        registerBasicItemRender(ItemHandler.CRYSTAL_PICKAXE_WHITE);
+        registerBasicItemRender(ItemHandler.CRYSTAL_SWORD_RED);
+        registerBasicItemRender(ItemHandler.CRYSTAL_SWORD_BLUE);
+        registerBasicItemRender(ItemHandler.CRYSTAL_SWORD_GREEN);
+        registerBasicItemRender(ItemHandler.CRYSTAL_SWORD_YELLOW);
+        registerBasicItemRender(ItemHandler.CRYSTAL_SWORD_WHITE);
 
         Logger.info("All item renderer got registered.");
     }
