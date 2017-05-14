@@ -26,6 +26,8 @@ public class BlockRenderHandler {
         registerRenderer(BlockHandler.ITEM_BLOCK_CRYSTAL_ORE_GREEN);
         registerRenderer(BlockHandler.ITEM_BLOCK_CRYSTAL_ORE_YELLOW);
         registerRenderer(BlockHandler.ITEM_BLOCK_CRYSTAL_ORE_WHITE);
+        registerRenderer(BlockHandler.ITEM_BLOCK_ENTITY_JAR);
+        registerRenderer(BlockHandler.ITEM_BLOCK_PLAYER_JAR);
 
         Logger.info("All block renderer got registered.");
     }

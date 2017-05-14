@@ -1,5 +1,7 @@
 package de.comeight.crystallogy.handler;
 
+import de.comeight.crystallogy.blocks.EntityJar;
+import de.comeight.crystallogy.blocks.PlayerJar;
 import de.comeight.crystallogy.blocks.crystals.*;
 import de.comeight.crystallogy.util.Logger;
 import net.minecraft.block.Block;
@@ -21,6 +23,10 @@ public class BlockHandler {
     public static ItemBlock ITEM_BLOCK_CRYSTAL_ORE_YELLOW ;
     public static CrystalOreWhite CRYSTAL_ORE_WHITE;
     public static ItemBlock ITEM_BLOCK_CRYSTAL_ORE_WHITE;
+    public static EntityJar ENTITY_JAR;
+    public static ItemBlock ITEM_BLOCK_ENTITY_JAR;
+    public static PlayerJar PLAYER_JAR;
+    public static ItemBlock ITEM_BLOCK_PLAYER_JAR;
 
     //-----------------------------------------------Constructor:-------------------------------------------
 
@@ -40,6 +46,10 @@ public class BlockHandler {
         ITEM_BLOCK_CRYSTAL_ORE_YELLOW = new ItemBlock(CRYSTAL_ORE_YELLOW);
         CRYSTAL_ORE_WHITE = new CrystalOreWhite();
         ITEM_BLOCK_CRYSTAL_ORE_WHITE = new ItemBlock(CRYSTAL_ORE_WHITE);
+        ENTITY_JAR = new EntityJar();
+        ITEM_BLOCK_ENTITY_JAR = new ItemBlock(ENTITY_JAR);
+        PLAYER_JAR = new PlayerJar();
+        ITEM_BLOCK_PLAYER_JAR = new ItemBlock(PLAYER_JAR);
     }
 
     private void registerAllBlocks() {
@@ -50,6 +60,8 @@ public class BlockHandler {
         registerBlock(CRYSTAL_ORE_GREEN, ITEM_BLOCK_CRYSTAL_ORE_GREEN);
         registerBlock(CRYSTAL_ORE_YELLOW, ITEM_BLOCK_CRYSTAL_ORE_YELLOW);
         registerBlock(CRYSTAL_ORE_WHITE, ITEM_BLOCK_CRYSTAL_ORE_WHITE);
+        registerBlock(ENTITY_JAR, ITEM_BLOCK_ENTITY_JAR);
+        registerBlock(PLAYER_JAR, ITEM_BLOCK_PLAYER_JAR);
 
         Logger.info("All blocks got registered.");
     }
