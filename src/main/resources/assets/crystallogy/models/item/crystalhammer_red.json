@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "crystallogy:items/crystalHammer_red"
+        "layer0": "crystallogy:items/crystalhammer_red"
     }
 }

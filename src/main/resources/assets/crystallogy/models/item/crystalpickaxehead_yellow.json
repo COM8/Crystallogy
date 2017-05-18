@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "crystallogy:items/crystalPickaxeHead_yellow"
+        "layer0": "crystallogy:items/crystalpickaxehead_yellow"
     }
 }
