@@ -29,6 +29,7 @@ public class ItemRenderHandler {
             registerBasicItemRender(ItemHandler.CRYSTAL_HAMMER_HEAD, i, ItemHandler.CRYSTAL_HAMMER_HEAD.getUnlocalizedName().substring(5) + '_' + EnumCrystalColor.fromMeta(i));
             registerBasicItemRender(ItemHandler.CRYSTAL_PICKAXE_HEAD, i, ItemHandler.CRYSTAL_PICKAXE_HEAD.getUnlocalizedName().substring(5) + '_' + EnumCrystalColor.fromMeta(i));
             registerBasicItemRender(ItemHandler.CRYSTAL_SWORD_BLADE, i, ItemHandler.CRYSTAL_SWORD_BLADE.getUnlocalizedName().substring(5) + '_' + EnumCrystalColor.fromMeta(i));
+            registerBasicItemRender(ItemHandler.CRYSTAL_SHOVEL_HEAD, i, ItemHandler.CRYSTAL_SHOVEL_HEAD.getUnlocalizedName().substring(5) + '_' + EnumCrystalColor.fromMeta(i));
         }
         registerBasicItemRender(ItemHandler.CRYSTAL_PICKAXE_RED);
         registerBasicItemRender(ItemHandler.CRYSTAL_PICKAXE_BLUE);

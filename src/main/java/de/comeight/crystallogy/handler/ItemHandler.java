@@ -25,6 +25,7 @@ public class ItemHandler {
     public static CrystalSword_green CRYSTAL_SWORD_GREEN;
     public static CrystalSword_yellow CRYSTAL_SWORD_YELLOW;
     public static CrystalSword_white CRYSTAL_SWORD_WHITE;
+    public static CrystalShovelHead CRYSTAL_SHOVEL_HEAD;
 
     //-----------------------------------------------Constructor:-------------------------------------------
 
@@ -49,6 +50,7 @@ public class ItemHandler {
         CRYSTAL_SWORD_GREEN = new CrystalSword_green();
         CRYSTAL_SWORD_YELLOW = new CrystalSword_yellow();
         CRYSTAL_SWORD_WHITE = new CrystalSword_white();
+        CRYSTAL_SHOVEL_HEAD = new CrystalShovelHead();
     }
 
     private void registerAllItems() {
@@ -69,6 +71,7 @@ public class ItemHandler {
         GameRegistry.register(CRYSTAL_SWORD_GREEN);
         GameRegistry.register(CRYSTAL_SWORD_YELLOW);
         GameRegistry.register(CRYSTAL_SWORD_WHITE);
+        GameRegistry.register(CRYSTAL_SHOVEL_HEAD);
 
         Logger.info("All items got registered.");
     }
