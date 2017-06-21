@@ -2,11 +2,8 @@ package de.comeight.crystallogy.itemBlocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemBlockTemplate extends BaseItemBlock{
     //-----------------------------------------------Attributes:--------------------------------------------
@@ -26,14 +23,15 @@ public class ItemBlockTemplate extends BaseItemBlock{
         return damage;
     }
 
-    @SideOnly(Side.CLIENT)
     @Override
-    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
-        subItems.add(new ItemStack(itemIn, 1, 0));
-        subItems.add(new ItemStack(itemIn, 1, 1));
-        subItems.add(new ItemStack(itemIn, 1, 2));
-        subItems.add(new ItemStack(itemIn, 1, 3));
-        subItems.add(new ItemStack(itemIn, 1, 4));
+    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+        if (this.isInCreativeTab(tab))
+        {
+            for (int i = 0; i < 5; ++i)
+            {
+                items.add(new ItemStack(this, 1, i));
+            }
+        }
     }
 
     @Override

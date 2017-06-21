@@ -1,0 +1,9 @@
+{
+	"__comment": "Designed by COM8",
+	"parent": "crystallogy:block/crystal_ore",
+	"textures": {
+		"particle": "crystallogy:blocks/crystal_green",
+		"texture": "crystallogy:blocks/crystal_green",
+		"cobblestone": "blocks/cobblestone"
+	}
+}

@@ -2,7 +2,6 @@ package de.comeight.crystallogy.items;
 
 import de.comeight.crystallogy.util.enums.EnumCrystalColor;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 
@@ -23,9 +22,13 @@ public class CrystalShovelHead extends BaseItem{
     }
 
     @Override
-    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
-        for(int i = 0; i < 5; i++) {
-            subItems.add(new ItemStack(itemIn, 1, i));
+    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+        if (this.isInCreativeTab(tab))
+        {
+            for (int i = 0; i < 5; ++i)
+            {
+                items.add(new ItemStack(this, 1, i));
+            }
         }
     }
     
