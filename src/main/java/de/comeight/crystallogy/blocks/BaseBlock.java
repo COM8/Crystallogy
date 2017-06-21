@@ -1,6 +1,7 @@
 package de.comeight.crystallogy.blocks;
 
 import de.comeight.crystallogy.Crystallogy;
+import de.comeight.crystallogy.handler.CreativeTabHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -18,8 +19,7 @@ public abstract class BaseBlock extends Block {
 
         setUnlocalizedName(id);
         setRegistryName(Crystallogy.MOD_ID, id);
-        //TODO Add Creative tab
-        //setCreativeTab()
+        setCreativeTab(CreativeTabHandler.crystallogyMainTab);
     }
 
     //-----------------------------------------------Set-, Get- Methods:------------------------------------

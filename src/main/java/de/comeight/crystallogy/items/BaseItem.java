@@ -1,5 +1,6 @@
 package de.comeight.crystallogy.items;
 
+import de.comeight.crystallogy.handler.CreativeTabHandler;
 import net.minecraft.item.Item;
 
 public abstract class BaseItem extends Item{
@@ -8,9 +9,9 @@ public abstract class BaseItem extends Item{
 
     //-----------------------------------------------Constructor:-------------------------------------------
     public BaseItem(String id) {
-        //setCreativeTab() //TODO set creative tab
         setUnlocalizedName(id);
         setRegistryName(id);
+        setCreativeTab(CreativeTabHandler.crystallogyMainTab);
     }
 
     //-----------------------------------------------Set-, Get- Methods:------------------------------------

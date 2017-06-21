@@ -1,5 +1,6 @@
 package de.comeight.crystallogy.items.tools;
 
+import de.comeight.crystallogy.handler.CreativeTabHandler;
 import net.minecraft.item.ItemPickaxe;
 
 public class BaseItemPickaxe extends ItemPickaxe {
@@ -9,7 +10,7 @@ public class BaseItemPickaxe extends ItemPickaxe {
     //-----------------------------------------------Constructor:-------------------------------------------
     public BaseItemPickaxe(ToolMaterial material, String id) {
         super(material);
-        //setCreativeTab(CommonProxy.crystallogyMainTab); //TODO set creative tab
+        setCreativeTab(CreativeTabHandler.crystallogyMainTab);
         setUnlocalizedName(id);
         setRegistryName(id);
     }

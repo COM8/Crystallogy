@@ -43,7 +43,6 @@ public abstract class CrystalOre extends BaseBlockCutout {
         setLightLevel(0.3F);
         setLightOpacity(0);
         setSoundType(SoundType.GLASS);
-        setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
         setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.DOWN));
     }
 

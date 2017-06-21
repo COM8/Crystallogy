@@ -1,5 +1,7 @@
 < en_US.lang - English localization file >
 
+itemGroup.12crystallogy_main_tab=Crystallogy
+
 block.crystal_ore_red=§4Red§r Crystal Ore
 block.crystal_ore_blue=§9Blue§r Crystal Ore
 block.crystal_ore_green=§2Green§r Crystal Ore
