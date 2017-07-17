@@ -1,7 +1,6 @@
 package de.comeight.crystallogy.handler;
 
 import de.comeight.crystallogy.Crystallogy;
-import de.comeight.crystallogy.items.BaseItem;
 import de.comeight.crystallogy.util.Logger;
 import de.comeight.crystallogy.util.enums.EnumCrystalColor;
 import net.minecraft.block.Block;
