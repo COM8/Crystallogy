@@ -9,7 +9,7 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "1.11.2-2.0"
+version = "1.12-2.0"
 group = "de.comeight.crystallogy" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "crystallogy"
 
@@ -19,14 +19,14 @@ compileJava {
 }
 
 minecraft {
-    version = "1.12-14.21.0.2343"
+    version = "1.12-14.21.1.2413"
     runDir = "run"
     mappings = "snapshot_20170617"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 
 dependencies {
-	deobfCompile "mezz.jei:jei_1.12:4.6.0.65"
+	deobfCompile "mezz.jei:jei_1.12:4.7.2.77"
 }
 
 repositories {
@@ -52,4 +52,10 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
+}
+
+idea {
+	module {
+		inheritOutputDirs = true
+	}
 }
