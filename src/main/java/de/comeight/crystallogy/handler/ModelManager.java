@@ -71,11 +71,24 @@ public class ModelManager {
         registerItemModel(ItemHandler.CRYSTAL_PICKAXE_GREEN);
         registerItemModel(ItemHandler.CRYSTAL_PICKAXE_YELLOW);
         registerItemModel(ItemHandler.CRYSTAL_PICKAXE_WHITE);
+
+        registerItemModel(ItemHandler.CRYSTAL_HAMMER_RED);
+        registerItemModel(ItemHandler.CRYSTAL_HAMMER_BLUE);
+        registerItemModel(ItemHandler.CRYSTAL_HAMMER_GREEN);
+        registerItemModel(ItemHandler.CRYSTAL_HAMMER_YELLOW);
+        registerItemModel(ItemHandler.CRYSTAL_HAMMER_WHITE);
+
         registerItemModel(ItemHandler.CRYSTAL_SWORD_RED);
         registerItemModel(ItemHandler.CRYSTAL_SWORD_BLUE);
         registerItemModel(ItemHandler.CRYSTAL_SWORD_GREEN);
         registerItemModel(ItemHandler.CRYSTAL_SWORD_YELLOW);
         registerItemModel(ItemHandler.CRYSTAL_SWORD_WHITE);
+
+        registerItemModel(ItemHandler.CRYSTAL_SHOVEL_RED);
+        registerItemModel(ItemHandler.CRYSTAL_SHOVEL_BLUE);
+        registerItemModel(ItemHandler.CRYSTAL_SHOVEL_GREEN);
+        registerItemModel(ItemHandler.CRYSTAL_SHOVEL_YELLOW);
+        registerItemModel(ItemHandler.CRYSTAL_SHOVEL_WHITE);
 
         Logger.info("All item renderer got registered.");
     }
