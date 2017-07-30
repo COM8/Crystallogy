@@ -46,6 +46,7 @@ public class ItemHandler {
     public static final CrystalShovel_green CRYSTAL_SHOVEL_GREEN = new CrystalShovel_green();
     public static final CrystalShovel_yellow CRYSTAL_SHOVEL_YELLOW = new CrystalShovel_yellow();
     public static final CrystalShovel_white CRYSTAL_SHOVEL_WHITE = new CrystalShovel_white();
+    public static final BookOfKnowledge BOOK_OF_KNOWLEDGE = new BookOfKnowledge();
 
     //-----------------------------------------------Constructor:-------------------------------------------
 
@@ -99,7 +100,9 @@ public class ItemHandler {
                     CRYSTAL_SHOVEL_BLUE,
                     CRYSTAL_SHOVEL_GREEN,
                     CRYSTAL_SHOVEL_YELLOW,
-                    CRYSTAL_SHOVEL_WHITE
+                    CRYSTAL_SHOVEL_WHITE,
+
+                    BOOK_OF_KNOWLEDGE
             };
 
             for (final Item item : items) {

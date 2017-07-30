@@ -90,6 +90,8 @@ public class ModelManager {
         registerItemModel(ItemHandler.CRYSTAL_SHOVEL_YELLOW);
         registerItemModel(ItemHandler.CRYSTAL_SHOVEL_WHITE);
 
+        registerItemModel(ItemHandler.BOOK_OF_KNOWLEDGE);
+
         Logger.info("All item renderer got registered.");
     }
 
