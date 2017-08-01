@@ -1,33 +1,16 @@
-package de.comeight.crystallogy;
+package de.comeight.crystallogy.handler;
 
-import de.comeight.crystallogy.handler.*;
+import de.comeight.crystallogy.util.Logger;
+import de.comeight.crystallogy.worldGen.WorldGenCrystal;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class CommonProxy {
+public class WorldGenHandler {
     //-----------------------------------------------Attributes:--------------------------------------------
-    //Config:
-    private static ConfigHandler cH = new ConfigHandler();
 
-    //Blocks:
-    private static BlockHandler bH = new BlockHandler();
-
-    //Items:
-    private static ItemHandler iH = new ItemHandler();
-
-    //World Generators:
-    private static WorldGenHandler wH = new WorldGenHandler();
-
-    //Creative Tabs:
-    private static CreativeTabHandler cTH = new CreativeTabHandler();
-
-    //Recipes:
-    private static RecipeHandler rH = new RecipeHandler();
-
-    //Sounds:
-    private static SoundHandler sH = new SoundHandler();
 
     //-----------------------------------------------Constructor:-------------------------------------------
 
@@ -36,7 +19,11 @@ public class CommonProxy {
 
 
     //-----------------------------------------------Misc Methods:------------------------------------------
+    private void registerWorldGens() {
+        GameRegistry.registerWorldGenerator(new WorldGenCrystal(BlockHandler.CRYSTAL_ORE_RED, 10, 30, 5, 256), 0);
 
+        Logger.info("All world generators got registered.");
+    }
 
     //-----------------------------------------------Events:------------------------------------------------
 
@@ -44,36 +31,16 @@ public class CommonProxy {
     //-----------------------------------------------Pre-Init:----------------------------------------------
     @EventHandler
     public void preInit(FMLPreInitializationEvent e) {
-        cH.preInit(e);
-        bH.preInit(e);
-        iH.preInit(e);
-        wH.preInit(e);
-        cTH.preInit(e);
-        rH.preInit(e);
-        sH.preInit(e);
     }
 
     //-----------------------------------------------Init:--------------------------------------------------
     @EventHandler
     public void init(FMLInitializationEvent e) {
-        cH.init(e);
-        bH.init(e);
-        iH.init(e);
-        wH.init(e);
-        cTH.init(e);
-        rH.init(e);
-        sH.init(e);
+        registerWorldGens();
     }
 
     //-----------------------------------------------Post-Init:---------------------------------------------
     @EventHandler
     public void postInit(FMLPostInitializationEvent e) {
-        cH.postInit(e);
-        bH.postInit(e);
-        iH.postInit(e);
-        wH.postInit(e);
-        cTH.postInit(e);
-        rH.postInit(e);
-        sH.postInit(e);
     }
 }
