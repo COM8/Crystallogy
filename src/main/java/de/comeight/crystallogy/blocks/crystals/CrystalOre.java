@@ -44,11 +44,12 @@ public abstract class CrystalOre extends BaseBlockCutout {
 
     //-----------------------------------------------Constructor:-------------------------------------------
     public CrystalOre(String id, EnumCrystalColor color) {
-        super(Material.GLASS, id);
+        super(Material.ROCK, id);
 
         this.color = color;
 
-        setHarvestLevel("pickax", 2);
+        //setHarvestLevel("pickaxe", 2);
+        setHardness(2.0F);
         setLightLevel(0.3F);
         setLightOpacity(0);
         setSoundType(SoundType.GLASS);
@@ -95,7 +96,7 @@ public abstract class CrystalOre extends BaseBlockCutout {
 
         Random rand = world instanceof World ? ((World)world).rand : new Random();
 
-        int count = fortune + 4;
+        int count = fortune + 8;
         for (int i = 0; i < count; ++i)
         {
             if(rand.nextInt(2) == 0) {
@@ -103,7 +104,7 @@ public abstract class CrystalOre extends BaseBlockCutout {
             }
         }
 
-        count = fortune / 2 + 1;
+        count = fortune / 2 + 10;
         for (int i = 0; i < count; ++i)
         {
             if(rand.nextInt(2) == 0) {
@@ -111,7 +112,7 @@ public abstract class CrystalOre extends BaseBlockCutout {
             }
         }
 
-        if(rand.nextInt(5) == 0) {
+        if(rand.nextInt(3) == 0) {
             list.add(new ItemStack(Blocks.COBBLESTONE));
         }
 
@@ -152,7 +153,7 @@ public abstract class CrystalOre extends BaseBlockCutout {
     //-----------------------------------------------Misc Methods:------------------------------------------
     @Override
     protected BlockStateContainer createBlockState() {
-        return  new BlockStateContainer(this, new IProperty[] {FACING});
+        return new BlockStateContainer(this, new IProperty[] {FACING});
     }
 
     @Override
