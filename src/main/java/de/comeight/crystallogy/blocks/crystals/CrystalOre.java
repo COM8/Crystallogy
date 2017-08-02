@@ -1,8 +1,11 @@
 package de.comeight.crystallogy.blocks.crystals;
 
 import de.comeight.crystallogy.blocks.BaseBlockCutout;
+import de.comeight.crystallogy.client.creativeTabs.particles.CrystalParticle;
 import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
+import de.comeight.crystallogy.util.RGBColor;
+import de.comeight.crystallogy.util.Util;
 import de.comeight.crystallogy.util.enums.EnumCrystalColor;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -10,6 +13,7 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -22,6 +26,7 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -171,6 +176,20 @@ public abstract class CrystalOre extends BaseBlockCutout {
         super.onEntityCollidedWithBlock(worldIn, pos, state, entityIn);
         if(entityIn instanceof EntityLivingBase){
             entityIn.attackEntityFrom(DamageSource.GENERIC, 0.5F);
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+        super.randomDisplayTick(stateIn, worldIn, pos, rand);
+        if(rand.nextInt(7) == 0) {
+            for (int i = 0; i < rand.nextInt(15); i++) {
+                Vec3d pPos = new Vec3d(pos.getX() + 0.3 + rand.nextDouble() * 0.5, pos.getY() + 0.2 + rand.nextDouble() * 0.5, pos.getZ() + 0.3 + rand.nextDouble() * 0.5);
+                CrystalParticle p = new CrystalParticle(worldIn, pPos);
+                p.setRGBColor(color.getRGB_COLOR());
+                Minecraft.getMinecraft().effectRenderer.addEffect(p);
+            }
         }
     }
 

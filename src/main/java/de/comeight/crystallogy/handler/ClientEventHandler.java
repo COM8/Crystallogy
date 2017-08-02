@@ -1,36 +1,19 @@
-package de.comeight.crystallogy;
+package de.comeight.crystallogy.handler;
 
-import de.comeight.crystallogy.handler.*;
+import de.comeight.crystallogy.ClientProxy;
+import de.comeight.crystallogy.util.Logger;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class CommonProxy {
+@SideOnly(Side.CLIENT)
+public class ClientEventHandler {
     //-----------------------------------------------Attributes:--------------------------------------------
-    //Client Event Handler:
-    private static CommonEventHandler cEH = new CommonEventHandler();
 
-    //Config:
-    private static ConfigHandler cH = new ConfigHandler();
-
-    //Blocks:
-    private static BlockHandler bH = new BlockHandler();
-
-    //Items:
-    private static ItemHandler iH = new ItemHandler();
-
-    //World Generators:
-    private static WorldGenHandler wH = new WorldGenHandler();
-
-    //Creative Tabs:
-    private static CreativeTabHandler cTH = new CreativeTabHandler();
-
-    //Recipes:
-    private static RecipeHandler rH = new RecipeHandler();
-
-    //Sounds:
-    private static SoundHandler sH = new SoundHandler();
 
     //-----------------------------------------------Constructor:-------------------------------------------
 
@@ -47,39 +30,17 @@ public class CommonProxy {
     //-----------------------------------------------Pre-Init:----------------------------------------------
     @EventHandler
     public void preInit(FMLPreInitializationEvent e) {
-        cEH.preInit(e);
-        cH.preInit(e);
-        bH.preInit(e);
-        iH.preInit(e);
-        wH.preInit(e);
-        cTH.preInit(e);
-        rH.preInit(e);
-        sH.preInit(e);
+        MinecraftForge.EVENT_BUS.register(ClientProxy.pH);
+        Logger.info("All client events got registered.");
     }
 
     //-----------------------------------------------Init:--------------------------------------------------
     @EventHandler
     public void init(FMLInitializationEvent e) {
-        cEH.init(e);
-        cH.init(e);
-        bH.init(e);
-        iH.init(e);
-        wH.init(e);
-        cTH.init(e);
-        rH.init(e);
-        sH.init(e);
     }
 
     //-----------------------------------------------Post-Init:---------------------------------------------
     @EventHandler
     public void postInit(FMLPostInitializationEvent e) {
-        cEH.postInit(e);
-        cH.postInit(e);
-        bH.postInit(e);
-        iH.postInit(e);
-        wH.postInit(e);
-        cTH.postInit(e);
-        rH.postInit(e);
-        sH.postInit(e);
     }
 }
