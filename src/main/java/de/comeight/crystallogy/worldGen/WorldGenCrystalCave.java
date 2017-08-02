@@ -20,7 +20,6 @@ public class WorldGenCrystalCave {
 
     protected IBlockState cobble;
     protected IBlockState mossyCobble;
-    protected IBlockState stone;
 
     protected IBlockState fluid;
     protected IBlockState crystal1;
@@ -31,7 +30,6 @@ public class WorldGenCrystalCave {
         this.MAX_CRYSTALS_PER_CAVE = maxCrystalsPerCave;
         this.cobble = Blocks.COBBLESTONE.getDefaultState();
         this.mossyCobble = Blocks.MOSSY_COBBLESTONE.getDefaultState();
-        this.stone = Blocks.STONE.getDefaultState();
     }
 
     //-----------------------------------------------Set-, Get- Methods:------------------------------------
@@ -73,8 +71,7 @@ public class WorldGenCrystalCave {
     }
 
     protected int getFluidIndex(Random random, BlockPos pos) {
-        int y = -512 + random.nextInt(1024) + pos.getY() % 512;
-        return y % 2;
+        return random.nextInt(3) % 2;
     }
 
     protected int getCrystalIndex(Random random, BlockPos pos) {
@@ -94,7 +91,7 @@ public class WorldGenCrystalCave {
     }
 
     protected void generateWalls(Random random, BlockPos pos) {
-        int maxTries = crystalsLeft * 3;
+        int maxTries = crystalsLeft * 2;
         while (crystalsLeft > 0 && maxTries-- > 0) {
             int side = 1 + random.nextInt(5);
             int xSide = random.nextInt(7);
@@ -155,24 +152,25 @@ public class WorldGenCrystalCave {
                 BlockPos posBellow = pos.add(x, -1, z);
                 IBlockState state = world.getBlockState(posBellow);
                 if(!state.getBlock().isAir(state, world, posBellow)) {
-                    if(random.nextInt(10) == 0) {
+                    int r = random.nextInt(20);
+                    if(r % 2 == 0) {
                         world.setBlockState(posBellow, cobble);
                     }
-                    else if(random.nextInt(20) == 0) {
+                    else if(r == 0) {
                         world.setBlockState(posBellow, mossyCobble);
                     }
 
                     BlockPos waterLevel = posBellow.add(0, 1, 0);
                     boolean placedSolidBlock = false;
-                    if(random.nextInt(5) == 0) {
-                        world.setBlockState(waterLevel, stone);
+                    if(r % 5 == 0) {
+                        world.setBlockState(waterLevel, state);
                         placedSolidBlock = true;
                     }
-                    else if(random.nextInt(8) == 0) {
+                    else if(r % 8 == 0) {
                         world.setBlockState(waterLevel, cobble);
                         placedSolidBlock = true;
                     }
-                    else if(random.nextInt(13) == 0) {
+                    else if(r % 12 == 0) {
                         world.setBlockState(waterLevel, mossyCobble);
                         placedSolidBlock = true;
                     }
@@ -182,7 +180,7 @@ public class WorldGenCrystalCave {
 
                     if(placedSolidBlock) {
                         waterLevel = waterLevel.add(0, 1, 0);
-                        if(random.nextInt(4) == 0) {
+                        if(r % 4 == 0) {
                             placeCrystal(waterLevel, random);
                         }
                     }

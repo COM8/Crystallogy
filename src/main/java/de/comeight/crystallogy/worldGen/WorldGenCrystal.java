@@ -28,11 +28,11 @@ public class WorldGenCrystal extends BaseWorldGen {
         if (MIN_SPAWN_HEIGHT < 0 || MAX_SPAWN_HEIGHT > 256 || MIN_SPAWN_HEIGHT > MAX_SPAWN_HEIGHT){
             throw new IllegalArgumentException("Illegal height arguments for WorldGenerator! MIN_SPAWN_HEIGHT=" + MIN_SPAWN_HEIGHT + ", MAX_SPAWN_HEIGHT=" + MAX_SPAWN_HEIGHT + ", BLOCK=" + BLOCK.toString());
         }
-        if(random.nextInt(100/CHANCES_TO_SPAWN) != 0) {
+        if(random.nextInt(CHANCES_TO_SPAWN) != 0) {
             return;
         }
-        int x = chunkX + random.nextInt(6);
-        int z = chunkZ + random.nextInt(6);
+        int x = chunkX + 1 + random.nextInt(5);
+        int z = chunkZ + 1 + random.nextInt(5);
         int height = world.getHeight(new BlockPos(x, 0, z)).getY() - 1;
         if(MAX_SPAWN_HEIGHT > height){
             if(MIN_SPAWN_HEIGHT >= height){

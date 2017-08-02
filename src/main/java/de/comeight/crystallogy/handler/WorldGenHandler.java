@@ -20,7 +20,7 @@ public class WorldGenHandler {
 
     //-----------------------------------------------Misc Methods:------------------------------------------
     private void registerWorldGens() {
-        GameRegistry.registerWorldGenerator(new WorldGenCrystal(BlockHandler.CRYSTAL_ORE_RED, 10, 30, 5, 256), 0);
+        GameRegistry.registerWorldGenerator(new WorldGenCrystal(BlockHandler.CRYSTAL_ORE_RED, 1, 30, 5, 256), 0);
 
         Logger.info("All world generators got registered.");
     }
