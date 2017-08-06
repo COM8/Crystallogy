@@ -2,11 +2,9 @@ package de.comeight.crystallogy.blocks.crystals;
 
 import de.comeight.crystallogy.blocks.BaseBlockCutout;
 import de.comeight.crystallogy.client.creativeTabs.particles.CrystalParticle;
-import de.comeight.crystallogy.handler.BlockHandler;
 import de.comeight.crystallogy.handler.ItemHandler;
-import de.comeight.crystallogy.util.RGBColor;
-import de.comeight.crystallogy.util.Util;
 import de.comeight.crystallogy.util.enums.EnumCrystalColor;
+import de.comeight.crystallogy.util.enums.ToolClass;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -14,12 +12,9 @@ import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
@@ -53,8 +48,9 @@ public abstract class CrystalOre extends BaseBlockCutout {
 
         this.color = color;
 
-        //setHarvestLevel("pickaxe", 2);
-        setHardness(2.0F);
+        setHarvestLevel(ToolClass.PICKAXE, 2);
+        setResistance(15.0F);
+        setHardness(5.0F);
         setLightLevel(0.3F);
         setLightOpacity(0);
         setSoundType(SoundType.GLASS);

@@ -2,6 +2,7 @@ package de.comeight.crystallogy.blocks;
 
 import de.comeight.crystallogy.Crystallogy;
 import de.comeight.crystallogy.handler.CreativeTabHandler;
+import de.comeight.crystallogy.util.enums.ToolClass;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -23,6 +24,9 @@ public abstract class BaseBlock extends Block {
     }
 
     //-----------------------------------------------Set-, Get- Methods:------------------------------------
+    public void setHarvestLevel(ToolClass toolClass, int level) {
+        setHarvestLevel(toolClass.getName(), level);
+    }
 
 
     //-----------------------------------------------Misc Methods:------------------------------------------

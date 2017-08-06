@@ -47,6 +47,8 @@ public class ItemHandler {
     public static final CrystalShovel_yellow CRYSTAL_SHOVEL_YELLOW = new CrystalShovel_yellow();
     public static final CrystalShovel_white CRYSTAL_SHOVEL_WHITE = new CrystalShovel_white();
     public static final BookOfKnowledge BOOK_OF_KNOWLEDGE = new BookOfKnowledge();
+    public static final EntityCrystalKnife ENTITY_CRYSTAL_KNIFE = new EntityCrystalKnife();
+    public static final PlayerCrystalKnife PLAYER_CRYSTAL_KNIFE = new PlayerCrystalKnife();
 
     //-----------------------------------------------Constructor:-------------------------------------------
 
@@ -102,7 +104,10 @@ public class ItemHandler {
                     CRYSTAL_SHOVEL_YELLOW,
                     CRYSTAL_SHOVEL_WHITE,
 
-                    BOOK_OF_KNOWLEDGE
+                    BOOK_OF_KNOWLEDGE,
+
+                    ENTITY_CRYSTAL_KNIFE,
+                    PLAYER_CRYSTAL_KNIFE
             };
 
             for (final Item item : items) {

@@ -13,6 +13,7 @@ public class BaseItemShovel extends ItemSpade{
         setCreativeTab(CreativeTabHandler.crystallogyMainTab);
         setUnlocalizedName(id);
         setRegistryName(id);
+        damageVsEntity *= 0.25;
     }
 
     //-----------------------------------------------Set-, Get- Methods:------------------------------------

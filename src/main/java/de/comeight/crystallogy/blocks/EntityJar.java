@@ -10,7 +10,9 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Rotation;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -19,12 +21,11 @@ public class EntityJar extends BaseBlockCutout{
     //-----------------------------------------------Attributes:--------------------------------------------
     public static final String ID = "entity_jar";
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
+    protected static final AxisAlignedBB ENTITY_JAR_AABB = new AxisAlignedBB(0.20D, 0.0D, 0.25D, 0.8D, 0.6D, 1.0D);
 
     //-----------------------------------------------Constructor:-------------------------------------------
     public EntityJar() {
-        super(Material.GLASS, ID);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
-        this.setLightOpacity(0);
+        this(ID);
     }
 
     public EntityJar(String id) {
@@ -54,6 +55,12 @@ public class EntityJar extends BaseBlockCutout{
     }
 
     @Override
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
+    {
+        return ENTITY_JAR_AABB;
+    }
+
+    @Override
     public int getMetaFromState(IBlockState state)
     {
         return state.getValue(FACING).getHorizontalIndex();
@@ -63,7 +70,7 @@ public class EntityJar extends BaseBlockCutout{
     @Override
     public IBlockState withRotation(IBlockState state, Rotation rot)
     {
-        return state.getBlock() != this ? state : state.withProperty(FACING, rot.rotate((EnumFacing)state.getValue(FACING)));
+        return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }
 
     @Override

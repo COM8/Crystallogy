@@ -1,16 +1,12 @@
 package de.comeight.crystallogy.items.tools;
 
-public class BaseItemHammer extends BaseItemPickaxe {
+public class EntityCrystalKnife extends CrystalKnife{
     //-----------------------------------------------Attributes:--------------------------------------------
-
+    public static final String ID = "entityCrystalKnife";
 
     //-----------------------------------------------Constructor:-------------------------------------------
-    public BaseItemHammer(ToolMaterial material, String id) {
-        super(material, id);
-
-        setMaxDamage(getMaxDamage() * 15);
-        damageVsEntity *= 1.7;
-        attackSpeed = -3.4F;
+    public EntityCrystalKnife() {
+        super(ID);
     }
 
     //-----------------------------------------------Set-, Get- Methods:------------------------------------
