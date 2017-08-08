@@ -2,8 +2,7 @@
 	"__comment": "Designed by COM8",
 	"parent": "crystallogy:block/crystal_ore",
 	"textures": {
-		"particle": "crystallogy:blocks/crystal_red",
-		"texture": "crystallogy:blocks/crystal_red",
-		"cobblestone": "blocks/cobblestone"
+		"texture": "crystallogy:blocks/crystal_ore_red",
+		"particle": "crystallogy:blocks/crystal_ore_red"
 	}
 }

@@ -2,8 +2,7 @@
 	"__comment": "Designed by Com8",
 	"parent": "crystallogy:block/entity_jar",
 	"textures": {
-		"particle": "blocks/glass_gray",
-		"texture": "blocks/glass_gray",
-		"planks_birch": "blocks/planks_spruce"
+		"particle": "crystallogy:blocks/player_jar",
+		"texture": "crystallogy:blocks/player_jar"
 	}
 }
