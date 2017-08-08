@@ -21,7 +21,7 @@ public class EntityJar extends BaseBlockCutout{
     //-----------------------------------------------Attributes:--------------------------------------------
     public static final String ID = "entity_jar";
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
-    protected static final AxisAlignedBB ENTITY_JAR_AABB = new AxisAlignedBB(0.20D, 0.0D, 0.25D, 0.8D, 0.6D, 1.0D);
+    protected static final AxisAlignedBB ENTITY_JAR_AABB = new AxisAlignedBB(0.25D, 0.0D, 0.25D, 0.75D, 0.6875D, 0.75D);
 
     //-----------------------------------------------Constructor:-------------------------------------------
     public EntityJar() {
