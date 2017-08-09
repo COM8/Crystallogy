@@ -1,7 +1,7 @@
 package de.comeight.crystallogy.blocks.crystals;
 
 import de.comeight.crystallogy.blocks.BaseBlockCutout;
-import de.comeight.crystallogy.client.creativeTabs.particles.CrystalParticle;
+import de.comeight.crystallogy.client.particles.CrystalParticle;
 import de.comeight.crystallogy.handler.ItemHandler;
 import de.comeight.crystallogy.util.enums.EnumCrystalColor;
 import de.comeight.crystallogy.util.enums.ToolClass;

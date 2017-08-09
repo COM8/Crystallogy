@@ -1,7 +1,6 @@
 package de.comeight.crystallogy.handler;
 
-import de.comeight.crystallogy.client.creativeTabs.particles.BaseParticle;
-import de.comeight.crystallogy.client.creativeTabs.particles.CrystalParticle;
+import de.comeight.crystallogy.client.particles.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.fml.common.Mod.EventHandler;

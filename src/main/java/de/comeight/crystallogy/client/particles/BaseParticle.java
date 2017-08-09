@@ -1,4 +1,4 @@
-package de.comeight.crystallogy.client.creativeTabs.particles;
+package de.comeight.crystallogy.client.particles;
 
 import de.comeight.crystallogy.util.Logger;
 import de.comeight.crystallogy.util.RGBColor;
