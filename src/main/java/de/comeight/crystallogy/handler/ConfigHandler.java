@@ -11,7 +11,7 @@ import java.io.File;
 
 public class ConfigHandler {
     //-----------------------------------------------Attributes:--------------------------------------------
-    private static final String CONFIG_VERSION = "2.0";
+    private static final String CONFIG_VERSION = "2.0.1";
 
     private static final String CATEGORY_DEBUG = "debug";
     private static final String CATEGORY_MISC = "misc";
@@ -20,6 +20,7 @@ public class ConfigHandler {
 
     //Debug:
     public static boolean enableDebugMessagesInLog = false;
+    public static boolean enableDebugItem = false;
 
     //-----------------------------------------------Constructor:-------------------------------------------
 
@@ -55,7 +56,9 @@ public class ConfigHandler {
         //Gameplay:
 
         //Misc:
-
+        p = config.get(CATEGORY_DEBUG, "enableDebugItem", false);
+        p.setComment("Whether the Debug Item should get enabled. default=false");
+        enableDebugItem = p.getBoolean();
         //------------------------------------------
         config.save();
     }

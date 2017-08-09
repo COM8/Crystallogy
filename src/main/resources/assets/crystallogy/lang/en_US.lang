@@ -71,3 +71,4 @@ item.crystalShovel_white.name=§fWhite§r Crystal Shovel
 item.bookOfKnowledge.name=§6Book of Knowledge§r
 item.entityCrystalKnife.name=§5Entity Crystal Knife§r
 item.playerCrystalKnife.name=§5Player Crystal Knife§r
+item.debugItem.name=Debug Item

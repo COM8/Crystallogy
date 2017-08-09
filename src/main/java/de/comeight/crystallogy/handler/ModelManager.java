@@ -94,6 +94,7 @@ public class ModelManager {
 
         registerItemModel(ItemHandler.ENTITY_CRYSTAL_KNIFE);
         registerItemModel(ItemHandler.PLAYER_CRYSTAL_KNIFE);
+        registerItemModel(ItemHandler.DEBUG_ITEM);
 
         Logger.info("All item renderer got registered.");
     }

@@ -49,6 +49,7 @@ public class ItemHandler {
     public static final BookOfKnowledge BOOK_OF_KNOWLEDGE = new BookOfKnowledge();
     public static final EntityCrystalKnife ENTITY_CRYSTAL_KNIFE = new EntityCrystalKnife();
     public static final PlayerCrystalKnife PLAYER_CRYSTAL_KNIFE = new PlayerCrystalKnife();
+    public static final DebugItem DEBUG_ITEM = new DebugItem();
 
     //-----------------------------------------------Constructor:-------------------------------------------
 
@@ -105,14 +106,17 @@ public class ItemHandler {
                     CRYSTAL_SHOVEL_WHITE,
 
                     BOOK_OF_KNOWLEDGE,
+                    ConfigHandler.enableDebugItem ? DEBUG_ITEM : null,
 
                     ENTITY_CRYSTAL_KNIFE,
                     PLAYER_CRYSTAL_KNIFE
             };
 
             for (final Item item : items) {
-                registry.register(item);
-                ITEMS.add(item);
+                if(item != null) {
+                    registry.register(item);
+                    ITEMS.add(item);
+                }
             }
             Logger.info("All items got registered.");
         }
