@@ -30,6 +30,13 @@ public class EntityBouncyCrystal extends EntityThrowable {
         setGlowing(true);
     }
 
+    public EntityBouncyCrystal(World worldIn) {
+        super(worldIn);
+        this.collisionsLeft = 20;
+        setNoGravity(true);
+        setGlowing(true);
+    }
+
     //-----------------------------------------------Set-, Get- Methods:------------------------------------
 
 

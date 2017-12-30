@@ -35,6 +35,9 @@ public class CommonProxy {
     //Sounds:
     private static SoundHandler sH = new SoundHandler();
 
+    //Network:
+    private static NetworkHandler nH = new NetworkHandler();
+
     //-----------------------------------------------Constructor:-------------------------------------------
 
 
@@ -59,6 +62,7 @@ public class CommonProxy {
         cTH.preInit(e);
         rH.preInit(e);
         sH.preInit(e);
+        nH.preInit(e);
     }
 
     //-----------------------------------------------Init:--------------------------------------------------
@@ -73,6 +77,7 @@ public class CommonProxy {
         cTH.init(e);
         rH.init(e);
         sH.init(e);
+        nH.init(e);
     }
 
     //-----------------------------------------------Post-Init:---------------------------------------------
@@ -87,5 +92,6 @@ public class CommonProxy {
         cTH.postInit(e);
         rH.postInit(e);
         sH.postInit(e);
+        nH.postInit(e);
     }
 }
