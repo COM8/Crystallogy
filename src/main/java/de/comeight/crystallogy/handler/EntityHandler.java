@@ -1,23 +1,17 @@
-package de.comeight.crystallogy;
+package de.comeight.crystallogy.handler;
 
-import de.comeight.crystallogy.handler.ClientEventHandler;
-import de.comeight.crystallogy.handler.EntityRenderHandler;
-import de.comeight.crystallogy.handler.ParticleHandler;
+import de.comeight.crystallogy.Crystallogy;
+import de.comeight.crystallogy.entities.EntityBouncyCrystal;
+import de.comeight.crystallogy.util.Logger;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 
-public class ClientProxy extends CommonProxy{
+public class EntityHandler {
     //-----------------------------------------------Attributes:--------------------------------------------
-    //Particles:
-    public static ParticleHandler pH = new ParticleHandler();
-
-    //Entity Renderer:
-    private static EntityRenderHandler eRH = new EntityRenderHandler();
-
-    //Client Events:
-    private static ClientEventHandler cEH = new ClientEventHandler();
+    private static int id = 0;
 
     //-----------------------------------------------Constructor:-------------------------------------------
 
@@ -26,7 +20,10 @@ public class ClientProxy extends CommonProxy{
 
 
     //-----------------------------------------------Misc Methods:------------------------------------------
-
+    private void registerEntities() {
+        EntityRegistry.registerModEntity(EntityBouncyCrystal.RESOURCE_LOCATION, EntityBouncyCrystal.class, EntityBouncyCrystal.NAME, id++, Crystallogy.INSTANCE, 64, 1, true);
+        Logger.info("All entities got registered.");
+    }
 
     //-----------------------------------------------Events:------------------------------------------------
 
@@ -34,27 +31,16 @@ public class ClientProxy extends CommonProxy{
     //-----------------------------------------------Pre-Init:----------------------------------------------
     @EventHandler
     public void preInit(FMLPreInitializationEvent e) {
-        super.preInit(e);
-        cEH.preInit(e);
-        eRH.preInit(e);
-        pH.preInit(e);
     }
 
     //-----------------------------------------------Init:--------------------------------------------------
     @EventHandler
     public void init(FMLInitializationEvent e) {
-        super.init(e);
-        cEH.init(e);
-        eRH.init(e);
-        pH.init(e);
+        registerEntities();
     }
 
     //-----------------------------------------------Post-Init:---------------------------------------------
     @EventHandler
     public void postInit(FMLPostInitializationEvent e) {
-        super.postInit(e);
-        cEH.postInit(e);
-        eRH.postInit(e);
-        pH.postInit(e);
     }
 }

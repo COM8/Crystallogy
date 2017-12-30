@@ -20,6 +20,9 @@ public class CommonProxy {
     //Items:
     private static ItemHandler iH = new ItemHandler();
 
+    //Entities:
+    private static EntityHandler eH = new EntityHandler();
+
     //World Generators:
     private static WorldGenHandler wH = new WorldGenHandler();
 
@@ -51,6 +54,7 @@ public class CommonProxy {
         cH.preInit(e);
         bH.preInit(e);
         iH.preInit(e);
+        eH.preInit(e);
         wH.preInit(e);
         cTH.preInit(e);
         rH.preInit(e);
@@ -64,6 +68,7 @@ public class CommonProxy {
         cH.init(e);
         bH.init(e);
         iH.init(e);
+        eH.init(e);
         wH.init(e);
         cTH.init(e);
         rH.init(e);
@@ -77,6 +82,7 @@ public class CommonProxy {
         cH.postInit(e);
         bH.postInit(e);
         iH.postInit(e);
+        eH.postInit(e);
         wH.postInit(e);
         cTH.postInit(e);
         rH.postInit(e);

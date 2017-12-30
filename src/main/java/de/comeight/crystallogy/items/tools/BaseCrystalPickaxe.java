@@ -1,5 +1,7 @@
 package de.comeight.crystallogy.items.tools;
 
+import net.minecraft.item.ItemStack;
+
 public class BaseCrystalPickaxe extends BaseItemPickaxe{
     //-----------------------------------------------Attributes:--------------------------------------------
 
@@ -7,12 +9,14 @@ public class BaseCrystalPickaxe extends BaseItemPickaxe{
     //-----------------------------------------------Constructor:-------------------------------------------
     public BaseCrystalPickaxe(ToolMaterial material, String id) {
         super(material, id);
-        setMaxDamage(getMaxDamage() * 10);
-        damageVsEntity *= 0.25;
+        attackDamage *= 0.25;
     }
 
     //-----------------------------------------------Set-, Get- Methods:------------------------------------
-
+    @Override
+    public int getMaxDamage(ItemStack stack) {
+        return super.getMaxDamage(stack) * 10;
+    }
 
     //-----------------------------------------------Misc Methods:------------------------------------------
 

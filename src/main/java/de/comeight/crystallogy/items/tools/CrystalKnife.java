@@ -16,7 +16,7 @@ public abstract class CrystalKnife extends BaseItemShovel{
     //-----------------------------------------------Constructor:-------------------------------------------
     public CrystalKnife(String id) {
         super(CustomToolMaterials.CRYSTAL_RED, id);
-        damageVsEntity = 0.5F;
+        attackDamage = 0.5F;
         attackSpeed = 0F;
         setMaxDamage(5);
         setNoRepair();

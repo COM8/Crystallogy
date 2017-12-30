@@ -1,5 +1,7 @@
 package de.comeight.crystallogy.items.tools;
 
+import net.minecraft.item.ItemStack;
+
 public class BaseItemHammer extends BaseItemPickaxe {
     //-----------------------------------------------Attributes:--------------------------------------------
 
@@ -7,14 +9,15 @@ public class BaseItemHammer extends BaseItemPickaxe {
     //-----------------------------------------------Constructor:-------------------------------------------
     public BaseItemHammer(ToolMaterial material, String id) {
         super(material, id);
-
-        setMaxDamage(getMaxDamage() * 15);
-        damageVsEntity *= 1.7;
+        attackDamage *= 1.7;
         attackSpeed = -3.4F;
     }
 
     //-----------------------------------------------Set-, Get- Methods:------------------------------------
-
+    @Override
+    public int getMaxDamage(ItemStack stack) {
+        return super.getMaxDamage(stack) * 15;
+    }
 
     //-----------------------------------------------Misc Methods:------------------------------------------
 

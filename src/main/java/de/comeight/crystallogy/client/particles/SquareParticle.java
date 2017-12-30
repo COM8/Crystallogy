@@ -9,23 +9,29 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class CrystalParticle extends BaseParticleExtended {
+public class SquareParticle extends BaseParticleExtended {
     //-----------------------------------------------Attributes:--------------------------------------------
-    public static final ResourceLocation RL_CRYSTAL_PARTICLE = new ResourceLocation(Crystallogy.MOD_ID + ":particles/j/j");
-    public static final String ID_CRYSTAL_PARTICLE = Crystallogy.MOD_ID + ":crystalParticle";
+    public static final ResourceLocation RL_SQUARE_PARTICLE = new ResourceLocation(Crystallogy.MOD_ID + ":particles/square/square");
+    public static final String ID_SQUARE_PARTICLE = Crystallogy.MOD_ID + ":squareParticle";
 
     //-----------------------------------------------Constructor:-------------------------------------------
-    public CrystalParticle(World worldIn, Vec3d pos) {
-        super(RL_CRYSTAL_PARTICLE, ID_CRYSTAL_PARTICLE, worldIn, pos);
+    public SquareParticle(World worldIn, Vec3d pos) {
+        super(RL_SQUARE_PARTICLE, ID_SQUARE_PARTICLE, worldIn, pos);
+        this.particleTexturesCount = 1;
 
-        this.particleMaxAge = 60 + Util.RANDOM.nextInt(30);
-        this.animationSpeed = particleMaxAge / 32;
         this.motionX = -0.005 + Util.RANDOM.nextDouble() * 0.01;
         this.motionY = -0.005 + Util.RANDOM.nextDouble() * 0.01;
         this.motionZ = -0.005 + Util.RANDOM.nextDouble() * 0.01;
+
+        this.particleScale = Util.RANDOM.nextFloat() * 0.2F;
+        this.particleMaxAge = 60 + Util.RANDOM.nextInt(100);
+        particleGravity = 1.0F;
+        setRBGColorF(0.5F + Util.RANDOM.nextFloat() * 0.5F, Util.RANDOM.nextFloat() * 0.2F, 0.0F);
+        setRBGColorF(Util.RANDOM.nextFloat(), Util.RANDOM.nextFloat(), Util.RANDOM.nextFloat());
+
     }
 
-    public CrystalParticle() {
+    public SquareParticle() {
         this(null, new Vec3d(0.0, 0.0,0.0));
     }
 
@@ -33,7 +39,17 @@ public class CrystalParticle extends BaseParticleExtended {
 
 
     //-----------------------------------------------Misc Methods:------------------------------------------
-
+    @Override
+    public void onUpdate() {
+        super.onUpdate();
+        this.particleScale *= 0.99F;
+        if(particleScale < 0.05) {
+            this.setExpired();
+        }
+        if(motionY > -0.02) {
+            motionY -= 0.001 * particleScale * 200;
+        }
+    }
 
     //-----------------------------------------------Events:------------------------------------------------
 

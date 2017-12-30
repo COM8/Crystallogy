@@ -49,6 +49,7 @@ public class ParticleHandler {
 
     public void registerParticles(){
         registerParticle(new CrystalParticle());
+        registerParticle(new SquareParticle());
     }
 
     //-----------------------------------------------Events:------------------------------------------------

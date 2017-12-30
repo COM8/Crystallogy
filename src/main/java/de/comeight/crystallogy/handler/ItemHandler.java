@@ -50,6 +50,7 @@ public class ItemHandler {
     public static final EntityCrystalKnife ENTITY_CRYSTAL_KNIFE = new EntityCrystalKnife();
     public static final PlayerCrystalKnife PLAYER_CRYSTAL_KNIFE = new PlayerCrystalKnife();
     public static final DebugItem DEBUG_ITEM = new DebugItem();
+    public static final BouncyCrystal BOUNCY_CRYSTAL = new BouncyCrystal();
 
     //-----------------------------------------------Constructor:-------------------------------------------
 
@@ -105,11 +106,12 @@ public class ItemHandler {
                     CRYSTAL_SHOVEL_YELLOW,
                     CRYSTAL_SHOVEL_WHITE,
 
-                    BOOK_OF_KNOWLEDGE,
+                    ENTITY_CRYSTAL_KNIFE,
+                    PLAYER_CRYSTAL_KNIFE,
+                    BOUNCY_CRYSTAL,
                     ConfigHandler.enableDebugItem ? DEBUG_ITEM : null,
 
-                    ENTITY_CRYSTAL_KNIFE,
-                    PLAYER_CRYSTAL_KNIFE
+                    BOOK_OF_KNOWLEDGE
             };
 
             for (final Item item : items) {
