@@ -2,6 +2,7 @@ package de.comeight.crystallogy.client.particles;
 
 import de.comeight.crystallogy.Crystallogy;
 import de.comeight.crystallogy.util.Util;
+import de.comeight.crystallogy.util.enums.EnumParticle;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -16,7 +17,7 @@ public class SquareParticle extends BaseParticleExtended {
 
     //-----------------------------------------------Constructor:-------------------------------------------
     public SquareParticle(World worldIn, Vec3d pos) {
-        super(RL_SQUARE_PARTICLE, ID_SQUARE_PARTICLE, worldIn, pos);
+        super(RL_SQUARE_PARTICLE, ID_SQUARE_PARTICLE, worldIn, pos, EnumParticle.SQUARE_PARTICLE);
         this.particleTexturesCount = 1;
 
         this.motionX = -0.005 + Util.RANDOM.nextDouble() * 0.01;
@@ -49,6 +50,11 @@ public class SquareParticle extends BaseParticleExtended {
         if(motionY > -0.02) {
             motionY -= 0.001 * particleScale * 200;
         }
+    }
+
+    @Override
+    public BaseParticle clone() {
+        return new SquareParticle(world, new Vec3d(posX, posY, posZ));
     }
 
     //-----------------------------------------------Events:------------------------------------------------

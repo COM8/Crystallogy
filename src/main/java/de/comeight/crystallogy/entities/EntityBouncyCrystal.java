@@ -2,6 +2,9 @@ package de.comeight.crystallogy.entities;
 
 import de.comeight.crystallogy.Crystallogy;
 import de.comeight.crystallogy.client.particles.SquareParticle;
+import de.comeight.crystallogy.network.NetworkMessageParticle;
+import de.comeight.crystallogy.network.ParticleContainer;
+import de.comeight.crystallogy.util.NetworkUtils;
 import de.comeight.crystallogy.util.Util;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -76,14 +79,20 @@ public class EntityBouncyCrystal extends EntityThrowable {
     }
 
     private void spawnParticle(BlockPos pos) {
-        if(!world.isRemote) {
+        if(world.isRemote) {
             return;
         }
+        SquareParticle p = new SquareParticle(world, new Vec3d(pos));
+        ParticleContainer pC = p.toParticleContainer();
+        pC.area = new Vec3d(1, 0.5, 1);
+        pC.randomColor = true;
+        pC.particleCount = 1000;
+        NetworkUtils.sendToServer(new NetworkMessageParticle(pC));
 
-        for (int i = 0; i < 1000; i++) {
+        /*for (int i = 0; i < 1000; i++) {
             Vec3d pPos = new Vec3d(pos.getX() + Util.RANDOM.nextFloat(), pos.getY() + 0.5, pos.getZ() + Util.RANDOM.nextFloat());
             Minecraft.getMinecraft().effectRenderer.addEffect(new SquareParticle(world, pPos));
-        }
+        }*/
     }
 
     @Override

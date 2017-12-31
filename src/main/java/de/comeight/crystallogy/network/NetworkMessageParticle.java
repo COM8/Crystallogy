@@ -1,6 +1,5 @@
-package de.comeight.crystallogy.network.handler;
+package de.comeight.crystallogy.network;
 
-import de.comeight.crystallogy.network.BaseNetworkMessage;
 import de.comeight.crystallogy.util.Logger;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,8 +10,8 @@ public class NetworkMessageParticle extends BaseNetworkMessage {
     protected NBTTagCompound particleNbtTagCompound;
 
     //-----------------------------------------------Constructor:-------------------------------------------
-    public NetworkMessageParticle(NBTTagCompound particleNbtTagCompound){
-        this.particleNbtTagCompound = particleNbtTagCompound;
+    public NetworkMessageParticle(ParticleContainer pC){
+        this.particleNbtTagCompound = pC.toNBT();
         this.messageValid = true;
     }
 
@@ -20,7 +19,9 @@ public class NetworkMessageParticle extends BaseNetworkMessage {
     }
 
     //-----------------------------------------------Set-, Get- Methods:------------------------------------
-
+    public NBTTagCompound getParticleNbtTagCompound() {
+        return particleNbtTagCompound;
+    }
 
     //-----------------------------------------------Misc Methods:------------------------------------------
     @Override

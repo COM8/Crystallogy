@@ -2,6 +2,7 @@ package de.comeight.crystallogy.client.particles;
 
 import de.comeight.crystallogy.Crystallogy;
 import de.comeight.crystallogy.util.Util;
+import de.comeight.crystallogy.util.enums.EnumParticle;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -16,7 +17,7 @@ public class CrystalParticle extends BaseParticleExtended {
 
     //-----------------------------------------------Constructor:-------------------------------------------
     public CrystalParticle(World worldIn, Vec3d pos) {
-        super(RL_CRYSTAL_PARTICLE, ID_CRYSTAL_PARTICLE, worldIn, pos);
+        super(RL_CRYSTAL_PARTICLE, ID_CRYSTAL_PARTICLE, worldIn, pos, EnumParticle.CRYSTAL_PARTICLE);
 
         this.particleMaxAge = 60 + Util.RANDOM.nextInt(30);
         this.animationSpeed = particleMaxAge / 32;
@@ -33,7 +34,10 @@ public class CrystalParticle extends BaseParticleExtended {
 
 
     //-----------------------------------------------Misc Methods:------------------------------------------
-
+    @Override
+    public BaseParticle clone() {
+        return new CrystalParticle(world, new Vec3d(posX, posY, posZ));
+    }
 
     //-----------------------------------------------Events:------------------------------------------------
 

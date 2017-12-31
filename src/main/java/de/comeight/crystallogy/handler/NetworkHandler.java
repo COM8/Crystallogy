@@ -1,7 +1,7 @@
 package de.comeight.crystallogy.handler;
 
 import de.comeight.crystallogy.Crystallogy;
-import de.comeight.crystallogy.network.handler.NetworkMessageParticle;
+import de.comeight.crystallogy.network.NetworkMessageParticle;
 import de.comeight.crystallogy.network.handler.client.MessageHandlerClientParticle;
 import de.comeight.crystallogy.network.handler.server.MessageHandlerServerParticle;
 import net.minecraftforge.fml.common.Mod.EventHandler;

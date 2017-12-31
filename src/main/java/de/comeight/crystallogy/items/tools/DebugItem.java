@@ -2,6 +2,9 @@ package de.comeight.crystallogy.items.tools;
 
 import de.comeight.crystallogy.client.particles.SquareParticle;
 import de.comeight.crystallogy.items.BaseItem;
+import de.comeight.crystallogy.network.NetworkMessageParticle;
+import de.comeight.crystallogy.network.ParticleContainer;
+import de.comeight.crystallogy.util.NetworkUtils;
 import de.comeight.crystallogy.util.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -47,11 +50,17 @@ public class DebugItem extends BaseItem {
     }
 
     private void spawnParticles(BlockPos pos, World worldIn) {
-        for (int i = 0; i < 10000; i++) {
+        /*for (int i = 0; i < 10000; i++) {
             Vec3d pPos = new Vec3d(pos.getX() - 0.25+ Util.RANDOM.nextFloat() * 0.5, pos.getY() + 2, pos.getZ() - 0.25+ Util.RANDOM.nextFloat() * 0.5);
             particle = new SquareParticle(worldIn, pPos);
             Minecraft.getMinecraft().effectRenderer.addEffect(particle);
-        }
+        }*/
+        SquareParticle p = new SquareParticle(worldIn, new Vec3d(pos));
+        ParticleContainer pC = p.toParticleContainer();
+        pC.area = new Vec3d(1, 0.5, 1);
+        pC.randomColor = true;
+        pC.particleCount = 10000;
+        NetworkUtils.sendToServer(new NetworkMessageParticle(pC));
     }
 
 

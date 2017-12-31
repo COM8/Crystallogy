@@ -1,6 +1,7 @@
 package de.comeight.crystallogy.client.particles;
 
 import de.comeight.crystallogy.util.Util;
+import de.comeight.crystallogy.util.enums.EnumParticle;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -8,13 +9,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class BaseParticleExtended extends BaseParticle {
+public abstract class BaseParticleExtended extends BaseParticle {
     //-----------------------------------------------Attributes:--------------------------------------------
 
 
     //-----------------------------------------------Constructor:-------------------------------------------
-    protected BaseParticleExtended(ResourceLocation rL, String id, World worldIn, Vec3d pos) {
-        super(rL, id, worldIn, pos);
+    protected BaseParticleExtended(ResourceLocation rL, String id, World worldIn, Vec3d pos, EnumParticle particle) {
+        super(rL, id, worldIn, pos, particle);
 
         this.particleMaxAge = 30 + Util.RANDOM.nextInt(30);
         this.animationSpeed = particleMaxAge / 32;
@@ -25,13 +26,11 @@ public class BaseParticleExtended extends BaseParticle {
 
 
     //-----------------------------------------------Misc Methods:------------------------------------------
-
     @Override
     public void onUpdate() {
         super.onUpdate();
         move(motionX, motionY, motionZ);
     }
-
 
     //-----------------------------------------------Events:------------------------------------------------
 

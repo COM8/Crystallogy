@@ -1,7 +1,9 @@
 package de.comeight.crystallogy.client.particles;
 
+import de.comeight.crystallogy.network.ParticleContainer;
 import de.comeight.crystallogy.util.Logger;
 import de.comeight.crystallogy.util.RGBColor;
+import de.comeight.crystallogy.util.enums.EnumParticle;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.util.ResourceLocation;
@@ -13,6 +15,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public abstract class BaseParticle extends Particle {
     //-----------------------------------------------Attributes:--------------------------------------------
+    protected final EnumParticle particle;
     private boolean canDie;
     public final ResourceLocation RL;
     public final String ID;
@@ -21,9 +24,10 @@ public abstract class BaseParticle extends Particle {
     protected double animationSpeed;
 
     //-----------------------------------------------Constructor:-------------------------------------------
-    protected BaseParticle(ResourceLocation rL, String id, World worldIn, Vec3d pos) {
+    protected BaseParticle(ResourceLocation rL, String id, World worldIn, Vec3d pos, EnumParticle particle) {
         super(worldIn, pos.x, pos.y, pos.z);
 
+        this.particle = particle;
         this.canDie = true;
         this.RL = rL;
         this.ID = id;
@@ -78,6 +82,22 @@ public abstract class BaseParticle extends Particle {
             this.particleAge++;
         }
     }
+
+    public ParticleContainer toParticleContainer(){
+        ParticleContainer pC = new ParticleContainer();
+
+        pC.particle = particle;
+        pC.pos = new Vec3d(posX, posY, posZ);
+        pC.color = new RGBColor(particleRed, particleGreen, particleBlue);
+        pC.randomMaxAge = false;
+        pC.randomColor = false;
+        pC.randomScale =false;
+        pC.maxAgeMin = particleMaxAge;
+
+        return pC;
+    }
+
+    public abstract BaseParticle clone();
 
     //-----------------------------------------------Events:------------------------------------------------
 

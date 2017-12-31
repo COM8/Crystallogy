@@ -1,6 +1,6 @@
 package de.comeight.crystallogy.network.handler.server;
 
-import de.comeight.crystallogy.network.handler.NetworkMessageParticle;
+import de.comeight.crystallogy.network.NetworkMessageParticle;
 import de.comeight.crystallogy.util.Logger;
 import de.comeight.crystallogy.util.NetworkUtils;
 import net.minecraft.entity.player.EntityPlayerMP;
