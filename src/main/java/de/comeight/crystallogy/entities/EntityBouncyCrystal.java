@@ -5,9 +5,8 @@ import de.comeight.crystallogy.client.particles.SquareParticle;
 import de.comeight.crystallogy.network.NetworkMessageParticle;
 import de.comeight.crystallogy.network.ParticleContainer;
 import de.comeight.crystallogy.util.NetworkUtils;
-import de.comeight.crystallogy.util.Util;
+import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.SoundEvents;
@@ -24,18 +23,22 @@ public class EntityBouncyCrystal extends EntityThrowable {
     public static final String NAME = ":entityBouncyCrystal";
     public static final ResourceLocation RESOURCE_LOCATION = new ResourceLocation(Crystallogy.MOD_ID + ":bouncyCrystal");
     private int collisionsLeft;
+    private int noCollisionTicks;
 
     //-----------------------------------------------Constructor:-------------------------------------------
     public EntityBouncyCrystal(World worldIn, EntityLivingBase throwerIn) {
         super(worldIn, throwerIn);
         this.collisionsLeft = 20;
+        this.noCollisionTicks = 0;
         setNoGravity(true);
         setGlowing(true);
+        setAlwaysRenderNameTag(true);
     }
 
     public EntityBouncyCrystal(World worldIn) {
         super(worldIn);
         this.collisionsLeft = 20;
+        this.noCollisionTicks = 0;
         setNoGravity(true);
         setGlowing(true);
     }
@@ -50,57 +53,65 @@ public class EntityBouncyCrystal extends EntityThrowable {
         if(isDead || pos == null) {
             return;
         }
+        IBlockState state = world.getBlockState(pos);
+        if(state == null || state.getBlock() instanceof BlockLiquid){
+            return;
+        }
         if(!world.isRemote) {
             if(!collided) {
                 collisionsLeft--;
             }
             if(collisionsLeft <= 0) {
-                world.playSound(null, posX, posY, posZ, SoundEvents.ENTITY_ARMORSTAND_HIT, SoundCategory.NEUTRAL, 0.5F, 0.4F + Util.RANDOM.nextFloat() * 0.5F);
+                world.playSound(null, posX, posY, posZ, SoundEvents.ENTITY_ARMORSTAND_HIT, SoundCategory.NEUTRAL, 0.5F, 0.4F + world.rand.nextFloat() * 0.5F);
                 setDead();
                 return;
             }
-        }
-        else {
-            IBlockState state = world.getBlockState(pos);
-            if(state != null){
-                world.destroyBlock(result.getBlockPos(), true);
-                spawnParticle(result.getBlockPos());
+            else {
+                if(state != null){
+                    world.destroyBlock(result.getBlockPos(), true);
+                    spawnParticle(result.getBlockPos());
+                }
             }
         }
 
-        if(Util.RANDOM.nextInt(3) == 0) {
-            motionX *= -(1 + Util.RANDOM.nextFloat() * 0.2);
-            motionY *= -(1 + Util.RANDOM.nextFloat() * 0.2);
-            motionZ *= -(1 + Util.RANDOM.nextFloat() * 0.2);
-        }
-        motionX *= -1;
-        motionY *= -1;
-        motionZ *= -1;
+        noCollisionTicks = 0;
+        motionX = -motionX;
+        motionY = -motionY;
+        motionZ = -motionZ;
     }
 
     private void spawnParticle(BlockPos pos) {
         if(world.isRemote) {
             return;
         }
-        SquareParticle p = new SquareParticle(world, new Vec3d(pos));
+        SquareParticle p = new SquareParticle(world, new Vec3d(pos).addVector(0, 0.45, 0));
         ParticleContainer pC = p.toParticleContainer();
         pC.area = new Vec3d(1, 0.5, 1);
         pC.randomColor = true;
         pC.particleCount = 1000;
         NetworkUtils.sendToServer(new NetworkMessageParticle(pC));
-
-        /*for (int i = 0; i < 1000; i++) {
-            Vec3d pPos = new Vec3d(pos.getX() + Util.RANDOM.nextFloat(), pos.getY() + 0.5, pos.getZ() + Util.RANDOM.nextFloat());
-            Minecraft.getMinecraft().effectRenderer.addEffect(new SquareParticle(world, pPos));
-        }*/
     }
 
     @Override
     public void onUpdate() {
+        double mX = motionX;
+        double mY = motionY;
+        double mZ = motionZ;
         super.onUpdate();
-        motionX *= 1.01;
-        motionY *= 1.01;
-        motionZ *= 1.01;
+        if(noCollisionTicks > 0){
+            motionX = mX;
+            motionY = mY;
+            motionZ = mZ;
+        }
+        else{
+            motionX *= 1.02;
+            motionY *= 1.02;
+            motionZ *= 1.02;
+        }
+        noCollisionTicks++;
+        if(noCollisionTicks >= 1200){
+            setDead();
+        }
     }
 
     @Override
